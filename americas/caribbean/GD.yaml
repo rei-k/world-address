@@ -1,43 +1,39 @@
 name:
-  en: Dominican Republic
+  en: Grenada
   local:
-    - { lang: es, value: República Dominicana }
+    - { lang: en, value: Grenada }
 
-iso_codes: { alpha2: DO, alpha3: DOM, numeric: "214" }
+iso_codes: { alpha2: GD, alpha3: GRD, numeric: "308" }
 
 continent: North America
 subregion: Caribbean
 
 languages:
-  - { name: Spanish, role: national_primary }
-  - { name: English, role: auxiliary_international, required_for_shipping: true }
+  - { name: English, role: official }
+  - { name: French Patois, role: regional }
 
 administrative_divisions:
-  level1: { type: Provincia, label_en: Province, source: ../../data/do_provincias.json }
-  level2: { type: Municipio, label_en: Municipality, source: ../../data/do_municipios.json }
-  level3: { type: Sector / Barrio, label_en: Neighborhood, source: ../../data/do_sectores.json }
+  level1: { type: Parish, label_en: Parish, count: 6, source: ../../data/gd_parishes.json }
+  level2: { type: Dependency, label_en: Dependency, count: 1 }
 
 address_format:
   order_variants:
-    - context: domestic_es
-      order: [recipient, building, floor, room, street_address, sector, municipio, provincia, country]
-    - context: international_en
-      order: [recipient, room, floor, building, street_address, municipio, provincia, postal_code, country]
+    - context: domestic
+      order: [recipient, building, street_address, city, parish, country]
+    - context: international
+      order: [recipient, building, street_address, city, parish, country]
 
 postal_code:
-  required: true
-  required_for_international: true
-  stability: medium
-  regex: "^[0-9]{5}$"
-  example: "10101"
+  required: false
+  description: "Grenada does not use a postal code system"
 
 validation:
   rules:
-    - "Provincia と Municipio は必須"
-    - "Sector/Barrio が未記入の場合は交差点情報を含める"
+    - "Parish is required"
+    - "City/town name recommended"
 
 examples:
-  domestic_es: "Torre Empresarial, Av. 27 de Febrero 1234, Sector Naco, Municipio Santo Domingo, Provincia Santo Domingo, República Dominicana 10101"
-  international_en: "Av. 27 de Febrero 1234, Naco, Santo Domingo 10101, Dominican Republic"
+  domestic: "Grand Anse Main Road, St. George's, St. George, Grenada"
+  international: "Grand Anse Main Road, St. George's, St. George, Grenada"
 
 status: { un_member: true, recognized: true, disputed: false }

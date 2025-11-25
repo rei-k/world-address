@@ -1,38 +1,48 @@
 name: 
-  en: Estonia
+  en: Finland
   local:
-    - lang: et
-      value: Eesti
+    - lang: fi
+      value: Suomi
+      script: Latin
+      direction: ltr
+    - lang: sv
+      value: Finland
       script: Latin
       direction: ltr
 
 iso_codes:
-  alpha2: EE
-  alpha3: EST
-  numeric: "233"
+  alpha2: FI
+  alpha3: FIN
+  numeric: "246"
 
 continent: Europe
 subregion: Northern Europe
 
 languages:
-  - name: Estonian
+  - name: Finnish
     script: Latin
     role: official
     country_name:
-      et: Eesti
-      en: Estonia
+      fi: Suomi
+      en: Finland
+  - name: Swedish
+    script: Latin
+    role: co-official
+    country_name:
+      sv: Finland
+      en: Finland
   - name: English
     script: Latin
     role: auxiliary
     country_name:
-      en: Estonia
+      en: Finland
 
 administrative_divisions:
   level1:
-    type: County
-    label_local: Maakond
-    label_en: County
-    count: 15
+    type: Region
+    label_local: Maakunta
+    label_en: Region
+    count: 19
 
 address_format:
   order_variants:
@@ -57,12 +67,12 @@ address_format:
     required: true
     regex: "^[0-9]{5}$"
     description: "5-digit numeric postal code"
-    example: "10111"
+    example: "00100"
 
 examples:
-  domestic_raw: "Pärnu mnt 10, 10111 Tallinn"
-  domestic_normalized: "Pärnu mnt 10 10111 Tallinn"
-  international: "Pärnu mnt 10, 10111 Tallinn, Estonia"
+  domestic_raw: "Mannerheimintie 10, 00100 Helsinki"
+  domestic_normalized: "Mannerheimintie 10 00100 Helsinki"
+  international: "Mannerheimintie 10, 00100 Helsinki, Finland"
 
 status:
   un_member: true

@@ -1,15 +1,15 @@
 name:
-  en: Palestine
+  en: Jordan
   local:
     - lang: ar
-      value: فلسطين
+      value: الأردن
       script: Arabic
       direction: rtl
 
 iso_codes:
-  alpha2: PS
-  alpha3: PSE
-  numeric: "275"
+  alpha2: JO
+  alpha3: JOR
+  numeric: "400"
 
 continent: Asia
 subregion: West Asia
@@ -18,19 +18,19 @@ languages:
   - name: Arabic
     script: Arabic
     role: official
-    country_name: فلسطين
+    country_name: الأردن
   - name: English
     script: Latin
     role: auxiliary
-    country_name: Palestine
+    country_name: Jordan
 
 administrative_divisions:
   level1:
     type: Governorate
     label_local: محافظة
     label_en: Governorate
-    count: 16
-    source: ../../data/ps_governorates.json
+    count: 12
+    source: ../../data/jo_governorates.json
 
 address_format:
   order_variants:
@@ -39,6 +39,7 @@ address_format:
         - recipient
         - governorate
         - city
+        - district
         - street_address
         - building
         - floor
@@ -52,21 +53,24 @@ address_format:
         - floor
         - room
         - street_address
+        - district
         - city
         - governorate
         - postal_code
         - country
 
   postal_code:
-    required: false
-    description: "Postal codes exist but are not consistently used"
+    required: true
+    regex: "^[0-9]{5}$"
+    description: "5-digit numeric postal code"
+    example: "11118"
 
 examples:
-  domestic_raw: "Al-Masyoun, Ramallah"
-  domestic_normalized: "Al-Masyoun Ramallah"
-  international: "Room 203, Al-Masyoun, Ramallah, Palestine"
+  domestic_raw: "شارع الملك عبدالله الثاني، عمّان 11118"
+  domestic_normalized: "King Abdullah II Street, Amman 11118"
+  international: "Room 502, King Abdullah II Street, Amman 11118, Jordan"
 
 status:
-  un_member: observer
-  recognized: partial
-  disputed: true
+  un_member: true
+  recognized: true
+  disputed: false

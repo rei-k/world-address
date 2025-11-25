@@ -1,41 +1,54 @@
 name: 
-  en: Saint Pierre and Miquelon
+  en: French Polynesia
   local:
     - lang: fr
-      value: Saint-Pierre-et-Miquelon
+      value: Polynésie française
+      script: Latin
+      direction: ltr
+    - lang: ty
+      value: Pōrīnetia Farāni
       script: Latin
       direction: ltr
 
 iso_codes:
-  alpha2: PM
-  alpha3: SPM
-  numeric: "666"
+  alpha2: PF
+  alpha3: PYF
+  numeric: "258"
 
-continent: North America
-subregion: North America
+continent: Oceania
+subregion: Polynesia
 
 languages:
   - name: French
     script: Latin
     role: official
     country_name:
-      fr: Saint-Pierre-et-Miquelon
-      en: Saint Pierre and Miquelon
+      fr: Polynésie française
+      en: French Polynesia
+  - name: Tahitian
+    script: Latin
+    role: co-official
+    country_name:
+      ty: Pōrīnetia Farāni
+      en: French Polynesia
   - name: English
     script: Latin
     role: auxiliary
     country_name:
-      en: Saint Pierre and Miquelon
+      en: French Polynesia
 
 administrative_divisions:
   level1:
-    type: Commune
-    label_local: Commune
-    label_en: Municipality
-    count: 2
+    type: Archipelago
+    label_local: Archipel
+    label_en: Archipelago
+    count: 5
     names:
-      - Saint-Pierre
-      - Miquelon-Langlade
+      - Society Islands (Îles de la Société)
+      - Tuamotu Archipelago (Îles Tuamotu)
+      - Gambier Islands (Îles Gambier)
+      - Marquesas Islands (Îles Marquises)
+      - Austral Islands (Îles Australes)
 
 address_format:
   order_variants:
@@ -46,6 +59,7 @@ address_format:
         - house_number
         - postal_code
         - city
+        - island
         - country
     - context: international
       order:
@@ -54,18 +68,19 @@ address_format:
         - house_number
         - postal_code
         - city
+        - island
         - country
 
   postal_code:
     required: true
-    regex: "^975[0-9]{2}$"
-    description: "Postal codes start with 975"
-    example: "97500"
+    regex: "^987[0-9]{2}$"
+    description: "Postal codes start with 987"
+    example: "98713"
 
 examples:
-  domestic_raw: "Rue Abbé Pierre Gervain, 97500 Saint-Pierre"
-  domestic_normalized: "Rue Abbé Pierre Gervain 97500 Saint-Pierre"
-  international: "Rue Abbé Pierre Gervain, 97500 Saint-Pierre, Saint Pierre and Miquelon"
+  domestic_raw: "Avenue du Prince Hinoi, 98713 Papeete, Tahiti"
+  domestic_normalized: "Avenue du Prince Hinoi 98713 Papeete Tahiti"
+  international: "Avenue du Prince Hinoi, 98713 Papeete, Tahiti, French Polynesia"
 
 status:
   un_member: false
