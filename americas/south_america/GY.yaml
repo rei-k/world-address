@@ -1,0 +1,62 @@
+name:
+  en: Guyana
+  local:
+    - lang: en
+      value: Guyana
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: GY
+  alpha3: GUY
+  numeric: "328"
+
+continent: South America
+subregion: Northern South America
+
+languages:
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Guyana
+    required_for_shipping: true
+
+administrative_divisions:
+  level1:
+    type: Region
+    label_en: Region
+    count: 10
+  level2:
+    type: Neighbourhood
+    label_en: Neighbourhood
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, village, city, region, country]
+    - context: international
+      order: [recipient, street_address, village, city, region, country]
+
+  village: { required: false, example: "Kitty" }
+
+  postal_code:
+    required: false
+    description: "Postal codes are not commonly used in Guyana"
+    coverage: limited
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal codes are rarely used"
+    - "Region name is important for delivery"
+
+examples:
+  domestic_raw: "123 Main Street, Kitty, Georgetown, Demerara-Mahaica"
+  domestic_normalized: "123 Main Street Kitty Georgetown Demerara-Mahaica"
+  international: "123 Main Street, Kitty, Georgetown, Demerara-Mahaica, Guyana"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

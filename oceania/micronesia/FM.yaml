@@ -1,0 +1,63 @@
+name:
+  en: Federated States of Micronesia
+  local:
+    - lang: en
+      value: Federated States of Micronesia
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: FM
+  alpha3: FSM
+  numeric: "583"
+
+continent: Oceania
+subregion: Micronesia
+
+languages:
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Federated States of Micronesia
+    required_for_shipping: true
+
+administrative_divisions:
+  level1:
+    type: State
+    label_en: State
+    count: 4
+    names:
+      - Yap
+      - Chuuk
+      - Pohnpei
+      - Kosrae
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, village, state, postal_code, country]
+    - context: international
+      order: [recipient, street_address, village, state, postal_code, country]
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{5}$"
+    description: "5-digit US-style ZIP code (969xx series)"
+    example: "96941"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Uses US-style ZIP codes in the 969xx range"
+    - "State name should be included"
+
+examples:
+  domestic_raw: "PO Box 123, Kolonia, Pohnpei, FM 96941"
+  domestic_normalized: "PO Box 123 Kolonia Pohnpei FM 96941"
+  international: "PO Box 123, Kolonia, Pohnpei, FM 96941, Federated States of Micronesia"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

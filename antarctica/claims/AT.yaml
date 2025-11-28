@@ -1,0 +1,27 @@
+name:
+  en: Australian Antarctic Territory
+  local: Australian Antarctic Territory
+
+claimant_country:
+  name: Australia
+  alpha2: AU
+
+claim_details:
+  sector: "45°E to 136°E and 142°E to 160°E, south of 60°S"
+  area_km2: 5896500
+  established: 1933
+  overlaps_with: []
+  note: "Largest territorial claim in Antarctica (42% of the continent)"
+
+address_notes:
+  - "Mail routed through Hobart, Tasmania"
+  - "Australia operates three permanent stations"
+
+major_stations:
+  - Mawson Station
+  - Davis Station
+  - Casey Station
+
+status:
+  recognized: false
+  note: "Claim suspended under Antarctic Treaty; no overlapping claims"

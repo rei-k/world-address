@@ -1,0 +1,31 @@
+name:
+  en: Maitri Station
+  local: मैत्री
+
+operating_country:
+  name: India
+  alpha2: IN
+  program: National Centre for Polar and Ocean Research (NCPOR)
+
+location:
+  coordinates:
+    latitude: -70.767
+    longitude: 11.733
+  region: Schirmacher Oasis, Queen Maud Land
+  claim_area: Norwegian claim (Dronning Maud Land)
+
+operational:
+  type: year_round
+  established: 1989
+  capacity_winter: 25
+  capacity_summer: 65
+
+address_format:
+  mail_routing:
+    via_country: India
+    via_city: Goa
+  example: "Name, Maitri Station, c/o NCPOR, Headland Sada, Vasco-da-Gama, Goa 403804, India"
+
+status:
+  active: true
+  note: "India's second and currently active permanent Antarctic station"

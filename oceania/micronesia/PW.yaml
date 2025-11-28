@@ -1,0 +1,62 @@
+name:
+  en: Palau
+  local:
+    - lang: pau
+      value: Belau
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: PW
+  alpha3: PLW
+  numeric: "585"
+
+continent: Oceania
+subregion: Micronesia
+
+languages:
+  - name: Palauan
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Belau
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Palau
+    required_for_shipping: true
+
+administrative_divisions:
+  level1:
+    type: State
+    label_en: State
+    count: 16
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, state, postal_code, country]
+    - context: international
+      order: [recipient, street_address, state, postal_code, country]
+
+  postal_code:
+    required: true
+    regex: "^96940$"
+    description: "Single ZIP code for all of Palau"
+    example: "96940"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Palau uses a single ZIP code: 96940"
+
+examples:
+  domestic_raw: "PO Box 123, Koror, PW 96940"
+  domestic_normalized: "PO Box 123 Koror PW 96940"
+  international: "PO Box 123, Koror, PW 96940, Palau"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

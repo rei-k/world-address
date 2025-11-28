@@ -1,0 +1,72 @@
+name:
+  en: New Zealand
+  local:
+    - lang: en
+      value: New Zealand
+      script: Latin
+      direction: ltr
+    - lang: mi
+      value: Aotearoa
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: NZ
+  alpha3: NZL
+  numeric: "554"
+
+continent: Oceania
+subregion: Australia and New Zealand
+
+languages:
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: New Zealand
+    required_for_shipping: true
+  - name: Māori
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Aotearoa
+
+administrative_divisions:
+  level1:
+    type: Region
+    label_en: Region
+    count: 16
+  level2:
+    type: Territorial Authority
+    label_en: District / City
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, unit, street_address, suburb, city, postal_code, country]
+    - context: international
+      order: [recipient, unit, street_address, suburb, city, postal_code, country]
+
+  unit: { required: false, example: "Unit 3" }
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{4}$"
+    description: "4-digit numeric postcode"
+    example: "1010"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postcode is 4 digits"
+    - "City or town name should be included"
+
+examples:
+  domestic_raw: "Unit 3, 123 Queen Street, Auckland Central, Auckland 1010"
+  domestic_normalized: "Unit 3 123 Queen Street Auckland Central Auckland 1010"
+  international: "Unit 3, 123 Queen Street, Auckland Central, Auckland 1010, New Zealand"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

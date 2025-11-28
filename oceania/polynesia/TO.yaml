@@ -1,0 +1,56 @@
+name:
+  en: Tonga
+  local:
+    - lang: to
+      value: Tonga
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: TO
+  alpha3: TON
+  numeric: "776"
+
+continent: Oceania
+subregion: Polynesia
+
+languages:
+  - name: Tongan
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Tonga
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Tonga
+    required_for_shipping: true
+
+administrative_divisions:
+  level1:
+    type: Division
+    label_en: Division
+    count: 5
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, village, island, country]
+    - context: international
+      order: [recipient, street_address, village, island, country]
+
+  postal_code:
+    required: false
+    description: "Postal codes are not commonly used in Tonga"
+    coverage: none
+
+examples:
+  domestic_raw: "PO Box 123, Taufa'ahau Road, Nuku'alofa, Tongatapu"
+  domestic_normalized: "PO Box 123 Taufa'ahau Road Nuku'alofa Tongatapu"
+  international: "PO Box 123, Taufa'ahau Road, Nuku'alofa, Tonga"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

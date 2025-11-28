@@ -1,0 +1,31 @@
+name:
+  en: Vostok Station
+  local: Станция Восток
+
+operating_country:
+  name: Russia
+  alpha2: RU
+  program: Russian Antarctic Expedition (RAE)
+
+location:
+  coordinates:
+    latitude: -78.464
+    longitude: 106.837
+  region: Princess Elizabeth Land
+  claim_area: Australian Antarctic Territory (not recognized by Russia)
+
+operational:
+  type: year_round
+  established: 1957
+  capacity_winter: 13
+  capacity_summer: 25
+
+address_format:
+  mail_routing:
+    via_country: Russia
+    via_city: St. Petersburg
+  example: "Name, Vostok Station, c/o Arctic and Antarctic Research Institute, 38 Bering Street, St. Petersburg 199397, Russia"
+
+status:
+  active: true
+  note: "Located at the southern Pole of Cold; recorded coldest natural temperature on Earth (-89.2°C)"

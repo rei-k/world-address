@@ -1,0 +1,75 @@
+name:
+  en: Ukraine
+  local:
+    - lang: uk
+      value: Україна
+      script: Cyrillic
+      direction: ltr
+
+iso_codes:
+  alpha2: UA
+  alpha3: UKR
+  numeric: "804"
+
+continent: Europe
+subregion: Eastern Europe
+
+languages:
+  - name: Ukrainian
+    script: Cyrillic
+    direction: ltr
+    role: official
+    country_name: Україна
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Ukraine
+
+administrative_divisions:
+  level1:
+    type: Oblast
+    label_local: Область
+    label_en: Oblast
+    count: 24
+  level2:
+    type: Raion
+    label_local: Район
+    label_en: District
+  level3:
+    type: City
+    label_local: Місто
+    label_en: City
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, number, building, apartment, city, oblast, postal_code, country]
+    - context: international
+      order: [recipient, apartment, building, street_address, number, city, oblast, postal_code, country]
+
+  building: { required: false, example: "буд. 5" }
+  apartment: { required: false, example: "кв. 12" }
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{5}$"
+    description: "5-digit numeric postal code"
+    example: "01001"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code is 5 digits"
+    - "Cyrillic script is official but Latin transliteration accepted for international shipping"
+
+examples:
+  domestic_raw: "вул. Хрещатик 22, буд. 5, кв. 12, Київ, Київська область, 01001"
+  domestic_normalized: "вул. Хрещатик 22 буд. 5 кв. 12 Київ 01001"
+  international: "Apt 12, Bldg 5, vul. Khreshchatyk 22, Kyiv 01001, Ukraine"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: true

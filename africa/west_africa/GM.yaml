@@ -70,4 +70,14 @@ validation:
   allow_latin_transliteration: true
   rules:
     - "LGA must be included"
-    - "Postal code or locality clarity required for internationa
+    - "Postal code or locality clarity required for international shipping"
+
+examples:
+  domestic_raw: "Kairaba Complex, 2nd Floor, Room 5, Kairaba Avenue, Serrekunda"
+  domestic_normalized: "Kairaba Complex 2nd Floor Room 5 Kairaba Avenue Serrekunda"
+  international: "Room 5, 2nd Floor, Kairaba Complex, Kairaba Avenue, Serrekunda, The Gambia"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

@@ -1,0 +1,56 @@
+name:
+  en: Tuvalu
+  local:
+    - lang: tvl
+      value: Tuvalu
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: TV
+  alpha3: TUV
+  numeric: "798"
+
+continent: Oceania
+subregion: Polynesia
+
+languages:
+  - name: Tuvaluan
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Tuvalu
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Tuvalu
+    required_for_shipping: true
+
+administrative_divisions:
+  level1:
+    type: Island Council
+    label_en: Island Council
+    count: 8
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, village, island, country]
+    - context: international
+      order: [recipient, village, island, country]
+
+  postal_code:
+    required: false
+    description: "Postal codes are not used in Tuvalu"
+    coverage: none
+
+examples:
+  domestic_raw: "PO Box 123, Vaiaku, Funafuti"
+  domestic_normalized: "PO Box 123 Vaiaku Funafuti"
+  international: "PO Box 123, Vaiaku, Funafuti, Tuvalu"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

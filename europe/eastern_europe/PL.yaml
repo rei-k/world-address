@@ -1,0 +1,74 @@
+name:
+  en: Poland
+  local:
+    - lang: pl
+      value: Polska
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: PL
+  alpha3: POL
+  numeric: "616"
+
+continent: Europe
+subregion: Eastern Europe
+
+languages:
+  - name: Polish
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Polska
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Poland
+
+administrative_divisions:
+  level1:
+    type: Voivodeship
+    label_local: Województwo
+    label_en: Voivodeship
+    count: 16
+  level2:
+    type: County
+    label_local: Powiat
+    label_en: County
+  level3:
+    type: Commune
+    label_local: Gmina
+    label_en: Commune
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, number, apartment, postal_code, city, country]
+    - context: international
+      order: [recipient, apartment, street_address, number, postal_code, city, country]
+
+  apartment: { required: false, example: "m. 12" }
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{2}-[0-9]{3}$"
+    description: "5-digit postal code with hyphen (XX-XXX)"
+    example: "00-001"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code is 5 digits with hyphen after 2nd digit"
+    - "City name must be included"
+
+examples:
+  domestic_raw: "ul. Marszałkowska 123, m. 12, 00-001 Warszawa"
+  domestic_normalized: "ul. Marszałkowska 123 m. 12 00-001 Warszawa"
+  international: "Apt 12, ul. Marszałkowska 123, 00-001 Warsaw, Poland"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

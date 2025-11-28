@@ -1,0 +1,71 @@
+name:
+  en: Georgia
+  local:
+    - lang: ka
+      value: საქართველო
+      script: Georgian
+      direction: ltr
+
+iso_codes:
+  alpha2: GE
+  alpha3: GEO
+  numeric: "268"
+
+continent: Asia
+subregion: Caucasus
+
+languages:
+  - name: Georgian
+    script: Georgian
+    direction: ltr
+    role: official
+    country_name: საქართველო
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Georgia
+
+administrative_divisions:
+  level1:
+    type: Region
+    label_local: მხარე
+    label_en: Region
+    count: 9
+  level2:
+    type: Municipality
+    label_local: მუნიციპალიტეტი
+    label_en: Municipality
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, number, apartment, city, postal_code, country]
+    - context: international
+      order: [recipient, apartment, street_address, number, city, postal_code, country]
+
+  apartment: { required: false, example: "ბინა 12" }
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{4}$"
+    description: "4-digit numeric postal code"
+    example: "0105"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code is 4 digits"
+    - "Georgian script is official but Latin transliteration accepted for international shipping"
+
+examples:
+  domestic_raw: "რუსთაველის გამზირი 12, ბინა 5, თბილისი, 0105"
+  domestic_normalized: "Rustaveli Ave 12 Apt 5 Tbilisi 0105"
+  international: "Apt 5, Rustaveli Ave 12, Tbilisi 0105, Georgia"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: true
+  note: "South Ossetia and Abkhazia are disputed territories"

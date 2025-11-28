@@ -1,0 +1,30 @@
+name:
+  en: Davis Station
+
+operating_country:
+  name: Australia
+  alpha2: AU
+  program: Australian Antarctic Division (AAD)
+
+location:
+  coordinates:
+    latitude: -68.577
+    longitude: 77.967
+  region: Princess Elizabeth Land
+  claim_area: Australian Antarctic Territory
+
+operational:
+  type: year_round
+  established: 1957
+  capacity_winter: 22
+  capacity_summer: 70
+
+address_format:
+  mail_routing:
+    via_country: Australia
+    via_city: Hobart
+  example: "Name, Davis Station, c/o Australian Antarctic Division, 203 Channel Highway, Kingston TAS 7050, Australia"
+
+status:
+  active: true
+  note: "Located in the Vestfold Hills, one of the largest ice-free areas in Antarctica"

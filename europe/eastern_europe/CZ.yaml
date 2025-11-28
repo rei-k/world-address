@@ -1,0 +1,68 @@
+name:
+  en: Czech Republic
+  local:
+    - lang: cs
+      value: Česká republika
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: CZ
+  alpha3: CZE
+  numeric: "203"
+
+continent: Europe
+subregion: Eastern Europe
+
+languages:
+  - name: Czech
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Česká republika
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Czech Republic
+
+administrative_divisions:
+  level1:
+    type: Region
+    label_local: Kraj
+    label_en: Region
+    count: 14
+  level2:
+    type: District
+    label_local: Okres
+    label_en: District
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, number, postal_code, city, country]
+    - context: international
+      order: [recipient, street_address, number, postal_code, city, country]
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{3} [0-9]{2}$"
+    description: "5-digit postal code with space (XXX XX)"
+    example: "110 00"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code is 5 digits with space after 3rd digit"
+    - "City name must be included"
+
+examples:
+  domestic_raw: "Václavské náměstí 1, 110 00 Praha 1"
+  domestic_normalized: "Václavské náměstí 1 110 00 Praha 1"
+  international: "Václavské náměstí 1, 110 00 Prague, Czech Republic"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

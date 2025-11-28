@@ -1,0 +1,79 @@
+name:
+  en: Paraguay
+  local:
+    - lang: es
+      value: Paraguay
+      script: Latin
+      direction: ltr
+    - lang: gn
+      value: Paraguái
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: PY
+  alpha3: PRY
+  numeric: "600"
+
+continent: South America
+subregion: Southern America
+
+languages:
+  - name: Spanish
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Paraguay
+  - name: Guarani
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Paraguái
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Paraguay
+
+administrative_divisions:
+  level1:
+    type: Department
+    label_local: Departamento
+    label_en: Department
+    count: 17
+  level2:
+    type: District
+    label_local: Distrito
+    label_en: District
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, number, neighborhood, city, department, postal_code, country]
+    - context: international
+      order: [recipient, street_address, number, neighborhood, city, department, postal_code, country]
+
+  neighborhood: { required: false, example: "Barrio San Roque" }
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{4}$"
+    description: "4-digit numeric postal code"
+    example: "1209"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code is 4 digits"
+    - "Neighborhood name is commonly used"
+
+examples:
+  domestic_raw: "Av. España 1234, Barrio San Roque, Asunción, Asunción, 1209"
+  domestic_normalized: "Av. España 1234 Barrio San Roque Asunción 1209"
+  international: "Av. España 1234, Barrio San Roque, Asunción 1209, Paraguay"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

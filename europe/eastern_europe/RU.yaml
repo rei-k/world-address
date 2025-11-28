@@ -1,0 +1,72 @@
+name:
+  en: Russia
+  local:
+    - lang: ru
+      value: Россия
+      script: Cyrillic
+      direction: ltr
+
+iso_codes:
+  alpha2: RU
+  alpha3: RUS
+  numeric: "643"
+
+continent: Europe
+subregion: Eastern Europe
+
+languages:
+  - name: Russian
+    script: Cyrillic
+    direction: ltr
+    role: official
+    country_name: Россия
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Russia
+
+administrative_divisions:
+  level1:
+    type: Federal Subject
+    label_local: Субъект федерации
+    label_en: Federal Subject
+    count: 85
+    note: "Includes republics, krais, oblasts, cities, autonomous oblasts, and autonomous okrugs"
+  level2:
+    type: District
+    label_local: Район
+    label_en: District
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, number, building, apartment, city, region, postal_code, country]
+    - context: international
+      order: [recipient, apartment, building, street_address, number, city, region, postal_code, country]
+
+  building: { required: false, example: "корп. 2" }
+  apartment: { required: false, example: "кв. 56" }
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{6}$"
+    description: "6-digit numeric postal code"
+    example: "101000"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code is 6 digits"
+    - "Cyrillic script is official but Latin transliteration accepted for international shipping"
+
+examples:
+  domestic_raw: "ул. Тверская 15, корп. 2, кв. 56, Москва, Московская область, 125009"
+  domestic_normalized: "ул. Тверская 15 корп. 2 кв. 56 Москва 125009"
+  international: "Apt 56, Bldg 2, ul. Tverskaya 15, Moscow 125009, Russia"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false
