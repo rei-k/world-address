@@ -1,0 +1,121 @@
+{
+  "name": {
+    "en": "Bolivia",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Bolivia",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BO",
+    "alpha3": "BOL",
+    "numeric": "068"
+  },
+  "continent": "South America",
+  "subregion": "Western South America",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Bolivia"
+    },
+    {
+      "name": "Quechua",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official"
+    },
+    {
+      "name": "Aymara",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Bolivia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Department",
+      "label_local": "Departamento",
+      "label_en": "Department",
+      "count": 9
+    },
+    "level2": {
+      "type": "Province",
+      "label_local": "Provincia",
+      "label_en": "Province"
+    },
+    "level3": {
+      "type": "Municipality",
+      "label_local": "Municipio",
+      "label_en": "Municipality"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "zone",
+          "city",
+          "department",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "zone",
+          "city",
+          "department",
+          "country"
+        ]
+      }
+    ],
+    "zone": {
+      "required": false,
+      "example": "Zona Sur"
+    },
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes are not commonly used in Bolivia",
+      "coverage": "limited"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal codes are rarely used",
+      "Zone names are important for urban areas"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Calle Comercio 123, Zona Central, La Paz",
+    "domestic_normalized": "Calle Comercio 123 Zona Central La Paz",
+    "international": "Calle Comercio 123, Zona Central, La Paz, Bolivia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

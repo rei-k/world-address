@@ -1,0 +1,98 @@
+{
+  "name": {
+    "en": "Denmark",
+    "local": [
+      {
+        "lang": "da",
+        "value": "Danmark",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "DK",
+    "alpha3": "DNK",
+    "numeric": "208"
+  },
+  "continent": "Europe",
+  "subregion": "Northern Europe",
+  "languages": [
+    {
+      "name": "Danish",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "da": "Danmark",
+        "en": "Denmark"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Denmark"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Region",
+      "label_en": "Region",
+      "count": 5,
+      "names": [
+        "Hovedstaden",
+        "Midtjylland",
+        "Nordjylland",
+        "Sjælland",
+        "Syddanmark"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "floor",
+          "door",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric postal code",
+      "example": "2100"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Nørregade 12, 1165 København K",
+    "domestic_normalized": "Nørregade 12 1165 København K",
+    "international": "Nørregade 12, 1165 København K, Denmark"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

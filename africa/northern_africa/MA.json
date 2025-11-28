@@ -1,0 +1,147 @@
+{
+  "name": {
+    "en": "Morocco",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "المغرب",
+        "script": "Arabic",
+        "direction": "rtl"
+      },
+      {
+        "lang": "fr",
+        "value": "Maroc",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MA",
+    "alpha3": "MAR",
+    "numeric": "504"
+  },
+  "continent": "Africa",
+  "subregion": "Northern Africa",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "المغرب"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "country_name": "Maroc"
+    },
+    {
+      "name": "Berber",
+      "script": "Tifinagh",
+      "direction": "ltr",
+      "role": "co-official",
+      "country_name": "ⵍⵎⵖⵔⵉⴱ"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Morocco"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "جهة",
+      "label_en": "Region",
+      "count": 12,
+      "source": "../../data/ma_regions.json"
+    },
+    "level2": {
+      "type": "Province/Prefecture",
+      "label_local": "إقليم/عمالة",
+      "label_en": "Province/Prefecture",
+      "count": null
+    },
+    "level3": {
+      "type": "Commune",
+      "label_local": "جماعة",
+      "label_en": "Municipality",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "commune",
+          "province",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Tour Atlas"
+    },
+    "floor": {
+      "required": false,
+      "example": "5ème étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Bureau 501"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "5-digit postal code",
+      "example": "20000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required",
+      "Postal code format: 5 digits"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "شارع محمد الخامس، 20000 الدار البيضاء",
+    "domestic_normalized": "Avenue Mohammed V, 20000 Casablanca",
+    "international": "Avenue Mohammed V, 20000 Casablanca, Morocco"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "name": {
+    "en": "Ireland",
+    "local": [
+      {
+        "lang": "ga",
+        "value": "Éire",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Ireland",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "IE",
+    "alpha3": "IRL",
+    "numeric": "372"
+  },
+  "continent": "Europe",
+  "subregion": "Northern Europe",
+  "languages": [
+    {
+      "name": "Irish",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "ga": "Éire",
+        "en": "Ireland"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Ireland"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "County",
+      "label_local": "Contae",
+      "label_en": "County",
+      "count": 26
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "district",
+          "city",
+          "eircode",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "district",
+          "city",
+          "eircode",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[A-Z0-9]{3} ?[A-Z0-9]{4}$",
+      "description": "Eircode: 7-character alphanumeric (e.g., D02 XY12)",
+      "example": "D02 XY12"
+    }
+  },
+  "examples": {
+    "domestic_raw": "12 Nassau Street, Dublin 2, D02 XY12",
+    "domestic_normalized": "12 Nassau Street Dublin 2 D02 XY12",
+    "international": "12 Nassau Street, D02 XY12 Dublin, Ireland"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

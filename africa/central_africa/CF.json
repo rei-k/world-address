@@ -1,0 +1,136 @@
+{
+  "name": {
+    "en": "Central African Republic",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "République centrafricaine",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "sg",
+        "value": "Ködörösêse tî Bêafrîka",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CF",
+    "alpha3": "CAF",
+    "numeric": "140"
+  },
+  "continent": "Africa",
+  "subregion": "Central Africa",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "République centrafricaine"
+    },
+    {
+      "name": "Sango",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Ködörösêse tî Bêafrîka"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Central African Republic"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Prefecture",
+      "label_local": "Préfecture",
+      "label_en": "Prefecture",
+      "count": 16,
+      "source": "../../data/cf_prefectures.json"
+    },
+    "level2": {
+      "type": "Sub-Prefecture",
+      "label_local": "Sous-Préfecture",
+      "label_en": "Sub-Prefecture",
+      "count": null
+    },
+    "level3": {
+      "type": "Commune",
+      "label_local": "Commune",
+      "label_en": "Commune",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "commune",
+          "subprefecture",
+          "city",
+          "prefecture",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "prefecture",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Immeuble Centrafrican"
+    },
+    "floor": {
+      "required": false,
+      "example": "3ème étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Bureau 301"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Avenue de l'Indépendance, Bangui",
+    "domestic_normalized": "Avenue de l'Indépendance, Bangui",
+    "international": "Avenue de l'Indépendance, Bangui, Central African Republic"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

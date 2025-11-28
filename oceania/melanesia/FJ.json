@@ -1,0 +1,108 @@
+{
+  "name": {
+    "en": "Fiji",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Fiji",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "fj",
+        "value": "Viti",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "FJ",
+    "alpha3": "FJI",
+    "numeric": "242"
+  },
+  "continent": "Oceania",
+  "subregion": "Melanesia",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Fiji",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Fijian",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Viti"
+    },
+    {
+      "name": "Hindi",
+      "script": "Devanagari",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "फ़िजी"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Division",
+      "label_en": "Division",
+      "count": 4
+    },
+    "level2": {
+      "type": "Province",
+      "label_en": "Province",
+      "count": 14
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes exist but are not widely used",
+      "coverage": "limited"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal codes are optional",
+      "City name is important for delivery"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "123 Victoria Parade, Suva",
+    "domestic_normalized": "123 Victoria Parade Suva",
+    "international": "123 Victoria Parade, Suva, Fiji"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

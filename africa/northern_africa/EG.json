@@ -1,0 +1,129 @@
+{
+  "name": {
+    "en": "Egypt",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "مصر",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "EG",
+    "alpha3": "EGY",
+    "numeric": "818"
+  },
+  "continent": "Africa",
+  "subregion": "Northern Africa",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "مصر"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Egypt"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Governorate",
+      "label_local": "محافظة",
+      "label_en": "Governorate",
+      "count": 27,
+      "source": "../../data/eg_governorates.json"
+    },
+    "level2": {
+      "type": "Markaz/Qism",
+      "label_local": "مركز/قسم",
+      "label_en": "District/Section",
+      "count": null
+    },
+    "level3": {
+      "type": "Village/Neighborhood",
+      "label_local": "قرية/حي",
+      "label_en": "Village/Neighborhood",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "district",
+          "city",
+          "governorate",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "city",
+          "governorate",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Nile Tower"
+    },
+    "floor": {
+      "required": false,
+      "example": "10th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 1001"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "5-digit postal code",
+      "example": "11511"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Governorate name is required",
+      "Postal code format: 5 digits"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "شارع التحرير، وسط البلد، القاهرة 11511",
+    "domestic_normalized": "Tahrir Street, Downtown, Cairo 11511",
+    "international": "Tahrir Street, Downtown, Cairo 11511, Egypt"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

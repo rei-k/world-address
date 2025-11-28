@@ -1,0 +1,150 @@
+{
+  "name": {
+    "en": "Rwanda",
+    "local": [
+      {
+        "lang": "rw",
+        "value": "Rwanda",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "fr",
+        "value": "Rwanda",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Rwanda",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "RW",
+    "alpha3": "RWA",
+    "numeric": "646"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "Kinyarwanda",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Rwanda"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Rwanda"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "Rwanda"
+    },
+    {
+      "name": "Swahili",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Rwanda"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Intara",
+      "label_en": "Province",
+      "count": 5,
+      "source": "../../data/rw_provinces.json"
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "Akarere",
+      "label_en": "District",
+      "count": 30
+    },
+    "level3": {
+      "type": "Sector",
+      "label_local": "Umurenge",
+      "label_en": "Sector",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "sector",
+          "district",
+          "province",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "sector",
+          "district",
+          "province",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Kigali City Tower"
+    },
+    "floor": {
+      "required": false,
+      "example": "8th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 802"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "District name is required",
+      "Province name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "KN 3 Avenue, Nyarugenge, Kigali",
+    "domestic_normalized": "KN 3 Avenue, Nyarugenge, Kigali",
+    "international": "KN 3 Avenue, Nyarugenge, Kigali, Rwanda"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

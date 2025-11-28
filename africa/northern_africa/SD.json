@@ -1,0 +1,122 @@
+{
+  "name": {
+    "en": "Sudan",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "السودان",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SD",
+    "alpha3": "SDN",
+    "numeric": "729"
+  },
+  "continent": "Africa",
+  "subregion": "Northern Africa",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "السودان"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "co-official",
+      "required_for_shipping": true,
+      "country_name": "Sudan"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "State",
+      "label_local": "ولاية",
+      "label_en": "State",
+      "count": 18,
+      "source": "../../data/sd_states.json"
+    },
+    "level2": {
+      "type": "Locality",
+      "label_local": "محلية",
+      "label_en": "Locality",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "locality",
+          "city",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Corinthia Tower"
+    },
+    "floor": {
+      "required": false,
+      "example": "8th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 805"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "5-digit postal code",
+      "example": "11111"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "State name is required",
+      "Postal code format: 5 digits"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "شارع النيل، الخرطوم 11111",
+    "domestic_normalized": "Nile Street, Khartoum 11111",
+    "international": "Nile Street, Khartoum 11111, Sudan"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

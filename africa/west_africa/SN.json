@@ -1,0 +1,128 @@
+{
+  "name": {
+    "en": "Senegal",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "Sénégal",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SN",
+    "alpha3": "SEN",
+    "numeric": "686"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Sénégal"
+    },
+    {
+      "name": "Wolof",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "national",
+      "country_name": "Senegaal"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Région",
+      "label_en": "Region",
+      "count": 14,
+      "source": "../../data/sn_regions.json"
+    },
+    "level2": {
+      "type": "Department",
+      "label_local": "Département",
+      "label_en": "Department",
+      "count": null,
+      "source": "../../data/sn_departments.json"
+    },
+    "level3": {
+      "type": "Commune",
+      "label_local": "Commune",
+      "label_en": "Commune",
+      "count": null,
+      "source": "../../data/sn_communes.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "commune",
+          "department",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "commune",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Résidence Dakar"
+    },
+    "floor": {
+      "required": false,
+      "example": "4e étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Appt 8"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "Occurs but rarely used; include for DHL/FedEx export",
+      "example": "11000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Commune and Region must be clear",
+      "Postal code helps with customs and export"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Résidence Dakar, Avenue Cheikh Anta Diop, Dakar, Sénégal",
+    "domestic_normalized": "Avenue Cheikh Anta Diop Dakar",
+    "international": "Résidence Dakar, Av. Cheikh Anta Diop, Dakar 11000, Senegal"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "name": {
+    "en": "Guernsey",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Guernsey",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GG",
+    "alpha3": "GGY",
+    "numeric": "831"
+  },
+  "continent": "Europe",
+  "subregion": "Northern Europe",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Guernsey"
+      }
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "role": "historical",
+      "country_name": {
+        "fr": "Guernesey",
+        "en": "Guernsey"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Parish",
+      "label_local": "Parish",
+      "label_en": "Parish",
+      "count": 10
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^GY[0-9]{1,2} ?[0-9][A-Z]{2}$",
+      "description": "Guernsey postcode format",
+      "example": "GY1 1AA"
+    }
+  },
+  "examples": {
+    "domestic_raw": "High Street, St Peter Port, GY1 1AA",
+    "domestic_normalized": "High Street St Peter Port GY1 1AA",
+    "international": "High Street, St Peter Port GY1 1AA, Guernsey"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

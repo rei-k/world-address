@@ -1,0 +1,110 @@
+{
+  "name": {
+    "en": "Hong Kong",
+    "local": [
+      {
+        "lang": "zh",
+        "value": "香港",
+        "script": "Han",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "HK",
+    "alpha3": "HKG",
+    "numeric": "344"
+  },
+  "continent": "Asia",
+  "subregion": "East Asia",
+  "languages": [
+    {
+      "name": "Chinese",
+      "script": "Han",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "香港"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "Hong Kong"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "區",
+      "label_en": "District",
+      "count": 18,
+      "source": "../../data/hk_districts.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "district",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "中環中心"
+    },
+    "floor": {
+      "required": false,
+      "example": "12F"
+    },
+    "room": {
+      "required": false,
+      "example": "1205"
+    },
+    "postal_code": {
+      "required": false,
+      "description": "No postal code system in Hong Kong",
+      "coverage": "none"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Use English in international shipping",
+      "Postal code is not applicable"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "香港中環皇后大道中99號中環中心1205室",
+    "domestic_normalized": "中環中心 1205室 皇后大道中99號 中環 香港",
+    "international": "Room 1205, Central Plaza, 99 Queen’s Road Central, Central, Hong Kong"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "name": {
+    "en": "Armenia",
+    "local": [
+      {
+        "lang": "hy",
+        "value": "Հայաստան",
+        "script": "Armenian",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AM",
+    "alpha3": "ARM",
+    "numeric": "051"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Armenian",
+      "script": "Armenian",
+      "role": "official",
+      "country_name": "Հայաստան"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Armenia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Մարզ",
+      "label_en": "Province",
+      "count": 11,
+      "source": "../../data/am_provinces.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "province",
+          "city",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric",
+      "example": "0010"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Yerevan 0010",
+    "domestic_normalized": "Yerevan 0010",
+    "international": "Room 203, Yerevan 0010, Armenia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

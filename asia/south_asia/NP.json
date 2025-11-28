@@ -1,0 +1,99 @@
+{
+  "name": {
+    "en": "Nepal",
+    "local": [
+      {
+        "lang": "ne",
+        "value": "नेपाल",
+        "script": "Devanagari",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "NP",
+    "alpha3": "NPL",
+    "numeric": "524"
+  },
+  "continent": "Asia",
+  "subregion": "South Asia",
+  "languages": [
+    {
+      "name": "Nepali",
+      "script": "Devanagari",
+      "role": "official",
+      "country_name": "नेपाल"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Nepal"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "प्रदेश",
+      "label_en": "Province",
+      "count": 7,
+      "source": "../../data/np_provinces.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "province",
+          "district",
+          "municipality",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "municipality",
+          "district",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Civil Mall"
+    },
+    "room": {
+      "required": false,
+      "example": "407"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric",
+      "example": "44600"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Civil Mall, Kathmandu 44600",
+    "domestic_normalized": "Civil Mall Kathmandu 44600",
+    "international": "Room 407, Civil Mall, Kathmandu 44600, Nepal"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

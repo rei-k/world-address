@@ -1,0 +1,112 @@
+{
+  "name": {
+    "en": "India",
+    "local": [
+      {
+        "lang": "hi",
+        "value": "भारत",
+        "script": "Devanagari",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "India",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "IN",
+    "alpha3": "IND",
+    "numeric": "356"
+  },
+  "continent": "Asia",
+  "subregion": "South Asia",
+  "languages": [
+    {
+      "name": "Hindi",
+      "script": "Devanagari",
+      "role": "official",
+      "country_name": "भारत"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "India"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "State/Union Territory",
+      "label_local": "राज्य / केन्द्रशासित प्रदेश",
+      "label_en": "State / Union Territory",
+      "count": 36,
+      "source": "../../data/in_states.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "state",
+          "district",
+          "city",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "district",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "DLF Cyber City"
+    },
+    "floor": {
+      "required": false,
+      "example": "12F"
+    },
+    "room": {
+      "required": false,
+      "example": "1208"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "description": "6-digit numeric",
+      "example": "110001"
+    }
+  },
+  "examples": {
+    "domestic_raw": "DLF Cyber City, Gurgaon, Haryana 122002",
+    "domestic_normalized": "DLF Cyber City Gurgaon Haryana 122002",
+    "international": "Room 1208, DLF Cyber City, Gurgaon, Haryana 122002, India"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

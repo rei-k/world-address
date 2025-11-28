@@ -1,0 +1,113 @@
+{
+  "name": {
+    "en": "Armenia",
+    "local": [
+      {
+        "lang": "hy",
+        "value": "Hayastan",
+        "script": "Armenian",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AM",
+    "alpha3": "ARM",
+    "numeric": "051"
+  },
+  "continent": "Asia",
+  "subregion": "Caucasus",
+  "languages": [
+    {
+      "name": "Armenian",
+      "script": "Armenian",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Hayastan"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Armenia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Marz",
+      "label_en": "Province",
+      "count": 10
+    },
+    "level2": {
+      "type": "Community",
+      "label_local": "Hamaynk",
+      "label_en": "Community"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "building",
+          "apartment",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "apartment",
+          "building",
+          "street_address",
+          "number",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Building 5"
+    },
+    "apartment": {
+      "required": false,
+      "example": "Apt 23"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric postal code",
+      "example": "0010"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code is 4 digits",
+      "Armenian script is official but Latin transliteration accepted for international shipping"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Mashtots Ave 12, Building 5, Apt 23, Yerevan, 0010",
+    "domestic_normalized": "Mashtots Ave 12 Bldg 5 Apt 23 Yerevan 0010",
+    "international": "Apt 23, Bldg 5, Mashtots Ave 12, Yerevan 0010, Armenia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

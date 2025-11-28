@@ -1,0 +1,36 @@
+{
+  "name": {
+    "en": "Zhongshan Station",
+    "local": "中山站"
+  },
+  "operating_country": {
+    "name": "China",
+    "alpha2": "CN",
+    "program": "Chinese Arctic and Antarctic Administration (CAA)"
+  },
+  "location": {
+    "coordinates": {
+      "latitude": -69.373,
+      "longitude": 76.377
+    },
+    "region": "Prydz Bay, Princess Elizabeth Land",
+    "claim_area": "Australian Antarctic Territory (not recognized by China)"
+  },
+  "operational": {
+    "type": "year_round",
+    "established": 1989,
+    "capacity_winter": 25,
+    "capacity_summer": 60
+  },
+  "address_format": {
+    "mail_routing": {
+      "via_country": "China",
+      "via_city": "Beijing"
+    },
+    "example": "Name, Zhongshan Station, c/o Chinese Arctic and Antarctic Administration, 1 Fuxingmenwai Street, Beijing 100860, China"
+  },
+  "status": {
+    "active": true,
+    "note": "China's second permanent Antarctic research station"
+  }
+}

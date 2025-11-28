@@ -1,0 +1,163 @@
+{
+  "name": {
+    "en": "Cuba",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Cuba",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CU",
+    "alpha3": "CUB",
+    "numeric": "192"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official_primary",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Haitian Creole",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "recognized_regional"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary_international",
+      "required_for_customs": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Provincia",
+      "label_es": "Provincia",
+      "label_en": "Province",
+      "count": 15,
+      "source": "../../data/cu_provincias.json"
+    },
+    "level2": {
+      "type": "Municipio",
+      "label_es": "Municipio",
+      "label_en": "Municipality",
+      "count": null,
+      "source": "../../data/cu_municipios.json"
+    },
+    "level3": {
+      "type": "Consejo Popular",
+      "label_es": "Consejo Popular",
+      "label_en": "Community Council",
+      "description": "This unit is mandatory for commercial/international routing.",
+      "source": "../../data/cu_consejos.json"
+    },
+    "level4": {
+      "type": "Barrio / Reparto",
+      "label_es": "Barrio / Reparto",
+      "label_en": "Neighborhood",
+      "source": "../../data/cu_barrios.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "commercial_international",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "barrio",
+          "consejo",
+          "municipio",
+          "provincia",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "domestic_descriptive",
+        "order": [
+          "recipient",
+          "reference_point",
+          "street_address",
+          "barrio",
+          "municipio",
+          "provincia",
+          "country"
+        ]
+      },
+      {
+        "context": "international_english",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "barrio",
+          "consejo",
+          "municipio",
+          "provincia",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Edificio Sierra Maestra"
+    },
+    "floor": {
+      "required": false,
+      "example": "Piso 4"
+    },
+    "room": {
+      "required": false,
+      "example": "Apto 402"
+    },
+    "reference_point": {
+      "required_in_domestic_descriptive": true,
+      "example": "A 50 metros de la escuela 'José Martí'"
+    }
+  },
+  "postal_code": {
+    "required": true,
+    "required_for_international": true,
+    "stability": "high",
+    "regex": "^[0-9]{5}$",
+    "example": "10400",
+    "description": "Código Postal (5 dígitos). Consejos y Municipios están codificados por rango."
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Consejo Popular is mandatory for all commercial or customs shipments.",
+      "Domestic descriptive addresses MUST include a reference point.",
+      "Street number (Número) is required when available; if unknown, use nearest intersection.",
+      "Do not remove accents; doing so may cause routing ambiguity."
+    ]
+  },
+  "examples": {
+    "commercial_international_es": "Apto 402, Edificio Sierra Maestra, Calle Línea 456, Reparto Vedado, Consejo Vedado, Municipio Plaza de la Revolución, La Habana, 10400, Cuba",
+    "commercial_international_en": "402 Sierra Maestra Building, 456 Linea Street, Vedado, Plaza de la Revolución, Havana 10400, Cuba",
+    "domestic_descriptive": "Casa de Marta, a 50m de la escuela 'José Martí', Reparto Pastorita, Municipio Holguín, Holguín, Cuba"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false,
+    "postal_system": "Correos de Cuba + International forwarding partners"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "name": {
+    "en": "Uganda",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Uganda",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "sw",
+        "value": "Uganda",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "UG",
+    "alpha3": "UGA",
+    "numeric": "800"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "Uganda"
+    },
+    {
+      "name": "Swahili",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Uganda"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": 146,
+      "source": "../../data/ug_districts.json"
+    },
+    "level2": {
+      "type": "County",
+      "label_local": "County",
+      "label_en": "County",
+      "count": null
+    },
+    "level3": {
+      "type": "Sub-County",
+      "label_local": "Sub-County",
+      "label_en": "Sub-County",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "subcounty",
+          "county",
+          "district",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "county",
+          "district",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Workers House"
+    },
+    "floor": {
+      "required": false,
+      "example": "6th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 605"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "District name is required",
+      "City name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Kampala Road, Kampala, Central Region",
+    "domestic_normalized": "Kampala Road, Kampala",
+    "international": "Kampala Road, Kampala, Uganda"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

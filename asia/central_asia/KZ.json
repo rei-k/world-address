@@ -1,0 +1,117 @@
+{
+  "name": {
+    "en": "Kazakhstan",
+    "local": [
+      {
+        "lang": "kk",
+        "value": "Қазақстан",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ru",
+        "value": "Казахстан",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "KZ",
+    "alpha3": "KAZ",
+    "numeric": "398"
+  },
+  "continent": "Asia",
+  "subregion": "Central Asia",
+  "languages": [
+    {
+      "name": "Kazakh",
+      "script": "Cyrillic",
+      "role": "official",
+      "country_name": "Қазақстан"
+    },
+    {
+      "name": "Russian",
+      "script": "Cyrillic",
+      "role": "official",
+      "country_name": "Казахстан"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Kazakhstan"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region/City of republican significance",
+      "label_local": "Облыс / Республика маңызы бар қала",
+      "label_en": "Region / City of republican significance",
+      "count": 20,
+      "source": "../../data/kz_regions.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "region",
+          "city",
+          "district",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "city",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "KazMunayGas Tower"
+    },
+    "floor": {
+      "required": false,
+      "example": "15F"
+    },
+    "room": {
+      "required": false,
+      "example": "1502"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "description": "6-digit numeric",
+      "example": "010000"
+    }
+  },
+  "examples": {
+    "domestic_raw": "KazMunayGas Tower, Astana 010000",
+    "domestic_normalized": "KazMunayGas Tower Astana 010000",
+    "international": "Room 1502, KazMunayGas Tower, Astana 010000, Kazakhstan"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

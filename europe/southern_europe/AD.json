@@ -1,0 +1,65 @@
+{
+  "name": {
+    "en": "Andorra",
+    "local": [
+      {
+        "lang": "ca",
+        "value": "Andorra",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AD",
+    "alpha3": "AND",
+    "numeric": "020"
+  },
+  "continent": "Europe",
+  "subregion": "Southern Europe",
+  "languages": [
+    {
+      "name": "Catalan",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "ca": "Andorra",
+        "en": "Andorra"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Andorra"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Parish",
+      "label_local": "Parròquia",
+      "label_en": "Parish",
+      "count": 7
+    }
+  },
+  "address_format": {
+    "postal_code": {
+      "required": true,
+      "regex": "^AD[0-9]{3}$",
+      "description": "Postal codes start with AD + 3 digits",
+      "example": "AD500"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Avinguda Meritxell 10, AD500 Andorra la Vella",
+    "domestic_normalized": "Avinguda Meritxell 10 AD500 Andorra la Vella",
+    "international": "Avinguda Meritxell 10, AD500 Andorra la Vella, Andorra"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

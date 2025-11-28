@@ -1,0 +1,118 @@
+{
+  "name": {
+    "en": "Cape Verde",
+    "local": [
+      {
+        "lang": "pt",
+        "value": "Cabo Verde",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CV",
+    "alpha3": "CPV",
+    "numeric": "132"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "Portuguese",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Cabo Verde"
+    },
+    {
+      "name": "Kriolu",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "recognized",
+      "country_name": "Kabu Verdi"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Municipality",
+      "label_local": "Concelho",
+      "label_en": "Municipality",
+      "count": 22,
+      "source": "../../data/cv_concelhos.json"
+    },
+    "level2": {
+      "type": "Parish",
+      "label_local": "Freguesia",
+      "label_en": "Parish",
+      "count": null,
+      "source": "../../data/cv_freguesias.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "parish",
+          "municipality",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "municipality",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Ed. Mindelo"
+    },
+    "floor": {
+      "required": false,
+      "example": "3º Andar"
+    },
+    "room": {
+      "required": false,
+      "example": "Apto 2"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "length": 4,
+      "description": "4-digit postal code required",
+      "example": "2110"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Municipality must be included",
+      "Postal code must be 4 digits"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Ed. Mindelo, Rua Lisboa, Mindelo, São Vicente, Cabo Verde 2110",
+    "domestic_normalized": "Rua Lisboa Mindelo São Vicente 2110",
+    "international": "Rua Lisboa, Mindelo 2110, São Vicente, Cape Verde"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

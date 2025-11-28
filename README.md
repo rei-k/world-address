@@ -1,13 +1,22 @@
-# 🌍 World Address YAML
+# 🌍 World Address YAML / JSON
 
-世界各国の住所形式をYAML形式で構造化したオープンデータベースです。
+世界各国の住所形式をYAML形式とJSON形式で構造化したオープンデータベースです。
 
 ## 📋 概要
 
-このプロジェクトは、世界中の国・地域の住所体系を標準化されたYAML形式で記述し、以下の用途に活用できるデータを提供します：
+このプロジェクトは、世界中の国・地域の住所体系を標準化されたYAML形式およびJSON形式で記述し、以下の用途に活用できるデータを提供します：
 
 - 🚚 **配送実務**: 国際配送のためのフォーム設計や住所ラベル生成
 - 📚 **研究・分析**: 各国の住所制度の比較研究や標準化
+
+## 📂 データ形式
+
+全てのデータはYAMLとJSONの両形式で提供されています：
+
+- **YAML**: 人間が読みやすく編集しやすい形式
+- **JSON**: プログラムからの利用に最適化された形式
+
+各国・地域のデータは同じディレクトリ内に `.yaml` と `.json` の両方のファイルとして配置されています。
 
 ## 📁 ディレクトリ構造
 
@@ -53,8 +62,8 @@ world-address-yaml/
 
 ### ファイル命名規則
 
-- 国ファイル: `{ISO 3166-1 alpha-2コード}.yaml` (例: `JP.yaml`, `US.yaml`)
-- 地域ファイル: `{地域名}.yaml` (例: `Papua.yaml`)
+- 国ファイル: `{ISO 3166-1 alpha-2コード}.yaml` / `{ISO 3166-1 alpha-2コード}.json` (例: `JP.yaml`, `JP.json`, `US.yaml`, `US.json`)
+- 地域ファイル: `{地域名}.yaml` / `{地域名}.json` (例: `Papua.yaml`, `Papua.json`)
 
 ### スキーマレベル
 
@@ -161,9 +170,9 @@ status:
 
 ### データの読み込み
 
-任意のYAMLパーサーを使用してデータを読み込むことができます。
+任意のYAML/JSONパーサーを使用してデータを読み込むことができます。
 
-**Python:**
+**Python (YAML):**
 ```python
 import yaml
 
@@ -174,12 +183,31 @@ print(japan_data['name']['en'])  # Japan
 print(japan_data['address_format']['postal_code']['regex'])  # ^[0-9]{3}-[0-9]{4}$
 ```
 
-**JavaScript/Node.js:**
+**Python (JSON):**
+```python
+import json
+
+with open('asia/east_asia/JP.json', 'r', encoding='utf-8') as f:
+    japan_data = json.load(f)
+
+print(japan_data['name']['en'])  # Japan
+print(japan_data['address_format']['postal_code']['regex'])  # ^[0-9]{3}-[0-9]{4}$
+```
+
+**JavaScript/Node.js (YAML):**
 ```javascript
 const yaml = require('js-yaml');
 const fs = require('fs');
 
 const japanData = yaml.load(fs.readFileSync('asia/east_asia/JP.yaml', 'utf8'));
+console.log(japanData.name.en);  // Japan
+```
+
+**JavaScript/Node.js (JSON):**
+```javascript
+const fs = require('fs');
+
+const japanData = JSON.parse(fs.readFileSync('asia/east_asia/JP.json', 'utf8'));
 console.log(japanData.name.en);  // Japan
 ```
 
@@ -190,7 +218,8 @@ console.log(japanData.name.en);  // Japan
 1. 適切な大陸・地域のディレクトリに移動
 2. ISO 3166-1 alpha-2コードをファイル名として使用
 3. `型/README.md` のスキーマに従ってYAMLファイルを作成
-4. Pull Requestを作成
+4. 対応するJSONファイルも作成（YAMLから自動変換可能）
+5. Pull Requestを作成
 
 ### データの修正・改善
 
@@ -205,9 +234,10 @@ console.log(japanData.name.en);  // Japan
 
 ## 📊 収録状況
 
-- **総ファイル数**: 279件のYAMLファイル
+- **総ファイル数**: 279件（YAML + JSON = 558ファイル）
 - **大陸**: 6大陸（アフリカ、アメリカ、南極、アジア、ヨーロッパ、オセアニア）
 - **特殊地域**: 海外領土、係争地域、研究基地なども収録
+- **データ形式**: YAML および JSON
 
 ## 📜 ライセンス
 
@@ -220,4 +250,4 @@ console.log(japanData.name.en);  // Japan
 
 ---
 
-🌐 **World Address YAML** - 世界の住所を、ひとつのフォーマットで
+🌐 **World Address YAML / JSON** - 世界の住所を、ひとつのフォーマットで

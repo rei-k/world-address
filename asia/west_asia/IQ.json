@@ -1,0 +1,103 @@
+{
+  "name": {
+    "en": "Iraq",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "العراق",
+        "script": "Arabic",
+        "direction": "rtl"
+      },
+      {
+        "lang": "ku",
+        "value": "عێراق",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "IQ",
+    "alpha3": "IRQ",
+    "numeric": "368"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "official",
+      "country_name": "العراق"
+    },
+    {
+      "name": "Kurdish",
+      "script": "Arabic",
+      "role": "co-official",
+      "country_name": "عێراق"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Iraq"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Governorate",
+      "label_local": "محافظة",
+      "label_en": "Governorate",
+      "count": 19,
+      "source": "../../data/iq_governorates.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "governorate",
+          "district",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "governorate",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric (introduced 2004)",
+      "example": "10011"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Zayouna Mall, Baghdad 10011",
+    "domestic_normalized": "Zayouna Mall Baghdad 10011",
+    "international": "Room 305, 3F Zayouna Mall, Baghdad 10011, Iraq"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": true
+  }
+}

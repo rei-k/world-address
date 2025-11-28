@@ -1,0 +1,111 @@
+{
+  "name": {
+    "en": "Serbia",
+    "local": [
+      {
+        "lang": "sr",
+        "value": "Србија",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      },
+      {
+        "lang": "sr-Latn",
+        "value": "Srbija",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "RS",
+    "alpha3": "SRB",
+    "numeric": "688"
+  },
+  "continent": "Europe",
+  "subregion": "Southeastern Europe",
+  "languages": [
+    {
+      "name": "Serbian",
+      "script": "Cyrillic",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Србија"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Serbia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "Округ",
+      "label_en": "District",
+      "count": 29
+    },
+    "level2": {
+      "type": "Municipality",
+      "label_local": "Општина",
+      "label_en": "Municipality"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "apartment",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "apartment",
+          "street_address",
+          "number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "apartment": {
+      "required": false,
+      "example": "stan 12"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric postal code",
+      "example": "11000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code is 5 digits",
+      "Both Cyrillic and Latin scripts are accepted"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Кнез Михаилова 12, стан 5, 11000 Београд",
+    "domestic_normalized": "Knez Mihailova 12 stan 5 11000 Beograd",
+    "international": "Apt 5, Knez Mihailova 12, 11000 Belgrade, Serbia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

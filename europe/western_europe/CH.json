@@ -1,0 +1,115 @@
+{
+  "name": {
+    "en": "Switzerland",
+    "local": [
+      {
+        "lang": "de",
+        "value": "Schweiz",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "fr",
+        "value": "Suisse",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "it",
+        "value": "Svizzera",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "rm",
+        "value": "Svizra",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CH",
+    "alpha3": "CHE",
+    "numeric": "756"
+  },
+  "continent": "Europe",
+  "subregion": "Western Europe",
+  "languages": [
+    {
+      "name": "German",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Schweiz"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Suisse"
+    },
+    {
+      "name": "Italian",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Svizzera"
+    },
+    {
+      "name": "Romansh",
+      "script": "Latin",
+      "role": "co-official",
+      "country_name": "Svizra"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Canton",
+      "label_local": "Kanton/Canton/Cantone/Chantun",
+      "label_en": "Canton",
+      "count": 26
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "canton",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric postal code",
+      "example": "8001"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Bahnhofstrasse 1, 8001 Zürich",
+    "domestic_normalized": "Bahnhofstrasse 1 8001 Zürich",
+    "international": "Bahnhofstrasse 1, 8001 Zürich, Switzerland"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

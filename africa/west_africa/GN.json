@@ -1,0 +1,121 @@
+{
+  "name": {
+    "en": "Guinea",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "Guinée",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GN",
+    "alpha3": "GIN",
+    "numeric": "324"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Guinée"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Région",
+      "label_en": "Region",
+      "count": 7,
+      "source": "../../data/gn_regions.json"
+    },
+    "level2": {
+      "type": "Prefecture",
+      "label_local": "Préfecture",
+      "label_en": "Prefecture",
+      "count": 33,
+      "source": "../../data/gn_prefectures.json"
+    },
+    "level3": {
+      "type": "Sub-Prefecture/Commune",
+      "label_local": "Commune",
+      "label_en": "Commune",
+      "count": null,
+      "source": "../../data/gn_communes.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "commune",
+          "prefecture",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "commune",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Résidence Conakry"
+    },
+    "floor": {
+      "required": false,
+      "example": "2e étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Appt 6"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^[0-9]{3}$",
+      "length": 3,
+      "description": "3-digit zone codes used for international sorting",
+      "example": "001"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Commune must be included",
+      "Postal code recommended for international shipment"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Résidence Conakry, Rue 15, Commune Dixinn, Conakry, Guinée",
+    "domestic_normalized": "Rue 15 Dixinn Conakry",
+    "international": "Résidence Conakry, Rue 15, Dixinn 001, Conakry, Guinea"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

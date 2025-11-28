@@ -1,0 +1,120 @@
+{
+  "name": {
+    "en": "Moldova",
+    "local": [
+      {
+        "lang": "ro",
+        "value": "Moldova",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MD",
+    "alpha3": "MDA",
+    "numeric": "498"
+  },
+  "continent": "Europe",
+  "subregion": "Eastern Europe",
+  "languages": [
+    {
+      "name": "Romanian",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Moldova"
+    },
+    {
+      "name": "Russian",
+      "script": "Cyrillic",
+      "direction": "ltr",
+      "role": "regional",
+      "country_name": "Молдова"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Moldova"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "Raion",
+      "label_en": "District",
+      "count": 32
+    },
+    "level2": {
+      "type": "City",
+      "label_local": "Oraș",
+      "label_en": "City"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "building",
+          "apartment",
+          "city",
+          "district",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "apartment",
+          "building",
+          "street_address",
+          "number",
+          "city",
+          "district",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "bl. 5"
+    },
+    "apartment": {
+      "required": false,
+      "example": "ap. 23"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^MD-[0-9]{4}$",
+      "description": "Postal code format: MD- followed by 4 digits",
+      "example": "MD-2001"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code begins with MD- followed by 4 digits",
+      "City name must be included"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "str. Ștefan cel Mare 123, bl. 5, ap. 23, Chișinău, MD-2001",
+    "domestic_normalized": "str. Ștefan cel Mare 123 bl. 5 ap. 23 Chișinău MD-2001",
+    "international": "Ap. 23, Bl. 5, str. Stefan cel Mare 123, Chisinau MD-2001, Moldova"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

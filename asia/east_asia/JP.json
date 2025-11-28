@@ -1,0 +1,116 @@
+{
+  "name": {
+    "en": "Japan",
+    "local": [
+      {
+        "lang": "ja",
+        "value": "日本",
+        "script": "Kanji",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "JP",
+    "alpha3": "JPN",
+    "numeric": "392"
+  },
+  "continent": "Asia",
+  "subregion": "East Asia",
+  "languages": [
+    {
+      "name": "Japanese",
+      "script": "Kanji",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "日本"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Japan"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Prefecture",
+      "label_local": "都道府県",
+      "label_en": "Prefecture",
+      "count": 47,
+      "source": "../../data/jp_prefectures.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "prefecture",
+          "city",
+          "ward",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "ward",
+          "city",
+          "prefecture",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "新宿パークタワー"
+    },
+    "floor": {
+      "required": false,
+      "example": "12F"
+    },
+    "room": {
+      "required": false,
+      "example": "1205"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{3}-[0-9]{4}$",
+      "length": 7,
+      "description": "7-digit numeric code with hyphen",
+      "example": "100-0001"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Prefecture name must never be omitted",
+      "Postal code must be 7 digits with hyphen"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "〒100-0001 東京都千代田区千代田1-1 皇居",
+    "domestic_normalized": "東京都 千代田区 千代田1-1 皇居 100-0001",
+    "international": "Imperial Palace, 1-1 Chiyoda, Chiyoda-ku, Tokyo 100-0001, Japan"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

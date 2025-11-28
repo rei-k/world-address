@@ -1,0 +1,118 @@
+{
+  "name": {
+    "en": "São Tomé and Príncipe",
+    "local": [
+      {
+        "lang": "pt",
+        "value": "São Tomé e Príncipe",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "ST",
+    "alpha3": "STP",
+    "numeric": "678"
+  },
+  "continent": "Africa",
+  "subregion": "Central Africa",
+  "languages": [
+    {
+      "name": "Portuguese",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "São Tomé e Príncipe"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "São Tomé and Príncipe"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "Distrito",
+      "label_en": "District",
+      "count": 7,
+      "names": [
+        "Água Grande",
+        "Cantagalo",
+        "Caué",
+        "Lembá",
+        "Lobata",
+        "Mé-Zóchi",
+        "Pagué (Príncipe)"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "locality",
+          "city",
+          "district",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "district",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Hotel Miramar"
+    },
+    "floor": {
+      "required": false,
+      "example": "3º Andar"
+    },
+    "room": {
+      "required": false,
+      "example": "Sala 305"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Avenida da Independência, São Tomé",
+    "domestic_normalized": "Avenida da Independência, São Tomé",
+    "international": "Avenida da Independência, São Tomé, São Tomé and Príncipe"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

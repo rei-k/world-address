@@ -1,0 +1,111 @@
+{
+  "name": {
+    "en": "Argentina",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Argentina",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AR",
+    "alpha3": "ARG",
+    "numeric": "032"
+  },
+  "continent": "South America",
+  "subregion": "Southern America",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Argentina"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Argentina"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Provincia",
+      "label_en": "Province",
+      "count": 23
+    },
+    "level2": {
+      "type": "Department",
+      "label_local": "Departamento",
+      "label_en": "Department"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "floor",
+          "room",
+          "postal_code",
+          "city",
+          "province",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "street_address",
+          "postal_code",
+          "city",
+          "province",
+          "country"
+        ]
+      }
+    ],
+    "floor": {
+      "required": false,
+      "example": "Piso 5"
+    },
+    "room": {
+      "required": false,
+      "example": "Depto A"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[A-Z][0-9]{4}[A-Z]{3}$",
+      "description": "8-character alphanumeric code (CPA format since 1998)",
+      "example": "C1425ABC"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code uses CPA format (letter + 4 digits + 3 letters)",
+      "Province name should be included for clarity"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Av. Corrientes 1234, Piso 5, Depto A, C1043AAZ, Buenos Aires",
+    "domestic_normalized": "Av. Corrientes 1234 Piso 5 Depto A C1043AAZ Buenos Aires",
+    "international": "Av. Corrientes 1234, Floor 5, Apt A, C1043AAZ Buenos Aires, Argentina"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

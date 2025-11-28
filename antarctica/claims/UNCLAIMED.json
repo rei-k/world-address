@@ -1,0 +1,25 @@
+{
+  "name": {
+    "en": "Marie Byrd Land (Unclaimed)",
+    "local": "Marie Byrd Land"
+  },
+  "claim_details": {
+    "sector": "90°W to 150°W, south of 60°S",
+    "area_km2": 1610000,
+    "status": "unclaimed",
+    "note": "Largest unclaimed territory on Earth"
+  },
+  "address_notes": [
+    "No postal system - no sovereign state",
+    "Research stations operated by various countries"
+  ],
+  "stations_in_area": [
+    "None permanent",
+    "Occasional field camps by various national programs"
+  ],
+  "status": {
+    "recognized": false,
+    "claimed": false,
+    "note": "The only part of Antarctica not claimed by any nation"
+  }
+}

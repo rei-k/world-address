@@ -1,0 +1,141 @@
+{
+  "name": {
+    "en": "Comoros",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "جزر القمر",
+        "script": "Arabic",
+        "direction": "rtl"
+      },
+      {
+        "lang": "fr",
+        "value": "Comores",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "KM",
+    "alpha3": "COM",
+    "numeric": "174"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "Comorian",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "Komori"
+    },
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "جزر القمر"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Comores"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Comoros"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Island",
+      "label_local": "Île",
+      "label_en": "Island",
+      "count": 3,
+      "names": [
+        "Grande Comore (Ngazidja)",
+        "Anjouan (Ndzuani)",
+        "Mohéli (Mwali)"
+      ]
+    },
+    "level2": {
+      "type": "Prefecture",
+      "label_local": "Préfecture",
+      "label_en": "Prefecture",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "prefecture",
+          "city",
+          "island",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "island",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Itsandra Beach Hotel"
+    },
+    "floor": {
+      "required": false,
+      "example": "2nd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Room 205"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required",
+      "Island name recommended"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Avenue des Ministères, Moroni, Grande Comore",
+    "domestic_normalized": "Avenue des Ministères, Moroni",
+    "international": "Avenue des Ministères, Moroni, Comoros"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

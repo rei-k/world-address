@@ -1,0 +1,93 @@
+{
+  "name": {
+    "en": "Kuwait",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "الكويت",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "KW",
+    "alpha3": "KWT",
+    "numeric": "414"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "official",
+      "country_name": "الكويت"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Kuwait"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Governorate",
+      "label_local": "محافظة",
+      "label_en": "Governorate",
+      "count": 6,
+      "source": "../../data/kw_governorates.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "governorate",
+          "area",
+          "block",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "block",
+          "area",
+          "governorate",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric",
+      "example": "13001"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Block 1, Street 10, Building 5, Hawalli 13001",
+    "domestic_normalized": "Block 1 Street 10 Building 5 Hawalli 13001",
+    "international": "Room 305, Building 5, Street 10, Block 1, Hawalli 13001, Kuwait"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

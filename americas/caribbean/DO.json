@@ -1,0 +1,100 @@
+{
+  "name": {
+    "en": "Dominican Republic",
+    "local": [
+      {
+        "lang": "es",
+        "value": "República Dominicana"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "DO",
+    "alpha3": "DOM",
+    "numeric": "214"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "Spanish",
+      "role": "national_primary"
+    },
+    {
+      "name": "English",
+      "role": "auxiliary_international",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Provincia",
+      "label_en": "Province",
+      "source": "../../data/do_provincias.json"
+    },
+    "level2": {
+      "type": "Municipio",
+      "label_en": "Municipality",
+      "source": "../../data/do_municipios.json"
+    },
+    "level3": {
+      "type": "Sector / Barrio",
+      "label_en": "Neighborhood",
+      "source": "../../data/do_sectores.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic_es",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "sector",
+          "municipio",
+          "provincia",
+          "country"
+        ]
+      },
+      {
+        "context": "international_en",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "municipio",
+          "provincia",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required": true,
+    "required_for_international": true,
+    "stability": "medium",
+    "regex": "^[0-9]{5}$",
+    "example": "10101"
+  },
+  "validation": {
+    "rules": [
+      "Provincia と Municipio は必須",
+      "Sector/Barrio が未記入の場合は交差点情報を含める"
+    ]
+  },
+  "examples": {
+    "domestic_es": "Torre Empresarial, Av. 27 de Febrero 1234, Sector Naco, Municipio Santo Domingo, Provincia Santo Domingo, República Dominicana 10101",
+    "international_en": "Av. 27 de Febrero 1234, Naco, Santo Domingo 10101, Dominican Republic"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

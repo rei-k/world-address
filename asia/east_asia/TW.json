@@ -1,0 +1,114 @@
+{
+  "name": {
+    "en": "Taiwan",
+    "local": [
+      {
+        "lang": "zh",
+        "value": "臺灣",
+        "script": "Han",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "TW",
+    "alpha3": "TWN",
+    "numeric": "158"
+  },
+  "continent": "Asia",
+  "subregion": "East Asia",
+  "languages": [
+    {
+      "name": "Chinese",
+      "script": "Han",
+      "role": "official",
+      "country_name": "臺灣"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Taiwan"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "County/City",
+      "label_local": "縣 / 市",
+      "label_en": "County / City",
+      "count": 22,
+      "source": "../../data/tw_counties.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "county",
+          "city",
+          "district",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "city",
+          "county",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "台北101"
+    },
+    "floor": {
+      "required": false,
+      "example": "35F"
+    },
+    "room": {
+      "required": false,
+      "example": "3501"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{3}([0-9]{2})?$",
+      "length": "3-5",
+      "description": "3 to 5 digit numeric code",
+      "example": "100"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code must be 3–5 digits",
+      "International mail must include English transliteration"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "台北市信義區信義路五段7號台北101 3501室",
+    "domestic_normalized": "台北101 3501室 信義路五段7號 信義區 台北市 110",
+    "international": "Room 3501, Taipei 101, 7 Xinyi Rd Sec.5, Xinyi District, Taipei City 110, Taiwan"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": "partial",
+    "disputed": true
+  }
+}

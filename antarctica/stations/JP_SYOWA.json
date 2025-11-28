@@ -1,0 +1,36 @@
+{
+  "name": {
+    "en": "Syowa Station",
+    "local": "昭和基地"
+  },
+  "operating_country": {
+    "name": "Japan",
+    "alpha2": "JP",
+    "program": "National Institute of Polar Research (NIPR)"
+  },
+  "location": {
+    "coordinates": {
+      "latitude": -69.006,
+      "longitude": 39.59
+    },
+    "region": "East Ongul Island, Lützow-Holm Bay",
+    "claim_area": "None (unclaimed sector)"
+  },
+  "operational": {
+    "type": "year_round",
+    "established": 1957,
+    "capacity_winter": 28,
+    "capacity_summer": 110
+  },
+  "address_format": {
+    "mail_routing": {
+      "via_country": "Japan",
+      "via_city": "Tokyo"
+    },
+    "example": "Name, Syowa Station, c/o National Institute of Polar Research, 10-3 Midori-cho, Tachikawa, Tokyo 190-8518, Japan"
+  },
+  "status": {
+    "active": true,
+    "note": "Japan's main Antarctic research station"
+  }
+}

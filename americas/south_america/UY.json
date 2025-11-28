@@ -1,0 +1,107 @@
+{
+  "name": {
+    "en": "Uruguay",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Uruguay",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "UY",
+    "alpha3": "URY",
+    "numeric": "858"
+  },
+  "continent": "South America",
+  "subregion": "Southern America",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Uruguay"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Uruguay"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Department",
+      "label_local": "Departamento",
+      "label_en": "Department",
+      "count": 19
+    },
+    "level2": {
+      "type": "Municipality",
+      "label_local": "Municipio",
+      "label_en": "Municipality"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "apartment",
+          "city",
+          "department",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "apartment",
+          "street_address",
+          "number",
+          "city",
+          "department",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "apartment": {
+      "required": false,
+      "example": "Apto 302"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric postal code",
+      "example": "11000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code is 5 digits",
+      "Department name is recommended"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "18 de Julio 1234, Apto 302, Montevideo, Montevideo, 11100",
+    "domestic_normalized": "18 de Julio 1234 Apto 302 Montevideo 11100",
+    "international": "Apt 302, 18 de Julio 1234, Montevideo 11100, Uruguay"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

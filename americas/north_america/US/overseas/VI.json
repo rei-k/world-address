@@ -1,0 +1,152 @@
+{
+  "name": {
+    "en": "United States Virgin Islands",
+    "local": [
+      {
+        "lang": "en",
+        "value": "United States Virgin Islands",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "VI",
+    "alpha3": "VIR",
+    "numeric": "850"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean (US Territory)",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "primary_residential_and_administrative",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Virgin Islands Creole English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "spoken_local",
+      "usage_notes": "place names often follow English orthography"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Island",
+      "label_en": "Island",
+      "values": [
+        "Saint Thomas",
+        "Saint Croix",
+        "Saint John"
+      ],
+      "source": "../../data/vi_islands.json"
+    },
+    "level2": {
+      "type": "Subdistrict",
+      "label_en": "Subdistrict",
+      "count": null,
+      "source": "../../data/vi_subdistricts.json"
+    },
+    "level3": {
+      "type": "Estate",
+      "label_en": "Estate (historical plantation → present local community unit)",
+      "count": null,
+      "source": "../../data/vi_estates.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic_street",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "estate",
+          "subdistrict",
+          "island",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "pobox",
+        "order": [
+          "recipient",
+          "pobox",
+          "island",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "estate",
+          "subdistrict",
+          "island",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Tutu Park Mall"
+    },
+    "floor": {
+      "required": false,
+      "example": "2nd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 14"
+    },
+    "pobox": {
+      "required": false,
+      "example": "PO Box 12345"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "stability": "high",
+      "regex": "^008[0-9]{2}(-[0-9]{4})?$",
+      "example": "00802",
+      "example_plus4": "00802-1234",
+      "description": "USPS ZIP range 008xx is reserved for the U.S. Virgin Islands."
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Island name is mandatory (St. Thomas / St. Croix / St. John).",
+      "Subdistrict recommended for precise delivery.",
+      "Estate strongly recommended in non-urban areas.",
+      "If PO Box present → street address omitted."
+    ]
+  },
+  "examples": {
+    "domestic_street": "Tutu Park Mall, 4605 Tutu Park, Estate Tutu, Subdistrict Tutu, St. Thomas, VI 00802, USA",
+    "domestic_pobox": "PO Box 12345, Charlotte Amalie, St. Thomas, VI 00802, USA",
+    "international": "Suite 14, 2nd Floor, Tutu Park Mall, Estate Tutu, St. Thomas, VI 00802, United States Virgin Islands"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false,
+    "note": "Unincorporated territory of the United States"
+  }
+}

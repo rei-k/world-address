@@ -1,0 +1,152 @@
+{
+  "name": {
+    "en": "American Samoa",
+    "local": [
+      {
+        "lang": "sm",
+        "value": "Amerika Sāmoa",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "American Samoa",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AS",
+    "alpha3": "ASM",
+    "numeric": "016"
+  },
+  "continent": "Oceania",
+  "subregion": "Polynesia (US Territory)",
+  "languages": [
+    {
+      "name": "Samoan",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "primary_residential_and_cultural"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "administrative_primary",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_en": "District",
+      "values": [
+        "Eastern",
+        "Western",
+        "Manu'a"
+      ],
+      "source": "../../data/as_districts.json"
+    },
+    "level2": {
+      "type": "County",
+      "label_en": "County",
+      "count": null,
+      "source": "../../data/as_counties.json"
+    },
+    "level3": {
+      "type": "Village",
+      "label_en": "Village",
+      "count": null,
+      "source": "../../data/as_villages.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic_street",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "village",
+          "county",
+          "district",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "pobox",
+        "order": [
+          "recipient",
+          "pobox",
+          "village",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "village",
+          "county",
+          "district",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Pago Plaza"
+    },
+    "floor": {
+      "required": false,
+      "example": "3rd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 15"
+    },
+    "pobox": {
+      "required": false,
+      "example": "PO Box 987"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "stability": "high",
+      "regex": "^96799(-[0-9]{4})?$",
+      "example": "96799",
+      "description": "American Samoa uses USPS ZIP 96799."
+    }
+  },
+  "validation": {
+    "rules": [
+      "Village is mandatory",
+      "County recommended for non-urban routing",
+      "PO Box cannot include street address"
+    ]
+  },
+  "examples": {
+    "domestic_street": "Pago Plaza, Fagotogo, Ma'oputasi County, Eastern District, AS 96799, USA",
+    "pobox": "PO Box 987, Pago Pago, AS 96799, USA",
+    "international": "Fagotogo, Ma'oputasi, Eastern District, AS 96799, United States"
+  },
+  "status": {
+    "postal_system": "USPS",
+    "political_status": "US Territory"
+  }
+}

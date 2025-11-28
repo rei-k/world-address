@@ -1,0 +1,80 @@
+{
+  "name": {
+    "en": "Bermuda",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Bermuda",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BM",
+    "alpha3": "BMU",
+    "numeric": "060"
+  },
+  "continent": "North America",
+  "subregion": "North Atlantic",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Bermuda"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Parish",
+      "label_local": "Parish",
+      "label_en": "Parish",
+      "count": 9
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "house_number",
+          "street",
+          "parish",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "house_number",
+          "street",
+          "parish",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[A-Z]{2} ?[0-9]{2}$",
+      "description": "AA NN format",
+      "example": "HM 12"
+    }
+  },
+  "examples": {
+    "domestic_raw": "1 Front Street, Hamilton HM 12",
+    "domestic_normalized": "1 Front Street Hamilton HM12",
+    "international": "1 Front Street, Hamilton HM 12, Bermuda"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

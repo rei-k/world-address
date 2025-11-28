@@ -1,0 +1,109 @@
+{
+  "name": {
+    "en": "Easter Island",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Isla de Pascua",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "rap",
+        "value": "Rapa Nui",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "parent_country": {
+    "alpha2": "CL",
+    "name": "Chile"
+  },
+  "iso_codes": {
+    "note": "No separate ISO code; part of Chile (CL)"
+  },
+  "subregion": "Polynesia (geographically in Oceania, politically part of Chile)",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Isla de Pascua"
+    },
+    {
+      "name": "Rapa Nui",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Rapa Nui"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Easter Island"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Special Territory",
+      "label_local": "Territorio Especial",
+      "label_en": "Special Territory",
+      "note": "Easter Island is a special territory (provincia) of Chile"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "hanga_roa",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "hanga_roa",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{7}$",
+      "description": "7-digit numeric postal code (Chilean system)",
+      "example": "2770000",
+      "note": "Postal codes for Easter Island are in the 277xxxx range"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "All addresses are in Hanga Roa, the only town",
+      "Uses Chilean postal code format"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Av. Atamu Tekena s/n, Hanga Roa, Isla de Pascua, 2770000",
+    "domestic_normalized": "Av. Atamu Tekena s/n Hanga Roa 2770000",
+    "international": "Av. Atamu Tekena s/n, Hanga Roa, Easter Island 2770000, Chile"
+  },
+  "status": {
+    "special_territory": true,
+    "un_member": false,
+    "recognized": true,
+    "disputed": false,
+    "note": "Special territory of Chile; also known as Rapa Nui"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "name": {
+    "en": "United Arab Emirates",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "الإمارات العربية المتحدة",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AE",
+    "alpha3": "ARE",
+    "numeric": "784"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "official",
+      "country_name": "الإمارات العربية المتحدة"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "United Arab Emirates"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Emirate",
+      "label_local": "إمارة",
+      "label_en": "Emirate",
+      "count": 7,
+      "source": "../../data/ae_emirates.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "emirate",
+          "city",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "city",
+          "emirate",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes not widely used; P.O. boxes are common"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Downtown Dubai, P.O. Box 12345",
+    "domestic_normalized": "Downtown Dubai PO Box 12345",
+    "international": "Room 402, Downtown Dubai, P.O. Box 12345, United Arab Emirates"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

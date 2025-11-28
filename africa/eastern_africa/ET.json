@@ -1,0 +1,128 @@
+{
+  "name": {
+    "en": "Ethiopia",
+    "local": [
+      {
+        "lang": "am",
+        "value": "ኢትዮጵያ",
+        "script": "Ethiopic",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "ET",
+    "alpha3": "ETH",
+    "numeric": "231"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "Amharic",
+      "script": "Ethiopic",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "ኢትዮጵያ"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Ethiopia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "ክልል",
+      "label_en": "Region",
+      "count": 11,
+      "source": "../../data/et_regions.json"
+    },
+    "level2": {
+      "type": "Zone",
+      "label_local": "ዞን",
+      "label_en": "Zone",
+      "count": null
+    },
+    "level3": {
+      "type": "Woreda",
+      "label_local": "ወረዳ",
+      "label_en": "District",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "woreda",
+          "zone",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "zone",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Zemen Bank Building"
+    },
+    "floor": {
+      "required": false,
+      "example": "5th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Office 501"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "regex": "^[0-9]{4}$",
+      "length": 4,
+      "description": "4-digit postal code",
+      "example": "1000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required",
+      "Postal code format: 4 digits"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "ቦሌ መንገድ፣ አዲስ አበባ 1000",
+    "domestic_normalized": "Bole Road, Addis Ababa 1000",
+    "international": "Bole Road, Addis Ababa 1000, Ethiopia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

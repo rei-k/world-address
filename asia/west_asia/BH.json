@@ -1,0 +1,91 @@
+{
+  "name": {
+    "en": "Bahrain",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "البحرين",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BH",
+    "alpha3": "BHR",
+    "numeric": "048"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "official",
+      "country_name": "البحرين"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Bahrain"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Governorate",
+      "label_local": "محافظة",
+      "label_en": "Governorate",
+      "count": 4,
+      "source": "../../data/bh_governorates.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "governorate",
+          "area",
+          "block",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "block",
+          "area",
+          "governorate",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{3,4}$",
+      "description": "3–4 digit numeric",
+      "example": "323"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Block 327, Road 1211, Building 45, Manama 323",
+    "domestic_normalized": "Block 327 Road 1211 Building 45 Manama 323",
+    "international": "Building 45, Road 1211, Block 327, Manama 323, Bahrain"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

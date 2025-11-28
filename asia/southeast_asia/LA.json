@@ -1,0 +1,98 @@
+{
+  "name": {
+    "en": "Laos",
+    "local": [
+      {
+        "lang": "lo",
+        "value": "ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ",
+        "script": "Lao",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "LA",
+    "alpha3": "LAO",
+    "numeric": "418"
+  },
+  "continent": "Asia",
+  "subregion": "Southeast Asia",
+  "languages": [
+    {
+      "name": "Lao",
+      "script": "Lao",
+      "role": "official",
+      "country_name": "ປະເທດລາວ"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Laos"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province/Prefecture",
+      "label_local": "ແຂວງ / ນະຄອນຫຼວງ",
+      "label_en": "Province / Prefecture",
+      "count": 18,
+      "source": "../../data/la_provinces.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "province",
+          "district",
+          "village",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "village",
+          "district",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "That Luang Plaza"
+    },
+    "room": {
+      "required": false,
+      "example": "305"
+    },
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes exist but are not widely used",
+      "coverage": "partial"
+    }
+  },
+  "examples": {
+    "domestic_raw": "ບ້ານດົງໂດກ ເມືອງຈັນທະບູລີ ນະຄອນຫຼວງວຽງຈັນ That Luang Plaza 305",
+    "domestic_normalized": "That Luang Plaza 305 Vientiane",
+    "international": "Room 305, That Luang Plaza, Chanthabouly District, Vientiane, Laos"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

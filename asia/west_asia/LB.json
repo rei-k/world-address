@@ -1,0 +1,93 @@
+{
+  "name": {
+    "en": "Lebanon",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "لبنان",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "LB",
+    "alpha3": "LBN",
+    "numeric": "422"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "official",
+      "country_name": "لبنان"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Liban"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Lebanon"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Governorate",
+      "label_local": "محافظة",
+      "label_en": "Governorate",
+      "count": 9,
+      "source": "../../data/lb_governorates.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "governorate",
+          "district",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "district",
+          "governorate",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes exist but are not widely used"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Beirut Central District",
+    "domestic_normalized": "Beirut Central District",
+    "international": "Room 302, Beirut Central District, Lebanon"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

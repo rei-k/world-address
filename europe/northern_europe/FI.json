@@ -1,0 +1,115 @@
+{
+  "name": {
+    "en": "Finland",
+    "local": [
+      {
+        "lang": "fi",
+        "value": "Suomi",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "sv",
+        "value": "Finland",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "FI",
+    "alpha3": "FIN",
+    "numeric": "246"
+  },
+  "continent": "Europe",
+  "subregion": "Northern Europe",
+  "languages": [
+    {
+      "name": "Finnish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": {
+        "fi": "Suomi",
+        "en": "Finland"
+      }
+    },
+    {
+      "name": "Swedish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "co-official",
+      "country_name": {
+        "sv": "Finland",
+        "en": "Finland"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": {
+        "en": "Finland"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Maakunta",
+      "label_en": "Region",
+      "count": 19
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric postal code",
+      "example": "00100"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code format: 5 digits",
+      "City name required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Mannerheimintie 10, 00100 Helsinki",
+    "domestic_normalized": "Mannerheimintie 10 00100 Helsinki",
+    "international": "Mannerheimintie 10, 00100 Helsinki, Finland"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

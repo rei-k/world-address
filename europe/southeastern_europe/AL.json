@@ -1,0 +1,99 @@
+{
+  "name": {
+    "en": "Albania",
+    "local": [
+      {
+        "lang": "sq",
+        "value": "Shqipëri",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AL",
+    "alpha3": "ALB",
+    "numeric": "008"
+  },
+  "continent": "Europe",
+  "subregion": "Southeastern Europe",
+  "languages": [
+    {
+      "name": "Albanian",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Shqipëri"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Albania"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "County",
+      "label_local": "Qark",
+      "label_en": "County",
+      "count": 12
+    },
+    "level2": {
+      "type": "Municipality",
+      "label_local": "Bashki",
+      "label_en": "Municipality"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric postal code",
+      "example": "1001"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code is 4 digits",
+      "City name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Rruga Durrësit 12, 1001 Tiranë",
+    "domestic_normalized": "Rruga Durrësit 12 1001 Tiranë",
+    "international": "Rruga Durrësit 12, 1001 Tirana, Albania"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

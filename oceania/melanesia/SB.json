@@ -1,0 +1,76 @@
+{
+  "name": {
+    "en": "Solomon Islands",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Solomon Islands",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SB",
+    "alpha3": "SLB",
+    "numeric": "090"
+  },
+  "continent": "Oceania",
+  "subregion": "Melanesia",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Solomon Islands",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_en": "Province",
+      "count": 9
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "city",
+          "province",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "city",
+          "province",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes are not commonly used",
+      "coverage": "none"
+    }
+  },
+  "examples": {
+    "domestic_raw": "PO Box 123, Mendana Avenue, Honiara",
+    "domestic_normalized": "PO Box 123 Mendana Avenue Honiara",
+    "international": "PO Box 123, Mendana Avenue, Honiara, Solomon Islands"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

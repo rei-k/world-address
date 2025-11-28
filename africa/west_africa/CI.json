@@ -1,0 +1,137 @@
+{
+  "name": {
+    "en": "Côte d'Ivoire",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "Côte d’Ivoire",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CI",
+    "alpha3": "CIV",
+    "numeric": "384"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Côte d’Ivoire"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": 14,
+      "source": "../../data/ci_districts.json"
+    },
+    "level2": {
+      "type": "Region",
+      "label_local": "Région",
+      "label_en": "Region",
+      "count": null,
+      "source": "../../data/ci_regions.json"
+    },
+    "level3": {
+      "type": "Department",
+      "label_local": "Département",
+      "label_en": "Department",
+      "count": null,
+      "source": "../../data/ci_departments.json"
+    },
+    "level4": {
+      "type": "Commune",
+      "label_local": "Commune",
+      "label_en": "Commune",
+      "count": null,
+      "source": "../../data/ci_communes.json"
+    },
+    "level5": {
+      "type": "Arrondissement",
+      "label_local": "Arrondissement",
+      "label_en": "District",
+      "count": null,
+      "source": "../../data/ci_arrondissements.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "arrondissement",
+          "commune",
+          "department",
+          "region",
+          "district",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "commune",
+          "district",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Résidence Plateau"
+    },
+    "floor": {
+      "required": false,
+      "example": "8e étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Appt 14"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^[0-9]{4,5}$",
+      "length": null,
+      "description": "Postal codes exist but often not required domestically",
+      "example": "Abidjan 01"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Commune and District must be included",
+      "Postal code recommended for international shipments"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Résidence Plateau, Blvd. Rue 12, Arr. Plateau, Commune Plateau, Abidjan, Côte d’Ivoire",
+    "domestic_normalized": "Rue 12 Plateau Abidjan",
+    "international": "Résidence Plateau, Rue 12, Plateau, Abidjan 01, Côte d’Ivoire"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

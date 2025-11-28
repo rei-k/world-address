@@ -1,0 +1,89 @@
+{
+  "name": {
+    "en": "Oman",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "عمان",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "OM",
+    "alpha3": "OMN",
+    "numeric": "512"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "official",
+      "country_name": "عمان"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Oman"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Governorate",
+      "label_local": "محافظة",
+      "label_en": "Governorate",
+      "count": 11,
+      "source": "../../data/om_governorates.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "governorate",
+          "wilayat",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "wilayat",
+          "governorate",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{3}$",
+      "description": "3-digit numeric",
+      "example": "112"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Madinat Qaboos, Muscat 112",
+    "domestic_normalized": "Madinat Qaboos Muscat 112",
+    "international": "Building 8, Madinat Qaboos, Muscat 112, Oman"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

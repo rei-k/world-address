@@ -1,0 +1,104 @@
+{
+  "name": {
+    "en": "Faroe Islands",
+    "local": [
+      {
+        "lang": "fo",
+        "value": "Føroyar",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "da",
+        "value": "Færøerne",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "FO",
+    "alpha3": "FRO",
+    "numeric": "234"
+  },
+  "continent": "Europe",
+  "subregion": "Northern Europe",
+  "languages": [
+    {
+      "name": "Faroese",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "fo": "Føroyar",
+        "en": "Faroe Islands"
+      }
+    },
+    {
+      "name": "Danish",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "da": "Færøerne",
+        "en": "Faroe Islands"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Faroe Islands"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Municipality",
+      "label_local": "Kommuna",
+      "label_en": "Municipality",
+      "count": 29
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^FO-[0-9]{3}$",
+      "description": "FO- followed by 3 digits",
+      "example": "FO-100"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Tórsgøta 10, FO-100 Tórshavn",
+    "domestic_normalized": "Tórsgøta 10 FO-100 Tórshavn",
+    "international": "Tórsgøta 10, FO-100 Tórshavn, Faroe Islands"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

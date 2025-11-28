@@ -1,0 +1,97 @@
+{
+  "name": {
+    "en": "Bangladesh",
+    "local": [
+      {
+        "lang": "bn",
+        "value": "বাংলাদেশ",
+        "script": "Bengali",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BD",
+    "alpha3": "BGD",
+    "numeric": "050"
+  },
+  "continent": "Asia",
+  "subregion": "South Asia",
+  "languages": [
+    {
+      "name": "Bengali",
+      "script": "Bengali",
+      "role": "official",
+      "country_name": "বাংলাদেশ"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Bangladesh"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Division",
+      "label_local": "বিভাগ",
+      "label_en": "Division",
+      "count": 8,
+      "source": "../../data/bd_divisions.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "division",
+          "district",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "district",
+          "division",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Bashundhara City"
+    },
+    "room": {
+      "required": false,
+      "example": "502"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric",
+      "example": "1215"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Bashundhara City, Dhaka 1215",
+    "domestic_normalized": "Bashundhara City Dhaka 1215",
+    "international": "Room 502, Bashundhara City, Dhaka 1215, Bangladesh"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "name": {
+    "en": "Guam",
+    "local": [
+      {
+        "lang": "ch",
+        "value": "Guåhån",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Guam",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GU",
+    "alpha3": "GUM",
+    "numeric": "316"
+  },
+  "continent": "Oceania",
+  "subregion": "Micronesia (US Territory)",
+  "languages": [
+    {
+      "name": "CHamoru",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "cultural_primary"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "administrative_primary",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Village",
+      "label_local_ch": "Påsgan / Taotao tåsi variants exist",
+      "label_en": "Village",
+      "count": 19,
+      "source": "../../data/gu_villages.json"
+    },
+    "level2": {
+      "type": "Neighborhood / Area",
+      "count": null,
+      "source": "../../data/gu_neighborhoods.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic_street",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "neighborhood",
+          "village",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "pobox",
+        "order": [
+          "recipient",
+          "pobox",
+          "village",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "neighborhood",
+          "village",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "ITC Building"
+    },
+    "floor": {
+      "required": false,
+      "example": "5th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 501"
+    },
+    "pobox": {
+      "required": false,
+      "example": "PO Box 12345"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "stability": "high",
+      "regex": "^969[0-9]{2}(-[0-9]{4})?$",
+      "example": "96913",
+      "description": "Guam uses USPS ZIP 969xx range."
+    }
+  },
+  "validation": {
+    "rules": [
+      "Village is required.",
+      "Neighborhood recommended for dense areas.",
+      "If PO Box present → omit street address."
+    ]
+  },
+  "examples": {
+    "domestic_street": "ITC Building, Chalan San Antonio, Tamuning, GU 96913, USA",
+    "domestic_pobox": "PO Box 456, Dededo, GU 96929, USA",
+    "international": "Chalan San Antonio, Tamuning, GU 96913, United States"
+  }
+}

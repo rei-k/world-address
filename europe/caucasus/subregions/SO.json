@@ -1,0 +1,124 @@
+{
+  "name": {
+    "en": "South Ossetia",
+    "local": [
+      {
+        "lang": "os",
+        "value": "Хуссар Ирыстон",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ka",
+        "value": "სამხრეთ ოსეთი",
+        "script": "Georgian",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ru",
+        "value": "Южная Осетия",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "note": "No ISO 3166-1 code; claimed by Georgia (GE)"
+  },
+  "subregion": "Caucasus",
+  "languages": [
+    {
+      "name": "Ossetian",
+      "script": "Cyrillic",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Хуссар Ирыстон"
+    },
+    {
+      "name": "Russian",
+      "script": "Cyrillic",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Южная Осетия"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "South Ossetia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "Район",
+      "label_en": "District",
+      "count": 4
+    },
+    "level2": {
+      "type": "City",
+      "label_local": "Город",
+      "label_en": "City"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "apartment",
+          "city",
+          "district",
+          "postal_code"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "apartment",
+          "street_address",
+          "number",
+          "city",
+          "district",
+          "postal_code"
+        ],
+        "note": "International mail may need to be addressed via Russia"
+      }
+    ],
+    "apartment": {
+      "required": false,
+      "example": "кв. 8"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "description": "Uses Russian postal code format",
+      "example": "100001",
+      "note": "International mail may use Russian postal system"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code is 6 digits (Russian format)",
+      "International shipping may require routing via Russia"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "ул. Сталина 25, кв. 8, Цхинвал, 100001",
+    "domestic_normalized": "ul. Stalina 25 kv. 8 Tskhinval 100001",
+    "international": "Apt 8, ul. Stalina 25, Tskhinval 100001, South Ossetia (via Russia)"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": "partial",
+    "disputed": true,
+    "note": "De facto independent; recognized by Russia, Nicaragua, Venezuela, Nauru, Syria; claimed by Georgia as Tskhinvali Region"
+  }
+}

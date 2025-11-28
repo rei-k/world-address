@@ -1,0 +1,76 @@
+{
+  "name": {
+    "en": "South Georgia and the South Sandwich Islands",
+    "local": [
+      {
+        "lang": "en",
+        "value": "South Georgia and the South Sandwich Islands",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GS",
+    "alpha3": "SGS",
+    "numeric": "239"
+  },
+  "continent": "South America",
+  "subregion": "South Atlantic",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "South Georgia and the South Sandwich Islands"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Territory",
+      "label_local": "Territory",
+      "label_en": "Territory",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "locality",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "locality",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^SIQQ 1ZZ$",
+      "description": "Single code SIQQ 1ZZ",
+      "example": "SIQQ 1ZZ"
+    }
+  },
+  "examples": {
+    "domestic_raw": "King Edward Point SIQQ 1ZZ",
+    "domestic_normalized": "King Edward Point SIQQ 1ZZ",
+    "international": "King Edward Point, SIQQ 1ZZ, South Georgia and the South Sandwich Islands"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

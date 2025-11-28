@@ -1,0 +1,80 @@
+{
+  "name": {
+    "en": "Cayman Islands",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Cayman Islands",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "KY",
+    "alpha3": "CYM",
+    "numeric": "136"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Cayman Islands"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": 6
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "district",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "district",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^KY-[0-9]{4}$",
+      "description": "KY- followed by 4 digits",
+      "example": "KY1-1001"
+    }
+  },
+  "examples": {
+    "domestic_raw": "123 West Bay Road, KY1-1001 George Town",
+    "domestic_normalized": "123 West Bay Road KY1-1001 George Town",
+    "international": "123 West Bay Road, KY1-1001 George Town, Cayman Islands"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

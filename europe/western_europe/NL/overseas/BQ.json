@@ -1,0 +1,100 @@
+{
+  "name": {
+    "en": "Caribbean Netherlands",
+    "local": [
+      {
+        "lang": "nl",
+        "value": "Caribisch Nederland",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BQ",
+    "alpha3": "BES",
+    "numeric": "535"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "Dutch",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "nl": "Caribisch Nederland",
+        "en": "Caribbean Netherlands"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "co-official",
+      "country_name": {
+        "en": "Caribbean Netherlands"
+      }
+    },
+    {
+      "name": "Papiamentu",
+      "script": "Latin",
+      "role": "co-official",
+      "country_name": {
+        "pap": "Boneiru / Sint Eustatius / Saba",
+        "en": "Bonaire / Sint Eustatius / Saba"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Special Municipality",
+      "label_local": "Openbare Lichamen",
+      "label_en": "Special Municipality",
+      "count": 3,
+      "names": [
+        "Bonaire",
+        "Sint Eustatius",
+        "Saba"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "No standardized postal codes",
+      "example": ""
+    }
+  },
+  "examples": {
+    "domestic_raw": "Kaya Grandi 12, Kralendijk, Bonaire",
+    "domestic_normalized": "Kaya Grandi 12 Kralendijk Bonaire",
+    "international": "Kaya Grandi 12, Kralendijk, Bonaire, Caribbean Netherlands"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

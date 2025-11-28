@@ -1,0 +1,36 @@
+{
+  "name": {
+    "en": "Bharati Station",
+    "local": "भारती"
+  },
+  "operating_country": {
+    "name": "India",
+    "alpha2": "IN",
+    "program": "National Centre for Polar and Ocean Research (NCPOR)"
+  },
+  "location": {
+    "coordinates": {
+      "latitude": -69.407,
+      "longitude": 76.188
+    },
+    "region": "Larsemann Hills, Princess Elizabeth Land",
+    "claim_area": "Australian Antarctic Territory (not recognized by India)"
+  },
+  "operational": {
+    "type": "year_round",
+    "established": 2012,
+    "capacity_winter": 23,
+    "capacity_summer": 47
+  },
+  "address_format": {
+    "mail_routing": {
+      "via_country": "India",
+      "via_city": "Goa"
+    },
+    "example": "Name, Bharati Station, c/o NCPOR, Headland Sada, Vasco-da-Gama, Goa 403804, India"
+  },
+  "status": {
+    "active": true,
+    "note": "India's third and newest Antarctic research station"
+  }
+}

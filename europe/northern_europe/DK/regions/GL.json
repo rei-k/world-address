@@ -1,0 +1,111 @@
+{
+  "name": {
+    "en": "Greenland",
+    "local": [
+      {
+        "lang": "kl",
+        "value": "Kalaallit Nunaat",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "da",
+        "value": "Grønland",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GL",
+    "alpha3": "GRL",
+    "numeric": "304"
+  },
+  "continent": "North America",
+  "subregion": "Arctic",
+  "languages": [
+    {
+      "name": "Greenlandic",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "kl": "Kalaallit Nunaat",
+        "en": "Greenland"
+      }
+    },
+    {
+      "name": "Danish",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "da": "Grønland",
+        "en": "Greenland"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Greenland"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Municipality",
+      "label_local": "Kommune",
+      "label_en": "Municipality",
+      "count": 5,
+      "names": [
+        "Avannaata",
+        "Kujalleq",
+        "Qeqertalik",
+        "Qeqqata",
+        "Sermersooq"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit postal code, mostly in 39xx range",
+      "example": "3900"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Imaneq 45, 3900 Nuuk",
+    "domestic_normalized": "Imaneq 45 3900 Nuuk",
+    "international": "Imaneq 45, 3900 Nuuk, Greenland"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "name": {
+    "en": "France",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "France",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "FR",
+    "alpha3": "FRA",
+    "numeric": "250"
+  },
+  "continent": "Europe",
+  "subregion": "Western Europe",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "fr": "France",
+        "en": "France"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "France"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Région",
+      "label_en": "Region",
+      "count": 13,
+      "note": "Metropolitan France (13 regions since 2016)",
+      "names": [
+        "Auvergne-Rhône-Alpes",
+        "Bourgogne-Franche-Comté",
+        "Bretagne",
+        "Centre-Val de Loire",
+        "Corse",
+        "Grand Est",
+        "Hauts-de-France",
+        "Île-de-France",
+        "Normandie",
+        "Nouvelle-Aquitaine",
+        "Occitanie",
+        "Pays de la Loire",
+        "Provence-Alpes-Côte d’Azur"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric postal code (01xxx–95xxx for metropolitan)",
+      "example": "75001"
+    }
+  },
+  "examples": {
+    "domestic_raw": "10 Rue de Rivoli, 75001 Paris",
+    "domestic_normalized": "10 Rue de Rivoli 75001 Paris",
+    "international": "10 Rue de Rivoli, 75001 Paris, France"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

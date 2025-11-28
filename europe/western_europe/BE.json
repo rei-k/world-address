@@ -1,0 +1,107 @@
+{
+  "name": {
+    "en": "Belgium",
+    "local": [
+      {
+        "lang": "nl",
+        "value": "België",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "fr",
+        "value": "Belgique",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "de",
+        "value": "Belgien",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BE",
+    "alpha3": "BEL",
+    "numeric": "056"
+  },
+  "continent": "Europe",
+  "subregion": "Western Europe",
+  "languages": [
+    {
+      "name": "Dutch",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "België"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Belgique"
+    },
+    {
+      "name": "German",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Belgien"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Région / Gewest / Region",
+      "label_en": "Region",
+      "count": 3,
+      "names": [
+        "Flanders",
+        "Wallonia",
+        "Brussels-Capital"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric postal code",
+      "example": "1000"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Rue de la Loi 16, 1000 Bruxelles",
+    "domestic_normalized": "Rue de la Loi 16 1000 Bruxelles",
+    "international": "Rue de la Loi 16, 1000 Bruxelles, Belgium"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

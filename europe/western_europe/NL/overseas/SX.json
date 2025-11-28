@@ -1,0 +1,92 @@
+{
+  "name": {
+    "en": "Sint Maarten",
+    "local": [
+      {
+        "lang": "nl",
+        "value": "Sint Maarten",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Sint Maarten",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SX",
+    "alpha3": "SXM",
+    "numeric": "534"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "Dutch",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "nl": "Sint Maarten",
+        "en": "Sint Maarten"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Sint Maarten"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "No postal codes used",
+      "example": ""
+    }
+  },
+  "examples": {
+    "domestic_raw": "Front Street 45, Philipsburg",
+    "domestic_normalized": "Front Street 45 Philipsburg",
+    "international": "Front Street 45, Philipsburg, Sint Maarten"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

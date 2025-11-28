@@ -1,0 +1,129 @@
+{
+  "name": {
+    "en": "Eritrea",
+    "local": [
+      {
+        "lang": "ti",
+        "value": "ኤርትራ",
+        "script": "Ethiopic",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ar",
+        "value": "إريتريا",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "ER",
+    "alpha3": "ERI",
+    "numeric": "232"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "Tigrinya",
+      "script": "Ethiopic",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "ኤርትራ"
+    },
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "إريتريا"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Eritrea"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "ዞባ",
+      "label_en": "Region",
+      "count": 6,
+      "source": "../../data/er_regions.json"
+    },
+    "level2": {
+      "type": "Sub-Region",
+      "label_local": "ንኡስ ዞባ",
+      "label_en": "Sub-Region",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "subregion",
+          "city",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "region",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Himbol Building"
+    },
+    "floor": {
+      "required": false,
+      "example": "3rd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 305"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Harnet Avenue, Asmara",
+    "domestic_normalized": "Harnet Avenue, Asmara",
+    "international": "Harnet Avenue, Asmara, Eritrea"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

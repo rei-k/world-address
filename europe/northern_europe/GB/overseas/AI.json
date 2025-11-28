@@ -1,0 +1,78 @@
+{
+  "name": {
+    "en": "Anguilla",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Anguilla",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AI",
+    "alpha3": "AIA",
+    "numeric": "660"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Anguilla"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": 14
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "locality",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "locality",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^AI-2640$",
+      "description": "Single code AI-2640",
+      "example": "AI-2640"
+    }
+  },
+  "examples": {
+    "domestic_raw": "The Valley AI-2640",
+    "domestic_normalized": "The Valley AI-2640",
+    "international": "The Valley, AI-2640, Anguilla"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

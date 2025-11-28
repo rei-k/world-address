@@ -1,0 +1,110 @@
+{
+  "name": {
+    "en": "Dominica",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Dominica"
+      },
+      {
+        "lang": "cpf-dm",
+        "value": "Donmnik"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "DM",
+    "alpha3": "DMA",
+    "numeric": "212"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "role": "official",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Dominican Creole French (Kwéyòl)",
+      "role": "spoken_local"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Parish",
+      "count": 10,
+      "source": "../../data/dm_parishes.json"
+    },
+    "level2": {
+      "type": "Village / Community",
+      "count": null,
+      "source": "../../data/dm_villages.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "village",
+          "parish",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "village",
+          "parish",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Bayfront House"
+    },
+    "floor": {
+      "required": false,
+      "example": "2nd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 3"
+    }
+  },
+  "postal_code": {
+    "required": false,
+    "required_for_international": true,
+    "stability": "low",
+    "regex": "^DM[0-9]{3}$",
+    "example": "DM001"
+  },
+  "validation": {
+    "rules": [
+      "Parish は必須",
+      "村落(Village)推奨、未記入時はランドマーク必須"
+    ]
+  },
+  "examples": {
+    "domestic": "Bayfront House, King George V St, Roseau, Saint George Parish, Dominica",
+    "international": "King George V Street, Roseau, Saint George DM001, Dominica"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

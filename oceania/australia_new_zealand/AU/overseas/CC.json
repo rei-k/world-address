@@ -1,0 +1,88 @@
+{
+  "name": {
+    "en": "Cocos (Keeling) Islands",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Cocos (Keeling) Islands",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "parent_country": {
+    "alpha2": "AU",
+    "name": "Australia"
+  },
+  "iso_codes": {
+    "alpha2": "CC",
+    "alpha3": "CCK",
+    "numeric": "166"
+  },
+  "subregion": "Indian Ocean",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Cocos (Keeling) Islands",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Cocos Malay",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "community"
+    }
+  ],
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "island",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "island",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^6799$",
+      "description": "Single postcode for Cocos Islands",
+      "example": "6799"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Cocos Islands uses Australian postal system",
+      "Single postcode: 6799",
+      "Include island name (Home Island or West Island)"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "123 Main Street, Home Island, Cocos (Keeling) Islands 6799",
+    "domestic_normalized": "123 Main Street Home Island 6799",
+    "international": "123 Main Street, Home Island, Cocos (Keeling) Islands 6799, Australia"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false,
+    "note": "External territory of Australia in the Indian Ocean"
+  }
+}

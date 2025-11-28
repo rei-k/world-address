@@ -1,0 +1,89 @@
+{
+  "name": {
+    "en": "Réunion",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "La Réunion",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "RE",
+    "alpha3": "REU",
+    "numeric": "638"
+  },
+  "continent": "Africa",
+  "subregion": "Indian Ocean",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "fr": "La Réunion",
+        "en": "Réunion"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Reunion"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Arrondissement",
+      "label_local": "Arrondissement",
+      "label_en": "District",
+      "count": 4
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^974[0-9]{2}$",
+      "description": "Postal codes start with 974",
+      "example": "97400"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Rue de Paris, 97400 Saint-Denis",
+    "domestic_normalized": "Rue de Paris 97400 Saint-Denis",
+    "international": "Rue de Paris, 97400 Saint-Denis, Réunion"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

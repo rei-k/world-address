@@ -1,0 +1,79 @@
+{
+  "name": {
+    "en": "Guatemala",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Guatemala"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GT",
+    "alpha3": "GTM",
+    "numeric": "320"
+  },
+  "languages": [
+    {
+      "name": "Spanish",
+      "role": "national_primary"
+    },
+    {
+      "name": "K’iche’ / Q’eqchi’ / Mam / etc.",
+      "role": "regional_indigenous"
+    },
+    {
+      "name": "English",
+      "role": "international_aux"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Departamento",
+      "count": 22
+    },
+    "level2": {
+      "type": "Municipio"
+    },
+    "level3": {
+      "type": "Zona (urban standardized)"
+    },
+    "level4": {
+      "type": "Colonia / Barrio"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "domestic_es": [
+          "recipient",
+          "building",
+          "street_address",
+          "zona",
+          "colonia",
+          "municipio",
+          "departamento",
+          "country"
+        ]
+      },
+      {
+        "international": [
+          "recipient",
+          "building",
+          "street_address",
+          "colonia",
+          "municipio",
+          "departamento",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required_for_international": true,
+    "stability": "medium",
+    "regex": "^[0-9]{5}$",
+    "example": "01001"
+  }
+}

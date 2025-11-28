@@ -1,0 +1,121 @@
+{
+  "name": {
+    "en": "Mali",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "Mali",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "ML",
+    "alpha3": "MLI",
+    "numeric": "466"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Mali"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Région",
+      "label_en": "Region",
+      "count": 10,
+      "source": "../../data/ml_regions.json"
+    },
+    "level2": {
+      "type": "Cercle",
+      "label_local": "Cercle",
+      "label_en": "District (Cercle)",
+      "count": null,
+      "source": "../../data/ml_cercles.json"
+    },
+    "level3": {
+      "type": "Commune",
+      "label_local": "Commune",
+      "label_en": "Commune",
+      "count": null,
+      "source": "../../data/ml_communes.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "commune",
+          "cercle",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "commune",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Résidence Bamako"
+    },
+    "floor": {
+      "required": false,
+      "example": "3e étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Appt 9"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "5-digit postal codes exist but are rarely used domestically",
+      "example": "91000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Commune and Region must be included",
+      "Postal code recommended for international shipments"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Résidence Bamako, Rue 24, Commune IV, Bamako, Région de Bamako, Mali",
+    "domestic_normalized": "Rue 24 Commune IV Bamako",
+    "international": "Résidence Bamako, Rue 24, Commune IV, Bamako 91000, Mali"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

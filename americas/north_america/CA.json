@@ -1,0 +1,134 @@
+{
+  "name": {
+    "en": "Canada",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Canada",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "fr",
+        "value": "Canada",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CA",
+    "alpha3": "CAN",
+    "numeric": "124"
+  },
+  "continent": "North America",
+  "subregion": "Northern America",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_administration": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province / Territory",
+      "label_en": "Province / Territory",
+      "label_fr": "Province / Territoire",
+      "count": 13,
+      "source": "../../data/ca_provinces.json"
+    },
+    "level2": {
+      "type": "Municipality / City / Town",
+      "label_en": "Municipality",
+      "label_fr": "Municipalité",
+      "count": null,
+      "source": "../../data/ca_municipalities.json"
+    },
+    "level3": {
+      "type": "Locality / Neighborhood / Rural Route",
+      "label_en": "Neighborhood / Locality",
+      "label_fr": "Quartier / Localité",
+      "count": null,
+      "source": "../../data/ca_localities.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic_bilingual",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "locality",
+          "municipality",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "municipality",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Place Ville Marie"
+    },
+    "floor": {
+      "required": false,
+      "example": "12th Floor / 12e étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 1201"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "stability": "high",
+      "regex": "^[A-Za-z]\\d[A-Za-z] ?\\d[A-Za-z]\\d$",
+      "example": "H3B 2Y5",
+      "description": "First 3 chars (FSA), last 3 chars (LDU). Space optional domestic."
+    }
+  },
+  "validation": {
+    "rules": [
+      "Province must use official 2-letter code (e.g., ON, QC, BC).",
+      "Postal code must correspond to province region allocation.",
+      "French accents preserved; English capitalization optional."
+    ]
+  },
+  "examples": {
+    "domestic": "Place Ville Marie, 1 Boulevard René-Lévesque O, Montréal, QC H3B 2Y5, Canada",
+    "international": "1 Rue Saint-Jean, Québec, QC G1R 1R3, Canada"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

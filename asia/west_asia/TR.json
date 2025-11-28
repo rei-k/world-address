@@ -1,0 +1,93 @@
+{
+  "name": {
+    "en": "Turkey",
+    "local": [
+      {
+        "lang": "tr",
+        "value": "Türkiye",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "TR",
+    "alpha3": "TUR",
+    "numeric": "792"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Turkish",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Türkiye"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Turkey"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "İl",
+      "label_en": "Province",
+      "count": 81,
+      "source": "../../data/tr_provinces.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "province",
+          "district",
+          "neighborhood",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "neighborhood",
+          "district",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric",
+      "example": "34340"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Kanyon AVM, Şişli, İstanbul 34340",
+    "domestic_normalized": "Kanyon AVM Şişli İstanbul 34340",
+    "international": "Room 502, 5F Kanyon AVM, Şişli, İstanbul 34340, Turkey"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

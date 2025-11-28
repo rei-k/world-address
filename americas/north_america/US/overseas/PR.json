@@ -1,0 +1,154 @@
+{
+  "name": {
+    "en": "Puerto Rico",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Puerto Rico",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Puerto Rico",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "PR",
+    "alpha3": "PRI",
+    "numeric": "630"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean (US Territory)",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "primary_residential"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official_administrative",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Municipio",
+      "label_es": "Municipio",
+      "label_en": "Municipality",
+      "count": 78,
+      "source": "../../data/pr_municipios.json"
+    },
+    "level2": {
+      "type": "Barrio",
+      "label_es": "Barrio",
+      "label_en": "District / Community",
+      "count": null,
+      "source": "../../data/pr_barrios.json"
+    },
+    "level3": {
+      "type": "Sector / Urbanización / Residencial / Condominio",
+      "label_es": "Sector / Urb. / Res. / Cond.",
+      "label_en": "Neighborhood / Housing Block",
+      "count": null,
+      "source": "../../data/pr_sectors.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic_street_es",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "sector",
+          "barrio",
+          "municipio",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "domestic_street_en",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "sector",
+          "barrio",
+          "municipio",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "pobox",
+        "order": [
+          "recipient",
+          "pobox",
+          "municipio",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Condominio Miramar Plaza"
+    },
+    "floor": {
+      "required": false,
+      "example": "Piso 8"
+    },
+    "room": {
+      "required": false,
+      "example": "Apt 12"
+    },
+    "pobox": {
+      "required": false,
+      "example": "PO Box 4567"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "stability": "high",
+      "regex": "^[0-9]{5}(-[0-9]{4})?$",
+      "example": "00907",
+      "example_plus4": "00907-1234"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Municipio always required.",
+      "Barrio or Sector strongly recommended for street delivery.",
+      "If PO Box is present: street_address must be omitted."
+    ]
+  },
+  "examples": {
+    "domestic_es": "Condominio Miramar Plaza, Calle Hoare 150, Sector Miramar, Barrio Santurce, San Juan, PR 00907",
+    "domestic_en": "150 Hoare Street, Miramar Sector, Santurce, San Juan, PR 00907",
+    "pobox": "PO Box 4567, Bayamón, PR 00960",
+    "international": "150 Hoare Street, San Juan, PR 00907, United States"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": "US Territory",
+    "postal_system": "USPS"
+  }
+}

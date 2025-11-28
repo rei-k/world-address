@@ -1,0 +1,85 @@
+{
+  "name": {
+    "en": "Yemen",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "اليمن",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "YE",
+    "alpha3": "YEM",
+    "numeric": "887"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "official",
+      "country_name": "اليمن"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Yemen"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Governorate",
+      "label_local": "محافظة",
+      "label_en": "Governorate",
+      "count": 22,
+      "source": "../../data/ye_governorates.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "governorate",
+          "district",
+          "street_address",
+          "building",
+          "room",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "district",
+          "governorate",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes not in common use"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Tahrir Square, Sana'a",
+    "domestic_normalized": "Tahrir Square Sana'a",
+    "international": "Building 22, Tahrir Square, Sana'a, Yemen"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": true
+  }
+}

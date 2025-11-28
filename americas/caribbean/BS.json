@@ -1,0 +1,120 @@
+{
+  "name": {
+    "en": "The Bahamas",
+    "local": [
+      {
+        "lang": "en",
+        "value": "The Bahamas",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "bah-kriol",
+        "value": "Bahamian Creole English",
+        "script": "Latin",
+        "direction": "ltr",
+        "usage_notes": "Spoken widely; not used in formal addressing."
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BS",
+    "alpha3": "BHS",
+    "numeric": "044"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Island / District",
+      "label_en": "Island / District",
+      "count": 32,
+      "source": "../../data/bs_districts.json"
+    },
+    "level2": {
+      "type": "Settlement / Town / Community",
+      "label_en": "Settlement",
+      "count": null,
+      "source": "../../data/bs_settlements.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic_street",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "settlement",
+          "district",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "settlement",
+          "district",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Cable Beach Plaza"
+    },
+    "floor": {
+      "required": false,
+      "example": "2nd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 204"
+    }
+  },
+  "postal_code": {
+    "required": false,
+    "required_for_international": true,
+    "stability": "medium",
+    "regex": "^[A-Z]{1}-[0-9]{4}$",
+    "example": "N-3731",
+    "description": "Letter prefix indicates island region:\n  N = New Providence\n  F = Freeport / Grand Bahama\n  E = Out Islands (varies)\nNumber identifies delivery zone; widely omitted domestically.\n"
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Street address often includes descriptive guidance; avoid removing local modifiers.",
+      "Settlement name must not be omitted; delivery fails without it.",
+      "Postal code recommended for international shipments to avoid customs delay."
+    ]
+  },
+  "examples": {
+    "domestic": "Cable Beach Plaza, West Bay Street, Cable Beach, New Providence, Bahamas",
+    "domestic_with_unit": "Suite 204, Cable Beach Plaza, West Bay St, Cable Beach, New Providence, Bahamas",
+    "international": "West Bay Street, Cable Beach, N-3731, New Providence, The Bahamas",
+    "hotel_shipping": "Attn: Guest Name, Sandals Royal Bahamian, Cable Beach, New Providence, The Bahamas"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "name": {
+    "en": "Macao",
+    "local": [
+      {
+        "lang": "zh",
+        "value": "澳門",
+        "script": "Han",
+        "direction": "ltr"
+      },
+      {
+        "lang": "pt",
+        "value": "Macau",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MO",
+    "alpha3": "MAC",
+    "numeric": "446"
+  },
+  "continent": "Asia",
+  "subregion": "East Asia",
+  "languages": [
+    {
+      "name": "Chinese",
+      "script": "Han",
+      "role": "official",
+      "country_name": "澳門"
+    },
+    {
+      "name": "Portuguese",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Macau"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Macao"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Parish",
+      "label_local": "堂區",
+      "label_en": "Parish",
+      "count": 7,
+      "source": "../../data/mo_parishes.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "parish",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "parish",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "葡京酒店"
+    },
+    "floor": {
+      "required": false,
+      "example": "15F"
+    },
+    "room": {
+      "required": false,
+      "example": "1502"
+    },
+    "postal_code": {
+      "required": false,
+      "description": "No postal code system in Macao",
+      "coverage": "none"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "International mail must include English or Portuguese",
+      "Postal code is not applicable"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "澳門花地瑪堂區新口岸友誼大馬路葡京酒店1502室",
+    "domestic_normalized": "葡京酒店 1502室 友誼大馬路 花地瑪堂區 澳門",
+    "international": "Room 1502, Hotel Lisboa, Avenida da Amizade, Nossa Senhora de Fátima, Macao"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

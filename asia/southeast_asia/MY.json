@@ -1,0 +1,106 @@
+{
+  "name": {
+    "en": "Malaysia",
+    "local": [
+      {
+        "lang": "ms",
+        "value": "Malaysia",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MY",
+    "alpha3": "MYS",
+    "numeric": "458"
+  },
+  "continent": "Asia",
+  "subregion": "Southeast Asia",
+  "languages": [
+    {
+      "name": "Malay",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Malaysia"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Malaysia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "State/Federal Territory",
+      "label_local": "Negeri / Wilayah Persekutuan",
+      "label_en": "State / Federal Territory",
+      "count": 16,
+      "source": "../../data/my_states.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "state",
+          "city",
+          "district",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "city",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Petronas Twin Towers"
+    },
+    "floor": {
+      "required": false,
+      "example": "41F"
+    },
+    "room": {
+      "required": false,
+      "example": "4101"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric",
+      "example": "50088"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Petronas Twin Towers, Kuala Lumpur 50088",
+    "domestic_normalized": "Petronas Twin Towers Kuala Lumpur 50088",
+    "international": "Room 4101, Petronas Twin Towers, Kuala Lumpur 50088, Malaysia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

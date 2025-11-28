@@ -1,0 +1,115 @@
+{
+  "name": {
+    "en": "Zambia",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Zambia",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "ZM",
+    "alpha3": "ZMB",
+    "numeric": "894"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "Zambia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Province",
+      "label_en": "Province",
+      "count": 10,
+      "source": "../../data/zm_provinces.json"
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "district",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Findeco House"
+    },
+    "floor": {
+      "required": false,
+      "example": "5th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 501"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "5-digit postal code",
+      "example": "10101"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Province name is required",
+      "Postal code format: 5 digits"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Cairo Road, Lusaka 10101",
+    "domestic_normalized": "Cairo Road, Lusaka 10101",
+    "international": "Cairo Road, Lusaka 10101, Zambia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

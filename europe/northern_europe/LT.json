@@ -1,0 +1,89 @@
+{
+  "name": {
+    "en": "Lithuania",
+    "local": [
+      {
+        "lang": "lt",
+        "value": "Lietuva",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "LT",
+    "alpha3": "LTU",
+    "numeric": "440"
+  },
+  "continent": "Europe",
+  "subregion": "Northern Europe",
+  "languages": [
+    {
+      "name": "Lithuanian",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "lt": "Lietuva",
+        "en": "Lithuania"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Lithuania"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "County",
+      "label_local": "Apskritis",
+      "label_en": "County",
+      "count": 10
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^LT-[0-9]{5}$",
+      "description": "LT- followed by 5 digits",
+      "example": "LT-01100"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Gedimino pr. 1, LT-01100 Vilnius",
+    "domestic_normalized": "Gedimino pr. 1 LT-01100 Vilnius",
+    "international": "Gedimino pr. 1, LT-01100 Vilnius, Lithuania"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}
