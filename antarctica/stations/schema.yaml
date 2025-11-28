@@ -1,0 +1,65 @@
+# Schema for Antarctic Research Station Address Files
+# Each station file should follow this structure
+
+station_schema:
+  name:
+    en: string              # Station name in English
+    local: string           # Station name in operating country's language (optional)
+  
+  operating_country:
+    name: string            # Full country name
+    alpha2: string          # ISO 3166-1 alpha-2 code
+    program: string         # National Antarctic program name
+  
+  location:
+    coordinates:
+      latitude: number      # Decimal degrees (negative for south)
+      longitude: number     # Decimal degrees
+    region: string          # Antarctic region name
+    claim_area: string      # Which country's claim area (if any)
+  
+  operational:
+    type: string            # year_round / summer_only
+    established: integer    # Year established
+    capacity_winter: integer
+    capacity_summer: integer
+  
+  address_format:
+    mail_routing:
+      via_country: string   # Country that routes mail
+      via_city: string      # City used for routing
+      postal_code: string   # Postal code if applicable
+    
+    example: string         # Full address example
+  
+  status:
+    active: boolean
+    note: string            # Any special notes
+
+# Example usage in station files:
+example_station:
+  name:
+    en: McMurdo Station
+  operating_country:
+    name: United States
+    alpha2: US
+    program: United States Antarctic Program (USAP)
+  location:
+    coordinates:
+      latitude: -77.846
+      longitude: 166.668
+    region: Ross Island
+    claim_area: New Zealand (Ross Dependency)
+  operational:
+    type: year_round
+    established: 1956
+    capacity_winter: 200
+    capacity_summer: 1000
+  address_format:
+    mail_routing:
+      via_country: New Zealand
+      via_city: Christchurch
+    example: "Name, McMurdo Station, PSC 469 Box 700, APO AP 96599-1035, USA"
+  status:
+    active: true
+    note: "Largest Antarctic research station"

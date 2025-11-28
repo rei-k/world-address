@@ -1,0 +1,76 @@
+name:
+  en: Tokelau
+  local:
+    - lang: en
+      value: Tokelau
+      script: Latin
+      direction: ltr
+    - lang: tkl
+      value: Tokelau
+      script: Latin
+      direction: ltr
+
+parent_country:
+  alpha2: NZ
+  name: New Zealand
+  relationship: "Dependent territory"
+
+iso_codes:
+  alpha2: TK
+  alpha3: TKL
+  numeric: "772"
+
+subregion: Polynesia
+
+languages:
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Tokelau
+    required_for_shipping: true
+  - name: Tokelauan
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Tokelau
+
+administrative_divisions:
+  level1:
+    type: Atoll
+    label_en: Atoll
+    count: 3
+    names:
+      - Atafu
+      - Nukunonu
+      - Fakaofo
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, village, atoll, country]
+    - context: international
+      order: [recipient, village, atoll, country]
+
+  postal_code:
+    required: false
+    description: "Postal codes are not used in Tokelau"
+    coverage: none
+    note: "Mail is delivered via Samoa or New Zealand"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Atoll name is essential for delivery"
+    - "Mail often routed through Samoa"
+
+examples:
+  domestic_raw: "c/o Tokelau Apia Liaison Office, Apia, Samoa (via Tokelau)"
+  domestic_normalized: "Fakaofo Atoll Tokelau"
+  international: "Fakaofo Atoll, Tokelau (via Samoa)"
+
+status:
+  un_member: false
+  recognized: true
+  disputed: false
+  note: "Dependent territory of New Zealand"

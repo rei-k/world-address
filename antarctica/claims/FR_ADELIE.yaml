@@ -1,0 +1,24 @@
+name:
+  en: Adélie Land
+  local: Terre Adélie
+
+claimant_country:
+  name: France
+  alpha2: FR
+
+claim_details:
+  sector: "136°E to 142°E, south of 60°S"
+  area_km2: 432000
+  established: 1924
+  overlaps_with: []
+
+address_notes:
+  - "Mail routed through France"
+  - "Part of French Southern and Antarctic Lands (TAAF)"
+
+major_stations:
+  - Dumont d'Urville Station
+
+status:
+  recognized: false
+  note: "Claim suspended under Antarctic Treaty; no overlapping claims"

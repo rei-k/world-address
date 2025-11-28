@@ -1,0 +1,71 @@
+name:
+  en: Niue
+  local:
+    - lang: en
+      value: Niue
+      script: Latin
+      direction: ltr
+    - lang: niu
+      value: Niuē
+      script: Latin
+      direction: ltr
+
+parent_country:
+  alpha2: NZ
+  name: New Zealand
+  relationship: "Free association"
+
+iso_codes:
+  alpha2: NU
+  alpha3: NIU
+  numeric: "570"
+
+subregion: Polynesia
+
+languages:
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Niue
+    required_for_shipping: true
+  - name: Niuean
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Niuē
+
+administrative_divisions:
+  level1:
+    type: Village
+    label_en: Village
+    count: 14
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, village, country]
+    - context: international
+      order: [recipient, village, country]
+
+  postal_code:
+    required: false
+    description: "Postal codes are not used in Niue"
+    coverage: none
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Village name is sufficient for delivery"
+    - "Single island nation"
+
+examples:
+  domestic_raw: "PO Box 123, Alofi"
+  domestic_normalized: "PO Box 123 Alofi"
+  international: "PO Box 123, Alofi, Niue"
+
+status:
+  un_member: false
+  recognized: true
+  disputed: false
+  note: "Self-governing state in free association with New Zealand"

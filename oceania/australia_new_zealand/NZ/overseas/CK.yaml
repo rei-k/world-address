@@ -1,0 +1,72 @@
+name:
+  en: Cook Islands
+  local:
+    - lang: en
+      value: Cook Islands
+      script: Latin
+      direction: ltr
+    - lang: rar
+      value: Kūki 'Āirani
+      script: Latin
+      direction: ltr
+
+parent_country:
+  alpha2: NZ
+  name: New Zealand
+  relationship: "Free association"
+
+iso_codes:
+  alpha2: CK
+  alpha3: COK
+  numeric: "184"
+
+subregion: Polynesia
+
+languages:
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Cook Islands
+    required_for_shipping: true
+  - name: Cook Islands Māori
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Kūki 'Āirani
+
+administrative_divisions:
+  level1:
+    type: Island
+    label_en: Island
+    count: 15
+    note: "15 islands divided into Northern and Southern groups"
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, village, island, country]
+    - context: international
+      order: [recipient, street_address, village, island, country]
+
+  postal_code:
+    required: false
+    description: "Postal codes are not used in Cook Islands"
+    coverage: none
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Island name is important for delivery"
+    - "Most addresses are on Rarotonga"
+
+examples:
+  domestic_raw: "PO Box 123, Avarua, Rarotonga"
+  domestic_normalized: "PO Box 123 Avarua Rarotonga"
+  international: "PO Box 123, Avarua, Rarotonga, Cook Islands"
+
+status:
+  un_member: false
+  recognized: true
+  disputed: false
+  note: "Self-governing state in free association with New Zealand"

@@ -1,0 +1,50 @@
+name:
+  en: Heard Island and McDonald Islands
+  local:
+    - lang: en
+      value: Heard Island and McDonald Islands
+      script: Latin
+      direction: ltr
+
+parent_country:
+  alpha2: AU
+  name: Australia
+
+iso_codes:
+  alpha2: HM
+  alpha3: HMD
+  numeric: "334"
+
+subregion: Sub-Antarctic
+
+languages:
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Heard Island and McDonald Islands
+    required_for_shipping: true
+
+administrative_divisions:
+  note: "No permanent population; administered from Australia"
+
+address_format:
+  note: "Uninhabited territory - no postal service"
+
+  postal_code:
+    required: false
+    description: "No postal service - uninhabited islands"
+    coverage: none
+
+validation:
+  rules:
+    - "Uninhabited territory - no permanent addresses"
+
+examples:
+  note: "No permanent residents; addresses not applicable"
+
+status:
+  un_member: false
+  recognized: true
+  disputed: false
+  note: "Uninhabited external territory of Australia; research expeditions only"

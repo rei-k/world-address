@@ -1,0 +1,30 @@
+name:
+  en: Casey Station
+
+operating_country:
+  name: Australia
+  alpha2: AU
+  program: Australian Antarctic Division (AAD)
+
+location:
+  coordinates:
+    latitude: -66.283
+    longitude: 110.529
+  region: Wilkes Land
+  claim_area: Australian Antarctic Territory
+
+operational:
+  type: year_round
+  established: 1969
+  capacity_winter: 19
+  capacity_summer: 60
+
+address_format:
+  mail_routing:
+    via_country: Australia
+    via_city: Hobart
+  example: "Name, Casey Station, c/o Australian Antarctic Division, 203 Channel Highway, Kingston TAS 7050, Australia"
+
+status:
+  active: true
+  note: "Australia's most accessible Antarctic station"

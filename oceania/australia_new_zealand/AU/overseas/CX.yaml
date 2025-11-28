@@ -1,0 +1,64 @@
+name:
+  en: Christmas Island
+  local:
+    - lang: en
+      value: Christmas Island
+      script: Latin
+      direction: ltr
+
+parent_country:
+  alpha2: AU
+  name: Australia
+
+iso_codes:
+  alpha2: CX
+  alpha3: CXR
+  numeric: "162"
+
+subregion: Indian Ocean
+
+languages:
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Christmas Island
+    required_for_shipping: true
+  - name: Chinese
+    script: Han
+    direction: ltr
+    role: community
+  - name: Malay
+    script: Latin
+    direction: ltr
+    role: community
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, locality, postal_code, country]
+    - context: international
+      order: [recipient, street_address, locality, postal_code, country]
+
+  postal_code:
+    required: true
+    regex: "^6798$"
+    description: "Single postcode for Christmas Island"
+    example: "6798"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Christmas Island uses Australian postal system"
+    - "Single postcode: 6798"
+
+examples:
+  domestic_raw: "123 Murray Road, Settlement, Christmas Island 6798"
+  domestic_normalized: "123 Murray Road Settlement 6798"
+  international: "123 Murray Road, Settlement, Christmas Island 6798, Australia"
+
+status:
+  un_member: false
+  recognized: true
+  disputed: false
+  note: "External territory of Australia in the Indian Ocean"

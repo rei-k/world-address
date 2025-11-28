@@ -1,0 +1,30 @@
+name:
+  en: Mawson Station
+
+operating_country:
+  name: Australia
+  alpha2: AU
+  program: Australian Antarctic Division (AAD)
+
+location:
+  coordinates:
+    latitude: -67.603
+    longitude: 62.876
+  region: Mac Robertson Land
+  claim_area: Australian Antarctic Territory
+
+operational:
+  type: year_round
+  established: 1954
+  capacity_winter: 20
+  capacity_summer: 60
+
+address_format:
+  mail_routing:
+    via_country: Australia
+    via_city: Hobart
+  example: "Name, Mawson Station, c/o Australian Antarctic Division, 203 Channel Highway, Kingston TAS 7050, Australia"
+
+status:
+  active: true
+  note: "Australia's oldest continuously occupied Antarctic station"

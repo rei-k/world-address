@@ -1,0 +1,44 @@
+# Antarctica Metadata
+# This file provides overview information for the Antarctica directory
+
+description: |
+  Antarctica is the Earth's southernmost continent, containing the geographic 
+  South Pole. It is governed by the Antarctic Treaty System, which designates 
+  Antarctica as a scientific preserve and prohibits military activity.
+
+governance:
+  treaty: Antarctic Treaty System
+  year_established: 1959
+  year_effective: 1961
+  parties: 54
+  consultative_parties: 29
+  note: "Territorial claims are frozen but not renounced"
+
+territorial_claims:
+  total: 7
+  claimant_nations:
+    - Argentina
+    - Australia
+    - Chile
+    - France
+    - New Zealand
+    - Norway
+    - United Kingdom
+  unclaimed_area: "Marie Byrd Land (between 90°W and 150°W)"
+  overlapping_claims: "Argentine, British, and Chilean claims overlap in Antarctic Peninsula region"
+
+research_presence:
+  year_round_stations: 40+
+  summer_only_stations: 30+
+  personnel_winter: ~1,000
+  personnel_summer: ~5,000
+
+address_notes:
+  - "No standard postal system exists"
+  - "Mail is routed through national Antarctic programs"
+  - "Delivery times are irregular and dependent on logistics flights/ships"
+  - "Most stations accessible only during Antarctic summer (November-February)"
+
+directory_structure:
+  claims: "Territorial claims by various nations"
+  stations: "Research station address information"
