@@ -1,0 +1,81 @@
+name:
+  en: Haiti
+  local:
+    - lang: fr
+      value: Haïti
+      script: Latin
+      direction: ltr
+    - lang: ht
+      value: Ayiti
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: HT
+  alpha3: HTI
+  numeric: "332"
+
+continent: North America
+subregion: Caribbean
+
+languages:
+  - name: French
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Haïti
+  - name: Haitian Creole
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Ayiti
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Haiti
+
+administrative_divisions:
+  level1:
+    type: Department
+    label_local: Département
+    label_en: Department
+    count: 10
+  level2:
+    type: Arrondissement
+    label_local: Arrondissement
+    label_en: Arrondissement
+  level3:
+    type: Commune
+    label_local: Commune
+    label_en: Commune
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, commune, department, postal_code, country]
+    - context: international
+      order: [recipient, street_address, commune, department, postal_code, country]
+
+  postal_code:
+    required: true
+    regex: "^HT[0-9]{4}$"
+    description: "Postal code format: HT followed by 4 digits"
+    example: "HT6110"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code begins with HT followed by 4 digits"
+    - "Department name is recommended"
+
+examples:
+  domestic_raw: "Rue du Commerce 45, Port-au-Prince, Ouest, HT6110"
+  domestic_normalized: "Rue du Commerce 45 Port-au-Prince Ouest HT6110"
+  international: "45 Rue du Commerce, Port-au-Prince, Ouest HT6110, Haiti"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

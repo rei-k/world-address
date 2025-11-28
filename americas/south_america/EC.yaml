@@ -1,0 +1,80 @@
+name:
+  en: Ecuador
+  local:
+    - lang: es
+      value: Ecuador
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: EC
+  alpha3: ECU
+  numeric: "218"
+
+continent: South America
+subregion: Western South America
+
+languages:
+  - name: Spanish
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Ecuador
+  - name: Quechua
+    script: Latin
+    direction: ltr
+    role: official
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Ecuador
+
+administrative_divisions:
+  level1:
+    type: Province
+    label_local: Provincia
+    label_en: Province
+    count: 24
+  level2:
+    type: Canton
+    label_local: Cantón
+    label_en: Canton
+  level3:
+    type: Parish
+    label_local: Parroquia
+    label_en: Parish
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, number, building, floor, office, city, province, postal_code, country]
+    - context: international
+      order: [recipient, office, floor, building, street_address, number, city, province, postal_code, country]
+
+  building: { required: false, example: "Edificio Torres" }
+  floor: { required: false, example: "Piso 8" }
+  office: { required: false, example: "Oficina 801" }
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{6}$"
+    description: "6-digit numeric postal code"
+    example: "170150"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code is 6 digits"
+    - "Province name should be included"
+
+examples:
+  domestic_raw: "Av. Amazonas N34-123, Edificio Torres, Piso 8, Oficina 801, Quito, Pichincha, 170150"
+  domestic_normalized: "Av. Amazonas N34-123 Edificio Torres Piso 8 Oficina 801 Quito Pichincha 170150"
+  international: "Office 801, Floor 8, Edificio Torres, Av. Amazonas N34-123, Quito 170150, Ecuador"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

@@ -1,0 +1,79 @@
+name:
+  en: Peru
+  local:
+    - lang: es
+      value: Perú
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: PE
+  alpha3: PER
+  numeric: "604"
+
+continent: South America
+subregion: Western South America
+
+languages:
+  - name: Spanish
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Perú
+  - name: Quechua
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Piruw
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Peru
+
+administrative_divisions:
+  level1:
+    type: Department
+    label_local: Departamento
+    label_en: Department
+    count: 25
+  level2:
+    type: Province
+    label_local: Provincia
+    label_en: Province
+  level3:
+    type: District
+    label_local: Distrito
+    label_en: District
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, number, interior, urbanization, district, province, department, postal_code, country]
+    - context: international
+      order: [recipient, interior, street_address, number, urbanization, district, province, department, postal_code, country]
+
+  interior: { required: false, example: "Int. 301" }
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{5}$"
+    description: "5-digit numeric postal code"
+    example: "15001"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code is 5 digits"
+    - "District name is commonly used in addresses"
+
+examples:
+  domestic_raw: "Av. Arequipa 1234, Int. 301, Urb. San Isidro, Miraflores, Lima, Lima, 15074"
+  domestic_normalized: "Av. Arequipa 1234 Int. 301 San Isidro Miraflores Lima 15074"
+  international: "Int. 301, Av. Arequipa 1234, Miraflores, Lima 15074, Peru"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

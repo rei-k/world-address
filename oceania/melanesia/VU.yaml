@@ -1,0 +1,69 @@
+name:
+  en: Vanuatu
+  local:
+    - lang: en
+      value: Vanuatu
+      script: Latin
+      direction: ltr
+    - lang: fr
+      value: Vanuatu
+      script: Latin
+      direction: ltr
+    - lang: bi
+      value: Vanuatu
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: VU
+  alpha3: VUT
+  numeric: "548"
+
+continent: Oceania
+subregion: Melanesia
+
+languages:
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Vanuatu
+    required_for_shipping: true
+  - name: French
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Vanuatu
+  - name: Bislama
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Vanuatu
+
+administrative_divisions:
+  level1:
+    type: Province
+    label_en: Province
+    count: 6
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, city, province, country]
+    - context: international
+      order: [recipient, street_address, city, province, country]
+
+  postal_code:
+    required: false
+    description: "Postal codes are not commonly used"
+    coverage: none
+
+examples:
+  domestic_raw: "PO Box 123, Rue Higginson, Port Vila, Shefa"
+  domestic_normalized: "PO Box 123 Rue Higginson Port Vila Shefa"
+  international: "PO Box 123, Rue Higginson, Port Vila, Vanuatu"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

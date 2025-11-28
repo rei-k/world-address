@@ -86,4 +86,11 @@ validation:
 
 examples:
   domestic_street: "Tutu Park Mall, 4605 Tutu Park, Estate Tutu, Subdistrict Tutu, St. Thomas, VI 00802, USA"
-  domes
+  domestic_pobox: "PO Box 12345, Charlotte Amalie, St. Thomas, VI 00802, USA"
+  international: "Suite 14, 2nd Floor, Tutu Park Mall, Estate Tutu, St. Thomas, VI 00802, United States Virgin Islands"
+
+status:
+  un_member: false
+  recognized: true
+  disputed: false
+  note: "Unincorporated territory of the United States"

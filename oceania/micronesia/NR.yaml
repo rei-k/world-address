@@ -1,0 +1,57 @@
+name:
+  en: Nauru
+  local:
+    - lang: na
+      value: Naoero
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: NR
+  alpha3: NRU
+  numeric: "520"
+
+continent: Oceania
+subregion: Micronesia
+
+languages:
+  - name: Nauruan
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Naoero
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Nauru
+    required_for_shipping: true
+
+administrative_divisions:
+  level1:
+    type: District
+    label_en: District
+    count: 14
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, location, district, country]
+    - context: international
+      order: [recipient, location, district, country]
+
+  postal_code:
+    required: false
+    description: "Postal codes are not used in Nauru"
+    coverage: none
+    note: "Nauru is a single small island with no postal code system"
+
+examples:
+  domestic_raw: "Location 123, Yaren District"
+  domestic_normalized: "Location 123 Yaren District"
+  international: "Location 123, Yaren District, Nauru"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

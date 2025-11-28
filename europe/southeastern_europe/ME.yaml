@@ -1,0 +1,73 @@
+name:
+  en: Montenegro
+  local:
+    - lang: cnr
+      value: Crna Gora
+      script: Latin
+      direction: ltr
+    - lang: sr
+      value: Црна Гора
+      script: Cyrillic
+      direction: ltr
+
+iso_codes:
+  alpha2: ME
+  alpha3: MNE
+  numeric: "499"
+
+continent: Europe
+subregion: Southeastern Europe
+
+languages:
+  - name: Montenegrin
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Crna Gora
+  - name: Serbian
+    script: Cyrillic
+    direction: ltr
+    role: official
+    country_name: Црна Гора
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Montenegro
+
+administrative_divisions:
+  level1:
+    type: Municipality
+    label_local: Opština
+    label_en: Municipality
+    count: 24
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, number, postal_code, city, country]
+    - context: international
+      order: [recipient, street_address, number, postal_code, city, country]
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{5}$"
+    description: "5-digit numeric postal code"
+    example: "81000"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code is 5 digits"
+    - "Both Latin and Cyrillic scripts accepted"
+
+examples:
+  domestic_raw: "Slobode 12, 81000 Podgorica"
+  domestic_normalized: "Slobode 12 81000 Podgorica"
+  international: "Slobode 12, 81000 Podgorica, Montenegro"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

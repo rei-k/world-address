@@ -1,0 +1,76 @@
+name:
+  en: Venezuela
+  local:
+    - lang: es
+      value: Venezuela
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: VE
+  alpha3: VEN
+  numeric: "862"
+
+continent: South America
+subregion: Northern South America
+
+languages:
+  - name: Spanish
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Venezuela
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Venezuela
+
+administrative_divisions:
+  level1:
+    type: State
+    label_local: Estado
+    label_en: State
+    count: 23
+  level2:
+    type: Municipality
+    label_local: Municipio
+    label_en: Municipality
+  level3:
+    type: Parish
+    label_local: Parroquia
+    label_en: Parish
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, building, floor, apartment, urbanization, city, state, postal_code, country]
+    - context: international
+      order: [recipient, apartment, floor, building, street_address, urbanization, city, state, postal_code, country]
+
+  building: { required: false, example: "Torre A" }
+  floor: { required: false, example: "Piso 15" }
+  apartment: { required: false, example: "Apto 15-B" }
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{4}$"
+    description: "4-digit numeric postal code"
+    example: "1010"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code is 4 digits"
+    - "Urbanization name is commonly used in addresses"
+
+examples:
+  domestic_raw: "Av. Libertador, Torre A, Piso 15, Apto 15-B, Urb. El Rosal, Caracas, Distrito Capital, 1060"
+  domestic_normalized: "Av. Libertador Torre A Piso 15 Apto 15-B Urb. El Rosal Caracas 1060"
+  international: "Apt 15-B, Floor 15, Torre A, Av. Libertador, Caracas 1060, Venezuela"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

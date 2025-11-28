@@ -1,0 +1,73 @@
+name:
+  en: Romania
+  local:
+    - lang: ro
+      value: România
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: RO
+  alpha3: ROU
+  numeric: "642"
+
+continent: Europe
+subregion: Eastern Europe
+
+languages:
+  - name: Romanian
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: România
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Romania
+
+administrative_divisions:
+  level1:
+    type: County
+    label_local: Județ
+    label_en: County
+    count: 41
+  level2:
+    type: Municipality
+    label_local: Municipiu
+    label_en: Municipality
+
+address_format:
+  order_variants:
+    - context: domestic
+      order: [recipient, street_address, number, building, floor, apartment, sector, city, county, postal_code, country]
+    - context: international
+      order: [recipient, apartment, floor, building, street_address, number, sector, city, county, postal_code, country]
+
+  building: { required: false, example: "Bl. A1" }
+  floor: { required: false, example: "Et. 5" }
+  apartment: { required: false, example: "Ap. 23" }
+  sector: { required: false, example: "Sector 1" }
+
+  postal_code:
+    required: true
+    regex: "^[0-9]{6}$"
+    description: "6-digit numeric postal code"
+    example: "010101"
+
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - "Postal code is 6 digits"
+    - "Bucharest uses Sector instead of county"
+
+examples:
+  domestic_raw: "Str. Victoriei 10, Bl. A1, Et. 5, Ap. 23, Sector 1, București, 010101"
+  domestic_normalized: "Str. Victoriei 10 Bl. A1 Et. 5 Ap. 23 Sector 1 București 010101"
+  international: "Ap. 23, Et. 5, Bl. A1, Str. Victoriei 10, Sector 1, Bucharest 010101, Romania"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false
