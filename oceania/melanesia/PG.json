@@ -1,0 +1,109 @@
+{
+  "name": {
+    "en": "Papua New Guinea",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Papua New Guinea",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "tpi",
+        "value": "Papua Niugini",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "PG",
+    "alpha3": "PNG",
+    "numeric": "598"
+  },
+  "continent": "Oceania",
+  "subregion": "Melanesia",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Papua New Guinea",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Tok Pisin",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Papua Niugini"
+    },
+    {
+      "name": "Hiri Motu",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_en": "Province",
+      "count": 22
+    },
+    "level2": {
+      "type": "District",
+      "label_en": "District"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{3}$",
+      "description": "3-digit numeric postal code",
+      "example": "111"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code is 3 digits",
+      "Province name is recommended"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "PO Box 1234, Waigani, National Capital District, 131",
+    "domestic_normalized": "PO Box 1234 Waigani NCD 131",
+    "international": "PO Box 1234, Waigani, Port Moresby 131, Papua New Guinea"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

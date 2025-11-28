@@ -1,0 +1,148 @@
+{
+  "name": {
+    "en": "United States",
+    "local": [
+      {
+        "lang": "en",
+        "value": "United States of America",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "US",
+    "alpha3": "USA",
+    "numeric": "840"
+  },
+  "continent": "North America",
+  "subregion": "Northern America",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "administrative_primary",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "major_regional_secondary",
+      "usage_notes": "widely used in CA, TX, FL, NY, PR, Southwest regions"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "State / Federal District / Territory",
+      "label_en": "State",
+      "count": "50 + 1 (DC) + territories",
+      "source": "../../data/us_states.json"
+    },
+    "level2": {
+      "type": "County / City / Borough / Parish",
+      "label_en": "County (generic)",
+      "count": null,
+      "source": "../../data/us_counties.json"
+    },
+    "level3": {
+      "type": "Municipality / City / Town",
+      "label_en": "City / Town",
+      "count": null,
+      "source": "../../data/us_municipalities.json"
+    },
+    "level4": {
+      "type": "Neighborhood / Subdivision",
+      "label_en": "Neighborhood",
+      "count": null,
+      "source": "../../data/us_neighborhoods.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic_street",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "city",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "pobox",
+        "order": [
+          "recipient",
+          "pobox",
+          "city",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "One World Trade Center"
+    },
+    "floor": {
+      "required": false,
+      "example": "58th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 5804"
+    },
+    "pobox": {
+      "required": false,
+      "example": "PO Box 12345"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "stability": "high",
+      "regex": "^[0-9]{5}(-[0-9]{4})?$",
+      "example": "10001",
+      "example_plus4": "10001-1234",
+      "description": "US ZIP codes define routing to USPS distribution regions. ZIP+4 improves delivery accuracy."
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "State must be valid USPS 2-letter code (e.g., CA, NY, TX, FL).",
+      "ZIP must match city+state region (cross-check recommended).",
+      "If PO Box is present → ignore street address."
+    ]
+  },
+  "examples": {
+    "domestic_street": "One World Trade Center, 285 Fulton St, New York, NY 10007, USA",
+    "domestic_pobox": "PO Box 12345, Los Angeles, CA 90001, USA",
+    "international": "285 Fulton Street, New York, NY 10007, United States"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

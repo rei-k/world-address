@@ -1,0 +1,135 @@
+{
+  "name": {
+    "en": "Mauritius",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Mauritius",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "fr",
+        "value": "Maurice",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MU",
+    "alpha3": "MUS",
+    "numeric": "480"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "Mauritius"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "country_name": "Maurice"
+    },
+    {
+      "name": "Creole",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "lingua_franca",
+      "country_name": "Moris"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": 9,
+      "source": "../../data/mu_districts.json"
+    },
+    "level2": {
+      "type": "Village Council Area",
+      "label_local": "Village Council Area",
+      "label_en": "Village Council Area",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "village",
+          "city",
+          "district",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "district",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Newton Tower"
+    },
+    "floor": {
+      "required": false,
+      "example": "8th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 805"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "5-digit postal code",
+      "example": "11328"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "District name is required",
+      "Postal code format: 5 digits"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Royal Road, Port Louis 11328",
+    "domestic_normalized": "Royal Road, Port Louis 11328",
+    "international": "Royal Road, Port Louis 11328, Mauritius"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

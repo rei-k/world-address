@@ -1,0 +1,111 @@
+{
+  "name": {
+    "en": "Hungary",
+    "local": [
+      {
+        "lang": "hu",
+        "value": "Magyarország",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "HU",
+    "alpha3": "HUN",
+    "numeric": "348"
+  },
+  "continent": "Europe",
+  "subregion": "Eastern Europe",
+  "languages": [
+    {
+      "name": "Hungarian",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Magyarország"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Hungary"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "County",
+      "label_local": "Megye",
+      "label_en": "County",
+      "count": 19
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "Járás",
+      "label_en": "District"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "postal_code",
+          "city",
+          "street_address",
+          "number",
+          "floor",
+          "door",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "floor",
+          "door",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "floor": {
+      "required": false,
+      "example": "3. em."
+    },
+    "door": {
+      "required": false,
+      "example": "12. ajtó"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric postal code",
+      "example": "1051"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code is 4 digits",
+      "Postal code appears before city name in domestic format"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "1051 Budapest, Nádor utca 12, 3. em. 12. ajtó",
+    "domestic_normalized": "1051 Budapest Nádor utca 12 3. em. 12. ajtó",
+    "international": "Nádor utca 12, Floor 3, Door 12, 1051 Budapest, Hungary"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

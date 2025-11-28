@@ -1,0 +1,135 @@
+{
+  "name": {
+    "en": "Mauritania",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "موريتانيا",
+        "script": "Arabic",
+        "direction": "rtl"
+      },
+      {
+        "lang": "fr",
+        "value": "Mauritanie",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MR",
+    "alpha3": "MRT",
+    "numeric": "478"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "موريتانيا"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Mauritanie"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Wilayah",
+      "label_en": "Region",
+      "count": 15,
+      "source": "../../data/mr_regions.json"
+    },
+    "level2": {
+      "type": "Department",
+      "label_local": "Moughataa",
+      "label_en": "Department",
+      "count": null,
+      "source": "../../data/mr_departments.json"
+    },
+    "level3": {
+      "type": "Commune",
+      "label_local": "Commune",
+      "label_en": "Commune",
+      "count": null,
+      "source": "../../data/mr_communes.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "commune",
+          "department",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "commune",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "عمارة نواكشوط"
+    },
+    "floor": {
+      "required": false,
+      "example": "الطابق 2"
+    },
+    "room": {
+      "required": false,
+      "example": "شقة 5"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "Exists but often unused domestically",
+      "example": "00001"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Commune must be included",
+      "Postal code recommended for shipments leaving the country"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "عمارة نواكشوط، شارع جمال عبد الناصر، نواكشوط، موريتانيا",
+    "domestic_normalized": "شارع جمال عبد الناصر نواكشوط",
+    "international": "Avenue Abdel Nasser, Nouakchott 00001, Mauritania"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

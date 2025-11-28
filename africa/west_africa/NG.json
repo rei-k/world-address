@@ -1,0 +1,122 @@
+{
+  "name": {
+    "en": "Nigeria",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Nigeria",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "NG",
+    "alpha3": "NGA",
+    "numeric": "566"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Nigeria"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "State",
+      "label_local": "State",
+      "label_en": "State",
+      "count": 36,
+      "source": "../../data/ng_states.json"
+    },
+    "level2": {
+      "type": "Local Government Area",
+      "label_local": "LGA",
+      "label_en": "LGA",
+      "count": 774,
+      "source": "../../data/ng_lga.json"
+    },
+    "level3": {
+      "type": "Ward",
+      "label_local": "Ward",
+      "label_en": "Ward",
+      "count": null,
+      "source": "../../data/ng_wards.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "ward",
+          "lga",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "ward",
+          "lga",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Unity House"
+    },
+    "floor": {
+      "required": false,
+      "example": "2nd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 12"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "length": 6,
+      "description": "6-digit postal code required nationwide",
+      "example": "900211"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "LGA and State must be clear",
+      "Postal code must be 6 digits, no exceptions"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Unity House, 12 Off Herbert Macaulay Way, Wuse II Ward, Abuja Municipal LGA, FCT Abuja, 900211, Nigeria",
+    "domestic_normalized": "Herbert Macaulay Way Wuse II Abuja 900211",
+    "international": "Unity House, Herbert Macaulay Way, Abuja 900211, Nigeria"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

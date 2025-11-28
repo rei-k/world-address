@@ -1,0 +1,114 @@
+{
+  "name": {
+    "en": "Chile",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Chile",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CL",
+    "alpha3": "CHL",
+    "numeric": "152"
+  },
+  "continent": "South America",
+  "subregion": "Southern America",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Chile"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Chile"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Región",
+      "label_en": "Region",
+      "count": 16
+    },
+    "level2": {
+      "type": "Province",
+      "label_local": "Provincia",
+      "label_en": "Province"
+    },
+    "level3": {
+      "type": "Commune",
+      "label_local": "Comuna",
+      "label_en": "Commune"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "department",
+          "commune",
+          "city",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "department",
+          "commune",
+          "city",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "department": {
+      "required": false,
+      "example": "Depto 502"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{7}$",
+      "description": "7-digit numeric postal code",
+      "example": "8320000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code is 7 digits",
+      "Region and commune names recommended for delivery accuracy"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Av. Providencia 1234, Depto 502, Providencia, Santiago, Región Metropolitana, 7500000",
+    "domestic_normalized": "Av. Providencia 1234 Depto 502 Providencia Santiago 7500000",
+    "international": "Av. Providencia 1234, Apt 502, Providencia, Santiago 7500000, Chile"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

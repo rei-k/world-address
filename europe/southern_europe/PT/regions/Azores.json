@@ -1,0 +1,56 @@
+{
+  "name": {
+    "en": "Azores",
+    "local": [
+      {
+        "lang": "pt",
+        "value": "Açores",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Azores",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "PT-20",
+    "alpha3": null,
+    "numeric": null
+  },
+  "region_of": "Portugal",
+  "languages": [
+    {
+      "name": "Portuguese",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "pt": "Açores",
+        "en": "Azores"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Azores"
+      }
+    }
+  ],
+  "address_format": {
+    "postal_code": {
+      "required": true,
+      "regex": "^9[0-9]{3}-[0-9]{3}$",
+      "description": "Postal codes in the range 95xx–98xx for Azores municipalities",
+      "example": "9500-321"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Rua Direita 12, 9500-321 Ponta Delgada",
+    "international": "Rua Direita 12, 9500-321 Ponta Delgada, Azores, Portugal"
+  }
+}

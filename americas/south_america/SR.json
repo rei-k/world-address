@@ -1,0 +1,96 @@
+{
+  "name": {
+    "en": "Suriname",
+    "local": [
+      {
+        "lang": "nl",
+        "value": "Suriname",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SR",
+    "alpha3": "SUR",
+    "numeric": "740"
+  },
+  "continent": "South America",
+  "subregion": "Northern South America",
+  "languages": [
+    {
+      "name": "Dutch",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Suriname"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Suriname"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": 10
+    },
+    "level2": {
+      "type": "Resort",
+      "label_local": "Resort",
+      "label_en": "Resort"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "city",
+          "district",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "city",
+          "district",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes are not commonly used in Suriname",
+      "coverage": "limited"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal codes are rarely used",
+      "District name is important for delivery"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Domineestraat 12, Paramaribo, Paramaribo",
+    "domestic_normalized": "Domineestraat 12 Paramaribo Paramaribo",
+    "international": "Domineestraat 12, Paramaribo, Suriname"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

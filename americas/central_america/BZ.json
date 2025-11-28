@@ -1,0 +1,87 @@
+{
+  "name": {
+    "en": "Belize",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Belize"
+      },
+      {
+        "lang": "es",
+        "value": "Belice"
+      },
+      {
+        "lang": "bz-Kriol",
+        "value": "Bileez"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BZ",
+    "alpha3": "BLZ",
+    "numeric": "084"
+  },
+  "continent": "North America",
+  "subregion": "Central America",
+  "languages": [
+    {
+      "name": "English",
+      "role": "official",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Spanish",
+      "role": "widespread_secondary"
+    },
+    {
+      "name": "Belizean Kriol",
+      "role": "common_spoken"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "values": [
+        "Corozal",
+        "Orange Walk",
+        "Belize",
+        "Cayo",
+        "Stann Creek",
+        "Toledo"
+      ]
+    },
+    "level2": {
+      "type": "Town / Village / Community"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "domestic": [
+          "recipient",
+          "building",
+          "street_address",
+          "locality",
+          "district",
+          "country"
+        ]
+      },
+      {
+        "international": [
+          "recipient",
+          "building",
+          "street_address",
+          "district",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "stability": "low",
+    "required_for_international": true,
+    "regex": "^[A-Z]{2}-[0-9]{4}$",
+    "example": "BZ-1102"
+  }
+}

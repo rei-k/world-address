@@ -1,0 +1,78 @@
+{
+  "name": {
+    "en": "Liechtenstein",
+    "local": [
+      {
+        "lang": "de",
+        "value": "Liechtenstein",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "LI",
+    "alpha3": "LIE",
+    "numeric": "438"
+  },
+  "continent": "Europe",
+  "subregion": "Western Europe",
+  "languages": [
+    {
+      "name": "German",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Liechtenstein"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Municipality",
+      "label_local": "Gemeinde",
+      "label_en": "Municipality",
+      "count": 11
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric postal code (shared range with Switzerland)",
+      "example": "9490"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Herrengasse 10, 9490 Vaduz",
+    "domestic_normalized": "Herrengasse 10 9490 Vaduz",
+    "international": "Herrengasse 10, 9490 Vaduz, Liechtenstein"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "name": {
+    "en": "Turkmenistan",
+    "local": [
+      {
+        "lang": "tk",
+        "value": "Türkmenistan",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ru",
+        "value": "Туркменистан",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "TM",
+    "alpha3": "TKM",
+    "numeric": "795"
+  },
+  "continent": "Asia",
+  "subregion": "Central Asia",
+  "languages": [
+    {
+      "name": "Turkmen",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Türkmenistan"
+    },
+    {
+      "name": "Russian",
+      "script": "Cyrillic",
+      "role": "auxiliary",
+      "country_name": "Туркменистан"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Turkmenistan"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "welaýat",
+      "label_en": "Region",
+      "count": 5,
+      "source": "../../data/tm_regions.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "region",
+          "city",
+          "district",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "district",
+          "city",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Berkarar Mall"
+    },
+    "room": {
+      "required": false,
+      "example": "304"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "description": "6-digit numeric",
+      "example": "744000"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Berkarar Mall, Ashgabat 744000",
+    "domestic_normalized": "Berkarar Mall Ashgabat 744000",
+    "international": "Room 304, Berkarar Mall, Ashgabat 744000, Turkmenistan"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

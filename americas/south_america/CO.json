@@ -1,0 +1,113 @@
+{
+  "name": {
+    "en": "Colombia",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Colombia",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CO",
+    "alpha3": "COL",
+    "numeric": "170"
+  },
+  "continent": "South America",
+  "subregion": "Northern South America",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Colombia"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Colombia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Department",
+      "label_local": "Departamento",
+      "label_en": "Department",
+      "count": 32
+    },
+    "level2": {
+      "type": "Municipality",
+      "label_local": "Municipio",
+      "label_en": "Municipality"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "building",
+          "apartment",
+          "neighborhood",
+          "city",
+          "department",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "apartment",
+          "building",
+          "street_address",
+          "neighborhood",
+          "city",
+          "department",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Torre Norte"
+    },
+    "apartment": {
+      "required": false,
+      "example": "Apto 1201"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "description": "6-digit numeric postal code",
+      "example": "110111"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code is 6 digits",
+      "Colombian addresses often use grid-based street naming (Calle, Carrera, etc.)"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Calle 72 # 10-25, Torre Norte, Apto 1201, Chapinero, Bogotá D.C., 110231",
+    "domestic_normalized": "Calle 72 # 10-25 Torre Norte Apto 1201 Chapinero Bogotá 110231",
+    "international": "Apt 1201, Torre Norte, Calle 72 # 10-25, Chapinero, Bogotá 110231, Colombia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

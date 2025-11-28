@@ -1,0 +1,129 @@
+{
+  "name": {
+    "en": "Togo",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "Togo",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "TG",
+    "alpha3": "TGO",
+    "numeric": "768"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Togo"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Région",
+      "label_en": "Region",
+      "count": 5,
+      "source": "../../data/tg_regions.json"
+    },
+    "level2": {
+      "type": "Prefecture",
+      "label_local": "Préfecture",
+      "label_en": "Prefecture",
+      "count": null,
+      "source": "../../data/tg_prefectures.json"
+    },
+    "level3": {
+      "type": "Commune",
+      "label_local": "Commune",
+      "label_en": "Commune",
+      "count": null,
+      "source": "../../data/tg_communes.json"
+    },
+    "level4": {
+      "type": "Arrondissement",
+      "label_local": "Arrondissement",
+      "label_en": "District",
+      "count": null,
+      "source": "../../data/tg_arrondissements.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "arrondissement",
+          "commune",
+          "prefecture",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "commune",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Résidence Lomé"
+    },
+    "floor": {
+      "required": false,
+      "example": "3e étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Appt 4"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "Often omitted domestically",
+      "example": "20000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Commune and Region must be included",
+      "Postal code recommended when shipping outside Togo"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Résidence Lomé, Rue 12, Arr. Tokoin, Lomé, Togo",
+    "domestic_normalized": "Rue 12 Tokoin Lomé",
+    "international": "Résidence Lomé, Rue 12, Lomé 20000, Togo"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "name": {
+    "en": "Trinidad and Tobago"
+  },
+  "iso_codes": {
+    "alpha2": "TT",
+    "alpha3": "TTO",
+    "numeric": "780"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "role": "official",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region / Borough / City",
+      "source": "../../data/tt_level1.json"
+    },
+    "level2": {
+      "type": "Community / Locality / Ward",
+      "source": "../../data/tt_level2.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "community",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "community",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required": true,
+    "required_for_international": true,
+    "stability": "high",
+    "regex": "^[0-9]{6}$",
+    "example": "500123"
+  },
+  "validation": {
+    "rules": [
+      "Region/Borough/City は必須",
+      "Community 推奨（6桁CPと組で誤配削減）"
+    ]
+  },
+  "examples": {
+    "international": "Wrightson Rd, Woodbrook, Port of Spain 500123, Trinidad and Tobago"
+  }
+}

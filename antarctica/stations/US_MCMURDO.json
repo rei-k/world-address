@@ -1,0 +1,35 @@
+{
+  "name": {
+    "en": "McMurdo Station"
+  },
+  "operating_country": {
+    "name": "United States",
+    "alpha2": "US",
+    "program": "United States Antarctic Program (USAP)"
+  },
+  "location": {
+    "coordinates": {
+      "latitude": -77.846,
+      "longitude": 166.668
+    },
+    "region": "Ross Island",
+    "claim_area": "New Zealand (Ross Dependency)"
+  },
+  "operational": {
+    "type": "year_round",
+    "established": 1956,
+    "capacity_winter": 200,
+    "capacity_summer": 1000
+  },
+  "address_format": {
+    "mail_routing": {
+      "via_country": "New Zealand",
+      "via_city": "Christchurch"
+    },
+    "example": "Name, McMurdo Station, PSC 469 Box 700, APO AP 96599-1035, USA"
+  },
+  "status": {
+    "active": true,
+    "note": "Largest Antarctic research station; serves as logistics hub for US Antarctic operations"
+  }
+}

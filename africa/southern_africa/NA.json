@@ -1,0 +1,78 @@
+{
+  "name": {
+    "en": "Namibia",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Namibia",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "NA",
+    "alpha3": "NAM",
+    "numeric": "516"
+  },
+  "continent": "Africa",
+  "subregion": "Southern Africa",
+  "languages": [
+    {
+      "name": "English",
+      "role": "official_administrative",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Oshiwambo / Nama / Herero / Afrikaans",
+      "role": "regional_place_names"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "count": 14,
+      "source": "../../data/na_regions.json"
+    },
+    "level2": {
+      "type": "Constituency",
+      "count": null
+    },
+    "level3": {
+      "type": "Settlement / Village",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "domestic": [
+          "recipient",
+          "building",
+          "street_address",
+          "settlement",
+          "constituency",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "international": [
+          "recipient",
+          "building",
+          "street_address",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required": false,
+    "required_for_international": true,
+    "stability": "low",
+    "regex": "^[0-9]{5}$",
+    "example": "9000"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "name": {
+    "en": "Equatorial Guinea",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Guinea Ecuatorial",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "fr",
+        "value": "Guinée équatoriale",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "pt",
+        "value": "Guiné Equatorial",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GQ",
+    "alpha3": "GNQ",
+    "numeric": "226"
+  },
+  "continent": "Africa",
+  "subregion": "Central Africa",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Guinea Ecuatorial"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Guinée équatoriale"
+    },
+    {
+      "name": "Portuguese",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Guiné Equatorial"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Equatorial Guinea"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Provincia",
+      "label_en": "Province",
+      "count": 8,
+      "names": [
+        "Annobón",
+        "Bioko Norte",
+        "Bioko Sur",
+        "Centro Sur",
+        "Djibloho",
+        "Kié-Ntem",
+        "Litoral",
+        "Wele-Nzas"
+      ]
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "Distrito",
+      "label_en": "District",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "district",
+          "city",
+          "province",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "province",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Edificio Sofitel"
+    },
+    "floor": {
+      "required": false,
+      "example": "5º Piso"
+    },
+    "room": {
+      "required": false,
+      "example": "Oficina 501"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Avenida de la Independencia, Malabo",
+    "domestic_normalized": "Avenida de la Independencia, Malabo",
+    "international": "Avenida de la Independencia, Malabo, Equatorial Guinea"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

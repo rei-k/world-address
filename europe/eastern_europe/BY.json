@@ -1,0 +1,126 @@
+{
+  "name": {
+    "en": "Belarus",
+    "local": [
+      {
+        "lang": "be",
+        "value": "Беларусь",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ru",
+        "value": "Беларусь",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BY",
+    "alpha3": "BLR",
+    "numeric": "112"
+  },
+  "continent": "Europe",
+  "subregion": "Eastern Europe",
+  "languages": [
+    {
+      "name": "Belarusian",
+      "script": "Cyrillic",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Беларусь"
+    },
+    {
+      "name": "Russian",
+      "script": "Cyrillic",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Беларусь"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Belarus"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Oblast",
+      "label_local": "Вобласць",
+      "label_en": "Region",
+      "count": 6
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "Раён",
+      "label_en": "District"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "building",
+          "apartment",
+          "city",
+          "oblast",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "apartment",
+          "building",
+          "street_address",
+          "number",
+          "city",
+          "oblast",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "корп. 2"
+    },
+    "apartment": {
+      "required": false,
+      "example": "кв. 45"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "description": "6-digit numeric postal code",
+      "example": "220030"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code is 6 digits",
+      "Both Belarusian and Russian are accepted"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "ул. Независимости 20, корп. 2, кв. 45, Минск, Минская область, 220030",
+    "domestic_normalized": "ул. Независимости 20 корп. 2 кв. 45 Минск 220030",
+    "international": "Apt 45, Bldg 2, vul. Nezalezhnastsi 20, Minsk 220030, Belarus"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

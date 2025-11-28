@@ -1,0 +1,123 @@
+{
+  "name": {
+    "en": "Angola",
+    "local": [
+      {
+        "lang": "pt",
+        "value": "Angola",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AO",
+    "alpha3": "AGO",
+    "numeric": "024"
+  },
+  "continent": "Africa",
+  "subregion": "Central Africa",
+  "languages": [
+    {
+      "name": "Portuguese",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Angola"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Angola"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Província",
+      "label_en": "Province",
+      "count": 18,
+      "source": "../../data/ao_provinces.json"
+    },
+    "level2": {
+      "type": "Municipality",
+      "label_local": "Município",
+      "label_en": "Municipality",
+      "count": null
+    },
+    "level3": {
+      "type": "Commune",
+      "label_local": "Comuna",
+      "label_en": "Commune",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "commune",
+          "municipality",
+          "province",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "province",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Edifício Atlântico"
+    },
+    "floor": {
+      "required": false,
+      "example": "7º Andar"
+    },
+    "room": {
+      "required": false,
+      "example": "Sala 702"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required",
+      "Province name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Avenida 4 de Fevereiro, Luanda",
+    "domestic_normalized": "Avenida 4 de Fevereiro, Luanda",
+    "international": "Avenida 4 de Fevereiro, Luanda, Angola"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

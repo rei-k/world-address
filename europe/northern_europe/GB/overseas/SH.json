@@ -1,0 +1,83 @@
+{
+  "name": {
+    "en": "Saint Helena, Ascension and Tristan da Cunha",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Saint Helena, Ascension and Tristan da Cunha",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SH",
+    "alpha3": "SHN",
+    "numeric": "654"
+  },
+  "continent": "Africa",
+  "subregion": "South Atlantic",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Saint Helena, Ascension and Tristan da Cunha"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Territory",
+      "label_local": "Territory",
+      "label_en": "Territory",
+      "count": 3,
+      "names": [
+        "Saint Helena",
+        "Ascension",
+        "Tristan da Cunha"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "locality",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "locality",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^(STHL 1ZZ|ASCN 1ZZ|TDCU 1ZZ)$",
+      "description": "Each island has fixed postal code",
+      "example": "STHL 1ZZ"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Jamestown STHL 1ZZ",
+    "domestic_normalized": "Jamestown STHL 1ZZ",
+    "international": "Jamestown, STHL 1ZZ, Saint Helena"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

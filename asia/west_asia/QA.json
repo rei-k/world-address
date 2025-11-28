@@ -1,0 +1,87 @@
+{
+  "name": {
+    "en": "Qatar",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "قطر",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "QA",
+    "alpha3": "QAT",
+    "numeric": "634"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "official",
+      "country_name": "قطر"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Qatar"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Municipality",
+      "label_local": "بلدية",
+      "label_en": "Municipality",
+      "count": 8,
+      "source": "../../data/qa_municipalities.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "municipality",
+          "zone",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "zone",
+          "municipality",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes not used; address based on zone and street numbers"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Zone 56, Street 340, Building 12, Doha",
+    "domestic_normalized": "Zone 56 Street 340 Building 12 Doha",
+    "international": "Building 12, Street 340, Zone 56, Doha, Qatar"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

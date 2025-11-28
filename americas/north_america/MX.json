@@ -1,0 +1,140 @@
+{
+  "name": {
+    "en": "Mexico",
+    "local": [
+      {
+        "lang": "es",
+        "value": "México",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Mexico",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MX",
+    "alpha3": "MEX",
+    "numeric": "484"
+  },
+  "continent": "North America",
+  "subregion": "Central America / Mexico",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "national_primary"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary_international",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Estado",
+      "label_es": "Estado",
+      "label_en": "State",
+      "count": 32,
+      "source": "../../data/mx_states.json"
+    },
+    "level2": {
+      "type": "Municipio / Alcaldía",
+      "label_es": "Municipio / Alcaldía (CDMX)",
+      "label_en": "Municipality",
+      "count": null,
+      "source": "../../data/mx_municipios.json"
+    },
+    "level3": {
+      "type": "Colonia / Fraccionamiento / Barrio / Unidad Habitacional",
+      "label_es": "Colonia",
+      "label_en": "Neighborhood",
+      "count": null,
+      "source": "../../data/mx_colonias.json"
+    },
+    "level4": {
+      "type": "Calle / Avenida / Andador",
+      "label_es": "Calle",
+      "label_en": "Street",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic_es",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "colonia",
+          "municipio",
+          "estado",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "colonia",
+          "municipio",
+          "estado",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Torre Reforma"
+    },
+    "floor": {
+      "required": false,
+      "example": "Piso 18"
+    },
+    "room": {
+      "required": false,
+      "example": "Oficina 1804"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "stability": "high",
+      "regex": "^[0-9]{5}$",
+      "example": "06700",
+      "description": "Código Postal (5-digit). Defines delivery zone; colonia selection must match CP."
+    }
+  },
+  "validation": {
+    "rules": [
+      "Colonia is required to ensure routing (CP alone is insufficient).",
+      "Municipio must be compatible with CP region.",
+      "CDMX uses Alcaldía instead of Municipio — detect automatically."
+    ]
+  },
+  "examples": {
+    "domestic_es": "Torre Reforma, Paseo de la Reforma 483, Colonia Juárez, Alcaldía Cuauhtémoc, Ciudad de México, CP 06600, México",
+    "international": "Paseo de la Reforma 483, Juárez, Cuauhtémoc, CDMX 06600, Mexico"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

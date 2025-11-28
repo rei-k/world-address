@@ -1,0 +1,71 @@
+{
+  "name": {
+    "en": "Malta",
+    "local": [
+      {
+        "lang": "mt",
+        "value": "Malta",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Malta",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MT",
+    "alpha3": "MLT",
+    "numeric": "470"
+  },
+  "continent": "Europe",
+  "subregion": "Southern Europe",
+  "languages": [
+    {
+      "name": "Maltese",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "mt": "Malta",
+        "en": "Malta"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Malta"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Local Council",
+      "label_local": "Kunsill Lokali",
+      "label_en": "Local Council",
+      "count": 68
+    }
+  },
+  "address_format": {
+    "postal_code": {
+      "required": true,
+      "regex": "^[A-Z]{3} ?[0-9]{4}$",
+      "description": "Format: XXX NNNN (3 letters + 4 digits)",
+      "example": "VLT 1117"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Republic Street 12, VLT 1117 Valletta",
+    "domestic_normalized": "Republic Street 12 VLT1117 Valletta",
+    "international": "Republic Street 12, VLT 1117 Valletta, Malta"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

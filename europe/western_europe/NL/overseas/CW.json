@@ -1,0 +1,103 @@
+{
+  "name": {
+    "en": "Curaçao",
+    "local": [
+      {
+        "lang": "nl",
+        "value": "Curaçao",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "pap",
+        "value": "Kòrsou",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CW",
+    "alpha3": "CUW",
+    "numeric": "531"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "Dutch",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "nl": "Curaçao",
+        "en": "Curaçao"
+      }
+    },
+    {
+      "name": "Papiamentu",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "pap": "Kòrsou",
+        "en": "Curaçao"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Curaçao"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "Wijk",
+      "label_en": "District",
+      "count": 3
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes exist but are rarely used",
+      "example": ""
+    }
+  },
+  "examples": {
+    "domestic_raw": "Breedestraat 12, Willemstad",
+    "domestic_normalized": "Breedestraat 12 Willemstad",
+    "international": "Breedestraat 12, Willemstad, Curaçao"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

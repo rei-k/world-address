@@ -1,0 +1,115 @@
+{
+  "name": {
+    "en": "United Kingdom",
+    "local": [
+      {
+        "lang": "en",
+        "value": "United Kingdom of Great Britain and Northern Ireland",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GB",
+    "alpha3": "GBR",
+    "numeric": "826"
+  },
+  "continent": "Europe",
+  "subregion": "Northern Europe",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "United Kingdom"
+      }
+    },
+    {
+      "name": "Welsh",
+      "script": "Latin",
+      "role": "regional",
+      "country_name": {
+        "cy": "Y Deyrnas Unedig",
+        "en": "United Kingdom"
+      }
+    },
+    {
+      "name": "Scottish Gaelic",
+      "script": "Latin",
+      "role": "regional",
+      "country_name": {
+        "gd": "An Rìoghachd Aonaichte",
+        "en": "United Kingdom"
+      }
+    },
+    {
+      "name": "Irish Gaelic",
+      "script": "Latin",
+      "role": "regional",
+      "country_name": {
+        "ga": "An Ríocht Aontaithe",
+        "en": "United Kingdom"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Country",
+      "label_local": "Country",
+      "label_en": "Country",
+      "count": 4,
+      "names": [
+        "England",
+        "Scotland",
+        "Wales",
+        "Northern Ireland"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "house_number",
+          "street",
+          "locality",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "house_number",
+          "street",
+          "locality",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[A-Z]{1,2}[0-9R][0-9A-Z]? ?[0-9][A-Z]{2}$",
+      "description": "Alphanumeric postcode system",
+      "example": "SW1A 2AA"
+    }
+  },
+  "examples": {
+    "domestic_raw": "10 Downing Street, London SW1A 2AA",
+    "domestic_normalized": "10 Downing Street London SW1A 2AA",
+    "international": "10 Downing Street, SW1A 2AA London, United Kingdom"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "name": {
+    "en": "Brazil",
+    "local": [
+      {
+        "lang": "pt",
+        "value": "Brasil",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BR",
+    "alpha3": "BRA",
+    "numeric": "076"
+  },
+  "continent": "South America",
+  "subregion": "South America",
+  "languages": [
+    {
+      "name": "Portuguese",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Brasil"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Brazil"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "State / Federal District",
+      "label_local": "Estado / Distrito Federal",
+      "label_en": "State",
+      "count": 26
+    },
+    "level2": {
+      "type": "Municipality",
+      "label_local": "Município",
+      "label_en": "Municipality"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "complement",
+          "neighborhood",
+          "city",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "number",
+          "complement",
+          "neighborhood",
+          "city",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "complement": {
+      "required": false,
+      "example": "Apto 101"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}-[0-9]{3}$",
+      "description": "8-digit CEP with hyphen (XXXXX-XXX)",
+      "example": "01310-100"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "CEP (postal code) is 8 digits with hyphen after 5th digit",
+      "State must use 2-letter abbreviation (SP, RJ, MG, etc.)"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Av. Paulista, 1578 - Apto 101, Bela Vista, São Paulo - SP, 01310-200",
+    "domestic_normalized": "Av. Paulista 1578 Apto 101 Bela Vista São Paulo SP 01310-200",
+    "international": "Av. Paulista 1578, Apt 101, Bela Vista, São Paulo, SP 01310-200, Brazil"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

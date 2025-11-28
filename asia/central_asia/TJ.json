@@ -1,0 +1,109 @@
+{
+  "name": {
+    "en": "Tajikistan",
+    "local": [
+      {
+        "lang": "tg",
+        "value": "Тоҷикистон",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ru",
+        "value": "Таджикистан",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "TJ",
+    "alpha3": "TJK",
+    "numeric": "762"
+  },
+  "continent": "Asia",
+  "subregion": "Central Asia",
+  "languages": [
+    {
+      "name": "Tajik",
+      "script": "Cyrillic",
+      "role": "official",
+      "country_name": "Тоҷикистон"
+    },
+    {
+      "name": "Russian",
+      "script": "Cyrillic",
+      "role": "auxiliary",
+      "country_name": "Таджикистан"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Tajikistan"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region/Autonomous Region/Capital District",
+      "label_local": "Вилоят / Махсус район",
+      "label_en": "Region / Autonomous Region / Capital District",
+      "count": 5,
+      "source": "../../data/tj_regions.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "region",
+          "district",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "district",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Dushanbe Hyatt"
+    },
+    "room": {
+      "required": false,
+      "example": "210"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "description": "6-digit numeric",
+      "example": "734025"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Dushanbe Hyatt, Dushanbe 734025",
+    "domestic_normalized": "Dushanbe Hyatt Dushanbe 734025",
+    "international": "Room 210, Hyatt, Dushanbe 734025, Tajikistan"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

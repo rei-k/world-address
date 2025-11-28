@@ -1,0 +1,56 @@
+{
+  "name": {
+    "en": "Madeira",
+    "local": [
+      {
+        "lang": "pt",
+        "value": "Madeira",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Madeira",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "PT-30",
+    "alpha3": null,
+    "numeric": null
+  },
+  "region_of": "Portugal",
+  "languages": [
+    {
+      "name": "Portuguese",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "pt": "Madeira",
+        "en": "Madeira"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Madeira"
+      }
+    }
+  ],
+  "address_format": {
+    "postal_code": {
+      "required": true,
+      "regex": "^9[0-9]{3}-[0-9]{3}$",
+      "description": "Postal codes in the range 90xx–92xx for Madeira",
+      "example": "9000-082"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Avenida Arriaga 10, 9000-082 Funchal",
+    "international": "Avenida Arriaga 10, 9000-082 Funchal, Madeira, Portugal"
+  }
+}

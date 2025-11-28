@@ -1,0 +1,128 @@
+{
+  "name": {
+    "en": "The Gambia",
+    "local": [
+      {
+        "lang": "en",
+        "value": "The Gambia",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GM",
+    "alpha3": "GMB",
+    "numeric": "270"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "The Gambia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Region",
+      "label_en": "Region",
+      "count": 5,
+      "source": "../../data/gm_regions.json"
+    },
+    "level2": {
+      "type": "Local Government Area",
+      "label_local": "LGA",
+      "label_en": "Local Government Area",
+      "count": 8,
+      "source": "../../data/gm_lga.json"
+    },
+    "level3": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": null,
+      "source": "../../data/gm_districts.json"
+    },
+    "level4": {
+      "type": "Ward",
+      "label_local": "Ward",
+      "label_en": "Ward",
+      "count": null,
+      "source": "../../data/gm_wards.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "ward",
+          "lga",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "lga",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Kairaba Complex"
+    },
+    "floor": {
+      "required": false,
+      "example": "2nd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Room 5"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^[A-Z0-9\\-]{2,8}$",
+      "length": null,
+      "description": "The Gambia does not widely use postal codes; include city/LGA clearly for international delivery",
+      "example": "Serrekunda"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "LGA must be included",
+      "Postal code or locality clarity required for international shipping"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Kairaba Complex, 2nd Floor, Room 5, Kairaba Avenue, Serrekunda",
+    "domestic_normalized": "Kairaba Complex 2nd Floor Room 5 Kairaba Avenue Serrekunda",
+    "international": "Room 5, 2nd Floor, Kairaba Complex, Kairaba Avenue, Serrekunda, The Gambia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "name": {
+    "en": "Panama",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Panamá"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "PA",
+    "alpha3": "PAN",
+    "numeric": "591"
+  },
+  "languages": [
+    {
+      "name": "Spanish",
+      "role": "national_primary"
+    },
+    {
+      "name": "English",
+      "role": "auxiliary_international",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Provincia / Comarca"
+    },
+    "level2": {
+      "type": "Distrito"
+    },
+    "level3": {
+      "type": "Corregimiento"
+    },
+    "level4": {
+      "type": "Barrio / Urbanización"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "domestic_es": [
+          "recipient",
+          "building",
+          "street_address",
+          "barrio",
+          "corregimiento",
+          "distrito",
+          "provincia",
+          "country"
+        ]
+      },
+      {
+        "international": [
+          "recipient",
+          "building",
+          "street_address",
+          "distrito",
+          "provincia",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required_for_international": true,
+    "stability": "medium",
+    "regex": "^[0-9]{4}$",
+    "example": "0801"
+  }
+}

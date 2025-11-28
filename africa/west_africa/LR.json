@@ -1,0 +1,113 @@
+{
+  "name": {
+    "en": "Liberia",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Liberia",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "LR",
+    "alpha3": "LBR",
+    "numeric": "430"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Liberia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "County",
+      "label_local": "County",
+      "label_en": "County",
+      "count": 15,
+      "source": "../../data/lr_counties.json"
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": null,
+      "source": "../../data/lr_districts.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "district",
+          "county",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "county",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Monrovia Center"
+    },
+    "floor": {
+      "required": false,
+      "example": "3rd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 8"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^10[0-9]{2}$",
+      "length": 4,
+      "description": "Postal codes used mainly for Monrovia (1000–1099)",
+      "example": "1000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "County must be included",
+      "Postal code recommended when shipping internationally, especially from Monrovia"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Monrovia Center, Broad Street, Central Monrovia, Montserrado County, Liberia",
+    "domestic_normalized": "Broad Street Central Monrovia Montserrado",
+    "international": "Monrovia Center, Broad Street, Central Monrovia 1000, Montserrado, Liberia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "name": {
+    "en": "Burkina Faso",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "Burkina Faso",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BF",
+    "alpha3": "BFA",
+    "numeric": "854"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Burkina Faso"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Région",
+      "label_en": "Region",
+      "count": 13,
+      "source": "../../data/bf_regions.json"
+    },
+    "level2": {
+      "type": "Province",
+      "label_local": "Province",
+      "label_en": "Province",
+      "count": 45,
+      "source": "../../data/bf_provinces.json"
+    },
+    "level3": {
+      "type": "Commune",
+      "label_local": "Commune",
+      "label_en": "Commune",
+      "count": null,
+      "source": "../../data/bf_communes.json"
+    },
+    "level4": {
+      "type": "Arrondissement",
+      "label_local": "Arrondissement",
+      "label_en": "District",
+      "count": null,
+      "source": "../../data/bf_arrondissements.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "arrondissement",
+          "commune",
+          "province",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "commune",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Résidence Ouaga"
+    },
+    "floor": {
+      "required": false,
+      "example": "2e étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Appt 5"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^[0-9]{4}$",
+      "length": 4,
+      "description": "4-digit postal zones; often omitted domestically",
+      "example": "01BP123"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Region and Commune must be included",
+      "Postal code recommended for international shipments"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Résidence Ouaga, Secteur 15, Arr. 4, Ouagadougou, Kadiogo, Centre, Burkina Faso",
+    "domestic_normalized": "Secteur 15 Arrondissement 4 Ouagadougou Kadiogo Centre",
+    "international": "Résidence Ouaga, Secteur 15, Ouagadougou 01BP123, Centre, Burkina Faso"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

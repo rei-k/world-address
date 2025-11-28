@@ -1,0 +1,109 @@
+{
+  "name": {
+    "en": "North Korea",
+    "local": [
+      {
+        "lang": "ko",
+        "value": "조선민주주의인민공화국",
+        "script": "Hangul",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "KP",
+    "alpha3": "PRK",
+    "numeric": "408"
+  },
+  "continent": "Asia",
+  "subregion": "East Asia",
+  "languages": [
+    {
+      "name": "Korean",
+      "script": "Hangul",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "조선민주주의인민공화국"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "country_name": "North Korea"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province/Direct-administered City",
+      "label_local": "도 / 직할시",
+      "label_en": "Province / Direct-administered City",
+      "count": 9,
+      "source": "../../data/kp_provinces.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "province",
+          "city",
+          "district",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "district",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "금수산의사당"
+    },
+    "floor": {
+      "required": false
+    },
+    "room": {
+      "required": false
+    },
+    "postal_code": {
+      "required": false,
+      "description": "Postal code system not consistently used",
+      "coverage": "partial"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": false,
+    "rules": [
+      "Postal codes are rare and often omitted",
+      "Addresses usually require city and province"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "평양시 중구역 금수산의사당",
+    "domestic_normalized": "금수산의사당 중구역 평양시",
+    "international": "Kumsusan Assembly Hall, Jung District, Pyongyang, DPR Korea"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": "partial",
+    "disputed": true
+  }
+}

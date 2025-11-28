@@ -1,0 +1,89 @@
+{
+  "name": {
+    "en": "Jamaica"
+  },
+  "iso_codes": {
+    "alpha2": "JM",
+    "alpha3": "JAM",
+    "numeric": "388"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "role": "official",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Jamaican Patois",
+      "role": "spoken_local"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Parish",
+      "count": 14,
+      "source": "../../data/jm_parishes.json"
+    },
+    "level2": {
+      "type": "Town / Community / District",
+      "source": "../../data/jm_towns.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "town",
+          "parish",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "town",
+          "parish",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required": false,
+    "required_for_international": true,
+    "stability": "low",
+    "regex": "^JM[A-Z]{1}[0-9]{2}$",
+    "example": "JMAAW10",
+    "description": "Jamaica Post の 'JMAxxx' 形式が一部導入。存在しない地域も多い。"
+  },
+  "validation": {
+    "rules": [
+      "Parish は必須",
+      "Town/Community の欠落時はランドマーク必須",
+      "郵便番号がない地域は空欄で可（ダミー禁止）"
+    ]
+  },
+  "examples": {
+    "domestic": "Shop 5, Sovereign Centre, Hope Rd, Liguanea, Saint Andrew, Jamaica",
+    "international": "Hope Road, Liguanea, Saint Andrew JMAAW10, Jamaica"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

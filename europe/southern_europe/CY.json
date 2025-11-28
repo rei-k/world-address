@@ -1,0 +1,80 @@
+{
+  "name": {
+    "en": "Cyprus",
+    "local": [
+      {
+        "lang": "el",
+        "value": "Κύπρος",
+        "script": "Greek",
+        "direction": "ltr"
+      },
+      {
+        "lang": "tr",
+        "value": "Kıbrıs",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CY",
+    "alpha3": "CYP",
+    "numeric": "196"
+  },
+  "continent": "Europe",
+  "subregion": "Southern Europe",
+  "languages": [
+    {
+      "name": "Greek",
+      "script": "Greek",
+      "role": "official",
+      "country_name": {
+        "el": "Κύπρος",
+        "en": "Cyprus"
+      }
+    },
+    {
+      "name": "Turkish",
+      "script": "Latin",
+      "role": "official (north)",
+      "country_name": {
+        "tr": "Kıbrıs",
+        "en": "Cyprus"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Cyprus"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "Επαρχία / İlçe",
+      "label_en": "District",
+      "count": 6
+    }
+  },
+  "address_format": {
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric postal code",
+      "example": "1010"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Archbishop Makarios Ave 10, 1010 Nicosia",
+    "domestic_normalized": "Archbishop Makarios Ave 10 1010 Nicosia",
+    "international": "Archbishop Makarios Ave 10, 1010 Nicosia, Cyprus"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": true
+  }
+}

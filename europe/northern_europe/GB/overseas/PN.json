@@ -1,0 +1,82 @@
+{
+  "name": {
+    "en": "Pitcairn Islands",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Pitcairn Islands",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "PN",
+    "alpha3": "PCN",
+    "numeric": "612"
+  },
+  "continent": "Oceania",
+  "subregion": "Polynesia",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Pitcairn Islands"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Island",
+      "label_local": "Island",
+      "label_en": "Island",
+      "count": 4,
+      "names": [
+        "Pitcairn",
+        "Henderson",
+        "Ducie",
+        "Oeno"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "locality",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "locality",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^PCRN 1ZZ$",
+      "description": "Single code PCRN 1ZZ",
+      "example": "PCRN 1ZZ"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Adamstown PCRN 1ZZ",
+    "domestic_normalized": "Adamstown PCRN 1ZZ",
+    "international": "Adamstown, PCRN 1ZZ, Pitcairn Islands"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

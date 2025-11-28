@@ -1,0 +1,107 @@
+{
+  "name": {
+    "en": "Australia",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Australia",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AU",
+    "alpha3": "AUS",
+    "numeric": "036"
+  },
+  "continent": "Oceania",
+  "subregion": "Australia and New Zealand",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Australia",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "State / Territory",
+      "label_en": "State",
+      "count": 8,
+      "names": [
+        "New South Wales",
+        "Victoria",
+        "Queensland",
+        "Western Australia",
+        "South Australia",
+        "Tasmania",
+        "Australian Capital Territory",
+        "Northern Territory"
+      ]
+    },
+    "level2": {
+      "type": "Local Government Area",
+      "label_en": "LGA"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "unit",
+          "street_address",
+          "suburb",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "unit",
+          "street_address",
+          "suburb",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "unit": {
+      "required": false,
+      "example": "Unit 5"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric postcode",
+      "example": "2000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postcode is 4 digits",
+      "State must use abbreviation (NSW, VIC, QLD, WA, SA, TAS, ACT, NT)",
+      "Suburb name must be in uppercase"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Unit 5, 123 George Street, SYDNEY NSW 2000",
+    "domestic_normalized": "Unit 5 123 George Street SYDNEY NSW 2000",
+    "international": "Unit 5, 123 George Street, Sydney NSW 2000, Australia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

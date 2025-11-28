@@ -1,0 +1,59 @@
+{
+  "name": {
+    "en": "Italy",
+    "local": [
+      {
+        "lang": "it",
+        "value": "Italia",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "IT",
+    "alpha3": "ITA",
+    "numeric": "380"
+  },
+  "continent": "Europe",
+  "subregion": "Southern Europe",
+  "languages": [
+    {
+      "name": "Italian",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "it": "Italia",
+        "en": "Italy"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Italy"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Regione",
+      "label_en": "Region",
+      "count": 20
+    }
+  },
+  "address_format": {
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit CAP",
+      "example": "00184"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Via Nazionale 1, 00184 Roma",
+    "international": "Via Nazionale 1, 00184 Roma, Italy"
+  }
+}

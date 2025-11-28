@@ -1,0 +1,70 @@
+{
+  "name": {
+    "en": "El Salvador",
+    "local": [
+      {
+        "lang": "es",
+        "value": "El Salvador"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SV",
+    "alpha3": "SLV",
+    "numeric": "222"
+  },
+  "languages": [
+    {
+      "name": "Spanish",
+      "role": "national_primary"
+    },
+    {
+      "name": "English",
+      "role": "optional_international"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Departamento",
+      "count": 14
+    },
+    "level2": {
+      "type": "Municipio"
+    },
+    "level3": {
+      "type": "Colonia / Barrio / Residencial"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "domestic_es": [
+          "recipient",
+          "building",
+          "street_address",
+          "colonia",
+          "municipio",
+          "departamento",
+          "country"
+        ]
+      },
+      {
+        "international": [
+          "recipient",
+          "building",
+          "street_address",
+          "municipio",
+          "departamento",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "stability": "medium",
+    "required_for_international": true,
+    "regex": "^[0-9]{4}$",
+    "example": "01101"
+  }
+}

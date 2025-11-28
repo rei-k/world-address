@@ -1,0 +1,93 @@
+{
+  "name": {
+    "en": "Austria",
+    "local": [
+      {
+        "lang": "de",
+        "value": "Österreich",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AT",
+    "alpha3": "AUT",
+    "numeric": "040"
+  },
+  "continent": "Europe",
+  "subregion": "Western Europe",
+  "languages": [
+    {
+      "name": "German",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Österreich"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "State",
+      "label_local": "Bundesland",
+      "label_en": "Federal State",
+      "count": 9,
+      "names": [
+        "Burgenland",
+        "Kärnten",
+        "Niederösterreich",
+        "Oberösterreich",
+        "Salzburg",
+        "Steiermark",
+        "Tirol",
+        "Vorarlberg",
+        "Wien"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "floor",
+          "room",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "floor",
+          "room",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric postal code",
+      "example": "1010"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Kärntner Straße 15, 1010 Wien",
+    "domestic_normalized": "Kärntner Straße 15 1010 Wien",
+    "international": "Kärntner Straße 15, 1010 Wien, Austria"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

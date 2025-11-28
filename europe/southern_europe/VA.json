@@ -1,0 +1,80 @@
+{
+  "name": {
+    "en": "Vatican City",
+    "local": [
+      {
+        "lang": "it",
+        "value": "Città del Vaticano",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "la",
+        "value": "Civitas Vaticana",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "VA",
+    "alpha3": "VAT",
+    "numeric": "336"
+  },
+  "continent": "Europe",
+  "subregion": "Southern Europe",
+  "languages": [
+    {
+      "name": "Italian",
+      "script": "Latin",
+      "role": "working",
+      "country_name": {
+        "it": "Città del Vaticano",
+        "en": "Vatican City"
+      }
+    },
+    {
+      "name": "Latin",
+      "script": "Latin",
+      "role": "heritage",
+      "country_name": {
+        "la": "Civitas Vaticana",
+        "en": "Vatican City"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Vatican City"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "None",
+      "label_local": "State",
+      "label_en": "State",
+      "count": 1
+    }
+  },
+  "address_format": {
+    "postal_code": {
+      "required": true,
+      "regex": "^00120$",
+      "description": "Single postal code 00120",
+      "example": "00120"
+    }
+  },
+  "examples": {
+    "domestic_raw": "00120 Città del Vaticano",
+    "domestic_normalized": "00120 Città del Vaticano",
+    "international": "00120 Vatican City"
+  },
+  "status": {
+    "un_member": "observer",
+    "recognized": true,
+    "disputed": false
+  }
+}

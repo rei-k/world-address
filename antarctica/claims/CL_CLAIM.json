@@ -1,0 +1,33 @@
+{
+  "name": {
+    "en": "Chilean Antarctic Territory",
+    "local": "Territorio Chileno Antártico"
+  },
+  "claimant_country": {
+    "name": "Chile",
+    "alpha2": "CL"
+  },
+  "claim_details": {
+    "sector": "53°W to 90°W, south of 60°S",
+    "area_km2": 1250000,
+    "established": 1940,
+    "overlaps_with": [
+      "British Antarctic Territory",
+      "Argentine Antarctica"
+    ]
+  },
+  "address_notes": [
+    "Mail to Chilean bases routed through Punta Arenas, Chile",
+    "Chile operates several research stations"
+  ],
+  "major_stations": [
+    "Presidente Eduardo Frei Montalva Base",
+    "General Bernardo O'Higgins Base",
+    "Arturo Prat Station",
+    "Villa Las Estrellas (civilian settlement)"
+  ],
+  "status": {
+    "recognized": false,
+    "note": "Claim suspended under Antarctic Treaty; overlaps with British and Argentine claims"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "name": {
+    "en": "Saint Lucia",
+    "local": [
+      {
+        "lang": "cpf-lc",
+        "value": "Sent Lisi"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "LC",
+    "alpha3": "LCA",
+    "numeric": "662"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "role": "official",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Saint Lucian Creole French (Kwéyòl)",
+      "role": "spoken_local"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Quarter",
+      "count": 10,
+      "source": "../../data/lc_quarters.json"
+    },
+    "level2": {
+      "type": "Town / Village / Community",
+      "source": "../../data/lc_towns.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "town",
+          "quarter",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "town",
+          "quarter",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required": true,
+    "required_for_international": true,
+    "stability": "high",
+    "regex": "^LC-[0-9]{3}$",
+    "example": "LC-101"
+  },
+  "validation": {
+    "rules": [
+      "Quarter は必須",
+      "Town 推奨、未記入時は集落名(Locality)を補う"
+    ]
+  },
+  "examples": {
+    "international": "Reduit Beach Ave, Rodney Bay, Gros Islet, LC-101, Saint Lucia"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "name": {
+    "en": "Honduras",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Honduras"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "HN",
+    "alpha3": "HND",
+    "numeric": "340"
+  },
+  "languages": [
+    {
+      "name": "Spanish",
+      "role": "national_primary"
+    },
+    {
+      "name": "Garífuna / Miskito / Pech / etc.",
+      "role": "regional"
+    },
+    {
+      "name": "English",
+      "role": "international_aux"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Departamento",
+      "count": 18
+    },
+    "level2": {
+      "type": "Municipio"
+    },
+    "level3": {
+      "type": "Colonia / Barrio"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "domestic_es": [
+          "recipient",
+          "building",
+          "street_address",
+          "colonia",
+          "municipio",
+          "departamento",
+          "country"
+        ]
+      },
+      {
+        "international": [
+          "recipient",
+          "building",
+          "street_address",
+          "municipio",
+          "departamento",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "stability": "low",
+    "required_for_international": true,
+    "regex": "^[0-9]{5}$",
+    "example": "21101"
+  }
+}

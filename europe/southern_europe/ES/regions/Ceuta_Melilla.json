@@ -1,0 +1,69 @@
+{
+  "name": {
+    "en": "Ceuta and Melilla",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Ceuta",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "es",
+        "value": "Melilla",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Ceuta",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Melilla",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "ES-CE/ES-ML",
+    "alpha3": null,
+    "numeric": null
+  },
+  "region_of": "Spain",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "es": "Ceuta y Melilla",
+        "en": "Ceuta and Melilla"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Ceuta and Melilla"
+      }
+    }
+  ],
+  "address_format": {
+    "postal_code": {
+      "required": true,
+      "regex": "^(51|52)[0-9]{3}$",
+      "description": "Postal codes in 51xxx (Ceuta) and 52xxx (Melilla)",
+      "example": "51001"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Calle Real 5, 51001 Ceuta",
+    "domestic_normalized": "Calle Real 5 51001 Ceuta",
+    "international": "Calle Real 5, 51001 Ceuta, Spain"
+  }
+}

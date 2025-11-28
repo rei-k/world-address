@@ -1,0 +1,116 @@
+{
+  "name": {
+    "en": "Libya",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "ليبيا",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "LY",
+    "alpha3": "LBY",
+    "numeric": "434"
+  },
+  "continent": "Africa",
+  "subregion": "Northern Africa",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "ليبيا"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Libya"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "شعبية",
+      "label_en": "District",
+      "count": 22,
+      "source": "../../data/ly_districts.json"
+    },
+    "level2": {
+      "type": "Municipality",
+      "label_local": "بلدية",
+      "label_en": "Municipality",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "municipality",
+          "city",
+          "district",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "district",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Burj Al-Fateh"
+    },
+    "floor": {
+      "required": false,
+      "example": "3rd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Office 301"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "شارع عمر المختار، طرابلس",
+    "domestic_normalized": "Omar Al-Mukhtar Street, Tripoli",
+    "international": "Omar Al-Mukhtar Street, Tripoli, Libya"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

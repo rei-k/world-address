@@ -1,0 +1,92 @@
+{
+  "name": {
+    "en": "Gibraltar",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Gibraltar",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "es",
+        "value": "Gibraltar",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GI",
+    "alpha3": "GIB",
+    "numeric": "292"
+  },
+  "continent": "Europe",
+  "subregion": "Southern Europe",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Gibraltar"
+      }
+    },
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "role": "common",
+      "country_name": {
+        "es": "Gibraltar",
+        "en": "Gibraltar"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "street",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "street",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "No postal codes in use",
+      "example": ""
+    }
+  },
+  "examples": {
+    "domestic_raw": "12 Main Street, Gibraltar",
+    "domestic_normalized": "12 Main Street Gibraltar",
+    "international": "12 Main Street, Gibraltar"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

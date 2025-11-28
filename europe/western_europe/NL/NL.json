@@ -1,0 +1,112 @@
+{
+  "name": {
+    "en": "Netherlands",
+    "local": [
+      {
+        "lang": "nl",
+        "value": "Nederland",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "NL",
+    "alpha3": "NLD",
+    "numeric": "528"
+  },
+  "continent": "Europe",
+  "subregion": "Western Europe",
+  "languages": [
+    {
+      "name": "Dutch",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "nl": "Nederland",
+        "en": "Netherlands"
+      }
+    },
+    {
+      "name": "Frisian",
+      "script": "Latin",
+      "role": "regional",
+      "country_name": {
+        "fy": "Fryslân",
+        "en": "Friesland"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Netherlands"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Provincie",
+      "label_en": "Province",
+      "count": 12,
+      "names": [
+        "Drenthe",
+        "Flevoland",
+        "Friesland",
+        "Gelderland",
+        "Groningen",
+        "Limburg",
+        "Noord-Brabant",
+        "Noord-Holland",
+        "Overijssel",
+        "Utrecht",
+        "Zeeland",
+        "Zuid-Holland"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4} ?[A-Z]{2}$",
+      "description": "4 digits + 2 uppercase letters",
+      "example": "1012 AB"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Damrak 1-5, 1012 AB Amsterdam",
+    "domestic_normalized": "Damrak 1-5 1012 AB Amsterdam",
+    "international": "Damrak 1-5, 1012 AB Amsterdam, Netherlands"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

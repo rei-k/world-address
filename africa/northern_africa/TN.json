@@ -1,0 +1,140 @@
+{
+  "name": {
+    "en": "Tunisia",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "تونس",
+        "script": "Arabic",
+        "direction": "rtl"
+      },
+      {
+        "lang": "fr",
+        "value": "Tunisie",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "TN",
+    "alpha3": "TUN",
+    "numeric": "788"
+  },
+  "continent": "Africa",
+  "subregion": "Northern Africa",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "تونس"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "country_name": "Tunisie"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Tunisia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Governorate",
+      "label_local": "ولاية",
+      "label_en": "Governorate",
+      "count": 24,
+      "source": "../../data/tn_governorates.json"
+    },
+    "level2": {
+      "type": "Delegation",
+      "label_local": "معتمدية",
+      "label_en": "Delegation",
+      "count": null
+    },
+    "level3": {
+      "type": "Sector",
+      "label_local": "قطاع",
+      "label_en": "Sector",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "sector",
+          "delegation",
+          "governorate",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Immeuble Lac Palace"
+    },
+    "floor": {
+      "required": false,
+      "example": "5ème étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Bureau 502"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "regex": "^[0-9]{4}$",
+      "length": 4,
+      "description": "4-digit postal code",
+      "example": "1000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required",
+      "Postal code format: 4 digits"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "شارع الحبيب بورقيبة، 1000 تونس",
+    "domestic_normalized": "Avenue Habib Bourguiba, 1000 Tunis",
+    "international": "Avenue Habib Bourguiba, 1000 Tunis, Tunisia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

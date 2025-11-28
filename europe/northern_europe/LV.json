@@ -1,0 +1,89 @@
+{
+  "name": {
+    "en": "Latvia",
+    "local": [
+      {
+        "lang": "lv",
+        "value": "Latvija",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "LV",
+    "alpha3": "LVA",
+    "numeric": "428"
+  },
+  "continent": "Europe",
+  "subregion": "Northern Europe",
+  "languages": [
+    {
+      "name": "Latvian",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "lv": "Latvija",
+        "en": "Latvia"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Latvia"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Municipality",
+      "label_local": "Novads",
+      "label_en": "Municipality",
+      "count": 43
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^LV-[0-9]{4}$",
+      "description": "LV- followed by 4 digits",
+      "example": "LV-1050"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Brīvības iela 20, LV-1050 Rīga",
+    "domestic_normalized": "Brīvības iela 20 LV-1050 Rīga",
+    "international": "Brīvības iela 20, LV-1050 Rīga, Latvia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

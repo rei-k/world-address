@@ -1,0 +1,102 @@
+{
+  "name": {
+    "en": "Luxembourg",
+    "local": [
+      {
+        "lang": "lb",
+        "value": "Lëtzebuerg",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "fr",
+        "value": "Luxembourg",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "de",
+        "value": "Luxemburg",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "LU",
+    "alpha3": "LUX",
+    "numeric": "442"
+  },
+  "continent": "Europe",
+  "subregion": "Western Europe",
+  "languages": [
+    {
+      "name": "Luxembourgish",
+      "script": "Latin",
+      "role": "national",
+      "country_name": "Lëtzebuerg"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Luxembourg"
+    },
+    {
+      "name": "German",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Luxemburg"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Canton",
+      "label_local": "Kanton",
+      "label_en": "Canton",
+      "count": 12
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric postal code",
+      "example": "2450"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Boulevard Royal 12, 2450 Luxembourg",
+    "domestic_normalized": "Boulevard Royal 12 2450 Luxembourg",
+    "international": "Boulevard Royal 12, 2450 Luxembourg, Luxembourg"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

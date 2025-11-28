@@ -1,0 +1,69 @@
+{
+  "name": {
+    "en": "Saint Vincent and the Grenadines"
+  },
+  "iso_codes": {
+    "alpha2": "VC",
+    "alpha3": "VCT",
+    "numeric": "670"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "role": "official",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Parish",
+      "source": "../../data/vc_parishes.json"
+    },
+    "level2": {
+      "type": "Village / Town / Island (Grenadines)",
+      "source": "../../data/vc_localities.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "street_address",
+          "village",
+          "parish",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "street_address",
+          "village",
+          "parish",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required": false,
+    "required_for_international": false,
+    "stability": "none"
+  },
+  "validation": {
+    "rules": [
+      "Parish + Village は必須",
+      "小島名（Bequia 等）は必ず含める"
+    ]
+  },
+  "examples": {
+    "international": "Front St, Port Elizabeth, Bequia, Saint Vincent and the Grenadines"
+  }
+}

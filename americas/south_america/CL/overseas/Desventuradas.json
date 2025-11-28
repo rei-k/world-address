@@ -1,0 +1,74 @@
+{
+  "name": {
+    "en": "Desventuradas Islands",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Islas Desventuradas",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "parent_country": {
+    "alpha2": "CL",
+    "name": "Chile"
+  },
+  "iso_codes": {
+    "note": "No separate ISO code; part of Chile (CL)"
+  },
+  "subregion": "South Pacific",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Islas Desventuradas"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Desventuradas Islands"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Commune",
+      "label_local": "Comuna",
+      "label_en": "Commune",
+      "note": "Part of Juan Fernández commune, Valparaíso Region"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "special",
+        "note": "These islands are uninhabited; no regular postal service"
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "No postal service - uninhabited islands",
+      "coverage": "none"
+    }
+  },
+  "validation": {
+    "rules": [
+      "Uninhabited islands - no permanent addresses"
+    ]
+  },
+  "examples": {
+    "note": "No permanent residents; addresses not applicable"
+  },
+  "status": {
+    "special_territory": true,
+    "un_member": false,
+    "recognized": true,
+    "disputed": false,
+    "note": "Uninhabited Chilean islands; includes San Ambrosio and San Félix islands"
+  }
+}

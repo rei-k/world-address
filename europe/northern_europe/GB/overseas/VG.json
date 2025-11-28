@@ -1,0 +1,78 @@
+{
+  "name": {
+    "en": "British Virgin Islands",
+    "local": [
+      {
+        "lang": "en",
+        "value": "British Virgin Islands",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "VG",
+    "alpha3": "VGB",
+    "numeric": "092"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "British Virgin Islands"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Island",
+      "label_local": "Island",
+      "label_en": "Island",
+      "count": 4
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^VG[0-9]{4}$",
+      "description": "VG followed by 4 digits",
+      "example": "VG1110"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Main Street, Road Town, VG1110 Tortola",
+    "domestic_normalized": "Main Street Road Town VG1110 Tortola",
+    "international": "Main Street, Road Town, VG1110 Tortola, British Virgin Islands"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

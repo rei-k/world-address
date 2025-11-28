@@ -1,0 +1,124 @@
+{
+  "name": {
+    "en": "South Africa",
+    "local": [
+      {
+        "lang": "en",
+        "value": "South Africa",
+        "script": "Latin"
+      },
+      {
+        "lang": "af",
+        "value": "Suid-Afrika",
+        "script": "Latin"
+      },
+      {
+        "lang": "zu",
+        "value": "iNingizimu Afrika",
+        "script": "Latin"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "ZA",
+    "alpha3": "ZAF",
+    "numeric": "710"
+  },
+  "languages": [
+    {
+      "name": "English",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Afrikaans"
+    },
+    {
+      "name": "Zulu"
+    },
+    {
+      "name": "Xhosa"
+    },
+    {
+      "name": "Sotho"
+    },
+    {
+      "name": "Tswana"
+    },
+    {
+      "name": "Tsonga"
+    },
+    {
+      "name": "Venda"
+    },
+    {
+      "name": "Swati"
+    },
+    {
+      "name": "Ndebele"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "count": 9,
+      "source": "../../data/za_provinces.json"
+    },
+    "level2": {
+      "type": "Municipality",
+      "count": null
+    },
+    "level3": {
+      "type": "Suburb / Township / Locality",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "street_delivery": {
+          "order": [
+            "recipient",
+            "building",
+            "floor",
+            "room",
+            "street_address",
+            "suburb",
+            "municipality",
+            "province",
+            "postal_code",
+            "country"
+          ]
+        }
+      },
+      {
+        "pobox_delivery": {
+          "order": [
+            "recipient",
+            "pobox",
+            "suburb",
+            "municipality",
+            "province",
+            "postal_code",
+            "country"
+          ]
+        }
+      }
+    ]
+  },
+  "postal_code": {
+    "required_for_international": true,
+    "stability": "high",
+    "regex": "^[0-9]{4}$",
+    "example": "8001"
+  },
+  "validation": {
+    "rules": [
+      "Province required",
+      "Street vs PO Box must be detected"
+    ]
+  },
+  "examples": {
+    "street": "12 Long St, Gardens, Cape Town, Western Cape 8001, South Africa",
+    "pobox": "PO Box 123, Cape Town 8000, South Africa"
+  }
+}

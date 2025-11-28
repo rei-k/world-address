@@ -1,0 +1,56 @@
+{
+  "name": {
+    "en": "Canary Islands",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Islas Canarias",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Canary Islands",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "ES-CN",
+    "alpha3": null,
+    "numeric": null
+  },
+  "region_of": "Spain",
+  "languages": [
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "es": "Islas Canarias",
+        "en": "Canary Islands"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Canary Islands"
+      }
+    }
+  ],
+  "address_format": {
+    "postal_code": {
+      "required": true,
+      "regex": "^(35|38)[0-9]{3}$",
+      "description": "Postal codes: 35xxx (Las Palmas), 38xxx (Santa Cruz de Tenerife)",
+      "example": "38001"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Calle León y Castillo 20, 35001 Las Palmas de Gran Canaria",
+    "international": "Calle León y Castillo 20, 35001 Las Palmas de Gran Canaria, Canary Islands, Spain"
+  }
+}

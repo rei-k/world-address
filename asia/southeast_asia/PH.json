@@ -1,0 +1,108 @@
+{
+  "name": {
+    "en": "Philippines",
+    "local": [
+      {
+        "lang": "fil",
+        "value": "Pilipinas",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "PH",
+    "alpha3": "PHL",
+    "numeric": "608"
+  },
+  "continent": "Asia",
+  "subregion": "Southeast Asia",
+  "languages": [
+    {
+      "name": "Filipino",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Pilipinas"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "Philippines"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Rehiyon",
+      "label_en": "Region",
+      "count": 17,
+      "source": "../../data/ph_regions.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "region",
+          "province",
+          "city",
+          "barangay",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "barangay",
+          "city",
+          "province",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "RCBC Plaza"
+    },
+    "floor": {
+      "required": false,
+      "example": "15F"
+    },
+    "room": {
+      "required": false,
+      "example": "1503"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}$",
+      "description": "4-digit numeric",
+      "example": "1004"
+    }
+  },
+  "examples": {
+    "domestic_raw": "RCBC Plaza, Makati City 1004",
+    "domestic_normalized": "RCBC Plaza Makati City 1004",
+    "international": "Room 1503, RCBC Plaza, Makati City 1004, Philippines"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

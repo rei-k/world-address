@@ -1,0 +1,134 @@
+{
+  "name": {
+    "en": "Tanzania",
+    "local": [
+      {
+        "lang": "sw",
+        "value": "Tanzania",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Tanzania",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "TZ",
+    "alpha3": "TZA",
+    "numeric": "834"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "Swahili",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Tanzania"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "Tanzania"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Mkoa",
+      "label_en": "Region",
+      "count": 31,
+      "source": "../../data/tz_regions.json"
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "Wilaya",
+      "label_en": "District",
+      "count": null
+    },
+    "level3": {
+      "type": "Ward",
+      "label_local": "Kata",
+      "label_en": "Ward",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "ward",
+          "district",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "PSPF Towers"
+    },
+    "floor": {
+      "required": false,
+      "example": "4th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Office 401"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "5-digit postal code",
+      "example": "11101"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Region name is required",
+      "Postal code format: 5 digits"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Ali Hassan Mwinyi Road, Dar es Salaam 11101",
+    "domestic_normalized": "Ali Hassan Mwinyi Road, Dar es Salaam 11101",
+    "international": "Ali Hassan Mwinyi Road, Dar es Salaam 11101, Tanzania"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

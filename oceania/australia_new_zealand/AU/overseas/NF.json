@@ -1,0 +1,94 @@
+{
+  "name": {
+    "en": "Norfolk Island",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Norfolk Island",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "pih",
+        "value": "Norfuk Ailen",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "parent_country": {
+    "alpha2": "AU",
+    "name": "Australia"
+  },
+  "iso_codes": {
+    "alpha2": "NF",
+    "alpha3": "NFK",
+    "numeric": "574"
+  },
+  "subregion": "Polynesia",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Norfolk Island",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Norfuk",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Norfuk Ailen"
+    }
+  ],
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "locality",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "locality",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^2899$",
+      "description": "Single postcode for Norfolk Island",
+      "example": "2899"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Norfolk Island uses Australian postal system",
+      "Single postcode: 2899"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "123 Taylors Road, Burnt Pine, Norfolk Island 2899",
+    "domestic_normalized": "123 Taylors Road Burnt Pine 2899",
+    "international": "123 Taylors Road, Burnt Pine, Norfolk Island 2899, Australia"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false,
+    "note": "External territory of Australia"
+  }
+}

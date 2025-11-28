@@ -1,0 +1,25 @@
+{
+  "name": {
+    "en": "Peter I Island",
+    "local": "Peter I Øy"
+  },
+  "claimant_country": {
+    "name": "Norway",
+    "alpha2": "NO"
+  },
+  "claim_details": {
+    "location": "68°50′S 90°35′W",
+    "area_km2": 154,
+    "established": 1929,
+    "overlaps_with": [],
+    "note": "Uninhabited volcanic island; Norway's only Antarctic claim outside Queen Maud Land"
+  },
+  "address_notes": [
+    "No permanent station",
+    "Occasional scientific expeditions only"
+  ],
+  "status": {
+    "recognized": false,
+    "note": "Claim suspended under Antarctic Treaty; uninhabited island"
+  }
+}

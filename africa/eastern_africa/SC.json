@@ -1,0 +1,150 @@
+{
+  "name": {
+    "en": "Seychelles",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Seychelles",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "fr",
+        "value": "Seychelles",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SC",
+    "alpha3": "SYC",
+    "numeric": "690"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "Seychelles"
+    },
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Seychelles"
+    },
+    {
+      "name": "Seychellois Creole",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Sesel"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": 26,
+      "names": [
+        "Anse aux Pins",
+        "Anse Boileau",
+        "Anse Etoile",
+        "Anse Louis",
+        "Anse Royale",
+        "Baie Lazare",
+        "Baie Sainte Anne",
+        "Beau Vallon",
+        "Bel Air",
+        "Bel Ombre",
+        "Cascade",
+        "Glacis",
+        "Grand Anse Mahe",
+        "Grand Anse Praslin",
+        "La Digue and Inner Islands",
+        "Les Mamelles",
+        "Mont Buxton",
+        "Mont Fleuri",
+        "Plaisance",
+        "Pointe La Rue",
+        "Port Glaud",
+        "Roche Caiman",
+        "Saint Louis",
+        "Takamaka",
+        "English River",
+        "Victoria"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "district",
+          "island",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "island",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Victoria House"
+    },
+    "floor": {
+      "required": false,
+      "example": "3rd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 302"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required",
+      "Island name recommended"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Independence Avenue, Victoria, Mahé",
+    "domestic_normalized": "Independence Avenue, Victoria",
+    "international": "Independence Avenue, Victoria, Seychelles"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

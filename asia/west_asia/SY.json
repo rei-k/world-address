@@ -1,0 +1,87 @@
+{
+  "name": {
+    "en": "Syria",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "سوريا",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SY",
+    "alpha3": "SYR",
+    "numeric": "760"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "official",
+      "country_name": "سوريا"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Syria"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Governorate",
+      "label_local": "محافظة",
+      "label_en": "Governorate",
+      "count": 14,
+      "source": "../../data/sy_governorates.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "governorate",
+          "city",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "city",
+          "governorate",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Not consistently used"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Umayyad Square, Damascus",
+    "domestic_normalized": "Umayyad Square Damascus",
+    "international": "Room 401, Umayyad Square, Damascus, Syria"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": true
+  }
+}

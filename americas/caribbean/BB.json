@@ -1,0 +1,81 @@
+{
+  "name": {
+    "en": "Barbados"
+  },
+  "iso_codes": {
+    "alpha2": "BB",
+    "alpha3": "BRB",
+    "numeric": "052"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "role": "official",
+      "required_for_shipping": true
+    },
+    {
+      "name": "Bajan Creole",
+      "role": "spoken_local"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Parish",
+      "count": 11,
+      "source": "../../data/bb_parishes.json"
+    },
+    "level2": {
+      "type": "District / Locality",
+      "source": "../../data/bb_districts.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "district",
+          "parish",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "parish",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required": true,
+    "required_for_international": true,
+    "stability": "high",
+    "regex": "^BB[0-9]{2}$",
+    "example": "BB02"
+  },
+  "validation": {
+    "rules": [
+      "Parish 必須、District 推奨",
+      "郵便番号は 'BB' + 2桁で固定"
+    ]
+  },
+  "examples": {
+    "international": "Broad St, Bridgetown, Saint Michael BB02, Barbados"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "name": {
+    "en": "Sierra Leone",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Sierra Leone",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SL",
+    "alpha3": "SLE",
+    "numeric": "694"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Sierra Leone"
+    },
+    {
+      "name": "Krio",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "lingua_franca",
+      "country_name": "Salone"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Province",
+      "label_en": "Province",
+      "count": 5,
+      "source": "../../data/sl_provinces.json"
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": null,
+      "source": "../../data/sl_districts.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "district",
+          "province",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Freetown Center"
+    },
+    "floor": {
+      "required": false,
+      "example": "2nd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Office 4"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^[0-9]{4}$",
+      "length": 4,
+      "description": "Exists but inconsistently used",
+      "example": "4000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "District and Province must be clear",
+      "Postal code recommended for import/export logistics"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Freetown Center, Siaka Stevens St., Freetown, Western Urban, Sierra Leone",
+    "domestic_normalized": "Siaka Stevens St Freetown Western Urban",
+    "international": "Freetown Center, Siaka Stevens St., Freetown 4000, Western Urban, Sierra Leone"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

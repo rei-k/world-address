@@ -1,0 +1,68 @@
+{
+  "name": {
+    "en": "Antigua and Barbuda"
+  },
+  "iso_codes": {
+    "alpha2": "AG",
+    "alpha3": "ATG",
+    "numeric": "028"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "role": "official",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Parish",
+      "source": "../../data/ag_parishes.json"
+    },
+    "level2": {
+      "type": "Village / Town / Island (Barbuda)",
+      "source": "../../data/ag_villages.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "street_address",
+          "village",
+          "parish",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "street_address",
+          "village",
+          "parish",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required": false,
+    "required_for_international": false,
+    "stability": "none"
+  },
+  "validation": {
+    "rules": [
+      "Parish + Village（Barbuda の場合は島名）を必須"
+    ]
+  },
+  "examples": {
+    "international": "High St, St. John's, Saint John, Antigua and Barbuda"
+  }
+}

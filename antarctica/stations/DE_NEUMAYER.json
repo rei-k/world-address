@@ -1,0 +1,36 @@
+{
+  "name": {
+    "en": "Neumayer Station III",
+    "local": "Neumayer-Station III"
+  },
+  "operating_country": {
+    "name": "Germany",
+    "alpha2": "DE",
+    "program": "Alfred Wegener Institute (AWI)"
+  },
+  "location": {
+    "coordinates": {
+      "latitude": -70.674,
+      "longitude": -8.274
+    },
+    "region": "Ekström Ice Shelf, Queen Maud Land",
+    "claim_area": "Norwegian claim (Dronning Maud Land)"
+  },
+  "operational": {
+    "type": "year_round",
+    "established": 2009,
+    "capacity_winter": 9,
+    "capacity_summer": 50
+  },
+  "address_format": {
+    "mail_routing": {
+      "via_country": "Germany",
+      "via_city": "Bremerhaven"
+    },
+    "example": "Name, Neumayer Station III, c/o Alfred Wegener Institute, Am Handelshafen 12, 27570 Bremerhaven, Germany"
+  },
+  "status": {
+    "active": true,
+    "note": "Third generation of Germany's Antarctic station; built on hydraulic stilts"
+  }
+}

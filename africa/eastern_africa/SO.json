@@ -1,0 +1,136 @@
+{
+  "name": {
+    "en": "Somalia",
+    "local": [
+      {
+        "lang": "so",
+        "value": "Soomaaliya",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ar",
+        "value": "الصومال",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SO",
+    "alpha3": "SOM",
+    "numeric": "706"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "Somali",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Soomaaliya"
+    },
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "الصومال"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Somalia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Federal Member State",
+      "label_local": "Dowlad Goboleed",
+      "label_en": "Federal Member State",
+      "count": 6,
+      "source": "../../data/so_states.json"
+    },
+    "level2": {
+      "type": "Region",
+      "label_local": "Gobol",
+      "label_en": "Region",
+      "count": null
+    },
+    "level3": {
+      "type": "District",
+      "label_local": "Degmo",
+      "label_en": "District",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "district",
+          "region",
+          "city",
+          "state",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "state",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Jazeera Palace Hotel"
+    },
+    "floor": {
+      "required": false,
+      "example": "2nd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Room 205"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Maka Al-Mukarama Road, Mogadishu",
+    "domestic_normalized": "Maka Al-Mukarama Road, Mogadishu",
+    "international": "Maka Al-Mukarama Road, Mogadishu, Somalia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

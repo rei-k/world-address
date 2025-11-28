@@ -1,0 +1,103 @@
+{
+  "name": {
+    "en": "Israel",
+    "local": [
+      {
+        "lang": "he",
+        "value": "יִשְׂרָאֵל",
+        "script": "Hebrew",
+        "direction": "rtl"
+      },
+      {
+        "lang": "ar",
+        "value": "إسرائيل",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "IL",
+    "alpha3": "ISR",
+    "numeric": "376"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Hebrew",
+      "script": "Hebrew",
+      "role": "official",
+      "country_name": "יִשְׂרָאֵל"
+    },
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "recognized",
+      "country_name": "إسرائيل"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Israel"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "מחוז",
+      "label_en": "District",
+      "count": 6,
+      "source": "../../data/il_districts.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "district",
+          "city",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "district",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{7}$",
+      "description": "7-digit numeric",
+      "example": "6100001"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Azrieli Center, Tel Aviv 6100001",
+    "domestic_normalized": "Azrieli Center Tel Aviv 6100001",
+    "international": "Room 1001, 10F Azrieli Center, Tel Aviv 6100001, Israel"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": true
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "name": {
+    "en": "Germany",
+    "local": [
+      {
+        "lang": "de",
+        "value": "Deutschland",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "DE",
+    "alpha3": "DEU",
+    "numeric": "276"
+  },
+  "continent": "Europe",
+  "subregion": "Western Europe",
+  "languages": [
+    {
+      "name": "German",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Deutschland"
+    },
+    {
+      "name": "Sorbian",
+      "script": "Latin",
+      "role": "regional",
+      "country_name": "Serbska"
+    },
+    {
+      "name": "Frisian",
+      "script": "Latin",
+      "role": "regional",
+      "country_name": "Frysk"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "State",
+      "label_local": "Bundesland",
+      "label_en": "Federal State",
+      "count": 16,
+      "names": [
+        "Baden-Württemberg",
+        "Bayern",
+        "Berlin",
+        "Brandenburg",
+        "Bremen",
+        "Hamburg",
+        "Hessen",
+        "Mecklenburg-Vorpommern",
+        "Niedersachsen",
+        "Nordrhein-Westfalen",
+        "Rheinland-Pfalz",
+        "Saarland",
+        "Sachsen",
+        "Sachsen-Anhalt",
+        "Schleswig-Holstein",
+        "Thüringen"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "floor",
+          "room",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "floor",
+          "room",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric postal code",
+      "example": "10115"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Musterstraße 12, 10115 Berlin",
+    "domestic_normalized": "Musterstraße 12 10115 Berlin",
+    "international": "Musterstraße 12, 10115 Berlin, Germany"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "name": {
+    "en": "Mozambique",
+    "local": [
+      {
+        "lang": "pt",
+        "value": "Moçambique",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MZ",
+    "alpha3": "MOZ",
+    "numeric": "508"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "Portuguese",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Moçambique"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Mozambique"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Província",
+      "label_en": "Province",
+      "count": 11,
+      "source": "../../data/mz_provinces.json"
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "Distrito",
+      "label_en": "District",
+      "count": null
+    },
+    "level3": {
+      "type": "Administrative Post",
+      "label_local": "Posto Administrativo",
+      "label_en": "Administrative Post",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "district",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Edifício 33 Andares"
+    },
+    "floor": {
+      "required": false,
+      "example": "10º Andar"
+    },
+    "room": {
+      "required": false,
+      "example": "Sala 1001"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "regex": "^[0-9]{4}$",
+      "length": 4,
+      "description": "4-digit postal code",
+      "example": "1100"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Province name is required",
+      "Postal code format: 4 digits"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Avenida Julius Nyerere, Maputo 1100",
+    "domestic_normalized": "Avenida Julius Nyerere, Maputo 1100",
+    "international": "Avenida Julius Nyerere, Maputo 1100, Mozambique"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

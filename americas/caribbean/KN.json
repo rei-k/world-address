@@ -1,0 +1,82 @@
+{
+  "name": {
+    "en": "Saint Kitts and Nevis"
+  },
+  "iso_codes": {
+    "alpha2": "KN",
+    "alpha3": "KNA",
+    "numeric": "659"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "role": "official",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Island",
+      "values": [
+        "Saint Kitts",
+        "Nevis"
+      ],
+      "source": "../../data/kn_islands.json"
+    },
+    "level2": {
+      "type": "Parish",
+      "source": "../../data/kn_parishes.json"
+    },
+    "level3": {
+      "type": "Village / Town",
+      "source": "../../data/kn_villages.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "street_address",
+          "village",
+          "parish",
+          "island",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "street_address",
+          "village",
+          "parish",
+          "island",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required": false,
+    "required_for_international": true,
+    "stability": "medium",
+    "regex": "^KN[0-9]{4}$",
+    "example": "KN0101"
+  },
+  "validation": {
+    "rules": [
+      "Island + Parish を必須",
+      "Village 省略時はランドマーク必須"
+    ]
+  },
+  "examples": {
+    "international": "Bay Rd, Basseterre, Saint George Basseterre, Saint Kitts KN0101, Saint Kitts and Nevis"
+  }
+}

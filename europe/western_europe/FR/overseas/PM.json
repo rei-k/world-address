@@ -1,0 +1,103 @@
+{
+  "name": {
+    "en": "Saint Pierre and Miquelon",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "Saint-Pierre-et-Miquelon",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "PM",
+    "alpha3": "SPM",
+    "numeric": "666"
+  },
+  "continent": "North America",
+  "subregion": "North America",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": {
+        "fr": "Saint-Pierre-et-Miquelon",
+        "en": "Saint Pierre and Miquelon"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": {
+        "en": "Saint Pierre and Miquelon"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Commune",
+      "label_local": "Commune",
+      "label_en": "Municipality",
+      "count": 2,
+      "names": [
+        "Saint-Pierre",
+        "Miquelon-Langlade"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^975[0-9]{2}$",
+      "description": "Postal codes start with 975",
+      "example": "97500"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code format: starts with 975",
+      "City name required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Rue Abbé Pierre Gervain, 97500 Saint-Pierre",
+    "domestic_normalized": "Rue Abbé Pierre Gervain 97500 Saint-Pierre",
+    "international": "Rue Abbé Pierre Gervain, 97500 Saint-Pierre, Saint Pierre and Miquelon"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

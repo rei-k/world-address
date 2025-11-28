@@ -1,0 +1,134 @@
+{
+  "name": {
+    "en": "Kenya",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Kenya",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "sw",
+        "value": "Kenya",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "KE",
+    "alpha3": "KEN",
+    "numeric": "404"
+  },
+  "continent": "Africa",
+  "subregion": "Eastern Africa",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "Kenya"
+    },
+    {
+      "name": "Swahili",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Kenya"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "County",
+      "label_local": "County",
+      "label_en": "County",
+      "count": 47,
+      "source": "../../data/ke_counties.json"
+    },
+    "level2": {
+      "type": "Sub-County",
+      "label_local": "Sub-County",
+      "label_en": "Sub-County",
+      "count": null
+    },
+    "level3": {
+      "type": "Ward",
+      "label_local": "Ward",
+      "label_en": "Ward",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "ward",
+          "subcounty",
+          "county",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "subcounty",
+          "county",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "KICC Building"
+    },
+    "floor": {
+      "required": false,
+      "example": "3rd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 305"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "5-digit postal code",
+      "example": "00100"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "County name is required",
+      "Postal code format: 5 digits"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Kenyatta Avenue, Nairobi 00100",
+    "domestic_normalized": "Kenyatta Avenue, Nairobi 00100",
+    "international": "Kenyatta Avenue, Nairobi 00100, Kenya"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

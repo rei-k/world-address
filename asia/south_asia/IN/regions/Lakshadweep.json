@@ -1,0 +1,17 @@
+{
+  "name": {
+    "en": "Lakshadweep",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Lakshadweep",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "region_of": "India",
+  "type": "Union Territory",
+  "postal_code_format": "682###",
+  "example": "682555"
+}

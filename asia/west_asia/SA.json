@@ -1,0 +1,93 @@
+{
+  "name": {
+    "en": "Saudi Arabia",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "المملكة العربية السعودية",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SA",
+    "alpha3": "SAU",
+    "numeric": "682"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "official",
+      "country_name": "المملكة العربية السعودية"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Saudi Arabia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "منطقة",
+      "label_en": "Province",
+      "count": 13,
+      "source": "../../data/sa_provinces.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "province",
+          "city",
+          "district",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric",
+      "example": "12233"
+    }
+  },
+  "examples": {
+    "domestic_raw": "King Fahd Road, Riyadh 12233",
+    "domestic_normalized": "King Fahd Road Riyadh 12233",
+    "international": "Room 502, King Fahd Road, Riyadh 12233, Saudi Arabia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

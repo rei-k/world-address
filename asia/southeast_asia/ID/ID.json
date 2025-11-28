@@ -1,0 +1,106 @@
+{
+  "name": {
+    "en": "Indonesia",
+    "local": [
+      {
+        "lang": "id",
+        "value": "Indonesia",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "ID",
+    "alpha3": "IDN",
+    "numeric": "360"
+  },
+  "continent": "Asia",
+  "subregion": "Southeast Asia",
+  "languages": [
+    {
+      "name": "Indonesian",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Indonesia"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Indonesia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Provinsi",
+      "label_en": "Province",
+      "count": 38,
+      "source": "../../data/id_provinces.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "province",
+          "regency",
+          "district",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "regency",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Plaza Indonesia"
+    },
+    "floor": {
+      "required": false,
+      "example": "8F"
+    },
+    "room": {
+      "required": false,
+      "example": "801"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric",
+      "example": "10310"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Jl. MH Thamrin No.1, Plaza Indonesia 801, Jakarta Pusat 10310",
+    "domestic_normalized": "Plaza Indonesia 801 Jl. MH Thamrin No.1 Jakarta Pusat 10310",
+    "international": "Room 801, Plaza Indonesia, Jl. MH Thamrin No.1, Central Jakarta 10310, Indonesia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

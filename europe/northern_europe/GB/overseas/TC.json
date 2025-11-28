@@ -1,0 +1,78 @@
+{
+  "name": {
+    "en": "Turks and Caicos Islands",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Turks and Caicos Islands",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "TC",
+    "alpha3": "TCA",
+    "numeric": "796"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Turks and Caicos Islands"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Island",
+      "label_local": "Island",
+      "label_en": "Island",
+      "count": 6
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^TKCA 1ZZ$",
+      "description": "Single code TKCA 1ZZ",
+      "example": "TKCA 1ZZ"
+    }
+  },
+  "examples": {
+    "domestic_raw": "123 Leeward Highway, TKCA 1ZZ Providenciales",
+    "domestic_normalized": "123 Leeward Highway TKCA 1ZZ Providenciales",
+    "international": "123 Leeward Highway, TKCA 1ZZ Providenciales, Turks and Caicos Islands"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

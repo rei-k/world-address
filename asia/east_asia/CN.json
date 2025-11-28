@@ -1,0 +1,125 @@
+{
+  "name": {
+    "en": "China",
+    "local": [
+      {
+        "lang": "zh",
+        "value": "中国",
+        "script": "Han",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CN",
+    "alpha3": "CHN",
+    "numeric": "156"
+  },
+  "continent": "Asia",
+  "subregion": "East Asia",
+  "languages": [
+    {
+      "name": "Chinese",
+      "script": "Han",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "中国"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "China"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province / Autonomous Region / Municipality / SAR",
+      "label_local": "省 / 自治区 / 直辖市 / 特别行政区",
+      "label_en": "Province / Autonomous Region / Municipality / SAR",
+      "count": 34,
+      "source": "../../data/cn_provinces.json"
+    },
+    "level2": {
+      "type": "City",
+      "required": true
+    },
+    "level3": {
+      "type": "District/County",
+      "required": false
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "province",
+          "city",
+          "district",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "SOHO现代城C座"
+    },
+    "floor": {
+      "required": false,
+      "example": "12F"
+    },
+    "room": {
+      "required": false,
+      "example": "1201"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "length": 6,
+      "coverage": "nationwide",
+      "description": "6-digit numeric code",
+      "example": "100000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "International shipping must include Pinyin transliteration",
+      "Province or municipality name must always be written, postal code alone is not sufficient"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "北京市朝阳区建国路88号SOHO现代城C座1201",
+    "domestic_normalized": "北京市 朝阳区 建国路88号 SOHO现代城C座1201 100000",
+    "international": "Room 1201, Tower C, SOHO Modern City, 88 Jianguo Road, Chaoyang District, Beijing 100000, China"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

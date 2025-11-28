@@ -1,0 +1,89 @@
+{
+  "name": {
+    "en": "Palestine",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "فلسطين",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "PS",
+    "alpha3": "PSE",
+    "numeric": "275"
+  },
+  "continent": "Asia",
+  "subregion": "West Asia",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "role": "official",
+      "country_name": "فلسطين"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Palestine"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Governorate",
+      "label_local": "محافظة",
+      "label_en": "Governorate",
+      "count": 16,
+      "source": "../../data/ps_governorates.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "governorate",
+          "city",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "city",
+          "governorate",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes exist but are not consistently used"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Al-Masyoun, Ramallah",
+    "domestic_normalized": "Al-Masyoun Ramallah",
+    "international": "Room 203, Al-Masyoun, Ramallah, Palestine"
+  },
+  "status": {
+    "un_member": "observer",
+    "recognized": "partial",
+    "disputed": true
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "name": {
+    "en": "Montserrat",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Montserrat",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MS",
+    "alpha3": "MSR",
+    "numeric": "500"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "en": "Montserrat"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Parish",
+      "label_local": "Parish",
+      "label_en": "Parish",
+      "count": 3
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^MSR[0-9]{4}$",
+      "description": "MSR followed by 4 digits",
+      "example": "MSR1110"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Plymouth MSR1110",
+    "domestic_normalized": "Plymouth MSR1110",
+    "international": "Plymouth MSR1110, Montserrat"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "name": {
+    "en": "Samoa",
+    "local": [
+      {
+        "lang": "sm",
+        "value": "Samoa",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "WS",
+    "alpha3": "WSM",
+    "numeric": "882"
+  },
+  "continent": "Oceania",
+  "subregion": "Polynesia",
+  "languages": [
+    {
+      "name": "Samoan",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Samoa"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Samoa",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "Itumalo",
+      "label_en": "District",
+      "count": 11
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "village",
+          "district",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "village",
+          "district",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Postal codes are not commonly used in Samoa",
+      "coverage": "none"
+    }
+  },
+  "examples": {
+    "domestic_raw": "PO Box 123, Beach Road, Apia, Tuamasaga",
+    "domestic_normalized": "PO Box 123 Beach Road Apia Tuamasaga",
+    "international": "PO Box 123, Beach Road, Apia, Samoa"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

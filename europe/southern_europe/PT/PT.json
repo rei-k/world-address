@@ -1,0 +1,89 @@
+{
+  "name": {
+    "en": "Portugal",
+    "local": [
+      {
+        "lang": "pt",
+        "value": "Portugal",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "PT",
+    "alpha3": "PRT",
+    "numeric": "620"
+  },
+  "continent": "Europe",
+  "subregion": "Southern Europe",
+  "languages": [
+    {
+      "name": "Portuguese",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "pt": "Portugal",
+        "en": "Portugal"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Portugal"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "Distrito",
+      "label_en": "District",
+      "count": 18
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{4}-[0-9]{3}$",
+      "description": "7-digit postal code written as NNNN-NNN",
+      "example": "1100-200"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Rua Augusta 1, 1100-200 Lisboa",
+    "domestic_normalized": "Rua Augusta 1 1100-200 Lisboa",
+    "international": "Rua Augusta 1, 1100-200 Lisboa, Portugal"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

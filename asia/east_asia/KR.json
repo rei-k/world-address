@@ -1,0 +1,116 @@
+{
+  "name": {
+    "en": "South Korea",
+    "local": [
+      {
+        "lang": "ko",
+        "value": "대한민국",
+        "script": "Hangul",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "KR",
+    "alpha3": "KOR",
+    "numeric": "410"
+  },
+  "continent": "Asia",
+  "subregion": "East Asia",
+  "languages": [
+    {
+      "name": "Korean",
+      "script": "Hangul",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "대한민국"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "South Korea"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province/Metropolitan City",
+      "label_local": "도 / 광역시 / 특별시",
+      "label_en": "Province / Metropolitan City / Special City",
+      "count": 17,
+      "source": "../../data/kr_provinces.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "province",
+          "city",
+          "district",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "롯데월드타워"
+    },
+    "floor": {
+      "required": false,
+      "example": "25F"
+    },
+    "room": {
+      "required": false,
+      "example": "2501"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "5-digit numeric code",
+      "example": "04524"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code must be 5 digits",
+      "Use road name addressing system since 2014"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "서울특별시 송파구 올림픽로 300 롯데월드타워 2501호",
+    "domestic_normalized": "롯데월드타워 2501호 올림픽로300 송파구 서울특별시 04524",
+    "international": "Room 2501, Lotte World Tower, 300 Olympic-ro, Songpa-gu, Seoul 04524, South Korea"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

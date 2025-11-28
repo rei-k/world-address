@@ -1,0 +1,116 @@
+{
+  "name": {
+    "en": "Mongolia",
+    "local": [
+      {
+        "lang": "mn",
+        "value": "Монгол улс",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MN",
+    "alpha3": "MNG",
+    "numeric": "496"
+  },
+  "continent": "Asia",
+  "subregion": "East Asia",
+  "languages": [
+    {
+      "name": "Mongolian",
+      "script": "Cyrillic",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Монгол улс"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Mongolia"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Aimag/Capital City",
+      "label_local": "Аймаг / Хот",
+      "label_en": "Province / Capital City",
+      "count": 22,
+      "source": "../../data/mn_aimags.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "aimag",
+          "city",
+          "district",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "city",
+          "aimag",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Шангри-Ла зочид буудал"
+    },
+    "floor": {
+      "required": false,
+      "example": "8F"
+    },
+    "room": {
+      "required": false,
+      "example": "801"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "5-digit numeric code",
+      "example": "15141"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Postal code must be 5 digits",
+      "International mail must include English transliteration"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Улаанбаатар хот, Сүхбаатар дүүрэг, Энхтайваны өргөн чөлөө 19, Шангри-Ла зочид буудал 801",
+    "domestic_normalized": "Шангри-Ла зочид буудал 801 Энхтайваны өргөн чөлөө19 Сүхбаатар дүүрэг Улаанбаатар 15141",
+    "international": "Room 801, Shangri-La Hotel, 19 Peace Avenue, Sukhbaatar District, Ulaanbaatar 15141, Mongolia"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

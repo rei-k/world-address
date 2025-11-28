@@ -1,0 +1,59 @@
+{
+  "name": {
+    "en": "Greece",
+    "local": [
+      {
+        "lang": "el",
+        "value": "Ελλάδα",
+        "script": "Greek",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GR",
+    "alpha3": "GRC",
+    "numeric": "300"
+  },
+  "continent": "Europe",
+  "subregion": "Southern Europe",
+  "languages": [
+    {
+      "name": "Greek",
+      "script": "Greek",
+      "role": "official",
+      "country_name": {
+        "el": "Ελλάδα",
+        "en": "Greece"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Greece"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Περιφέρεια",
+      "label_en": "Region",
+      "count": 13
+    }
+  },
+  "address_format": {
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{5}$",
+      "description": "5-digit numeric postal code",
+      "example": "10558"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Adrianou 1, 10558 Athina",
+    "international": "Adrianou 1, 10558 Athens, Greece"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "name": {
+    "en": "Gabon",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "Gabon",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GA",
+    "alpha3": "GAB",
+    "numeric": "266"
+  },
+  "continent": "Africa",
+  "subregion": "Central Africa",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Gabon"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Gabon"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province",
+      "label_local": "Province",
+      "label_en": "Province",
+      "count": 9,
+      "source": "../../data/ga_provinces.json"
+    },
+    "level2": {
+      "type": "Department",
+      "label_local": "Département",
+      "label_en": "Department",
+      "count": null
+    },
+    "level3": {
+      "type": "Commune",
+      "label_local": "Commune",
+      "label_en": "Commune",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "commune",
+          "department",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Immeuble du Littoral"
+    },
+    "floor": {
+      "required": false,
+      "example": "7ème étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Bureau 702"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes exist but not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Boulevard Triomphal Omar Bongo, Libreville",
+    "domestic_normalized": "Boulevard Triomphal Omar Bongo, Libreville",
+    "international": "Boulevard Triomphal Omar Bongo, Libreville, Gabon"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

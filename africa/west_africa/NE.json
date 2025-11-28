@@ -1,0 +1,121 @@
+{
+  "name": {
+    "en": "Niger",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "Niger",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "NE",
+    "alpha3": "NER",
+    "numeric": "562"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Niger"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Région",
+      "label_en": "Region",
+      "count": 7,
+      "source": "../../data/ne_regions.json"
+    },
+    "level2": {
+      "type": "Department",
+      "label_local": "Département",
+      "label_en": "Department",
+      "count": null,
+      "source": "../../data/ne_departments.json"
+    },
+    "level3": {
+      "type": "Commune",
+      "label_local": "Commune",
+      "label_en": "Commune",
+      "count": null,
+      "source": "../../data/ne_communes.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "commune",
+          "department",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "commune",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Résidence Niamey"
+    },
+    "floor": {
+      "required": false,
+      "example": "1er étage"
+    },
+    "room": {
+      "required": false,
+      "example": "Appt 10"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^[0-9]{4}$",
+      "length": 4,
+      "description": "Used mostly in Niamey and official logistics documents",
+      "example": "8001"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Commune and Region must be clear",
+      "Postal code recommended for export shipping"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Résidence Niamey, Rue 24, Commune III, Niamey, Niger",
+    "domestic_normalized": "Rue 24 Commune III Niamey",
+    "international": "Résidence Niamey, Rue 24, Niamey 8001, Niger"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

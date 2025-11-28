@@ -1,0 +1,36 @@
+{
+  "name": {
+    "en": "Mario Zucchelli Station",
+    "local": "Stazione Mario Zucchelli"
+  },
+  "operating_country": {
+    "name": "Italy",
+    "alpha2": "IT",
+    "program": "Italian National Antarctic Research Programme (PNRA)"
+  },
+  "location": {
+    "coordinates": {
+      "latitude": -74.694,
+      "longitude": 164.113
+    },
+    "region": "Terra Nova Bay, Victoria Land",
+    "claim_area": "New Zealand (Ross Dependency)"
+  },
+  "operational": {
+    "type": "summer_only",
+    "established": 1985,
+    "capacity_winter": 0,
+    "capacity_summer": 90
+  },
+  "address_format": {
+    "mail_routing": {
+      "via_country": "New Zealand",
+      "via_city": "Christchurch"
+    },
+    "example": "Name, Mario Zucchelli Station, c/o ENEA, Via Anguillarese 301, 00123 Rome, Italy"
+  },
+  "status": {
+    "active": true,
+    "note": "Italy's main Antarctic research station; summer-only operation"
+  }
+}

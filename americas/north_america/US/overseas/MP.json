@@ -1,0 +1,150 @@
+{
+  "name": {
+    "en": "Northern Mariana Islands",
+    "local": [
+      {
+        "lang": "ch",
+        "value": "Na Islas Mariånas",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "en",
+        "value": "Northern Mariana Islands",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MP",
+    "alpha3": "MNP",
+    "numeric": "580"
+  },
+  "continent": "Oceania",
+  "subregion": "Micronesia (US Commonwealth)",
+  "languages": [
+    {
+      "name": "CHamoru",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "cultural_primary"
+    },
+    {
+      "name": "Carolinian",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "indigenous_secondary"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "administrative_primary",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Municipality",
+      "label_en": "Municipality",
+      "values": [
+        "Saipan",
+        "Tinian",
+        "Rota"
+      ],
+      "source": "../../data/mp_municipalities.json"
+    },
+    "level2": {
+      "type": "Village / Neighborhood",
+      "label_en": "Village / District",
+      "count": null,
+      "source": "../../data/mp_villages.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic_street",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "village",
+          "municipality",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "pobox",
+        "order": [
+          "recipient",
+          "pobox",
+          "municipality",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "village",
+          "municipality",
+          "state",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Mango Resort"
+    },
+    "floor": {
+      "required": false,
+      "example": "2nd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Room 201"
+    },
+    "pobox": {
+      "required": false,
+      "example": "PO Box 502356"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "stability": "high",
+      "regex": "^969[0-9]{2}(-[0-9]{4})?$",
+      "example": "96950",
+      "description": "MP uses USPS ZIP block 96950–96952."
+    }
+  },
+  "validation": {
+    "rules": [
+      "Municipality is required",
+      "Village recommended for local routing",
+      "PO Box addresses must omit street"
+    ]
+  },
+  "examples": {
+    "domestic_street": "Mango Resort, Chalan Kiya, Village San Vicente, Saipan, MP 96950, USA",
+    "domestic_pobox": "PO Box 502356, Saipan, MP 96950, USA",
+    "international": "Chalan Kiya, San Vicente, Saipan, MP 96950, United States"
+  },
+  "status": {
+    "postal_system": "USPS",
+    "political_status": "US Commonwealth"
+  }
+}

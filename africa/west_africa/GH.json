@@ -1,0 +1,113 @@
+{
+  "name": {
+    "en": "Ghana",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Ghana",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GH",
+    "alpha3": "GHA",
+    "numeric": "288"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Ghana"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Region",
+      "label_en": "Region",
+      "count": 16,
+      "source": "../../data/gh_regions.json"
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": null,
+      "source": "../../data/gh_districts.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "district",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Accra Tower"
+    },
+    "floor": {
+      "required": false,
+      "example": "5th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 20"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^[A-Z]{2}-[0-9]{3}-[0-9]{4}$",
+      "length": null,
+      "description": "GhanaPost GPS format (e.g., GA-123-4567)",
+      "example": "GA-107-1234"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Region and District must be present",
+      "Use GhanaPost GPS code for international shipping when available"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Accra Tower, Oxford St., Osu, Accra Metropolitan, Greater Accra, Ghana",
+    "domestic_normalized": "Oxford St Accra Metropolitan Greater Accra",
+    "international": "Accra Tower, Oxford St., Osu, GA-107-1234, Greater Accra, Ghana"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

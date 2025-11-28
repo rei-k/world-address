@@ -1,0 +1,65 @@
+{
+  "name": {
+    "en": "San Marino",
+    "local": [
+      {
+        "lang": "it",
+        "value": "San Marino",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "SM",
+    "alpha3": "SMR",
+    "numeric": "674"
+  },
+  "continent": "Europe",
+  "subregion": "Southern Europe",
+  "languages": [
+    {
+      "name": "Italian",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "it": "San Marino",
+        "en": "San Marino"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "San Marino"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Municipality",
+      "label_local": "Castello",
+      "label_en": "Municipality",
+      "count": 9
+    }
+  },
+  "address_format": {
+    "postal_code": {
+      "required": true,
+      "regex": "^4789[0-9]$",
+      "description": "Postal codes start with 4789x",
+      "example": "47890"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Piazza della Libertà 1, 47890 San Marino",
+    "domestic_normalized": "Piazza della Libertà 1 47890 San Marino",
+    "international": "Piazza della Libertà 1, 47890 San Marino, San Marino"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

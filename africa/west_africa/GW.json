@@ -1,0 +1,120 @@
+{
+  "name": {
+    "en": "Guinea-Bissau",
+    "local": [
+      {
+        "lang": "pt",
+        "value": "Guiné-Bissau",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "GW",
+    "alpha3": "GNB",
+    "numeric": "624"
+  },
+  "continent": "Africa",
+  "subregion": "Western Africa",
+  "languages": [
+    {
+      "name": "Portuguese",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Guiné-Bissau"
+    },
+    {
+      "name": "Crioulo (Kriolu)",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "recognized",
+      "country_name": "Guiné-Bissau"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Região",
+      "label_en": "Region",
+      "count": 8,
+      "source": "../../data/gw_regions.json"
+    },
+    "level2": {
+      "type": "Sector",
+      "label_local": "Setor",
+      "label_en": "Sector",
+      "count": null,
+      "source": "../../data/gw_sectors.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "sector",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "sector",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Ed. Bissau Nova"
+    },
+    "floor": {
+      "required": false,
+      "example": "2º Andar"
+    },
+    "room": {
+      "required": false,
+      "example": "Apto 3"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": true,
+      "regex": "^CP [0-9]{4}$",
+      "length": null,
+      "description": "Postal codes rarely used; CP codes exist for international routing",
+      "example": "CP 1100"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Region and Sector must be included",
+      "Postal code recommended for international shipments"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Ed. Bissau Nova, Rua Combatentes, Bissau, Setor Autónomo de Bissau, Guiné-Bissau",
+    "domestic_normalized": "Rua Combatentes Bissau",
+    "international": "Ed. Bissau Nova, Rua Combatentes, Bissau CP 1100, Guiné-Bissau"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "name": {
+    "en": "Antarctica",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Antarctica",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AQ",
+    "alpha3": "ATA",
+    "numeric": "010"
+  },
+  "continent": "Antarctica",
+  "subregion": "Antarctic",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "working_language",
+      "note": "No official language; English commonly used for international coordination",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "note": "No permanent population or government; governed by Antarctic Treaty System",
+    "claims": "See claims/ directory for territorial claims by various nations",
+    "stations": "See stations/ directory for research station addresses"
+  },
+  "address_format": {
+    "note": "Addresses are directed to specific research stations operated by national Antarctic programs",
+    "order_variants": [
+      {
+        "context": "research_station",
+        "order": [
+          "recipient",
+          "station_name",
+          "operating_country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "No postal code system; mail routed through operating country",
+      "coverage": "none"
+    }
+  },
+  "validation": {
+    "rules": [
+      "Mail must be addressed to specific research station",
+      "Routed through the operating country's postal system",
+      "Seasonal accessibility may affect delivery"
+    ]
+  },
+  "examples": {
+    "station_address": "Dr. John Smith, McMurdo Station, Antarctica (via USAP, Christchurch, New Zealand)",
+    "research_program": "Research Team Alpha, Amundsen-Scott South Pole Station, Antarctica (via USAP)"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false,
+    "note": "Governed by Antarctic Treaty System (1959); no single sovereign state"
+  },
+  "special_notes": [
+    "Antarctica has no permanent population",
+    "Research stations are operated by various nations",
+    "Territorial claims are suspended under Antarctic Treaty",
+    "See claims/ and stations/ subdirectories for specific information"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": {
+    "en": "British Antarctic Territory",
+    "local": "British Antarctic Territory"
+  },
+  "claimant_country": {
+    "name": "United Kingdom",
+    "alpha2": "GB"
+  },
+  "iso_codes": {
+    "note": "Uses British postcode system (SIQQ 1ZZ)"
+  },
+  "claim_details": {
+    "sector": "20°W to 80°W, south of 60°S",
+    "area_km2": 1709400,
+    "established": 1908,
+    "overlaps_with": [
+      "Argentine Antarctica",
+      "Chilean Antarctic Territory"
+    ]
+  },
+  "address_notes": [
+    "Mail routed through Falkland Islands",
+    "Uses British postcode SIQQ 1ZZ"
+  ],
+  "major_stations": [
+    "Rothera Research Station",
+    "Halley Research Station",
+    "Signy Research Station"
+  ],
+  "postal_code": {
+    "value": "SIQQ 1ZZ",
+    "description": "British postcode for British Antarctic Territory"
+  },
+  "status": {
+    "recognized": false,
+    "note": "Claim suspended under Antarctic Treaty; overlaps with Argentine and Chilean claims"
+  }
+}

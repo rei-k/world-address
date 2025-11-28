@@ -1,0 +1,121 @@
+{
+  "name": {
+    "en": "Botswana",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Botswana",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "tn",
+        "value": "Botswana",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BW",
+    "alpha3": "BWA",
+    "numeric": "072"
+  },
+  "continent": "Africa",
+  "subregion": "Southern Africa",
+  "languages": [
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "Botswana"
+    },
+    {
+      "name": "Setswana",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Botswana"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "District",
+      "label_local": "District",
+      "label_en": "District",
+      "count": 16,
+      "source": "../../data/bw_districts.json"
+    },
+    "level2": {
+      "type": "Sub-District",
+      "label_local": "Sub-District",
+      "label_en": "Sub-District",
+      "count": null
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "locality",
+          "district",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "city",
+          "district",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Fairscape Precinct"
+    },
+    "floor": {
+      "required": false,
+      "example": "4th Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Suite 401"
+    },
+    "postal_code": {
+      "required": false,
+      "required_for_international": false,
+      "description": "Postal codes not widely used"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City name is required"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Main Mall, Gaborone",
+    "domestic_normalized": "Main Mall, Gaborone",
+    "international": "Main Mall, Gaborone, Botswana"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

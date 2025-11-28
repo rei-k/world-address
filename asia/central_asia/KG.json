@@ -1,0 +1,111 @@
+{
+  "name": {
+    "en": "Kyrgyzstan",
+    "local": [
+      {
+        "lang": "ky",
+        "value": "Кыргызстан",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ru",
+        "value": "Киргизия",
+        "script": "Cyrillic",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "KG",
+    "alpha3": "KGZ",
+    "numeric": "417"
+  },
+  "continent": "Asia",
+  "subregion": "Central Asia",
+  "languages": [
+    {
+      "name": "Kyrgyz",
+      "script": "Cyrillic",
+      "role": "official",
+      "country_name": "Кыргызстан"
+    },
+    {
+      "name": "Russian",
+      "script": "Cyrillic",
+      "role": "official",
+      "country_name": "Киргизия"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": "Kyrgyzstan"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region/City",
+      "label_local": "Область / Шаар",
+      "label_en": "Region / City",
+      "count": 9,
+      "source": "../../data/kg_regions.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "region",
+          "city",
+          "district",
+          "street_address",
+          "building",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "room",
+          "street_address",
+          "district",
+          "city",
+          "region",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Bishkek Park Mall"
+    },
+    "room": {
+      "required": false,
+      "example": "403"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "description": "6-digit numeric",
+      "example": "720001"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Bishkek Park Mall, Bishkek 720001",
+    "domestic_normalized": "Bishkek Park Mall Bishkek 720001",
+    "international": "Room 403, Bishkek Park Mall, Bishkek 720001, Kyrgyzstan"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

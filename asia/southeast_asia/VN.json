@@ -1,0 +1,108 @@
+{
+  "name": {
+    "en": "Vietnam",
+    "local": [
+      {
+        "lang": "vi",
+        "value": "Việt Nam",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "VN",
+    "alpha3": "VNM",
+    "numeric": "704"
+  },
+  "continent": "Asia",
+  "subregion": "Southeast Asia",
+  "languages": [
+    {
+      "name": "Vietnamese",
+      "script": "Latin",
+      "role": "official",
+      "country_name": "Việt Nam"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Vietnam"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Province/Municipality",
+      "label_local": "Tỉnh / Thành phố trực thuộc trung ương",
+      "label_en": "Province / Centrally-controlled Municipality",
+      "count": 63,
+      "source": "../../data/vn_provinces.json"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "province",
+          "city",
+          "district",
+          "ward",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "ward",
+          "district",
+          "city",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Bitexco Financial Tower"
+    },
+    "floor": {
+      "required": false,
+      "example": "52F"
+    },
+    "room": {
+      "required": false,
+      "example": "5203"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "description": "6-digit numeric",
+      "example": "700000"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Bitexco Financial Tower, Quận 1, Thành phố Hồ Chí Minh 700000",
+    "domestic_normalized": "Bitexco Financial Tower Quận 1 Thành phố Hồ Chí Minh 700000",
+    "international": "Room 5203, Bitexco Financial Tower, District 1, Ho Chi Minh City 700000, Vietnam"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  }
+}

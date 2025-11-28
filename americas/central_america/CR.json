@@ -1,0 +1,71 @@
+{
+  "name": {
+    "en": "Costa Rica",
+    "local": [
+      {
+        "lang": "es",
+        "value": "Costa Rica"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CR",
+    "alpha3": "CRI",
+    "numeric": "188"
+  },
+  "languages": [
+    {
+      "name": "Spanish",
+      "role": "national_primary"
+    },
+    {
+      "name": "English",
+      "role": "auxiliary_international",
+      "required_for_shipping": true
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Provincia",
+      "count": 7
+    },
+    "level2": {
+      "type": "Cantón"
+    },
+    "level3": {
+      "type": "Distrito"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "domestic_es": [
+          "recipient",
+          "building",
+          "street_address",
+          "distrito",
+          "canton",
+          "provincia",
+          "country"
+        ]
+      },
+      {
+        "international": [
+          "recipient",
+          "building",
+          "street_address",
+          "canton",
+          "provincia",
+          "postal_code",
+          "country"
+        ]
+      }
+    ]
+  },
+  "postal_code": {
+    "required_for_international": true,
+    "stability": "medium",
+    "regex": "^[0-9]{5}$",
+    "example": "10101"
+  }
+}
