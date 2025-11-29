@@ -1,7 +1,7 @@
 {
   "name": "@vey/qr-nfc",
   "version": "1.0.0",
-  "description": "QR code and NFC utilities for Vey World Address SDK - Address proof and quick registration",
+  "description": "QR code and NFC utilities for Vey World Address SDK - Address proof, ZKP (Zero-Knowledge Proof), and quick registration",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -23,7 +23,13 @@
     "address",
     "world-address",
     "vey",
-    "proof"
+    "proof",
+    "zero-knowledge-proof",
+    "zkp",
+    "pedersen-commitment",
+    "merkle-tree",
+    "cryptographic-proof",
+    "selective-disclosure"
   ],
   "author": "Vey Team",
   "license": "MIT",

@@ -10,6 +10,178 @@ QR code and NFC utilities for address handling in the Vey World Address SDK.
 
 This package provides functionality for sharing, authenticating, and exchanging address data through QR codes and NFC tags.
 
+## 🔐 ゼロ知識証明 (Zero-Knowledge Proof / ZKP) 機能
+
+### 概要
+
+このパッケージは、高度な暗号技術を使用したゼロ知識証明機能を提供します。これにより、住所の存在を証明しながら、実際の住所情報を開示することなくプライバシーを保護できます。
+
+This package provides advanced Zero-Knowledge Proof (ZKP) capabilities using cryptographic techniques. This allows proving address existence while protecting privacy without revealing actual address information.
+
+### サポートするアルゴリズム / Supported Algorithms
+
+| アルゴリズム | 説明 | 用途 |
+|-------------|------|------|
+| **Pedersen Commitment** | 暗号学的コミットメントスキーム | 住所の存在証明 |
+| **Schnorr Proof** | 離散対数ベースの知識証明 | 秘密情報の知識証明 |
+| **Merkle Tree** | ハッシュベースのメンバーシップ証明 | データベース所属証明 |
+
+### 使用例 / Usage Examples
+
+#### 1. 暗号学的住所証明 (V2) / Cryptographic Address Proof (V2)
+
+```typescript
+import { createAddressProofV2, verifyAddressProofV2, randomBytes } from '@vey/qr-nfc';
+
+const address = {
+  recipient: '山田太郎',
+  street_address: '千代田区千代田1-1',
+  city: '千代田区',
+  province: '東京都',
+  postal_code: '100-0001',
+  country: 'Japan'
+};
+
+// 秘密鍵を生成
+const secret = randomBytes(32);
+
+// 暗号学的に安全な住所証明を作成（SHA-256ハッシュ + HMAC-SHA256署名）
+const proof = await createAddressProofV2(address, {
+  expiresIn: 3600,  // 1時間有効
+  secret: secret
+});
+
+// 証明を検証
+const result = await verifyAddressProofV2(proof, { 
+  secret: secret,
+  address: address  // オプション：住所ハッシュも検証
+});
+
+if (result.valid && result.addressVerified) {
+  console.log('住所が暗号学的に確認されました');
+}
+```
+
+#### 2. ZKP住所存在証明 / ZKP Address Existence Proof
+
+```typescript
+import { createZKPAddressProof, verifyZKPAddressProof, randomBytes } from '@vey/qr-nfc';
+
+const secret = randomBytes(32);
+
+// Pedersenコミットメントを使用したZKP証明
+const zkpProof = await createZKPAddressProof(address, {
+  algorithm: 'pedersen',
+  expiresIn: 3600,
+  secret: secret
+});
+
+// 証明を検証（住所を知らなくても検証可能）
+const result = await verifyZKPAddressProof(zkpProof, { secret });
+
+console.log(`証明有効: ${result.valid}`);
+console.log(`使用アルゴリズム: ${result.algorithm}`);
+```
+
+#### 3. 選択的開示 / Selective Disclosure
+
+住所の一部のみを開示しながら、全体の存在を証明：
+
+```typescript
+import { createZKPAddressProof } from '@vey/qr-nfc';
+
+// 国と郵便番号のみを開示
+const proof = await createZKPAddressProof(address, {
+  disclosureFields: ['country', 'postal_code']
+});
+
+// 開示されたフィールド
+console.log(proof.data.disclosed_fields?.revealed);
+// { country: 'Japan', postal_code: '100-0001' }
+
+// 他のフィールドはハッシュとして保存（開示されない）
+console.log(proof.data.disclosed_fields?.hashes);
+// { recipient: 'abc...', street_address: 'def...', ... }
+```
+
+#### 4. 地域証明 / Region Proof
+
+住所全体を開示せずに、特定の地域に住んでいることを証明：
+
+```typescript
+import { createRegionProof } from '@vey/qr-nfc';
+
+// 国のみを開示
+const countryProof = await createRegionProof(address);
+// -> { country: 'Japan' } のみ開示
+
+// 都道府県まで開示
+const prefectureProof = await createRegionProof(address, ['country', 'province']);
+// -> { country: 'Japan', province: 'Tokyo' } のみ開示
+```
+
+#### 5. 郵便番号証明 / Postal Code Proof
+
+配送可能エリアの確認に使用：
+
+```typescript
+import { createPostalCodeProof } from '@vey/qr-nfc';
+
+const proof = await createPostalCodeProof(address);
+// -> { postal_code: '100-0001', country: 'Japan' } のみ開示
+```
+
+#### 6. Merkleツリー証明 / Merkle Tree Proof
+
+住所がデータベースに存在することを証明：
+
+```typescript
+import { 
+  sha256, 
+  calculateMerkleRoot, 
+  generateMerkleProof, 
+  verifyMerkleProof 
+} from '@vey/qr-nfc';
+
+// 住所データベースのハッシュリスト
+const addressHashes = await Promise.all(
+  addresses.map(addr => sha256(JSON.stringify(addr)))
+);
+
+// Merkleルートを計算
+const merkleRoot = await calculateMerkleRoot(addressHashes);
+
+// 特定の住所のMerkle証明を生成
+const targetHash = await sha256(JSON.stringify(address));
+const proof = await generateMerkleProof(targetHash, addressHashes);
+
+// 証明を検証（ルートを知っていれば、データベース全体を知らなくても検証可能）
+const isValid = await verifyMerkleProof(
+  proof.leaf,
+  proof.root,
+  proof.proof,
+  proof.positions
+);
+```
+
+### 暗号化ユーティリティ / Cryptographic Utilities
+
+```typescript
+import { sha256, hmacSha256, verifyHmacSha256, randomBytes } from '@vey/qr-nfc';
+
+// SHA-256ハッシュ
+const hash = await sha256('data to hash');
+
+// HMAC-SHA256署名
+const signature = await hmacSha256('message', 'secret-key');
+
+// 署名検証
+const isValid = await verifyHmacSha256('message', signature, 'secret-key');
+
+// 暗号学的に安全な乱数生成
+const randomHex = randomBytes(32);  // 32バイト = 64文字のhex
+```
+
 ## 🎯 QRコードでできること / QR Code Use Cases
 
 ### 1. 📍 住所共有 (Address Sharing)
@@ -46,6 +218,8 @@ const qrData = generateQRCodeURL(qrPayload);
 - プライバシーを保護した住所検証
 - 時限式の住所証明（有効期限付き）
 
+#### 基本的な使用例（レガシーV1）
+
 ```typescript
 import { createAddressProof, verifyAddressProof } from '@vey/qr-nfc';
 
@@ -60,6 +234,23 @@ const result = verifyAddressProof(proof);
 if (result.valid && !result.expired) {
   console.log('住所が確認されました');
 }
+```
+
+#### 暗号学的に安全な住所証明（V2推奨）
+
+```typescript
+import { createAddressProofV2, verifyAddressProofV2, randomBytes } from '@vey/qr-nfc';
+
+const secret = randomBytes(32);
+
+// SHA-256 + HMAC-SHA256を使用した安全な証明
+const proofV2 = await createAddressProofV2(address, {
+  expiresIn: 3600,
+  secret: secret
+});
+
+// 暗号学的検証
+const result = await verifyAddressProofV2(proofV2, { secret });
 ```
 
 **活用シーン**:
@@ -314,15 +505,28 @@ const smartLockConfig: NFCRecord = {
 
 ## 🔐 セキュリティ考慮事項 / Security Considerations
 
+### 暗号化技術
+
+- **SHA-256**: 住所データのハッシュ化に使用。衝突耐性があり、元データの推測が困難
+- **HMAC-SHA256**: デジタル署名に使用。改ざん検出と認証を提供
+- **Pedersenコミットメント**: 情報を秘匿しながらコミットメントを作成
+- **Merkleツリー**: データベースメンバーシップの効率的な証明
+
 ### QRコード
 - 有効期限を設定して不正利用を防止
 - 署名付きペイロードで改ざんを検出
-- 最小限の情報のみを含める（必要に応じて）
+- 最小限の情報のみを含める（選択的開示）
+- V2ではHMAC-SHA256による暗号学的署名
 
 ### NFC
 - 暗号化された通信を使用
 - 認証済みデバイスのみ書き込み許可
 - 読み取りログを保持
+
+### プライバシー保護
+- ゼロ知識証明により、住所全体を開示せずに存在を証明
+- 選択的開示で必要最小限の情報のみを共有
+- ハッシュベースのコミットメントで元データを保護
 
 ## 📦 インストール / Installation
 
