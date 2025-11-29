@@ -682,20 +682,24 @@ export function autoFillForm(
   const filledFields: string[] = [];
   const missingFields: string[] = [];
 
-  // Define the fields to process that exist in both AddressInput and mapping
-  const addressFieldKeys: (keyof AddressInput)[] = [
-    'recipient', 'building', 'floor', 'room', 'unit',
-    'street_address', 'district', 'ward', 'city',
-    'province', 'postal_code', 'country'
-  ];
+  // Helper function to dispatch input events on form elements
+  const dispatchInputEvents = (element: HTMLElement, includeInput = true): void => {
+    if (includeInput) {
+      element.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    element.dispatchEvent(new Event('change', { bubbles: true }));
+  };
 
-  for (const field of addressFieldKeys) {
-    const value = address[field];
+  // Get the field keys from the mapping, which defines all supported fields
+  const mappingKeys = Object.keys(mapping) as (keyof AutoFillFieldMapping)[];
+
+  for (const field of mappingKeys) {
+    const value = address[field as keyof AddressInput];
     if (value === undefined || value === null || value === '') {
       continue;
     }
 
-    const selector = mapping[field as keyof AutoFillFieldMapping];
+    const selector = mapping[field];
     if (!selector) {
       missingFields.push(field);
       continue;
@@ -710,13 +714,11 @@ export function autoFillForm(
     // Fill the field based on element type
     if (element instanceof HTMLInputElement) {
       element.value = value;
-      element.dispatchEvent(new Event('input', { bubbles: true }));
-      element.dispatchEvent(new Event('change', { bubbles: true }));
+      dispatchInputEvents(element);
       filledFields.push(field);
     } else if (element instanceof HTMLTextAreaElement) {
       element.value = value;
-      element.dispatchEvent(new Event('input', { bubbles: true }));
-      element.dispatchEvent(new Event('change', { bubbles: true }));
+      dispatchInputEvents(element);
       filledFields.push(field);
     } else if (element instanceof HTMLSelectElement) {
       // Try to find matching option
@@ -725,7 +727,7 @@ export function autoFillForm(
       );
       if (option) {
         element.value = option.value;
-        element.dispatchEvent(new Event('change', { bubbles: true }));
+        dispatchInputEvents(element, false);
         filledFields.push(field);
       } else {
         missingFields.push(field);
