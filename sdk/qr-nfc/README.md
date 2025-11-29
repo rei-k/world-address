@@ -22,9 +22,13 @@ This package provides advanced Zero-Knowledge Proof (ZKP) capabilities using cry
 
 | アルゴリズム | 説明 | 用途 |
 |-------------|------|------|
-| **Pedersen Commitment** | 暗号学的コミットメントスキーム | 住所の存在証明 |
-| **Schnorr Proof** | 離散対数ベースの知識証明 | 秘密情報の知識証明 |
+| **Pedersen Commitment** | ハッシュベースのコミットメントスキーム | 住所の存在証明 |
+| **Schnorr Proof** | Fiat-Shamirヒューリスティックを使用した知識証明 | 秘密情報の知識証明 |
 | **Merkle Tree** | ハッシュベースのメンバーシップ証明 | データベース所属証明 |
+
+> **⚠️ セキュリティノート**: PedersenとSchnorrの実装は、Web Crypto APIを使用した簡易化されたハッシュベースの実装です。正式なゼロ知識証明の保証が必要な本番システムでは、楕円曲線暗号ライブラリ（libsodium、snarkjs等）の使用を推奨します。
+>
+> **⚠️ Security Note**: The Pedersen and Schnorr implementations are simplified hash-based implementations using Web Crypto API. For production systems requiring formal ZKP guarantees, use a proper elliptic curve cryptography library (e.g., libsodium, snarkjs).
 
 ### 使用例 / Usage Examples
 

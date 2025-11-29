@@ -29,6 +29,8 @@ import {
   createAddressHash,
   createRegionProof,
   createPostalCodeProof,
+  // Schnorr verification with secret
+  verifySchnorrProofWithSecret,
   // Legacy functions
   createAddressProof,
   verifyAddressProof,
@@ -168,13 +170,14 @@ describe('Pedersen Commitment', () => {
 
 describe('Schnorr Proof', () => {
   describe('createSchnorrProof', () => {
-    it('should create proof with commitment, challenge, and response', async () => {
+    it('should create proof with commitment, challenge, response, and nonce_hash', async () => {
       const publicValue = await sha256('public');
       const proof = await createSchnorrProof('secret', publicValue);
 
       expect(proof.commitment).toBeDefined();
       expect(proof.challenge).toBeDefined();
       expect(proof.response).toBeDefined();
+      expect(proof.nonce_hash).toBeDefined();
     });
   });
 
@@ -191,6 +194,24 @@ describe('Schnorr Proof', () => {
       const proof = await createSchnorrProof('secret', publicValue);
       const wrongPublicValue = await sha256('wrong');
       const isValid = await verifySchnorrProof(proof, wrongPublicValue);
+      expect(isValid).toBe(false);
+    });
+  });
+
+  describe('verifySchnorrProofWithSecret', () => {
+    it('should verify proof with correct secret', async () => {
+      const secret = 'my-secret';
+      const publicValue = await sha256(secret);
+      const proof = await createSchnorrProof(secret, publicValue);
+      const isValid = await verifySchnorrProofWithSecret(proof, publicValue, secret);
+      expect(isValid).toBe(true);
+    });
+
+    it('should reject proof with wrong secret', async () => {
+      const secret = 'my-secret';
+      const publicValue = await sha256(secret);
+      const proof = await createSchnorrProof(secret, publicValue);
+      const isValid = await verifySchnorrProofWithSecret(proof, publicValue, 'wrong-secret');
       expect(isValid).toBe(false);
     });
   });

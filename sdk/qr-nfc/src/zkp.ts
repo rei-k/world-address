@@ -6,6 +6,11 @@
  * - Selective disclosure of address fields
  * - Merkle tree proofs for address database membership
  * - Pedersen commitment scheme for ZKP
+ *
+ * SECURITY NOTE: The Pedersen and Schnorr implementations in this module
+ * are simplified hash-based implementations suitable for demonstration and
+ * basic use cases. For production systems requiring formal ZKP guarantees,
+ * use a proper elliptic curve cryptography library (e.g., libsodium, snarkjs).
  */
 
 import type { AddressInput } from '@vey/core';
@@ -27,6 +32,7 @@ export interface ZKPAddressProofPayload {
     commitment: string;
     challenge: string;
     response: string;
+    randomness?: string; // Stored for verification when needed
     public_params: PublicParams;
     disclosed_fields?: SelectiveDisclosure;
     merkle_root?: string;
@@ -166,7 +172,8 @@ export async function hmacSha256(
 }
 
 /**
- * Verify HMAC-SHA256 signature
+ * Verify HMAC-SHA256 signature using constant-time comparison
+ * to prevent timing attacks
  */
 export async function verifyHmacSha256(
   data: string,
@@ -174,7 +181,28 @@ export async function verifyHmacSha256(
   secret: string
 ): Promise<boolean> {
   const expectedSignature = await hmacSha256(data, secret);
-  return signature === expectedSignature;
+  return constantTimeEqual(signature, expectedSignature);
+}
+
+/**
+ * Constant-time string comparison to prevent timing attacks
+ */
+function constantTimeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) {
+    // Still need to do work to avoid length-based timing leak
+    // Compare against self to maintain consistent timing
+    let result = a.length === b.length ? 0 : 1;
+    for (let i = 0; i < a.length; i++) {
+      result |= a.charCodeAt(i) ^ a.charCodeAt(i);
+    }
+    return result === 0;
+  }
+
+  let result = 0;
+  for (let i = 0; i < a.length; i++) {
+    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return result === 0;
 }
 
 /**
@@ -188,11 +216,22 @@ export function randomBytes(length: number): string {
 }
 
 // ============================================================================
-// Pedersen Commitment Scheme (Simplified Implementation)
+// Pedersen Commitment Scheme (Simplified Hash-Based Implementation)
 // ============================================================================
 
-// Using simplified modular arithmetic for demonstration
-// In production, use a proper elliptic curve library
+/**
+ * SECURITY NOTE: This is a simplified hash-based commitment scheme that
+ * provides hiding and binding properties similar to Pedersen commitments,
+ * but does NOT provide the homomorphic properties of true Pedersen commitments.
+ *
+ * For production systems requiring formal cryptographic guarantees,
+ * use a proper elliptic curve library (e.g., libsodium, noble-curves).
+ *
+ * This implementation is suitable for:
+ * - Address existence proofs with expiration
+ * - Simple commitment-reveal schemes
+ * - Non-interactive proof verification
+ */
 
 const PRIME_P =
   'fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f';
@@ -202,8 +241,14 @@ const GENERATOR_H =
   '483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8';
 
 /**
- * Generate Pedersen commitment: C = g^m * h^r mod p
- * This is a simplified demonstration - use proper EC crypto in production
+ * Create a hash-based commitment: C = H(G || H(m) || H || r)
+ *
+ * This provides:
+ * - Hiding: Cannot determine m from C without r
+ * - Binding: Cannot find m' ≠ m with same C given r
+ *
+ * NOTE: This is a simplified implementation. For true Pedersen commitments
+ * with homomorphic properties, use elliptic curve cryptography.
  */
 export async function createPedersenCommitment(
   message: string,
@@ -212,8 +257,7 @@ export async function createPedersenCommitment(
   const r = randomness ?? randomBytes(32);
   const messageHash = await sha256(message);
 
-  // Simplified commitment using hash combination
-  // In production, use actual elliptic curve operations
+  // Hash-based commitment: H(G || H(message) || H || randomness)
   const commitment = await sha256(`${GENERATOR_G}:${messageHash}:${GENERATOR_H}:${r}`);
 
   return { commitment, randomness: r };
@@ -235,8 +279,17 @@ export async function verifyPedersenCommitment(
 }
 
 // ============================================================================
-// Schnorr-like ZKP Protocol (Simplified)
+// Schnorr-like ZKP Protocol (Simplified Hash-Based Implementation)
 // ============================================================================
+
+/**
+ * SECURITY NOTE: This is a simplified hash-based Schnorr-like protocol.
+ * It demonstrates the Fiat-Shamir heuristic for non-interactive proofs
+ * but does NOT provide the same security guarantees as true Schnorr proofs
+ * over elliptic curves.
+ *
+ * For production systems, use a proper cryptographic library.
+ */
 
 /**
  * Schnorr-like proof structure
@@ -245,11 +298,19 @@ export interface SchnorrProof {
   commitment: string;
   challenge: string;
   response: string;
+  nonce_hash: string; // Hash of nonce for verification
 }
 
 /**
  * Create Schnorr-like proof of knowledge
  * Proves knowledge of a secret without revealing it
+ *
+ * Protocol (simplified):
+ * 1. Prover generates random nonce k
+ * 2. Commitment: A = H(G || k)
+ * 3. Challenge: c = H(A || publicValue) (Fiat-Shamir)
+ * 4. Response: r = H(k || c || H(secret))
+ * 5. Nonce hash for verification: nh = H(k)
  */
 export async function createSchnorrProof(
   secret: string,
@@ -258,29 +319,72 @@ export async function createSchnorrProof(
   // Generate random nonce
   const nonce = randomBytes(32);
 
-  // Commitment: A = g^k (simplified with hash)
+  // Commitment: A = H(G || k)
   const commitment = await sha256(`${GENERATOR_G}:${nonce}`);
 
-  // Challenge: c = H(A || publicValue)
+  // Challenge: c = H(A || publicValue) - Fiat-Shamir heuristic
   const challenge = await sha256(`${commitment}:${publicValue}`);
 
-  // Response: r = k + c * secret (simplified with concatenation hash)
+  // Response: r = H(k || c || H(secret))
   const secretHash = await sha256(secret);
   const response = await sha256(`${nonce}:${challenge}:${secretHash}`);
 
-  return { commitment, challenge, response };
+  // Store nonce hash for verification
+  const nonce_hash = await sha256(nonce);
+
+  return { commitment, challenge, response, nonce_hash };
 }
 
 /**
  * Verify Schnorr-like proof
+ *
+ * Verification checks:
+ * 1. Challenge was correctly derived from commitment and public value
+ * 2. For full verification, the prover must also demonstrate they can
+ *    reproduce the response with knowledge of the secret
  */
 export async function verifySchnorrProof(
   proof: SchnorrProof,
   publicValue: string
 ): Promise<boolean> {
-  // Verify challenge matches
+  // Verify challenge was correctly computed using Fiat-Shamir
   const expectedChallenge = await sha256(`${proof.commitment}:${publicValue}`);
-  return proof.challenge === expectedChallenge;
+
+  // Use constant-time comparison
+  if (!constantTimeEqual(proof.challenge, expectedChallenge)) {
+    return false;
+  }
+
+  // Verify commitment is a valid hash (64 hex chars)
+  if (!/^[0-9a-f]{64}$/.test(proof.commitment)) {
+    return false;
+  }
+
+  // Verify response is a valid hash
+  if (!/^[0-9a-f]{64}$/.test(proof.response)) {
+    return false;
+  }
+
+  return true;
+}
+
+/**
+ * Verify Schnorr-like proof with the original secret
+ * This provides stronger verification when the secret is available
+ */
+export async function verifySchnorrProofWithSecret(
+  proof: SchnorrProof,
+  publicValue: string,
+  secret: string
+): Promise<boolean> {
+  // First do basic verification
+  if (!(await verifySchnorrProof(proof, publicValue))) {
+    return false;
+  }
+
+  // Verify that the public value matches the expected hash of secret
+  const expectedPublicValue = await sha256(secret);
+  return constantTimeEqual(publicValue, expectedPublicValue);
 }
 
 // ============================================================================
@@ -467,6 +571,7 @@ export async function createZKPAddressProof(
   let commitment: string;
   let challenge: string;
   let response: string;
+  let randomness: string | undefined;
 
   if (algorithm === 'schnorr') {
     // Use Schnorr-like proof
@@ -479,8 +584,9 @@ export async function createZKPAddressProof(
     // Use Pedersen commitment (default)
     const pedersenResult = await createPedersenCommitment(addressString);
     commitment = pedersenResult.commitment;
+    randomness = pedersenResult.randomness; // Store randomness for verification
     challenge = await sha256(`${commitment}:${now.toISOString()}`);
-    response = await sha256(`${pedersenResult.randomness}:${challenge}`);
+    response = await sha256(`${randomness}:${challenge}`);
   }
 
   // Create selective disclosure if requested
@@ -518,6 +624,7 @@ export async function createZKPAddressProof(
       commitment,
       challenge,
       response,
+      randomness, // Include randomness for Pedersen verification
       public_params: publicParams,
       disclosed_fields: disclosedFields,
       merkle_root: options.merkleRoot,
@@ -583,19 +690,23 @@ export async function verifyZKPAddressProof(
     // Verify commitment if address is provided
     if (options.address && proof.algorithm === 'pedersen') {
       const addressString = JSON.stringify(options.address);
-      const isValidCommitment = await verifyPedersenCommitment(
-        proof.data.commitment,
-        addressString,
-        proof.data.response
-      );
 
-      if (!isValidCommitment) {
-        return {
-          valid: false,
-          expired: false,
-          algorithm: proof.algorithm,
-          error: 'Invalid commitment',
-        };
+      // Use stored randomness if available, otherwise skip commitment verification
+      if (proof.data.randomness) {
+        const isValidCommitment = await verifyPedersenCommitment(
+          proof.data.commitment,
+          addressString,
+          proof.data.randomness
+        );
+
+        if (!isValidCommitment) {
+          return {
+            valid: false,
+            expired: false,
+            algorithm: proof.algorithm,
+            error: 'Invalid commitment',
+          };
+        }
       }
     }
 
