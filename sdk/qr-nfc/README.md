@@ -10,6 +10,89 @@ QR code and NFC utilities for address handling in the Vey World Address SDK.
 
 This package provides functionality for sharing, authenticating, and exchanging address data through QR codes and NFC tags.
 
+## ⚡ 住所入力代行 (Address Auto-fill) - NEW!
+
+**QRコードやNFCをスキャンするだけで、住所フォームを自動入力できます。**
+
+Automatically fill address forms by scanning QR codes or tapping NFC tags.
+
+### 🔧 クイックスタート
+
+```typescript
+import {
+  createAutoFillQR,
+  autoFillFormFromQR,
+  createNFCAutoFillHandler
+} from '@vey/qr-nfc';
+
+// === QRコード生成（送信側） ===
+// 住所をQRコードにエンコード
+const qrData = createAutoFillQR({
+  recipient: '山田太郎',
+  postal_code: '100-0001',
+  province: '東京都',
+  city: '千代田区',
+  street_address: '千代田1-1',
+  country: 'Japan'
+}, { label: '自宅' });
+
+// QRコードライブラリで表示（例：qrcode.js）
+// qrcode.toCanvas(canvas, qrData);
+
+// === QRコード読み取り（受信側） ===
+// QRコードスキャナーで読み取ったデータでフォームを自動入力
+const result = autoFillFormFromQR(scannedQRData);
+if (result.success) {
+  console.log(`${result.filledCount}件のフィールドを入力しました`);
+}
+
+// === NFC経由での自動入力 ===
+const nfcAutoFill = createNFCAutoFillHandler();
+
+if (nfcAutoFill.supported) {
+  // NFCタグを読み取りフォームを自動入力
+  const result = await nfcAutoFill.readAndFill();
+  if (result.success) {
+    showMessage('住所を入力しました');
+  }
+}
+```
+
+### 📋 カスタムフィールドマッピング
+
+デフォルトでは、一般的なフォームフィールド名（`name`, `postal_code`, `address`, etc.）に対応していますが、
+独自のフィールド名を使用している場合はカスタムマッピングを指定できます：
+
+```typescript
+import { autoFillForm } from '@vey/qr-nfc';
+
+const result = autoFillForm(address, {
+  recipient: '#customer-name',           // CSSセレクタ
+  postal_code: '[name="zip-code"]',      // 属性セレクタ
+  province: '#prefecture-select',
+  city: 'input[data-field="city"]',
+  street_address: '#address-line1'
+});
+```
+
+### ⏱️ 有効期限付きのQRコード
+
+セキュリティのため、QRコードに有効期限を設定できます：
+
+```typescript
+import { createAutoFillPayload, isAutoFillExpired } from '@vey/qr-nfc';
+
+// 1時間有効なQRコードを作成
+const payload = createAutoFillPayload(address, {
+  expiresIn: 3600  // 秒単位
+});
+
+// 有効期限チェック
+if (isAutoFillExpired(payload)) {
+  console.log('このQRコードは期限切れです');
+}
+```
+
 ## 🎯 QRコードでできること / QR Code Use Cases
 
 ### 1. 📍 住所共有 (Address Sharing)
