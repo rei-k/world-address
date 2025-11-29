@@ -592,8 +592,10 @@ export interface AuditLogService {
     query: AuditLogQuery,
     format: AuditLogExportFormat
   ): Promise<{
-    data: string | Blob;
+    /** Data as string (for JSON, CSV, text) or base64 encoded binary (for xlsx, pdf) */
+    data: string;
     filename: string;
+    mimeType: string;
   }>;
   
   /** Get audit statistics */

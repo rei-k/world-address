@@ -98,6 +98,54 @@ async function handleSubmit() {
 
 ## 🎯 Features
 
+### 🤖 AI/Automation (Gemini Integration)
+
+- **OCR (Handwritten Character Recognition)** - Scan shipping labels, invoices, and handwritten notes
+- **HS Code Auto-Suggestion** - AI-powered tariff code lookup from product descriptions
+- **Dangerous Goods Detection** - Identify prohibited items from images
+- **Multilingual Translation** - Real-time text/speech translation for international customers
+- **Address Verification** - Validate and correct addresses with geocoding
+- **Invoice Auto-Generation** - Create customs invoices from shipment data
+
+### 🔌 POS Hardware & IoT
+
+- **Bluetooth Weight Scale** - Auto-input weight via Web Bluetooth
+- **AR Size Measurement** - Camera-based package dimension measurement
+- **Payment Terminal Integration** - Square, Stripe Terminal, Suica/PASMO support
+- **Passport Scanner (MRZ)** - eKYC identity verification
+- **Label Printer Control** - Direct WebUSB/Bluetooth printing to Zebra, Brother
+
+### 🚚 Logistics & Shipping
+
+- **Multi-Carrier Rate Comparison** - FedEx, DHL, UPS, EMS, and regional carriers
+- **ETD/ETA Prediction** - Machine learning-based delivery time estimation
+- **Multi-Piece Shipments** - Single tracking for multiple packages
+- **Pickup Scheduling** - Carrier pickup API integration
+- **Carbon Offset Calculation** - CO2 emissions and offset options
+- **Alternative Delivery Locations** - PUDO, lockers, convenience store pickup
+
+### 👥 Customer Engagement
+
+- **LINE/WhatsApp Notifications** - Shipping updates via SNS
+- **Digital Receipts** - QR code and email receipts
+- **Member Features** - Address book, shipping history, points
+- **"Same as Before"** - One-click duplicate shipments from QR codes
+- **Digital Signage** - Idle screen promotions and queue management
+
+### 📊 Dashboard & Analytics
+
+- **Heatmap Analysis** - Geographic shipping visualization
+- **Inventory Management** - Packaging material tracking and alerts
+- **Staff Performance** - Productivity and accuracy metrics
+- **Profit Margin Analysis** - Real-time cost vs. revenue tracking
+- **Fraud Detection** - Anomaly detection and alert system
+
+### 🔒 System & Reliability
+
+- **Complete Offline Mode** - IndexedDB storage with background sync
+- **Kiosk Mode** - Browser lockdown for public terminals
+- **Audit Logging** - Full action history for compliance
+
 ### UI/UX
 
 - **Universal Shadow Widget** - Framework-agnostic embeddable forms
