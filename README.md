@@ -319,78 +319,78 @@ console.log(japanData.name.en);  // Japan
 <summary>🌍 アフリカ / Africa（54か国・地域）</summary>
 
 #### 中央アフリカ / Central Africa
-| コード | 国名 |
-|--------|------|
-| AO | Angola |
-| CD | Democratic Republic of the Congo |
-| CF | Central African Republic |
-| CG | Republic of the Congo |
-| CM | Cameroon |
-| GA | Gabon |
-| GQ | Equatorial Guinea |
-| ST | São Tomé and Príncipe |
-| TD | Chad |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| AO | Angola | アンゴラ |
+| CD | Democratic Republic of the Congo | コンゴ民主共和国 |
+| CF | Central African Republic | 中央アフリカ共和国 |
+| CG | Republic of the Congo | コンゴ共和国 |
+| CM | Cameroon | カメルーン |
+| GA | Gabon | ガボン |
+| GQ | Equatorial Guinea | 赤道ギニア |
+| ST | São Tomé and Príncipe | サントメ・プリンシペ |
+| TD | Chad | チャド |
 
 #### 東アフリカ / Eastern Africa
-| コード | 国名 |
-|--------|------|
-| BI | Burundi |
-| DJ | Djibouti |
-| ER | Eritrea |
-| ET | Ethiopia |
-| KE | Kenya |
-| KM | Comoros |
-| MG | Madagascar |
-| MU | Mauritius |
-| MW | Malawi |
-| MZ | Mozambique |
-| RW | Rwanda |
-| SC | Seychelles |
-| SO | Somalia |
-| TZ | Tanzania |
-| UG | Uganda |
-| ZM | Zambia |
-| ZW | Zimbabwe |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| BI | Burundi | ブルンジ |
+| DJ | Djibouti | ジブチ |
+| ER | Eritrea | エリトリア |
+| ET | Ethiopia | エチオピア |
+| KE | Kenya | ケニア |
+| KM | Comoros | コモロ |
+| MG | Madagascar | マダガスカル |
+| MU | Mauritius | モーリシャス |
+| MW | Malawi | マラウイ |
+| MZ | Mozambique | モザンビーク |
+| RW | Rwanda | ルワンダ |
+| SC | Seychelles | セーシェル |
+| SO | Somalia | ソマリア |
+| TZ | Tanzania | タンザニア |
+| UG | Uganda | ウガンダ |
+| ZM | Zambia | ザンビア |
+| ZW | Zimbabwe | ジンバブエ |
 
 #### 北アフリカ / Northern Africa
-| コード | 国名 |
-|--------|------|
-| DZ | Algeria |
-| EG | Egypt |
-| LY | Libya |
-| MA | Morocco |
-| SD | Sudan |
-| SS | South Sudan |
-| TN | Tunisia |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| DZ | Algeria | アルジェリア |
+| EG | Egypt | エジプト |
+| LY | Libya | リビア |
+| MA | Morocco | モロッコ |
+| SD | Sudan | スーダン |
+| SS | South Sudan | 南スーダン |
+| TN | Tunisia | チュニジア |
 
 #### 南部アフリカ / Southern Africa
-| コード | 国名 |
-|--------|------|
-| BW | Botswana |
-| LS | Lesotho |
-| NA | Namibia |
-| SZ | Eswatini |
-| ZA | South Africa |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| BW | Botswana | ボツワナ |
+| LS | Lesotho | レソト |
+| NA | Namibia | ナミビア |
+| SZ | Eswatini | エスワティニ |
+| ZA | South Africa | 南アフリカ |
 
 #### 西アフリカ / West Africa
-| コード | 国名 |
-|--------|------|
-| BF | Burkina Faso |
-| BJ | Benin |
-| CI | Côte d'Ivoire |
-| CV | Cape Verde |
-| GH | Ghana |
-| GM | The Gambia |
-| GN | Guinea |
-| GW | Guinea-Bissau |
-| LR | Liberia |
-| ML | Mali |
-| MR | Mauritania |
-| NE | Niger |
-| NG | Nigeria |
-| SL | Sierra Leone |
-| SN | Senegal |
-| TG | Togo |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| BF | Burkina Faso | ブルキナファソ |
+| BJ | Benin | ベナン |
+| CI | Côte d'Ivoire | コートジボワール |
+| CV | Cape Verde | カーボベルデ |
+| GH | Ghana | ガーナ |
+| GM | The Gambia | ガンビア |
+| GN | Guinea | ギニア |
+| GW | Guinea-Bissau | ギニアビサウ |
+| LR | Liberia | リベリア |
+| ML | Mali | マリ |
+| MR | Mauritania | モーリタニア |
+| NE | Niger | ニジェール |
+| NG | Nigeria | ナイジェリア |
+| SL | Sierra Leone | シエラレオネ |
+| SN | Senegal | セネガル |
+| TG | Togo | トーゴ |
 
 </details>
 
@@ -398,71 +398,71 @@ console.log(japanData.name.en);  // Japan
 <summary>🌎 アメリカ大陸 / Americas（45か国・地域）</summary>
 
 #### カリブ海 / Caribbean
-| コード | 国名 |
-|--------|------|
-| AG | Antigua and Barbuda |
-| BB | Barbados |
-| BS | The Bahamas |
-| CU | Cuba |
-| DM | Dominica |
-| DO | Dominican Republic |
-| GD | Grenada |
-| HT | Haiti |
-| JM | Jamaica |
-| KN | Saint Kitts and Nevis |
-| LC | Saint Lucia |
-| TT | Trinidad and Tobago |
-| VC | Saint Vincent and the Grenadines |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| AG | Antigua and Barbuda | アンティグア・バーブーダ |
+| BB | Barbados | バルバドス |
+| BS | The Bahamas | バハマ |
+| CU | Cuba | キューバ |
+| DM | Dominica | ドミニカ国 |
+| DO | Dominican Republic | ドミニカ共和国 |
+| GD | Grenada | グレナダ |
+| HT | Haiti | ハイチ |
+| JM | Jamaica | ジャマイカ |
+| KN | Saint Kitts and Nevis | セントクリストファー・ネイビス |
+| LC | Saint Lucia | セントルシア |
+| TT | Trinidad and Tobago | トリニダード・トバゴ |
+| VC | Saint Vincent and the Grenadines | セントビンセント・グレナディーン |
 
 #### 中央アメリカ / Central America
-| コード | 国名 |
-|--------|------|
-| BZ | Belize |
-| CR | Costa Rica |
-| GT | Guatemala |
-| HN | Honduras |
-| NI | Nicaragua |
-| PA | Panama |
-| SV | El Salvador |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| BZ | Belize | ベリーズ |
+| CR | Costa Rica | コスタリカ |
+| GT | Guatemala | グアテマラ |
+| HN | Honduras | ホンジュラス |
+| NI | Nicaragua | ニカラグア |
+| PA | Panama | パナマ |
+| SV | El Salvador | エルサルバドル |
 
 #### 北アメリカ / North America
-| コード | 国名 |
-|--------|------|
-| CA | Canada |
-| MX | Mexico |
-| US | United States |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| CA | Canada | カナダ |
+| MX | Mexico | メキシコ |
+| US | United States | アメリカ合衆国 |
 
 **米国海外領土 / U.S. Overseas Territories:**
-| コード | 地域名 |
-|--------|--------|
-| AS | American Samoa |
-| GU | Guam |
-| MP | Northern Mariana Islands |
-| PR | Puerto Rico |
-| VI | United States Virgin Islands |
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| AS | American Samoa | アメリカ領サモア |
+| GU | Guam | グアム |
+| MP | Northern Mariana Islands | 北マリアナ諸島 |
+| PR | Puerto Rico | プエルトリコ |
+| VI | United States Virgin Islands | アメリカ領ヴァージン諸島 |
 
 #### 南アメリカ / South America
-| コード | 国名 |
-|--------|------|
-| AR | Argentina |
-| BO | Bolivia |
-| BR | Brazil |
-| CL | Chile |
-| CO | Colombia |
-| EC | Ecuador |
-| GY | Guyana |
-| PE | Peru |
-| PY | Paraguay |
-| SR | Suriname |
-| UY | Uruguay |
-| VE | Venezuela |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| AR | Argentina | アルゼンチン |
+| BO | Bolivia | ボリビア |
+| BR | Brazil | ブラジル |
+| CL | Chile | チリ |
+| CO | Colombia | コロンビア |
+| EC | Ecuador | エクアドル |
+| GY | Guyana | ガイアナ |
+| PE | Peru | ペルー |
+| PY | Paraguay | パラグアイ |
+| SR | Suriname | スリナム |
+| UY | Uruguay | ウルグアイ |
+| VE | Venezuela | ベネズエラ |
 
 **チリ海外領土 / Chile Overseas Territories:**
-| ファイル名 | 地域名 |
-|------------|--------|
-| Desventuradas | Desventuradas Islands |
-| Easter_Island | Easter Island |
-| Juan_Fernandez | Juan Fernández Islands |
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Desventuradas | Desventuradas Islands | デスベンチュラダス諸島 |
+| Easter_Island | Easter Island | イースター島 |
+| Juan_Fernandez | Juan Fernández Islands | フアン・フェルナンデス諸島 |
 
 </details>
 
@@ -470,38 +470,38 @@ console.log(japanData.name.en);  // Japan
 <summary>🧊 南極 / Antarctica（22地域・基地）</summary>
 
 #### 南極大陸 / Antarctica
-| コード | 名称 |
-|--------|------|
-| AQ | Antarctica |
+| コード | 名称 | 日本語名 |
+|--------|------|----------|
+| AQ | Antarctica | 南極 |
 
 #### 領有権主張地域 / Territorial Claims
-| コード | 名称 |
-|--------|------|
-| AR_CLAIM | Argentine Antarctica |
-| AT | Australian Antarctic Territory |
-| BAT | British Antarctic Territory |
-| CL_CLAIM | Chilean Antarctic Territory |
-| FR_ADELIE | Adélie Land |
-| NO_PB | Peter I Island |
-| NO_QML | Queen Maud Land |
-| NZ_ROSS | Ross Dependency |
-| UNCLAIMED | Marie Byrd Land (Unclaimed) |
+| コード | 名称 | 日本語名 |
+|--------|------|----------|
+| AR_CLAIM | Argentine Antarctica | アルゼンチン領南極 |
+| AT | Australian Antarctic Territory | オーストラリア南極領 |
+| BAT | British Antarctic Territory | イギリス領南極地域 |
+| CL_CLAIM | Chilean Antarctic Territory | チリ領南極 |
+| FR_ADELIE | Adélie Land | アデリーランド |
+| NO_PB | Peter I Island | ペーター1世島 |
+| NO_QML | Queen Maud Land | ドロンニング・モード・ランド |
+| NZ_ROSS | Ross Dependency | ロス海属領 |
+| UNCLAIMED | Marie Byrd Land (Unclaimed) | マリーバードランド（未主張） |
 
 #### 研究基地 / Research Stations
-| コード | 名称 |
-|--------|------|
-| AU_CASEY | Casey Station |
-| AU_DAVIS | Davis Station |
-| AU_MAWSON | Mawson Station |
-| CN_ZHONGSHAN | Zhongshan Station |
-| DE_NEUMAYER | Neumayer Station III |
-| IN_BHARATI | Bharati Station |
-| IN_MAITRI | Maitri Station |
-| IT_ZUCCHELLI | Mario Zucchelli Station |
-| JP_SYOWA | Syowa Station |
-| KR_SEJONG | King Sejong Station |
-| RU_VOSTOK | Vostok Station |
-| US_MCMURDO | McMurdo Station |
+| コード | 名称 | 日本語名 |
+|--------|------|----------|
+| AU_CASEY | Casey Station | ケーシー基地 |
+| AU_DAVIS | Davis Station | デイビス基地 |
+| AU_MAWSON | Mawson Station | モーソン基地 |
+| CN_ZHONGSHAN | Zhongshan Station | 中山基地 |
+| DE_NEUMAYER | Neumayer Station III | ノイマイヤー基地III |
+| IN_BHARATI | Bharati Station | バラティ基地 |
+| IN_MAITRI | Maitri Station | マイトリ基地 |
+| IT_ZUCCHELLI | Mario Zucchelli Station | マリオ・ズッケリ基地 |
+| JP_SYOWA | Syowa Station | 昭和基地 |
+| KR_SEJONG | King Sejong Station | 世宗基地 |
+| RU_VOSTOK | Vostok Station | ボストーク基地 |
+| US_MCMURDO | McMurdo Station | マクマード基地 |
 
 </details>
 
@@ -509,89 +509,89 @@ console.log(japanData.name.en);  // Japan
 <summary>🌏 アジア / Asia（54か国・地域）</summary>
 
 #### 中央アジア / Central Asia
-| コード | 国名 |
-|--------|------|
-| KG | Kyrgyzstan |
-| KZ | Kazakhstan |
-| TJ | Tajikistan |
-| TM | Turkmenistan |
-| UZ | Uzbekistan |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| KG | Kyrgyzstan | キルギス |
+| KZ | Kazakhstan | カザフスタン |
+| TJ | Tajikistan | タジキスタン |
+| TM | Turkmenistan | トルクメニスタン |
+| UZ | Uzbekistan | ウズベキスタン |
 
 #### 東アジア / East Asia
-| コード | 国名 |
-|--------|------|
-| CN | China |
-| HK | Hong Kong |
-| JP | Japan |
-| KP | North Korea |
-| KR | South Korea |
-| MN | Mongolia |
-| MO | Macao |
-| TW | Taiwan |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| CN | China | 中国 |
+| HK | Hong Kong | 香港 |
+| JP | Japan | 日本 |
+| KP | North Korea | 北朝鮮 |
+| KR | South Korea | 韓国 |
+| MN | Mongolia | モンゴル |
+| MO | Macao | マカオ |
+| TW | Taiwan | 台湾 |
 
 #### 南アジア / South Asia
-| コード | 国名 |
-|--------|------|
-| AF | Afghanistan |
-| BD | Bangladesh |
-| BT | Bhutan |
-| IN | India |
-| LK | Sri Lanka |
-| MV | Maldives |
-| NP | Nepal |
-| PK | Pakistan |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| AF | Afghanistan | アフガニスタン |
+| BD | Bangladesh | バングラデシュ |
+| BT | Bhutan | ブータン |
+| IN | India | インド |
+| LK | Sri Lanka | スリランカ |
+| MV | Maldives | モルディブ |
+| NP | Nepal | ネパール |
+| PK | Pakistan | パキスタン |
 
 **インド連邦直轄領 / Indian Union Territories:**
-| ファイル名 | 地域名 |
-|------------|--------|
-| Andaman_Nicobar | Andaman and Nicobar Islands |
-| Lakshadweep | Lakshadweep |
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Andaman_Nicobar | Andaman and Nicobar Islands | アンダマン・ニコバル諸島 |
+| Lakshadweep | Lakshadweep | ラクシャディープ諸島 |
 
 #### 東南アジア / Southeast Asia
-| コード | 国名 |
-|--------|------|
-| BN | Brunei |
-| ID | Indonesia |
-| KH | Cambodia |
-| LA | Laos |
-| MM | Myanmar |
-| MY | Malaysia |
-| PH | Philippines |
-| SG | Singapore |
-| TH | Thailand |
-| TL | Timor-Leste |
-| VN | Vietnam |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| BN | Brunei | ブルネイ |
+| ID | Indonesia | インドネシア |
+| KH | Cambodia | カンボジア |
+| LA | Laos | ラオス |
+| MM | Myanmar | ミャンマー |
+| MY | Malaysia | マレーシア |
+| PH | Philippines | フィリピン |
+| SG | Singapore | シンガポール |
+| TH | Thailand | タイ |
+| TL | Timor-Leste | 東ティモール |
+| VN | Vietnam | ベトナム |
 
 **インドネシア特別地域 / Indonesia Special Regions:**
-| ファイル名 | 地域名 |
-|------------|--------|
-| Papua | Papua |
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Papua | Papua | パプア |
 
 #### 西アジア / West Asia
-| コード | 国名 |
-|--------|------|
-| AE | United Arab Emirates |
-| BH | Bahrain |
-| IL | Israel |
-| IQ | Iraq |
-| IR | Iran |
-| JO | Jordan |
-| KW | Kuwait |
-| LB | Lebanon |
-| OM | Oman |
-| PS | Palestine |
-| QA | Qatar |
-| SA | Saudi Arabia |
-| SY | Syria |
-| TR | Turkey |
-| YE | Yemen |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| AE | United Arab Emirates | アラブ首長国連邦 |
+| BH | Bahrain | バーレーン |
+| IL | Israel | イスラエル |
+| IQ | Iraq | イラク |
+| IR | Iran | イラン |
+| JO | Jordan | ヨルダン |
+| KW | Kuwait | クウェート |
+| LB | Lebanon | レバノン |
+| OM | Oman | オマーン |
+| PS | Palestine | パレスチナ |
+| QA | Qatar | カタール |
+| SA | Saudi Arabia | サウジアラビア |
+| SY | Syria | シリア |
+| TR | Turkey | トルコ |
+| YE | Yemen | イエメン |
 
 **コーカサス / Caucasus:**
-| コード | 国名 |
-|--------|------|
-| AM | Armenia |
-| AZ | Azerbaijan |
-| GE | Georgia |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| AM | Armenia | アルメニア |
+| AZ | Azerbaijan | アゼルバイジャン |
+| GE | Georgia | ジョージア |
 
 > ※ コーカサス諸国はアジアとヨーロッパの境界に位置するため、両方のセクションに記載されています。
 > *Note: Caucasus countries are listed in both Asia and Europe sections as they are geographically located at the boundary between the two continents.*
@@ -602,149 +602,149 @@ console.log(japanData.name.en);  // Japan
 <summary>🇪🇺 ヨーロッパ / Europe（73か国・地域）</summary>
 
 #### コーカサス / Caucasus
-| コード | 国名 |
-|--------|------|
-| AM | Armenia |
-| AZ | Azerbaijan |
-| GE | Georgia |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| AM | Armenia | アルメニア |
+| AZ | Azerbaijan | アゼルバイジャン |
+| GE | Georgia | ジョージア |
 
 > ※ アジアセクションにも記載 / Also listed in Asia section
 
 **コーカサス係争地域 / Caucasus Disputed Territories:**
-| コード | 地域名 |
-|--------|--------|
-| AB | Abkhazia |
-| SO | South Ossetia |
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| AB | Abkhazia | アブハジア |
+| SO | South Ossetia | 南オセチア |
 
 #### 東ヨーロッパ / Eastern Europe
-| コード | 国名 |
-|--------|------|
-| BG | Bulgaria |
-| BY | Belarus |
-| CZ | Czech Republic |
-| HU | Hungary |
-| MD | Moldova |
-| PL | Poland |
-| RO | Romania |
-| RU | Russia |
-| SK | Slovakia |
-| UA | Ukraine |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| BG | Bulgaria | ブルガリア |
+| BY | Belarus | ベラルーシ |
+| CZ | Czech Republic | チェコ |
+| HU | Hungary | ハンガリー |
+| MD | Moldova | モルドバ |
+| PL | Poland | ポーランド |
+| RO | Romania | ルーマニア |
+| RU | Russia | ロシア |
+| SK | Slovakia | スロバキア |
+| UA | Ukraine | ウクライナ |
 
 #### 北ヨーロッパ / Northern Europe
-| コード | 国名 |
-|--------|------|
-| DK | Denmark |
-| EE | Estonia |
-| FI | Finland |
-| GB | United Kingdom |
-| IE | Ireland |
-| IS | Iceland |
-| LT | Lithuania |
-| LV | Latvia |
-| NO | Norway |
-| SE | Sweden |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| DK | Denmark | デンマーク |
+| EE | Estonia | エストニア |
+| FI | Finland | フィンランド |
+| GB | United Kingdom | イギリス |
+| IE | Ireland | アイルランド |
+| IS | Iceland | アイスランド |
+| LT | Lithuania | リトアニア |
+| LV | Latvia | ラトビア |
+| NO | Norway | ノルウェー |
+| SE | Sweden | スウェーデン |
 
 **デンマーク自治領 / Danish Autonomous Territories:**
-| コード | 地域名 |
-|--------|--------|
-| FO | Faroe Islands |
-| GL | Greenland |
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| FO | Faroe Islands | フェロー諸島 |
+| GL | Greenland | グリーンランド |
 
 **イギリス王室属領 / British Crown Dependencies:**
-| コード | 地域名 |
-|--------|--------|
-| GG | Guernsey |
-| IM | Isle of Man |
-| JE | Jersey |
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| GG | Guernsey | ガーンジー |
+| IM | Isle of Man | マン島 |
+| JE | Jersey | ジャージー |
 
 **イギリス海外領土 / British Overseas Territories:**
-| コード | 地域名 |
-|--------|--------|
-| AI | Anguilla |
-| BM | Bermuda |
-| FK | Falkland Islands |
-| GI | Gibraltar |
-| GS | South Georgia and the South Sandwich Islands |
-| IO | British Indian Ocean Territory |
-| KY | Cayman Islands |
-| MS | Montserrat |
-| PN | Pitcairn Islands |
-| SH | Saint Helena, Ascension and Tristan da Cunha |
-| TC | Turks and Caicos Islands |
-| VG | British Virgin Islands |
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| AI | Anguilla | アンギラ |
+| BM | Bermuda | バミューダ |
+| FK | Falkland Islands | フォークランド諸島 |
+| GI | Gibraltar | ジブラルタル |
+| GS | South Georgia and the South Sandwich Islands | サウスジョージア・サウスサンドウィッチ諸島 |
+| IO | British Indian Ocean Territory | イギリス領インド洋地域 |
+| KY | Cayman Islands | ケイマン諸島 |
+| MS | Montserrat | モントセラト |
+| PN | Pitcairn Islands | ピトケアン諸島 |
+| SH | Saint Helena, Ascension and Tristan da Cunha | セントヘレナ・アセンション・トリスタンダクーニャ |
+| TC | Turks and Caicos Islands | タークス・カイコス諸島 |
+| VG | British Virgin Islands | イギリス領ヴァージン諸島 |
 
 #### 南東ヨーロッパ / Southeastern Europe
-| コード | 国名 |
-|--------|------|
-| AL | Albania |
-| BA | Bosnia and Herzegovina |
-| HR | Croatia |
-| ME | Montenegro |
-| MK | North Macedonia |
-| RS | Serbia |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| AL | Albania | アルバニア |
+| BA | Bosnia and Herzegovina | ボスニア・ヘルツェゴビナ |
+| HR | Croatia | クロアチア |
+| ME | Montenegro | モンテネグロ |
+| MK | North Macedonia | 北マケドニア |
+| RS | Serbia | セルビア |
 
 **南東ヨーロッパ係争地域 / Southeastern Europe Disputed Territories:**
-| コード | 地域名 |
-|--------|--------|
-| XK | Kosovo |
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| XK | Kosovo | コソボ |
 
 #### 南ヨーロッパ / Southern Europe
-| コード | 国名 |
-|--------|------|
-| AD | Andorra |
-| CY | Cyprus |
-| ES | Spain |
-| GR | Greece |
-| IT | Italy |
-| MT | Malta |
-| PT | Portugal |
-| SM | San Marino |
-| VA | Vatican City |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| AD | Andorra | アンドラ |
+| CY | Cyprus | キプロス |
+| ES | Spain | スペイン |
+| GR | Greece | ギリシャ |
+| IT | Italy | イタリア |
+| MT | Malta | マルタ |
+| PT | Portugal | ポルトガル |
+| SM | San Marino | サンマリノ |
+| VA | Vatican City | バチカン市国 |
 
 **スペイン特別地域 / Spain Special Regions:**
-| ファイル名 | 地域名 |
-|------------|--------|
-| Canary_Islands | Canary Islands |
-| Ceuta_Melilla | Ceuta and Melilla |
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Canary_Islands | Canary Islands | カナリア諸島 |
+| Ceuta_Melilla | Ceuta and Melilla | セウタ・メリリャ |
 
 **ポルトガル自治領 / Portuguese Autonomous Regions:**
-| ファイル名 | 地域名 |
-|------------|--------|
-| Azores | Azores |
-| Madeira | Madeira |
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Azores | Azores | アゾレス諸島 |
+| Madeira | Madeira | マデイラ諸島 |
 
 #### 西ヨーロッパ / Western Europe
-| コード | 国名 |
-|--------|------|
-| AT | Austria |
-| BE | Belgium |
-| CH | Switzerland |
-| DE | Germany |
-| FR | France |
-| LI | Liechtenstein |
-| LU | Luxembourg |
-| MC | Monaco |
-| NL | Netherlands |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| AT | Austria | オーストリア |
+| BE | Belgium | ベルギー |
+| CH | Switzerland | スイス |
+| DE | Germany | ドイツ |
+| FR | France | フランス |
+| LI | Liechtenstein | リヒテンシュタイン |
+| LU | Luxembourg | ルクセンブルク |
+| MC | Monaco | モナコ |
+| NL | Netherlands | オランダ |
 
 **フランス海外領土 / French Overseas Territories:**
-| コード | 地域名 |
-|--------|--------|
-| GF | French Guiana |
-| GP | Guadeloupe |
-| MQ | Martinique |
-| NC | New Caledonia |
-| PF | French Polynesia |
-| PM | Saint Pierre and Miquelon |
-| RE | Réunion |
-| WF | Wallis and Futuna |
-| YT | Mayotte |
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| GF | French Guiana | フランス領ギアナ |
+| GP | Guadeloupe | グアドループ |
+| MQ | Martinique | マルティニーク |
+| NC | New Caledonia | ニューカレドニア |
+| PF | French Polynesia | フランス領ポリネシア |
+| PM | Saint Pierre and Miquelon | サンピエール・ミクロン |
+| RE | Réunion | レユニオン |
+| WF | Wallis and Futuna | ウォリス・フツナ |
+| YT | Mayotte | マヨット |
 
 **オランダ海外領土 / Dutch Overseas Territories:**
-| コード | 地域名 |
-|--------|--------|
-| BQ | Caribbean Netherlands |
-| CW | Curaçao |
-| SX | Sint Maarten |
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| BQ | Caribbean Netherlands | カリブ・オランダ |
+| CW | Curaçao | キュラソー |
+| SX | Sint Maarten | シント・マールテン |
 
 </details>
 
@@ -752,49 +752,49 @@ console.log(japanData.name.en);  // Japan
 <summary>🌴 オセアニア / Oceania（22か国・地域）</summary>
 
 #### オーストラリア・ニュージーランド / Australia and New Zealand
-| コード | 国名 |
-|--------|------|
-| AU | Australia |
-| NZ | New Zealand |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| AU | Australia | オーストラリア |
+| NZ | New Zealand | ニュージーランド |
 
 **オーストラリア海外領土 / Australian External Territories:**
-| コード | 地域名 |
-|--------|--------|
-| CC | Cocos (Keeling) Islands |
-| CX | Christmas Island |
-| HM | Heard Island and McDonald Islands |
-| NF | Norfolk Island |
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| CC | Cocos (Keeling) Islands | ココス（キーリング）諸島 |
+| CX | Christmas Island | クリスマス島 |
+| HM | Heard Island and McDonald Islands | ハード島・マクドナルド諸島 |
+| NF | Norfolk Island | ノーフォーク島 |
 
 **ニュージーランド関連領土 / New Zealand Associated Territories:**
-| コード | 地域名 |
-|--------|--------|
-| CK | Cook Islands |
-| NU | Niue |
-| TK | Tokelau |
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| CK | Cook Islands | クック諸島 |
+| NU | Niue | ニウエ |
+| TK | Tokelau | トケラウ |
 
 #### メラネシア / Melanesia
-| コード | 国名 |
-|--------|------|
-| FJ | Fiji |
-| PG | Papua New Guinea |
-| SB | Solomon Islands |
-| VU | Vanuatu |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| FJ | Fiji | フィジー |
+| PG | Papua New Guinea | パプアニューギニア |
+| SB | Solomon Islands | ソロモン諸島 |
+| VU | Vanuatu | バヌアツ |
 
 #### ミクロネシア / Micronesia
-| コード | 国名 |
-|--------|------|
-| FM | Federated States of Micronesia |
-| KI | Kiribati |
-| MH | Marshall Islands |
-| NR | Nauru |
-| PW | Palau |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| FM | Federated States of Micronesia | ミクロネシア連邦 |
+| KI | Kiribati | キリバス |
+| MH | Marshall Islands | マーシャル諸島 |
+| NR | Nauru | ナウル |
+| PW | Palau | パラオ |
 
 #### ポリネシア / Polynesia
-| コード | 国名 |
-|--------|------|
-| TO | Tonga |
-| TV | Tuvalu |
-| WS | Samoa |
+| コード | 国名 | 日本語名 |
+|--------|------|----------|
+| TO | Tonga | トンガ |
+| TV | Tuvalu | ツバル |
+| WS | Samoa | サモア |
 
 </details>
 
