@@ -1,104 +1,177 @@
+# 🇪🇺 ヨーロッパ / Europe
+
+ヨーロッパの収録国一覧と分類ルールです。
+
+## 📁 ディレクトリ構造
+
+```
 europe/
-  northern_europe/
-    DK/                              # デンマーク王国
-      DK.yaml                        # 本国（住所形式：北欧共通、郵便番号4桁）
-      overseas/
-        FO.yaml                      # フェロー諸島（自治領・独自郵便番号体制）
-        GL.yaml                      # グリーンランド（自治領・独自住所形式）
+├── northern_europe/      # 北ヨーロッパ
+├── western_europe/       # 西ヨーロッパ
+├── southern_europe/      # 南ヨーロッパ
+├── eastern_europe/       # 東ヨーロッパ
+├── southeastern_europe/  # 南東ヨーロッパ
+└── caucasus/             # コーカサス
+```
 
-    FI.yaml                          # フィンランド（独立国）
-    SE.yaml                          # スウェーデン（独立国）
-    NO.yaml                          # ノルウェー（独立国）
-    IS.yaml                          # アイスランド（独立国）
-    EE.yaml                          # エストニア（独立国）
-    LV.yaml                          # ラトビア（独立国）
-    LT.yaml                          # リトアニア（独立国）
-    IE.yaml                          # アイルランド（独立国）
+## 🗺️ 収録国・地域一覧
 
-    GB/                              # イギリス（連合王国）
-      GB.yaml                        # 本国（住所形式：postcode必須）
-      crown_dependencies/            # 王室属領（独立性高い、郵便体系が異なる）
-        JE.yaml                      # ジャージー
-        GG.yaml                      # ガーンジー
-        IM.yaml                      # マン島
-      overseas/                      # 英国海外領土（住所形式は地域ごとに異なる）
-        GI.yaml                      # ジブラルタル（ヨーロッパ内）
-        BM.yaml                      # バミューダ（北大西洋）
-        KY.yaml                      # ケイマン諸島（カリブ）
-        VG.yaml                      # 英領バージン諸島（カリブ）
-        MS.yaml                      # モントセラト（カリブ）
-        TC.yaml                      # タークス・カイコス諸島（カリブ）
-        SH.yaml                      # セントヘレナ・アセンション・トリスタン＝ダクーニャ（大西洋）
-        FK.yaml                      # フォークランド諸島（南米近海）
-        GS.yaml                      # サウスジョージア・南サンドウィッチ諸島（南大西洋）
-        IO.yaml                      # 英領インド洋地域
-        PN.yaml                      # ピトケアン諸島（オセアニア）
-        AI.yaml                      # アンギラ（カリブ）
-        # BAT（British Antarctic Territory）は南極カテゴリに分類
+### 北ヨーロッパ / Northern Europe
 
-  western_europe/
-    FR/                              # フランス共和国
-      FR.yaml                        # 本国（住所形式：郵便番号5桁）
-      overseas/                      # 海外県・地域（住所体系は本国と異なる）
-        GF.yaml                      # 仏領ギアナ（南米）
-        GP.yaml                      # グアドループ（カリブ）
-        MQ.yaml                      # マルティニーク（カリブ）
-        RE.yaml                      # レユニオン（インド洋）
-        YT.yaml                      # マヨット（インド洋）
-        PM.yaml                      # サンピエール・ミクロン（北米）
-        WF.yaml                      # ワリス・フツナ（オセアニア）
-        PF.yaml                      # 仏領ポリネシア（オセアニア）
-        NC.yaml                      # ニューカレドニア（オセアニア）
-        TF.yaml                      # 仏領南方・南極地域
-    NL/                              # オランダ王国
-      NL.yaml                        # 本国（住所形式：郵便番号4桁+2文字）
-      overseas/
-        CW.yaml                      # キュラソー（カリブ）
-        SX.yaml                      # シント・マールテン（カリブ）
-        BQ.yaml                      # カリブ・オランダ（ボネール、シントユースタティウス、サバ）
-    BE.yaml                          # ベルギー
-    LU.yaml                          # ルクセンブルク
-    LI.yaml                          # リヒテンシュタイン
-    DE.yaml                          # ドイツ
-    AT.yaml                          # オーストリア
-    CH.yaml                          # スイス
-    MC.yaml                          # モナコ
+| コード | 国名（英語） | 国名（日本語） |
+|--------|--------------|----------------|
+| DK | Denmark | デンマーク |
+| EE | Estonia | エストニア |
+| FI | Finland | フィンランド |
+| GB | United Kingdom | イギリス |
+| IE | Ireland | アイルランド |
+| IS | Iceland | アイスランド |
+| LT | Lithuania | リトアニア |
+| LV | Latvia | ラトビア |
+| NO | Norway | ノルウェー |
+| SE | Sweden | スウェーデン |
 
-  southern_europe/
-    ES/                              # スペイン
-      ES.yaml                        # 本国（住所形式：郵便番号5桁）
-      regions/                       # 海外領ではなく国内の自治州
-        Canary_Islands.yaml          # カナリア諸島（郵便番号体系が独自範囲）
-        Ceuta_Melilla.yaml           # セウタ・メリリャ（北アフリカ側だがスペイン領）
-    PT/                              # ポルトガル
-      PT.yaml                        # 本国
-      regions/
-        Azores.yaml                  # アゾレス諸島（自治州）
-        Madeira.yaml                 # マデイラ諸島（自治州）
-    IT.yaml                          # イタリア
-    GR.yaml                          # ギリシャ
-    SM.yaml                          # サンマリノ
-    MT.yaml                          # マルタ
-    AD.yaml                          # アンドラ
-    VA.yaml                          # バチカン
-    CY.yaml                          # キプロス
+#### デンマーク自治領 / Danish Autonomous Territories
 
-  eastern_europe/
-    PL.yaml                          # ポーランド
-    CZ.yaml                          # チェコ
-    SK.yaml                          # スロバキア
-    HU.yaml                          # ハンガリー
-    RO.yaml                          # ルーマニア
-    BG.yaml                          # ブルガリア
-    UA.yaml                          # ウクライナ
-    BY.yaml                          # ベラルーシ
-    MD.yaml                          # モルドバ
-    RU.yaml                          # ロシア（欧州側。大部分はアジアだがここでは欧州区分）
-southeastern_europe/
-    AL.yaml                          # アルバニア
-    MK.yaml                          # 北マケドニア
-    RS.yaml                          # セルビア
-    ME.yaml                          # モンテネグロ
-    BA.yaml                          # ボスニア・ヘルツェゴビナ
-    XK.yaml                          # コソボ（ISO未承認だが実在）
+| コード | 地域名（英語） | 地域名（日本語） |
+|--------|----------------|------------------|
+| FO | Faroe Islands | フェロー諸島 |
+| GL | Greenland | グリーンランド |
 
+#### イギリス王室属領 / British Crown Dependencies
+
+| コード | 地域名（英語） | 地域名（日本語） |
+|--------|----------------|------------------|
+| GG | Guernsey | ガーンジー |
+| IM | Isle of Man | マン島 |
+| JE | Jersey | ジャージー |
+
+#### イギリス海外領土 / British Overseas Territories
+
+| コード | 地域名（英語） | 地域名（日本語） |
+|--------|----------------|------------------|
+| AI | Anguilla | アンギラ |
+| BM | Bermuda | バミューダ |
+| FK | Falkland Islands | フォークランド諸島 |
+| GI | Gibraltar | ジブラルタル |
+| GS | South Georgia and the South Sandwich Islands | サウスジョージア・南サンドウィッチ諸島 |
+| IO | British Indian Ocean Territory | 英領インド洋地域 |
+| KY | Cayman Islands | ケイマン諸島 |
+| MS | Montserrat | モントセラト |
+| PN | Pitcairn Islands | ピトケアン諸島 |
+| SH | Saint Helena, Ascension and Tristan da Cunha | セントヘレナ・アセンション・トリスタンダクーニャ |
+| TC | Turks and Caicos Islands | タークス・カイコス諸島 |
+| VG | British Virgin Islands | 英領バージン諸島 |
+
+### 西ヨーロッパ / Western Europe
+
+| コード | 国名（英語） | 国名（日本語） |
+|--------|--------------|----------------|
+| AT | Austria | オーストリア |
+| BE | Belgium | ベルギー |
+| CH | Switzerland | スイス |
+| DE | Germany | ドイツ |
+| FR | France | フランス |
+| LI | Liechtenstein | リヒテンシュタイン |
+| LU | Luxembourg | ルクセンブルク |
+| MC | Monaco | モナコ |
+| NL | Netherlands | オランダ |
+
+#### フランス海外領土 / French Overseas Territories
+
+| コード | 地域名（英語） | 地域名（日本語） |
+|--------|----------------|------------------|
+| GF | French Guiana | 仏領ギアナ |
+| GP | Guadeloupe | グアドループ |
+| MQ | Martinique | マルティニーク |
+| NC | New Caledonia | ニューカレドニア |
+| PF | French Polynesia | 仏領ポリネシア |
+| PM | Saint Pierre and Miquelon | サンピエール・ミクロン |
+| RE | Réunion | レユニオン |
+| WF | Wallis and Futuna | ワリス・フツナ |
+| YT | Mayotte | マヨット |
+
+#### オランダ海外領土 / Dutch Overseas Territories
+
+| コード | 地域名（英語） | 地域名（日本語） |
+|--------|----------------|------------------|
+| BQ | Caribbean Netherlands | カリブ・オランダ |
+| CW | Curaçao | キュラソー |
+| SX | Sint Maarten | シント・マールテン |
+
+### 南ヨーロッパ / Southern Europe
+
+| コード | 国名（英語） | 国名（日本語） |
+|--------|--------------|----------------|
+| AD | Andorra | アンドラ |
+| CY | Cyprus | キプロス |
+| ES | Spain | スペイン |
+| GR | Greece | ギリシャ |
+| IT | Italy | イタリア |
+| MT | Malta | マルタ |
+| PT | Portugal | ポルトガル |
+| SM | San Marino | サンマリノ |
+| VA | Vatican City | バチカン |
+
+#### スペイン特別地域 / Spain Special Regions
+
+| ファイル名 | 地域名（英語） | 地域名（日本語） |
+|------------|----------------|------------------|
+| Canary_Islands | Canary Islands | カナリア諸島 |
+| Ceuta_Melilla | Ceuta and Melilla | セウタ・メリリャ |
+
+#### ポルトガル自治領 / Portuguese Autonomous Regions
+
+| ファイル名 | 地域名（英語） | 地域名（日本語） |
+|------------|----------------|------------------|
+| Azores | Azores | アゾレス諸島 |
+| Madeira | Madeira | マデイラ諸島 |
+
+### 東ヨーロッパ / Eastern Europe
+
+| コード | 国名（英語） | 国名（日本語） |
+|--------|--------------|----------------|
+| BG | Bulgaria | ブルガリア |
+| BY | Belarus | ベラルーシ |
+| CZ | Czech Republic | チェコ |
+| HU | Hungary | ハンガリー |
+| MD | Moldova | モルドバ |
+| PL | Poland | ポーランド |
+| RO | Romania | ルーマニア |
+| RU | Russia | ロシア |
+| SK | Slovakia | スロバキア |
+| UA | Ukraine | ウクライナ |
+
+### 南東ヨーロッパ / Southeastern Europe
+
+| コード | 国名（英語） | 国名（日本語） |
+|--------|--------------|----------------|
+| AL | Albania | アルバニア |
+| BA | Bosnia and Herzegovina | ボスニア・ヘルツェゴビナ |
+| HR | Croatia | クロアチア |
+| ME | Montenegro | モンテネグロ |
+| MK | North Macedonia | 北マケドニア |
+| RS | Serbia | セルビア |
+
+#### 南東ヨーロッパ係争地域 / Southeastern Europe Disputed Territories
+
+| コード | 地域名（英語） | 地域名（日本語） |
+|--------|----------------|------------------|
+| XK | Kosovo | コソボ |
+
+### コーカサス / Caucasus
+
+| コード | 国名（英語） | 国名（日本語） |
+|--------|--------------|----------------|
+| AM | Armenia | アルメニア |
+| AZ | Azerbaijan | アゼルバイジャン |
+| GE | Georgia | ジョージア |
+
+> ※ コーカサス諸国はアジアとヨーロッパの境界に位置するため、アジアセクションにも記載されています。
+
+#### コーカサス係争地域 / Caucasus Disputed Territories
+
+| コード | 地域名（英語） | 地域名（日本語） |
+|--------|----------------|------------------|
+| AB | Abkhazia | アブハジア |
+| SO | South Ossetia | 南オセチア |
