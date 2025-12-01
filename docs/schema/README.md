@@ -222,3 +222,111 @@ business_hours:           # 営業時間慣習
   sunday_trading: boolean # 日曜営業の一般性
   public_holidays_trading: boolean # 祝日営業の一般性
 ```
+
+## 🌍 緯度経度レベル（Geo-coordinates Level）型
+
+緯度経度を用いた住所との関係性・検証機能を提供するスキーマです。
+住所データの「保険」として、座標情報を活用した信頼性向上機能を実現します。
+
+### 緯度経度の関係性（Relationship）
+
+```yaml
+geo:                          # 地理座標情報
+  center:                     # 中心座標
+    latitude: number          # 緯度（-90 〜 90）
+    longitude: number         # 経度（-180 〜 180）
+    accuracy: number          # 精度（メートル、オプション）
+    altitude: number          # 高度（メートル、オプション）
+    source: string            # 取得元（gps / geocoder / manual / database / device）
+    captured_at: string       # 取得日時（ISO 8601）
+
+  bounds:                     # 住所範囲（オプション）
+    northeast:                # 北東端
+      latitude: number
+      longitude: number
+    southwest:                # 南西端
+      latitude: number
+      longitude: number
+
+  verified: boolean           # 座標の検証済みフラグ
+  verified_at: string         # 最終検証日時（ISO 8601）
+```
+
+### 緯度経度保険（Geo-Insurance）設定
+
+座標を用いた住所検証のフォールバック機能の設定です。
+
+```yaml
+geo_insurance:                # 緯度経度保険設定
+  enabled: boolean            # 機能有効化（true / false）
+  tolerance_meters: number    # 許容距離（メートル）、デフォルト: 100
+  min_confidence: number      # 最小信頼度閾値（0-1）、デフォルト: 0.8
+  auto_correct: boolean       # 座標に基づく住所自動補正
+  fallback_behavior: string   # 検証失敗時の動作（reject / warn / accept_with_flag）
+```
+
+### 使用例
+
+```yaml
+# 日本の住所データに緯度経度を追加する例
+name:
+  en: Tokyo Station Area
+  local:
+    - lang: ja
+      value: 東京駅周辺
+      
+geo:
+  center:
+    latitude: 35.6812
+    longitude: 139.7671
+    accuracy: 10
+    source: geocoder
+    captured_at: "2024-01-15T09:30:00Z"
+  bounds:
+    northeast:
+      latitude: 35.6830
+      longitude: 139.7690
+    southwest:
+      latitude: 35.6794
+      longitude: 139.7652
+  verified: true
+  verified_at: "2024-01-15T09:30:00Z"
+
+geo_insurance:
+  enabled: true
+  tolerance_meters: 50
+  min_confidence: 0.85
+  auto_correct: false
+  fallback_behavior: warn
+```
+
+### SDK での使用
+
+```typescript
+import { 
+  verifyAddressWithGeo, 
+  createGeoAddress, 
+  calculateDistance 
+} from '@vey/core';
+
+// 住所と座標の関係性を作成
+const address = createGeoAddress(
+  'JP-13-101-01',
+  { latitude: 35.6812, longitude: 139.7671 }
+);
+
+// 配達員の現在位置で住所を検証（保険機能）
+const driverLocation = {
+  latitude: 35.6815,
+  longitude: 139.7668,
+  accuracy: 5,
+  source: 'gps'
+};
+
+const result = verifyAddressWithGeo(address, driverLocation);
+if (result.valid) {
+  console.log('配達員は正しい位置にいます');
+} else {
+  console.log(`配達員は${result.distance}m離れた位置にいます`);
+}
+```

@@ -322,3 +322,160 @@ export interface WaybillPayload {
   /** BLS signature */
   sig?: string;
 }
+
+// ============================================================================
+// Geo-coordinates (緯度経度) Types
+// ============================================================================
+
+/**
+ * Source of geo-coordinates
+ * 緯度経度の取得元
+ */
+export type GeoSource =
+  | 'gps'           // GPS device
+  | 'geocoder'      // Geocoding service
+  | 'manual'        // Manual entry
+  | 'database'      // Address database
+  | 'device'        // Device location API
+  | 'unknown';      // Unknown source
+
+/**
+ * Geographic coordinates with accuracy information
+ * 緯度経度と精度情報
+ * 
+ * Used for:
+ * 1. Address relationship mapping (住所との関係性)
+ * 2. Address verification/insurance (緯度経度を保険とする技術)
+ * 3. Fallback address resolution
+ */
+export interface GeoCoordinates {
+  /** Latitude in decimal degrees (-90 to 90) / 緯度 */
+  latitude: number;
+  /** Longitude in decimal degrees (-180 to 180) / 経度 */
+  longitude: number;
+  /** Accuracy radius in meters (optional) / 精度（メートル） */
+  accuracy?: number;
+  /** Altitude in meters (optional) / 高度（メートル） */
+  altitude?: number;
+  /** Source of the coordinates / 取得元 */
+  source?: GeoSource;
+  /** Timestamp when coordinates were captured / 取得日時 */
+  capturedAt?: string;
+}
+
+/**
+ * Geo-bounds for area representation
+ * 地理的境界（範囲表現用）
+ */
+export interface GeoBounds {
+  /** Northeast corner / 北東端 */
+  northeast: {
+    latitude: number;
+    longitude: number;
+  };
+  /** Southwest corner / 南西端 */
+  southwest: {
+    latitude: number;
+    longitude: number;
+  };
+}
+
+/**
+ * Address with geo-coordinates relationship
+ * 住所と緯度経度の関係性
+ * 
+ * This type represents the mapping between an address and its geographic location,
+ * enabling the "insurance" (保険) feature where coordinates serve as a fallback
+ * verification mechanism.
+ */
+export interface GeoAddress {
+  /** Primary address PID */
+  pid: string;
+  /** Geographic center point / 中心座標 */
+  center: GeoCoordinates;
+  /** Geographic bounds of the address area / 住所範囲 */
+  bounds?: GeoBounds;
+  /** Verification status / 検証状態 */
+  verified?: boolean;
+  /** Last verified timestamp / 最終検証日時 */
+  verifiedAt?: string;
+}
+
+/**
+ * Geo-verification result
+ * 緯度経度を用いた住所検証結果（保険機能）
+ */
+export interface GeoVerificationResult {
+  /** Whether the coordinates match the address / 座標と住所の一致 */
+  valid: boolean;
+  /** Confidence score (0-1) / 信頼度スコア */
+  confidence: number;
+  /** Distance from expected location in meters / 期待位置からの距離 */
+  distance: number;
+  /** Whether within acceptable tolerance / 許容範囲内か */
+  withinTolerance: boolean;
+  /** Suggested PID if coordinates indicate different address / 候補PID */
+  suggestedPid?: string;
+  /** Verification method used / 検証方法 */
+  method: 'bounds' | 'center' | 'reverse_geocode';
+}
+
+/**
+ * Geocoding request
+ * ジオコーディングリクエスト
+ */
+export interface GeocodingRequest {
+  /** Address input for forward geocoding */
+  address?: AddressInput;
+  /** PID for PID-based geocoding */
+  pid?: string;
+  /** Coordinates for reverse geocoding */
+  coordinates?: GeoCoordinates;
+  /** Preferred language for results */
+  language?: string;
+}
+
+/**
+ * Geocoding result
+ * ジオコーディング結果
+ */
+export interface GeocodingResult {
+  /** Success status */
+  success: boolean;
+  /** Resolved coordinates (for forward geocoding) */
+  coordinates?: GeoCoordinates;
+  /** Resolved address (for reverse geocoding) */
+  address?: AddressInput;
+  /** Resolved PID */
+  pid?: string;
+  /** Confidence score (0-1) */
+  confidence: number;
+  /** Alternative results */
+  alternatives?: Array<{
+    coordinates?: GeoCoordinates;
+    address?: AddressInput;
+    pid?: string;
+    confidence: number;
+  }>;
+  /** Error message if failed */
+  error?: string;
+}
+
+/**
+ * Geo-insurance configuration
+ * 緯度経度保険設定
+ * 
+ * Configuration for using coordinates as address verification fallback
+ */
+export interface GeoInsuranceConfig {
+  /** Enable geo-insurance feature / 緯度経度保険を有効化 */
+  enabled: boolean;
+  /** Maximum acceptable distance in meters / 最大許容距離（メートル） */
+  toleranceMeters: number;
+  /** Minimum confidence threshold (0-1) / 最小信頼度閾値 */
+  minConfidence: number;
+  /** Whether to auto-correct address based on coordinates / 座標に基づく住所自動補正 */
+  autoCorrect: boolean;
+  /** Fallback behavior when address verification fails */
+  fallbackBehavior: 'reject' | 'warn' | 'accept_with_flag';
+}

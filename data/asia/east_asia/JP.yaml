@@ -137,3 +137,34 @@ pos:
     typical_close: "20:00"
     sunday_trading: true
     public_holidays_trading: true
+
+# 緯度経度関連情報（Geo-coordinates）
+geo:
+  # 日本の地理的中心（Center of Japan - approximate）
+  center:
+    latitude: 36.2048
+    longitude: 138.2529
+    accuracy: 1000
+    source: database
+    captured_at: "2024-01-01T00:00:00Z"
+  
+  # 日本の地理的範囲（Geographical bounds of Japan）
+  bounds:
+    northeast:
+      latitude: 45.5220
+      longitude: 153.9870
+    southwest:
+      latitude: 24.0500
+      longitude: 122.9340
+  
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+
+# 緯度経度保険設定（Geo-Insurance Configuration）
+# 配送・住所検証における座標活用のフォールバック機能
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

@@ -35,6 +35,15 @@ export type {
   PIDEncodingOptions,
   NormalizedAddress,
   WaybillPayload,
+  // Geo-coordinates types (緯度経度)
+  GeoSource,
+  GeoCoordinates,
+  GeoBounds,
+  GeoAddress,
+  GeoVerificationResult,
+  GeocodingRequest,
+  GeocodingResult,
+  GeoInsuranceConfig,
 } from './types';
 
 // Client
@@ -59,4 +68,25 @@ export type { FormatOptions } from './formatter';
 // Loader
 export { createDataLoader, dataLoader } from './loader';
 export type { DataLoaderConfig } from './loader';
+
+// Geocoding (緯度経度関連機能)
+export {
+  // Coordinate validation
+  validateCoordinates,
+  isWithinBounds,
+  // Distance calculation
+  calculateDistance,
+  getBoundsCenter,
+  // Geo-insurance (緯度経度を保険とする技術)
+  defaultGeoInsuranceConfig,
+  verifyAddressWithGeo,
+  findBestMatchingAddress,
+  // Coordinate formatting
+  formatCoordinates,
+  parseCoordinates,
+  convertCoordinateFormat,
+  // Geo-address creation
+  createGeoAddress,
+  createBoundsFromRadius,
+} from './geocode';
 
