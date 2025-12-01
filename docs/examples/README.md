@@ -1,7 +1,12 @@
-🚚 配送実務（届くレベル）スキーマ
+# サンプルデータ / Example Data
+
+このドキュメントでは、World Address YAMLプロジェクトの各スキーマレベルの具体的な使用例を示しています。
+
+## 🚚 配送実務（届くレベル）スキーマ
 
 👉 ゴール：最小限の入力でも確実に届く。フォーム設計や配送ラベル生成向け。
 
+```yaml
 name: 
   en: Afghanistan
 
@@ -42,21 +47,22 @@ address_format:
 
 examples:
   international: "Mr. Ahmad Khan, Karte Parwan Street 15, Kabul, Afghanistan 1001"
+```
 
-特徴
+### 特徴
 
-必須フィールドだけ
+- 必須フィールドだけ
+- 言語は英語＋現地語（英語必須フラグあり）
+- 郵便番号は正規表現のみ
+- サンプル住所は国際配送向けに1つ
 
-言語は英語＋現地語（英語必須フラグあり）
+---
 
-郵便番号は正規表現のみ
-
-サンプル住所は国際配送向けに1つ
-
-📚 研究分析（フルレベル）スキーマ
+## 📚 研究分析（フルレベル）スキーマ
 
 👉 ゴール：各国の住所制度を比較・分析・標準化する研究用途。階層・多言語・歴史も含む。
 
+```yaml
 name:
   en: Afghanistan
   fa: افغانستان
@@ -147,11 +153,15 @@ examples:
   domestic_raw: "ولایت کابل، شهر کابل، کارته پروان، سرک ۱۵"
   domestic_normalized: "Kabul Province, Kabul City, Karte Parwan Street 15"
   international: "Room 1205, Floor 12, Azadi Tower Complex, Karte Parwan Street 15, Kabul, Afghanistan 1001"
+```
 
-🏪 POS（販売時点情報管理）スキーマ
+---
+
+## 🏪 POS（販売時点情報管理）スキーマ
 
 👉 ゴール：POS システムでの決済・レシート発行・税務処理に必要な情報を提供。小売・飲食店向け。
 
+```yaml
 name:
   en: Japan
   local:
@@ -231,17 +241,13 @@ business_hours:
   typical_close: "20:00"
   sunday_trading: true
   public_holidays_trading: true
+```
 
-特徴
+### 特徴
 
-通貨情報（ISO 4217 コード、記号、小数点桁数）
-
-税制（消費税率、軽減税率、内税/外税）
-
-レシート要件（必須項目、電子レシート可否、保存義務期間）
-
-決済手段（主要な決済方法と普及度）
-
-ロケール（日付・時刻形式、タイムゾーン）
-
-営業時間慣習（日曜・祝日営業の一般性）
+- 通貨情報（ISO 4217 コード、記号、小数点桁数）
+- 税制（消費税率、軽減税率、内税/外税）
+- レシート要件（必須項目、電子レシート可否、保存義務期間）
+- 決済手段（主要な決済方法と普及度）
+- ロケール（日付・時刻形式、タイムゾーン）
+- 営業時間慣習（日曜・祝日営業の一般性）

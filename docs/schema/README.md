@@ -1,4 +1,12 @@
-🚚 配送実務レベル（届くレベル）型
+# スキーマ型定義 / Schema Type Definitions
+
+このドキュメントでは、World Address YAMLプロジェクトで使用するスキーマ型を定義しています。
+
+## 🚚 配送実務レベル（届くレベル）型
+
+最小限の入力で確実に届くことを目指した、フォーム設計や配送ラベル生成向けのスキーマです。
+
+```yaml
 name:                     # 国名
   en: string              # 英語名（必須）
 
@@ -37,8 +45,13 @@ address_format:           # 住所フォーマット
 
 examples:
   international: string   # 国際配送ラベルの例
+```
 
-📚 研究レベル（学術・比較用）型
+## 📚 研究レベル（学術・比較用）型
+
+各国の住所制度を比較・分析・標準化する研究用途向けの詳細スキーマです。
+
+```yaml
 name:                     # 国名（多言語対応）
   en: string              # 英語名
   local:                  # 現地名（複数可）
@@ -142,8 +155,13 @@ examples:                 # 住所例
   domestic_raw: string         # 現地そのまま
   domestic_normalized: string  # 正規化後
   international: string        # 国際配送用
+```
 
-🏪 POSレベル（販売時点情報管理用）型
+## 🏪 POSレベル（販売時点情報管理用）型
+
+POSシステムでの決済・レシート発行・税務処理に必要な情報を提供する、小売・飲食店向けのスキーマです。
+
+```yaml
 name:                     # 国名（多言語対応）
   en: string              # 英語名
   local:                  # 現地名（複数可）
@@ -203,3 +221,4 @@ business_hours:           # 営業時間慣習
   typical_close: string   # 一般的な閉店時間（例: "20:00"）
   sunday_trading: boolean # 日曜営業の一般性
   public_holidays_trading: boolean # 祝日営業の一般性
+```

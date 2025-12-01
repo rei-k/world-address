@@ -2,9 +2,10 @@
  * @vey/core - World Address SDK Core
  *
  * Universal address format handling, validation, and formatting
+ * With AI/Automation, POS Hardware, Logistics, and System features
  */
 
-// Types
+// Core Types
 export type {
   Language,
   LocalName,
@@ -59,19 +60,3 @@ export type { FormatOptions } from './formatter';
 export { createDataLoader, dataLoader } from './loader';
 export type { DataLoaderConfig } from './loader';
 
-// PID (Place ID) module
-export {
-  encodePID,
-  decodePID,
-  validatePID,
-  createPID,
-  parsePID,
-  generatePIDFromAddress,
-  addCollisionCounter,
-  removeCollisionCounter,
-  extractPIDPath,
-  comparePIDHierarchy,
-  isPIDParent,
-  getPIDDepth,
-  createWaybillPayload,
-} from './pid';

@@ -22,40 +22,53 @@
 
 ```
 world-address-yaml/
-├── africa/                 # アフリカ
-│   ├── central_africa/
-│   ├── eastern_africa/
-│   ├── northern_africa/
-│   ├── southern_africa/
-│   └── west_africa/
-├── americas/               # アメリカ大陸
-│   ├── caribbean/
-│   ├── central_america/
-│   ├── north_america/
-│   └── south_america/
-├── antarctica/             # 南極
-│   ├── claims/             # 領有権主張地域
-│   └── stations/           # 研究基地
-├── asia/                   # アジア
-│   ├── central_asia/
-│   ├── east_asia/
-│   ├── south_asia/
-│   ├── southeast_asia/
-│   └── west_asia/
-├── europe/                 # ヨーロッパ
-│   ├── caucasus/
-│   ├── eastern_europe/
-│   ├── northern_europe/
-│   ├── southeastern_europe/
-│   ├── southern_europe/
-│   └── western_europe/
-├── oceania/                # オセアニア
-│   ├── australia_new_zealand/
-│   ├── melanesia/
-│   ├── micronesia/
-│   └── polynesia/
-├── 型/                     # スキーマ型定義
-└── 例/                     # サンプルデータ
+├── data/                     # 住所データ（YAML・JSON）
+│   ├── africa/               # アフリカ
+│   │   ├── central_africa/
+│   │   ├── eastern_africa/
+│   │   ├── northern_africa/
+│   │   ├── southern_africa/
+│   │   └── west_africa/
+│   ├── americas/             # アメリカ大陸
+│   │   ├── caribbean/
+│   │   ├── central_america/
+│   │   ├── north_america/
+│   │   └── south_america/
+│   ├── antarctica/           # 南極
+│   │   ├── claims/           # 領有権主張地域
+│   │   └── stations/         # 研究基地
+│   ├── asia/                 # アジア
+│   │   ├── central_asia/
+│   │   ├── east_asia/
+│   │   ├── south_asia/
+│   │   ├── southeast_asia/
+│   │   └── west_asia/
+│   ├── europe/               # ヨーロッパ
+│   │   ├── caucasus/
+│   │   ├── eastern_europe/
+│   │   ├── northern_europe/
+│   │   ├── southeastern_europe/
+│   │   ├── southern_europe/
+│   │   └── western_europe/
+│   └── oceania/              # オセアニア
+│       ├── australia_new_zealand/
+│       ├── melanesia/
+│       ├── micronesia/
+│       └── polynesia/
+├── docs/                     # ドキュメント
+│   ├── schema/               # スキーマ型定義
+│   └── examples/             # サンプルデータ
+├── sdk/                      # 開発者向けSDK
+│   ├── core/                 # コアSDK
+│   ├── react/                # React用コンポーネント
+│   ├── vue/                  # Vue用コンポーザブル
+│   ├── widget/               # ユニバーサルウィジェット
+│   ├── webhooks/             # Webhookユーティリティ
+│   ├── qr-nfc/               # QRコード・NFC統合
+│   ├── graphql/              # GraphQLスキーマ
+│   ├── grpc/                 # gRPCプロトコル定義
+│   └── cli/                  # CLIツール
+└── README.md                 # プロジェクト説明
 ```
 
 ## 📝 データ形式
@@ -368,7 +381,7 @@ if (result.valid) {
 ```python
 import yaml
 
-with open('asia/east_asia/JP.yaml', 'r', encoding='utf-8') as f:
+with open('data/asia/east_asia/JP.yaml', 'r', encoding='utf-8') as f:
     japan_data = yaml.safe_load(f)
 
 print(japan_data['name']['en'])  # Japan
@@ -379,7 +392,7 @@ print(japan_data['address_format']['postal_code']['regex'])  # ^[0-9]{3}-[0-9]{4
 ```python
 import json
 
-with open('asia/east_asia/JP.json', 'r', encoding='utf-8') as f:
+with open('data/asia/east_asia/JP.json', 'r', encoding='utf-8') as f:
     japan_data = json.load(f)
 
 print(japan_data['name']['en'])  # Japan
@@ -391,7 +404,7 @@ print(japan_data['address_format']['postal_code']['regex'])  # ^[0-9]{3}-[0-9]{4
 const yaml = require('js-yaml');
 const fs = require('fs');
 
-const japanData = yaml.load(fs.readFileSync('asia/east_asia/JP.yaml', 'utf8'));
+const japanData = yaml.load(fs.readFileSync('data/asia/east_asia/JP.yaml', 'utf8'));
 console.log(japanData.name.en);  // Japan
 ```
 
@@ -399,7 +412,7 @@ console.log(japanData.name.en);  // Japan
 ```javascript
 const fs = require('fs');
 
-const japanData = JSON.parse(fs.readFileSync('asia/east_asia/JP.json', 'utf8'));
+const japanData = JSON.parse(fs.readFileSync('data/asia/east_asia/JP.json', 'utf8'));
 console.log(japanData.name.en);  // Japan
 ```
 
@@ -409,7 +422,7 @@ console.log(japanData.name.en);  // Japan
 
 1. 適切な大陸・地域のディレクトリに移動
 2. ISO 3166-1 alpha-2コードをファイル名として使用
-3. `型/README.md` のスキーマに従ってYAMLファイルを作成
+3. `docs/schema/README.md` のスキーマに従ってYAMLファイルを作成
 4. 対応するJSONファイルも作成（YAMLから自動変換可能）
 5. Pull Requestを作成
 

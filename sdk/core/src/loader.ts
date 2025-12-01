@@ -52,14 +52,14 @@ export function createDataLoader(config: DataLoaderConfig = {}) {
       // Map country codes to their file paths
       const countryPaths: Record<string, string> = {
         // East Asia
-        JP: 'asia/east_asia/JP.json',
-        CN: 'asia/east_asia/CN.json',
-        KR: 'asia/east_asia/KR.json',
-        KP: 'asia/east_asia/KP.json',
-        TW: 'asia/east_asia/TW.json',
-        HK: 'asia/east_asia/HK.json',
-        MO: 'asia/east_asia/MO.json',
-        MN: 'asia/east_asia/MN.json',
+        JP: 'data/asia/east_asia/JP.json',
+        CN: 'data/asia/east_asia/CN.json',
+        KR: 'data/asia/east_asia/KR.json',
+        KP: 'data/asia/east_asia/KP.json',
+        TW: 'data/asia/east_asia/TW.json',
+        HK: 'data/asia/east_asia/HK.json',
+        MO: 'data/asia/east_asia/MO.json',
+        MN: 'data/asia/east_asia/MN.json',
         // Add more mappings as needed
       };
 
