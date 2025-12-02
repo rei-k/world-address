@@ -64,9 +64,15 @@ console.log(pid); // "JP-13-113-01-T07-B12-BN02-R342"
 
 ### ドキュメント
 
+#### システム設計
 - 📖 [クラウド住所帳システム概要](./docs/cloud-address-book.md) - システムの全体像と主要フロー
 - 🏗️ [システムアーキテクチャ](./docs/cloud-address-book-architecture.md) - 技術アーキテクチャとデータフロー
+- 🔧 [サーバーサイドアーキテクチャ](./docs/server-architecture.md) - コアAPI・SDK役割整理
+- 🌐 [SDK言語・エコシステム分類](./docs/sdk-classification.md) - 各言語向けSDK仕様
+
+#### 実装ガイド
 - 💻 [実装ガイド](./docs/cloud-address-book-implementation.md) - コード例とベストプラクティス
+- 🛒 [ECサイト統合フロー](./docs/ec-integration-flow.md) - チェックアウトフロー完全ガイド
 - 🔐 [ZKPプロトコル](./docs/zkp-protocol.md) - ゼロ知識証明プロトコルの詳細
 - 📚 [API仕様](./docs/zkp-api.md) - APIリファレンス
 
