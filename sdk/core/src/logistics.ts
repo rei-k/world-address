@@ -26,10 +26,11 @@ export type CarrierCode =
   | 'ups'
   | 'usps'
   | 'ems'
-  | 'yamato'     // ヤマト運輸
-  | 'sagawa'     // 佐川急便
-  | 'jppost'     // 日本郵便
-  | 'sf_express' // SF Express
+  | 'yamato'       // ヤマト運輸
+  | 'sagawa'       // 佐川急便
+  | 'jppost'       // 日本郵便
+  | 'sf_express'   // SF Express (顺丰速运)
+  | 'jd_logistics' // JD Logistics (京东物流)
   | 'aramex'
   | 'dpd'
   | 'tnt'
@@ -745,4 +746,773 @@ export interface LogisticsService {
     currentStatus: string;
     estimatedDelivery?: string;
   }>;
+}
+
+// ============================================================================
+// Community Logistics (コミュニティ物流)
+// ============================================================================
+
+/**
+ * Consolidated Shipping (ご近所シェア配送)
+ * Community-based shipping where neighbors consolidate shipments to save on shipping costs
+ */
+
+/**
+ * Consolidated shipping participant
+ */
+export interface ConsolidatedParticipant {
+  /** User identifier */
+  userId: string;
+  /** User name */
+  name: string;
+  /** Package count */
+  packageCount: number;
+  /** Total weight */
+  totalWeight: {
+    value: number;
+    unit: WeightUnit;
+  };
+  /** User's share of total cost */
+  costShare?: number;
+  /** Participant role */
+  role: 'organizer' | 'participant';
+  /** Join timestamp */
+  joinedAt: string;
+  /** Pickup address */
+  pickupAddress: AddressInput;
+}
+
+/**
+ * Consolidated shipping group
+ */
+export interface ConsolidatedShippingGroup {
+  /** Group identifier */
+  groupId: string;
+  /** Group name */
+  name: string;
+  /** Location (building/office name) */
+  location: string;
+  /** Pickup address */
+  pickupAddress: AddressInput;
+  /** Organizer */
+  organizer: ConsolidatedParticipant;
+  /** Participants */
+  participants: ConsolidatedParticipant[];
+  /** Total participants */
+  totalParticipants: number;
+  /** Maximum participants allowed */
+  maxParticipants?: number;
+  /** Group status */
+  status: 'open' | 'full' | 'scheduled' | 'picked_up' | 'completed' | 'cancelled';
+  /** Scheduled pickup time */
+  scheduledPickup?: PickupWindow;
+  /** Carrier */
+  carrier?: CarrierCode;
+  /** Service level */
+  serviceLevel?: ServiceLevel;
+  /** Total cost */
+  totalCost?: {
+    amount: number;
+    currency: string;
+  };
+  /** Cost per participant (split equally or by weight) */
+  costSplitMethod: 'equal' | 'by_weight' | 'by_package';
+  /** Created timestamp */
+  createdAt: string;
+  /** Expiry timestamp (auto-close if not full) */
+  expiresAt?: string;
+}
+
+/**
+ * Consolidated shipping request
+ */
+export interface ConsolidatedShippingRequest {
+  /** Location identifier */
+  location: string;
+  /** Pickup address */
+  pickupAddress: AddressInput;
+  /** Organizer info */
+  organizer: {
+    userId: string;
+    name: string;
+    phone: string;
+    email?: string;
+  };
+  /** Initial packages */
+  packages: PackageInfo[];
+  /** Maximum participants */
+  maxParticipants?: number;
+  /** Preferred carriers */
+  preferredCarriers?: CarrierCode[];
+  /** Service level */
+  serviceLevel?: ServiceLevel;
+  /** Cost split method */
+  costSplitMethod: 'equal' | 'by_weight' | 'by_package';
+  /** Pickup time window */
+  pickupWindow: PickupWindow;
+  /** Group name */
+  groupName?: string;
+}
+
+/**
+ * Join consolidated shipping request
+ */
+export interface JoinConsolidatedRequest {
+  /** Group ID to join */
+  groupId: string;
+  /** Participant info */
+  participant: {
+    userId: string;
+    name: string;
+    phone: string;
+    email?: string;
+  };
+  /** Packages to add */
+  packages: PackageInfo[];
+  /** Pickup address (must match group location) */
+  pickupAddress: AddressInput;
+}
+
+/**
+ * Consolidated shipping response
+ */
+export interface ConsolidatedShippingResponse {
+  /** Whether creation was successful */
+  success: boolean;
+  /** Created group */
+  group?: ConsolidatedShippingGroup;
+  /** Shareable group link */
+  groupLink?: string;
+  /** QR code for joining */
+  qrCode?: string;
+  /** Error message if failed */
+  error?: string;
+}
+
+/**
+ * Crowdsourced Delivery (ついでに持って行って機能)
+ * Uber-like logistics where travelers carry packages for others
+ */
+
+/**
+ * Traveler profile for crowdsourced delivery
+ */
+export interface TravelerProfile {
+  /** Traveler user ID */
+  userId: string;
+  /** Traveler name */
+  name: string;
+  /** Trust score (e.g., Alipay Sesame Credit) */
+  trustScore?: number;
+  /** Trust provider */
+  trustProvider?: 'alipay_sesame' | 'wechat_pay' | 'platform_rating';
+  /** Verified identity */
+  identityVerified: boolean;
+  /** Average rating */
+  rating?: number;
+  /** Total deliveries completed */
+  deliveriesCompleted: number;
+  /** Available capacity */
+  capacity?: {
+    maxWeight: {
+      value: number;
+      unit: WeightUnit;
+    };
+    maxDimensions?: PackageDimensions;
+  };
+}
+
+/**
+ * Crowdsourced delivery route
+ */
+export interface CrowdsourcedRoute {
+  /** Route identifier */
+  routeId: string;
+  /** Traveler */
+  traveler: TravelerProfile;
+  /** Origin */
+  origin: AddressInput;
+  /** Destination */
+  destination: AddressInput;
+  /** Departure date/time */
+  departureTime: string;
+  /** Arrival date/time */
+  arrivalTime: string;
+  /** Transport mode */
+  transportMode: 'flight' | 'train' | 'bus' | 'car' | 'other';
+  /** Available capacity remaining */
+  availableCapacity: {
+    weight: {
+      value: number;
+      unit: WeightUnit;
+    };
+    dimensions?: PackageDimensions;
+  };
+  /** Price per kg */
+  pricePerKg: {
+    amount: number;
+    currency: string;
+  };
+  /** Route status */
+  status: 'available' | 'full' | 'in_progress' | 'completed' | 'cancelled';
+  /** Created timestamp */
+  createdAt: string;
+}
+
+/**
+ * Crowdsourced delivery request
+ */
+export interface CrowdsourcedDeliveryRequest {
+  /** Package info */
+  package: PackageInfo;
+  /** Pickup location */
+  pickup: AddressInput;
+  /** Delivery location */
+  delivery: AddressInput;
+  /** Required delivery by date */
+  requiredBy?: string;
+  /** Sender info */
+  sender: {
+    userId: string;
+    name: string;
+    phone: string;
+    email?: string;
+  };
+  /** Receiver info */
+  receiver: {
+    name: string;
+    phone: string;
+  };
+  /** Maximum price willing to pay */
+  maxPrice?: {
+    amount: number;
+    currency: string;
+  };
+  /** Insurance required */
+  insuranceRequired?: boolean;
+  /** Special handling instructions */
+  instructions?: string;
+}
+
+/**
+ * Crowdsourced delivery match
+ */
+export interface CrowdsourcedMatch {
+  /** Match identifier */
+  matchId: string;
+  /** Traveler route */
+  route: CrowdsourcedRoute;
+  /** Package request */
+  request: CrowdsourcedDeliveryRequest;
+  /** Match score (0-1) */
+  matchScore: number;
+  /** Estimated price */
+  estimatedPrice: {
+    amount: number;
+    currency: string;
+  };
+  /** Estimated delivery time */
+  estimatedDelivery: string;
+  /** Match status */
+  status: 'proposed' | 'accepted' | 'in_transit' | 'delivered' | 'rejected';
+  /** Created timestamp */
+  createdAt: string;
+}
+
+/**
+ * Crowdsourced delivery response
+ */
+export interface CrowdsourcedDeliveryResponse {
+  /** Whether matching was successful */
+  success: boolean;
+  /** Available matches sorted by score */
+  matches?: CrowdsourcedMatch[];
+  /** Error message if failed */
+  error?: string;
+}
+
+// ============================================================================
+// Cross-Border Social Commerce (Daigou 2.0)
+// ============================================================================
+
+/**
+ * Social commerce product catalog
+ * WeChat Moments integration for social buyers
+ */
+export interface SocialCommerceProduct {
+  /** Product identifier */
+  productId: string;
+  /** Product name */
+  name: string;
+  /** Product description */
+  description?: string;
+  /** Product images */
+  images: string[];
+  /** Price */
+  price: {
+    amount: number;
+    currency: string;
+  };
+  /** Inventory quantity */
+  inventory: number;
+  /** Product category */
+  category?: string;
+  /** Product weight */
+  weight?: {
+    value: number;
+    unit: WeightUnit;
+  };
+  /** Product dimensions */
+  dimensions?: PackageDimensions;
+  /** Source country */
+  sourceCountry: string;
+  /** Created timestamp */
+  createdAt: string;
+}
+
+/**
+ * Social buyer catalog
+ */
+export interface SocialBuyerCatalog {
+  /** Catalog identifier */
+  catalogId: string;
+  /** Buyer identifier */
+  buyerId: string;
+  /** Buyer name */
+  buyerName: string;
+  /** Products */
+  products: SocialCommerceProduct[];
+  /** WeChat sharing enabled */
+  wechatSharingEnabled: boolean;
+  /** Catalog link */
+  catalogLink?: string;
+  /** Created timestamp */
+  createdAt: string;
+  /** Updated timestamp */
+  updatedAt: string;
+}
+
+/**
+ * Social commerce order
+ */
+export interface SocialCommerceOrder {
+  /** Order identifier */
+  orderId: string;
+  /** Product */
+  product: SocialCommerceProduct;
+  /** Quantity */
+  quantity: number;
+  /** Customer info */
+  customer: {
+    name: string;
+    phone: string;
+    wechatId?: string;
+  };
+  /** Delivery address (pre-filled from cloud address book) */
+  deliveryAddress: AddressInput;
+  /** Order total */
+  total: {
+    amount: number;
+    currency: string;
+  };
+  /** Order status */
+  status: 'pending' | 'confirmed' | 'shipped' | 'delivered' | 'cancelled';
+  /** Created timestamp */
+  createdAt: string;
+}
+
+/**
+ * Inventory item for WMS functionality
+ */
+export interface InventoryItem {
+  /** Item identifier */
+  itemId: string;
+  /** Product reference */
+  productId: string;
+  /** Product name */
+  productName: string;
+  /** Quantity in stock */
+  quantity: number;
+  /** Location (e.g., home storage) */
+  location?: string;
+  /** Product images */
+  images?: string[];
+  /** Weight */
+  weight?: {
+    value: number;
+    unit: WeightUnit;
+  };
+  /** Dimensions */
+  dimensions?: PackageDimensions;
+  /** Purchase date */
+  purchaseDate?: string;
+  /** Expiry date (if applicable) */
+  expiryDate?: string;
+  /** Notes */
+  notes?: string;
+}
+
+/**
+ * Inventory management request
+ */
+export interface InventoryUpdateRequest {
+  /** Buyer identifier */
+  buyerId: string;
+  /** Items to add/update */
+  items: Omit<InventoryItem, 'itemId'>[];
+  /** Operation type */
+  operation: 'add' | 'update' | 'remove' | 'ship';
+}
+
+/**
+ * Inventory shipment (ship from inventory)
+ */
+export interface InventoryShipmentRequest {
+  /** Buyer identifier */
+  buyerId: string;
+  /** Items to ship */
+  items: Array<{
+    itemId: string;
+    quantity: number;
+  }>;
+  /** Delivery address */
+  deliveryAddress: AddressInput;
+  /** Receiver info */
+  receiver: {
+    name: string;
+    phone: string;
+  };
+  /** Carrier */
+  carrier?: CarrierCode;
+  /** Service level */
+  serviceLevel?: ServiceLevel;
+}
+
+/**
+ * Inventory shipment response
+ */
+export interface InventoryShipmentResponse {
+  /** Whether shipment was successful */
+  success: boolean;
+  /** Updated inventory */
+  inventory?: InventoryItem[];
+  /** Shipping label */
+  label?: {
+    trackingNumber: string;
+    labelData: string;
+    labelFormat: 'pdf' | 'zpl' | 'png';
+  };
+  /** Error message if failed */
+  error?: string;
+}
+
+// ============================================================================
+// Digital Handshake Logistics (デジタル・ハンドシェイク物流)
+// ============================================================================
+
+/**
+ * Digital handshake QR/NFC token
+ * Contains shipment information for courier handover
+ */
+export interface DigitalHandshakeToken {
+  /** Token identifier */
+  tokenId: string;
+  /** Waybill number */
+  waybillNumber: string;
+  /** Carrier */
+  carrier: CarrierCode;
+  /** Shipment details */
+  shipment: {
+    origin: AddressInput;
+    destination: AddressInput;
+    packages: PackageInfo[];
+  };
+  /** Sender info */
+  sender: {
+    name: string;
+    phone: string;
+  };
+  /** Receiver info */
+  receiver: {
+    name: string;
+    phone: string;
+  };
+  /** Token type */
+  tokenType: 'pickup' | 'delivery';
+  /** QR code data */
+  qrCode?: string;
+  /** NFC data */
+  nfcData?: string;
+  /** Token status */
+  status: 'pending' | 'scanned' | 'completed' | 'expired';
+  /** Created timestamp */
+  createdAt: string;
+  /** Expires timestamp */
+  expiresAt: string;
+}
+
+/**
+ * Digital handshake event
+ */
+export interface DigitalHandshakeEvent {
+  /** Event identifier */
+  eventId: string;
+  /** Token identifier */
+  tokenId: string;
+  /** Event type */
+  eventType: 'token_created' | 'token_scanned' | 'handover_initiated' | 'handover_completed' | 'handover_failed';
+  /** Actor (user or courier) */
+  actor: {
+    id: string;
+    name: string;
+    role: 'sender' | 'courier' | 'receiver';
+  };
+  /** Location coordinates */
+  location?: {
+    latitude: number;
+    longitude: number;
+  };
+  /** Device info */
+  device?: {
+    type: 'mobile' | 'pda' | 'tablet';
+    id?: string;
+  };
+  /** Event timestamp */
+  timestamp: string;
+  /** Additional metadata */
+  metadata?: Record<string, unknown>;
+}
+
+/**
+ * Digital handshake request
+ */
+export interface DigitalHandshakeRequest {
+  /** Shipment details */
+  shipment: {
+    origin: AddressInput;
+    destination: AddressInput;
+    packages: PackageInfo[];
+  };
+  /** Sender info */
+  sender: {
+    userId: string;
+    name: string;
+    phone: string;
+    email?: string;
+  };
+  /** Receiver info */
+  receiver: {
+    name: string;
+    phone: string;
+  };
+  /** Carrier */
+  carrier: CarrierCode;
+  /** Service code */
+  serviceCode: string;
+  /** Pickup time window */
+  pickupWindow: PickupWindow;
+  /** Pre-validation enabled */
+  preValidation?: boolean;
+}
+
+/**
+ * Digital handshake response
+ */
+export interface DigitalHandshakeResponse {
+  /** Whether request was successful */
+  success: boolean;
+  /** Waybill number */
+  waybillNumber?: string;
+  /** Pickup token (QR/NFC) */
+  pickupToken?: DigitalHandshakeToken;
+  /** Delivery token (QR/NFC) */
+  deliveryToken?: DigitalHandshakeToken;
+  /** Pre-validation result */
+  preValidation?: {
+    addressValid: boolean;
+    itemsAllowed: boolean;
+    errors?: string[];
+  };
+  /** Error message if failed */
+  error?: string;
+}
+
+/**
+ * Handover scan request
+ */
+export interface HandoverScanRequest {
+  /** Token identifier */
+  tokenId: string;
+  /** Scanner (courier) info */
+  scanner: {
+    id: string;
+    name: string;
+    carrier: CarrierCode;
+  };
+  /** Scan location */
+  location?: {
+    latitude: number;
+    longitude: number;
+  };
+  /** Scan timestamp */
+  timestamp: string;
+  /** Scan method */
+  scanMethod: 'qr' | 'nfc' | 'manual';
+}
+
+/**
+ * Handover scan response
+ */
+export interface HandoverScanResponse {
+  /** Whether scan was successful */
+  success: boolean;
+  /** Shipment details */
+  shipment?: {
+    waybillNumber: string;
+    origin: AddressInput;
+    destination: AddressInput;
+    packages: PackageInfo[];
+  };
+  /** Next action */
+  nextAction?: 'print_label' | 'confirm_pickup' | 'deliver' | 'scan_receiver';
+  /** Error message if failed */
+  error?: string;
+}
+
+// ============================================================================
+// China-Specific Carrier Integration
+// ============================================================================
+
+/**
+ * SF Express (顺丰速运) specific types
+ */
+export interface SFExpressConfig {
+  /** SF Express account ID */
+  accountId: string;
+  /** API key */
+  apiKey: string;
+  /** Environment */
+  environment: 'sandbox' | 'production';
+  /** Endpoint */
+  endpoint?: string;
+}
+
+/**
+ * JD Logistics (京东物流) specific types
+ */
+export interface JDLogisticsConfig {
+  /** JD account ID */
+  accountId: string;
+  /** API key */
+  apiKey: string;
+  /** Environment */
+  environment: 'sandbox' | 'production';
+  /** Endpoint */
+  endpoint?: string;
+}
+
+/**
+ * China address standardization request
+ * Standardizes addresses to carrier master data (4-level: province/city/district/street)
+ */
+export interface ChinaAddressStandardizationRequest {
+  /** Raw address input */
+  rawAddress: string;
+  /** Province name (optional, for disambiguation) */
+  province?: string;
+  /** City name (optional, for disambiguation) */
+  city?: string;
+  /** District name (optional, for disambiguation) */
+  district?: string;
+  /** Street/detailed address */
+  street?: string;
+}
+
+/**
+ * China address standardization response
+ */
+export interface ChinaAddressStandardizationResponse {
+  /** Whether standardization was successful */
+  success: boolean;
+  /** Standardized address */
+  standardized?: {
+    /** Province (一级) */
+    province: {
+      code: string;
+      name: string;
+    };
+    /** City (二级) */
+    city: {
+      code: string;
+      name: string;
+    };
+    /** District (三级) */
+    district: {
+      code: string;
+      name: string;
+    };
+    /** Street (四级) */
+    street?: {
+      code?: string;
+      name: string;
+    };
+    /** Detailed address */
+    detail: string;
+    /** Postal code */
+    postalCode?: string;
+  };
+  /** Confidence score (0-1) */
+  confidence: number;
+  /** Alternative matches */
+  alternatives?: Array<{
+    province: { code: string; name: string };
+    city: { code: string; name: string };
+    district: { code: string; name: string };
+    street?: { code?: string; name: string };
+    detail: string;
+    confidence: number;
+  }>;
+  /** Error message if failed */
+  error?: string;
+}
+
+/**
+ * Extended Logistics Service with Community Features
+ */
+export interface CommunityLogisticsService extends LogisticsService {
+  /** Create consolidated shipping group */
+  createConsolidatedShipping(request: ConsolidatedShippingRequest): Promise<ConsolidatedShippingResponse>;
+  
+  /** Join consolidated shipping group */
+  joinConsolidatedShipping(request: JoinConsolidatedRequest): Promise<{ success: boolean; group?: ConsolidatedShippingGroup; error?: string }>;
+  
+  /** Find available traveler routes for crowdsourced delivery */
+  findTravelerRoutes(request: CrowdsourcedDeliveryRequest): Promise<CrowdsourcedDeliveryResponse>;
+  
+  /** Register as traveler for crowdsourced delivery */
+  registerTravelerRoute(route: Omit<CrowdsourcedRoute, 'routeId' | 'status' | 'createdAt'>): Promise<{ success: boolean; route?: CrowdsourcedRoute; error?: string }>;
+  
+  /** Create social buyer catalog */
+  createSocialCatalog(buyerId: string, products: SocialCommerceProduct[]): Promise<{ success: boolean; catalog?: SocialBuyerCatalog; error?: string }>;
+  
+  /** Update inventory */
+  updateInventory(request: InventoryUpdateRequest): Promise<{ success: boolean; inventory?: InventoryItem[]; error?: string }>;
+  
+  /** Ship from inventory */
+  shipFromInventory(request: InventoryShipmentRequest): Promise<InventoryShipmentResponse>;
+  
+  /** Create digital handshake shipment */
+  createDigitalHandshake(request: DigitalHandshakeRequest): Promise<DigitalHandshakeResponse>;
+  
+  /** Scan handover token */
+  scanHandoverToken(request: HandoverScanRequest): Promise<HandoverScanResponse>;
+  
+  /** Standardize China address */
+  standardizeChinaAddress(request: ChinaAddressStandardizationRequest): Promise<ChinaAddressStandardizationResponse>;
+  
+  /** Configure SF Express */
+  configureSFExpress(config: SFExpressConfig): Promise<{ success: boolean; error?: string }>;
+  
+  /** Configure JD Logistics */
+  configureJDLogistics(config: JDLogisticsConfig): Promise<{ success: boolean; error?: string }>;
 }

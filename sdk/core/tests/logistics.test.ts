@@ -16,6 +16,18 @@ import type {
   CarbonOffsetResult,
   DeliveryLocation,
   LogisticsService,
+  // Community Logistics types
+  ConsolidatedShippingGroup,
+  ConsolidatedShippingRequest,
+  CrowdsourcedRoute,
+  CrowdsourcedDeliveryRequest,
+  SocialCommerceProduct,
+  SocialBuyerCatalog,
+  InventoryItem,
+  DigitalHandshakeToken,
+  DigitalHandshakeRequest,
+  ChinaAddressStandardizationRequest,
+  ChinaAddressStandardizationResponse,
 } from '../src/logistics';
 
 describe('Logistics Types', () => {
@@ -288,6 +300,365 @@ describe('Logistics Types', () => {
 
       expect(location.type).toBe('convenience_store');
       expect(location.distance?.value).toBe(0.5);
+    });
+  });
+
+  describe('Community Logistics Types', () => {
+    describe('Consolidated Shipping', () => {
+      it('should support Chinese carriers', () => {
+        const carriers: CarrierCode[] = [
+          'sf_express',
+          'jd_logistics',
+        ];
+
+        expect(carriers).toContain('sf_express');
+        expect(carriers).toContain('jd_logistics');
+      });
+
+      it('should define consolidated shipping group structure', () => {
+        const group: ConsolidatedShippingGroup = {
+          groupId: 'group_001',
+          name: 'Shibuya Mansion Group',
+          location: 'Shibuya Residence Tower',
+          pickupAddress: {
+            street_address: '1-1 Shibuya',
+            city: 'Shibuya-ku',
+            province: 'Tokyo',
+            postal_code: '150-0001',
+            country: 'Japan',
+          },
+          organizer: {
+            userId: 'user_001',
+            name: 'Taro Yamada',
+            packageCount: 2,
+            totalWeight: { value: 3.5, unit: 'kg' },
+            role: 'organizer',
+            joinedAt: '2024-01-15T10:00:00Z',
+            pickupAddress: {
+              street_address: '1-1 Shibuya, Apt 301',
+              city: 'Shibuya-ku',
+              province: 'Tokyo',
+              postal_code: '150-0001',
+              country: 'Japan',
+            },
+          },
+          participants: [],
+          totalParticipants: 1,
+          maxParticipants: 10,
+          status: 'open',
+          costSplitMethod: 'by_weight',
+          createdAt: '2024-01-15T10:00:00Z',
+        };
+
+        expect(group.status).toBe('open');
+        expect(group.costSplitMethod).toBe('by_weight');
+        expect(group.organizer.role).toBe('organizer');
+      });
+
+      it('should define consolidated shipping request structure', () => {
+        const request: ConsolidatedShippingRequest = {
+          location: 'Shibuya Residence Tower',
+          pickupAddress: {
+            street_address: '1-1 Shibuya',
+            city: 'Shibuya-ku',
+            province: 'Tokyo',
+            postal_code: '150-0001',
+            country: 'Japan',
+          },
+          organizer: {
+            userId: 'user_001',
+            name: 'Taro Yamada',
+            phone: '090-1234-5678',
+            email: 'taro@example.com',
+          },
+          packages: [
+            {
+              weight: { value: 2.5, unit: 'kg' },
+              dimensions: {
+                length: 30,
+                width: 20,
+                height: 15,
+                unit: 'cm',
+              },
+            },
+          ],
+          maxParticipants: 10,
+          preferredCarriers: ['sf_express', 'yamato'],
+          serviceLevel: 'standard',
+          costSplitMethod: 'by_weight',
+          pickupWindow: {
+            date: '2024-01-16',
+            startTime: '14:00',
+            endTime: '17:00',
+          },
+        };
+
+        expect(request.preferredCarriers).toContain('sf_express');
+        expect(request.costSplitMethod).toBe('by_weight');
+      });
+    });
+
+    describe('Crowdsourced Delivery', () => {
+      it('should define traveler route structure', () => {
+        const route: CrowdsourcedRoute = {
+          routeId: 'route_001',
+          traveler: {
+            userId: 'user_traveler_001',
+            name: 'Hanako Tanaka',
+            trustScore: 750,
+            trustProvider: 'alipay_sesame',
+            identityVerified: true,
+            rating: 4.8,
+            deliveriesCompleted: 23,
+          },
+          origin: {
+            city: 'Tokyo',
+            country: 'Japan',
+          },
+          destination: {
+            city: 'Osaka',
+            country: 'Japan',
+          },
+          departureTime: '2024-01-20T09:00:00Z',
+          arrivalTime: '2024-01-20T12:00:00Z',
+          transportMode: 'train',
+          availableCapacity: {
+            weight: { value: 5, unit: 'kg' },
+          },
+          pricePerKg: {
+            amount: 500,
+            currency: 'JPY',
+          },
+          status: 'available',
+          createdAt: '2024-01-15T10:00:00Z',
+        };
+
+        expect(route.traveler.trustProvider).toBe('alipay_sesame');
+        expect(route.traveler.identityVerified).toBe(true);
+        expect(route.status).toBe('available');
+      });
+
+      it('should define crowdsourced delivery request structure', () => {
+        const request: CrowdsourcedDeliveryRequest = {
+          package: {
+            weight: { value: 2, unit: 'kg' },
+            dimensions: {
+              length: 30,
+              width: 20,
+              height: 15,
+              unit: 'cm',
+            },
+          },
+          pickup: {
+            city: 'Tokyo',
+            country: 'Japan',
+          },
+          delivery: {
+            city: 'Osaka',
+            country: 'Japan',
+          },
+          sender: {
+            userId: 'user_sender_001',
+            name: 'Taro Yamada',
+            phone: '090-1234-5678',
+          },
+          receiver: {
+            name: 'Jiro Suzuki',
+            phone: '090-8765-4321',
+          },
+          maxPrice: {
+            amount: 1500,
+            currency: 'JPY',
+          },
+          insuranceRequired: true,
+        };
+
+        expect(request.insuranceRequired).toBe(true);
+        expect(request.maxPrice?.currency).toBe('JPY');
+      });
+    });
+
+    describe('Social Commerce (Daigou 2.0)', () => {
+      it('should define social commerce product structure', () => {
+        const product: SocialCommerceProduct = {
+          productId: 'prod_001',
+          name: 'Japanese Snack Set',
+          description: 'Assorted Japanese snacks',
+          images: ['https://example.com/img1.jpg'],
+          price: {
+            amount: 2500,
+            currency: 'JPY',
+          },
+          inventory: 50,
+          category: 'Food & Beverages',
+          weight: { value: 1.5, unit: 'kg' },
+          sourceCountry: 'Japan',
+          createdAt: '2024-01-15T10:00:00Z',
+        };
+
+        expect(product.sourceCountry).toBe('Japan');
+        expect(product.inventory).toBe(50);
+      });
+
+      it('should define social buyer catalog structure', () => {
+        const catalog: SocialBuyerCatalog = {
+          catalogId: 'cat_001',
+          buyerId: 'buyer_001',
+          buyerName: 'Tokyo Daigou Shop',
+          products: [],
+          wechatSharingEnabled: true,
+          catalogLink: 'https://example.com/catalog/cat_001',
+          createdAt: '2024-01-15T10:00:00Z',
+          updatedAt: '2024-01-15T10:00:00Z',
+        };
+
+        expect(catalog.wechatSharingEnabled).toBe(true);
+        expect(catalog.catalogLink).toContain('cat_001');
+      });
+
+      it('should define inventory item structure', () => {
+        const item: InventoryItem = {
+          itemId: 'inv_001',
+          productId: 'prod_001',
+          productName: 'Japanese Snack Set',
+          quantity: 10,
+          location: 'Home Storage - Room A',
+          images: ['https://example.com/img1.jpg'],
+          weight: { value: 1.5, unit: 'kg' },
+          purchaseDate: '2024-01-10',
+          notes: 'Keep in cool place',
+        };
+
+        expect(item.quantity).toBe(10);
+        expect(item.location).toContain('Room A');
+      });
+    });
+
+    describe('Digital Handshake Logistics', () => {
+      it('should define digital handshake token structure', () => {
+        const token: DigitalHandshakeToken = {
+          tokenId: 'token_001',
+          waybillNumber: 'WB123456',
+          carrier: 'sf_express',
+          shipment: {
+            origin: {
+              city: 'Tokyo',
+              country: 'Japan',
+            },
+            destination: {
+              city: 'Osaka',
+              country: 'Japan',
+            },
+            packages: [
+              {
+                weight: { value: 2, unit: 'kg' },
+              },
+            ],
+          },
+          sender: {
+            name: 'Taro Yamada',
+            phone: '090-1234-5678',
+          },
+          receiver: {
+            name: 'Hanako Tanaka',
+            phone: '090-8765-4321',
+          },
+          tokenType: 'pickup',
+          qrCode: 'data:image/png;base64,...',
+          status: 'pending',
+          createdAt: '2024-01-15T10:00:00Z',
+          expiresAt: '2024-01-16T10:00:00Z',
+        };
+
+        expect(token.carrier).toBe('sf_express');
+        expect(token.tokenType).toBe('pickup');
+        expect(token.status).toBe('pending');
+      });
+
+      it('should define digital handshake request structure', () => {
+        const request: DigitalHandshakeRequest = {
+          shipment: {
+            origin: {
+              city: 'Tokyo',
+              country: 'Japan',
+            },
+            destination: {
+              city: 'Osaka',
+              country: 'Japan',
+            },
+            packages: [
+              {
+                weight: { value: 2, unit: 'kg' },
+              },
+            ],
+          },
+          sender: {
+            userId: 'user_001',
+            name: 'Taro Yamada',
+            phone: '090-1234-5678',
+          },
+          receiver: {
+            name: 'Hanako Tanaka',
+            phone: '090-8765-4321',
+          },
+          carrier: 'sf_express',
+          serviceCode: 'SF_EXPRESS_STANDARD',
+          pickupWindow: {
+            date: '2024-01-16',
+            startTime: '14:00',
+            endTime: '17:00',
+          },
+          preValidation: true,
+        };
+
+        expect(request.carrier).toBe('sf_express');
+        expect(request.preValidation).toBe(true);
+      });
+    });
+
+    describe('China Address Standardization', () => {
+      it('should define China address standardization request structure', () => {
+        const request: ChinaAddressStandardizationRequest = {
+          rawAddress: '北京市朝阳区建国路93号万达广场',
+          province: '北京市',
+          city: '北京市',
+          district: '朝阳区',
+          street: '建国路93号万达广场',
+        };
+
+        expect(request.province).toBe('北京市');
+        expect(request.district).toBe('朝阳区');
+      });
+
+      it('should define China address standardization response structure', () => {
+        const response: ChinaAddressStandardizationResponse = {
+          success: true,
+          standardized: {
+            province: {
+              code: '110000',
+              name: '北京市',
+            },
+            city: {
+              code: '110100',
+              name: '北京市',
+            },
+            district: {
+              code: '110105',
+              name: '朝阳区',
+            },
+            street: {
+              name: '建国路',
+            },
+            detail: '93号万达广场',
+            postalCode: '100025',
+          },
+          confidence: 0.95,
+        };
+
+        expect(response.success).toBe(true);
+        expect(response.standardized?.province.name).toBe('北京市');
+        expect(response.confidence).toBeGreaterThan(0.9);
+      });
     });
   });
 });
