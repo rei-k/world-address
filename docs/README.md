@@ -7,8 +7,11 @@
 | ファイル/ディレクトリ | 説明 |
 |---------------------|------|
 | [cloud-address-book.md](./cloud-address-book.md) | クラウド住所帳システム - ZKPを中心としたプライバシー保護型住所管理システムの概要 |
+| [address-search-engine.md](./address-search-engine.md) | **NEW!** 住所検索エンジン - 検索UIで入力工程を削除する新規格 |
+| [address-search-engine-api.md](./address-search-engine-api.md) | **NEW!** 住所検索エンジンAPI - 検索エンジンのAPI仕様とリファレンス |
 | [cloud-address-book-architecture.md](./cloud-address-book-architecture.md) | クラウド住所帳アーキテクチャ - システムアーキテクチャとデータフロー |
 | [cloud-address-book-implementation.md](./cloud-address-book-implementation.md) | 実装ガイド - コード例と実装ベストプラクティス |
+| [ec-integration-flow.md](./ec-integration-flow.md) | ECサイト統合フロー - チェックアウトフロー完全ガイド |
 | [zkp-protocol.md](./zkp-protocol.md) | ZKPプロトコル - ゼロ知識証明プロトコルの詳細仕様 |
 | [zkp-api.md](./zkp-api.md) | ZKP API - API仕様とリファレンス |
 | [schema/](./schema/) | スキーマ型定義 - 各スキーマレベル（配送実務・研究・POS）の型定義 |
@@ -20,7 +23,28 @@
 
 ### 主要ドキュメント
 
-1. **[クラウド住所帳システム](./cloud-address-book.md)**
+1. **[住所検索エンジン](./address-search-engine.md)** 🆕
+   - コア概念: 入力工程の削除
+   - システムアーキテクチャ（5層構造）
+   - 検索エンジンの役割（Identity vs Index & Routing）
+   - 検索体験フロー
+   - Permissions Index構造
+   - 解除・権限モデル
+   - ルーティングレイヤー
+   - プロダクト競争力
+   - 実装ガイド
+
+2. **[住所検索エンジンAPI](./address-search-engine-api.md)** 🆕
+   - 認証
+   - 検索API
+   - 権限管理API
+   - ルーティングAPI
+   - 監査API
+   - エラーハンドリング
+   - Webhooks
+   - SDK使用例
+
+3. **[クラウド住所帳システム](./cloud-address-book.md)**
    - システムの登場人物（役割）
    - 住所ID（PID）の扱い方
    - 住所登録フロー
@@ -32,7 +56,7 @@
    - 実装技術スタック
    - ロードマップ（v1-v5）
 
-2. **[システムアーキテクチャ](./cloud-address-book-architecture.md)**
+4. **[システムアーキテクチャ](./cloud-address-book-architecture.md)**
    - システム全体構成
    - データフロー詳細
    - コンポーネント設計
@@ -40,7 +64,7 @@
    - データモデル
    - APIエンドポイント設計
 
-3. **[実装ガイド](./cloud-address-book-implementation.md)**
+5. **[実装ガイド](./cloud-address-book-implementation.md)**
    - 開発環境セットアップ
    - 基本的な使用例
    - 住所登録の実装
@@ -51,12 +75,14 @@
 
 ### 特徴
 
+- 🔍 **入力工程の削除**: 検索UIで住所入力フォームを完全に置き換え
 - 🔒 **プライバシー保護**: ECサイトは生住所を一切見ない
 - ✅ **検証可能**: ZK証明で配送可能性を検証
 - 📊 **監査可能**: すべてのアクセスを記録
-- 🔑 **ユーザー主権**: ユーザーが自分の住所データを管理
+- 🔑 **ユーザー主権**: ユーザーが自分の住所データと提出権を管理
 - 🌍 **多国対応**: すべての国の住所形式に対応
 - 📱 **モバイル対応**: Google Wallet/Apple Wallet統合
+- 🔄 **提出権管理**: User-Controlled Revocationによる完全な権限制御
 
 ## 📚 スキーマレベル
 
