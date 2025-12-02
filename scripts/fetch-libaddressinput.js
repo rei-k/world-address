@@ -13,6 +13,9 @@ const path = require('path');
 
 const BASE_URL = 'https://chromium-i18n.appspot.com/ssl-address';
 
+// Additional fields to extract from libaddressinput data
+const ADDITIONAL_FIELDS = ['id', 'sub_isoids', 'sub_lnames', 'sub_mores', 'sub_zips', 'sub_zipexs'];
+
 // ISO 3166-1 alpha-2 country codes
 // Based on the existing data structure in this repository
 const COUNTRY_CODES = [
@@ -109,8 +112,13 @@ function jsonToYaml(obj, indent = 0) {
       });
     } else if (typeof value === 'string') {
       // Escape special characters in YAML
-      if (value.includes('\n') || value.includes(':') || value.includes('#')) {
-        yaml += `${indentStr}${key}: "${value.replace(/"/g, '\\"')}"\n`;
+      // Check for characters that require quoting in YAML
+      const needsQuoting = /[:\n#\[\]{}&*!|>'"%@`]/.test(value) || 
+                          value.trim() !== value || 
+                          /^[-?]/.test(value);
+      
+      if (needsQuoting) {
+        yaml += `${indentStr}${key}: "${value.replace(/"/g, '\\"').replace(/\\/g, '\\\\')}"\n`;
       } else {
         yaml += `${indentStr}${key}: ${value}\n`;
       }
@@ -168,7 +176,7 @@ function transformLibAddressData(countryCode, data) {
   }
   
   // Add other useful fields
-  ['id', 'sub_isoids', 'sub_lnames', 'sub_mores', 'sub_zips', 'sub_zipexs'].forEach(field => {
+  ADDITIONAL_FIELDS.forEach(field => {
     if (data[field]) {
       transformed.libaddressinput[field] = data[field];
     }

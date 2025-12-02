@@ -8,8 +8,8 @@
 const path = require('path');
 const fs = require('fs');
 
-// Import the transformation function
-const { transformLibAddressData } = require('./fetch-libaddressinput.js');
+// Import the transformation function using proper path resolution
+const { transformLibAddressData } = require(path.join(__dirname, 'fetch-libaddressinput.js'));
 
 // Mock libaddressinput data for Japan
 const mockJPData = {
