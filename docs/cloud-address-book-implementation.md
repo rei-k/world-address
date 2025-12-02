@@ -784,6 +784,16 @@ class CloudAddressBook {
   async addFriend(qrData: string, label: string) {
     const friendData = JSON.parse(qrData);
     
+    // Simple hash function for QR verification
+    const hashData = async (data: string) => {
+      const encoder = new TextEncoder();
+      const dataBuffer = encoder.encode(data);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
+      return Array.from(new Uint8Array(hashBuffer))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    };
+    
     const friendEntry = {
       owner_did: this.userDid,
       friend_did: friendData.did,
@@ -830,7 +840,13 @@ async function main() {
   const qr = await addressBook.generateQR(result.pid);
   console.log('QR code generated');
   
-  // 友達追加
+  // 友達追加（例: 他のユーザーからQRコードを取得）
+  const friendQrData = JSON.stringify({
+    version: '1.0',
+    did: 'did:key:z6MkfD6ccYE22Y3tJS9rLvvd5JYDCDQBnLYLdPzPgWJwPQ4x',
+    pid: 'JP-14-201-05-T03-B08-BN01-R201',
+    timestamp: new Date().toISOString(),
+  });
   const friend = await addressBook.addFriend(friendQrData, '田中さん');
   console.log('Friend added:', friend.label);
 }

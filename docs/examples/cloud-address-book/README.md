@@ -84,6 +84,7 @@ completeScenario().catch(console.error);
 - [Architecture](../../cloud-address-book-architecture.md)
 - [Implementation Guide](../../cloud-address-book-implementation.md)
 - [ZKP Protocol](../../zkp-protocol.md)
+- [ZKP API](../../zkp-api.md)
 
 ---
 

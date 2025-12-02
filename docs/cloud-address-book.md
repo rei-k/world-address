@@ -453,7 +453,8 @@ import { MerkleTree } from 'merkletreejs';
 - [ZKP Protocol Documentation](./zkp-protocol.md) - ZKPプロトコル詳細
 - [ZKP API Documentation](./zkp-api.md) - API仕様
 - [Schema Documentation](./schema/README.md) - スキーマ定義
-- [Examples](./examples/zkp/) - 実装例
+- [Cloud Address Book Examples](./examples/cloud-address-book/) - クラウド住所帳実装例
+- [ZKP Examples](./examples/zkp/) - ZKP実装例
 
 ---
 
