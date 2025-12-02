@@ -8,6 +8,7 @@
 |---------------------|------|
 | [cloud-address-book.md](./cloud-address-book.md) | クラウド住所帳システム - ZKPを中心としたプライバシー保護型住所管理システムの概要 |
 | [address-search-engine.md](./address-search-engine.md) | **NEW!** 住所検索エンジン - 検索UIで入力工程を削除する新規格 |
+| [ai-capabilities.md](./ai-capabilities.md) | **NEW!** AI機能強化戦略 - 検索精度・安全性・相互運用性を向上させる5つのAI機能 |
 | [address-search-engine-api.md](./address-search-engine-api.md) | **NEW!** 住所検索エンジンAPI - 検索エンジンのAPI仕様とリファレンス |
 | [cloud-address-book-architecture.md](./cloud-address-book-architecture.md) | クラウド住所帳アーキテクチャ - システムアーキテクチャとデータフロー |
 | [cloud-address-book-implementation.md](./cloud-address-book-implementation.md) | 実装ガイド - コード例と実装ベストプラクティス |
@@ -44,7 +45,16 @@
    - Webhooks
    - SDK使用例
 
-3. **[クラウド住所帳システム](./cloud-address-book.md)**
+3. **[AI機能強化戦略](./ai-capabilities.md)** 🆕
+   - 住所理解・構造化AI（PIDツリー正規化・一致判定）
+   - 住所検索UI最適化AI（コンテキスト別候補提案）
+   - 決済接続AI（決済トークン最適化）
+   - 提携インデックス管理AI（プライバシー管理・自動検出）
+   - 攻撃・異常検知AI（セキュリティ監視）
+   - 実装ロードマップ
+   - 技術スタック
+
+4. **[クラウド住所帳システム](./cloud-address-book.md)**
    - システムの登場人物（役割）
    - 住所ID（PID）の扱い方
    - 住所登録フロー
@@ -56,7 +66,7 @@
    - 実装技術スタック
    - ロードマップ（v1-v5）
 
-4. **[システムアーキテクチャ](./cloud-address-book-architecture.md)**
+5. **[システムアーキテクチャ](./cloud-address-book-architecture.md)**
    - システム全体構成
    - データフロー詳細
    - コンポーネント設計
@@ -64,7 +74,7 @@
    - データモデル
    - APIエンドポイント設計
 
-5. **[実装ガイド](./cloud-address-book-implementation.md)**
+6. **[実装ガイド](./cloud-address-book-implementation.md)**
    - 開発環境セットアップ
    - 基本的な使用例
    - 住所登録の実装
@@ -76,6 +86,7 @@
 ### 特徴
 
 - 🔍 **入力工程の削除**: 検索UIで住所入力フォームを完全に置き換え
+- 🤖 **AI機能強化**: 住所理解・検索最適化・決済接続・提携管理・異常検知の5つのAI
 - 🔒 **プライバシー保護**: ECサイトは生住所を一切見ない
 - ✅ **検証可能**: ZK証明で配送可能性を検証
 - 📊 **監査可能**: すべてのアクセスを記録
