@@ -144,3 +144,48 @@ export {
   validateProviderSignature,
 } from './zkp';
 
+// AMF (Address Mapping Framework)
+export {
+  normalizeAddress,
+  denormalizeAddress,
+  validateNormalizedAddress,
+  normalizedAddressToPIDComponents,
+} from './amf';
+
+// Crypto (End-to-end encryption)
+export {
+  encryptAddress,
+  decryptAddress,
+  signData,
+  verifySignature,
+  generateKey,
+  hashData,
+} from './crypto';
+export type { EncryptionResult } from './crypto';
+
+// Address Client (Cloud Address Book)
+export {
+  AddressClient,
+  createAddressClient,
+} from './address-client';
+export type {
+  AddressClientConfig,
+  AuthCredentials,
+} from './address-client';
+
+// Friends & QR Management
+export {
+  generateFriendQR,
+  generateAddressQR,
+  scanFriendQR,
+  scanAddressQR,
+  verifyFriendPID,
+  createFriendFromQR,
+  generateId,
+} from './friends';
+export type {
+  FriendQRPayload,
+  AddressQRPayload,
+  FriendEntry,
+} from './friends';
+
