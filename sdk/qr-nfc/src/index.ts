@@ -472,3 +472,11 @@ export function generateQRCodeURL(payload: QRPayload): string {
   // This returns data that can be passed to QR code libraries
   return data;
 }
+
+/**
+ * Wallet Integration for Google Wallet and Apple Wallet
+ * 
+ * Export wallet types and implementation functions
+ */
+export * from './wallet';
+export * from './wallet-impl';
