@@ -202,4 +202,79 @@ export {
   getTranslationCacheStats,
 } from './translation';
 
+// Logistics & Shipping
+export type {
+  // Core carrier types
+  CarrierCode,
+  ServiceLevel,
+  CarrierService,
+  // Rate comparison
+  PackageInfo,
+  RateQuoteRequest,
+  RateBreakdown,
+  RateQuote,
+  RateComparisonResponse,
+  // ETA prediction
+  PredictionFactors,
+  DeliveryPrediction,
+  ETAPredictionRequest,
+  ETAPredictionResponse,
+  // Multi-piece shipments
+  ShipmentPiece,
+  MultiPieceShipment,
+  MultiPieceRequest,
+  MultiPieceResponse,
+  // Pickup scheduling
+  PickupWindow,
+  PickupRequest,
+  PickupConfirmation,
+  PickupResponse,
+  // Carbon offset
+  CarbonOffsetRequest,
+  CarbonOffsetResult,
+  CarbonOffsetResponse,
+  // Alternative delivery
+  DeliveryLocationType,
+  DeliveryLocation,
+  AlternativeLocationRequest,
+  AlternativeLocationResponse,
+  DeliveryPreference,
+  // Logistics service
+  LogisticsConfig,
+  LogisticsService,
+  // Community Logistics (コミュニティ物流)
+  ConsolidatedParticipant,
+  ConsolidatedShippingGroup,
+  ConsolidatedShippingRequest,
+  JoinConsolidatedRequest,
+  ConsolidatedShippingResponse,
+  TravelerProfile,
+  CrowdsourcedRoute,
+  CrowdsourcedDeliveryRequest,
+  CrowdsourcedMatch,
+  CrowdsourcedDeliveryResponse,
+  // Social Commerce (Daigou 2.0)
+  SocialCommerceProduct,
+  SocialBuyerCatalog,
+  SocialCommerceOrder,
+  InventoryItem,
+  InventoryUpdateRequest,
+  InventoryShipmentRequest,
+  InventoryShipmentResponse,
+  // Digital Handshake Logistics
+  DigitalHandshakeToken,
+  DigitalHandshakeEvent,
+  DigitalHandshakeRequest,
+  DigitalHandshakeResponse,
+  HandoverScanRequest,
+  HandoverScanResponse,
+  // China-specific carriers
+  SFExpressConfig,
+  JDLogisticsConfig,
+  ChinaAddressStandardizationRequest,
+  ChinaAddressStandardizationResponse,
+  // Extended logistics service
+  CommunityLogisticsService,
+} from './logistics';
+
 
