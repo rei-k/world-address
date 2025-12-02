@@ -31,7 +31,10 @@ const translations = {
         recipient: 'Recipient Name',
         locality: 'Locality',
         houseNumber: 'House Number',
-        street: 'Street'
+        street: 'Street',
+        firstNamePlaceholder: 'John',
+        lastNamePlaceholder: 'Smith',
+        phonePlaceholder: '+1 (555) 123-4567'
     },
     ja: {
         pageTitle: '🌍 世界の住所フォームデモ',
@@ -64,7 +67,10 @@ const translations = {
         recipient: '宛名',
         locality: '地域',
         houseNumber: '番地',
-        street: '通り'
+        street: '通り',
+        firstNamePlaceholder: '太郎',
+        lastNamePlaceholder: '山田',
+        phonePlaceholder: '03-0000-0000'
     },
     zh: {
         pageTitle: '🌍 世界地址表单演示',
@@ -97,7 +103,10 @@ const translations = {
         recipient: '收件人姓名',
         locality: '地区',
         houseNumber: '门牌号',
-        street: '街道'
+        street: '街道',
+        firstNamePlaceholder: '明',
+        lastNamePlaceholder: '李',
+        phonePlaceholder: '010-0000-0000'
     }
 };
 
@@ -226,7 +235,7 @@ const countryData = {
             en: {
                 province: 'Beijing',
                 city: 'Dongcheng District',
-                streetAddress: 'Chang\'an Avenue',
+                streetAddress: "Chang'an Avenue",
                 building: 'Forbidden City',
                 room: '101',
                 postalCode: '100006'
@@ -507,14 +516,14 @@ function updateUI() {
 // Update placeholders
 function updatePlaceholders() {
     const t = translations[currentLang];
-    document.getElementById('firstName').placeholder = currentLang === 'ja' ? '太郎' : currentLang === 'zh' ? '明' : 'John';
-    document.getElementById('lastName').placeholder = currentLang === 'ja' ? '山田' : currentLang === 'zh' ? '李' : 'Smith';
+    document.getElementById('firstName').placeholder = t.firstNamePlaceholder;
+    document.getElementById('lastName').placeholder = t.lastNamePlaceholder;
     
     if (currentCountry) {
         const data = countryData[currentCountry];
         document.getElementById('phone').placeholder = data.phoneExample;
     } else {
-        document.getElementById('phone').placeholder = '+1 (555) 123-4567';
+        document.getElementById('phone').placeholder = t.phonePlaceholder;
     }
 }
 
