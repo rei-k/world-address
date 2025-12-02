@@ -1,0 +1,51 @@
+name: Auto-fetch libaddressinput data
+
+on:
+  # Run every day at midnight JST (15:00 UTC, since JST = UTC+9)
+  schedule:
+    - cron: '0 15 * * *'
+  
+  # Allow manual triggering
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-and-update:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Make fetch script executable
+        run: chmod +x scripts/fetch-libaddressinput.js
+      
+      - name: Fetch libaddressinput data
+        run: node scripts/fetch-libaddressinput.js
+      
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code || echo "changes=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/libaddressinput/
+          git commit -m "Auto-update libaddressinput data - $(date +'%Y-%m-%d %H:%M:%S JST' --date='TZ="Asia/Tokyo"')"
+          git push
+      
+      - name: No changes detected
+        if: steps.git-check.outputs.changes != 'true'
+        run: echo "No changes detected in libaddressinput data"
