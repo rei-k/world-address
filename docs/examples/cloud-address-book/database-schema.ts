@@ -145,6 +145,56 @@ export interface AccessLogEntry {
   accessed_at: string;             // アクセス日時
 }
 
+/**
+ * Payment Entry - 決済情報エントリ
+ * 
+ * クラウド住所帳に保存される決済方法情報
+ * カード番号などの機密情報は保存せず、決済トークン/IDのみを保持
+ */
+export interface PaymentEntry {
+  // 識別子
+  id: string;                      // 内部ID
+  user_did: string;                // ユーザーDID
+  payment_token_id: string;        // 決済トークンID（一意）
+  
+  // 決済プロバイダー情報
+  provider: string;                // 決済プロバイダー（Stripe, PayPal, etc.）
+  provider_customer_id: string;    // プロバイダー側の顧客ID
+  
+  // 決済方法情報（暗号化）
+  encrypted_payment_token: string; // 暗号化された決済トークン
+  encryption_algorithm: string;    // 暗号化アルゴリズム
+  encryption_iv: string;           // 初期化ベクトル
+  
+  // 表示用情報（平文・機密でない情報のみ）
+  payment_type: string;            // 決済種別（card, paypal, apple_pay, google_pay等）
+  card_last4?: string;             // カード下4桁（カードの場合）
+  card_brand?: string;             // カードブランド（Visa, Mastercard等）
+  card_exp_month?: number;         // 有効期限月
+  card_exp_year?: number;          // 有効期限年
+  billing_country?: string;        // 請求先国コード
+  
+  // セキュリティ
+  signature: string;               // ユーザー署名
+  nonce?: string;                  // ワンタイムトークン用Nonce
+  
+  // 状態管理
+  is_revoked: boolean;             // 失効フラグ
+  is_default: boolean;             // デフォルト決済手段フラグ
+  is_verified: boolean;            // 検証済みフラグ
+  
+  // タイムスタンプ
+  created_at: string;              // 作成日時
+  updated_at: string;              // 更新日時
+  last_used_at?: string;           // 最終使用日時
+  expires_at?: string;             // 有効期限
+  revoked_at?: string;             // 失効日時
+  
+  // ラベル
+  label?: string;                  // 表示用ラベル（例: "メインカード", "PayPal"）
+  notes?: string;                  // メモ
+}
+
 // ============================================================================
 // PostgreSQL DDL (Data Definition Language)
 // ============================================================================
@@ -274,6 +324,70 @@ CREATE INDEX idx_revocation_entries_revoked_at ON revocation_entries(revoked_at)
 
 -- ============================================================================
 
+-- Payment Entry テーブル
+CREATE TABLE payment_entries (
+  -- 識別子
+  id VARCHAR(255) PRIMARY KEY,
+  user_did VARCHAR(255) NOT NULL,
+  payment_token_id VARCHAR(255) NOT NULL UNIQUE,
+  
+  -- 決済プロバイダー情報
+  provider VARCHAR(100) NOT NULL,
+  provider_customer_id VARCHAR(255) NOT NULL,
+  
+  -- 決済方法情報（暗号化）
+  encrypted_payment_token TEXT NOT NULL,
+  encryption_algorithm VARCHAR(50) NOT NULL DEFAULT 'AES-256-GCM',
+  encryption_iv VARCHAR(255) NOT NULL,
+  
+  -- 表示用情報（平文・機密でない情報のみ）
+  payment_type VARCHAR(50) NOT NULL,
+  card_last4 VARCHAR(4),
+  card_brand VARCHAR(50),
+  card_exp_month INTEGER,
+  card_exp_year INTEGER,
+  billing_country VARCHAR(2),
+  
+  -- セキュリティ
+  signature TEXT NOT NULL,
+  nonce VARCHAR(255),
+  
+  -- 状態管理
+  is_revoked BOOLEAN NOT NULL DEFAULT FALSE,
+  is_default BOOLEAN NOT NULL DEFAULT FALSE,
+  is_verified BOOLEAN NOT NULL DEFAULT FALSE,
+  
+  -- タイムスタンプ
+  created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  last_used_at TIMESTAMP WITH TIME ZONE,
+  expires_at TIMESTAMP WITH TIME ZONE,
+  revoked_at TIMESTAMP WITH TIME ZONE,
+  
+  -- ラベル
+  label VARCHAR(255),
+  notes TEXT,
+  
+  -- 制約
+  CONSTRAINT check_payment_type CHECK (payment_type IN ('card', 'paypal', 'apple_pay', 'google_pay', 'bank_account', 'other')),
+  CONSTRAINT check_card_exp_month CHECK (card_exp_month IS NULL OR (card_exp_month >= 1 AND card_exp_month <= 12)),
+  CONSTRAINT check_card_exp_year CHECK (card_exp_year IS NULL OR card_exp_year >= 2000)
+);
+
+-- インデックス
+CREATE INDEX idx_payment_entries_user_did ON payment_entries(user_did);
+CREATE INDEX idx_payment_entries_payment_token_id ON payment_entries(payment_token_id);
+CREATE INDEX idx_payment_entries_is_revoked ON payment_entries(is_revoked);
+CREATE INDEX idx_payment_entries_is_default ON payment_entries(is_default);
+CREATE INDEX idx_payment_entries_provider ON payment_entries(provider);
+
+-- ユニーク制約: ユーザーごとに1つのデフォルト決済手段のみ
+CREATE UNIQUE INDEX idx_payment_entries_user_default 
+  ON payment_entries(user_did) 
+  WHERE is_default = TRUE AND is_revoked = FALSE;
+
+-- ============================================================================
+
 -- Access Log Entry テーブル
 CREATE TABLE access_log_entries (
   -- 識別子
@@ -324,6 +438,11 @@ CREATE TRIGGER update_address_entries_updated_at
   FOR EACH ROW
   EXECUTE FUNCTION update_updated_at_column();
 
+CREATE TRIGGER update_payment_entries_updated_at 
+  BEFORE UPDATE ON payment_entries
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
+
 -- ============================================================================
 -- ビュー: アクティブな住所のみ
 -- ============================================================================
@@ -335,6 +454,10 @@ WHERE is_revoked = FALSE;
 CREATE VIEW active_friends AS
 SELECT * FROM friend_entries
 WHERE is_revoked = FALSE;
+
+CREATE VIEW active_payment_methods AS
+SELECT * FROM payment_entries
+WHERE is_revoked = FALSE AND (expires_at IS NULL OR expires_at > CURRENT_TIMESTAMP);
 
 -- ============================================================================
 -- 関数: PID検証
@@ -370,6 +493,17 @@ $$ LANGUAGE plpgsql;
 
 -- 失効されたPIDを確認
 -- SELECT is_pid_revoked('JP-13-113-01');
+
+-- ユーザーのアクティブな決済方法を取得
+-- SELECT * FROM active_payment_methods WHERE user_did = 'did:key:...';
+
+-- デフォルト決済方法を取得
+-- SELECT * FROM payment_entries 
+-- WHERE user_did = 'did:key:...' AND is_default = TRUE AND is_revoked = FALSE;
+
+-- 有効期限切れの決済方法を確認
+-- SELECT * FROM payment_entries 
+-- WHERE expires_at IS NOT NULL AND expires_at < CURRENT_TIMESTAMP;
 
 `;
 
@@ -539,6 +673,82 @@ db.access_log_entries.createIndex({ "accessor_did": 1 });
 db.access_log_entries.createIndex({ "accessed_at": 1 });
 db.access_log_entries.createIndex({ "result": 1 });
 
+// ============================================================================
+
+// Payment Entry コレクション
+db.createCollection("payment_entries", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: [
+        "id", "user_did", "payment_token_id",
+        "provider", "provider_customer_id",
+        "encrypted_payment_token", "encryption_algorithm", "encryption_iv",
+        "payment_type", "signature",
+        "is_revoked", "is_default", "is_verified",
+        "created_at", "updated_at"
+      ],
+      properties: {
+        id: { bsonType: "string" },
+        user_did: { bsonType: "string" },
+        payment_token_id: { bsonType: "string" },
+        provider: { bsonType: "string" },
+        provider_customer_id: { bsonType: "string" },
+        encrypted_payment_token: { bsonType: "string" },
+        encryption_algorithm: { bsonType: "string" },
+        encryption_iv: { bsonType: "string" },
+        payment_type: { 
+          bsonType: "string",
+          enum: ["card", "paypal", "apple_pay", "google_pay", "bank_account", "other"]
+        },
+        card_last4: { bsonType: ["string", "null"] },
+        card_brand: { bsonType: ["string", "null"] },
+        card_exp_month: { 
+          bsonType: ["int", "null"],
+          minimum: 1,
+          maximum: 12
+        },
+        card_exp_year: { 
+          bsonType: ["int", "null"],
+          minimum: 2000
+        },
+        billing_country: { bsonType: ["string", "null"] },
+        signature: { bsonType: "string" },
+        nonce: { bsonType: ["string", "null"] },
+        is_revoked: { bsonType: "bool" },
+        is_default: { bsonType: "bool" },
+        is_verified: { bsonType: "bool" },
+        created_at: { bsonType: "string" },
+        updated_at: { bsonType: "string" },
+        last_used_at: { bsonType: ["string", "null"] },
+        expires_at: { bsonType: ["string", "null"] },
+        revoked_at: { bsonType: ["string", "null"] },
+        label: { bsonType: ["string", "null"] },
+        notes: { bsonType: ["string", "null"] }
+      }
+    }
+  }
+});
+
+// インデックス
+db.payment_entries.createIndex({ "user_did": 1 });
+db.payment_entries.createIndex({ "payment_token_id": 1 }, { unique: true });
+db.payment_entries.createIndex({ "is_revoked": 1 });
+db.payment_entries.createIndex({ "is_default": 1 });
+db.payment_entries.createIndex({ "provider": 1 });
+
+// ユニーク制約: ユーザーごとに1つのデフォルト決済手段のみ
+db.payment_entries.createIndex(
+  { "user_did": 1 },
+  { 
+    unique: true,
+    partialFilterExpression: { 
+      "is_default": true, 
+      "is_revoked": false 
+    }
+  }
+);
+
 `;
 
 // ============================================================================
@@ -692,6 +902,57 @@ model AccessLogEntry {
   @@index([accessedAt])
   @@index([result])
   @@map("access_log_entries")
+}
+
+model PaymentEntry {
+  // 識別子
+  id             String @id
+  userDid        String @map("user_did")
+  paymentTokenId String @unique @map("payment_token_id")
+  
+  // 決済プロバイダー情報
+  provider           String @map("provider")
+  providerCustomerId String @map("provider_customer_id")
+  
+  // 決済方法情報（暗号化）
+  encryptedPaymentToken String @map("encrypted_payment_token")
+  encryptionAlgorithm   String @default("AES-256-GCM") @map("encryption_algorithm")
+  encryptionIv          String @map("encryption_iv")
+  
+  // 表示用情報（平文・機密でない情報のみ）
+  paymentType    String  @map("payment_type")
+  cardLast4      String? @map("card_last4")
+  cardBrand      String? @map("card_brand")
+  cardExpMonth   Int?    @map("card_exp_month")
+  cardExpYear    Int?    @map("card_exp_year")
+  billingCountry String? @map("billing_country")
+  
+  // セキュリティ
+  signature String
+  nonce     String? @map("nonce")
+  
+  // 状態管理
+  isRevoked  Boolean @default(false) @map("is_revoked")
+  isDefault  Boolean @default(false) @map("is_default")
+  isVerified Boolean @default(false) @map("is_verified")
+  
+  // タイムスタンプ
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+  lastUsedAt DateTime? @map("last_used_at")
+  expiresAt  DateTime? @map("expires_at")
+  revokedAt  DateTime? @map("revoked_at")
+  
+  // ラベル
+  label String?
+  notes String?
+  
+  @@index([userDid])
+  @@index([paymentTokenId])
+  @@index([isRevoked])
+  @@index([isDefault])
+  @@index([provider])
+  @@map("payment_entries")
 }
 `;
 
