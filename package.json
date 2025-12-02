@@ -1,0 +1,33 @@
+{
+  "name": "world-address-yaml",
+  "version": "1.0.0",
+  "description": "World address formats in YAML and JSON with cloud address book system",
+  "private": true,
+  "scripts": {
+    "fetch:libaddressinput": "node scripts/fetch-libaddressinput-v2.js",
+    "test:scripts": "node scripts/test-transform.js",
+    "lint": "eslint scripts --ext .js",
+    "lint:fix": "eslint scripts --ext .js --fix",
+    "format": "prettier --write \"scripts/**/*.js\"",
+    "format:check": "prettier --check \"scripts/**/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rei-k/world-address-yaml"
+  },
+  "keywords": [
+    "address",
+    "world-address",
+    "international",
+    "shipping",
+    "postal",
+    "yaml",
+    "json"
+  ],
+  "author": "Vey Team",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  }
+}
