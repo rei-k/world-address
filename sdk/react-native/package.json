@@ -1,0 +1,35 @@
+{
+  "name": "@vey/react-native",
+  "version": "1.0.0",
+  "description": "React Native SDK for World Address YAML - Address validation and formatting",
+  "main": "lib/commonjs/index",
+  "module": "lib/module/index",
+  "types": "lib/typescript/index.d.ts",
+  "react-native": "src/index",
+  "scripts": {
+    "typescript": "tsc --noEmit"
+  },
+  "keywords": [
+    "address",
+    "validation",
+    "react-native",
+    "world-address",
+    "international"
+  ],
+  "author": "VEY Team",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "dependencies": {
+    "@vey/core": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-native": "^0.72.0",
+    "react": "^18.0.0",
+    "react-native": "^0.72.0",
+    "typescript": "^5.0.0"
+  }
+}
