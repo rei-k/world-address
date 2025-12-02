@@ -8,6 +8,75 @@
 
 - 🚚 **配送実務**: 国際配送のためのフォーム設計や住所ラベル生成
 - 📚 **研究・分析**: 各国の住所制度の比較研究や標準化
+- 🔐 **クラウド住所帳**: ゼロ知識証明を活用したプライバシー保護型住所管理システム
+
+## 🆕 クラウド住所帳システム / Cloud Address Book System
+
+**NEW!** ゼロ知識証明（ZKP）を中心とした、プライバシー保護型のクラウド住所帳システムを提供します。
+
+### 特徴
+
+- 🔒 **完全なプライバシー保護**: ECサイトや第三者は生住所を一切見ることができません
+- ✅ **検証可能な配送**: ZK証明により、住所を公開せずに配送可能性を証明
+- 📊 **完全な監査可能性**: すべてのアクセスを記録し、不正利用を防止
+- 🔑 **ユーザー主権**: ユーザーが自分の住所データを完全に管理
+- 🌍 **グローバル対応**: すべての国の住所形式に対応
+- 📱 **モバイルウォレット統合**: Google Wallet/Apple Walletとシームレスに連携
+
+### 主要機能
+
+1. **住所登録・管理**
+   - AMF（Address Mapping Framework）による住所正規化
+   - PID（Place ID）自動生成
+   - エンドツーエンド暗号化
+   - Verifiable Credential（VC）発行
+
+2. **友達管理**
+   - 生住所を見ずに配送先を登録
+   - QR/NFCによる簡単な友達追加
+   - PIDベースの安全な住所共有
+
+3. **配送統合**
+   - ECサイトでのZK証明ベース配送先検証
+   - 配送業者へのアクセス制御
+   - ラストワンマイルでのみ住所開示
+   - 完全な監査ログ
+
+4. **QR/NFC対応**
+   - 端末内での住所暗号化
+   - Google Wallet/Apple Wallet連携
+   - ホテル、金融機関での住所証明
+
+### クイックスタート
+
+```bash
+# SDKのインストール
+npm install @vey/core
+
+# 基本的な使用例
+import { createAddressClient, normalizeAddress, encodePID } from '@vey/core';
+
+// 住所の正規化とPID生成
+const normalized = await normalizeAddress(rawAddress, 'JP');
+const pid = encodePID(normalized);
+console.log(pid); // "JP-13-113-01-T07-B12-BN02-R342"
+```
+
+### ドキュメント
+
+- 📖 [クラウド住所帳システム概要](./docs/cloud-address-book.md) - システムの全体像と主要フロー
+- 🏗️ [システムアーキテクチャ](./docs/cloud-address-book-architecture.md) - 技術アーキテクチャとデータフロー
+- 💻 [実装ガイド](./docs/cloud-address-book-implementation.md) - コード例とベストプラクティス
+- 🔐 [ZKPプロトコル](./docs/zkp-protocol.md) - ゼロ知識証明プロトコルの詳細
+- 📚 [API仕様](./docs/zkp-api.md) - APIリファレンス
+
+### ロードマップ
+
+- ✅ **v1 MVP**: AMF + PID + 暗号化保存のクラウド住所帳
+- 🔄 **v2**: 国コード・地域レベルのZK証明
+- 📋 **v3**: 配送業者統合と高度なアクセス制御
+- 🎯 **v4**: DID/VC完全連携とマルチキャリア対応
+- 🚀 **v5**: Google Wallet/Apple Wallet完全統合
 
 ## 📂 データ形式
 
