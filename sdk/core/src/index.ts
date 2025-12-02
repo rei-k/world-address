@@ -44,6 +44,31 @@ export type {
   GeocodingRequest,
   GeocodingResult,
   GeoInsuranceConfig,
+  // ZKP (Zero-Knowledge Proof) types
+  DIDMethod,
+  DIDDocument,
+  VerificationMethod,
+  ServiceEndpoint,
+  VCType,
+  VerifiableCredential,
+  CredentialSubject,
+  Proof,
+  ZKProofType,
+  ZKCircuit,
+  ZKProof,
+  ZKProofVerificationResult,
+  ShippingCondition,
+  ShippingValidationRequest,
+  ShippingValidationResponse,
+  AddressProvider,
+  RevocationEntry,
+  RevocationList,
+  AccessControlPolicy,
+  PIDResolutionRequest,
+  PIDResolutionResponse,
+  AuditLogEntry,
+  TrackingEvent,
+  ZKPWaybill,
 } from './types';
 
 // Client
@@ -89,4 +114,33 @@ export {
   createGeoAddress,
   createBoundsFromRadius,
 } from './geocode';
+
+// ZKP (Zero-Knowledge Proof) Address Protocol
+export {
+  // Flow 1: Address Registration & Authentication
+  createDIDDocument,
+  createAddressPIDCredential,
+  signCredential,
+  verifyCredential,
+  // Flow 2: Shipping Request & Waybill Generation
+  createZKCircuit,
+  generateZKProof,
+  verifyZKProof,
+  validateShippingRequest,
+  createZKPWaybill,
+  // Flow 3: Delivery Execution & Tracking
+  validateAccessPolicy,
+  resolvePID,
+  createAuditLogEntry,
+  createTrackingEvent,
+  // Flow 4: Address Update & Revocation
+  createRevocationEntry,
+  createRevocationList,
+  isPIDRevoked,
+  getNewPID,
+  signRevocationList,
+  // Address Provider Management
+  createAddressProvider,
+  validateProviderSignature,
+} from './zkp';
 

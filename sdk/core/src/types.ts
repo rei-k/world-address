@@ -479,3 +479,456 @@ export interface GeoInsuranceConfig {
   /** Fallback behavior when address verification fails */
   fallbackBehavior: 'reject' | 'warn' | 'accept_with_flag';
 }
+
+// ============================================================================
+// ZKP (Zero-Knowledge Proof) Address Protocol Types
+// ============================================================================
+
+/**
+ * DID (Decentralized Identifier) Method
+ * Supported DID methods for identity management
+ */
+export type DIDMethod = 'did:key' | 'did:web' | 'did:ethr' | 'did:pkh' | string;
+
+/**
+ * DID Document
+ * W3C Decentralized Identifier Document
+ */
+export interface DIDDocument {
+  /** DID identifier */
+  id: string;
+  /** DID method used */
+  method?: DIDMethod;
+  /** Verification methods (public keys) */
+  verificationMethod?: VerificationMethod[];
+  /** Authentication methods */
+  authentication?: string[];
+  /** Service endpoints */
+  service?: ServiceEndpoint[];
+  /** Creation timestamp */
+  created?: string;
+  /** Last update timestamp */
+  updated?: string;
+}
+
+/**
+ * Verification Method (Public Key)
+ * Used for signature verification
+ */
+export interface VerificationMethod {
+  /** Method identifier */
+  id: string;
+  /** Key type (e.g., 'Ed25519VerificationKey2020') */
+  type: string;
+  /** Controller DID */
+  controller: string;
+  /** Public key in multibase format */
+  publicKeyMultibase?: string;
+  /** Public key in JWK format */
+  publicKeyJwk?: Record<string, unknown>;
+}
+
+/**
+ * Service Endpoint
+ * DID service endpoint definition
+ */
+export interface ServiceEndpoint {
+  /** Service identifier */
+  id: string;
+  /** Service type */
+  type: string;
+  /** Service endpoint URL */
+  serviceEndpoint: string;
+}
+
+/**
+ * Verifiable Credential Type
+ * Types of VCs issued in the address protocol
+ */
+export type VCType = 
+  | 'AddressPIDCredential'          // Address PID VC
+  | 'DeliveryCapabilityCredential'  // Delivery capability VC
+  | 'AddressVerificationCredential' // Address verification VC
+  | string;
+
+/**
+ * Verifiable Credential (VC)
+ * W3C Verifiable Credential for address data
+ */
+export interface VerifiableCredential {
+  /** VC context */
+  '@context': string[];
+  /** VC identifier */
+  id: string;
+  /** VC type */
+  type: VCType[];
+  /** Issuer DID */
+  issuer: string;
+  /** Issuance date (ISO 8601) */
+  issuanceDate: string;
+  /** Expiration date (ISO 8601, optional) */
+  expirationDate?: string;
+  /** Credential subject (actual data) */
+  credentialSubject: CredentialSubject;
+  /** Cryptographic proof */
+  proof?: Proof;
+}
+
+/**
+ * Credential Subject
+ * Data contained in the VC
+ */
+export interface CredentialSubject {
+  /** Subject DID (usually user DID) */
+  id: string;
+  /** Address PID */
+  addressPID?: string;
+  /** Country code */
+  countryCode?: string;
+  /** Administrative level 1 code */
+  admin1Code?: string;
+  /** Delivery capability metadata */
+  deliveryCapability?: {
+    /** Supported carriers */
+    carriers?: string[];
+    /** Delivery zone codes */
+    zones?: string[];
+    /** Restricted items */
+    restrictions?: string[];
+  };
+  /** Additional properties */
+  [key: string]: unknown;
+}
+
+/**
+ * Cryptographic Proof
+ * Signature/proof attached to VC
+ */
+export interface Proof {
+  /** Proof type (e.g., 'Ed25519Signature2020', 'BbsBlsSignature2020') */
+  type: string;
+  /** Creation timestamp */
+  created: string;
+  /** Verification method reference */
+  verificationMethod: string;
+  /** Proof purpose */
+  proofPurpose: string;
+  /** Proof value (signature) */
+  proofValue: string;
+  /** Challenge (for proof of possession) */
+  challenge?: string;
+  /** Domain */
+  domain?: string;
+}
+
+/**
+ * ZK Proof Type
+ * Supported ZK proof systems
+ */
+export type ZKProofType = 
+  | 'groth16'      // Groth16 (zk-SNARK)
+  | 'plonk'        // PLONK
+  | 'bulletproofs' // Bulletproofs
+  | 'stark'        // zk-STARK
+  | 'halo2';       // Halo2
+
+/**
+ * ZK Circuit Definition
+ * ZK circuit metadata
+ */
+export interface ZKCircuit {
+  /** Circuit identifier */
+  id: string;
+  /** Circuit name */
+  name: string;
+  /** Proof type used */
+  proofType: ZKProofType;
+  /** Circuit version */
+  version: string;
+  /** Public parameters CID/hash */
+  paramsHash: string;
+  /** Verification key */
+  verificationKey: string;
+  /** Circuit description */
+  description?: string;
+}
+
+/**
+ * ZK Proof
+ * Zero-knowledge proof for address validation
+ */
+export interface ZKProof {
+  /** Circuit ID used */
+  circuitId: string;
+  /** Proof type */
+  proofType: ZKProofType;
+  /** Proof data (serialized) */
+  proof: string;
+  /** Public inputs */
+  publicInputs: Record<string, unknown>;
+  /** Proof generation timestamp */
+  timestamp: string;
+  /** Prover identifier (optional) */
+  prover?: string;
+}
+
+/**
+ * ZK Proof Verification Result
+ * Result of ZK proof verification
+ */
+export interface ZKProofVerificationResult {
+  /** Whether proof is valid */
+  valid: boolean;
+  /** Circuit ID verified */
+  circuitId: string;
+  /** Verified public inputs */
+  publicInputs?: Record<string, unknown>;
+  /** Error message if invalid */
+  error?: string;
+  /** Verification timestamp */
+  verifiedAt: string;
+}
+
+/**
+ * Shipping Condition
+ * Conditions that must be satisfied for delivery
+ */
+export interface ShippingCondition {
+  /** Allowed country codes */
+  allowedCountries?: string[];
+  /** Allowed region/province codes */
+  allowedRegions?: string[];
+  /** Prohibited areas (PIDs or polygon definitions) */
+  prohibitedAreas?: string[];
+  /** Required delivery capabilities */
+  requiredCapabilities?: string[];
+  /** Maximum parcel weight (kg) */
+  maxWeight?: number;
+  /** Maximum parcel dimensions */
+  maxDimensions?: {
+    length: number;
+    width: number;
+    height: number;
+    unit: 'cm' | 'in';
+  };
+}
+
+/**
+ * Shipping Validation Request
+ * Request to validate address against shipping conditions
+ */
+export interface ShippingValidationRequest {
+  /** Address PID to validate */
+  pid: string;
+  /** User's signature (consent to use this address) */
+  userSignature?: string;
+  /** Shipping conditions */
+  conditions: ShippingCondition;
+  /** EC/Service provider identifier */
+  requesterId: string;
+  /** Request timestamp */
+  timestamp: string;
+}
+
+/**
+ * Shipping Validation Response
+ * Response containing ZK proof of delivery capability
+ */
+export interface ShippingValidationResponse {
+  /** Whether address satisfies conditions */
+  valid: boolean;
+  /** ZK proof of validation */
+  zkProof?: ZKProof;
+  /** PID token (anonymized) */
+  pidToken?: string;
+  /** Error details if invalid */
+  error?: string;
+  /** Response timestamp */
+  timestamp: string;
+}
+
+/**
+ * Address Provider Role
+ * Role of the address provider in the ecosystem
+ */
+export interface AddressProvider {
+  /** Provider identifier */
+  id: string;
+  /** Provider name */
+  name: string;
+  /** Provider DID */
+  did: string;
+  /** Provider's verification key */
+  verificationKey: string;
+  /** Supported ZK circuits */
+  circuits: ZKCircuit[];
+  /** API endpoint */
+  endpoint: string;
+  /** Supported countries */
+  supportedCountries?: string[];
+}
+
+/**
+ * Revocation List Entry
+ * Entry in the PID revocation list
+ */
+export interface RevocationEntry {
+  /** Revoked PID */
+  pid: string;
+  /** Revocation reason */
+  reason: 'address_change' | 'user_request' | 'invalid' | 'expired' | string;
+  /** Revocation timestamp */
+  revokedAt: string;
+  /** New PID (if address was updated) */
+  newPid?: string;
+}
+
+/**
+ * Revocation List
+ * Authenticated list of revoked PIDs
+ */
+export interface RevocationList {
+  /** List identifier */
+  id: string;
+  /** Issuer (address provider) DID */
+  issuer: string;
+  /** List version/sequence number */
+  version: number;
+  /** Last update timestamp */
+  updatedAt: string;
+  /** Revoked entries */
+  entries: RevocationEntry[];
+  /** Merkle root of revocation set */
+  merkleRoot?: string;
+  /** Cryptographic proof/signature */
+  proof?: Proof;
+}
+
+/**
+ * Access Control Policy
+ * Policy for accessing PID resolution (raw address)
+ */
+export interface AccessControlPolicy {
+  /** Policy identifier */
+  id: string;
+  /** Who can access */
+  principal: string; // DID or role
+  /** What resource (PID pattern) */
+  resource: string;
+  /** Action allowed */
+  action: 'resolve' | 'decrypt' | 'view' | string;
+  /** Conditions */
+  conditions?: Record<string, unknown>;
+  /** Expiration time */
+  expiresAt?: string;
+}
+
+/**
+ * PID Resolution Request
+ * Request to resolve PID to raw address
+ */
+export interface PIDResolutionRequest {
+  /** PID to resolve */
+  pid: string;
+  /** Requester DID (e.g., carrier) */
+  requesterId: string;
+  /** Access token/credential */
+  accessToken?: string;
+  /** Reason for access */
+  reason: string;
+  /** Request timestamp */
+  timestamp: string;
+}
+
+/**
+ * PID Resolution Response
+ * Response with decrypted address
+ */
+export interface PIDResolutionResponse {
+  /** Whether resolution succeeded */
+  success: boolean;
+  /** Decrypted address (only if authorized) */
+  address?: AddressInput;
+  /** Geographic coordinates */
+  coordinates?: GeoCoordinates;
+  /** Access log ID */
+  accessLogId?: string;
+  /** Error message if failed */
+  error?: string;
+  /** Response timestamp */
+  timestamp: string;
+}
+
+/**
+ * Audit Log Entry
+ * Record of who accessed what PID and when
+ */
+export interface AuditLogEntry {
+  /** Log entry ID */
+  id: string;
+  /** PID accessed */
+  pid: string;
+  /** Accessor DID */
+  accessor: string;
+  /** Action performed */
+  action: 'resolve' | 'decrypt' | 'verify' | string;
+  /** Access timestamp */
+  timestamp: string;
+  /** IP address (optional) */
+  ipAddress?: string;
+  /** Result (success/failure) */
+  result: 'success' | 'denied' | 'error';
+  /** Additional metadata */
+  metadata?: Record<string, unknown>;
+}
+
+/**
+ * Tracking Event
+ * Delivery tracking event
+ */
+export interface TrackingEvent {
+  /** Event ID */
+  id: string;
+  /** Tracking number */
+  trackingNumber: string;
+  /** Event type */
+  type: 'accepted' | 'in_transit' | 'out_for_delivery' | 'delivered' | 'failed' | string;
+  /** Event timestamp */
+  timestamp: string;
+  /** Location (coarse, e.g., city/country) */
+  location?: {
+    country?: string;
+    admin1?: string;
+    city?: string;
+  };
+  /** Event description */
+  description?: string;
+  /** Carrier */
+  carrier?: string;
+}
+
+/**
+ * Waybill with ZKP
+ * Enhanced waybill with ZK proof support
+ */
+export interface ZKPWaybill extends WaybillPayload {
+  /** ZK proof of valid delivery address */
+  zkProof: ZKProof;
+  /** Tracking number */
+  trackingNumber?: string;
+  /** Sender information (limited) */
+  sender?: {
+    name?: string;
+    country?: string;
+  };
+  /** Recipient information (limited, no raw address) */
+  recipient?: {
+    name?: string;
+    pidToken?: string; // Anonymized PID reference
+  };
+  /** Carrier information */
+  carrier?: {
+    id: string;
+    name: string;
+  };
+}
