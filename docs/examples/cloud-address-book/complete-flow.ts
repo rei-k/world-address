@@ -43,6 +43,7 @@ import {
   createRevocationEntry,
   createRevocationList,
   isPIDRevoked,
+  signRevocationList,
   
   // Audit
   createAuditLogEntry,
@@ -60,10 +61,6 @@ import {
 } from '@vey/core';
 
 import type {
-  AddressEntry,
-  FriendEntry,
-  RevocationEntry,
-  AccessLogEntry,
   NormalizedAddress,
   VerifiableCredential,
   ZKCircuit,

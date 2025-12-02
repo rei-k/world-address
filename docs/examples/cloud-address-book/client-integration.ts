@@ -9,6 +9,7 @@
  * into client applications (Web/Mobile).
  */
 
+import React from 'react';
 import {
   createAddressClient,
   normalizeAddress,
