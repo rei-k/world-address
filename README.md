@@ -449,6 +449,81 @@ if (result.valid) {
 
 詳細は [Schema Documentation](./docs/schema/README.md) をご覧ください。
 
+## 🔐 ZKPアドレスプロトコル (ZKP Address Protocol)
+
+プライバシー保護型の住所管理・配送システムです。ゼロ知識証明（Zero-Knowledge Proof）を活用し、ECサイトやキャリアに生住所を公開せずに配送を実現します。
+
+### 概要
+
+ZKPアドレスプロトコルは4つの主要なフローで構成されています：
+
+1. **住所登録・認証フロー** - ユーザーが住所を登録し、検証済みの住所クレデンシャル（VC）を取得
+2. **配送依頼・送り状発行フロー** - ECサイトが配送先の有効性をZK証明で確認（生住所は見ない）
+3. **配送実行・追跡フロー** - キャリアが必要な範囲でのみ住所情報にアクセス
+4. **住所更新・失効フロー** - 住所変更時の安全な更新と旧住所の失効
+
+### 特徴
+
+- 🔒 **プライバシー保護**: ECサイトは生住所を一切見ない
+- ✅ **検証可能**: ZK証明で配送可能性を検証
+- 📊 **監査可能**: すべてのアクセスを記録
+- 🔑 **ユーザー主権**: ユーザーが自分の住所データを管理
+
+### クイックスタート
+
+```typescript
+import {
+  createAddressPIDCredential,
+  validateShippingRequest,
+  createZKPWaybill
+} from '@vey/core';
+
+// 1. Address Provider: ユーザーにAddress PID Credentialを発行
+const vc = createAddressPIDCredential(
+  'did:key:user123',      // ユーザーDID
+  'did:web:vey.example',  // プロバイダDID
+  'JP-13-113-01',         // 住所PID
+  'JP',                   // 国コード
+  '13'                    // 都道府県コード
+);
+
+// 2. EC Site: 配送条件を満たすかZK証明で検証
+const response = validateShippingRequest(
+  {
+    pid: 'JP-13-113-01',
+    conditions: {
+      allowedCountries: ['JP'],
+      allowedRegions: ['13', '14', '27']
+    },
+    requesterId: 'did:web:ec-site.example',
+    timestamp: new Date().toISOString()
+  },
+  zkCircuit,
+  fullAddress // プロバイダのみが持つ生住所
+);
+
+// 3. 配送可能であればZKP付き送り状を作成
+if (response.valid && response.zkProof) {
+  const waybill = createZKPWaybill(
+    'WB-001',
+    'JP-13-113-01',
+    response.zkProof,
+    'TN-001'
+  );
+  // ECサイトはPIDトークンとZK証明のみを保存
+  // 生住所は保存しない！
+}
+```
+
+### ドキュメント
+
+- [ZKP Protocol Documentation](./docs/zkp-protocol.md) - プロトコル詳細
+- [API Reference](./docs/zkp-api.md) - API仕様
+- [Complete Flow Example](./docs/examples/zkp/complete-flow.ts) - 全フローの実装例
+- [EC Integration Example](./docs/examples/zkp/ec-integration.ts) - ECサイト統合例
+
+詳細は [ZKP Protocol Documentation](./docs/zkp-protocol.md) をご覧ください。
+
 ## 🔧 使用方法
 
 ### データの読み込み
