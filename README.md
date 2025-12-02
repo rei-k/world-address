@@ -142,10 +142,15 @@ world-address-yaml/
 
 ## 📝 データ形式
 
-### ファイル命名規則
+### ファイル命名規則とディレクトリ構造
 
-- 国ファイル: `{ISO 3166-1 alpha-2コード}.yaml` / `{ISO 3166-1 alpha-2コード}.json` (例: `JP.yaml`, `JP.json`, `US.yaml`, `US.json`)
-- 地域ファイル: `{地域名}.yaml` / `{地域名}.json` (例: `Papua.yaml`, `Papua.json`)
+全ての国は専用のディレクトリを持ち、その中に国コードと同じ名前のファイルが配置されています：
+
+- 国ファイル: `{地域}/{ISO 3166-1 alpha-2コード}/{ISO 3166-1 alpha-2コード}.yaml` および `.json`
+  - 例: `data/asia/east_asia/JP/JP.yaml`, `data/americas/north_america/US/US.yaml`
+- 海外領土・特別地域: `{国コード}/overseas/{地域名}.yaml` または `{国コード}/regions/{地域名}.yaml`
+  - 例: `data/americas/north_america/US/overseas/PR.yaml` (プエルトリコ)
+  - 例: `data/asia/southeast_asia/ID/regions/Papua.yaml` (パプア)
 
 ### スキーマレベル
 
@@ -603,7 +608,7 @@ if (response.valid && response.zkProof) {
 ```python
 import yaml
 
-with open('data/asia/east_asia/JP.yaml', 'r', encoding='utf-8') as f:
+with open('data/asia/east_asia/JP/JP.yaml', 'r', encoding='utf-8') as f:
     japan_data = yaml.safe_load(f)
 
 print(japan_data['name']['en'])  # Japan
@@ -614,7 +619,7 @@ print(japan_data['address_format']['postal_code']['regex'])  # ^[0-9]{3}-[0-9]{4
 ```python
 import json
 
-with open('data/asia/east_asia/JP.json', 'r', encoding='utf-8') as f:
+with open('data/asia/east_asia/JP/JP.json', 'r', encoding='utf-8') as f:
     japan_data = json.load(f)
 
 print(japan_data['name']['en'])  # Japan
@@ -626,7 +631,7 @@ print(japan_data['address_format']['postal_code']['regex'])  # ^[0-9]{3}-[0-9]{4
 const yaml = require('js-yaml');
 const fs = require('fs');
 
-const japanData = yaml.load(fs.readFileSync('data/asia/east_asia/JP.yaml', 'utf8'));
+const japanData = yaml.load(fs.readFileSync('data/asia/east_asia/JP/JP.yaml', 'utf8'));
 console.log(japanData.name.en);  // Japan
 ```
 
@@ -634,7 +639,7 @@ console.log(japanData.name.en);  // Japan
 ```javascript
 const fs = require('fs');
 
-const japanData = JSON.parse(fs.readFileSync('data/asia/east_asia/JP.json', 'utf8'));
+const japanData = JSON.parse(fs.readFileSync('data/asia/east_asia/JP/JP.json', 'utf8'));
 console.log(japanData.name.en);  // Japan
 ```
 
@@ -643,10 +648,18 @@ console.log(japanData.name.en);  // Japan
 ### 新しい国・地域のデータを追加する
 
 1. 適切な大陸・地域のディレクトリに移動
-2. ISO 3166-1 alpha-2コードをファイル名として使用
-3. `docs/schema/README.md` のスキーマに従ってYAMLファイルを作成
-4. 対応するJSONファイルも作成（YAMLから自動変換可能）
-5. Pull Requestを作成
+2. 国コード（ISO 3166-1 alpha-2）と同じ名前のディレクトリを作成
+3. そのディレクトリ内に `{国コード}.yaml` ファイルを作成
+4. `docs/schema/README.md` のスキーマに従ってデータを記述
+5. 対応するJSONファイルも作成（YAMLから自動変換可能）
+6. Pull Requestを作成
+
+例: 新しい国 "XY" を追加する場合
+```
+data/asia/east_asia/XY/
+  ├── XY.yaml
+  └── XY.json
+```
 
 ### データの修正・改善
 
@@ -656,8 +669,9 @@ console.log(japanData.name.en);  // Japan
 ### 注意事項
 
 - 政治的に敏感な地域（係争地域、部分承認国など）については、`status` フィールドで状況を明記
-- 海外領土は宗主国のディレクトリ内の `overseas/` サブディレクトリに配置
-- 特殊な行政区画は `regions/` サブディレクトリに配置
+- 海外領土は各国のディレクトリ内の `overseas/` サブディレクトリに配置
+- 特殊な行政区画は各国のディレクトリ内の `regions/` サブディレクトリに配置
+- 全ての国は専用のディレクトリを持ち、将来的な拡張に備えた構造になっています
 
 ## 📊 収録状況
 

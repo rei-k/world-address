@@ -15,16 +15,31 @@
 | [europe/](./europe/) | ヨーロッパ | 73か国・地域 |
 | [oceania/](./oceania/) | オセアニア | 22か国・地域 |
 
-## 📝 ファイル形式
+## 📝 ファイル形式とディレクトリ構造
 
-各国・地域のデータは同じディレクトリ内に `.yaml` と `.json` の両方のファイルとして配置されています。
+全ての国は専用のディレクトリを持ち、その中に国コードと同じ名前のファイルが配置されています。各国・地域のデータは `.yaml` と `.json` の両方の形式で提供されています。
+
+### ディレクトリ構造
+
+```
+data/{大陸}/{地域}/{国コード}/
+  ├── {国コード}.yaml         # 国の基本データ（YAML形式）
+  ├── {国コード}.json         # 国の基本データ（JSON形式）
+  ├── overseas/               # 海外領土（該当する国のみ）
+  │   ├── {領土コード}.yaml
+  │   └── {領土コード}.json
+  └── regions/                # 特別行政区画（該当する国のみ）
+      ├── {地域名}.yaml
+      └── {地域名}.json
+```
 
 ### ファイル命名規則
 
-- **国ファイル**: `{ISO 3166-1 alpha-2コード}.yaml` / `.json`
-  - 例: `JP.yaml`, `JP.json`, `US.yaml`, `US.json`
-- **地域ファイル**: `{地域名}.yaml` / `.json`
-  - 例: `Papua.yaml`, `Papua.json`
+- **国ファイル**: `{地域}/{ISO 3166-1 alpha-2コード}/{ISO 3166-1 alpha-2コード}.yaml` および `.json`
+  - 例: `data/asia/east_asia/JP/JP.yaml`, `data/americas/north_america/US/US.yaml`
+- **海外領土・特別地域**: `{国コード}/overseas/{地域名}.yaml` または `{国コード}/regions/{地域名}.yaml`
+  - 例: `data/americas/north_america/US/overseas/PR.yaml` (プエルトリコ)
+  - 例: `data/asia/southeast_asia/ID/regions/Papua.yaml` (パプア)
 
 ## 📊 収録状況
 
