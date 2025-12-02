@@ -38,6 +38,11 @@ tmp/
 temp/
 *.tmp
 
+# Backup files
+*-old.*
+*.bak
+*.backup
+
 # Package manager locks (keep package-lock.json for npm workspaces)
 yarn.lock
 pnpm-lock.yaml
