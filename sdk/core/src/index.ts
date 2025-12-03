@@ -277,4 +277,71 @@ export type {
   CommunityLogisticsService,
 } from './logistics';
 
+// Extended AI capabilities (10 new AI functions)
+export type {
+  // 1. Atlas Routing AI
+  DeliverySystemType,
+  RouteOptimizationRequest,
+  WMSFormat,
+  TMSFormat,
+  LastMileFormat,
+  RouteOptimizationResponse,
+  BookingSystemRequest,
+  BookingSystemResponse,
+  // 2. GAP Oracle
+  UserContext,
+  AddressPriorityScore,
+  PriorityDeterminationRequest,
+  PriorityDeterminationResponse,
+  PaymentTokenPriorityScore,
+  // 3. Schema Resolve AI
+  AddressFormatGrammar,
+  SchemaResolutionRequest,
+  ResolvedAddressHierarchy,
+  SchemaResolutionResponse,
+  // 4. Noise Block AI
+  RelevanceScore,
+  InvalidSiteDetection,
+  NoiseFilteringRequest,
+  NoiseFilteringResponse,
+  // 5. Ledger Link AI
+  LinkedPaymentToken,
+  LinkedContract,
+  LinkedReservation,
+  LedgerLinkingRequest,
+  LedgerLinkingResponse,
+  // 6. Fraud Radar AI
+  FraudPattern,
+  DetectedThreat,
+  FraudDetectionRequest,
+  FraudDetectionResponse,
+  // 7. Edge Normalize AI
+  AddressVariant,
+  NormalizationRequest,
+  NormalizationResponse,
+  MultiLanguageAddress,
+  // 8. Checkout Cast AI
+  CheckoutStep,
+  UIOptimizationRequest,
+  UIOptimizationResponse,
+  AutoFillRequest,
+  AutoFillResponse,
+  // 9. Revocation Sense AI
+  RevocationCandidate,
+  RevocationImpactAnalysis,
+  RevocationPredictionRequest,
+  RevocationPredictionResponse,
+  RevocationExecutionRequest,
+  RevocationExecutionResponse,
+  // 10. Context Locale AI
+  MultiDimensionalContext,
+  FilteringRule,
+  ContextFilteringRequest,
+  LocalizedAddressDisplay,
+  ContextFilteringResponse,
+  // Extended AI service interface
+  ExtendedAIServiceConfig,
+  ExtendedAIService,
+} from './ai-extended';
+
 

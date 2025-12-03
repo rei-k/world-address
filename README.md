@@ -68,6 +68,7 @@ console.log(pid); // "JP-13-113-01-T07-B12-BN02-R342"
 - 📖 [クラウド住所帳システム概要](./docs/cloud-address-book.md) - システムの全体像と主要フロー
 - 🔍 [住所検索エンジン](./docs/address-search-engine.md) - 検索UIで入力工程を削除する新規格
 - 🤖 [AI機能強化戦略](./docs/ai-capabilities.md) - 検索精度・安全性・相互運用性を向上させる5つのAI機能
+- 🚀 [AI機能拡張戦略](./docs/ai-capabilities-extended.md) - 配送最適化・優先判定・セキュリティ強化など10個の拡張AI機能
 - 🏗️ [システムアーキテクチャ](./docs/cloud-address-book-architecture.md) - 技術アーキテクチャとデータフロー
 - 🔧 [サーバーサイドアーキテクチャ](./docs/server-architecture.md) - コアAPI・SDK役割整理
 - 🌐 [SDK言語・エコシステム分類](./docs/sdk-classification.md) - 各言語向けSDK仕様
