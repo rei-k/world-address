@@ -1,0 +1,36 @@
+{
+  "name": "@vey/mini-alipay",
+  "version": "1.0.0",
+  "description": "Alipay Mini-Program SDK for VEY Address and Shipping System",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "dev:alipay": "npm run build && npm run copy:dist",
+    "copy:dist": "cp -r dist ../../../miniprogram/lib/alipay",
+    "test": "jest",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix"
+  },
+  "keywords": [
+    "alipay",
+    "mini-program",
+    "zhifubao",
+    "address",
+    "shipping",
+    "logistics"
+  ],
+  "author": "VEY Team",
+  "license": "MIT",
+  "dependencies": {
+    "@vey/mini-common": "^1.0.0",
+    "@vey/core": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/alipay-miniprogram": "^1.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "eslint": "^8.0.0"
+  }
+}
