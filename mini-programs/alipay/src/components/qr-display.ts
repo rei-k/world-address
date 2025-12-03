@@ -38,9 +38,12 @@ export class QRDisplayComponent {
   
   /**
    * Create Alipay QR code (placeholder - would use cloud function)
+   * TODO: Integrate with proper QR code generation library or cloud function
+   * For production, use my.cloud.function to generate actual QR code image
    */
   private async createAlipayQRCode(data: string): Promise<string> {
     // In production, call cloud function to generate QR code
+    // Example: my.cloud.function.invoke({ name: 'generateQR', data: { content: data } })
     return `data:image/png;base64,${data}`;
   }
   

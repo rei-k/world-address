@@ -35,20 +35,39 @@ export function generateHandshakeQRData(
 
 /**
  * Encode handshake data to QR string
+ * Note: Uses btoa for cross-platform compatibility
  */
 export function encodeHandshakeData(data: any): string {
-  return Buffer.from(JSON.stringify(data)).toString('base64');
+  const jsonString = JSON.stringify(data);
+  // Use btoa for browser/mini-program compatibility instead of Buffer
+  if (typeof btoa !== 'undefined') {
+    return btoa(jsonString);
+  }
+  // Fallback for Node.js environments (testing)
+  return typeof Buffer !== 'undefined' 
+    ? Buffer.from(jsonString).toString('base64')
+    : jsonString;
 }
 
 /**
  * Decode handshake data from QR string
+ * Note: Uses atob for cross-platform compatibility
  */
 export function decodeHandshakeData(qrData: string): any {
   try {
-    const json = Buffer.from(qrData, 'base64').toString('utf8');
+    // Use atob for browser/mini-program compatibility instead of Buffer
+    let json: string;
+    if (typeof atob !== 'undefined') {
+      json = atob(qrData);
+    } else if (typeof Buffer !== 'undefined') {
+      // Fallback for Node.js environments (testing)
+      json = Buffer.from(qrData, 'base64').toString('utf8');
+    } else {
+      json = qrData;
+    }
     return JSON.parse(json);
   } catch (error) {
-    throw new Error('Invalid QR code data');
+    throw new Error('INVALID_QR_DATA');
   }
 }
 

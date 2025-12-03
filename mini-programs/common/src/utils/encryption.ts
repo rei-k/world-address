@@ -31,6 +31,7 @@ export function generateToken(length: number = 32): string {
 /**
  * Simple XOR encryption (for demo purposes only)
  * In production, use proper encryption libraries
+ * Note: Uses btoa for cross-platform compatibility
  */
 export function xorEncrypt(text: string, key: string): string {
   let result = '';
@@ -39,14 +40,30 @@ export function xorEncrypt(text: string, key: string): string {
       text.charCodeAt(i) ^ key.charCodeAt(i % key.length)
     );
   }
-  return Buffer.from(result, 'binary').toString('base64');
+  // Use btoa for browser/mini-program compatibility
+  if (typeof btoa !== 'undefined') {
+    return btoa(result);
+  }
+  return typeof Buffer !== 'undefined'
+    ? Buffer.from(result, 'binary').toString('base64')
+    : result;
 }
 
 /**
  * Simple XOR decryption
+ * Note: Uses atob for cross-platform compatibility
  */
 export function xorDecrypt(encrypted: string, key: string): string {
-  const text = Buffer.from(encrypted, 'base64').toString('binary');
+  let text: string;
+  // Use atob for browser/mini-program compatibility
+  if (typeof atob !== 'undefined') {
+    text = atob(encrypted);
+  } else if (typeof Buffer !== 'undefined') {
+    text = Buffer.from(encrypted, 'base64').toString('binary');
+  } else {
+    text = encrypted;
+  }
+  
   let result = '';
   for (let i = 0; i < text.length; i++) {
     result += String.fromCharCode(

@@ -39,9 +39,12 @@ export class QRDisplayComponent {
   
   /**
    * Create WeChat QR code (placeholder - would use cloud function)
+   * TODO: Integrate with proper QR code generation library or cloud function
+   * For production, use wx.cloud.callFunction to generate actual QR code image
    */
   private async createWXQRCode(data: string): Promise<string> {
     // In production, call cloud function to generate QR code
+    // Example: wx.cloud.callFunction({ name: 'generateQR', data: { content: data } })
     // For now, use a placeholder
     return `data:image/png;base64,${data}`;
   }

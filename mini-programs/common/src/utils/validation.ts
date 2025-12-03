@@ -6,6 +6,19 @@
 import { ShippingFormData, ShippingItem, ValidationResult } from '../types';
 
 /**
+ * Validation error codes for internationalization
+ */
+export const ValidationErrorCodes = {
+  RECIPIENT_PID_REQUIRED: 'ERR_RECIPIENT_PID_REQUIRED',
+  ITEMS_REQUIRED: 'ERR_ITEMS_REQUIRED',
+  CARRIER_REQUIRED: 'ERR_CARRIER_REQUIRED',
+  ITEM_NAME_REQUIRED: 'ERR_ITEM_NAME_REQUIRED',
+  ITEM_QUANTITY_INVALID: 'ERR_ITEM_QUANTITY_INVALID',
+  ITEM_WEIGHT_INVALID: 'ERR_ITEM_WEIGHT_INVALID',
+  ITEM_VALUE_INVALID: 'ERR_ITEM_VALUE_INVALID',
+} as const;
+
+/**
  * Validate shipping form data
  */
 export function validateShippingForm(data: ShippingFormData): ValidationResult {
@@ -13,29 +26,29 @@ export function validateShippingForm(data: ShippingFormData): ValidationResult {
   
   // Validate recipient PID
   if (!data.recipientPID || data.recipientPID.trim() === '') {
-    errors.push('受取人のPIDが必要です');
+    errors.push(ValidationErrorCodes.RECIPIENT_PID_REQUIRED);
   }
   
   // Validate items
   if (!data.items || data.items.length === 0) {
-    errors.push('配送アイテムが必要です');
+    errors.push(ValidationErrorCodes.ITEMS_REQUIRED);
   } else {
     data.items.forEach((item, index) => {
       const itemErrors = validateShippingItem(item);
       if (itemErrors.length > 0) {
-        errors.push(`アイテム${index + 1}: ${itemErrors.join(', ')}`);
+        errors.push(...itemErrors.map(err => `${err}:${index + 1}`));
       }
     });
   }
   
   // Validate carrier
   if (!data.carrier) {
-    errors.push('配送業者を選択してください');
+    errors.push(ValidationErrorCodes.CARRIER_REQUIRED);
   }
   
   return {
     valid: errors.length === 0,
-    reason: errors.length > 0 ? errors.join('; ') : undefined,
+    reason: errors.length > 0 ? errors.join(';') : undefined,
     warnings: [],
   };
 }
@@ -47,19 +60,19 @@ export function validateShippingItem(item: ShippingItem): string[] {
   const errors: string[] = [];
   
   if (!item.name || item.name.trim() === '') {
-    errors.push('商品名が必要です');
+    errors.push(ValidationErrorCodes.ITEM_NAME_REQUIRED);
   }
   
   if (!item.quantity || item.quantity <= 0) {
-    errors.push('数量は1以上である必要があります');
+    errors.push(ValidationErrorCodes.ITEM_QUANTITY_INVALID);
   }
   
   if (!item.weight || item.weight <= 0) {
-    errors.push('重量は0より大きい必要があります');
+    errors.push(ValidationErrorCodes.ITEM_WEIGHT_INVALID);
   }
   
   if (item.value !== undefined && item.value < 0) {
-    errors.push('価格は0以上である必要があります');
+    errors.push(ValidationErrorCodes.ITEM_VALUE_INVALID);
   }
   
   return errors;
