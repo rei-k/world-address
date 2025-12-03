@@ -375,6 +375,9 @@ function addGeoCoordinates() {
   let skippedCount = 0;
   let notFoundCount = 0;
   
+  // Generate timestamp once for consistency
+  const timestamp = new Date().toISOString();
+  
   console.log(`📍 Processing ${yamlFiles.length} YAML files...`);
   console.log('');
   
@@ -430,6 +433,13 @@ function addGeoCoordinates() {
         countryCode = fileName;
       }
       
+      // Validate coordinates have required properties
+      if (!coords || typeof coords.lat !== 'number' || typeof coords.lon !== 'number') {
+        console.log(`⚠️  Invalid coordinates for: ${countryCode} (${filePath})`);
+        notFoundCount++;
+        return;
+      }
+      
       // Add geo section
       data.geo = {
         center: {
@@ -437,7 +447,7 @@ function addGeoCoordinates() {
           longitude: coords.lon,
           accuracy: 1000,
           source: 'database',
-          captured_at: new Date().toISOString()
+          captured_at: timestamp
         }
       };
       

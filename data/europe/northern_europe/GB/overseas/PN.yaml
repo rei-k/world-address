@@ -44,9 +44,9 @@ address_format:
         - country
   postal_code:
     required: true
-    regex: ^PCRN 1ZZ$
+    regex: "^PCRN 1ZZ$"
     description: Single code PCRN 1ZZ
-    example: PCRN 1ZZ
+    example: "PCRN 1ZZ"
 examples:
   domestic_raw: Adamstown PCRN 1ZZ
   domestic_normalized: Adamstown PCRN 1ZZ
