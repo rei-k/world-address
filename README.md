@@ -29,8 +29,8 @@
 
 ### 📈 データ完成度 / Data Completeness
 
-- **総国数 / Total Countries**: 247
-- **フルスキーマ対応 / Full Schema Support**: 240 (97%)
+- **総国数 / Total Countries**: 248
+- **フルスキーマ対応 / Full Schema Support**: 241 (97%)
 - **平均完成度 / Average Completeness**: 98%
 - **POS対応 / POS Support**: 2 countries (JP, US)
 - **緯度経度対応 / Geo-coordinates**: 1 country (JP)
