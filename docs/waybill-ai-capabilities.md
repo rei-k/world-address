@@ -8,12 +8,53 @@ This document describes AI and algorithms that enhance waybill generation, searc
 
 ---
 
+## エグゼクティブサマリー / Executive Summary
+
+### 送り状AIの目的
+
+この領域のAIの目的は、**正確な送り状の生成・自動ミス防止・配送適合・高速復元・不正防止・再利用検索**です。
+
+### 10のAI・アルゴリズム概要
+
+1. **Waybill Parse AI** - EC側で作られた送り状の構造を解析・仕様理解し、次の生成時に使える形で把握できるAI。
+
+2. **Carrier Adapt AI** - DHLなど配送キャリアごとの送り状仕様・必須フィールド差を学習し、最適な送り状形式で出力するAI。
+
+3. **PID Embed AI** - 住所PIDを送り状の識別子として埋め込み、各サービスで検索・復元できるユニークIDアンカー生成AI。
+
+4. **Field Align AI** - 国ごとに住所階層や並び順が違っても、送り状フィールドの意味的整合性を保ったまま正しい位置へマッピングできるAI。
+
+5. **Error Prevent AI** - 郵便番号欠落、番地の揺れ、必須項目忘れ、言語誤記などを生成時・提出時に自動ブロック/補正/再確認できるAI。
+
+6. **FedEx-like Ranking Search** - FedExなどの検索思想を参考に、送り状生成・過去伝票の優先検索スコアリングを行うランク検索アルゴリズム。
+
+7. **Fraud Block LSH** - 不正住所入力やスパムWaybill生成をブロックするため、住所文脈の揺れを評価しながら不正パターンを除外できる近似検索（LSH応用）。
+
+8. **Waybill Nonce AI** - 送り状生成ごとにワンタイムNonce IDを発行し、改ざん防止・重複防止・追跡IDの安全運用を可能にするID生成AI。
+
+9. **Merklized Routing Hash** - 宛先一致を高速検証するため、住所フィールドをハッシュ空間に入れて照合速度と信頼を上げる構造。
+
+10. **Wallet Waybill Restore AI** - Google Walletのような財布アプリからQRや提出権を読み取り、送り状を1発で復元できるAI補助復元層。
+
+### すっきり結論
+
+送り状に強いAIとアルゴリズムはこの**3方向**：
+
+1. **構造解析** → PCFG/Parse系/Waybill理解
+2. **配送適合とフィールド整合** → キャリア仕様学習・マッピング
+3. **安全と高速復元** → ハッシュ・Nonce・異常検知・Walletからの復元
+
+**重要**: これは送り状を賢く作るAIではなく、送り状の**精度・一致検証・復元速度・配送互換・悪用耐性を強くするAI**です。
+
+---
+
 ## 目次 / Table of Contents
 
-1. [送り状AIの目的](#送り状aiの目的--waybill-ai-objectives)
-2. [10のAI・アルゴリズム](#10のai・アルゴリズム--10-ai--algorithms)
-3. [技術アーキテクチャ](#技術アーキテクチャ--technical-architecture)
-4. [実装ロードマップ](#実装ロードマップ--implementation-roadmap)
+1. [エグゼクティブサマリー](#エグゼクティブサマリー--executive-summary)
+2. [送り状AIの目的](#送り状aiの目的--waybill-ai-objectives)
+3. [10のAI・アルゴリズム](#10のai・アルゴリズム--10-ai--algorithms)
+4. [技術アーキテクチャ](#技術アーキテクチャ--technical-architecture)
+5. [実装ロードマップ](#実装ロードマップ--implementation-roadmap)
 
 ---
 
@@ -45,28 +86,31 @@ ECサイトで生成された送り状の構造を解析し、仕様を理解し
 #### 主要機能
 
 **1.1 送り状構造の自動認識**
+
 - 送り状PDFや画像からフィールド構造を抽出
 - 配送業者固有のフォーマットを識別
 - 必須フィールドと任意フィールドの区別
 
 **1.2 PCFG（確率文脈自由文法）ベース解析**
+
 - 送り状テンプレートの文法を確率的に学習
 - 新しいフォーマットへの適応能力
 - 変動的なレイアウトの正規化
 
 **1.3 フィールドマッピング学習**
+
 - EC事業者ごとの送り状フィールド対応関係を学習
 - 住所PIDとの自動マッピング
 - 過去の成功パターンからの学習
 
 #### 技術仕様
 
-| 要素 | 技術 |
-|------|------|
-| Document Understanding | LayoutLM, Document AI |
-| Structure Parsing | PCFG, Tree-based Models |
-| Template Learning | K-Means Clustering, Pattern Recognition |
-| OCR | Tesseract, Google Cloud Vision API |
+| 要素                   | 技術                                    |
+| ---------------------- | --------------------------------------- |
+| Document Understanding | LayoutLM, Document AI                   |
+| Structure Parsing      | PCFG, Tree-based Models                 |
+| Template Learning      | K-Means Clustering, Pattern Recognition |
+| OCR                    | Tesseract, Google Cloud Vision API      |
 
 #### 評価指標
 
@@ -87,38 +131,41 @@ DHL、FedEx、ヤマト運輸など配送業者ごとの送り状仕様と必須
 #### 主要機能
 
 **2.1 キャリア仕様データベース**
+
 - 世界主要配送業者の送り状仕様を管理
 - 必須フィールド、任意フィールドの定義
 - フィールド長制限、フォーマット規則
 
 **2.2 動的フォーマット変換**
+
 - 内部PID形式から各業者フォーマットへの変換
 - 住所階層の業者仕様への適応
 - 言語・文字コードの自動変換
 
 **2.3 仕様変更の自動学習**
+
 - 配送業者の仕様変更を検知
 - エラーフィードバックからの学習
 - 新しい必須項目への自動対応
 
 #### キャリア別最適化
 
-| キャリア | 特殊要件 | 対応 |
-|---------|---------|------|
-| DHL | Reference番号必須、英数字のみ | 自動変換・生成 |
-| FedEx | 住所2行制限、郵便番号形式厳格 | フォーマット調整 |
-| ヤマト運輸 | カナ必須、全角対応 | 文字種変換 |
-| 佐川急便 | 電話番号必須 | 検証・補完 |
-| UPS | 国コード標準化必須 | ISO準拠変換 |
+| キャリア   | 特殊要件                      | 対応             |
+| ---------- | ----------------------------- | ---------------- |
+| DHL        | Reference番号必須、英数字のみ | 自動変換・生成   |
+| FedEx      | 住所2行制限、郵便番号形式厳格 | フォーマット調整 |
+| ヤマト運輸 | カナ必須、全角対応            | 文字種変換       |
+| 佐川急便   | 電話番号必須                  | 検証・補完       |
+| UPS        | 国コード標準化必須            | ISO準拠変換      |
 
 #### 技術仕様
 
-| 要素 | 技術 |
-|------|------|
-| Specification Management | JSON Schema, OpenAPI |
-| Format Conversion | XSLT, Template Engine |
-| Validation | JSON Schema Validator |
-| Learning | Supervised Learning, Error Feedback Loop |
+| 要素                     | 技術                                     |
+| ------------------------ | ---------------------------------------- |
+| Specification Management | JSON Schema, OpenAPI                     |
+| Format Conversion        | XSLT, Template Engine                    |
+| Validation               | JSON Schema Validator                    |
+| Learning                 | Supervised Learning, Error Feedback Loop |
 
 #### 評価指標
 
@@ -139,16 +186,19 @@ DHL、FedEx、ヤマト運輸など配送業者ごとの送り状仕様と必須
 #### 主要機能
 
 **3.1 PIDアンカー生成**
+
 - 送り状固有のPIDベースIDを生成
 - QRコード、バーコードへの埋め込み
 - 短縮URL形式での共有可能性
 
 **3.2 検索インデックス最適化**
+
 - PIDツリー構造に基づくインデックス
 - 階層的検索（国→都道府県→市区町村→...）
 - O(log n)での高速検索
 
 **3.3 復元メカニズム**
+
 - PIDから完全な住所情報を復元
 - 権限に応じた段階的開示
 - キャッシュによる高速復元
@@ -158,34 +208,34 @@ DHL、FedEx、ヤマト運輸など配送業者ごとの送り状仕様と必須
 ```typescript
 interface WaybillPIDEmbed {
   // 送り状ID
-  waybillId: string;         // "WB-2024-001234"
-  
+  waybillId: string; // "WB-2024-001234"
+
   // 送り先PIDアンカー
-  destinationPID: string;    // "JP-13-113-01-T07-B12-BN02-R342"
-  
+  destinationPID: string; // "JP-13-113-01-T07-B12-BN02-R342"
+
   // 送り元PIDアンカー（オプション）
-  originPID?: string;        // "JP-27-100-05-..."
-  
+  originPID?: string; // "JP-27-100-05-..."
+
   // QRコード埋め込み用
-  qrPayload: string;         // Base64 encoded PID + metadata
-  
+  qrPayload: string; // Base64 encoded PID + metadata
+
   // 検索用ハッシュ
-  searchHash: string;        // SHA-256(PID + salt)
-  
+  searchHash: string; // SHA-256(PID + salt)
+
   // タイムスタンプ
-  timestamp: string;         // ISO 8601
+  timestamp: string; // ISO 8601
 }
 ```
 
 #### 技術仕様
 
-| 要素 | 技術 |
-|------|------|
-| PID Generation | Hierarchical Hashing, UUID v5 |
-| Index Structure | B+ Tree, Trie |
-| QR Generation | qrcode.js, zxing |
-| Search Algorithm | Radix Tree Search |
-| Cache | Redis, LRU Cache |
+| 要素             | 技術                          |
+| ---------------- | ----------------------------- |
+| PID Generation   | Hierarchical Hashing, UUID v5 |
+| Index Structure  | B+ Tree, Trie                 |
+| QR Generation    | qrcode.js, zxing              |
+| Search Algorithm | Radix Tree Search             |
+| Cache            | Redis, LRU Cache              |
 
 #### 評価指標
 
@@ -206,38 +256,41 @@ interface WaybillPIDEmbed {
 #### 主要機能
 
 **4.1 意味的フィールド理解**
+
 - 住所フィールドの意味を理解（国、州、市、番地など）
 - 言語に依存しない意味抽出
 - 階層関係の自動推論
 
 **4.2 国別フォーマット適応**
+
 - 日本: 郵便番号→都道府県→市区町村→町丁目→番地
 - 米国: Street Address→City→State→ZIP Code
 - 中国: 省→市→区→街道→小区→門牌号
 
 **4.3 動的フィールドマッピング**
+
 - 送り状フォーマットに応じて自動調整
 - 欠落フィールドの補完提案
 - 冗長フィールドの統合
 
 #### マッピングルール例
 
-| 日本語フィールド | 英語フィールド | 中国語フィールド | 意味 |
-|----------------|---------------|----------------|------|
-| 郵便番号 | Postal Code | 邮政编码 | postal_code |
-| 都道府県 | Prefecture/State | 省/直辖市 | admin_level_1 |
-| 市区町村 | City/Ward | 市/区 | admin_level_2 |
-| 町丁目 | District | 街道 | locality |
-| 番地 | Street Address | 门牌号 | street_number |
+| 日本語フィールド | 英語フィールド   | 中国語フィールド | 意味          |
+| ---------------- | ---------------- | ---------------- | ------------- |
+| 郵便番号         | Postal Code      | 邮政编码         | postal_code   |
+| 都道府県         | Prefecture/State | 省/直辖市        | admin_level_1 |
+| 市区町村         | City/Ward        | 市/区            | admin_level_2 |
+| 町丁目           | District         | 街道             | locality      |
+| 番地             | Street Address   | 门牌号           | street_number |
 
 #### 技術仕様
 
-| 要素 | 技術 |
-|------|------|
+| 要素                   | 技術                                 |
+| ---------------------- | ------------------------------------ |
 | Semantic Understanding | BERT, Word2Vec for address semantics |
-| Field Mapping | Rule Engine + ML Hybrid |
-| Schema Matching | Schema Matching Algorithms |
-| Ontology | Address Ontology (OWL) |
+| Field Mapping          | Rule Engine + ML Hybrid              |
+| Schema Matching        | Schema Matching Algorithms           |
+| Ontology               | Address Ontology (OWL)               |
 
 #### 評価指標
 
@@ -258,40 +311,43 @@ interface WaybillPIDEmbed {
 #### 主要機能
 
 **5.1 リアルタイムバリデーション**
+
 - 入力中のエラー検出
 - 必須項目の欠落チェック
 - フォーマット不正の即時通知
 
 **5.2 自動補正エンジン**
+
 - 郵便番号から住所を補完
 - 住所から郵便番号を推定
 - 文字種の自動変換（全角↔半角）
 
 **5.3 意味的妥当性検証**
+
 - 住所階層の論理的整合性
 - 実在性の検証（郵便番号データベース照合）
 - 配送不可エリアの警告
 
 #### エラー検出ルール
 
-| エラータイプ | 検出方法 | 対応 |
-|------------|---------|------|
-| 郵便番号欠落 | 必須フィールドチェック | 住所から推定提案 |
-| 郵便番号不一致 | 住所-郵便番号照合 | 自動補正 or 警告 |
-| 番地の揺れ | 表記ゆれ辞書 | 正規化提案 |
-| 必須項目忘れ | スキーマバリデーション | ブロック |
-| 言語誤記 | 文字種検出 | 変換提案 |
-| 配送不可エリア | エリアデータベース | 警告 |
+| エラータイプ   | 検出方法               | 対応             |
+| -------------- | ---------------------- | ---------------- |
+| 郵便番号欠落   | 必須フィールドチェック | 住所から推定提案 |
+| 郵便番号不一致 | 住所-郵便番号照合      | 自動補正 or 警告 |
+| 番地の揺れ     | 表記ゆれ辞書           | 正規化提案       |
+| 必須項目忘れ   | スキーマバリデーション | ブロック         |
+| 言語誤記       | 文字種検出             | 変換提案         |
+| 配送不可エリア | エリアデータベース     | 警告             |
 
 #### 技術仕様
 
-| 要素 | 技術 |
-|------|------|
-| Validation | JSON Schema, Regex |
-| Auto-correction | Fuzzy Matching, Levenshtein Distance |
-| Address Lookup | Postal Code Database, Geocoding API |
-| Character Conversion | ICU Library |
-| Machine Learning | Classification for error type detection |
+| 要素                 | 技術                                    |
+| -------------------- | --------------------------------------- |
+| Validation           | JSON Schema, Regex                      |
+| Auto-correction      | Fuzzy Matching, Levenshtein Distance    |
+| Address Lookup       | Postal Code Database, Geocoding API     |
+| Character Conversion | ICU Library                             |
+| Machine Learning     | Classification for error type detection |
 
 #### 評価指標
 
@@ -313,6 +369,7 @@ FedExなどの検索思想を参考に、送り状生成・過去伝票の優先
 #### 主要機能
 
 **6.1 送り状検索スコアリング**
+
 - 利用頻度スコア
 - 直近性スコア
 - 配送先の類似性スコア
@@ -320,26 +377,28 @@ FedExなどの検索思想を参考に、送り状生成・過去伝票の優先
 - ユーザープリファレンススコア
 
 **6.2 過去伝票の優先順位付け**
+
 ```typescript
 interface WaybillRankingScore {
   waybillId: string;
-  
+
   // スコア要素（0-1の正規化値）
-  frequencyScore: number;      // 利用頻度: 0.30
-  recencyScore: number;        // 直近性: 0.25
+  frequencyScore: number; // 利用頻度: 0.30
+  recencyScore: number; // 直近性: 0.25
   destinationSimilarity: number; // 配送先類似性: 0.20
-  carrierMatch: number;        // 業者一致: 0.15
-  completionRate: number;      // 完了率: 0.10
-  
+  carrierMatch: number; // 業者一致: 0.15
+  completionRate: number; // 完了率: 0.10
+
   // 総合スコア
-  totalScore: number;          // 加重平均
-  
+  totalScore: number; // 加重平均
+
   // ランク
   rank: number;
 }
 ```
 
 **6.3 インテリジェント提案**
+
 - 住所入力中の送り状候補提案
 - 配送業者選択時の最適送り状提案
 - 時間帯・曜日に基づく提案
@@ -347,7 +406,7 @@ interface WaybillRankingScore {
 #### ランキングアルゴリズム
 
 ```
-総合スコア = 
+総合スコア =
   0.30 × 利用頻度スコア +
   0.25 × 直近性スコア +
   0.20 × 配送先類似性スコア +
@@ -357,13 +416,13 @@ interface WaybillRankingScore {
 
 #### 技術仕様
 
-| 要素 | 技術 |
-|------|------|
-| Ranking Algorithm | Learning to Rank (LambdaMART) |
+| 要素                   | 技術                             |
+| ---------------------- | -------------------------------- |
+| Ranking Algorithm      | Learning to Rank (LambdaMART)    |
 | Similarity Calculation | Cosine Similarity, Jaccard Index |
-| Time Decay | Exponential Decay Function |
-| Index | Elasticsearch, Apache Solr |
-| Real-time Scoring | Redis for score cache |
+| Time Decay             | Exponential Decay Function       |
+| Index                  | Elasticsearch, Apache Solr       |
+| Real-time Scoring      | Redis for score cache            |
 
 #### 評価指標
 
@@ -385,17 +444,20 @@ interface WaybillRankingScore {
 #### 主要機能
 
 **7.1 LSHベース不正検出**
+
 - 住所の特徴ベクトル化
 - LSHハッシュによる類似住所の高速検出
 - 不正パターンデータベースとの照合
 
 **7.2 スパムWaybill検出**
+
 - 短時間での大量送り状生成
 - 同一住所への重複送り状
 - 不自然な配送パターン
 - 架空住所の検出
 
 **7.3 住所文脈の揺れ評価**
+
 - 意図的な文字変更の検出（O→0、I→1など）
 - 表記ゆれと不正変更の区別
 - 文脈に基づく妥当性評価
@@ -405,16 +467,16 @@ interface WaybillRankingScore {
 ```typescript
 interface AddressLSH {
   // 住所の特徴ベクトル
-  featureVector: number[];  // 次元数: 128
-  
+  featureVector: number[]; // 次元数: 128
+
   // LSHハッシュ（複数のハッシュ関数）
-  lshHashes: string[];      // 例: ["h1:abc", "h2:def", ...]
-  
+  lshHashes: string[]; // 例: ["h1:abc", "h2:def", ...]
+
   // 類似度閾値
   similarityThreshold: number; // 0.85（85%以上で類似と判定）
-  
+
   // 不正スコア
-  fraudScore: number;       // 0-100
+  fraudScore: number; // 0-100
 }
 
 // 不正判定基準
@@ -422,27 +484,27 @@ interface FraudDetectionCriteria {
   // 短時間大量生成
   maxWaybillsPerMinute: 10;
   maxWaybillsPerHour: 100;
-  
+
   // 重複送り状
-  duplicateThreshold: 3;    // 同一住所への重複許容数
-  
+  duplicateThreshold: 3; // 同一住所への重複許容数
+
   // 類似度判定
-  lshSimilarityThreshold: 0.90; // LSH類似度閾値
-  
+  lshSimilarityThreshold: 0.9; // LSH類似度閾値
+
   // 不正スコア閾値
-  fraudScoreThreshold: 70;  // この値以上でブロック
+  fraudScoreThreshold: 70; // この値以上でブロック
 }
 ```
 
 #### 技術仕様
 
-| 要素 | 技術 |
-|------|------|
-| LSH Algorithm | MinHash, SimHash |
-| Feature Extraction | TF-IDF, Word2Vec |
-| Similarity Metric | Cosine Similarity, Hamming Distance |
-| Database | Redis for LSH index |
-| Pattern Matching | Bloom Filter for known fraud patterns |
+| 要素               | 技術                                  |
+| ------------------ | ------------------------------------- |
+| LSH Algorithm      | MinHash, SimHash                      |
+| Feature Extraction | TF-IDF, Word2Vec                      |
+| Similarity Metric  | Cosine Similarity, Hamming Distance   |
+| Database           | Redis for LSH index                   |
+| Pattern Matching   | Bloom Filter for known fraud patterns |
 
 #### 評価指標
 
@@ -464,16 +526,19 @@ interface FraudDetectionCriteria {
 #### 主要機能
 
 **8.1 ワンタイムNonce生成**
+
 - 暗号学的に安全な乱数生成
 - 時刻ベースの一意性保証
 - 衝突確率の最小化
 
 **8.2 改ざん検出**
+
 - Nonceとコンテンツのハッシュ連鎖
 - 改ざん時の即時検出
 - 検証可能な証明チェーン
 
 **8.3 重複防止メカニズム**
+
 - Nonce重複チェック
 - 同一送り状の再提出防止
 - リプレイアタック対策
@@ -483,20 +548,20 @@ interface FraudDetectionCriteria {
 ```typescript
 interface WaybillNonce {
   // Nonce ID（128-bit）
-  nonceId: string;          // "550e8400-e29b-41d4-a716-446655440000"
-  
+  nonceId: string; // "550e8400-e29b-41d4-a716-446655440000"
+
   // 生成タイムスタンプ（ナノ秒精度）
-  timestamp: string;        // "2024-12-02T23:58:43.123456789Z"
-  
+  timestamp: string; // "2024-12-02T23:58:43.123456789Z"
+
   // 送り状コンテンツハッシュ
-  contentHash: string;      // SHA-256(waybill content)
-  
+  contentHash: string; // SHA-256(waybill content)
+
   // 署名（改ざん防止）
-  signature: string;        // HMAC-SHA256(nonceId + timestamp + contentHash)
-  
+  signature: string; // HMAC-SHA256(nonceId + timestamp + contentHash)
+
   // 有効期限
-  expiresAt: string;        // ISO 8601 timestamp
-  
+  expiresAt: string; // ISO 8601 timestamp
+
   // 使用状態
   used: boolean;
   usedAt?: string;
@@ -507,24 +572,24 @@ interface NonceVerification {
   valid: boolean;
   errors: string[];
   checks: {
-    nonceUnique: boolean;     // Nonce未使用
-    signatureValid: boolean;  // 署名検証成功
-    notExpired: boolean;      // 有効期限内
-    contentMatch: boolean;    // コンテンツハッシュ一致
+    nonceUnique: boolean; // Nonce未使用
+    signatureValid: boolean; // 署名検証成功
+    notExpired: boolean; // 有効期限内
+    contentMatch: boolean; // コンテンツハッシュ一致
   };
 }
 ```
 
 #### 技術仕様
 
-| 要素 | 技術 |
-|------|------|
-| Nonce Generation | Crypto-random, UUID v4 |
-| Hashing | SHA-256, SHA-3 |
-| Signature | HMAC-SHA256, Ed25519 |
-| Timestamp | High-resolution timestamp (nanosecond) |
-| Storage | Redis for fast lookup, PostgreSQL for audit |
-| TTL Management | Automatic expiration |
+| 要素             | 技術                                        |
+| ---------------- | ------------------------------------------- |
+| Nonce Generation | Crypto-random, UUID v4                      |
+| Hashing          | SHA-256, SHA-3                              |
+| Signature        | HMAC-SHA256, Ed25519                        |
+| Timestamp        | High-resolution timestamp (nanosecond)      |
+| Storage          | Redis for fast lookup, PostgreSQL for audit |
+| TTL Management   | Automatic expiration                        |
 
 #### 評価指標
 
@@ -546,16 +611,19 @@ interface NonceVerification {
 #### 主要機能
 
 **9.1 マークルツリー構築**
+
 - 住所フィールドの階層的ハッシュ化
 - ルートハッシュによる一致検証
 - 部分的な情報開示が可能
 
 **9.2 高速照合アルゴリズム**
+
 - O(log n)での検証速度
 - マークルプルーフによる効率的な証明
 - キャッシュフレンドリーな構造
 
 **9.3 改ざん検出**
+
 - 単一フィールド変更でルートハッシュが変化
 - 変更箇所の特定が容易
 - 証明チェーンの検証
@@ -565,19 +633,19 @@ interface NonceVerification {
 ```typescript
 interface AddressMerkleTree {
   // ルートハッシュ
-  root: string;             // SHA-256 hash
-  
+  root: string; // SHA-256 hash
+
   // 階層構造
   levels: {
-    level: number;          // 0: leaf, 1-n: intermediate
-    hashes: string[];       // このレベルのハッシュ配列
+    level: number; // 0: leaf, 1-n: intermediate
+    hashes: string[]; // このレベルのハッシュ配列
   }[];
-  
+
   // リーフノード（住所フィールド）
   leaves: {
-    field: string;          // "country", "admin1", "locality", etc.
-    value: string;          // フィールド値
-    hash: string;           // SHA-256(field + value)
+    field: string; // "country", "admin1", "locality", etc.
+    value: string; // フィールド値
+    hash: string; // SHA-256(field + value)
   }[];
 }
 
@@ -589,13 +657,13 @@ interface MerkleProof {
     value: string;
     hash: string;
   };
-  
+
   // プルーフパス（ルートまでの経路）
   path: {
     hash: string;
     position: 'left' | 'right';
   }[];
-  
+
   // ルートハッシュ
   root: string;
 }
@@ -617,13 +685,13 @@ interface MerkleProof {
 
 #### 技術仕様
 
-| 要素 | 技術 |
-|------|------|
-| Hash Function | SHA-256, SHA-3, Blake3 |
-| Tree Construction | Binary Merkle Tree |
-| Proof Generation | Merkle Proof |
-| Verification | O(log n) algorithm |
-| Storage | Compact representation |
+| 要素              | 技術                   |
+| ----------------- | ---------------------- |
+| Hash Function     | SHA-256, SHA-3, Blake3 |
+| Tree Construction | Binary Merkle Tree     |
+| Proof Generation  | Merkle Proof           |
+| Verification      | O(log n) algorithm     |
+| Storage           | Compact representation |
 
 #### 評価指標
 
@@ -645,16 +713,19 @@ Google WalletやApple Walletのような財布アプリからQRや提出権を�
 #### 主要機能
 
 **10.1 QRコード復元**
+
 - QRコードから送り状IDとPIDを抽出
 - 暗号化されたペイロードの復号
 - 権限検証と送り状データの取得
 
 **10.2 NFC復元**
+
 - NFCタグからの送り状情報読み取り
 - セキュアエレメントとの連携
 - オフライン対応
 
 **10.3 ウォレットアプリ統合**
+
 - Google Wallet Pass生成
 - Apple Wallet Pass生成
 - 送り状の自動更新・通知
@@ -665,11 +736,11 @@ Google WalletやApple Walletのような財布アプリからQRや提出権を�
 // Google Wallet Pass構造
 interface GoogleWalletPass {
   // パスID
-  passId: string;           // "waybill-2024-001234"
-  
+  passId: string; // "waybill-2024-001234"
+
   // パスタイプ
   passType: 'eventTicket' | 'boardingPass' | 'generic';
-  
+
   // 送り状情報
   waybillData: {
     waybillId: string;
@@ -678,21 +749,21 @@ interface GoogleWalletPass {
     trackingNumber: string;
     estimatedDelivery: string;
   };
-  
+
   // QRコードペイロード（暗号化）
-  qrPayload: string;        // Base64(Encrypt(waybillId + PID + nonce))
-  
+  qrPayload: string; // Base64(Encrypt(waybillId + PID + nonce))
+
   // バーコード
   barcode: {
     type: 'QR_CODE' | 'CODE_128';
     value: string;
     alternateText: string;
   };
-  
+
   // 表示情報
   display: {
-    title: string;          // "配送追跡"
-    subtitle: string;       // "ヤマト運輸"
+    title: string; // "配送追跡"
+    subtitle: string; // "ヤマト運輸"
     fields: {
       label: string;
       value: string;
@@ -704,16 +775,16 @@ interface GoogleWalletPass {
 interface WaybillRestoration {
   // 1. QR/NFCスキャン
   scanQR(qrData: string): Promise<EncryptedPayload>;
-  
+
   // 2. 復号
   decrypt(payload: EncryptedPayload, userKey: string): DecryptedData;
-  
+
   // 3. 権限確認
   verifyPermission(userId: string, waybillId: string): boolean;
-  
+
   // 4. 送り状取得
   fetchWaybill(waybillId: string): Promise<Waybill>;
-  
+
   // 5. PIDから住所復元（権限に応じて）
   restoreAddress(pid: string, permission: Permission): Promise<Address>;
 }
@@ -722,11 +793,13 @@ interface WaybillRestoration {
 #### AI復元機能
 
 **10.4 インテリジェント復元**
+
 - 不完全なQRコードからの復元
 - エラー訂正による復元率向上
 - 過去の履歴からの推定復元
 
 **10.5 複数ソースからの復元**
+
 - メール内のリンク
 - SMS内の追跡番号
 - ウォレットアプリのバックアップ
@@ -734,14 +807,14 @@ interface WaybillRestoration {
 
 #### 技術仕様
 
-| 要素 | 技術 |
-|------|------|
-| QR Generation/Scan | zxing, qrcode.js |
-| NFC | Web NFC API, Core NFC (iOS) |
-| Encryption | AES-256-GCM, ChaCha20-Poly1305 |
-| Wallet Integration | Google Wallet API, PassKit (Apple) |
-| Error Correction | Reed-Solomon Code |
-| AI Restoration | Neural Network for incomplete data recovery |
+| 要素               | 技術                                        |
+| ------------------ | ------------------------------------------- |
+| QR Generation/Scan | zxing, qrcode.js                            |
+| NFC                | Web NFC API, Core NFC (iOS)                 |
+| Encryption         | AES-256-GCM, ChaCha20-Poly1305              |
+| Wallet Integration | Google Wallet API, PassKit (Apple)          |
+| Error Correction   | Reed-Solomon Code                           |
+| AI Restoration     | Neural Network for incomplete data recovery |
 
 #### 評価指標
 
@@ -767,6 +840,7 @@ interface WaybillRestoration {
 - **Field Align AI**: 意味的フィールドマッピング
 
 **技術スタック**:
+
 - Document AI, LayoutLM
 - PCFG, Schema Matching
 - BERT-based semantic understanding
@@ -780,6 +854,7 @@ interface WaybillRestoration {
 - **Error Prevent AI**: 配送エラー防止
 
 **技術スタック**:
+
 - Rule Engine + ML Hybrid
 - JSON Schema Validation
 - Auto-correction Algorithms
@@ -796,6 +871,7 @@ interface WaybillRestoration {
 - **Wallet Waybill Restore AI**: ウォレット復元
 
 **技術スタック**:
+
 - LSH, MinHash, SimHash
 - Merkle Tree, Cryptographic Hashing
 - Wallet API Integration
@@ -849,6 +925,7 @@ interface WaybillRestoration {
 - [ ] データベース・インフラ構築
 
 **成果物**:
+
 - 送り状構造解析エンジン
 - PIDアンカー生成機能
 - 基本的な検索機能
@@ -862,6 +939,7 @@ interface WaybillRestoration {
 - [ ] 主要配送業者対応（5社以上）
 
 **成果物**:
+
 - 配送業者適合エンジン
 - 国際フィールドマッピング
 - 業者別テンプレート
@@ -875,6 +953,7 @@ interface WaybillRestoration {
 - [ ] リアルタイムバリデーション
 
 **成果物**:
+
 - エラー検出・補正エンジン
 - ランキング検索機能
 - ユーザーフィードバック機能
@@ -888,6 +967,7 @@ interface WaybillRestoration {
 - [ ] Merklized Routing Hash（#9）の実装
 
 **成果物**:
+
 - 不正検出システム
 - Nonce管理機能
 - マークルツリー検証
@@ -902,6 +982,7 @@ interface WaybillRestoration {
 - [ ] QR/NFC復元機能
 
 **成果物**:
+
 - ウォレットアプリ統合
 - QR/NFC復元機能
 - モバイルSDK
@@ -916,6 +997,7 @@ interface WaybillRestoration {
 - [ ] 運用マニュアル作成
 
 **成果物**:
+
 - 統合AIプラットフォーム
 - 運用ドキュメント
 - パフォーマンスレポート
@@ -929,6 +1011,7 @@ interface WaybillRestoration {
 本ドキュメントで定義した10のAI・アルゴリズムは、以下の3方向で送り状システムを強化します：
 
 #### 1. 構造解析（Parse & Understand）
+
 - **Waybill Parse AI**: PCFG/構造解析
 - **Carrier Adapt AI**: 業者仕様学習
 - **Field Align AI**: 意味的マッピング
@@ -936,6 +1019,7 @@ interface WaybillRestoration {
 → **目的**: 様々な送り状フォーマットを理解し、標準化
 
 #### 2. 配送適合とフィールド整合（Compliance & Alignment）
+
 - **Carrier Adapt AI**: 業者要件適応
 - **Field Align AI**: 国際フィールド整合
 - **Error Prevent AI**: エラー防止
@@ -943,6 +1027,7 @@ interface WaybillRestoration {
 → **目的**: 配送業者の要件に100%適合し、エラーを防止
 
 #### 3. 安全と高速復元（Security & Recovery）
+
 - **PID Embed AI**: PIDアンカー
 - **FedEx-like Ranking Search**: ランク検索
 - **Fraud Block LSH**: 不正検出
