@@ -607,8 +607,37 @@ AIはユーザーの正常な行動パターンを学習し、異常を検知し
 
 ---
 
+## 拡張AI機能 / Extended AI Capabilities
+
+この基本5機能に加えて、さらに10個の拡張AI機能が実装されています：
+
+**配送・物流最適化**:
+- **Atlas Routing AI** - 配送ルートの最適化と複数システム対応
+
+**インテリジェントな候補選択**:
+- **GAP Oracle** - コンテキストベースの優先判定
+- **Context Locale AI** - 多次元コンテキストフィルタリング
+
+**データ品質の向上**:
+- **Schema Resolve AI** - グローバルな住所形式対応
+- **Edge Normalize AI** - 表記揺れの完全吸収
+- **Noise Block AI** - ノイズ除去とクリーンな結果
+
+**セキュリティの強化**:
+- **Fraud Radar AI** - プロアクティブな不正検知
+
+**ユーザー体験の向上**:
+- **Checkout Cast AI** - ワンクリックチェックアウト
+- **Ledger Link AI** - データの自動統合
+- **Revocation Sense AI** - プライバシー管理の簡素化
+
+詳細は [AI機能拡張戦略ドキュメント](./ai-capabilities-extended.md) をご覧ください。
+
+---
+
 ## 関連ドキュメント / Related Documentation
 
+- [AI機能拡張戦略](./ai-capabilities-extended.md) - 10個の拡張AI機能の詳細
 - [Cloud Address Book System](./cloud-address-book.md) - システム全体像
 - [Address Search Engine](./address-search-engine.md) - 検索エンジンアーキテクチャ
 - [ZKP Protocol](./zkp-protocol.md) - プライバシー保護プロトコル
