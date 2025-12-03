@@ -13,6 +13,7 @@
     "alpha3": "GTM",
     "numeric": "320"
   },
+  "continent": "North America",
   "languages": [
     {
       "name": "Spanish",
@@ -75,5 +76,9 @@
     "stability": "medium",
     "regex": "^[0-9]{5}$",
     "example": "01001"
+  },
+  "examples": {
+    "domestic": "7a Avenida 12-23, Zona 1, Ciudad de Guatemala, Guatemala",
+    "international": "7a Avenida 12-23, Zona 1, Ciudad de Guatemala, 01001, Guatemala"
   }
 }

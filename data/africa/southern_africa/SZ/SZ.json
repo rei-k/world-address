@@ -15,6 +15,7 @@
     "alpha3": "SWZ",
     "numeric": "748"
   },
+  "continent": "Africa",
   "languages": [
     {
       "name": "siSwati",
@@ -75,5 +76,9 @@
     "stability": "medium",
     "regex": "^[A-Z]{1}[0-9]{3}$",
     "example": "H100"
+  },
+  "examples": {
+    "domestic": "Plot 123, Mbabane, Hhohho Region, Eswatini",
+    "international": "Plot 123, Mbabane, Hhohho Region, H100, Eswatini"
   }
 }

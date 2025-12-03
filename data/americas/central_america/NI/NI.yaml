@@ -9,6 +9,8 @@ iso_codes:
   alpha3: NIC
   numeric: "558"
 
+continent: North America
+
 languages:
   - name: Spanish
     role: national_primary
@@ -34,3 +36,7 @@ postal_code:
   required_for_international: true
   regex: "^[0-9]{5}$"
   example: "11011"
+
+examples:
+  domestic: "De la Rotonda del Periodista 2 cuadras al sur, Barrio Bolonia, Managua, Nicaragua"
+  international: "Barrio Bolonia, Managua, 11011, Nicaragua"

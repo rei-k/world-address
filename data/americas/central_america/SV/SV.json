@@ -13,6 +13,7 @@
     "alpha3": "SLV",
     "numeric": "222"
   },
+  "continent": "North America",
   "languages": [
     {
       "name": "Spanish",
@@ -66,5 +67,9 @@
     "required_for_international": true,
     "regex": "^[0-9]{4}$",
     "example": "01101"
+  },
+  "examples": {
+    "domestic": "Calle Principal, Colonia Escalón, San Salvador, El Salvador",
+    "international": "Calle Principal, Colonia Escalón, San Salvador, 01101, El Salvador"
   }
 }

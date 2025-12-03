@@ -9,6 +9,8 @@ iso_codes:
   alpha3: CRI
   numeric: "188"
 
+continent: North America
+
 languages:
   - name: Spanish
     role: national_primary
@@ -35,3 +37,7 @@ postal_code:
   stability: medium
   regex: "^[0-9]{5}$"
   example: "10101"
+
+examples:
+  domestic: "Avenida Central, San José, Costa Rica"
+  international: "Avenida Central, San José, 10101, Costa Rica"

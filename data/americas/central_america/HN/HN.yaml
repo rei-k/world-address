@@ -9,6 +9,8 @@ iso_codes:
   alpha3: HND
   numeric: "340"
 
+continent: North America
+
 languages:
   - name: Spanish
     role: national_primary
@@ -36,3 +38,7 @@ postal_code:
   required_for_international: true
   regex: "^[0-9]{5}$"
   example: "21101"
+
+examples:
+  domestic: "Colonia Palmira, Avenida República Argentina, Tegucigalpa, Honduras"
+  international: "Colonia Palmira, Avenida República Argentina, Tegucigalpa, 21101, Honduras"

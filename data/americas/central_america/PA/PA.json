@@ -13,6 +13,7 @@
     "alpha3": "PAN",
     "numeric": "591"
   },
+  "continent": "North America",
   "languages": [
     {
       "name": "Spanish",
@@ -70,5 +71,9 @@
     "stability": "medium",
     "regex": "^[0-9]{4}$",
     "example": "0801"
+  },
+  "examples": {
+    "domestic": "Calle 50, Edificio Plaza 2000, Bella Vista, Panamá, Panamá",
+    "international": "Calle 50, Edificio Plaza 2000, Bella Vista, Panamá, 0801, Panamá"
   }
 }
