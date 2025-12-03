@@ -26,6 +26,9 @@ jobs:
         with:
           node-version: '20'
       
+      - name: Install dependencies
+        run: npm install
+      
       - name: Make fetch script executable
         run: chmod +x scripts/fetch-libaddressinput-v2.js
       
