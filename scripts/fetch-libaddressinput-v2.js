@@ -217,22 +217,22 @@ function getOutputDirectory(countryCode) {
  * Check if data has changed compared to existing file
  * @param {string} filePath - Path to existing file
  * @param {Object} newData - New data to compare
- * @returns {boolean} True if data has changed
+ * @returns {{changed: boolean, isNewFile: boolean}} Object with change status and file existence
  */
-function hasDataChanged(filePath, newData) {
+function checkDataChange(filePath, newData) {
   try {
     if (!fs.existsSync(filePath)) {
-      return true; // New file
+      return { changed: true, isNewFile: true }; // New file
     }
 
     const existingData = readJSON(filePath);
     const existingStr = JSON.stringify(existingData, null, 2);
     const newStr = JSON.stringify(newData, null, 2);
 
-    return existingStr !== newStr;
+    return { changed: existingStr !== newStr, isNewFile: false };
   } catch (error) {
     logger.debug(`Error comparing data: ${error.message}`);
-    return true; // Assume changed on error
+    return { changed: true, isNewFile: false }; // Assume changed on error
   }
 }
 
@@ -274,13 +274,10 @@ async function fetchCountry(countryCode) {
     const jsonPath = path.join(outputDir, `${countryCode}.json`);
     const yamlPath = path.join(outputDir, `${countryCode}.yaml`);
 
-    // Check if this is a new file or an update (before writing)
-    const isNewFile = !fs.existsSync(jsonPath);
+    // Check if data has changed and if this is a new file
+    const { changed, isNewFile } = checkDataChange(jsonPath, finalData);
 
-    // Check if data has changed
-    const hasChanged = hasDataChanged(jsonPath, finalData);
-
-    if (!hasChanged) {
+    if (!changed) {
       logger.debug(`No changes for ${countryCode}`);
       stats.countries.unchanged++;
       stats.countries.success++;
@@ -431,4 +428,5 @@ module.exports = {
   transformData,
   fetchHierarchicalData,
   getOutputDirectory,
+  checkDataChange,
 };

@@ -219,7 +219,7 @@ Failed to process XX: Cannot read property 'split' of undefined
 
 ### パフォーマンス / Performance
 
-- **平均実行時間 / Average execution time**: ~2-3分（241カ国） / ~2-3 minutes (241 countries)
+- **平均実行時間 / Average execution time**: ~2分（241カ国） / ~2 minutes (241 countries)
 - **APIリクエスト数 / API requests**: ~5000-7000リクエスト / ~5000-7000 requests
 - **データサイズ / Data size**: ~10-15MB（全国合計） / ~10-15MB (all countries)
 
