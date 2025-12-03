@@ -42,29 +42,65 @@ The `scripts/utils/` directory contains reusable utility modules:
 
 ### Main Scripts
 
-#### fetch-libaddressinput.js
+#### fetch-libaddressinput.js (v1 - Legacy)
 
-Fetches address data from Google's libaddressinput API and converts it to YAML/JSON format.
+Original version that fetches basic address data from Google's libaddressinput API.
+
+**Note:** The v1 script is kept for reference. Use `fetch-libaddressinput-v2.js` for new data fetching.
+
+#### fetch-libaddressinput-v2.js (Recommended)
+
+Enhanced version with hierarchical data fetching and intelligent updates.
 
 **Usage:**
 ```bash
 npm run fetch:libaddressinput
 # or
-node scripts/fetch-libaddressinput.js
+node scripts/fetch-libaddressinput-v2.js
 ```
 
 **Features:**
-- Automatic retry on network failures
-- Rate limiting to avoid API throttling
-- Progress tracking
-- Comprehensive error handling
-- Dual format output (YAML + JSON)
+- ✨ **Hierarchical data fetching** - Recursively fetches all sub-regions
+- 🔍 **Change detection** - Only updates files when data has changed
+- 🔄 **Automatic retry** on network failures with exponential backoff
+- ⏱️ **Rate limiting** to avoid API throttling
+- 📊 **Progress tracking** with detailed statistics
+- 🎯 **Comprehensive error handling**
+- 📁 **Dual format output** (YAML + JSON)
+- 📈 **Metadata tracking** - Records fetch time and source information
+
+**Improvements over v1:**
+- Fetches complete hierarchical data (country → regions → subregions)
+- Intelligent change detection to avoid unnecessary updates
+- Better error handling and retry logic
+- Comprehensive logging and statistics
+- Supports incremental updates
 
 **Configuration:**
 - Edit `scripts/utils/constants.js` to modify:
   - Country codes to fetch
   - Request retry settings
   - Rate limiting parameters
+
+**See also:** [libaddressinput v2 Algorithm Documentation](./docs/libaddressinput-v2-algorithm.md)
+
+#### test-libaddressinput-v2.js
+
+Tests the v2 transformation logic with mock data.
+
+**Usage:**
+```bash
+npm run test:v2
+# or
+node scripts/test-libaddressinput-v2.js
+```
+
+**Features:**
+- Validates data transformation logic
+- Tests hierarchical data handling
+- Tests Japanese and multilingual data
+- Edge case testing
+- Output structure validation
 
 #### test-transform.js
 

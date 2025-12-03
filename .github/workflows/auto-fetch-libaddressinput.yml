@@ -27,10 +27,10 @@ jobs:
           node-version: '20'
       
       - name: Make fetch script executable
-        run: chmod +x scripts/fetch-libaddressinput.js
+        run: chmod +x scripts/fetch-libaddressinput-v2.js
       
       - name: Fetch libaddressinput data
-        run: node scripts/fetch-libaddressinput.js
+        run: node scripts/fetch-libaddressinput-v2.js
       
       - name: Check for changes
         id: git-check

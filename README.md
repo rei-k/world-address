@@ -16,7 +16,7 @@
 
 | 機能 / Feature | 状態 / Status | 説明 / Description |
 |---------------|--------------|-------------------|
-| ✅ libaddressinput データ自動取得 | **実装済み** / Implemented | Google libaddressinput から住所データを自動取得 |
+| ✅ libaddressinput データ自動取得 | **実装済み (v2)** / Implemented (v2) | Google libaddressinput から住所データを自動取得（階層的データ対応） |
 | ✅ data/libaddressinput/ の生成 | **実装済み** / Implemented | 毎日深夜0時（JST）に自動更新 |
 | ✅ 世界各国住所データ収録 | **実装済み** / Implemented | 247国・地域のYAML/JSONデータ |
 | ✅ データバリデーション | **実装済み** / Implemented | YAML構文・必須フィールドの自動検証 |
