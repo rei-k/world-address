@@ -25,7 +25,7 @@
 | 📋 公開NPMパッケージ | **計画中** / Planned | @vey/core, @vey/react 等の公開準備 |
 | 📋 ZKP 実装（プロトタイプ） | **計画中** / Planned | ゼロ知識証明によるプライバシー保護 |
 
-詳細なロードマップは [ロードマップセクション](#ロードマップ) をご覧ください。
+詳細なロードマップは **[ROADMAP.md](./ROADMAP.md)** をご覧ください。
 
 ### 📈 データ完成度 / Data Completeness
 
@@ -48,6 +48,8 @@ npm run stats:data
 - 🇺🇸 [アメリカ合衆国 (US)](./docs/examples/US_complete_example.yaml) - POS、多様な海外領土
 
 これらのファイルは、新しい国のデータを追加する際のテンプレートとして使用できます。
+
+詳細な使い方ガイドは **[完全実装例ガイド](./docs/examples/COMPLETE_EXAMPLES.md)** をご覧ください。
 
 ## 🆕 クラウド住所帳システム / Cloud Address Book System
 
