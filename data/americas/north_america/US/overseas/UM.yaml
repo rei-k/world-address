@@ -1,0 +1,55 @@
+name:
+  en: United States Minor Outlying Islands
+  local:
+    - lang: en
+      value: United States Minor Outlying Islands
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: UM
+  alpha3: UMI
+  numeric: "581"
+
+continent: Oceania
+subregion: Polynesia/Micronesia (US Territory)
+
+languages:
+  - name: English
+    script: Latin
+    direction: ltr
+    role: administrative_primary
+    required_for_shipping: true
+
+administrative_divisions:
+  level1:
+    type: Island/Atoll
+    label_en: Island or Atoll
+    count: 11
+    description: "Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Atoll, Navassa Island, Palmyra Atoll, Wake Island, Bajo Nuevo Bank, Serranilla Bank"
+
+address_format:
+  order_variants:
+    - context: international
+      order:
+        - recipient
+        - facility
+        - island_name
+        - country
+
+  postal_code:
+    required: false
+    description: "Most islands are uninhabited or have military facilities only; Wake Island uses ZIP code 96898"
+    example: "96898"
+
+examples:
+  international_wake: "Wake Island Airfield, Wake Island, UM 96898, United States"
+  international_midway: "Midway Atoll, United States Minor Outlying Islands"
+  international_johnston: "Johnston Atoll, United States Minor Outlying Islands"
+
+status:
+  un_member: false
+  recognized: true
+  disputed: false
+  dependency_of: "US"
+  special_status: "Unincorporated unorganized territories of the United States, mostly uninhabited"

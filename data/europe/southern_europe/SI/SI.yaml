@@ -1,0 +1,68 @@
+name: 
+  en: Slovenia
+  local:
+    - lang: sl
+      value: Slovenija
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: SI
+  alpha3: SVN
+  numeric: "705"
+
+continent: Europe
+subregion: Southern Europe
+
+languages:
+  - name: Slovenian
+    script: Latin
+    role: official
+    country_name:
+      sl: Slovenija
+      en: Slovenia
+  - name: English
+    script: Latin
+    role: auxiliary
+    country_name:
+      en: Slovenia
+
+administrative_divisions:
+  level1:
+    type: Municipality
+    label_local: Občina
+    label_en: Municipality
+    count: 212
+
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - street_address
+        - postal_code
+        - city
+        - country
+    - context: international
+      order:
+        - recipient
+        - street_address
+        - postal_code
+        - city
+        - country
+
+  postal_code:
+    required: true
+    regex: "^(SI-)?[0-9]{4}$"
+    description: "4 digits, optionally prefixed with SI-"
+    example: "1000"
+
+examples:
+  domestic_raw: "Cankarjeva cesta 5, 1000 Ljubljana"
+  domestic_normalized: "Cankarjeva cesta 5 1000 Ljubljana"
+  international: "Cankarjeva cesta 5, SI-1000 Ljubljana, Slovenia"
+
+status:
+  un_member: true
+  recognized: true
+  disputed: false

@@ -1,0 +1,72 @@
+{
+  "name": {
+    "en": "Bouvet Island",
+    "local": [
+      {
+        "lang": "no",
+        "value": "Bouvetøya",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "BV",
+    "alpha3": "BVT",
+    "numeric": "074"
+  },
+  "continent": "Antarctica",
+  "subregion": "Sub-Antarctic Islands (Norwegian Dependency)",
+  "languages": [
+    {
+      "name": "Norwegian",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "no": "Bouvetøya",
+        "en": "Bouvet Island"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "en": "Bouvet Island"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Uninhabited",
+      "label_en": "No administrative divisions",
+      "count": 0
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "facility",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Uninhabited island - no postal code system"
+    }
+  },
+  "examples": {
+    "international": "Bouvet Island, Norway"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false,
+    "dependency_of": "NO",
+    "special_status": "Uninhabited dependency of Norway"
+  }
+}

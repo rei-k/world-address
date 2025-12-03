@@ -1,0 +1,70 @@
+name: 
+  en: Svalbard and Jan Mayen
+  local:
+    - lang: "no"
+      value: Svalbard og Jan Mayen
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: SJ
+  alpha3: SJM
+  numeric: "744"
+
+continent: Europe
+subregion: Northern Europe (Norwegian Territory)
+
+languages:
+  - name: Norwegian
+    script: Latin
+    role: official
+    country_name:
+      "no": Svalbard og Jan Mayen
+      en: Svalbard and Jan Mayen
+  - name: English
+    script: Latin
+    role: auxiliary
+    country_name:
+      en: Svalbard and Jan Mayen
+
+administrative_divisions:
+  level1:
+    type: Settlement
+    label_en: Settlement
+    count: 5
+    description: "Main settlements: Longyearbyen, Ny-Ålesund, Barentsburg, Hornsund, Svea"
+
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - street_address
+        - postal_code
+        - city
+        - country
+    - context: international
+      order:
+        - recipient
+        - street_address
+        - postal_code
+        - city
+        - country
+
+  postal_code:
+    required: true
+    regex: "^9[0-9]{3}$"
+    description: "Norwegian postal code format 9xxx for Svalbard"
+    example: "9170"
+
+examples:
+  domestic_raw: "Postboks 123, 9171 Longyearbyen"
+  domestic_normalized: "Postboks 123 9171 Longyearbyen"
+  international: "Postboks 123, 9171 Longyearbyen, Svalbard, Norway"
+
+status:
+  un_member: false
+  recognized: true
+  disputed: false
+  dependency_of: "NO"
+  special_status: "Norwegian territory with special treaty status (Svalbard Treaty)"
