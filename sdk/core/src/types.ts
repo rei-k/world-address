@@ -994,3 +994,347 @@ export interface TranslationResult {
   /** Whether translation was cached */
   cached?: boolean;
 }
+
+// ============================================================================
+// Gift Delivery Types
+// ============================================================================
+
+/**
+ * Gift order status
+ */
+export enum GiftOrderStatus {
+  /** Waiting for recipient to select delivery address */
+  PENDING_SELECTION = 'pending_selection',
+  /** Ready to ship (address selected) */
+  READY_TO_SHIP = 'ready_to_ship',
+  /** Shipped */
+  SHIPPED = 'shipped',
+  /** Delivered */
+  DELIVERED = 'delivered',
+  /** Cancelled */
+  CANCELLED = 'cancelled',
+  /** Expired (deadline passed without address selection) */
+  EXPIRED = 'expired',
+}
+
+/**
+ * Gift order
+ */
+export interface GiftOrder {
+  /** Order ID */
+  orderId: string;
+  /** Sender DID */
+  senderId: string;
+  /** Recipient GAP PID (friend identifier) */
+  recipientGAPPID: string;
+  /** Product ID */
+  productId: string;
+  /** Order status */
+  status: GiftOrderStatus;
+  /** Delivery deadline (ISO 8601) */
+  deadline: string;
+  /** Created timestamp */
+  createdAt: string;
+  /** Address selected timestamp */
+  selectedAddressAt?: string;
+  /** Shipped timestamp */
+  shippedAt?: string;
+  /** Cancelled timestamp */
+  cancelledAt?: string;
+  /** Cancellation reason */
+  cancellationReason?: CancellationReason;
+  /** Gift message from sender */
+  message?: string;
+}
+
+/**
+ * Pending waybill (partial information)
+ */
+export interface PendingWaybill {
+  /** Waybill ID */
+  waybillId: string;
+  /** Order ID */
+  orderId: string;
+  /** Status */
+  status: 'pending' | 'completed';
+  /** Country code (public info) */
+  countryCode: string;
+  /** Region code / Admin1 (public info) */
+  regionCode?: string;
+  /** Full address PID (set after recipient selection) */
+  fullAddressPID?: string;
+  /** Delivery location details (set after recipient selection) */
+  deliveryLocation?: DeliveryLocation;
+  /** Selection deadline */
+  deadline: string;
+  /** Created timestamp */
+  createdAt: string;
+  /** Completed timestamp */
+  completedAt?: string;
+}
+
+/**
+ * Delivery location type
+ */
+export type DeliveryLocationType = 'home' | 'office' | 'convenience_store' | 'locker' | 'pickup_point' | 'other';
+
+/**
+ * Delivery location
+ */
+export interface DeliveryLocation {
+  /** Location type */
+  type: DeliveryLocationType;
+  /** Location label */
+  label: string;
+  /** Address PID */
+  pid: string;
+  /** Additional instructions */
+  instructions?: string;
+}
+
+/**
+ * Gift delivery candidate
+ */
+export interface GiftDeliveryCandidate {
+  /** Address PID */
+  pid: string;
+  /** Display label (e.g., "Home", "Office") */
+  label: string;
+  /** Location type */
+  type: DeliveryLocationType;
+  /** Carrier compatible */
+  carrierCompatible: boolean;
+  /** Incompatibility reasons */
+  incompatibleReasons?: string[];
+  /** AI evaluation score (0-100) */
+  aiScore: number;
+  /** Success probability (0-1) */
+  successProbability: number;
+  /** Number of previous deliveries */
+  previousDeliveries: number;
+  /** Number of successful deliveries */
+  successfulDeliveries: number;
+  /** Distance from cluster center (km) */
+  distanceFromCenter?: number;
+  /** Cluster group ID */
+  clusterGroupId?: string;
+  /** Priority level */
+  priority?: 'urgent' | 'high' | 'normal' | 'low';
+}
+
+/**
+ * Gift delivery selection
+ */
+export interface GiftDeliverySelection {
+  /** Selection ID */
+  selectionId: string;
+  /** Order ID */
+  orderId: string;
+  /** Recipient DID */
+  recipientDID: string;
+  /** Candidate addresses (AI-extracted) */
+  candidates: GiftDeliveryCandidate[];
+  /** Selected PID */
+  selectedPID?: string;
+  /** Selection timestamp */
+  selectedAt?: string;
+  /** AI recommendation */
+  aiRecommendation?: {
+    /** Recommended PID */
+    recommendedPID: string;
+    /** Recommendation reason */
+    reason: string;
+    /** Confidence (0-1) */
+    confidence: number;
+  };
+  /** Selection deadline */
+  deadline: string;
+  /** Access token */
+  accessToken: string;
+}
+
+/**
+ * Candidate cluster
+ */
+export interface CandidateCluster {
+  /** Cluster ID */
+  clusterId: string;
+  /** Cluster label (e.g., "Shibuya Area") */
+  label: string;
+  /** Candidates in cluster */
+  candidates: GiftDeliveryCandidate[];
+  /** Cluster center */
+  center: {
+    /** Latitude */
+    latitude: number;
+    /** Longitude */
+    longitude: number;
+    /** Center label (e.g., "Shibuya Station") */
+    label?: string;
+  };
+  /** Cluster radius (km) */
+  radius: number;
+  /** Optimal candidate */
+  optimalCandidate?: GiftDeliveryCandidate;
+  /** Cluster quality score (0-100) */
+  clusterScore: number;
+}
+
+/**
+ * Cancellation reason
+ */
+export enum CancellationReason {
+  /** Address not selected */
+  ADDRESS_UNSET = 'address_unset',
+  /** Deadline expired */
+  DEADLINE_EXPIRED = 'deadline_expired',
+  /** User cancelled */
+  USER_CANCELLED = 'user_cancelled',
+  /** Recipient declined */
+  RECIPIENT_DECLINED = 'recipient_declined',
+  /** System error */
+  SYSTEM_ERROR = 'system_error',
+  /** Payment failed */
+  PAYMENT_FAILED = 'payment_failed',
+}
+
+/**
+ * Expiration risk level
+ */
+export type ExpirationRisk = 'critical' | 'high' | 'medium' | 'low';
+
+/**
+ * Reminder type
+ */
+export type ReminderType = '72h' | '48h' | '24h' | '12h' | '3h' | '1h';
+
+/**
+ * Reminder schedule
+ */
+export interface ReminderSchedule {
+  /** Reminder type */
+  reminderType: ReminderType;
+  /** Scheduled timestamp (ISO 8601) */
+  scheduledAt: string;
+  /** Notification channel */
+  channel: 'email' | 'sms' | 'push';
+  /** Message */
+  message: string;
+  /** Whether sent */
+  sent: boolean;
+}
+
+/**
+ * Recipient preferences
+ */
+export interface RecipientPreferences {
+  /** Preferred notification channel */
+  preferredChannel: 'email' | 'sms' | 'push';
+  /** Timezone */
+  timezone: string;
+  /** Quiet hours */
+  quietHours?: {
+    /** Start time (HH:mm) */
+    start: string;
+    /** End time (HH:mm) */
+    end: string;
+  };
+}
+
+/**
+ * Time window
+ */
+export interface TimeWindow {
+  /** Start time (HH:mm) */
+  start: string;
+  /** End time (HH:mm) */
+  end: string;
+  /** Score (0-100) */
+  score: number;
+  /** Receive probability (0-1) */
+  receiveProbability: number;
+  /** Factors */
+  factors: {
+    /** Weekday pattern */
+    weekdayPattern: number;
+    /** Holiday pattern */
+    holidayPattern: number;
+    /** Traffic condition */
+    trafficCondition: number;
+  };
+}
+
+/**
+ * Location suggestion
+ */
+export interface LocationSuggestion {
+  /** Address PID */
+  pid: string;
+  /** Display label */
+  label: string;
+  /** Score (0-100) */
+  score: number;
+  /** Suggestion reasons */
+  reasons: string[];
+  /** Availability */
+  availability: {
+    /** Likely available */
+    likely: boolean;
+    /** Confidence (0-1) */
+    confidence: number;
+  };
+}
+
+/**
+ * Probability factors
+ */
+export interface ProbabilityFactors {
+  /** Historical success rate */
+  historicalSuccess: number;
+  /** Address quality score */
+  addressQuality: number;
+  /** Carrier reliability */
+  carrierReliability: number;
+  /** Seasonal factor */
+  seasonalFactor: number;
+  /** Geographic factor */
+  geographicFactor: number;
+}
+
+/**
+ * Action type
+ */
+export type ActionType = 'send_reminder' | 'adjust_priority' | 'escalate' | 'auto_cancel';
+
+/**
+ * Action
+ */
+export interface Action {
+  /** Action type */
+  type: ActionType;
+  /** Description */
+  description: string;
+  /** Scheduled timestamp */
+  scheduledAt?: string;
+  /** Executed timestamp */
+  executedAt?: string;
+}
+
+/**
+ * Suggestion type
+ */
+export type SuggestionType = 'deadline_extension' | 'reminder_optimization' | 'ui_improvement';
+
+/**
+ * Suggestion
+ */
+export interface Suggestion {
+  /** Suggestion type */
+  type: SuggestionType;
+  /** Description */
+  description: string;
+  /** Expected improvement (percentage) */
+  expectedImprovement: number;
+  /** Priority */
+  priority: 'high' | 'medium' | 'low';
+}
