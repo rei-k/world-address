@@ -11,6 +11,7 @@ This directory contains documentation about AI capabilities in the World Address
 | [ai-capabilities.md](./ai-capabilities.md) | **AI機能強化戦略** - 検索精度・安全性・相互運用性を向上させる5つのAI機能 |
 | [search-engine-algorithms.md](./search-engine-algorithms.md) | **検索エンジンアルゴリズム** - 住所クラウド検索エンジンの能力を向上させるアルゴリズムと技術スタック |
 | [waybill-ai-capabilities.md](./waybill-ai-capabilities.md) | **送り状AI・アルゴリズム** - 送り状の生成・検索・管理における10のAI機能 |
+| [zkp-quality-ai.md](./zkp-quality-ai.md) | **ZKPクオリティ向上AI** - ゼロ知識証明の安全性・正しさ・性能・UXを向上させる10のAI機能 |
 
 ## 🤖 概要 / Overview
 
@@ -61,6 +62,21 @@ This directory contains documentation about AI capabilities in the World Address
 4. **不正・ノイズ除外による検索信頼性向上**
    - Anomaly Detection - 異常検知
    - Rate Limiting - 不正検索を制御
+
+### ZKPクオリティ向上AI
+
+ゼロ知識証明のクオリティを向上させる以下10のAI機能について解説しています：
+
+1. **証明仕様チェッカーAI** - 仕様と実装の一致検証
+2. **ZK回路最適化AI** - 制約数削減と性能向上
+3. **証明テストケース生成AI** - 境界・異常・攻撃ケースの自動生成
+4. **パラメータ選定AI** - ユースケース別の最適パラメータ提案
+5. **サイドチャネル・メタデータ解析AI** - 情報漏洩の検出・防止
+6. **非ZKロジックとの整合性チェッカーAI** - 通常APIとの挙動一致確認
+7. **プロトコル設計アドバイザーAI** - プライバシーと実用性のバランス最適化
+8. **ZK UXガイドAI** - ユーザーフレンドリーなUI/UX設計
+9. **証明システム選定AI** - SNARK/STARK/Bulletproofsなどの最適選定
+10. **継続監査AI** - 運用中のZKPシステムの継続監視
 
 ## 🔗 関連ドキュメント / Related Documents
 
