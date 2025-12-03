@@ -6,6 +6,7 @@
   "scripts": {
     "fetch:libaddressinput": "node scripts/fetch-libaddressinput-v2.js",
     "test:scripts": "node scripts/test-transform.js",
+    "test:v2": "node scripts/test-libaddressinput-v2.js",
     "validate:data": "node scripts/validate-yaml.js",
     "stats:data": "node scripts/data-stats.js",
     "lint": "eslint scripts --ext .js",
