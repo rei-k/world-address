@@ -611,6 +611,8 @@ AIはユーザーの正常な行動パターンを学習し、異常を検知し
 
 - [Cloud Address Book System](../cloud-address-book.md) - システム全体像
 - [Address Search Engine](../address-search-engine.md) - 検索エンジンアーキテクチャ
+- [Search Engine Algorithms](./search-engine-algorithms.md) - 検索エンジン向上のアルゴリズム・技術スタック詳細
+- [Waybill AI Capabilities](./waybill-ai-capabilities.md) - 送り状AI・アルゴリズム機能
 - [ZKP Protocol](../zkp-protocol.md) - プライバシー保護プロトコル
 - [Payment Integration](../payment-integration.md) - 決済統合
 - [SDK Classification](../sdk-classification.md) - SDK仕様
