@@ -1,0 +1,90 @@
+{
+  "name": {
+    "en": "Åland Islands",
+    "local": [
+      {
+        "lang": "sv",
+        "value": "Åland",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AX",
+    "alpha3": "ALA",
+    "numeric": "248"
+  },
+  "continent": "Europe",
+  "subregion": "Northern Europe",
+  "languages": [
+    {
+      "name": "Swedish",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "sv": "Åland",
+        "en": "Åland Islands"
+      }
+    },
+    {
+      "name": "Finnish",
+      "script": "Latin",
+      "role": "auxiliary",
+      "country_name": {
+        "fi": "Ahvenanmaa",
+        "en": "Åland Islands"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Municipality",
+      "label_local": "Kommun",
+      "label_en": "Municipality",
+      "count": 16
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^22[0-9]{3}$",
+      "description": "Postal codes start with 22 (AX prefix)",
+      "example": "22100"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Torggatan 8, 22100 Mariehamn",
+    "domestic_normalized": "Torggatan 8 22100 Mariehamn",
+    "international": "Torggatan 8, AX-22100 Mariehamn, Åland Islands"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

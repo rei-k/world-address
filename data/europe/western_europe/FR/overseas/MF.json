@@ -1,0 +1,89 @@
+{
+  "name": {
+    "en": "Saint Martin",
+    "local": [
+      {
+        "lang": "fr",
+        "value": "Saint-Martin",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "MF",
+    "alpha3": "MAF",
+    "numeric": "663"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "French",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "fr": "Saint-Martin",
+        "en": "Saint Martin"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "widely_spoken",
+      "country_name": {
+        "en": "Saint Martin"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Quarter",
+      "label_local": "Quartier",
+      "label_en": "Quarter",
+      "count": 8
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^97150$",
+      "description": "All addresses use postal code 97150",
+      "example": "97150"
+    }
+  },
+  "examples": {
+    "domestic_raw": "Boulevard de Grand Case, 97150 Marigot",
+    "domestic_normalized": "Boulevard de Grand Case 97150 Marigot",
+    "international": "Boulevard de Grand Case, 97150 Marigot, Saint-Martin"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

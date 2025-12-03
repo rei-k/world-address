@@ -1,0 +1,101 @@
+{
+  "name": {
+    "en": "Aruba",
+    "local": [
+      {
+        "lang": "nl",
+        "value": "Aruba",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "pap",
+        "value": "Aruba",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "AW",
+    "alpha3": "ABW",
+    "numeric": "533"
+  },
+  "continent": "North America",
+  "subregion": "Caribbean",
+  "languages": [
+    {
+      "name": "Dutch",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "nl": "Aruba",
+        "en": "Aruba"
+      }
+    },
+    {
+      "name": "Papiamento",
+      "script": "Latin",
+      "role": "official",
+      "country_name": {
+        "pap": "Aruba",
+        "en": "Aruba"
+      }
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "role": "widely_spoken",
+      "country_name": {
+        "en": "Aruba"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Regio",
+      "label_en": "Region",
+      "count": 8
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "city",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Aruba does not use postal codes",
+      "example": ""
+    }
+  },
+  "examples": {
+    "domestic_raw": "Caya G. F. Betico Croes 23, Oranjestad",
+    "domestic_normalized": "Caya G. F. Betico Croes 23 Oranjestad",
+    "international": "Caya G. F. Betico Croes 23, Oranjestad, Aruba"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": true,
+    "disputed": false
+  }
+}

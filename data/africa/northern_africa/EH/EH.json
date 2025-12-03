@@ -1,0 +1,105 @@
+{
+  "name": {
+    "en": "Western Sahara",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "الصحراء الغربية",
+        "script": "Arabic",
+        "direction": "rtl"
+      },
+      {
+        "lang": "es",
+        "value": "Sáhara Occidental",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "EH",
+    "alpha3": "ESH",
+    "numeric": "732"
+  },
+  "continent": "Africa",
+  "subregion": "Northern Africa",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "primary",
+      "country_name": {
+        "ar": "الصحراء الغربية",
+        "en": "Western Sahara"
+      }
+    },
+    {
+      "name": "Spanish",
+      "script": "Latin",
+      "role": "historical",
+      "country_name": {
+        "es": "Sáhara Occidental",
+        "en": "Western Sahara"
+      }
+    },
+    {
+      "name": "Hassaniya Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "regional",
+      "country_name": {
+        "ar": "الصحراء الغربية",
+        "en": "Western Sahara"
+      }
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "منطقة",
+      "label_en": "Region",
+      "count": 3
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "city",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "city",
+          "region",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "No formal postal code system",
+      "example": ""
+    }
+  },
+  "examples": {
+    "domestic_raw": "Laayoune",
+    "domestic_normalized": "Laayoune",
+    "international": "Laayoune, Western Sahara"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": false,
+    "disputed": true,
+    "notes": "Disputed territory claimed by Morocco and the Sahrawi Arab Democratic Republic"
+  }
+}

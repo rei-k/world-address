@@ -1,0 +1,67 @@
+name: 
+  en: French Southern and Antarctic Lands
+  local:
+    - lang: fr
+      value: Terres australes et antarctiques françaises
+      script: Latin
+      direction: ltr
+
+iso_codes:
+  alpha2: TF
+  alpha3: ATF
+  numeric: "260"
+
+continent: Antarctica
+subregion: Antarctic
+
+languages:
+  - name: French
+    script: Latin
+    role: official
+    country_name:
+      fr: Terres australes et antarctiques françaises
+      en: French Southern and Antarctic Lands
+
+administrative_divisions:
+  level1:
+    type: District
+    label_local: District
+    label_en: District
+    count: 5
+    list:
+      - Kerguelen Islands
+      - Crozet Islands
+      - Amsterdam and Saint Paul Islands
+      - Adélie Land
+      - Scattered Islands
+
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - station
+        - district
+        - country
+    - context: international
+      order:
+        - recipient
+        - station
+        - district
+        - country
+
+  postal_code:
+    required: false
+    description: "No permanent postal addresses; scientific stations only"
+    example: ""
+
+examples:
+  domestic_raw: "Station de recherche Port-aux-Français, Îles Kerguelen"
+  domestic_normalized: "Station de recherche Port-aux-Français Îles Kerguelen"
+  international: "Port-aux-Français Research Station, Kerguelen Islands, French Southern and Antarctic Lands"
+
+status:
+  un_member: false
+  recognized: true
+  disputed: false
+  notes: "Uninhabited territory except for scientific research stations"
