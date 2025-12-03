@@ -69,6 +69,7 @@ console.log(pid); // "JP-13-113-01-T07-B12-BN02-R342"
 - 🔍 [住所検索エンジン](./docs/address-search-engine.md) - 検索UIで入力工程を削除する新規格
 - 🤖 [AI機能強化戦略](./docs/ai/ai-capabilities.md) - 検索精度・安全性・相互運用性を向上させる5つのAI機能
 - 🚚 [送り状AI・アルゴリズム](./docs/ai/waybill-ai-capabilities.md) - 送り状の生成・検索・管理における10のAI機能
+- 🔐 [ZKPクオリティ向上AI](./docs/ai/zkp-quality-ai.md) - ゼロ知識証明の安全性・正しさ・性能・UXを向上させる10のAI機能
 - 🏗️ [システムアーキテクチャ](./docs/cloud-address-book-architecture.md) - 技術アーキテクチャとデータフロー
 - 🔧 [サーバーサイドアーキテクチャ](./docs/server-architecture.md) - コアAPI・SDK役割整理
 - 🌐 [SDK言語・エコシステム分類](./docs/sdk-classification.md) - 各言語向けSDK仕様
