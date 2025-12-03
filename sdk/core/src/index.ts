@@ -277,4 +277,52 @@ export type {
   CommunityLogisticsService,
 } from './logistics';
 
+// Gift Delivery System
+export type {
+  // Gift order types
+  GiftOrder,
+  GiftOrderStatus,
+  PendingWaybill,
+  GiftDeliveryCandidate,
+  GiftDeliverySelection,
+  CandidateCluster,
+  CancellationReason,
+  ExpirationRisk,
+  ReminderSchedule,
+  RecipientPreferences,
+  TimeWindow,
+  LocationSuggestion,
+  ProbabilityFactors,
+  Action,
+  Suggestion,
+} from './types';
+
+export {
+  // Gift order management
+  createGiftOrder,
+  getGiftOrder,
+  updateGiftOrderStatus,
+  // Delivery location selection
+  getGiftDeliveryCandidates,
+  selectDeliveryLocation,
+  // AI classes
+  CarrierIntentAI,
+  GiftDeadlineWatchAI,
+  LocationClusteringAI,
+  SmartAddressSuggestionAI,
+  CancelReasonAI,
+  // Auto cancellation
+  autoCancelExpiredGift,
+} from './gift';
+
+export type {
+  // Request/Response types
+  CreateGiftOrderRequest,
+  CreateGiftOrderResponse,
+  GetDeliveryCandidatesRequest,
+  GetDeliveryCandidatesResponse,
+  SelectDeliveryLocationRequest,
+  SelectDeliveryLocationResponse,
+} from './gift';
+
 
