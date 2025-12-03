@@ -6,6 +6,12 @@ Alipay（支付宝）ミニプログラム用のVEY住所・配送システムSD
 
 This is the VEY Address and Shipping System SDK for Alipay Mini-Programs.
 
+## 📚 ドキュメント / Documentation
+
+- **[画面構成 / Screen Structure](./SCREEN-STRUCTURE.md)** - 8つの画面の詳細設計と型定義
+- **[UX導線 / UX Flow](./UX-FLOW.md)** - 10ステップの完全なユーザーフロー
+- **[AI機能 / AI Capabilities](./AI-CAPABILITIES.md)** - 10のAI機能の詳細
+
 ## 🚀 クイックスタート / Quick Start
 
 ### インストール / Installation
