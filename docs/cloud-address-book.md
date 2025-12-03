@@ -1,8 +1,14 @@
-# クラウド住所帳システム / Cloud Address Book System
+# クラウド住所帳システム（Veybook） / Cloud Address Book System (Veybook)
 
 ゼロ知識証明（ZKP）を中心とした、プライバシー保護型のクラウド住所帳システムの包括的なドキュメントです。
 
+このシステムは **Veyエコシステム** の中核となる **Veybook**（ヴェイブック）として提供されます。
+
 Comprehensive documentation for a privacy-preserving cloud address book system centered on Zero-Knowledge Proofs (ZKP).
+
+This system is provided as **Veybook**, the core of the **Vey Ecosystem**.
+
+> 📖 **関連ドキュメント**: [Veyエコシステム全体の概要](./vey-ecosystem.md) もご覧ください。
 
 ---
 
@@ -32,12 +38,16 @@ Comprehensive documentation for a privacy-preserving cloud address book system c
 - **データ保持**: 完全な生住所、全PID、秘密鍵
 
 ### 1.2 アドレスプロバイダー / Address Provider
+
+**Veybook** がこの役割を担います。
+
 - **役割**: 住所の保存とPID発行を行う住所基盤
 - **責任**:
   - AMF（Address Mapping Framework）による住所正規化
   - PID（Place ID）の発行と管理
   - Verifiable Credential（VC）の発行
   - ZK証明の生成サービス提供
+  - ソーシャルログイン統合（Google、Apple、LINE等）
 - **データ保持**: 完全な生住所、PID、VC、秘密塩（secret_salt）
 
 ### 1.3 友達/配送先 / Friend/Delivery Recipient
