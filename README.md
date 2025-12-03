@@ -45,7 +45,15 @@ Veybookにアカウントを持ち、住所を登録している場合：
 
 これにより、毎回の住所入力の手間を省き、入力ミスも防ぐことができます。
 
-詳細は **[Veyエコシステムドキュメント](./docs/vey-ecosystem.md)** をご覧ください。
+詳細は以下をご覧ください:
+- **[Veyエコシステム完全版](./Vey/)** - アプリケーション、図表、統合ガイドの完全なドキュメント
+- **[システム全体図](./Vey/diagrams/system-overview.md)** - アーキテクチャと各コンポーネント間の関係
+- **[データフロー図](./Vey/diagrams/data-flows.md)** - システム内のデータの流れ
+- **[ユーザージャーニー](./Vey/diagrams/user-journeys.md)** - 主要なユーザー体験フロー
+- **[技術統合図](./Vey/diagrams/technical-integration.md)** - API仕様と技術的な統合
+- **[セキュリティアーキテクチャ](./Vey/diagrams/security-architecture.md)** - セキュリティ設計と実装
+
+従来のドキュメント: **[Veyエコシステムドキュメント](./docs/vey-ecosystem.md)**
 
 ## 📋 概要
 
