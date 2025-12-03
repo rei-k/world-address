@@ -126,9 +126,21 @@ export class AuthService {
 
   /**
    * Generate state parameter for CSRF protection
+   * Uses cryptographically secure random values
    */
   private generateState(): string {
-    return Math.random().toString(36).substring(2, 15);
+    const array = new Uint8Array(16);
+    if (typeof window !== 'undefined' && window.crypto) {
+      window.crypto.getRandomValues(array);
+    } else if (typeof global !== 'undefined' && global.crypto) {
+      global.crypto.getRandomValues(array);
+    } else {
+      // Fallback for environments without crypto (should not happen in production)
+      for (let i = 0; i < array.length; i++) {
+        array[i] = Math.floor(Math.random() * 256);
+      }
+    }
+    return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
   }
 
   /**
@@ -149,8 +161,18 @@ export class AuthService {
 
   /**
    * Store user session
+   * 
+   * WARNING: In production, tokens should be stored in httpOnly cookies
+   * or secure storage to prevent XSS attacks. This implementation uses
+   * localStorage for development convenience only.
+   * 
+   * For production:
+   * - Use httpOnly cookies for access/refresh tokens
+   * - Implement CSRF protection
+   * - Consider using secure session storage
    */
   storeSession(response: OAuthResponse): void {
+    // TODO: Replace with httpOnly cookie storage in production
     localStorage.setItem('vey_access_token', response.accessToken);
     if (response.refreshToken) {
       localStorage.setItem('vey_refresh_token', response.refreshToken);

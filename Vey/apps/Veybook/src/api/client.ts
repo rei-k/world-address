@@ -74,7 +74,9 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`OAuth login failed: ${response.statusText}`);
+      // User-friendly error handling without exposing internal details
+      const errorCode = `AUTH_${response.status}`;
+      throw new Error(`Authentication failed. Error code: ${errorCode}`);
     }
 
     const data = await response.json();
@@ -92,7 +94,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to get user: ${response.statusText}`);
+      throw new Error(`Failed to fetch user profile. Error code: USER_${response.status}`);
     }
 
     return response.json();
@@ -109,7 +111,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to update user: ${response.statusText}`);
+      throw new Error(`Failed to update profile. Error code: USER_UPDATE_${response.status}`);
     }
 
     return response.json();
@@ -138,7 +140,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to create address: ${response.statusText}`);
+      throw new Error(`Failed to create address. Error code: ADDR_CREATE_${response.status}`);
     }
 
     return response.json();
@@ -154,7 +156,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to get addresses: ${response.statusText}`);
+      throw new Error(`Failed to fetch addresses. Error code: ADDR_LIST_${response.status}`);
     }
 
     return response.json();
@@ -170,7 +172,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to get address: ${response.statusText}`);
+      throw new Error(`Failed to fetch address. Error code: ADDR_GET_${response.status}`);
     }
 
     return response.json();
@@ -187,7 +189,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to update address: ${response.statusText}`);
+      throw new Error(`Failed to update address. Error code: ADDR_UPDATE_${response.status}`);
     }
 
     return response.json();
@@ -203,7 +205,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to delete address: ${response.statusText}`);
+      throw new Error(`Failed to delete address. Error code: ADDR_DELETE_${response.status}`);
     }
   }
 
@@ -217,7 +219,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to set primary address: ${response.statusText}`);
+      throw new Error(`Failed to set primary address. Error code: ADDR_PRIMARY_${response.status}`);
     }
 
     return response.json();
@@ -238,7 +240,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to get friends: ${response.statusText}`);
+      throw new Error(`Failed to fetch friends list. Error code: FRIEND_LIST_${response.status}`);
     }
 
     return response.json();
@@ -254,7 +256,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to generate invitation: ${response.statusText}`);
+      throw new Error(`Failed to generate invitation. Error code: FRIEND_INVITE_${response.status}`);
     }
 
     return response.json();
@@ -271,7 +273,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to accept invitation: ${response.statusText}`);
+      throw new Error(`Failed to accept invitation. Error code: FRIEND_ACCEPT_${response.status}`);
     }
 
     return response.json();
@@ -287,7 +289,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to remove friend: ${response.statusText}`);
+      throw new Error(`Failed to remove friend. Error code: FRIEND_REMOVE_${response.status}`);
     }
   }
 
@@ -307,7 +309,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to generate address token: ${response.statusText}`);
+      throw new Error(`Failed to generate address token. Error code: TOKEN_${response.status}`);
     }
 
     return response.json();
@@ -328,7 +330,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to get tracking info: ${response.statusText}`);
+      throw new Error(`Failed to fetch tracking information. Error code: TRACK_${response.status}`);
     }
 
     return response.json();
@@ -344,7 +346,7 @@ export class VeybookClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to get deliveries: ${response.statusText}`);
+      throw new Error(`Failed to fetch deliveries. Error code: DELIVERY_LIST_${response.status}`);
     }
 
     return response.json();

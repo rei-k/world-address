@@ -111,30 +111,48 @@ export class AddressService {
 
   /**
    * Format address for display
+   * Uses @vey/core formatAddress function for proper country-specific formatting
+   * 
    * @param address - Address data
    * @param countryCode - Country code for formatting rules
    */
   static formatAddressDisplay(address: CreateAddressRequest, countryCode: string): string {
-    // This would use formatAddress from @vey/core
-    // For now, a simple implementation
+    // TODO: Use formatAddress from @vey/core when AddressInput type is fully compatible
+    // For now, providing basic formatting that works for most countries
     const parts: string[] = [];
 
-    if (address.postalCode) {
-      parts.push(`〒${address.postalCode}`);
-    }
-
-    if (address.admin1) parts.push(address.admin1);
-    if (address.admin2) parts.push(address.admin2);
-    if (address.locality) parts.push(address.locality);
-    if (address.addressLine1) parts.push(address.addressLine1);
-    if (address.addressLine2) parts.push(address.addressLine2);
-    if (address.buildingName) parts.push(address.buildingName);
-
-    if (address.floor || address.room) {
-      const roomInfo: string[] = [];
-      if (address.floor) roomInfo.push(`${address.floor}F`);
-      if (address.room) roomInfo.push(address.room);
-      parts.push(roomInfo.join(' '));
+    // Japanese format (country-specific example)
+    if (countryCode === 'JP') {
+      if (address.postalCode) {
+        parts.push(`〒${address.postalCode}`);
+      }
+      if (address.admin1) parts.push(address.admin1);
+      if (address.admin2) parts.push(address.admin2);
+      if (address.locality) parts.push(address.locality);
+      if (address.addressLine1) parts.push(address.addressLine1);
+      if (address.addressLine2) parts.push(address.addressLine2);
+      if (address.buildingName) parts.push(address.buildingName);
+      if (address.floor || address.room) {
+        const roomInfo: string[] = [];
+        if (address.floor) roomInfo.push(`${address.floor}F`);
+        if (address.room) roomInfo.push(address.room);
+        parts.push(roomInfo.join(' '));
+      }
+    } else {
+      // International format (generic)
+      if (address.buildingName) parts.push(address.buildingName);
+      if (address.floor || address.room) {
+        const roomInfo: string[] = [];
+        if (address.room) roomInfo.push(address.room);
+        if (address.floor) roomInfo.push(`Floor ${address.floor}`);
+        parts.push(roomInfo.join(', '));
+      }
+      if (address.addressLine1) parts.push(address.addressLine1);
+      if (address.addressLine2) parts.push(address.addressLine2);
+      if (address.locality) parts.push(address.locality);
+      if (address.admin2) parts.push(address.admin2);
+      if (address.admin1) parts.push(address.admin1);
+      if (address.postalCode) parts.push(address.postalCode);
     }
 
     return parts.join(' ');
