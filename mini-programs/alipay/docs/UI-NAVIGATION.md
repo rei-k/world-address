@@ -933,19 +933,26 @@ Page({
   
   // AI意図予測
   async predictIntent(scanData) {
-    const prediction = await this.callAIService({
-      action: 'PREDICT_INTENT',
-      data: scanData
-    });
-    
-    // 適切な画面へ遷移
-    if (prediction.intent === 'GIFT_SETUP') {
-      my.navigateTo({
-        url: `/pages/gift-receipt/index?data=${scanData}`
+    try {
+      const prediction = await this.callAIService({
+        action: 'PREDICT_INTENT',
+        data: scanData
       });
-    } else if (prediction.intent === 'TRACKING') {
-      my.navigateTo({
-        url: `/pages/waybill-preview/index?hash=${scanData}`
+      
+      // 適切な画面へ遷移
+      if (prediction.intent === 'GIFT_SETUP') {
+        my.navigateTo({
+          url: `/pages/gift-receipt/index?data=${scanData}`
+        });
+      } else if (prediction.intent === 'TRACKING') {
+        my.navigateTo({
+          url: `/pages/waybill-preview/index?hash=${scanData}`
+        });
+      }
+    } catch (error) {
+      my.showToast({
+        content: 'スキャンデータの解析に失敗しました',
+        type: 'fail'
       });
     }
   },

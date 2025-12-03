@@ -686,12 +686,13 @@ interface ProgressBarStyles {
 ```typescript
 interface Breakpoints {
   // rpx単位（WeChat & Alipay共通）
-  xs: '0rpx',       // 0px - 超小型デバイス
-  sm: '576rpx',     // 288px - 小型デバイス
-  md: '768rpx',     // 384px - 中型デバイス
-  lg: '992rpx',     // 496px - 大型デバイス
-  xl: '1200rpx',    // 600px - 超大型デバイス
-  xxl: '1600rpx',   // 800px - 超々大型デバイス
+  // 一般的なデバイスサイズに基づく
+  xs: '0rpx',       // 0px - 超小型デバイス（〜320px）
+  sm: '640rpx',     // 320px - 小型デバイス（321px〜）
+  md: '750rpx',     // 375px - 中型デバイス（一般的なスマートフォン）
+  lg: '1024rpx',    // 512px - 大型デバイス（タブレット）
+  xl: '1280rpx',    // 640px - 超大型デバイス（横向きタブレット）
+  xxl: '1536rpx',   // 768px - デスクトップ（稀）
 }
 ```
 
