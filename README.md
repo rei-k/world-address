@@ -93,10 +93,70 @@ print(us_data['address_format']['postal_code']['regex'])  # "^\d{5}(-\d{4})?$"
 
 ### Core Applications
 
-| Application | Description |
-|-------------|-------------|
-| **📱 Veybook** | Cloud address book with social login integration, QR/NFC support, and end-to-end encryption |
-| **🏪 Veypos** | Global POS system supporting multi-currency, tax compliance, and Veybook integration |
+All important applications in the Vey ecosystem with their frontend UI/UX features:
+
+#### 📱 Veybook - Cloud Address Book
+**Description:** Cloud address book with social login integration, QR/NFC support, and end-to-end encryption
+
+**Frontend UI/UX Features:**
+- **Address Management Interface:** Clean, card-based layout for managing multiple addresses (home, work, other) with easy add/edit/delete actions
+- **QR/NFC Sharing Flow:** Visual step-by-step QR code generation and scanning interface with real-time friend request notifications
+- **Friend Management Dashboard:** Contact list with privacy-preserving friend connections, showing delivery permissions without exposing raw addresses
+- **One-Click Checkout Widget:** Embedded widget for e-commerce sites enabling instant address selection without re-entering information
+- **Mobile Wallet Integration:** Seamless Google Wallet/Apple Wallet pass design with QR codes for quick access
+- **Responsive Design:** Optimized for web (React/Next.js), mobile (React Native), and mini-programs (WeChat/Alipay)
+
+#### 🏪 VeyPOS - Point of Sale System
+**Description:** Global POS system supporting multi-currency, tax compliance, and Veybook integration
+
+**Frontend UI/UX Features:**
+- **Touch-Optimized Interface:** Large, accessible buttons designed for tablet/iPad use with minimal taps to complete transactions
+- **Product Grid View:** Visual product catalog with images, pricing, and quick add-to-cart functionality
+- **Multi-Currency Display:** Real-time currency conversion with clear display of original and converted prices
+- **Tax Calculation Overlay:** Transparent tax breakdown overlay showing standard/reduced rates per item category
+- **Receipt Preview:** Digital receipt preview before printing with all legally required fields per country
+- **Customer Lookup:** Quick Veybook integration for registered customer address/delivery preferences
+- **Offline Mode UI:** Clear visual indicators for offline operation with sync status badges
+- **Multi-Language Support:** Language switcher with 257-country address format support
+
+#### 🏪 VeyStore - E-Commerce Platform
+**Description:** E-commerce specialized CMS integrated with Vey ecosystem for addressless checkout
+
+**Frontend UI/UX Features:**
+- **Addressless Checkout Flow:** Streamlined checkout with Veybook "Select Address" button replacing traditional address forms
+- **Product Catalog:** Grid/list view toggle with filtering, sorting, and search functionality
+- **Shopping Cart:** Persistent cart with real-time inventory updates and shipping cost estimation
+- **ZKP Privacy Indicator:** Visual badges showing privacy protection status and secure delivery verification
+- **Multi-Language Store:** Language and currency selector with automatic content localization
+- **Responsive Themes:** Customizable themes optimized for mobile, tablet, and desktop shopping experiences
+- **Order Tracking Dashboard:** Real-time order status with map-based delivery tracking integration
+- **Delivery Options:** Visual delivery method selection with estimated times and carbon offset information
+
+#### 🚚 VeyExpress - Delivery Integration Platform
+**Description:** Multi-carrier delivery integration platform with AI-powered optimization and 254-country support
+
+**Frontend UI/UX Features:**
+- **Comprehensive Dashboard:** 7-category dashboard with delivery search, active shipments summary, and world map visualization
+- **Carrier Comparison Interface:** Side-by-side carrier comparison with pricing, delivery time, and rating indicators
+- **Real-Time Tracking Map:** Interactive map showing package location with predicted ETA and route visualization
+- **API Console:** Developer-friendly console for testing 8 core APIs with code snippets and live response preview
+- **Waybill Generator:** Visual waybill creation form with automatic field population and QR code generation
+- **Analytics Dashboard:** Charts and graphs for delivery performance, delays, returns, and cost analysis
+- **Logistics Management:** Integrated DMS/OMS/WMS/TMS interfaces with drag-and-drop workflow builders
+- **Multi-Modal Transport:** Visual selector for parcel/3PL/4PL/sea/rail/air shipping options with cost/time tradeoffs
+
+#### 📝 Veyform - Address Form System
+**Description:** Universal address form system supporting 257 countries with smart auto-fill and validation
+
+**Frontend UI/UX Features:**
+- **Adaptive Form Layout:** Dynamic form fields that adjust based on selected country's address format requirements
+- **Smart Auto-Complete:** Real-time address suggestions as user types, with postal code-based auto-fill
+- **Visual Validation:** Inline field validation with clear error messages and formatting hints (e.g., "123-4567" for JP postal codes)
+- **Veybook Integration Button:** "Use Saved Address" button with modal selector showing user's saved addresses
+- **Mobile-First Design:** Touch-friendly input fields with appropriate keyboard types (numeric for postal codes, etc.)
+- **Progress Indicators:** Step-by-step progress bar for multi-step address entry flows
+- **Accessibility Features:** WCAG 2.1 AA compliant with screen reader support and keyboard navigation
+- **Theme Customization:** CSS variable-based theming system for seamless brand integration
 
 ### Learn More
 
