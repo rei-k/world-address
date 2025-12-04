@@ -8,6 +8,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { VeybookClient } from '@vey/core';
 import { VeyExpressClient } from '@vey/express';
 
+// NOTE: This is example code. In production, import Prisma client:
+// import { PrismaClient } from '@prisma/client';
+// const prisma = new PrismaClient();
+// Or use your database client of choice
+declare const prisma: any;
+declare const stripe: any;
+
 // ============================================================================
 // OAuth Callback Handler
 // ============================================================================

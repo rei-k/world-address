@@ -261,6 +261,13 @@ interface CheckoutPageProps {
   user: any | null;
 }
 
+/**
+ * Checkout Page Component
+ * 
+ * Server-side rendered checkout page that loads cart and user data
+ * before rendering the VeybookCheckout component.
+ */
+
 export default function CheckoutPage({ cart, user }: CheckoutPageProps) {
   // Redirect to cart if empty
   useEffect(() => {
@@ -285,7 +292,15 @@ export default function CheckoutPage({ cart, user }: CheckoutPageProps) {
   );
 }
 
-// Server-side data fetching
+/**
+ * Server-side data fetching for checkout page
+ * 
+ * Loads cart items and user session before rendering the page.
+ * Redirects to cart page if cart is empty.
+ * 
+ * @param context - Next.js page context with request and response
+ * @returns Props containing cart items and user data
+ */
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
   

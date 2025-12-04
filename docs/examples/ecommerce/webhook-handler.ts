@@ -7,6 +7,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import crypto from 'crypto';
 
+// NOTE: This is example code. In production, import database and Stripe clients:
+// import { PrismaClient } from '@prisma/client';
+// import Stripe from 'stripe';
+// const prisma = new PrismaClient();
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+declare const prisma: any;
+declare const stripe: any;
+
 // ============================================================================
 // Webhook Signature Verification
 // ============================================================================
@@ -235,7 +243,8 @@ async function handleShipmentOutForDelivery(data: VeyExpressWebhookEvent['data']
   await sendPushNotification({
     type: 'out_for_delivery',
     trackingNumber: data.trackingNumber,
-    message: '本日中にお届け予定です'
+    // TODO: Add i18n support for messages
+    message: '本日中にお届け予定です' // "Expected delivery today"
   });
 }
 
@@ -279,7 +288,8 @@ async function handleShipmentDelivered(data: VeyExpressWebhookEvent['data']) {
   await sendPushNotification({
     type: 'delivered',
     trackingNumber: data.trackingNumber,
-    message: '商品が配達されました'
+    // TODO: Add i18n support for messages
+    message: '商品が配達されました' // "Your order has been delivered"
   });
 
   // Request review (after 3 days)
