@@ -733,8 +733,6 @@ These checks also run automatically via GitHub Actions.
 
 For development setup and best practices, see [DEVELOPMENT.md](./DEVELOPMENT.md).
 
-For contributing to Vey ecosystem, see [Vey Contributing Guide](./Vey/CONTRIBUTING.md).
-
 ## 🔧 開発者向け / For Developers
 
 ### Setup
