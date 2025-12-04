@@ -1,6 +1,6 @@
 # README Improvements Summary
 
-This document outlines the improvements made to the README.md file in response to the issue "redme改善点は？" (What are the README improvement points?).
+This document outlines the improvements made to the README.md file in response to the issue "README改善点は？" (What are the README improvement points?).
 
 ## Key Improvements
 
