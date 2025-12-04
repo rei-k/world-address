@@ -1,0 +1,884 @@
+/**
+ * Veybook Checkout Styles
+ * 
+ * CSS styles for the complete e-commerce checkout flow
+ */
+
+/* ============================================================================
+   Layout & Container
+   ============================================================================ */
+
+.veybook-checkout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+}
+
+.checkout-content {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .veybook-checkout {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
+
+/* ============================================================================
+   Progress Indicator
+   ============================================================================ */
+
+.checkout-progress {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  padding: 0 2rem;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  position: relative;
+}
+
+.progress-step::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: #e5e7eb;
+  z-index: -1;
+}
+
+.progress-step:last-child::after {
+  display: none;
+}
+
+.progress-step.active .step-indicator {
+  background: #4285f4;
+  color: white;
+}
+
+.progress-step.completed .step-indicator {
+  background: #10b981;
+  color: white;
+}
+
+.progress-step.completed::after {
+  background: #10b981;
+}
+
+.step-indicator {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.step-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.progress-step.active .step-label {
+  color: #4285f4;
+  font-weight: 600;
+}
+
+/* ============================================================================
+   Login Step
+   ============================================================================ */
+
+.login-step {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.login-step h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.login-step .subtitle {
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.login-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.veybook-login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.veybook-login-button.primary {
+  background: #4285f4;
+  color: white;
+}
+
+.veybook-login-button.primary:hover {
+  background: #3367d6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+}
+
+.veybook-login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.divider {
+  text-align: center;
+  position: relative;
+  margin: 1.5rem 0;
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.social-login-options {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-login-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: #374151;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.social-login-button:hover {
+  border-color: #9ca3af;
+  background: #f9fafb;
+}
+
+.social-login-button.google:hover {
+  border-color: #4285f4;
+}
+
+.social-login-button.apple:hover {
+  border-color: #000;
+}
+
+.manual-entry-button {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: #374151;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.manual-entry-button:hover {
+  border-color: #9ca3af;
+  background: #f9fafb;
+}
+
+.security-notice {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: #166534;
+}
+
+/* ============================================================================
+   Address Selection
+   ============================================================================ */
+
+.address-selection-step h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.address-list {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.address-card {
+  padding: 1.25rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.address-card:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.address-card.selected {
+  border-color: #4285f4;
+  background: #eff6ff;
+}
+
+.address-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.address-label {
+  font-weight: 600;
+  color: #111827;
+}
+
+.primary-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: #dbeafe;
+  color: #1e40af;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.address-details {
+  color: #4b5563;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.address-details .recipient {
+  font-weight: 600;
+  color: #111827;
+}
+
+.selection-indicator {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4285f4;
+}
+
+.add-address-button {
+  width: 100%;
+  padding: 1rem;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: #4285f4;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-address-button:hover {
+  border-color: #4285f4;
+  background: #eff6ff;
+}
+
+/* ============================================================================
+   Address Form
+   ============================================================================ */
+
+.add-address-form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.add-address-form h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.form-field {
+  margin-bottom: 1.25rem;
+}
+
+.form-field label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: #4285f4;
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-field.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.form-field.checkbox label {
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+  font-weight: 500;
+}
+
+.form-field.checkbox input {
+  width: auto;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.form-actions button {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.form-actions button[type="button"] {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.form-actions button[type="button"]:hover {
+  background: #f9fafb;
+}
+
+.form-actions button[type="submit"] {
+  background: #4285f4;
+  color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+  background: #3367d6;
+}
+
+.form-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   Payment Selection
+   ============================================================================ */
+
+.payment-selection-step h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.payment-methods-list {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.payment-method-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.payment-method-card:hover {
+  border-color: #d1d5db;
+}
+
+.payment-method-card.selected {
+  border-color: #4285f4;
+  background: #eff6ff;
+}
+
+.card-icon {
+  font-size: 2rem;
+}
+
+.card-info {
+  flex: 1;
+}
+
+.card-brand {
+  font-weight: 600;
+  color: #111827;
+}
+
+.card-number {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.card-expiry {
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+.add-payment-button {
+  width: 100%;
+  padding: 1rem;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: #4285f4;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-payment-button:hover {
+  border-color: #4285f4;
+  background: #eff6ff;
+}
+
+/* ============================================================================
+   Confirmation Step
+   ============================================================================ */
+
+.confirmation-step h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.order-section {
+  margin-bottom: 2rem;
+}
+
+.order-section h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.info-box {
+  padding: 1rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.cart-items {
+  display: grid;
+  gap: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 6px;
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-name {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.item-price {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.item-total {
+  font-weight: 600;
+  color: #111827;
+}
+
+.order-total {
+  background: #f9fafb;
+  padding: 1.25rem;
+  border-radius: 8px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  color: #4b5563;
+}
+
+.total-row.grand-total {
+  border-top: 2px solid #e5e7eb;
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ============================================================================
+   Completion Step
+   ============================================================================ */
+
+.complete-step {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: #10b981;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.complete-step h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.success-message {
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.order-summary {
+  background: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.order-summary h3 {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.order-summary ul {
+  list-style: none;
+  padding: 0;
+}
+
+.order-summary li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.order-summary li:last-child {
+  border-bottom: none;
+}
+
+.next-steps {
+  background: #eff6ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.next-steps h3 {
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 1rem;
+}
+
+.next-steps ol {
+  padding-left: 1.5rem;
+  color: #1e3a8a;
+}
+
+.next-steps li {
+  margin-bottom: 0.5rem;
+}
+
+.complete-step .actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.primary-button,
+.secondary-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.primary-button {
+  background: #4285f4;
+  color: white;
+  border: none;
+}
+
+.primary-button:hover {
+  background: #3367d6;
+}
+
+.secondary-button {
+  background: white;
+  color: #4285f4;
+  border: 1px solid #4285f4;
+}
+
+.secondary-button:hover {
+  background: #eff6ff;
+}
+
+/* ============================================================================
+   Cart Summary Sidebar
+   ============================================================================ */
+
+.cart-summary-sidebar {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+}
+
+.cart-summary-sidebar h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.summary-items {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  color: #4b5563;
+}
+
+.summary-row.total {
+  border-top: 2px solid #e5e7eb;
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #111827;
+}
+
+/* ============================================================================
+   Step Actions
+   ============================================================================ */
+
+.step-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.back-button,
+.continue-button,
+.confirm-button {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-button {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.back-button:hover {
+  background: #f9fafb;
+}
+
+.continue-button,
+.confirm-button {
+  background: #4285f4;
+  color: white;
+  border: none;
+}
+
+.continue-button:hover,
+.confirm-button:hover {
+  background: #3367d6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+}
+
+.continue-button:disabled,
+.confirm-button:disabled,
+.back-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================================================
+   Loading State
+   ============================================================================ */
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+}
+
+/* ============================================================================
+   Responsive Design
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .checkout-progress {
+    padding: 0 0.5rem;
+  }
+
+  .step-label {
+    display: none;
+  }
+
+  .login-step,
+  .checkout-content {
+    padding: 1rem;
+  }
+
+  .social-login-options {
+    flex-direction: column;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .step-actions {
+    flex-direction: column-reverse;
+  }
+
+  .cart-summary-sidebar {
+    position: static;
+  }
+
+  .complete-step .actions {
+    flex-direction: column;
+  }
+}
