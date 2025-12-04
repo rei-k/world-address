@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: FI
   alpha3: FIN
-  numeric: "246"
+  numeric: '246'
 continent: Europe
 subregion: Northern Europe
 languages:
@@ -65,11 +65,11 @@ address_format:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric postal code
-    example: "00100"
+    example: '00100'
 validation:
   allow_latin_transliteration: true
   rules:
-    - "Postal code format: 5 digits"
+    - 'Postal code format: 5 digits'
     - City name required
 examples:
   domestic_raw: Mannerheimintie 10, 00100 Helsinki
@@ -85,4 +85,48 @@ geo:
     longitude: 25.7482
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.638Z"
+    captured_at: '2025-12-03T16:54:11.638Z'
+pos:
+  currency:
+    code: EUR
+    symbol: €
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Europe/Helsinki
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

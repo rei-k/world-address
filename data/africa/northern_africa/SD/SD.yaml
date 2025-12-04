@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: SD
   alpha3: SDN
-  numeric: "729"
+  numeric: '729'
 continent: Africa
 subregion: Northern Africa
 languages:
@@ -75,12 +75,12 @@ address_format:
     regex: ^[0-9]{5}$
     length: 5
     description: 5-digit postal code
-    example: "11111"
+    example: '11111'
 validation:
   allow_latin_transliteration: true
   rules:
     - State name is required
-    - "Postal code format: 5 digits"
+    - 'Postal code format: 5 digits'
 examples:
   domestic_raw: شارع النيل، الخرطوم 11111
   domestic_normalized: Nile Street, Khartoum 11111
@@ -95,4 +95,48 @@ geo:
     longitude: 30.2176
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.547Z"
+    captured_at: '2025-12-03T16:54:11.547Z'
+pos:
+  currency:
+    code: SDG
+    symbol: ج.س.
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Africa/Khartoum
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

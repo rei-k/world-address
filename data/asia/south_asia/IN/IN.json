@@ -26,16 +26,46 @@
   "languages": [
     {
       "name": "Hindi",
+      "code": "hi",
       "script": "Devanagari",
+      "direction": "ltr",
       "role": "official",
-      "country_name": "भारत"
+      "country_name": "भारत",
+      "field_labels": {
+        "recipient": "प्राप्तकर्ता",
+        "building": "भवन",
+        "floor": "मंजिल",
+        "room": "कमरा",
+        "street_address": "पता",
+        "district": "जिला",
+        "ward": "वार्ड",
+        "city": "शहर",
+        "province": "राज्य",
+        "postal_code": "पिन कोड",
+        "country": "देश"
+      }
     },
     {
       "name": "English",
+      "code": "en",
       "script": "Latin",
+      "direction": "ltr",
       "role": "official",
       "required_for_shipping": true,
-      "country_name": "India"
+      "country_name": "India",
+      "field_labels": {
+        "recipient": "Recipient",
+        "building": "Building",
+        "floor": "Floor",
+        "room": "Room",
+        "street_address": "Street Address",
+        "district": "District",
+        "ward": "Ward",
+        "city": "City",
+        "province": "State",
+        "postal_code": "PIN Code",
+        "country": "Country"
+      }
     }
   ],
   "administrative_divisions": {
@@ -108,5 +138,72 @@
     "un_member": true,
     "recognized": true,
     "disputed": false
+  },
+  "geo": {
+    "center": {
+      "latitude": 20.5937,
+      "longitude": 78.9629,
+      "accuracy": 1000,
+      "source": "database",
+      "captured_at": "2025-12-03T16:54:11.615Z"
+    }
+  },
+  "pos": {
+    "currency": {
+      "code": "INR",
+      "symbol": "₹",
+      "symbol_position": "before",
+      "decimal_places": 2,
+      "decimal_separator": ".",
+      "thousands_separator": ","
+    },
+    "tax": {
+      "type": "GST",
+      "rate": {
+        "standard": null
+      },
+      "included_in_price": true,
+      "invoice_requirement": "optional"
+    },
+    "receipt": {
+      "required_fields": [
+        "business_name",
+        "date",
+        "items",
+        "total"
+      ],
+      "paper_width": "80mm",
+      "electronic_allowed": true,
+      "retention_period": "5 years"
+    },
+    "fiscal": {
+      "fiscal_device_required": false,
+      "registration_required": false,
+      "reporting_frequency": "varies"
+    },
+    "payment_methods": [
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "high"
+      },
+      {
+        "type": "credit_card",
+        "name": "Credit Card",
+        "prevalence": "high"
+      }
+    ],
+    "locale": {
+      "date_format": "YYYY-MM-DD",
+      "time_format": "24h",
+      "timezone": "Asia/Kolkata",
+      "week_start": "monday"
+    },
+    "business_hours": {
+      "typical_open": "09:00",
+      "typical_close": "18:00",
+      "sunday_trading": true,
+      "public_holidays_trading": false
+    }
   }
 }

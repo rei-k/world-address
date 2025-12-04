@@ -1,7 +1,7 @@
 name:
   en: Norway
   local:
-    - lang: "no"
+    - lang: 'no'
       value: Norge
       script: Latin
       direction: ltr
@@ -10,9 +10,9 @@ name:
       script: Latin
       direction: ltr
 iso_codes:
-  alpha2: "NO"
+  alpha2: 'NO'
   alpha3: NOR
-  numeric: "578"
+  numeric: '578'
 continent: Europe
 subregion: Northern Europe
 languages:
@@ -61,7 +61,7 @@ address_format:
     required: true
     regex: ^[0-9]{4}$
     description: 4-digit numeric postal code
-    example: "0150"
+    example: '0150'
 examples:
   domestic_raw: Karl Johans gate 15, 0150 Oslo
   domestic_normalized: Karl Johans gate 15 0150 Oslo
@@ -76,4 +76,48 @@ geo:
     longitude: 8.4689
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.646Z"
+    captured_at: '2025-12-03T16:54:11.646Z'
+pos:
+  currency:
+    code: NOK
+    symbol: kr
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Europe/Oslo
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

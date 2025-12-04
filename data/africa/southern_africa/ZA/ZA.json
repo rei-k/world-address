@@ -27,34 +27,117 @@
   "languages": [
     {
       "name": "English",
-      "required_for_shipping": true
+      "code": "en",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "South Africa",
+      "field_labels": {
+        "recipient": "Recipient",
+        "building": "Building",
+        "floor": "Floor",
+        "room": "Room",
+        "street_address": "Street Address",
+        "district": "District",
+        "ward": "Ward",
+        "city": "City",
+        "province": "Province",
+        "postal_code": "Postal Code",
+        "country": "Country"
+      }
     },
     {
-      "name": "Afrikaans"
+      "name": "Afrikaans",
+      "code": "af",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Suid-Afrika",
+      "field_labels": {
+        "recipient": "Ontvanger",
+        "building": "Gebou",
+        "floor": "Verdieping",
+        "room": "Kamer",
+        "street_address": "Straatadres",
+        "district": "Distrik",
+        "ward": "Wyk",
+        "city": "Stad",
+        "province": "Provinsie",
+        "postal_code": "Poskode",
+        "country": "Land"
+      }
     },
     {
-      "name": "Zulu"
+      "name": "Zulu",
+      "code": "zu",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "iNingizimu Afrika",
+      "field_labels": {
+        "recipient": "Umamukeli",
+        "building": "Isakhiwo",
+        "floor": "Ipulangwe",
+        "room": "Igumbi",
+        "street_address": "Ikheli Lomgwaqo",
+        "district": "Isifunda",
+        "ward": "Iwodi",
+        "city": "Idolobha",
+        "province": "Isifundazwe",
+        "postal_code": "Ikhodi Yeposi",
+        "country": "Izwe"
+      }
     },
     {
-      "name": "Xhosa"
+      "name": "Xhosa",
+      "code": "xh",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "uMzantsi Afrika"
     },
     {
-      "name": "Sotho"
+      "name": "Sotho",
+      "code": "st",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official"
     },
     {
-      "name": "Tswana"
+      "name": "Tswana",
+      "code": "tn",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official"
     },
     {
-      "name": "Tsonga"
+      "name": "Tsonga",
+      "code": "ts",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official"
     },
     {
-      "name": "Venda"
+      "name": "Venda",
+      "code": "ve",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official"
     },
     {
-      "name": "Swati"
+      "name": "Swati",
+      "code": "ss",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official"
     },
     {
-      "name": "Ndebele"
+      "name": "Ndebele",
+      "code": "nr",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official"
     }
   ],
   "administrative_divisions": {
@@ -120,5 +203,72 @@
   "examples": {
     "street": "12 Long St, Gardens, Cape Town, Western Cape 8001, South Africa",
     "pobox": "PO Box 123, Cape Town 8000, South Africa"
+  },
+  "geo": {
+    "center": {
+      "latitude": -30.5595,
+      "longitude": 22.9375,
+      "accuracy": 1000,
+      "source": "database",
+      "captured_at": "2025-12-03T16:54:11.551Z"
+    }
+  },
+  "pos": {
+    "currency": {
+      "code": "ZAR",
+      "symbol": "R",
+      "symbol_position": "before",
+      "decimal_places": 2,
+      "decimal_separator": ".",
+      "thousands_separator": ","
+    },
+    "tax": {
+      "type": "VAT",
+      "rate": {
+        "standard": null
+      },
+      "included_in_price": true,
+      "invoice_requirement": "optional"
+    },
+    "receipt": {
+      "required_fields": [
+        "business_name",
+        "date",
+        "items",
+        "total"
+      ],
+      "paper_width": "80mm",
+      "electronic_allowed": true,
+      "retention_period": "5 years"
+    },
+    "fiscal": {
+      "fiscal_device_required": false,
+      "registration_required": false,
+      "reporting_frequency": "varies"
+    },
+    "payment_methods": [
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "high"
+      },
+      {
+        "type": "credit_card",
+        "name": "Credit Card",
+        "prevalence": "high"
+      }
+    ],
+    "locale": {
+      "date_format": "YYYY-MM-DD",
+      "time_format": "24h",
+      "timezone": "Africa/Johannesburg",
+      "week_start": "monday"
+    },
+    "business_hours": {
+      "typical_open": "09:00",
+      "typical_close": "18:00",
+      "sunday_trading": true,
+      "public_holidays_trading": false
+    }
   }
 }

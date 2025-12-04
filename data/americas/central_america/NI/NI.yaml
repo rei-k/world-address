@@ -6,7 +6,7 @@ name:
 iso_codes:
   alpha2: NI
   alpha3: NIC
-  numeric: "558"
+  numeric: '558'
 continent: North America
 languages:
   - name: Spanish
@@ -43,7 +43,7 @@ postal_code:
   stability: low
   required_for_international: true
   regex: ^[0-9]{5}$
-  example: "11011"
+  example: '11011'
 examples:
   domestic: De la Rotonda del Periodista 2 cuadras al sur, Barrio Bolonia, Managua, Nicaragua
   international: Barrio Bolonia, Managua, 11011, Nicaragua
@@ -53,4 +53,48 @@ geo:
     longitude: -85.2072
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.575Z"
+    captured_at: '2025-12-03T16:54:11.575Z'
+pos:
+  currency:
+    code: NIO
+    symbol: C$
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: America/Managua
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

@@ -172,12 +172,12 @@
           },
           {
             "state": "OR",
-            "rate": 0.00,
+            "rate": 0,
             "notes": "No sales tax"
           },
           {
             "state": "DE",
-            "rate": 0.00,
+            "rate": 0,
             "notes": "No sales tax"
           }
         ]
@@ -254,6 +254,15 @@
       "typical_close": "21:00",
       "sunday_trading": true,
       "public_holidays_trading": true
+    }
+  },
+  "geo": {
+    "center": {
+      "latitude": 37.0902,
+      "longitude": -95.7129,
+      "accuracy": 1000,
+      "source": "database",
+      "captured_at": "2025-12-03T16:54:11.581Z"
     }
   }
 }

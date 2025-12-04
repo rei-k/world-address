@@ -6,7 +6,7 @@ name:
 iso_codes:
   alpha2: DO
   alpha3: DOM
-  numeric: "214"
+  numeric: '214'
 continent: North America
 subregion: Caribbean
 languages:
@@ -57,7 +57,7 @@ postal_code:
   required_for_international: true
   stability: medium
   regex: ^[0-9]{5}$
-  example: "10101"
+  example: '10101'
 validation:
   rules:
     - Provincia と Municipio は必須
@@ -75,4 +75,48 @@ geo:
     longitude: -70.1627
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.568Z"
+    captured_at: '2025-12-03T16:54:11.568Z'
+pos:
+  currency:
+    code: DOP
+    symbol: RD$
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: America/Santo_Domingo
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

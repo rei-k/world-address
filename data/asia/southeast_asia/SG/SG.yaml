@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: SG
   alpha3: SGP
-  numeric: "702"
+  numeric: '702'
 continent: Asia
 subregion: Southeast Asia
 languages:
@@ -65,12 +65,12 @@ address_format:
     example: 35F
   room:
     required: false
-    example: "3508"
+    example: '3508'
   postal_code:
     required: true
     regex: ^[0-9]{6}$
     description: 6-digit numeric
-    example: "018956"
+    example: '018956'
 examples:
   domestic_raw: 10 Bayfront Avenue, Marina Bay Sands, Singapore 018956
   domestic_normalized: Marina Bay Sands 10 Bayfront Avenue Singapore 018956
@@ -85,4 +85,48 @@ geo:
     longitude: 103.8198
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.621Z"
+    captured_at: '2025-12-03T16:54:11.621Z'
+pos:
+  currency:
+    code: SGD
+    symbol: S$
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: GST
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Singapore
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

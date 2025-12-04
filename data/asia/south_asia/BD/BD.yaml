@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: BD
   alpha3: BGD
-  numeric: "050"
+  numeric: '050'
 continent: Asia
 subregion: South Asia
 languages:
@@ -54,12 +54,12 @@ address_format:
     example: Bashundhara City
   room:
     required: false
-    example: "502"
+    example: '502'
   postal_code:
     required: true
     regex: ^[0-9]{4}$
     description: 4-digit numeric
-    example: "1215"
+    example: '1215'
 examples:
   domestic_raw: Bashundhara City, Dhaka 1215
   domestic_normalized: Bashundhara City Dhaka 1215
@@ -74,4 +74,48 @@ geo:
     longitude: 90.3563
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.613Z"
+    captured_at: '2025-12-03T16:54:11.613Z'
+pos:
+  currency:
+    code: BDT
+    symbol: ৳
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Dhaka
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

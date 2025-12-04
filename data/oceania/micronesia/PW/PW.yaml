@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: PW
   alpha3: PLW
-  numeric: "585"
+  numeric: '585'
 continent: Oceania
 subregion: Micronesia
 languages:
@@ -48,11 +48,11 @@ address_format:
     required: true
     regex: ^96940$
     description: Single ZIP code for all of Palau
-    example: "96940"
+    example: '96940'
 validation:
   allow_latin_transliteration: true
   rules:
-    - "Palau uses a single ZIP code: 96940"
+    - 'Palau uses a single ZIP code: 96940'
 examples:
   domestic_raw: PO Box 123, Koror, PW 96940
   domestic_normalized: PO Box 123 Koror PW 96940
@@ -67,4 +67,48 @@ geo:
     longitude: 134.5825
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.675Z"
+    captured_at: '2025-12-03T16:54:11.675Z'
+pos:
+  currency:
+    code: USD
+    symbol: $
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Pacific/Palau
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

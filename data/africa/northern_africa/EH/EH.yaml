@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: EH
   alpha3: ESH
-  numeric: "732"
+  numeric: '732'
 continent: Africa
 subregion: Northern Africa
 languages:
@@ -61,7 +61,7 @@ address_format:
   postal_code:
     required: false
     description: No formal postal code system
-    example: ""
+    example: ''
 examples:
   domestic_raw: Laayoune
   domestic_normalized: Laayoune
@@ -77,4 +77,48 @@ geo:
     longitude: -12.8858
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.544Z"
+    captured_at: '2025-12-03T16:54:11.544Z'
+pos:
+  currency:
+    code: MAD
+    symbol: د.م.
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Africa/El_Aaiun
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

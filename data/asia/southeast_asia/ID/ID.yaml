@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: ID
   alpha3: IDN
-  numeric: "360"
+  numeric: '360'
 continent: Asia
 subregion: Southeast Asia
 languages:
@@ -62,12 +62,12 @@ address_format:
     example: 8F
   room:
     required: false
-    example: "801"
+    example: '801'
   postal_code:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric
-    example: "10310"
+    example: '10310'
 examples:
   domestic_raw: Jl. MH Thamrin No.1, Plaza Indonesia 801, Jakarta Pusat 10310
   domestic_normalized: Plaza Indonesia 801 Jl. MH Thamrin No.1 Jakarta Pusat 10310
@@ -82,4 +82,48 @@ geo:
     longitude: 113.9213
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.618Z"
+    captured_at: '2025-12-03T16:54:11.618Z'
+pos:
+  currency:
+    code: IDR
+    symbol: Rp
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Jakarta
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

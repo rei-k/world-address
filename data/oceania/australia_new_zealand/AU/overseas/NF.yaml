@@ -15,7 +15,7 @@ parent_country:
 iso_codes:
   alpha2: NF
   alpha3: NFK
-  numeric: "574"
+  numeric: '574'
 subregion: Polynesia
 languages:
   - name: English
@@ -49,12 +49,12 @@ address_format:
     required: true
     regex: ^2899$
     description: Single postcode for Norfolk Island
-    example: "2899"
+    example: '2899'
 validation:
   allow_latin_transliteration: true
   rules:
     - Norfolk Island uses Australian postal system
-    - "Single postcode: 2899"
+    - 'Single postcode: 2899'
 examples:
   domestic_raw: 123 Taylors Road, Burnt Pine, Norfolk Island 2899
   domestic_normalized: 123 Taylors Road Burnt Pine 2899
@@ -70,4 +70,48 @@ geo:
     longitude: 167.9547
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.670Z"
+    captured_at: '2025-12-03T16:54:11.670Z'
+pos:
+  currency:
+    code: AUD
+    symbol: $
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Pacific/Norfolk
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: LY
   alpha3: LBY
-  numeric: "434"
+  numeric: '434'
 continent: Africa
 subregion: Northern Africa
 languages:
@@ -89,4 +89,48 @@ geo:
     longitude: 17.2283
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.545Z"
+    captured_at: '2025-12-03T16:54:11.545Z'
+pos:
+  currency:
+    code: LYD
+    symbol: ل.د
+    symbol_position: before
+    decimal_places: 3
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Africa/Tripoli
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

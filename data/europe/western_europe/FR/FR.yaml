@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: FR
   alpha3: FRA
-  numeric: "250"
+  numeric: '250'
 continent: Europe
 subregion: Western Europe
 languages:
@@ -66,7 +66,7 @@ address_format:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric postal code (01xxx–95xxx for metropolitan)
-    example: "75001"
+    example: '75001'
 examples:
   domestic_raw: 10 Rue de Rivoli, 75001 Paris
   domestic_normalized: 10 Rue de Rivoli 75001 Paris
@@ -81,4 +81,48 @@ geo:
     longitude: 2.2137
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.658Z"
+    captured_at: '2025-12-03T16:54:11.658Z'
+pos:
+  currency:
+    code: EUR
+    symbol: €
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Europe/Paris
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

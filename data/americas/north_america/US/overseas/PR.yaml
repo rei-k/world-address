@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: PR
   alpha3: PRI
-  numeric: "630"
+  numeric: '630'
 continent: North America
 subregion: Caribbean (US Territory)
 languages:
@@ -97,14 +97,14 @@ address_format:
     required_for_international: true
     stability: high
     regex: ^[0-9]{5}(-[0-9]{4})?$
-    example: "00907"
+    example: '00907'
     example_plus4: 00907-1234
 validation:
   allow_latin_transliteration: true
   rules:
     - Municipio always required.
     - Barrio or Sector strongly recommended for street delivery.
-    - "If PO Box is present: street_address must be omitted."
+    - 'If PO Box is present: street_address must be omitted.'
 examples:
   domestic_es: Condominio Miramar Plaza, Calle Hoare 150, Sector Miramar, Barrio Santurce, San Juan, PR 00907
   domestic_en: 150 Hoare Street, Miramar Sector, Santurce, San Juan, PR 00907
@@ -120,4 +120,48 @@ geo:
     longitude: -66.5901
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.586Z"
+    captured_at: '2025-12-03T16:54:11.586Z'
+pos:
+  currency:
+    code: USD
+    symbol: $
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: America/Puerto_Rico
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: CY
   alpha3: CYP
-  numeric: "196"
+  numeric: '196'
 continent: Europe
 subregion: Southern Europe
 languages:
@@ -44,7 +44,7 @@ address_format:
     required: true
     regex: ^[0-9]{4}$
     description: 4-digit numeric postal code
-    example: "1010"
+    example: '1010'
 examples:
   domestic_raw: Archbishop Makarios Ave 10, 1010 Nicosia
   domestic_normalized: Archbishop Makarios Ave 10 1010 Nicosia
@@ -59,4 +59,48 @@ geo:
     longitude: 33.4299
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.651Z"
+    captured_at: '2025-12-03T16:54:11.651Z'
+pos:
+  currency:
+    code: EUR
+    symbol: €
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Nicosia
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

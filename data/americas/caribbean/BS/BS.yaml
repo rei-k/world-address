@@ -13,7 +13,7 @@ name:
 iso_codes:
   alpha2: BS
   alpha3: BHS
-  numeric: "044"
+  numeric: '044'
 continent: North America
 subregion: Caribbean
 languages:
@@ -87,7 +87,7 @@ examples:
   domestic: Cable Beach Plaza, West Bay Street, Cable Beach, New Providence, Bahamas
   domestic_with_unit: Suite 204, Cable Beach Plaza, West Bay St, Cable Beach, New Providence, Bahamas
   international: West Bay Street, Cable Beach, N-3731, New Providence, The Bahamas
-  hotel_shipping: "Attn: Guest Name, Sandals Royal Bahamian, Cable Beach, New Providence, The Bahamas"
+  hotel_shipping: 'Attn: Guest Name, Sandals Royal Bahamian, Cable Beach, New Providence, The Bahamas'
 status:
   un_member: true
   recognized: true
@@ -98,4 +98,48 @@ geo:
     longitude: -77.3963
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.565Z"
+    captured_at: '2025-12-03T16:54:11.565Z'
+pos:
+  currency:
+    code: BSD
+    symbol: $
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: America/Nassau
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

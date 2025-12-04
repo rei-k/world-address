@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: MT
   alpha3: MLT
-  numeric: "470"
+  numeric: '470'
 continent: Europe
 subregion: Southern Europe
 languages:
@@ -37,7 +37,7 @@ address_format:
   postal_code:
     required: true
     regex: ^[A-Z]{3} ?[0-9]{4}$
-    description: "Format: XXX NNNN (3 letters + 4 digits)"
+    description: 'Format: XXX NNNN (3 letters + 4 digits)'
     example: VLT 1117
 examples:
   domestic_raw: Republic Street 12, VLT 1117 Valletta
@@ -53,4 +53,48 @@ geo:
     longitude: 14.3754
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.653Z"
+    captured_at: '2025-12-03T16:54:11.653Z'
+pos:
+  currency:
+    code: EUR
+    symbol: €
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Europe/Malta
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

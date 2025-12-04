@@ -1,14 +1,14 @@
 name:
   en: Svalbard and Jan Mayen
   local:
-    - lang: "no"
+    - lang: 'no'
       value: Svalbard og Jan Mayen
       script: Latin
       direction: ltr
 iso_codes:
   alpha2: SJ
   alpha3: SJM
-  numeric: "744"
+  numeric: '744'
 continent: Europe
 subregion: Northern Europe (Norwegian Territory)
 languages:
@@ -16,7 +16,7 @@ languages:
     script: Latin
     role: official
     country_name:
-      "no": Svalbard og Jan Mayen
+      'no': Svalbard og Jan Mayen
       en: Svalbard and Jan Mayen
   - name: English
     script: Latin
@@ -28,7 +28,7 @@ administrative_divisions:
     type: Settlement
     label_en: Settlement
     count: 5
-    description: "Main settlements: Longyearbyen, Ny-Ålesund, Barentsburg, Hornsund, Svea"
+    description: 'Main settlements: Longyearbyen, Ny-Ålesund, Barentsburg, Hornsund, Svea'
 address_format:
   order_variants:
     - context: domestic
@@ -49,7 +49,7 @@ address_format:
     required: true
     regex: ^9[0-9]{3}$
     description: Norwegian postal code format 9xxx for Svalbard
-    example: "9170"
+    example: '9170'
 examples:
   domestic_raw: Postboks 123, 9171 Longyearbyen
   domestic_normalized: Postboks 123 9171 Longyearbyen
@@ -58,7 +58,7 @@ status:
   un_member: false
   recognized: true
   disputed: false
-  dependency_of: "NO"
+  dependency_of: 'NO'
   special_status: Norwegian territory with special treaty status (Svalbard Treaty)
 geo:
   center:
@@ -66,4 +66,48 @@ geo:
     longitude: 23.6703
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.647Z"
+    captured_at: '2025-12-03T16:54:11.647Z'
+pos:
+  currency:
+    code: NOK
+    symbol: kr
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Arctic/Longyearbyen
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

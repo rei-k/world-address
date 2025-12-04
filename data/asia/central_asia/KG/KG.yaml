@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: KG
   alpha3: KGZ
-  numeric: "417"
+  numeric: '417'
 continent: Asia
 subregion: Central Asia
 languages:
@@ -64,12 +64,12 @@ address_format:
     example: Bishkek Park Mall
   room:
     required: false
-    example: "403"
+    example: '403'
   postal_code:
     required: true
     regex: ^[0-9]{6}$
     description: 6-digit numeric
-    example: "720001"
+    example: '720001'
 examples:
   domestic_raw: Bishkek Park Mall, Bishkek 720001
   domestic_normalized: Bishkek Park Mall Bishkek 720001
@@ -84,4 +84,48 @@ geo:
     longitude: 74.7661
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.603Z"
+    captured_at: '2025-12-03T16:54:11.603Z'
+pos:
+  currency:
+    code: KGS
+    symbol: с
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Bishkek
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

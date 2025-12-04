@@ -16,7 +16,7 @@ name:
 iso_codes:
   alpha2: LU
   alpha3: LUX
-  numeric: "442"
+  numeric: '442'
 continent: Europe
 subregion: Western Europe
 languages:
@@ -60,7 +60,7 @@ address_format:
     required: true
     regex: ^[0-9]{4}$
     description: 4-digit numeric postal code
-    example: "2450"
+    example: '2450'
 examples:
   domestic_raw: Boulevard Royal 12, 2450 Luxembourg
   domestic_normalized: Boulevard Royal 12 2450 Luxembourg
@@ -75,4 +75,48 @@ geo:
     longitude: 6.1296
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.665Z"
+    captured_at: '2025-12-03T16:54:11.665Z'
+pos:
+  currency:
+    code: EUR
+    symbol: €
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Europe/Luxembourg
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

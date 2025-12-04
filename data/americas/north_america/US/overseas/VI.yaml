@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: VI
   alpha3: VIR
-  numeric: "850"
+  numeric: '850'
 continent: North America
 subregion: Caribbean (US Territory)
 languages:
@@ -94,7 +94,7 @@ address_format:
     required_for_international: true
     stability: high
     regex: ^008[0-9]{2}(-[0-9]{4})?$
-    example: "00802"
+    example: '00802'
     example_plus4: 00802-1234
     description: USPS ZIP range 008xx is reserved for the U.S. Virgin Islands.
 validation:
@@ -119,4 +119,48 @@ geo:
     longitude: -64.8963
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.588Z"
+    captured_at: '2025-12-03T16:54:11.588Z'
+pos:
+  currency:
+    code: USD
+    symbol: $
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: America/St_Thomas
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: VN
   alpha3: VNM
-  numeric: "704"
+  numeric: '704'
 continent: Asia
 subregion: Southeast Asia
 languages:
@@ -64,12 +64,12 @@ address_format:
     example: 52F
   room:
     required: false
-    example: "5203"
+    example: '5203'
   postal_code:
     required: true
     regex: ^[0-9]{6}$
     description: 6-digit numeric
-    example: "700000"
+    example: '700000'
 examples:
   domestic_raw: Bitexco Financial Tower, Quận 1, Thành phố Hồ Chí Minh 700000
   domestic_normalized: Bitexco Financial Tower Quận 1 Thành phố Hồ Chí Minh 700000
@@ -84,4 +84,48 @@ geo:
     longitude: 108.2772
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.623Z"
+    captured_at: '2025-12-03T16:54:11.623Z'
+pos:
+  currency:
+    code: VND
+    symbol: ₫
+    symbol_position: before
+    decimal_places: 0
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Ho_Chi_Minh
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

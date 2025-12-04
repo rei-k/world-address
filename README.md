@@ -157,7 +157,7 @@ For detailed information about the Vey ecosystem:
 - **総国数 / Total Countries**: 257
 - **フルスキーマ対応 / Full Schema Support**: 257 (100%)
 - **平均完成度 / Average Completeness**: 99%
-- **POS対応 / POS Support**: 2 countries (JP, US)
+- **POS対応 / POS Support**: 257 countries (100%)
 - **緯度経度対応 / Geo-coordinates**: 257 countries (100%)
 
 完全なデータ統計を見るには:
@@ -785,7 +785,7 @@ For detailed development guide, see [DEVELOPMENT.md](./DEVELOPMENT.md).
 - **Special Territories**: Overseas territories, disputed regions, research stations
 - **Formats**: YAML and JSON
 - **Average Completeness**: 99%
-- **POS Support**: 2 countries (JP, US) - expanding to 20+ countries
+- **POS Support**: 257 countries (100%)
 - **Geo-coordinates**: 257 countries (100%)
 
 For complete list, see [Supported Countries & Regions](#-対応国地域一覧--supported-countries-and-regions) below.

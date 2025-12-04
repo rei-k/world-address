@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: CN
   alpha3: CHN
-  numeric: "156"
+  numeric: '156'
 continent: Asia
 subregion: East Asia
 languages:
@@ -70,14 +70,14 @@ address_format:
     example: 12F
   room:
     required: false
-    example: "1201"
+    example: '1201'
   postal_code:
     required: true
     regex: ^[0-9]{6}$
     length: 6
     coverage: nationwide
     description: 6-digit numeric code
-    example: "100000"
+    example: '100000'
 validation:
   allow_latin_transliteration: true
   rules:
@@ -97,4 +97,48 @@ geo:
     longitude: 104.1954
     accuracy: 1000
     source: database
-    captured_at: "2025-12-03T16:54:11.607Z"
+    captured_at: '2025-12-03T16:54:11.607Z'
+pos:
+  currency:
+    code: CNY
+    symbol: ¥
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Shanghai
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false
