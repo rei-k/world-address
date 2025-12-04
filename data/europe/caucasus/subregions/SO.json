@@ -132,8 +132,8 @@
   },
   "pos": {
     "currency": {
-      "code": "SOS",
-      "symbol": "Sh",
+      "code": "RUB",
+      "symbol": "₽",
       "symbol_position": "before",
       "decimal_places": 2,
       "decimal_separator": ".",
@@ -178,7 +178,7 @@
     "locale": {
       "date_format": "YYYY-MM-DD",
       "time_format": "24h",
-      "timezone": "Africa/Mogadishu",
+      "timezone": "Europe/Moscow",
       "week_start": "monday"
     },
     "business_hours": {

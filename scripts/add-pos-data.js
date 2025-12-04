@@ -257,7 +257,6 @@ const CURRENCY_DATA = {
   'AU': { code: 'AUD', symbol: '$', decimal_places: 2 },
   'CK': { code: 'NZD', symbol: '$', decimal_places: 2 },
   'FJ': { code: 'FJD', symbol: '$', decimal_places: 2 },
-  'PF': { code: 'XPF', symbol: '₣', decimal_places: 0 },
   'KI': { code: 'AUD', symbol: '$', decimal_places: 2 },
   'MH': { code: 'USD', symbol: '$', decimal_places: 2 },
   'FM': { code: 'USD', symbol: '$', decimal_places: 2 },
@@ -286,10 +285,6 @@ const CURRENCY_DATA = {
   'IO': { code: 'USD', symbol: '$', decimal_places: 2 },
   'PN': { code: 'NZD', symbol: '$', decimal_places: 2 },
   'SH': { code: 'SHP', symbol: '£', decimal_places: 2 },
-  
-  // Disputed territories
-  'AB': { code: 'RUB', symbol: '₽', decimal_places: 2 }, // Abkhazia (uses Russian Ruble)
-  'SO': { code: 'RUB', symbol: '₽', decimal_places: 2 }, // South Ossetia (uses Russian Ruble)
 };
 
 // Timezone mapping for countries
@@ -555,10 +550,6 @@ const TIMEZONE_DATA = {
   'IO': 'Indian/Chagos',
   'PN': 'Pacific/Pitcairn',
   'SH': 'Atlantic/St_Helena',
-  
-  // Disputed territories
-  'AB': 'Europe/Moscow', // Abkhazia
-  'SO': 'Europe/Moscow', // South Ossetia
 };
 
 /**
@@ -704,8 +695,16 @@ function addPOSToCountry(filePath) {
     // Get country code from file name or parent country
     let countryCode = path.basename(filePath, '.yaml');
     
+    // For disputed territories in subregions, use Georgia's currency for Caucasus regions
+    if (filePath.includes('/subregions/')) {
+      if (countryCode === 'AB' || countryCode === 'SO') {
+        // Caucasus disputed territories use Russian Ruble
+        countryCode = 'RU';
+        console.log(`  Using Russia (RU) for disputed territory ${path.basename(filePath, '.yaml')}`);
+      }
+    }
     // For special regions, try to get parent country code
-    if (data.parent_country || data.region_of || filePath.includes('/regions/') || filePath.includes('/overseas/')) {
+    else if (data.parent_country || data.region_of || filePath.includes('/regions/') || filePath.includes('/overseas/')) {
       const parentCode = getParentCountryCode(data, filePath);
       if (parentCode) {
         console.log(`  Using parent country ${parentCode} for region ${countryCode}`);
