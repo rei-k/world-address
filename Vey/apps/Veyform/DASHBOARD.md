@@ -192,7 +192,7 @@ npm run test:e2e    # Run end-to-end tests
 ## 🌍 Integration with Vey Ecosystem
 
 This dashboard integrates with:
-- **Veybook**: Cloud address book system
+- **Veyvault**: Cloud address book system
 - **VeyExpress**: Delivery integration platform
 - **VeyStore**: E-commerce platform
 - **VeyPOS**: Point of sale system
@@ -231,7 +231,7 @@ MIT License - See [LICENSE](../../../LICENSE) for details.
 ## 🔗 Related Documentation
 
 - [Vey Ecosystem Overview](../../README.md)
-- [Veybook Documentation](../Veybook/README.md)
+- [Veyvault Documentation](../Veyvault/README.md)
 - [World Address Data](../../../README.md)
 
 ---

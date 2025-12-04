@@ -10,7 +10,7 @@
 
 1. [名前の由来と理念](#名前の由来と理念)
 2. [エコシステムの全体像](#エコシステムの全体像)
-3. [Veybook - クラウド住所帳](#veybook---クラウド住所帳)
+3. [Veyvault - クラウド住所帳](#veybook---クラウド住所帳)
 4. [Veypos - POSアプリケーション](#veypos---posアプリケーション)
 5. [ソーシャルログイン統合](#ソーシャルログイン統合)
 6. [技術基盤](#技術基盤)
@@ -62,7 +62,7 @@ The Vey ecosystem consists of the following core services:
 ├─────────────────────────────────────────────────────────┤
 │                                                          │
 │  ┌──────────────┐        ┌──────────────┐              │
-│  │   Veybook    │◄──────►│    Veypos    │              │
+│  │   Veyvault    │◄──────►│    Veypos    │              │
 │  │クラウド住所帳 │        │  POS アプリ   │              │
 │  │              │        │              │              │
 │  │ • 住所管理    │        │ • 決済処理    │              │
@@ -86,11 +86,11 @@ The Vey ecosystem consists of the following core services:
 
 ---
 
-## Veybook - クラウド住所帳
+## Veyvault - クラウド住所帳
 
-**Veybook（ヴェイブック）** は、あなたの住所を安全に管理するクラウド住所帳アプリケーションです。
+**Veyvault（ヴェイブック）** は、あなたの住所を安全に管理するクラウド住所帳アプリケーションです。
 
-**Veybook** is a cloud address book application that securely manages your addresses.
+**Veyvault** is a cloud address book application that securely manages your addresses.
 
 ### 主な機能 / Key Features
 
@@ -156,8 +156,8 @@ The Vey ecosystem consists of the following core services:
 
 4. ECサイトで購入 / Purchase on E-commerce Site
    ↓
-   ソーシャルログイン → Veybook住所選択 → チェックアウト完了
-   Social login → Select Veybook address → Complete checkout
+   ソーシャルログイン → Veyvault住所選択 → チェックアウト完了
+   Social login → Select Veyvault address → Complete checkout
 ```
 
 ---
@@ -182,11 +182,11 @@ The Vey ecosystem consists of the following core services:
 
 #### 📦 配送先管理 / Delivery Destination Management
 
-- **Veybook連携**: 顧客がVeybookアカウントを持っていれば、QR/NFCで即座に配送先設定
+- **Veyvault連携**: 顧客がVeyvaultアカウントを持っていれば、QR/NFCで即座に配送先設定
 - **住所トークン**: 生住所を保存せず、トークンのみで配送管理
 - **プライバシー保護**: 店舗は顧客の生住所を知らなくても配送可能
 
-**Veybook Integration**: If customers have Veybook accounts, set delivery destinations instantly with QR/NFC  
+**Veyvault Integration**: If customers have Veyvault accounts, set delivery destinations instantly with QR/NFC  
 **Address Tokens**: Manage deliveries with tokens only, without storing raw addresses  
 **Privacy Protection**: Stores can deliver without knowing customers' actual addresses
 
@@ -225,8 +225,8 @@ The Vey ecosystem consists of the following core services:
 
 3. 配送先設定（オプション）/ Delivery Destination Setup (Optional)
    ↓
-   Veybook QR/NFCスキャン → 配送先自動設定
-   Scan Veybook QR/NFC → Auto-set delivery destination
+   Veyvault QR/NFCスキャン → 配送先自動設定
+   Scan Veyvault QR/NFC → Auto-set delivery destination
 
 4. レシート発行 / Receipt Issuance
    ↓
@@ -238,9 +238,9 @@ The Vey ecosystem consists of the following core services:
 
 ## ソーシャルログイン統合
 
-Veybookとソーシャルログインを統合することで、住所入力の手間を完全に省くことができます。
+Veyvaultとソーシャルログインを統合することで、住所入力の手間を完全に省くことができます。
 
-By integrating Veybook with social login, you can completely eliminate the hassle of address input.
+By integrating Veyvault with social login, you can completely eliminate the hassle of address input.
 
 ### 対応プロバイダ / Supported Providers
 
@@ -277,7 +277,7 @@ By integrating Veybook with social login, you can completely eliminate the hassl
          │
          ▼
 ┌─────────────────────────────────────────┐
-│  Veybook API                            │
+│  Veyvault API                            │
 │                                         │
 │  1. ユーザー識別                         │
 │     Identify user                       │
@@ -319,12 +319,12 @@ By integrating Veybook with social login, you can completely eliminate the hassl
 - ✅ **住所入力不要**: 毎回の面倒な住所入力から解放
 - ✅ **入力ミス防止**: 手入力によるミスがゼロに
 - ✅ **高速チェックアウト**: ワンクリックで注文完了
-- ✅ **一元管理**: すべての住所をVeybookで管理
+- ✅ **一元管理**: すべての住所をVeyvaultで管理
 
 **No Address Input**: Freedom from tedious address input every time  
 **Error Prevention**: Zero manual input errors  
 **Fast Checkout**: Complete orders with one click  
-**Centralized Management**: Manage all addresses in Veybook
+**Centralized Management**: Manage all addresses in Veyvault
 
 #### EC事業者側 / E-commerce Operator Side
 
@@ -386,7 +386,7 @@ The Vey ecosystem is built on the following technical foundation:
 **シナリオ**: オンラインショップで商品を購入
 
 1. 商品をカートに追加
-2. チェックアウト画面で「Veybookでログイン」をクリック
+2. チェックアウト画面で「Veyvaultでログイン」をクリック
 3. Google/Apple/LINEアカウントで認証
 4. 登録済みの住所から選択（または新規追加）
 5. 決済完了 → 配送開始
@@ -401,7 +401,7 @@ The Vey ecosystem is built on the following technical foundation:
 
 1. 店舗で商品を選択
 2. レジで決済
-3. 配送先設定：Veybook QRコードをスキャン
+3. 配送先設定：Veyvault QRコードをスキャン
 4. 配送日時を選択
 5. 完了 → 自宅へ配送
 
@@ -414,7 +414,7 @@ The Vey ecosystem is built on the following technical foundation:
 **シナリオ**: 友達に誕生日プレゼントを送りたい
 
 1. ECサイトで商品を選択
-2. 配送先に「友達のVeybook PID」を指定
+2. 配送先に「友達のVeyvault PID」を指定
    - 友達のQRコードをスキャン、または
    - 友達リストから選択
 3. 決済完了 → 友達の住所へ配送
@@ -428,7 +428,7 @@ The Vey ecosystem is built on the following technical foundation:
 **シナリオ**: ホテルのチェックイン時に住所証明が必要
 
 1. チェックインカウンターで本人確認
-2. Veybook QRコードを提示
+2. Veyvault QRコードを提示
 3. ホテル側がスキャン → 住所確認完了
 4. チェックイン完了
 
@@ -441,8 +441,8 @@ The Vey ecosystem is built on the following technical foundation:
 **シナリオ**: オンラインで銀行口座を開設
 
 1. 銀行のウェブサイトで口座開設申込
-2. 本人確認：Veybookでログイン
-3. 住所確認：Veybook Verifiable Credentialを提示
+2. 本人確認：Veyvaultでログイン
+3. 住所確認：Veyvault Verifiable Credentialを提示
 4. 口座開設完了
 
 **メリット**: 住所確認書類（公共料金の請求書等）が不要
@@ -458,7 +458,7 @@ The Vey ecosystem is built on the following technical foundation:
 ### キーポイント / Key Points
 
 1. **Vey** = "convey"（配達する、運ぶ）
-2. **Veybook** = クラウド住所帳アプリ
+2. **Veyvault** = クラウド住所帳アプリ
 3. **Veypos** = グローバルPOSアプリ
 4. **ソーシャルログイン** = 住所入力不要のチェックアウト
 5. **QR/NFC** = タップするだけで住所共有・決済

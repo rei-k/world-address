@@ -7,7 +7,7 @@ This implementation delivers a complete e-commerce purchase flow as specified in
 ### シナリオ: オンラインショップで商品を購入
 
 ✅ **1. 商品をカートに追加** - Shopping cart implementation  
-✅ **2. チェックアウト画面で「Veybookでログイン」をクリック** - Veybook login button  
+✅ **2. チェックアウト画面で「Veyvaultでログイン」をクリック** - Veyvault login button  
 ✅ **3. Google/Apple/アカウントで認証** - Multi-provider OAuth integration  
 ✅ **4. 登録済みの住所から選択（または新規追加）** - Address selection & creation  
 ✅ **5. 決済完了 → 配送開始** - Payment processing & shipment creation  
@@ -27,7 +27,7 @@ This implementation delivers a complete e-commerce purchase flow as specified in
   - Internationalization support
 
 ### React Components (1 file, ~400 lines)
-- `docs/examples/ecommerce/VeybookCheckout.tsx` (12 KB)
+- `docs/examples/ecommerce/VeyvaultCheckout.tsx` (12 KB)
   - Complete checkout flow component
   - Step-by-step wizard (Login → Address → Payment → Confirm → Complete)
   - OAuth authentication integration
@@ -109,14 +109,14 @@ This implementation delivers a complete e-commerce purchase flow as specified in
 - ✅ Responsive mobile design
 
 ### 2. Authentication Integration
-- ✅ Veybook OAuth 2.0 login
+- ✅ Veyvault OAuth 2.0 login
 - ✅ Google OAuth integration
 - ✅ Apple OAuth integration
 - ✅ Manual address entry fallback
 - ✅ CSRF protection with state parameter
 
 ### 3. Address Management
-- ✅ List registered addresses from Veybook
+- ✅ List registered addresses from Veyvault
 - ✅ Auto-select primary/default address
 - ✅ Add new address form
 - ✅ Address normalization & PID generation
@@ -195,7 +195,7 @@ This implementation delivers a complete e-commerce purchase flow as specified in
 
 ### Time Savings Comparison
 
-| Step | Traditional | With Veybook | Time Saved |
+| Step | Traditional | With Veyvault | Time Saved |
 |------|-------------|--------------|------------|
 | Login | 30 sec | 10 sec | 20 sec |
 | Address Entry | 3 min | 10 sec | 2 min 50 sec |
@@ -267,7 +267,7 @@ This implementation delivers a complete e-commerce purchase flow as specified in
 ## 🔗 Integration Points
 
 ### External Services
-1. **Veybook** - Address management & authentication
+1. **Veyvault** - Address management & authentication
 2. **VeyExpress** - Shipping & logistics
 3. **Stripe** - Payment processing
 4. **Google OAuth** - Social login
@@ -321,7 +321,7 @@ This implementation delivers a complete e-commerce purchase flow as specified in
 Based on the problem statement, all requirements are met:
 
 - [x] **商品をカートに追加** - Cart implementation provided
-- [x] **「Veybookでログイン」をクリック** - Login button component implemented
+- [x] **「Veyvaultでログイン」をクリック** - Login button component implemented
 - [x] **Google/Apple/アカウントで認証** - Multi-provider OAuth flows
 - [x] **登録済みの住所から選択（または新規追加）** - Address list & add form
 - [x] **決済完了 → 配送開始** - Payment & shipment integration
@@ -356,7 +356,7 @@ For teams adopting this implementation:
    ```
 
 2. **Configure Environment Variables**
-   - Veybook credentials
+   - Veyvault credentials
    - OAuth provider credentials
    - VeyExpress API key
    - Payment provider keys

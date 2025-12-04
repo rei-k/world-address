@@ -1,11 +1,11 @@
 /**
- * VeybookCheckout - Complete E-commerce Checkout Component
+ * VeyvaultCheckout - Complete E-commerce Checkout Component
  * 
  * This component implements the complete checkout flow described in the
  * e-commerce purchase scenario:
  * 
  * 1. Add products to cart
- * 2. Click "Login with Veybook" on checkout screen
+ * 2. Click "Login with Veyvault" on checkout screen
  * 3. Authenticate with Google/Apple/Account
  * 4. Select from registered addresses (or add new)
  * 5. Complete payment → Start shipping
@@ -14,7 +14,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { VeybookClient } from '@vey/core';
+import { VeyvaultClient } from '@vey/core';
 import { VeyExpressClient } from '@vey/express';
 
 // ============================================================================
@@ -30,7 +30,7 @@ interface CartItem {
   weight?: number; // kg
 }
 
-interface VeybookUser {
+interface VeyvaultUser {
   id: string;
   email: string;
   name: string;
@@ -70,19 +70,19 @@ type CheckoutStep = 'login' | 'address' | 'payment' | 'confirm' | 'complete';
 // Main Checkout Component
 // ============================================================================
 
-interface VeybookCheckoutProps {
+interface VeyvaultCheckoutProps {
   cart: CartItem[];
   onComplete?: (orderId: string, trackingNumber: string) => void;
   onCancel?: () => void;
 }
 
-export const VeybookCheckout: React.FC<VeybookCheckoutProps> = ({
+export const VeyvaultCheckout: React.FC<VeyvaultCheckoutProps> = ({
   cart,
   onComplete,
   onCancel
 }) => {
   const [currentStep, setCurrentStep] = useState<CheckoutStep>('login');
-  const [user, setUser] = useState<VeybookUser | null>(null);
+  const [user, setUser] = useState<VeyvaultUser | null>(null);
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | null>(null);
   const [processing, setProcessing] = useState(false);
@@ -97,7 +97,7 @@ export const VeybookCheckout: React.FC<VeybookCheckoutProps> = ({
     }
   }, []);
 
-  const handleLoginSuccess = (veybookUser: VeybookUser) => {
+  const handleLoginSuccess = (veybookUser: VeyvaultUser) => {
     setUser(veybookUser);
     sessionStorage.setItem('veybook_user', JSON.stringify(veybookUser));
     setCurrentStep('address');
@@ -197,22 +197,22 @@ export const VeybookCheckout: React.FC<VeybookCheckoutProps> = ({
 };
 
 // ============================================================================
-// Step 1: Login with Veybook
+// Step 1: Login with Veyvault
 // ============================================================================
 
 interface LoginStepProps {
-  onSuccess: (user: VeybookUser) => void;
+  onSuccess: (user: VeyvaultUser) => void;
 }
 
 const LoginStep: React.FC<LoginStepProps> = ({ onSuccess }) => {
   const [loading, setLoading] = useState(false);
 
-  const handleVeybookLogin = async () => {
+  const handleVeyvaultLogin = async () => {
     try {
       setLoading(true);
       
       // Build OAuth URL
-      const authUrl = buildVeybookAuthUrl({
+      const authUrl = buildVeyvaultAuthUrl({
         clientId: process.env.NEXT_PUBLIC_VEYBOOK_CLIENT_ID!,
         redirectUri: `${window.location.origin}/checkout/callback`,
         scope: 'address:read user:read',
@@ -222,7 +222,7 @@ const LoginStep: React.FC<LoginStepProps> = ({ onSuccess }) => {
       // Save state for verification
       sessionStorage.setItem('oauth_state', new URL(authUrl).searchParams.get('state')!);
 
-      // Redirect to Veybook auth
+      // Redirect to Veyvault auth
       window.location.href = authUrl;
     } catch (error) {
       console.error('Login failed:', error);
@@ -246,18 +246,18 @@ const LoginStep: React.FC<LoginStepProps> = ({ onSuccess }) => {
     <div className="login-step">
       <h2>配送先を選択してください</h2>
       <p className="subtitle">
-        Veybookにログインして、保存された住所から選択できます
+        Veyvaultにログインして、保存された住所から選択できます
       </p>
 
       <div className="login-options">
-        {/* Primary Veybook Login */}
+        {/* Primary Veyvault Login */}
         <button
           className="veybook-login-button primary"
-          onClick={handleVeybookLogin}
+          onClick={handleVeyvaultLogin}
           disabled={loading}
         >
-          <img src="/icons/veybook.svg" alt="Veybook" width={24} height={24} />
-          <span>Veybookでログイン</span>
+          <img src="/icons/veybook.svg" alt="Veyvault" width={24} height={24} />
+          <span>Veyvaultでログイン</span>
         </button>
 
         <div className="divider">または</div>
@@ -293,7 +293,7 @@ const LoginStep: React.FC<LoginStepProps> = ({ onSuccess }) => {
 
       <div className="security-notice">
         <p>
-          🔒 Veybookを使用することで、あなたの住所情報は暗号化され
+          🔒 Veyvaultを使用することで、あなたの住所情報は暗号化され
           安全に保管されます
         </p>
       </div>
@@ -306,7 +306,7 @@ const LoginStep: React.FC<LoginStepProps> = ({ onSuccess }) => {
 // ============================================================================
 
 interface AddressSelectionStepProps {
-  user: VeybookUser;
+  user: VeyvaultUser;
   onAddressSelected: (address: Address) => void;
   onBack: () => void;
 }
@@ -328,7 +328,7 @@ const AddressSelectionStep: React.FC<AddressSelectionStepProps> = ({
   const loadAddresses = async () => {
     try {
       setLoading(true);
-      const client = new VeybookClient({ accessToken: user.accessToken });
+      const client = new VeyvaultClient({ accessToken: user.accessToken });
       const addressList = await client.addresses.list();
       
       setAddresses(addressList);
@@ -418,4 +418,4 @@ const AddressSelectionStep: React.FC<AddressSelectionStepProps> = ({
 
 // ... (rest of the component code continues in the same file)
 
-export default VeybookCheckout;
+export default VeyvaultCheckout;

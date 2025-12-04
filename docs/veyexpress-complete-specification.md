@@ -464,7 +464,7 @@ import { DynamicPickup } from '@vey/express';
 const order = await DynamicPickup.createOrder({
   orderId: 'ORD-12345',
   sender: senderPID,
-  recipientFriendId: 'friend-user-123', // 友達のVeybook ID
+  recipientFriendId: 'friend-user-123', // 友達のVeyvault ID
   items: itemList,
   pickupDeadline: '48h' // 48時間以内に決定
 });

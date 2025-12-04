@@ -96,10 +96,10 @@ export interface Transaction {
   customer?: {
     id?: string;
     name?: string;
-    veybookId?: string; // Link to Veybook account
+    veybookId?: string; // Link to Veyvault account
   };
   delivery?: {
-    addressToken: string; // From Veybook
+    addressToken: string; // From Veyvault
     carrier?: string;
     trackingNumber?: string;
   };

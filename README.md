@@ -95,7 +95,7 @@ print(us_data['address_format']['postal_code']['regex'])  # "^\d{5}(-\d{4})?$"
 
 All important applications in the Vey ecosystem with their frontend UI/UX features:
 
-#### 📱 Veybook - Cloud Address Book
+#### 📱 Veyvault - Cloud Address Book
 **Description:** Cloud address book with social login integration, QR/NFC support, and end-to-end encryption
 
 **Frontend UI/UX Features:**
@@ -107,7 +107,7 @@ All important applications in the Vey ecosystem with their frontend UI/UX featur
 - **Responsive Design:** Optimized for web (React/Next.js), mobile (React Native), and mini-programs (WeChat/Alipay)
 
 #### 🏪 VeyPOS - Point of Sale System
-**Description:** Global POS system supporting multi-currency, tax compliance, and Veybook integration
+**Description:** Global POS system supporting multi-currency, tax compliance, and Veyvault integration
 
 **Frontend UI/UX Features:**
 - **Touch-Optimized Interface:** Large, accessible buttons designed for tablet/iPad use with minimal taps to complete transactions
@@ -115,7 +115,7 @@ All important applications in the Vey ecosystem with their frontend UI/UX featur
 - **Multi-Currency Display:** Real-time currency conversion with clear display of original and converted prices
 - **Tax Calculation Overlay:** Transparent tax breakdown overlay showing standard/reduced rates per item category
 - **Receipt Preview:** Digital receipt preview before printing with all legally required fields per country
-- **Customer Lookup:** Quick Veybook integration for registered customer address/delivery preferences
+- **Customer Lookup:** Quick Veyvault integration for registered customer address/delivery preferences
 - **Offline Mode UI:** Clear visual indicators for offline operation with sync status badges
 - **Multi-Language Support:** Language switcher with 257-country address format support
 
@@ -123,7 +123,7 @@ All important applications in the Vey ecosystem with their frontend UI/UX featur
 **Description:** E-commerce specialized CMS integrated with Vey ecosystem for addressless checkout
 
 **Frontend UI/UX Features:**
-- **Addressless Checkout Flow:** Streamlined checkout with Veybook "Select Address" button replacing traditional address forms
+- **Addressless Checkout Flow:** Streamlined checkout with Veyvault "Select Address" button replacing traditional address forms
 - **Product Catalog:** Grid/list view toggle with filtering, sorting, and search functionality
 - **Shopping Cart:** Persistent cart with real-time inventory updates and shipping cost estimation
 - **ZKP Privacy Indicator:** Visual badges showing privacy protection status and secure delivery verification
@@ -152,7 +152,7 @@ All important applications in the Vey ecosystem with their frontend UI/UX featur
 - **Adaptive Form Layout:** Dynamic form fields that adjust based on selected country's address format requirements
 - **Smart Auto-Complete:** Real-time address suggestions as user types, with postal code-based auto-fill
 - **Visual Validation:** Inline field validation with clear error messages and formatting hints (e.g., "123-4567" for JP postal codes)
-- **Veybook Integration Button:** "Use Saved Address" button with modal selector showing user's saved addresses
+- **Veyvault Integration Button:** "Use Saved Address" button with modal selector showing user's saved addresses
 - **Mobile-First Design:** Touch-friendly input fields with appropriate keyboard types (numeric for postal codes, etc.)
 - **Progress Indicators:** Step-by-step progress bar for multi-step address entry flows
 - **Accessibility Features:** WCAG 2.1 AA compliant with screen reader support and keyboard navigation
@@ -242,7 +242,7 @@ Veyエコシステムは6つの主要機能で構成されています：
 - WeChat / Alipay ミニプログラム対応
 
 詳細は以下をご覧ください：
-- **[Veybook アプリケーション](./Vey/apps/Veybook/README.md)** - クラウド住所帳の詳細
+- **[Veyvault アプリケーション](./Vey/apps/Veyvault/README.md)** - クラウド住所帳の詳細
 - **[Mini-Programs](./mini-programs/README.md)** - WeChat/Alipay ミニプログラム
 - **[Vey エコシステム](./Vey/README.md)** - 全体システム概要
 
@@ -500,7 +500,7 @@ world-address-yaml/
 │   ├── vue/                  # Vue composables
 │   └── ...                   # Other platform SDKs
 ├── Vey/                       # Vey ecosystem documentation
-│   ├── apps/                 # Application specs (Veybook, Veypos)
+│   ├── apps/                 # Application specs (Veyvault, Veypos)
 │   └── diagrams/             # System diagrams
 └── .github/workflows/         # CI/CD automation
 ```

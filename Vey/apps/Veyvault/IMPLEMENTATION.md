@@ -1,22 +1,22 @@
-# Veybook Implementation Summary
+# Veyvault Implementation Summary
 
-This document describes the implementation structure created to match the specifications in the Veybook README.md and flow diagrams.
+This document describes the implementation structure created to match the specifications in the Veyvault README.md and flow diagrams.
 
 ## Implementation Overview
 
-The Veybook application has been structured to align with the documented data flows and user journeys from the Vey ecosystem documentation.
+The Veyvault application has been structured to align with the documented data flows and user journeys from the Vey ecosystem documentation.
 
 ## Directory Structure
 
 ```
-Vey/apps/Veybook/
+Vey/apps/Veyvault/
 ├── package.json          # Application dependencies and scripts
 ├── tsconfig.json         # TypeScript configuration
 ├── README.md             # Application specification (pre-existing)
 ├── IMPLEMENTATION.md     # This file
 └── src/
     ├── api/              # API client layer
-    │   └── client.ts     # VeybookClient implementing all data flows
+    │   └── client.ts     # VeyvaultClient implementing all data flows
     ├── services/         # Business logic layer
     │   ├── address.service.ts  # Address management using @vey/core
     │   └── auth.service.ts     # OAuth authentication flows
@@ -109,7 +109,7 @@ Implements OAuth flows:
 
 ### User Journeys (`diagrams/user-journeys.md`)
 
-✅ **Journey 1: First-Time Veybook User**:
+✅ **Journey 1: First-Time Veyvault User**:
 - Social login support
 - Address registration flow
 - EC site integration via tokens

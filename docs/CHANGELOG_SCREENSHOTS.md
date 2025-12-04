@@ -29,7 +29,7 @@ This PR adds screenshots and enhanced feature descriptions to the application RE
    - 3画面での完結したユーザー体験
 
 5. **docs/images/veybook/architecture.svg**
-   - Veybookのシステムアーキテクチャ図
+   - Veyvaultのシステムアーキテクチャ図
    - マイクロサービスアーキテクチャの全体像
 
 ### 📄 ドキュメント / Documentation
@@ -56,7 +56,7 @@ This PR adds screenshots and enhanced feature descriptions to the application RE
 - Table of Contents に "Application Screenshots" を追加
 - 各機能の視覚的説明を追加
 
-### 2. Vey/apps/Veybook/README.md
+### 2. Vey/apps/Veyvault/README.md
 
 **追加セクション:**
 - 📸 Screenshots & Feature Overview
@@ -223,7 +223,7 @@ This PR adds screenshots and enhanced feature descriptions to the application RE
 ## 関連リンク / Related Links
 
 - [Main README](../README.md)
-- [Veybook README](../Vey/apps/Veybook/README.md)
+- [Veyvault README](../Vey/apps/Veyvault/README.md)
 - [Mini-Programs README](../mini-programs/README.md)
 - [Screenshots Documentation](./SCREENSHOTS.md)
 - [Vey Ecosystem](../Vey/README.md)

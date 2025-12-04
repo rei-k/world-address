@@ -1,6 +1,6 @@
 # Veybook - クラウド住所帳アプリケーション
 
-**Veybook（ヴェイブック）** は、あなたの住所を安全に管理するクラウド住所帳アプリケーションです。
+**Veybook（ヴェイヴォルト）** は、あなたの住所を安全に管理するクラウド住所帳アプリケーションです。
 
 **Veybook** is a cloud address book application that securely manages your addresses.
 
@@ -20,6 +20,9 @@ Veybook is a next-generation address management application that encrypts and se
 - 🛍️ **ECサイト連携**: ワンクリックチェックアウト
 - 💳 **ウォレット統合**: Google Wallet/Apple Wallet対応
 - 🌍 **国際対応**: 248カ国の住所形式をサポート
+- 🔍 **サイト検索**: Veyformを採用しているサイトを検索可能
+- ⚡ **ワンクリック購入/予約**: 検索したサイトで住所入力なしで買い物・予約
+- 🔓 **アクセス管理**: サイトへの住所アクセス権を後から解除可能
 
 ---
 
@@ -264,13 +267,50 @@ console.log('PID:', address.pid);
 ### ECサイト連携
 
 ```typescript
-// Veybook連携ボタン
-<VeybookButton
+// Veyvault連携ボタン
+<VeyvaultButton
   onSelect={(addressToken) => {
     // addressTokenを使用してチェックアウト
     checkout(addressToken);
   }}
 />
+```
+
+### Veyform採用サイト検索
+
+```typescript
+import { VeyClient } from '@vey/core';
+
+const client = new VeyClient({ apiKey: 'your_api_key' });
+
+// Veyformを採用しているサイトを検索
+const sites = await client.sites.search({
+  query: 'レストラン',
+  location: 'Tokyo',
+  category: 'food'
+});
+
+// 検索結果からサイトを選択してワンクリック予約
+sites.forEach(site => {
+  console.log(`${site.name} - ${site.description}`);
+});
+```
+
+### サイトアクセス管理
+
+```typescript
+// 現在アクセス許可しているサイトの一覧
+const authorizedSites = await client.access.list();
+
+// 特定のサイトへのアクセスを解除
+await client.access.revoke({
+  siteId: 'site-123'
+});
+
+// アクセス履歴を確認
+const history = await client.access.history({
+  siteId: 'site-123'
+});
 ```
 
 ---

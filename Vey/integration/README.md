@@ -10,21 +10,21 @@ This directory contains guides and sample code for integrating with the Vey ecos
 
 ### 1. ECサイト統合 / E-commerce Integration
 
-Veybook連携でワンクリックチェックアウトを実現
+Veyvault連携でワンクリックチェックアウトを実現
 
 ```javascript
-// Veybook統合ボタンの実装
-import { VeybookButton } from '@vey/react';
+// Veyvault統合ボタンの実装
+import { VeyvaultButton } from '@vey/react';
 
 function CheckoutPage() {
   return (
-    <VeybookButton
+    <VeyvaultButton
       onSelect={(addressToken) => {
         // addressTokenを使用してチェックアウト処理
         processCheckout({ addressToken });
       }}
       onError={(error) => {
-        console.error('Veybook error:', error);
+        console.error('Veyvault error:', error);
       }}
     />
   );

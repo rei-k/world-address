@@ -1,12 +1,12 @@
 /**
- * Usage Example - VeybookCheckout Integration
+ * Usage Example - VeyvaultCheckout Integration
  * 
- * This file demonstrates how to integrate the VeybookCheckout component
+ * This file demonstrates how to integrate the VeyvaultCheckout component
  * into your e-commerce application.
  */
 
 import React, { useState, useEffect } from 'react';
-import { VeybookCheckout } from './VeybookCheckout';
+import { VeyvaultCheckout } from './VeyvaultCheckout';
 
 // ============================================================================
 // Example 1: Basic Usage
@@ -49,7 +49,7 @@ export function BasicCheckoutExample() {
   return (
     <div className="checkout-page">
       <h1>チェックアウト</h1>
-      <VeybookCheckout
+      <VeyvaultCheckout
         cart={cart}
         onComplete={handleCheckoutComplete}
         onCancel={handleCheckoutCancel}
@@ -100,7 +100,7 @@ export function CartStateExample() {
   }
 
   return (
-    <VeybookCheckout
+    <VeyvaultCheckout
       cart={cart}
       onComplete={(orderId, trackingNumber) => {
         // Clear cart after successful checkout
@@ -188,7 +188,7 @@ export function AnalyticsExample() {
   }, []);
 
   return (
-    <VeybookCheckout
+    <VeyvaultCheckout
       cart={cart}
       onComplete={(orderId, trackingNumber) => {
         trackCheckoutComplete(orderId);
@@ -240,7 +240,7 @@ export function ErrorHandlingExample() {
         </div>
       )}
       
-      <VeybookCheckout
+      <VeyvaultCheckout
         cart={cart}
         onComplete={(orderId) => {
           window.location.href = `/orders/${orderId}`;
@@ -265,7 +265,7 @@ interface CheckoutPageProps {
  * Checkout Page Component
  * 
  * Server-side rendered checkout page that loads cart and user data
- * before rendering the VeybookCheckout component.
+ * before rendering the VeyvaultCheckout component.
  */
 
 export default function CheckoutPage({ cart, user }: CheckoutPageProps) {
@@ -278,7 +278,7 @@ export default function CheckoutPage({ cart, user }: CheckoutPageProps) {
 
   return (
     <div className="container">
-      <VeybookCheckout
+      <VeyvaultCheckout
         cart={cart}
         onComplete={(orderId, trackingNumber) => {
           // Redirect to order confirmation
@@ -373,7 +373,7 @@ export function DiscountCodeExample() {
         </div>
       )}
 
-      <VeybookCheckout
+      <VeyvaultCheckout
         cart={cart}
         onComplete={(orderId) => {
           window.location.href = `/orders/${orderId}`;
@@ -407,4 +407,4 @@ async function getUserFromSession(req: any): Promise<any | null> {
 // TypeScript Type Exports
 // ============================================================================
 
-export type { CartItem, VeybookUser, Address, PaymentMethod } from './VeybookCheckout';
+export type { CartItem, VeyvaultUser, Address, PaymentMethod } from './VeyvaultCheckout';

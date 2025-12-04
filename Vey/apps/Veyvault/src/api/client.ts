@@ -1,5 +1,5 @@
 /**
- * Veybook API Client
+ * Veyvault API Client
  * Implements data flows from diagrams/data-flows.md
  */
 
@@ -14,13 +14,19 @@ import type {
   FriendInvitation,
   DeliveryTracking,
   ApiConfig,
+  VeyformSite,
+  SiteSearchRequest,
+  SiteSearchResponse,
+  SiteAccess,
+  RevokeAccessRequest,
+  SiteAccessHistory,
 } from '../types';
 
 /**
- * Veybook API Client
+ * Veyvault API Client
  * Handles all API communication following the documented data flows
  */
-export class VeybookClient {
+export class VeyvaultClient {
   private baseURL: string;
   private apiKey?: string;
   private accessToken?: string;
@@ -351,11 +357,146 @@ export class VeybookClient {
 
     return response.json();
   }
+
+  // ============================================================================
+  // Flow 6: Veyform Site Search
+  // Search for sites that have integrated Veyform
+  // ============================================================================
+
+  /**
+   * Search for Veyform-enabled sites
+   * Users can discover sites where they can shop/book without entering address
+   */
+  async searchSites(request: SiteSearchRequest): Promise<SiteSearchResponse> {
+    const params = new URLSearchParams();
+    
+    if (request.query) params.append('query', request.query);
+    if (request.category) params.append('category', request.category);
+    if (request.location) params.append('location', request.location);
+    if (request.country) params.append('country', request.country);
+    if (request.services) params.append('services', request.services.join(','));
+    if (request.limit) params.append('limit', request.limit.toString());
+    if (request.offset) params.append('offset', request.offset.toString());
+
+    const response = await fetch(`${this.baseURL}/sites/search?${params}`, {
+      method: 'GET',
+      headers: this.getHeaders(),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to search sites. Error code: SITE_SEARCH_${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  /**
+   * Get details of a specific Veyform site
+   */
+  async getSite(siteId: string): Promise<VeyformSite> {
+    const response = await fetch(`${this.baseURL}/sites/${siteId}`, {
+      method: 'GET',
+      headers: this.getHeaders(),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to get site details. Error code: SITE_GET_${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  // ============================================================================
+  // Flow 7: Site Access Management
+  // Manage which sites have access to user's address
+  // ============================================================================
+
+  /**
+   * Grant a site access to user's address
+   * This enables one-click shopping/booking on that site
+   */
+  async grantSiteAccess(siteId: string, addressId: string, permissions: string[]): Promise<SiteAccess> {
+    const response = await fetch(`${this.baseURL}/access/grant`, {
+      method: 'POST',
+      headers: this.getHeaders(),
+      body: JSON.stringify({ siteId, addressId, permissions }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to grant site access. Error code: ACCESS_GRANT_${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  /**
+   * Get list of sites that have access to user's addresses
+   */
+  async listAuthorizedSites(): Promise<SiteAccess[]> {
+    const response = await fetch(`${this.baseURL}/access`, {
+      method: 'GET',
+      headers: this.getHeaders(),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to list authorized sites. Error code: ACCESS_LIST_${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  /**
+   * Revoke a site's access to user's address
+   * User can remove site permissions at any time
+   */
+  async revokeSiteAccess(request: RevokeAccessRequest): Promise<void> {
+    const response = await fetch(`${this.baseURL}/access/revoke`, {
+      method: 'POST',
+      headers: this.getHeaders(),
+      body: JSON.stringify(request),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to revoke site access. Error code: ACCESS_REVOKE_${response.status}`);
+    }
+  }
+
+  /**
+   * Get access history for a specific site
+   */
+  async getSiteAccessHistory(siteId: string): Promise<SiteAccessHistory[]> {
+    const response = await fetch(`${this.baseURL}/access/${siteId}/history`, {
+      method: 'GET',
+      headers: this.getHeaders(),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to get access history. Error code: ACCESS_HISTORY_${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  /**
+   * Get all access history for the user
+   */
+  async getAllAccessHistory(): Promise<SiteAccessHistory[]> {
+    const response = await fetch(`${this.baseURL}/access/history`, {
+      method: 'GET',
+      headers: this.getHeaders(),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to get access history. Error code: ACCESS_HISTORY_ALL_${response.status}`);
+    }
+
+    return response.json();
+  }
 }
 
 /**
- * Create a Veybook API client instance
+ * Create a Veyvault API client instance
  */
-export function createVeybookClient(config: ApiConfig): VeybookClient {
-  return new VeybookClient(config);
+export function createVeyvaultClient(config: ApiConfig): VeyvaultClient {
+  return new VeyvaultClient(config);
 }

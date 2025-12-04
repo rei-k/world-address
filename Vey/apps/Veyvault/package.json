@@ -1,7 +1,7 @@
 {
-  "name": "@vey/veybook",
+  "name": "@vey/veyvault",
   "version": "1.0.0",
-  "description": "Veybook - Cloud Address Book Application",
+  "description": "Veyvault - Cloud Address Vault Application",
   "private": true,
   "scripts": {
     "dev": "next dev",

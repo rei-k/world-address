@@ -73,7 +73,7 @@ export default function IntegrationBuilderPage() {
                     htmlFor="veybook"
                     className="ml-2 text-sm text-gray-700"
                   >
-                    Enable Veybook integration
+                    Enable Veyvault integration
                   </label>
                 </div>
               </div>

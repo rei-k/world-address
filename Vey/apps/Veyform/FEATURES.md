@@ -47,7 +47,7 @@ Visual interface to configure and generate integration code for your application
 #### Form Configuration
 - ✅ Enable address auto-complete
 - ✅ Enable address validation
-- ✅ Enable Veybook integration
+- ✅ Enable Veyvault integration
 
 #### Country Selection
 - Default country: Japan (JP)

@@ -1,11 +1,11 @@
 /**
- * Veybook Application Entry Point
+ * Veyvault Application Entry Point
  * 
  * Exports all services, clients, and types for use in the application
  */
 
 // API Client
-export { VeybookClient, createVeybookClient } from './api/client';
+export { VeyvaultClient, createVeyvaultClient } from './api/client';
 
 // Services
 export { AddressService } from './services/address.service';
@@ -25,4 +25,11 @@ export type {
   FriendInvitation,
   DeliveryTracking,
   TrackingEvent,
+  VeyformSite,
+  SiteSearchRequest,
+  SiteSearchResponse,
+  SiteAccess,
+  SiteAccessPermission,
+  RevokeAccessRequest,
+  SiteAccessHistory,
 } from './types';

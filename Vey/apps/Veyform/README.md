@@ -8,9 +8,9 @@
 
 ## 📋 概要 / Overview
 
-Veyformは、世界中の住所形式に対応した柔軟なフォームシステムを提供し、ユーザーがスムーズに住所を入力・管理できるようにします。Veybookとの統合により、一度入力した住所を再利用することで、高速チェックアウト体験を実現します。
+Veyformは、世界中の住所形式に対応した柔軟なフォームシステムを提供し、ユーザーがスムーズに住所を入力・管理できるようにします。Veyvaultとの統合により、一度入力した住所を再利用することで、高速チェックアウト体験を実現します。
 
-Veyform provides a flexible form system supporting address formats from around the world, enabling users to smoothly input and manage addresses. Integration with Veybook enables fast checkout experiences by reusing previously entered addresses.
+Veyform provides a flexible form system supporting address formats from around the world, enabling users to smoothly input and manage addresses. Integration with Veyvault enables fast checkout experiences by reusing previously entered addresses.
 
 ### 主な機能 / Key Features
 
@@ -35,7 +35,7 @@ Veyform provides a flexible form system supporting address formats from around t
 - Google Maps Places API統合
 - 住所の自動修正機能
 
-### Veybook Integration
+### Veyvault Integration
 - 保存済み住所の呼び出し
 - ワンクリック住所入力
 - 住所履歴管理
@@ -70,7 +70,7 @@ Veyform provides a flexible form system supporting address formats from around t
 │         ┌─────────────────┼─────────────────┐             │
 │         │                 │                 │             │
 │  ┌──────▼──────┐  ┌──────▼──────┐  ┌──────▼──────┐      │
-│  │  Address    │  │ Validation  │  │   Veybook   │      │
+│  │  Address    │  │ Validation  │  │   Veyvault   │      │
 │  │   Data      │  │   Engine    │  │ Integration │      │
 │  │  (257国)    │  │             │  │             │      │
 │  └─────────────┘  └─────────────┘  └─────────────┘      │
@@ -187,12 +187,12 @@ Veyformは257カ国・地域の住所形式に対応しています。各国の�
 
 ## 🔌 Integration with Vey Ecosystem
 
-### Veybook連携
+### Veyvault連携
 
 ```typescript
-import { VeyformWithVeybook } from '@vey/veyform';
+import { VeyformWithVeyvault } from '@vey/veyform';
 
-const form = new VeyformWithVeybook({
+const form = new VeyformWithVeyvault({
   veybookApiUrl: 'https://api.veybook.com',
   enableSavedAddresses: true,
   enableAutoFill: true

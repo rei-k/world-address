@@ -1,6 +1,6 @@
 /**
- * Veybook Application Types
- * Based on Veybook README.md and data flow diagrams
+ * Veyvault Application Types
+ * Based on Veyvault README.md and data flow diagrams
  */
 
 /**
@@ -153,5 +153,99 @@ export interface TrackingEvent {
   status: string;
   description: string;
   location?: string;
+  timestamp: Date;
+}
+
+/**
+ * Veyform-enabled Site model
+ * Represents a site that has integrated Veyform for address collection
+ */
+export interface VeyformSite {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  location?: {
+    country: string;
+    city?: string;
+    address?: string;
+  };
+  logoUrl?: string;
+  websiteUrl: string;
+  veyformIntegrationStatus: 'active' | 'inactive';
+  supportedServices: string[]; // e.g., ['shopping', 'booking', 'delivery']
+  rating?: number;
+  reviewCount?: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+/**
+ * Site search request
+ */
+export interface SiteSearchRequest {
+  query?: string;
+  category?: string;
+  location?: string;
+  country?: string;
+  services?: string[];
+  limit?: number;
+  offset?: number;
+}
+
+/**
+ * Site search response
+ */
+export interface SiteSearchResponse {
+  sites: VeyformSite[];
+  total: number;
+  hasMore: boolean;
+}
+
+/**
+ * Site access authorization
+ * Tracks which sites have been granted access to user's address
+ */
+export interface SiteAccess {
+  id: string;
+  userId: string;
+  siteId: string;
+  siteName: string;
+  addressId: string; // Which address is shared with this site
+  grantedAt: Date;
+  expiresAt?: Date;
+  lastUsedAt?: Date;
+  usageCount: number;
+  isActive: boolean;
+  permissions: SiteAccessPermission[];
+}
+
+/**
+ * Site access permissions
+ */
+export interface SiteAccessPermission {
+  type: 'read_address' | 'use_for_delivery' | 'use_for_billing';
+  granted: boolean;
+  grantedAt: Date;
+}
+
+/**
+ * Site access revocation request
+ */
+export interface RevokeAccessRequest {
+  siteId: string;
+  reason?: string;
+}
+
+/**
+ * Site access history entry
+ */
+export interface SiteAccessHistory {
+  id: string;
+  siteAccessId: string;
+  siteId: string;
+  siteName: string;
+  action: 'granted' | 'used' | 'revoked';
+  details?: string;
   timestamp: Date;
 }

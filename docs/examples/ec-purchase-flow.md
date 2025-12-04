@@ -2,9 +2,9 @@
 
 ## 📋 概要 / Overview
 
-このドキュメントは、オンラインショップでVeybookを使用したシームレスなチェックアウト体験を実現する方法を説明します。
+このドキュメントは、オンラインショップでVeyvaultを使用したシームレスなチェックアウト体験を実現する方法を説明します。
 
-This document explains how to implement a seamless checkout experience using Veybook on an online shop.
+This document explains how to implement a seamless checkout experience using Veyvault on an online shop.
 
 ---
 
@@ -13,7 +13,7 @@ This document explains how to implement a seamless checkout experience using Vey
 **オンラインショップで商品を購入**
 
 1. ✅ 商品をカートに追加
-2. 🔐 チェックアウト画面で「Veybookでログイン」をクリック
+2. 🔐 チェックアウト画面で「Veyvaultでログイン」をクリック
 3. 👤 Google/Apple/アカウントで認証
 4. 📍 登録済みの住所から選択（または新規追加）
 5. 💳 決済完了 → 📦 配送開始
@@ -77,26 +77,26 @@ cart.addItem({
 
 ---
 
-### ステップ 2️⃣: チェックアウト画面で「Veybookでログイン」をクリック
+### ステップ 2️⃣: チェックアウト画面で「Veyvaultでログイン」をクリック
 
 ```tsx
-// VeybookLoginButton.tsx
+// VeyvaultLoginButton.tsx
 import React from 'react';
-import { VeybookButton } from '@vey/react';
+import { VeyvaultButton } from '@vey/react';
 
-interface VeybookLoginButtonProps {
-  onSuccess: (user: VeybookUser) => void;
+interface VeyvaultLoginButtonProps {
+  onSuccess: (user: VeyvaultUser) => void;
   onError?: (error: Error) => void;
 }
 
-export const VeybookLoginButton: React.FC<VeybookLoginButtonProps> = ({
+export const VeyvaultLoginButton: React.FC<VeyvaultLoginButtonProps> = ({
   onSuccess,
   onError
 }) => {
-  const handleVeybookLogin = async () => {
+  const handleVeyvaultLogin = async () => {
     try {
-      // Veybook OAuth認証フロー開始
-      const authUrl = buildVeybookAuthUrl({
+      // Veyvault OAuth認証フロー開始
+      const authUrl = buildVeyvaultAuthUrl({
         clientId: process.env.NEXT_PUBLIC_VEYBOOK_CLIENT_ID!,
         redirectUri: `${window.location.origin}/checkout/callback`,
         scope: 'address:read user:read',
@@ -106,14 +106,14 @@ export const VeybookLoginButton: React.FC<VeybookLoginButtonProps> = ({
       // 認証画面にリダイレクト
       window.location.href = authUrl;
     } catch (error) {
-      console.error('Veybook login failed:', error);
+      console.error('Veyvault login failed:', error);
       onError?.(error as Error);
     }
   };
 
   return (
     <button
-      onClick={handleVeybookLogin}
+      onClick={handleVeyvaultLogin}
       className="veybook-login-button"
       style={{
         display: 'flex',
@@ -133,16 +133,16 @@ export const VeybookLoginButton: React.FC<VeybookLoginButtonProps> = ({
     >
       <img 
         src="/veybook-icon.svg" 
-        alt="Veybook" 
+        alt="Veyvault" 
         width={24} 
         height={24}
       />
-      Veybookでログイン
+      Veyvaultでログイン
     </button>
   );
 };
 
-function buildVeybookAuthUrl(params: {
+function buildVeyvaultAuthUrl(params: {
   clientId: string;
   redirectUri: string;
   scope: string;
@@ -169,14 +169,14 @@ function generateRandomState(): string {
 ```tsx
 // CheckoutPage.tsx
 import React, { useState } from 'react';
-import { VeybookLoginButton } from './VeybookLoginButton';
+import { VeyvaultLoginButton } from './VeyvaultLoginButton';
 import { ShoppingCart } from './ShoppingCart';
 
 export const CheckoutPage: React.FC = () => {
-  const [user, setUser] = useState<VeybookUser | null>(null);
+  const [user, setUser] = useState<VeyvaultUser | null>(null);
   const [cart] = useState(() => new ShoppingCart());
 
-  const handleVeybookSuccess = (veybookUser: VeybookUser) => {
+  const handleVeyvaultSuccess = (veybookUser: VeyvaultUser) => {
     setUser(veybookUser);
     // ユーザー情報を保存
     sessionStorage.setItem('veybook_user', JSON.stringify(veybookUser));
@@ -193,13 +193,13 @@ export const CheckoutPage: React.FC = () => {
         <p>合計: ¥{cart.getTotalPrice().toLocaleString()}</p>
       </div>
 
-      {/* Veybookログインボタン */}
+      {/* Veyvaultログインボタン */}
       {!user ? (
         <div className="login-section">
           <h2>配送先を選択</h2>
-          <p>Veybookにログインして、保存された住所から選択できます</p>
-          <VeybookLoginButton 
-            onSuccess={handleVeybookSuccess}
+          <p>Veyvaultにログインして、保存された住所から選択できます</p>
+          <VeyvaultLoginButton 
+            onSuccess={handleVeyvaultSuccess}
             onError={(error) => alert(`ログインエラー: ${error.message}`)}
           />
           
@@ -227,9 +227,9 @@ export const CheckoutPage: React.FC = () => {
 // auth-callback.ts
 // OAuth コールバック処理
 
-import { VeybookClient } from '@vey/core';
+import { VeyvaultClient } from '@vey/core';
 
-interface VeybookUser {
+interface VeyvaultUser {
   id: string;
   email: string;
   name: string;
@@ -241,7 +241,7 @@ interface VeybookUser {
 export async function handleOAuthCallback(
   code: string,
   state: string
-): Promise<VeybookUser> {
+): Promise<VeyvaultUser> {
   // 1. state検証（CSRF対策）
   const savedState = sessionStorage.getItem('oauth_state');
   if (state !== savedState) {
@@ -270,7 +270,7 @@ export async function handleOAuthCallback(
   const tokens = await tokenResponse.json();
 
   // 3. アクセストークンでユーザー情報を取得
-  const veybookClient = new VeybookClient({
+  const veybookClient = new VeyvaultClient({
     accessToken: tokens.access_token
   });
 
@@ -339,7 +339,7 @@ const AUTH_PROVIDERS: AuthProvider[] = [
   }
 ];
 
-export function MultiProviderAuth({ onSuccess }: { onSuccess: (user: VeybookUser) => void }) {
+export function MultiProviderAuth({ onSuccess }: { onSuccess: (user: VeyvaultUser) => void }) {
   const handleProviderLogin = async (provider: AuthProvider['name']) => {
     const authUrl = buildAuthUrl(provider, {
       clientId: process.env[`${provider.toUpperCase()}_CLIENT_ID`]!,
@@ -376,7 +376,7 @@ export function MultiProviderAuth({ onSuccess }: { onSuccess: (user: VeybookUser
 ```tsx
 // AddressSelection.tsx
 import React, { useState, useEffect } from 'react';
-import { VeybookClient } from '@vey/core';
+import { VeyvaultClient } from '@vey/core';
 
 interface Address {
   id: string;
@@ -395,7 +395,7 @@ interface Address {
 }
 
 interface AddressSelectionProps {
-  user: VeybookUser;
+  user: VeyvaultUser;
   onAddressSelected: (address: Address) => void;
 }
 
@@ -415,7 +415,7 @@ export const AddressSelection: React.FC<AddressSelectionProps> = ({
   const loadAddresses = async () => {
     try {
       setLoading(true);
-      const client = new VeybookClient({ accessToken: user.accessToken });
+      const client = new VeyvaultClient({ accessToken: user.accessToken });
       const addressList = await client.addresses.list();
       
       setAddresses(addressList);
@@ -525,10 +525,10 @@ export const AddressSelection: React.FC<AddressSelectionProps> = ({
 ```tsx
 // AddNewAddressForm.tsx
 import React, { useState } from 'react';
-import { VeybookClient } from '@vey/core';
+import { VeyvaultClient } from '@vey/core';
 
 interface AddNewAddressFormProps {
-  user: VeybookUser;
+  user: VeyvaultUser;
   onSuccess: (address: Address) => void;
   onCancel: () => void;
 }
@@ -557,7 +557,7 @@ export const AddNewAddressForm: React.FC<AddNewAddressFormProps> = ({
     
     try {
       setLoading(true);
-      const client = new VeybookClient({ accessToken: user.accessToken });
+      const client = new VeyvaultClient({ accessToken: user.accessToken });
       
       // 住所を正規化してPID生成
       const normalizedAddress = await client.addresses.normalize({
@@ -727,7 +727,7 @@ export const AddNewAddressForm: React.FC<AddNewAddressFormProps> = ({
 ```tsx
 // PaymentAndShipping.tsx
 import React, { useState } from 'react';
-import { VeybookClient, VeyExpressClient } from '@vey/core';
+import { VeyvaultClient, VeyExpressClient } from '@vey/core';
 
 interface PaymentMethod {
   id: string;
@@ -739,7 +739,7 @@ interface PaymentMethod {
 }
 
 interface CheckoutData {
-  user: VeybookUser;
+  user: VeyvaultUser;
   address: Address;
   cart: CartItem[];
   totalAmount: number;
@@ -764,7 +764,7 @@ export const PaymentAndShipping: React.FC<CheckoutData> = ({
     try {
       setProcessing(true);
 
-      const veybookClient = new VeybookClient({ accessToken: user.accessToken });
+      const veybookClient = new VeyvaultClient({ accessToken: user.accessToken });
       const veyExpressClient = new VeyExpressClient({ 
         apiKey: process.env.VEYEXPRESS_API_KEY 
       });
@@ -909,7 +909,7 @@ export const PaymentAndShipping: React.FC<CheckoutData> = ({
       {/* セキュリティ情報 */}
       <div className="security-notice">
         <p>🔒 このサイトはSSLで保護されています</p>
-        <p>📍 Veybookを使用することで、あなたの住所情報は暗号化され安全に保管されます</p>
+        <p>📍 Veyvaultを使用することで、あなたの住所情報は暗号化され安全に保管されます</p>
       </div>
     </div>
   );
@@ -941,7 +941,7 @@ async function processPayment(data: any) {
 
 ### 従来の方法との比較
 
-| 項目 | 従来の方法 | Veybook使用 |
+| 項目 | 従来の方法 | Veyvault使用 |
 |------|-----------|------------|
 | **所要時間** | 5-10分 | **1分** |
 | **住所入力** | 毎回手入力 | **不要** |
@@ -958,9 +958,9 @@ async function processPayment(data: any) {
 決済確認 → 完了
 ```
 
-**Veybookチェックアウト（約1分）:**
+**Veyvaultチェックアウト（約1分）:**
 ```
-商品選択 → カート確認 → Veybookログイン（10秒） → 
+商品選択 → カート確認 → Veyvaultログイン（10秒） → 
 住所選択（10秒） → 決済確認（10秒） → 完了 ✨
 ```
 
@@ -1019,7 +1019,7 @@ const encryptedAddress = await encryptAddress(
 ```tsx
 // スマートフォンでも快適なUI
 <div className="checkout-mobile">
-  <VeybookButton 
+  <VeyvaultButton 
     mobile={true}
     fullWidth={true}
   />
@@ -1106,7 +1106,7 @@ gtag('event', 'purchase', {
 
 ```typescript
 // サンドボックス環境でテスト
-const veybookClient = new VeybookClient({
+const veybookClient = new VeyvaultClient({
   apiKey: 'test_sk_...',
   environment: 'sandbox'
 });
@@ -1123,7 +1123,7 @@ const testAddress = {
 
 ```typescript
 // 詳細なログ出力
-const veybookClient = new VeybookClient({
+const veybookClient = new VeyvaultClient({
   apiKey: apiKey,
   debug: true,  // デバッグモード有効化
   logLevel: 'verbose'
@@ -1134,7 +1134,7 @@ const veybookClient = new VeybookClient({
 
 ## 📚 まとめ
 
-Veybookを使用することで:
+Veyvaultを使用することで:
 
 ✅ **住所入力不要** - 一度登録すれば繰り返し使用可能  
 ✅ **1分でチェックアウト** - 劇的な時間短縮  
@@ -1147,7 +1147,7 @@ Veybookを使用することで:
 
 ## 🔗 関連リンク
 
-- [Veybook API ドキュメント](../vey-ecosystem.md)
+- [Veyvault API ドキュメント](../vey-ecosystem.md)
 - [ZKP プロトコル](../zkp-protocol.md)
 - [VeyExpress 配送統合](../veyexpress-complete-specification.md)
 - [SDK リファレンス](../../sdk/README.md)

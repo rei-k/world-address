@@ -8,7 +8,7 @@ This directory contains all applications in the Vey ecosystem.
 
 ## 📱 コンシューマー向けアプリ / Consumer Applications
 
-### [Veybook](./Veybook/) - クラウド住所帳
+### [Veyvault](./Veyvault/) - クラウド住所帳
 **Cloud Address Book Application**
 
 住所管理、友達管理、QR/NFC対応、ソーシャルログイン統合
@@ -122,7 +122,7 @@ git clone https://github.com/rei-k/world-address-yaml.git
 cd world-address-yaml/Vey/apps
 
 # 各アプリケーションのディレクトリに移動
-cd Veybook  # または他のアプリ
+cd Veyvault  # または他のアプリ
 
 # 依存関係のインストール
 npm install

@@ -8,7 +8,7 @@
 
 ### 主な成果
 
-1. **Veybookアプリケーション完全実装**
+1. **Veyvaultアプリケーション完全実装**
    - 全データフロー実装済み（ユーザー登録、住所管理、友達管理、EC連携、配送追跡）
    - 型定義、APIクライアント、サービスレイヤー完成
    - OAuth認証（Google、Apple、LINE）実装
@@ -21,7 +21,7 @@
 
 3. **VeyStore構造作成**
    - Eコマース仕様書作成
-   - Veybook連携設計
+   - Veyvault連携設計
    - ワンクリックチェックアウト対応
 
 4. **VeyExpress構造作成**
@@ -37,7 +37,7 @@
 | diagrams/data-flows.md | ✅ 4/7フロー実装 | 57% |
 | diagrams/user-journeys.md | ✅ 2/5ジャーニー実装 | 40% |
 | diagrams/security-architecture.md | ✅ 完全対応 | 100% |
-| Veybook README | ✅ 完全対応 | 100% |
+| Veyvault README | ✅ 完全対応 | 100% |
 | VeyPOS README | ✅ 仕様作成完了 | 100% |
 
 ### セキュリティ
@@ -64,7 +64,7 @@ Major code updates have been made based on the resume (specifications) and flow 
 
 ### Key Achievements
 
-1. **Veybook Application - Full Implementation**
+1. **Veyvault Application - Full Implementation**
    - All data flows implemented (user registration, address management, friends, EC integration, delivery tracking)
    - Complete type definitions, API client, and service layer
    - OAuth authentication (Google, Apple, LINE)
@@ -77,7 +77,7 @@ Major code updates have been made based on the resume (specifications) and flow 
 
 3. **VeyStore Structure Created**
    - E-commerce specification document
-   - Veybook integration design
+   - Veyvault integration design
    - One-click checkout support
 
 4. **VeyExpress Structure Created**
@@ -93,7 +93,7 @@ Major code updates have been made based on the resume (specifications) and flow 
 | diagrams/data-flows.md | ✅ 4/7 flows | 57% |
 | diagrams/user-journeys.md | ✅ 2/5 journeys | 40% |
 | diagrams/security-architecture.md | ✅ Full compliance | 100% |
-| Veybook README | ✅ Full compliance | 100% |
+| Veyvault README | ✅ Full compliance | 100% |
 | VeyPOS README | ✅ Specification complete | 100% |
 
 ### Security
@@ -126,7 +126,7 @@ Major code updates have been made based on the resume (specifications) and flow 
 7. ⏳ Analytics: Pending (requires VeyAnalytics)
 
 **User Journeys** (from diagrams/user-journeys.md):
-1. ✅ First-Time Veybook User: Social login → Address → EC integration
+1. ✅ First-Time Veyvault User: Social login → Address → EC integration
 2. ⏳ EC Site Integration: Token generation complete, UI pending
 3. ⏳ Delivery Optimization: Tracking APIs ready, VeyWorkforce pending
 4. ⏳ Retail Digitalization: VeyPOS types ready, UI pending
@@ -154,9 +154,9 @@ All implementations use the existing `@vey/core` SDK:
 
 ## Conclusion / 結論
 
-レジュメとフロー図に基づくコード更新が完了しました。Veybookの完全実装と、その他主要アプリの構造作成により、Veyエコシステムの基盤が整いました。
+レジュメとフロー図に基づくコード更新が完了しました。Veyvaultの完全実装と、その他主要アプリの構造作成により、Veyエコシステムの基盤が整いました。
 
-The code update based on the resume and flow diagrams is complete. With the full implementation of Veybook and structural creation of other major apps, the foundation of the Vey ecosystem is now in place.
+The code update based on the resume and flow diagrams is complete. With the full implementation of Veyvault and structural creation of other major apps, the foundation of the Vey ecosystem is now in place.
 
 ---
 

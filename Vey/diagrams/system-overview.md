@@ -18,7 +18,7 @@ This document illustrates the overall architecture of the Vey ecosystem and the 
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │   Veybook    │  │  VeyStore    │  │  VeyTable    │  │ Veycontract  │          │
+│  │   Veyvault    │  │  VeyStore    │  │  VeyTable    │  │ Veycontract  │          │
 │  │              │  │              │  │              │  │              │          │
 │  │ クラウド住所帳 │  │ ECプラット    │  │ 店舗注文     │  │ 契約管理     │          │
 │  │              │  │ フォーム     │  │ アプリ       │  │ アプリ       │          │
@@ -84,7 +84,7 @@ This document illustrates the overall architecture of the Vey ecosystem and the 
 │  │ 配送統合      │  │  POSシステム                 │  │ ロッカー管理  │          │
 │  │              │  │                             │  │              │          │
 │  │ • マルチ      │  │  • 各国税制対応              │  │ • 予約割当   │          │
-│  │   キャリア    │  │  • Veybook連携             │  │ • QR/NFC    │          │
+│  │   キャリア    │  │  • Veyvault連携             │  │ • QR/NFC    │          │
 │  │ • 料金比較    │  │  • QR/NFC決済              │  │ • 空き状況   │          │
 │  │ • 追跡       │  │  • オフライン対応            │  │ • コンビニ連携│          │
 │  └──────┬───────┘  └──────┬──────────────────────┘  └──────┬───────┘          │
@@ -195,7 +195,7 @@ Core Platform (Layer 5)
 Layer 1: Consumer Apps
 ┌─────────────────────────────────────────────────┐
 │                                                 │
-│  Veybook ◄──► VeyStore ◄──► VeyTable          │
+│  Veyvault ◄──► VeyStore ◄──► VeyTable          │
 │     │            │              │              │
 │     └────────────┴──────────────┴─► Veycontract│
 │                                                 │
@@ -379,7 +379,7 @@ Data Sharing: Addresses, User Info, Order History
 
 ```
 1. Consumer                2. VeyStore        3. VeyPOS         4. VeyExpress
-   (Veybook)                                                      
+   (Veyvault)                                                      
       │                         │                  │                  │
       │ 1. 注文作成              │                  │                  │
       ├────────────────────────►│                  │                  │

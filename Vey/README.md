@@ -48,7 +48,7 @@ The Vey ecosystem consists of three layers: Consumer Applications, Business Appl
 │  ┌──────────────────┐  ┌──────────────────┐  ┌─────────────────┐ │
 │  │  Consumer Apps   │  │   Business Apps  │  │  Infrastructure │ │
 │  ├──────────────────┤  ├──────────────────┤  ├─────────────────┤ │
-│  │ • Veybook        │  │ • VeyWorkspace   │  │ • VeyExpress    │ │
+│  │ • Veyvault        │  │ • VeyWorkspace   │  │ • VeyExpress    │ │
 │  │ • VeyStore       │  │ • VeyOperations  │  │ • VeyPOS        │ │
 │  │ • VeyTable       │  │ • VeyWorkforce   │  │ • VeyLocker     │ │
 │  │ • Veycontract    │  │ • VeyGovernance  │  │ • VeyAnalytics  │ │
@@ -78,7 +78,7 @@ For detailed architecture diagrams, see the [diagrams/](./diagrams/) directory.
 
 ### コンシューマー向けアプリケーション / Consumer Applications
 
-#### [Veybook](./apps/Veybook/) - クラウド住所帳
+#### [Veyvault](./apps/Veyvault/) - クラウド住所帳
 **Cloud Address Book Application**
 
 📝 住所管理、友達管理、QR/NFC対応、ソーシャルログイン統合
@@ -95,7 +95,7 @@ For detailed architecture diagrams, see the [diagrams/](./diagrams/) directory.
 
 🏪 住所レス・Vey統合のEコマース特化型CMS
 
-- Veybook統合で住所入力不要
+- Veyvault統合で住所入力不要
 - カスタマイズ可能なテーマ・プラグイン
 - レスポンシブデザイン
 - ZKP技術でプライバシー保護
@@ -116,7 +116,7 @@ For detailed architecture diagrams, see the [diagrams/](./diagrams/) directory.
 📄 個人用契約管理・自動入力アプリケーション
 
 - 契約書の自動入力（名前・住所・電話）
-- Veybook連携で情報自動入力
+- Veyvault連携で情報自動入力
 - 契約記録・管理
 - 契約条項確認サポート
 
@@ -126,7 +126,7 @@ For detailed architecture diagrams, see the [diagrams/](./diagrams/) directory.
 ✈️ 航空券・ホテル・レンタカーの統合予約プラットフォーム
 
 - 航空券・ホテル・レンタカーの一括予約
-- Veybook連携で住所入力不要
+- Veyvault連携で住所入力不要
 - デジタルパスポート統合
 
 ### ビジネス向けアプリケーション / Business Applications
@@ -201,7 +201,7 @@ For detailed architecture diagrams, see the [diagrams/](./diagrams/) directory.
 💳 国際対応POSアプリケーション
 
 - 各国の税制・通貨・レシート要件に対応
-- Veybook連携で顧客住所管理
+- Veyvault連携で顧客住所管理
 - QR/NFCでの決済と配送先登録
 - オフライン対応
 - 多言語サポート
@@ -342,7 +342,7 @@ cd ../../Vey
 
 各アプリケーションのセットアップガイドは、対応するディレクトリをご覧ください：
 
-- [Veybook セットアップ](./apps/Veybook/SETUP.md)
+- [Veyvault セットアップ](./apps/Veyvault/SETUP.md)
 - [VeyPOS セットアップ](./apps/VeyPOS/SETUP.md)
 - [VeyWorkspace セットアップ](./apps/VeyWorkspace/SETUP.md)
 

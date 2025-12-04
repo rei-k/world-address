@@ -26,7 +26,7 @@ This document illustrates the detailed data flows within the Vey ecosystem.
        │    Auth Token
        ▼
 ┌──────────────────────────────────────────────────┐
-│               Veybook                            │
+│               Veyvault                            │
 │                                                  │
 │  3. ユーザーアカウント作成                         │
 │     Create User Account                          │
@@ -58,7 +58,7 @@ This document illustrates the detailed data flows within the Vey ecosystem.
        │    Enter Address
        ▼
 ┌──────────────────────────────────────────────────┐
-│               Veybook                            │
+│               Veyvault                            │
 │                                                  │
 │  2. フロントエンド検証                            │
 │     Frontend Validation                          │
@@ -121,7 +121,7 @@ This document illustrates the detailed data flows within the Vey ecosystem.
        │    Request Delivery Address
        ▼
 ┌──────────────────────────────────────────────────┐
-│               Veybook                            │
+│               Veyvault                            │
 │                                                  │
 │  4. 住所トークン生成                              │
 │     Generate Address Token                       │
@@ -202,7 +202,7 @@ This document illustrates the detailed data flows within the Vey ecosystem.
        ├────────────────────┬─────────────────────┐
        ▼                    ▼                     ▼
 ┌─────────────┐    ┌─────────────┐      ┌─────────────┐
-│   Veybook   │    │  VeyStore   │      │VeyAnalytics │
+│   Veyvault   │    │  VeyStore   │      │VeyAnalytics │
 │             │    │             │      │             │
 │ 6. プッシュ  │    │ 7. 状態更新  │      │ 8. 分析     │
 │   通知      │    │   Update    │      │   Analytics │
@@ -358,7 +358,7 @@ This document illustrates the detailed data flows within the Vey ecosystem.
                      ├────────┬────────┐
                      ▼        ▼        ▼
               ┌────────┐ ┌────────┐ ┌────────┐
-              │VeyPOS  │ │VeyStore│ │Veybook │
+              │VeyPOS  │ │VeyStore│ │Veyvault │
               └────────┘ └────────┘ └────────┘
 ```
 
@@ -381,7 +381,7 @@ This document illustrates the detailed data flows within the Vey ecosystem.
 │     • Order Items                                │
 │     • Prices                                     │
 │     • Tax Rates                                  │
-│     • Customer Info (from Veybook)              │
+│     • Customer Info (from Veyvault)              │
 └──────┬───────────────────────────────────────────┘
        │ 3. 請求書生成リクエスト
        │    Generate Invoice Request
@@ -420,7 +420,7 @@ This document illustrates the detailed data flows within the Vey ecosystem.
        │    Request Address Proof
        ▼
 ┌──────────────────────────────────────────────────┐
-│               Veybook                            │
+│               Veyvault                            │
 │                                                  │
 │  2. ZKP証明生成                                   │
 │     Generate ZKP Proof                           │
@@ -476,7 +476,7 @@ This document illustrates the detailed data flows within the Vey ecosystem.
        │    Enter Address Data
        ▼
 ┌──────────────────────────────────────────────────┐
-│         Veybook (Client-Side)                    │
+│         Veyvault (Client-Side)                    │
 │                                                  │
 │  2. クライアントサイド暗号化                       │
 │     Client-Side Encryption                       │
@@ -533,7 +533,7 @@ This document illustrates the detailed data flows within the Vey ecosystem.
        │    Plain Data (Authorized User Only)
        ▼
 ┌──────────────┐
-│   Veybook    │
+│   Veyvault    │
 │  (Authorized)│
 └──────────────┘
 ```
@@ -546,7 +546,7 @@ This document illustrates the detailed data flows within the Vey ecosystem.
 
 ```
 ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐
-│ VeyStore  │ │  VeyPOS   │ │VeyExpress │ │ Veybook   │
+│ VeyStore  │ │  VeyPOS   │ │VeyExpress │ │ Veyvault   │
 └─────┬─────┘ └─────┬─────┘ └─────┬─────┘ └─────┬─────┘
       │             │             │             │
       │ Event       │ Event       │ Event       │ Event

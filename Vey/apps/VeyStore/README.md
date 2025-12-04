@@ -8,11 +8,11 @@
 
 ## 📋 概要 / Overview
 
-VeyStoreは、Veybook統合により住所入力不要のスムーズなチェックアウト体験を提供するEコマースプラットフォームです。
+VeyStoreは、Veyvault統合により住所入力不要のスムーズなチェックアウト体験を提供するEコマースプラットフォームです。
 
 ### 主な機能 / Key Features
 
-- 🛍️ **Addressless Checkout**: Veybook統合で住所入力不要
+- 🛍️ **Addressless Checkout**: Veyvault統合で住所入力不要
 - 🔐 **Privacy-First**: ZKP技術でプライバシー保護
 - 🌍 **Global Ready**: 多言語・多通貨対応
 - 📦 **Delivery Integration**: VeyExpressで最適な配送業者を自動選択
@@ -24,7 +24,7 @@ VeyStoreは、Veybook統合により住所入力不要のスムーズなチェ�
 ## 🚀 Features
 
 ### One-Click Checkout
-- Veybook連携でワンクリック配送先設定
+- Veyvault連携でワンクリック配送先設定
 - 生住所を見せずにZKP証明で配送可能性を検証
 - 複数配送先の管理
 

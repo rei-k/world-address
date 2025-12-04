@@ -1016,7 +1016,7 @@ export default router;
 ```typescript
 import { ZKPAddressProof } from '@vey/express-zkp';
 
-// 住所提供者側（Veybookなど）
+// 住所提供者側（Veyvaultなど）
 async function generateAddressProof(
   userAddress: Address,
   shippingRequest: ShippingRequest

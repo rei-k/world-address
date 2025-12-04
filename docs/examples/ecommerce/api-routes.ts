@@ -1,11 +1,11 @@
 /**
  * API Routes for E-commerce Checkout
  * 
- * Next.js API routes for handling checkout operations with Veybook integration
+ * Next.js API routes for handling checkout operations with Veyvault integration
  */
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { VeybookClient } from '@vey/core';
+import { VeyvaultClient } from '@vey/core';
 import { VeyExpressClient } from '@vey/express';
 
 // NOTE: This is example code. In production, import Prisma client:
@@ -22,9 +22,9 @@ declare const stripe: any;
 /**
  * POST /api/auth/veybook/callback
  * 
- * Handles OAuth callback from Veybook
+ * Handles OAuth callback from Veyvault
  */
-export async function handleVeybookCallback(
+export async function handleVeyvaultCallback(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -57,7 +57,7 @@ export async function handleVeybookCallback(
     const tokens = await tokenResponse.json();
 
     // Get user info
-    const veybookClient = new VeybookClient({
+    const veybookClient = new VeyvaultClient({
       accessToken: tokens.access_token
     });
 
@@ -252,7 +252,7 @@ export async function processPayment(
 /**
  * GET /api/addresses
  * 
- * Lists user's addresses from Veybook
+ * Lists user's addresses from Veyvault
  */
 export async function listAddresses(
   req: NextApiRequest,
@@ -265,7 +265,7 @@ export async function listAddresses(
   }
 
   try {
-    const veybookClient = new VeybookClient({
+    const veybookClient = new VeyvaultClient({
       accessToken: user.accessToken
     });
 
@@ -281,7 +281,7 @@ export async function listAddresses(
 /**
  * POST /api/addresses
  * 
- * Creates a new address in Veybook
+ * Creates a new address in Veyvault
  */
 export async function createAddress(
   req: NextApiRequest,
@@ -296,7 +296,7 @@ export async function createAddress(
   const { label, recipient, postalCode, prefecture, city, addressLine1, addressLine2, phone, isPrimary } = req.body;
 
   try {
-    const veybookClient = new VeybookClient({
+    const veybookClient = new VeyvaultClient({
       accessToken: user.accessToken
     });
 
@@ -351,7 +351,7 @@ export async function validateDelivery(
   const { pid, conditions } = req.body;
 
   try {
-    const veybookClient = new VeybookClient({
+    const veybookClient = new VeyvaultClient({
       accessToken: user.accessToken
     });
 
@@ -541,7 +541,7 @@ export async function trackAnalyticsEvent(
 // ============================================================================
 
 export {
-  handleVeybookCallback,
+  handleVeyvaultCallback,
   createOrder,
   getOrder,
   processPayment,

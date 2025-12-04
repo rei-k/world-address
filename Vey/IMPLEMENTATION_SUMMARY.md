@@ -8,11 +8,11 @@ The Vey ecosystem documentation describes a comprehensive platform for logistics
 
 ## Implemented Applications
 
-### 1. Veybook - Cloud Address Book ✅
+### 1. Veyvault - Cloud Address Book ✅
 
 **Status**: Core implementation complete
 
-**Location**: `Vey/apps/Veybook/`
+**Location**: `Vey/apps/Veyvault/`
 
 **Implementation**:
 - ✅ Type definitions for all data models
@@ -32,7 +32,7 @@ The Vey ecosystem documentation describes a comprehensive platform for logistics
 - `src/services/auth.service.ts` - OAuth authentication
 
 **Conformance**: Matches specifications from:
-- `Vey/apps/Veybook/README.md`
+- `Vey/apps/Veyvault/README.md`
 - `Vey/diagrams/data-flows.md` (User Registration, Address Registration, Order & Delivery, Tracking flows)
 - `Vey/diagrams/user-journeys.md` (First-time user, Gift delivery)
 
@@ -71,7 +71,7 @@ The Vey ecosystem documentation describes a comprehensive platform for logistics
 - ⏳ UI implementation (pending)
 
 **Key Features** (Documented):
-- One-click checkout with Veybook
+- One-click checkout with Veyvault
 - ZKP-based privacy protection
 - Multi-language/currency support
 - VeyExpress integration for delivery
@@ -115,19 +115,19 @@ Based on `Vey/diagrams/data-flows.md`:
 
 ### ✅ Implemented Flows
 
-1. **User Registration Flow** (Veybook)
+1. **User Registration Flow** (Veyvault)
    - OAuth social login
    - Account creation
    - Profile initialization
    
-2. **Address Registration Flow** (Veybook)
+2. **Address Registration Flow** (Veyvault)
    - Frontend validation
    - API submission
    - PID generation
    - ZKP proof generation
    - Encrypted storage
 
-3. **Order & Delivery Flow** (Veybook → VeyStore → VeyExpress)
+3. **Order & Delivery Flow** (Veyvault → VeyStore → VeyExpress)
    - Address token generation
    - EC site integration
    - Carrier selection
@@ -150,7 +150,7 @@ Based on `Vey/diagrams/user-journeys.md`:
 
 ### ✅ Core Logic Implemented
 
-1. **Journey 1: First-Time Veybook User**
+1. **Journey 1: First-Time Veyvault User**
    - Social login (Google/Apple/LINE)
    - Address registration
    - EC site integration via tokens
@@ -172,7 +172,7 @@ Based on `Vey/diagrams/user-journeys.md`:
 Vey/
 ├── README.md                      # Ecosystem overview
 ├── apps/                          # Applications
-│   ├── Veybook/                   # ✅ Implemented
+│   ├── Veyvault/                   # ✅ Implemented
 │   │   ├── README.md
 │   │   ├── IMPLEMENTATION.md
 │   │   ├── package.json
@@ -228,12 +228,12 @@ sdk/
 
 | Specification | Location | Implementation | Status |
 |--------------|----------|----------------|--------|
-| **Veybook Spec** | `Vey/apps/Veybook/README.md` | `Vey/apps/Veybook/src/` | ✅ Core Complete |
+| **Veyvault Spec** | `Vey/apps/Veyvault/README.md` | `Vey/apps/Veyvault/src/` | ✅ Core Complete |
 | **VeyPOS Spec** | `Vey/apps/VeyPOS/README.md` | `Vey/apps/VeyPOS/src/` | ✅ Types Created |
 | **VeyStore Spec** | `Vey/apps/VeyStore/README.md` | `Vey/apps/VeyStore/` | ✅ Structure Created |
 | **VeyExpress Spec** | `Vey/apps/VeyExpress/README.md` | `Vey/apps/VeyExpress/` | ✅ Structure Created |
-| **Data Flows** | `Vey/diagrams/data-flows.md` | `Veybook/src/api/client.ts` | ✅ 4/7 Flows |
-| **User Journeys** | `Vey/diagrams/user-journeys.md` | `Veybook/src/` | ✅ 2/5 Journeys |
+| **Data Flows** | `Vey/diagrams/data-flows.md` | `Veyvault/src/api/client.ts` | ✅ 4/7 Flows |
+| **User Journeys** | `Vey/diagrams/user-journeys.md` | `Veyvault/src/` | ✅ 2/5 Journeys |
 | **SDK Core** | `sdk/core/` | `sdk/core/src/` | ✅ Complete |
 | **POS Schema** | `data/*/JP/JP.yaml` | `VeyPOS/src/types/` | ✅ Types Match |
 
@@ -242,13 +242,13 @@ sdk/
 To complete the implementation:
 
 ### High Priority
-1. **Veybook UI Components**
+1. **Veyvault UI Components**
    - Address input form
    - Friend management interface
    - QR code scanner/generator
    - Delivery tracking display
 
-2. **Veybook Pages**
+2. **Veyvault Pages**
    - Home/Dashboard
    - Address management
    - Friends page
@@ -293,6 +293,6 @@ To complete the implementation:
 
 ## Conclusion
 
-The implementation successfully creates a foundational structure that matches the documented Vey ecosystem specifications. The core business logic, type definitions, and API integrations for Veybook are complete and align with all major data flows and user journeys described in the documentation. Additional applications have their structure and specifications in place, ready for implementation.
+The implementation successfully creates a foundational structure that matches the documented Vey ecosystem specifications. The core business logic, type definitions, and API integrations for Veyvault are complete and align with all major data flows and user journeys described in the documentation. Additional applications have their structure and specifications in place, ready for implementation.
 
 The code is production-ready at the API/service layer and requires UI implementation to become a fully functional application.

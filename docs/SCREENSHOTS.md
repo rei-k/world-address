@@ -257,7 +257,7 @@ const vc = createAddressPIDCredential({
 
 ```typescript
 // チェックアウト時
-const addressToken = selectAddressFromVeybook();
+const addressToken = selectAddressFromVeyvault();
 
 // ECサイトに送信されるのはトークンのみ
 checkout({
@@ -493,11 +493,11 @@ Veyミニプログラムでは、**住所入力フォームが存在しません
 
 ## システムアーキテクチャ / System Architecture
 
-![Veybook Architecture](./images/veybook/architecture.svg)
+![Veyvault Architecture](./images/veybook/architecture.svg)
 
 ### アーキテクチャ概要 / Architecture Overview
 
-Veybookは、モダンなマイクロサービスアーキテクチャで構築されています。
+Veyvaultは、モダンなマイクロサービスアーキテクチャで構築されています。
 
 #### レイヤー構成 / Layer Structure
 
@@ -708,7 +708,7 @@ Veyエコシステムは、プライバシー第一のアプローチで、住�
 ---
 
 **関連リンク:**
-- [Veybook README](../Vey/apps/Veybook/README.md)
+- [Veyvault README](../Vey/apps/Veyvault/README.md)
 - [Mini-Programs README](../mini-programs/README.md)
 - [Vey Ecosystem](../Vey/README.md)
 - [Main README](../README.md)
