@@ -1,16 +1,16 @@
-# Veybook - クラウド住所帳アプリケーション
+# Veyvault - クラウド住所帳アプリケーション
 
-**Veybook（ヴェイヴォルト）** は、あなたの住所を安全に管理するクラウド住所帳アプリケーションです。
+**Veyvault（ヴェイヴォルト）** は、あなたの住所を安全に管理するクラウド住所帳アプリケーションです。
 
-**Veybook** is a cloud address book application that securely manages your addresses.
+**Veyvault** is a cloud address vault application that securely manages your addresses.
 
 ---
 
 ## 📋 概要 / Overview
 
-Veybookは、ユーザーの住所情報を暗号化してクラウド上で安全に管理し、ECサイトや配送サービスとシームレスに連携できる次世代の住所管理アプリケーションです。
+Veyvaultは、ユーザーの住所情報を暗号化してクラウド上で安全に管理し、ECサイトや配送サービスとシームレスに連携できる次世代の住所管理アプリケーションです。
 
-Veybook is a next-generation address management application that encrypts and securely manages user address information in the cloud, seamlessly integrating with e-commerce sites and delivery services.
+Veyvault is a next-generation address management application that encrypts and securely manages user address information in the cloud, seamlessly integrating with e-commerce sites and delivery services.
 
 ### 主な機能 / Key Features
 
@@ -32,7 +32,7 @@ Veybook is a next-generation address management application that encrypts and se
 
 ![Feature Overview](../../../docs/images/features/feature-overview.svg)
 
-Veybookは6つの主要機能で構成されています：
+Veyvaultは6つの主要機能で構成されています：
 
 1. **📝 Address Management (住所管理)** - 複数の住所をクラウドで一元管理。自動検証、257カ国対応
 2. **📱 QR/NFC Sharing (QR/NFC共有)** - スキャンするだけで友達追加。生住所を見せずにシェア
@@ -67,7 +67,7 @@ Veybookは6つの主要機能で構成されています：
 
 ### システムアーキテクチャ / System Architecture
 
-![Veybook Architecture](../../../docs/images/veybook/architecture.svg)
+![Veyvault Architecture](../../../docs/images/veyvault/architecture.svg)
 
 **エンタープライズグレードのマイクロサービスアーキテクチャ:**
 
@@ -82,7 +82,7 @@ Veybookは6つの主要機能で構成されています：
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Veybook Architecture                     │
+│                    Veyvault Architecture                     │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐    │
@@ -130,7 +130,7 @@ Veybookは6つの主要機能で構成されています：
 ```bash
 # リポジトリのクローン
 git clone https://github.com/rei-k/world-address-yaml.git
-cd world-address-yaml/Vey/apps/Veybook
+cd world-address-yaml/Vey/apps/Veyvault
 
 # 依存関係のインストール
 npm install
@@ -415,7 +415,8 @@ MIT License
 - [Vey エコシステム](../../README.md)
 - [API ドキュメント](../../diagrams/technical-integration.md)
 - [セキュリティ](../../diagrams/security-architecture.md)
+- [サイト管理機能](./SITE_MANAGEMENT.md) - Site search and access management
 
 ---
 
-**最終更新 / Last Updated**: 2025-12-03
+**最終更新 / Last Updated**: 2025-12-04
