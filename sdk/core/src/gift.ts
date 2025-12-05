@@ -6,14 +6,16 @@
  */
 
 import type { CarrierCode, ServiceLevel } from './logistics';
+import {
+  GiftOrderStatus,
+  CancellationReason,
+} from './types';
 import type {
   GiftOrder,
-  GiftOrderStatus,
   PendingWaybill,
   GiftDeliveryCandidate,
   GiftDeliverySelection,
   CandidateCluster,
-  CancellationReason,
   ExpirationRisk,
   ReminderSchedule,
   RecipientPreferences,

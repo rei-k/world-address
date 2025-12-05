@@ -16,6 +16,7 @@ import type {
   GeocodingResult,
   GeoInsuranceConfig,
   AddressInput,
+  GeoSource,
 } from './types';
 
 // ============================================================================
@@ -541,5 +542,341 @@ export function createBoundsFromRadius(
       latitude: center.latitude - latOffset,
       longitude: center.longitude - lngOffset,
     },
+  };
+}
+
+// ============================================================================
+// Geocoding API (Forward & Reverse Geocoding)
+// ============================================================================
+
+/**
+ * Default Nominatim API endpoint (OpenStreetMap)
+ */
+const DEFAULT_GEOCODING_API = 'https://nominatim.openstreetmap.org';
+
+/**
+ * Default number of results to fetch from geocoding API
+ */
+const DEFAULT_GEOCODING_LIMIT = 5;
+
+/**
+ * Default zoom level for reverse geocoding (18 = high detail)
+ */
+const DEFAULT_REVERSE_GEOCODING_ZOOM = 18;
+
+/**
+ * Request timeout in milliseconds
+ */
+const GEOCODING_TIMEOUT_MS = 10000;
+
+/**
+ * Cache for geocoding results to reduce API calls
+ */
+const geocodingCache = new Map<string, GeocodingResult>();
+
+/**
+ * Forward geocoding: Convert address to coordinates
+ * フォワードジオコーディング: 住所から座標への変換
+ * 
+ * @param request - Geocoding request with address
+ * @returns Promise<GeocodingResult>
+ * 
+ * @example
+ * ```ts
+ * const result = await forwardGeocode({
+ *   address: {
+ *     street: '1-1-1 Chiyoda',
+ *     city: 'Chiyoda-ku',
+ *     province: 'Tokyo',
+ *     country: 'JP',
+ *     postalCode: '100-0001'
+ *   }
+ * });
+ * // Returns: { success: true, coordinates: { latitude: 35.6812, longitude: 139.7671 }, ... }
+ * ```
+ */
+export async function forwardGeocode(
+  request: GeocodingRequest
+): Promise<GeocodingResult> {
+  if (!request.address && !request.pid) {
+    return {
+      success: false,
+      confidence: 0,
+      error: 'Either address or PID is required for forward geocoding',
+    };
+  }
+
+  // Check cache
+  const cacheKey = JSON.stringify(request);
+  const cached = geocodingCache.get(cacheKey);
+  if (cached) {
+    return cached;
+  }
+
+  let query = '';
+  
+  // Build query from address
+  if (request.address) {
+    const parts: string[] = [];
+    const addr = request.address;
+    
+    if (addr.street_address) parts.push(addr.street_address);
+    if (addr.city) parts.push(addr.city);
+    if (addr.province) parts.push(addr.province);
+    if (addr.postal_code) parts.push(addr.postal_code);
+    if (addr.country) parts.push(addr.country);
+    
+    query = parts.join(', ');
+  } else if (request.pid) {
+    // For PID, extract country and region codes
+    query = request.pid;
+  }
+
+  // Call Nominatim API
+  const url = new URL(`${DEFAULT_GEOCODING_API}/search`);
+  url.searchParams.set('q', query);
+  url.searchParams.set('format', 'json');
+  url.searchParams.set('limit', DEFAULT_GEOCODING_LIMIT.toString());
+  url.searchParams.set('addressdetails', '1');
+  
+  // Create abort controller for timeout
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), GEOCODING_TIMEOUT_MS);
+  
+  try {
+    const response = await fetch(url.toString(), {
+      headers: {
+        'User-Agent': '@vey/core geocoding client',
+      },
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`Geocoding API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data) || data.length === 0) {
+      const result: GeocodingResult = {
+        success: false,
+        confidence: 0,
+        error: 'No results found for the given address',
+      };
+      geocodingCache.set(cacheKey, result);
+      return result;
+    }
+
+    // Process results
+    const primary = data[0];
+    const coordinates: GeoCoordinates = {
+      latitude: parseFloat(primary.lat),
+      longitude: parseFloat(primary.lon),
+      source: 'nominatim',
+    };
+
+    // Calculate confidence based on importance score
+    const confidence = Math.min(1.0, parseFloat(primary.importance) || 0.5);
+
+    // Process alternatives
+    const alternatives = data.slice(1, 5).map(item => ({
+      coordinates: {
+        latitude: parseFloat(item.lat),
+        longitude: parseFloat(item.lon),
+        source: 'nominatim' as GeoSource,
+      },
+      confidence: Math.min(1.0, parseFloat(item.importance) || 0.3),
+    }));
+
+    const result: GeocodingResult = {
+      success: true,
+      coordinates,
+      confidence,
+      alternatives: alternatives.length > 0 ? alternatives : undefined,
+    };
+
+    // Cache result
+    geocodingCache.set(cacheKey, result);
+
+    return result;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return {
+      success: false,
+      confidence: 0,
+      error: `Geocoding failed: ${errorMessage}`,
+    };
+  }
+}
+
+/**
+ * Reverse geocoding: Convert coordinates to address
+ * リバースジオコーディング: 座標から住所への変換
+ * 
+ * @param request - Geocoding request with coordinates
+ * @returns Promise<GeocodingResult>
+ * 
+ * @example
+ * ```ts
+ * const result = await reverseGeocode({
+ *   coordinates: { latitude: 35.6812, longitude: 139.7671 }
+ * });
+ * // Returns: { success: true, address: { country: 'JP', city: 'Tokyo', ... }, ... }
+ * ```
+ */
+export async function reverseGeocode(
+  request: GeocodingRequest
+): Promise<GeocodingResult> {
+  if (!request.coordinates) {
+    return {
+      success: false,
+      confidence: 0,
+      error: 'Coordinates are required for reverse geocoding',
+    };
+  }
+
+  if (!validateCoordinates(request.coordinates)) {
+    return {
+      success: false,
+      confidence: 0,
+      error: 'Invalid coordinates provided',
+    };
+  }
+
+  // Check cache
+  const cacheKey = JSON.stringify(request);
+  const cached = geocodingCache.get(cacheKey);
+  if (cached) {
+    return cached;
+  }
+
+  try {
+    const { latitude, longitude } = request.coordinates;
+
+    // Call Nominatim reverse API
+    const url = new URL(`${DEFAULT_GEOCODING_API}/reverse`);
+    url.searchParams.set('lat', latitude.toString());
+    url.searchParams.set('lon', longitude.toString());
+    url.searchParams.set('format', 'json');
+    url.searchParams.set('addressdetails', '1');
+    url.searchParams.set('zoom', DEFAULT_REVERSE_GEOCODING_ZOOM.toString());
+    
+    // Create abort controller for timeout
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), GEOCODING_TIMEOUT_MS);
+    
+    const response = await fetch(url.toString(), {
+      headers: {
+        'User-Agent': '@vey/core geocoding client',
+      },
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`Reverse geocoding API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (!data || !data.address) {
+      const result: GeocodingResult = {
+        success: false,
+        confidence: 0,
+        error: 'No address found for the given coordinates',
+      };
+      geocodingCache.set(cacheKey, result);
+      return result;
+    }
+
+    // Parse address components
+    const addr = data.address;
+    const address: AddressInput = {
+      country: addr.country_code?.toUpperCase() || '',
+      province: addr.state || addr.province || addr.region || '',
+      city: addr.city || addr.town || addr.village || addr.municipality || '',
+      district: addr.suburb || addr.district || addr.neighbourhood || '',
+      street_address: [
+        addr.road,
+        addr.house_number,
+      ].filter(Boolean).join(' '),
+      postal_code: addr.postcode || '',
+    };
+
+    const confidence = Math.min(1.0, parseFloat(data.importance) || 0.5);
+
+    const result: GeocodingResult = {
+      success: true,
+      address,
+      coordinates: request.coordinates,
+      confidence,
+    };
+
+    // Cache result
+    geocodingCache.set(cacheKey, result);
+
+    return result;
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return {
+      success: false,
+      confidence: 0,
+      error: `Reverse geocoding failed: ${errorMessage}`,
+    };
+  }
+}
+
+/**
+ * Geocode function: Auto-detect forward or reverse geocoding
+ * ジオコーディング関数: フォワード/リバースを自動検出
+ * 
+ * @param request - Geocoding request
+ * @returns Promise<GeocodingResult>
+ * 
+ * @example
+ * ```ts
+ * // Forward geocoding
+ * const forward = await geocode({ address: { city: 'Tokyo', country: 'JP' } });
+ * 
+ * // Reverse geocoding
+ * const reverse = await geocode({ coordinates: { latitude: 35.6812, longitude: 139.7671 } });
+ * ```
+ */
+export async function geocode(
+  request: GeocodingRequest
+): Promise<GeocodingResult> {
+  if (request.coordinates) {
+    return reverseGeocode(request);
+  } else if (request.address || request.pid) {
+    return forwardGeocode(request);
+  } else {
+    return {
+      success: false,
+      confidence: 0,
+      error: 'Either address/PID or coordinates must be provided',
+    };
+  }
+}
+
+/**
+ * Clear geocoding cache
+ * ジオコーディングキャッシュをクリア
+ */
+export function clearGeocodingCache(): void {
+  geocodingCache.clear();
+}
+
+/**
+ * Get geocoding cache statistics
+ * ジオコーディングキャッシュの統計を取得
+ */
+export function getGeocodingCacheStats(): { size: number; keys: string[] } {
+  return {
+    size: geocodingCache.size,
+    keys: Array.from(geocodingCache.keys()),
   };
 }

@@ -118,6 +118,12 @@ export {
   // Geo-address creation
   createGeoAddress,
   createBoundsFromRadius,
+  // Forward & Reverse Geocoding
+  forwardGeocode,
+  reverseGeocode,
+  geocode,
+  clearGeocodingCache,
+  getGeocodingCacheStats,
 } from './geocode';
 
 // ZKP (Zero-Knowledge Proof) Address Protocol

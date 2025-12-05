@@ -336,6 +336,7 @@ export interface WaybillPayload {
 export type GeoSource =
   | 'gps'           // GPS device
   | 'geocoder'      // Geocoding service
+  | 'nominatim'     // OpenStreetMap Nominatim
   | 'manual'        // Manual entry
   | 'database'      // Address database
   | 'device'        // Device location API
