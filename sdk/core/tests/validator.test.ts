@@ -289,4 +289,115 @@ describe('getFieldOrder', () => {
       'country',
     ]);
   });
+
+  it('should return empty array when order_variants exists but first variant has no order', () => {
+    const emptyVariantFormat: CountryAddressFormat = {
+      ...japanFormat,
+      address_format: {
+        order_variants: [
+          {
+            context: 'domestic',
+            order: undefined as any,
+          },
+        ],
+        recipient: { required: true },
+      },
+    };
+
+    const order = getFieldOrder(emptyVariantFormat);
+    
+    // Should return empty array when first variant's order is undefined
+    expect(order).toEqual([]);
+  });
+
+  it('should handle postal context falling back to first variant', () => {
+    const order = getFieldOrder(japanFormat, 'postal');
+    
+    // Should fallback to first variant since postal context doesn't exist
+    expect(order).toEqual([
+      'recipient',
+      'prefecture',
+      'city',
+      'street_address',
+      'postal_code',
+    ]);
+  });
+});
+
+describe('validateAddress - additional edge cases', () => {
+  it('should handle languageCode option for territorial validation', () => {
+    const address: AddressInput = {
+      recipient: 'John Doe',
+      street_address: '1-1 Chiyoda',
+      city: 'Dokdo', // Blocked territorial name
+      province: 'Tokyo',
+      postal_code: '100-0001',
+      country: 'JP',
+    };
+
+    // Test with language code option
+    const result = validateAddress(address, japanFormat, { languageCode: 'en' });
+
+    expect(result.valid).toBe(false);
+    expect(result.errors.some(e => e.code === 'TERRITORIAL_RESTRICTION')).toBe(true);
+  });
+
+  it('should handle territorial validation when reason is not provided', () => {
+    const address: AddressInput = {
+      recipient: 'John Doe',
+      street_address: '1-1 Chiyoda',
+      city: 'Dokdo',
+      province: 'Tokyo',
+      postal_code: '100-0001',
+      country: 'JP',
+    };
+
+    const result = validateAddress(address, japanFormat);
+
+    // Should have default message when reason is not provided
+    const territorialError = result.errors.find(e => e.code === 'TERRITORIAL_RESTRICTION');
+    expect(territorialError).toBeDefined();
+    expect(territorialError?.message).toBeTruthy();
+  });
+
+  it('should not add territorial warnings when no suggestion is available', () => {
+    const formatWithoutTransliteration: CountryAddressFormat = {
+      ...japanFormat,
+      validation: {
+        allow_latin_transliteration: false,
+      },
+    };
+
+    const address: AddressInput = {
+      recipient: 'John Doe',
+      street_address: '1-1 Chiyoda',
+      city: 'Tokyo',
+      province: 'Tokyo',
+      postal_code: '100-0001',
+      country: 'Japan',
+    };
+
+    const result = validateAddress(address, formatWithoutTransliteration);
+
+    // Should not have transliteration warnings when not allowed
+    expect(result.warnings.filter(w => w.code === 'NON_LATIN_CHARACTERS')).toHaveLength(0);
+  });
+
+  it('should validate multiple territorial restriction fields', () => {
+    const address: AddressInput = {
+      recipient: 'John Doe',
+      street_address: 'Dokdo Street', // Blocked in street_address
+      city: 'Dokdo', // Blocked in city
+      district: 'Dokdo District', // Blocked in district
+      province: 'Tokyo',
+      postal_code: '100-0001',
+      country: 'JP',
+    };
+
+    const result = validateAddress(address, japanFormat);
+
+    // Should detect multiple territorial violations
+    const territorialErrors = result.errors.filter(e => e.code === 'TERRITORIAL_RESTRICTION');
+    expect(territorialErrors.length).toBeGreaterThan(1);
+  });
 });

@@ -1123,4 +1123,269 @@ describe('Geocoding API with Mocked Fetch', () => {
       expect(result.address).toBeDefined();
     });
   });
+
+  describe('forwardGeocode - edge cases for address parsing', () => {
+    it('should handle response with no alternatives (single result)', async () => {
+      const { forwardGeocode, clearGeocodingCache } = await import('../src/geocode');
+      clearGeocodingCache();
+
+      const mockResponse = [{
+        lat: '35.6812',
+        lon: '139.7671',
+        importance: 0.9,
+      }]; // Only one result, no alternatives
+
+      fetchMock.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const result = await forwardGeocode({
+        address: { city: 'Tokyo', country: 'JP' },
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.alternatives).toBeUndefined(); // No alternatives since only 1 result
+    });
+
+    it('should handle response with exactly 5 results', async () => {
+      const { forwardGeocode, clearGeocodingCache } = await import('../src/geocode');
+      clearGeocodingCache();
+
+      const mockResponse = [
+        { lat: '35.6812', lon: '139.7671', importance: 0.9 },
+        { lat: '35.6900', lon: '139.7700', importance: 0.8 },
+        { lat: '35.6850', lon: '139.7650', importance: 0.7 },
+        { lat: '35.6750', lon: '139.7550', importance: 0.6 },
+        { lat: '35.6800', lon: '139.7600', importance: 0.5 },
+      ];
+
+      fetchMock.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const result = await forwardGeocode({
+        address: { city: 'Tokyo', country: 'JP' },
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.alternatives).toBeDefined();
+      expect(result.alternatives?.length).toBe(4); // 5 results - 1 primary = 4 alternatives
+    });
+
+    it('should handle response with more than 5 results (should limit to 5)', async () => {
+      const { forwardGeocode, clearGeocodingCache } = await import('../src/geocode');
+      clearGeocodingCache();
+
+      const mockResponse = Array(10).fill(null).map((_, i) => ({
+        lat: `${35.68 + i * 0.01}`,
+        lon: `${139.76 + i * 0.01}`,
+        importance: 0.9 - i * 0.05,
+      }));
+
+      fetchMock.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const result = await forwardGeocode({
+        address: { city: 'Tokyo', country: 'JP' },
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.alternatives).toBeDefined();
+      expect(result.alternatives?.length).toBeLessThanOrEqual(4); // Max 4 alternatives (positions 1-4)
+    });
+
+    it('should handle response with missing importance field', async () => {
+      const { forwardGeocode, clearGeocodingCache } = await import('../src/geocode');
+      clearGeocodingCache();
+
+      const mockResponse = [{
+        lat: '35.6812',
+        lon: '139.7671',
+        // No importance field
+      }];
+
+      fetchMock.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const result = await forwardGeocode({
+        address: { city: 'Tokyo', country: 'JP' },
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.confidence).toBe(0.5); // Default confidence when importance is missing
+    });
+  });
+
+  describe('reverseGeocode - edge cases for address field parsing', () => {
+    it('should handle missing optional address fields', async () => {
+      const { reverseGeocode, clearGeocodingCache } = await import('../src/geocode');
+      clearGeocodingCache();
+
+      const mockResponse = {
+        address: {
+          country_code: 'jp',
+          // All other fields missing
+        },
+        importance: 0.8,
+      };
+
+      fetchMock.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const result = await reverseGeocode({
+        coordinates: { latitude: 35.6812, longitude: 139.7671 },
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.address?.country).toBe('JP');
+      expect(result.address?.province).toBe(''); // Empty when missing
+      expect(result.address?.city).toBe(''); // Empty when missing
+    });
+
+    it('should use alternative address field names', async () => {
+      const { reverseGeocode, clearGeocodingCache } = await import('../src/geocode');
+      clearGeocodingCache();
+
+      const mockResponse = {
+        address: {
+          country_code: 'us',
+          state: 'California', // Instead of province
+          town: 'San Francisco', // Instead of city
+          suburb: 'Mission District', // Instead of district
+          neighbourhood: 'Valencia', // Alternative for district
+          road: 'Market Street',
+          house_number: '123',
+          postcode: '94103',
+        },
+        importance: 0.9,
+      };
+
+      fetchMock.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const result = await reverseGeocode({
+        coordinates: { latitude: 37.7749, longitude: -122.4194 },
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.address?.province).toBe('California');
+      expect(result.address?.city).toBe('San Francisco');
+      expect(result.address?.district).toBe('Mission District');
+      expect(result.address?.street_address).toContain('Market Street');
+      expect(result.address?.street_address).toContain('123');
+    });
+
+    it('should fallback through multiple city name variants', async () => {
+      const { reverseGeocode, clearGeocodingCache } = await import('../src/geocode');
+      clearGeocodingCache();
+
+      const mockResponse = {
+        address: {
+          country_code: 'jp',
+          village: 'Small Village', // city fallback: city, town, village, municipality
+          municipality: 'Municipality Name',
+        },
+        importance: 0.7,
+      };
+
+      fetchMock.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const result = await reverseGeocode({
+        coordinates: { latitude: 35.0, longitude: 135.0 },
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.address?.city).toBe('Small Village'); // First available variant
+    });
+
+    it('should handle missing importance field in reverse geocoding', async () => {
+      const { reverseGeocode, clearGeocodingCache } = await import('../src/geocode');
+      clearGeocodingCache();
+
+      const mockResponse = {
+        address: {
+          country_code: 'jp',
+          city: 'Tokyo',
+        },
+        // No importance field
+      };
+
+      fetchMock.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const result = await reverseGeocode({
+        coordinates: { latitude: 35.6812, longitude: 139.7671 },
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.confidence).toBe(0.5); // Default confidence
+    });
+
+    it('should handle non-Error exceptions in reverse geocoding', async () => {
+      const { reverseGeocode, clearGeocodingCache } = await import('../src/geocode');
+      clearGeocodingCache();
+
+      // Mock a non-Error exception (e.g., string thrown)
+      fetchMock.mockRejectedValueOnce('String error message');
+
+      const result = await reverseGeocode({
+        coordinates: { latitude: 35.6812, longitude: 139.7671 },
+      });
+
+      expect(result.success).toBe(false);
+      expect(result.error).toContain('Unknown error');
+    });
+  });
+
+  describe('forwardGeocode - non-Error exception handling', () => {
+    it('should handle non-Error exceptions in forward geocoding', async () => {
+      const { forwardGeocode, clearGeocodingCache } = await import('../src/geocode');
+      clearGeocodingCache();
+
+      // Mock a non-Error exception
+      fetchMock.mockRejectedValueOnce('String error');
+
+      const result = await forwardGeocode({
+        address: { city: 'Tokyo' },
+      });
+
+      expect(result.success).toBe(false);
+      expect(result.error).toContain('Unknown error');
+    });
+
+    it('should handle response that is not an array', async () => {
+      const { forwardGeocode, clearGeocodingCache } = await import('../src/geocode');
+      clearGeocodingCache();
+
+      const mockResponse = { error: 'Not an array' }; // Object instead of array
+
+      fetchMock.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const result = await forwardGeocode({
+        address: { city: 'Tokyo' },
+      });
+
+      expect(result.success).toBe(false);
+      expect(result.error).toContain('No results found');
+    });
+  });
 });
+
