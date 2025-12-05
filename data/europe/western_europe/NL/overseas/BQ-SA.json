@@ -1,26 +1,26 @@
 {
   "name": {
-    "en": "Sint Eustatius",
+    "en": "Saba",
     "local": [
       {
         "lang": "nl",
-        "value": "Sint Eustatius",
+        "value": "Saba",
         "script": "Latin",
         "direction": "ltr"
       },
       {
         "lang": "en",
-        "value": "Sint Eustatius",
+        "value": "Saba",
         "script": "Latin",
         "direction": "ltr"
       }
     ]
   },
   "iso_codes": {
-    "alpha2": "BQ3",
+    "alpha2": "BQ-SA",
     "alpha3": null,
     "numeric": null,
-    "note": "User-assigned code for Sint Eustatius (part of Caribbean Netherlands BQ)"
+    "note": "User-assigned code for Saba (part of Caribbean Netherlands BQ)"
   },
   "continent": "North America",
   "subregion": "Caribbean",
@@ -31,8 +31,8 @@
       "script": "Latin",
       "role": "official",
       "country_name": {
-        "nl": "Sint Eustatius",
-        "en": "Sint Eustatius"
+        "nl": "Saba",
+        "en": "Saba"
       }
     },
     {
@@ -40,7 +40,7 @@
       "script": "Latin",
       "role": "co-official",
       "country_name": {
-        "en": "Sint Eustatius"
+        "en": "Saba"
       }
     }
   ],
@@ -76,9 +76,9 @@
     }
   },
   "examples": {
-    "domestic_raw": "Oranjestad 12, Sint Eustatius",
-    "domestic_normalized": "Oranjestad 12 Sint Eustatius",
-    "international": "Oranjestad 12, Sint Eustatius, Caribbean Netherlands"
+    "domestic_raw": "Windwardside 12, Saba",
+    "domestic_normalized": "Windwardside 12 Saba",
+    "international": "Windwardside 12, Saba, Caribbean Netherlands"
   },
   "status": {
     "un_member": false,
@@ -88,8 +88,8 @@
   },
   "geo": {
     "center": {
-      "latitude": 17.4894,
-      "longitude": -62.9735,
+      "latitude": 17.6357,
+      "longitude": -63.2325,
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-05T19:47:00.000Z"

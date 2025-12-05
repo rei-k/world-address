@@ -1,30 +1,38 @@
 {
   "name": {
-    "en": "Caribbean Netherlands",
+    "en": "Bonaire",
     "local": [
       {
         "lang": "nl",
-        "value": "Caribisch Nederland",
+        "value": "Bonaire",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "pap",
+        "value": "Boneiru",
         "script": "Latin",
         "direction": "ltr"
       }
     ]
   },
   "iso_codes": {
-    "alpha2": "BQ",
-    "alpha3": "BES",
-    "numeric": "535"
+    "alpha2": "BQ-BO",
+    "alpha3": null,
+    "numeric": null,
+    "note": "User-assigned code for Bonaire (part of Caribbean Netherlands BQ)"
   },
   "continent": "North America",
   "subregion": "Caribbean",
+  "part_of": "Caribbean Netherlands (BQ)",
   "languages": [
     {
       "name": "Dutch",
       "script": "Latin",
       "role": "official",
       "country_name": {
-        "nl": "Caribisch Nederland",
-        "en": "Caribbean Netherlands"
+        "nl": "Bonaire",
+        "en": "Bonaire"
       }
     },
     {
@@ -32,7 +40,7 @@
       "script": "Latin",
       "role": "co-official",
       "country_name": {
-        "en": "Caribbean Netherlands"
+        "en": "Bonaire"
       }
     },
     {
@@ -40,24 +48,11 @@
       "script": "Latin",
       "role": "co-official",
       "country_name": {
-        "pap": "Boneiru / Sint Eustatius / Saba",
-        "en": "Bonaire / Sint Eustatius / Saba"
+        "pap": "Boneiru",
+        "en": "Bonaire"
       }
     }
   ],
-  "administrative_divisions": {
-    "level1": {
-      "type": "Special Municipality",
-      "label_local": "Openbare Lichamen",
-      "label_en": "Special Municipality",
-      "count": 3,
-      "names": [
-        "Bonaire",
-        "Sint Eustatius",
-        "Saba"
-      ]
-    }
-  },
   "address_format": {
     "order_variants": [
       {
@@ -66,7 +61,8 @@
           "recipient",
           "street",
           "house_number",
-          "city",
+          "area",
+          "island",
           "country"
         ]
       },
@@ -76,7 +72,8 @@
           "recipient",
           "street",
           "house_number",
-          "city",
+          "area",
+          "island",
           "country"
         ]
       }
@@ -95,7 +92,8 @@
   "status": {
     "un_member": false,
     "recognized": true,
-    "disputed": false
+    "disputed": false,
+    "note": "Special municipality of the Netherlands"
   },
   "geo": {
     "center": {
