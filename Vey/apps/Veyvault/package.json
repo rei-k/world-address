@@ -12,8 +12,10 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@types/jsbarcode": "^3.11.4",
     "@types/qrcode.react": "^1.0.5",
     "axios": "^1.6.0",
+    "jsbarcode": "^3.12.1",
     "next": "^14.0.0",
     "qrcode.react": "^4.2.0",
     "react": "^18.0.0",

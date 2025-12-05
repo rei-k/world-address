@@ -2,15 +2,18 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import type { Address } from '../../src/types';
 
 export default function SettingsPage() {
   const [settings, setSettings] = useState({
     name: '',
     email: '',
     phone: '',
+    defaultAddressId: '',
     language: 'en',
     notifications: {
       qrScans: true,
+      barcodeScans: true,
       deliveries: true,
       marketing: false,
     },
@@ -20,6 +23,7 @@ export default function SettingsPage() {
     },
   });
 
+  const [addresses, setAddresses] = useState<Address[]>([]);
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
@@ -28,9 +32,11 @@ export default function SettingsPage() {
       name: 'John Doe',
       email: 'john@example.com',
       phone: '+1234567890',
+      defaultAddressId: '',
       language: 'en',
       notifications: {
         qrScans: true,
+        barcodeScans: true,
         deliveries: true,
         marketing: false,
       },
@@ -40,6 +46,10 @@ export default function SettingsPage() {
       },
     };
     setSettings(mockSettings);
+
+    // TODO: Load user addresses from API
+    const mockAddresses: Address[] = [];
+    setAddresses(mockAddresses);
   }, []);
 
   const handleSave = async (e: React.FormEvent) => {
@@ -125,7 +135,36 @@ export default function SettingsPage() {
               className="form-input"
               value={settings.phone}
               onChange={(e) => handleChange('phone', e.target.value)}
+              placeholder="+1234567890"
             />
+            <p style={{ fontSize: '13px', color: '#6b7280', marginTop: '4px' }}>
+              Used for auto-fill in hotel check-ins and financial institutions
+            </p>
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Default Address</label>
+            <select
+              className="form-select"
+              value={settings.defaultAddressId}
+              onChange={(e) => handleChange('defaultAddressId', e.target.value)}
+            >
+              <option value="">No default address</option>
+              {addresses.map(address => (
+                <option key={address.id} value={address.id}>
+                  {address.label || address.type} - {address.pid}
+                  {address.isDefault && ' (Current Default)'}
+                </option>
+              ))}
+            </select>
+            <p style={{ fontSize: '13px', color: '#6b7280', marginTop: '4px' }}>
+              ⭐ Auto-fill this address for hotel check-ins, financial institutions, etc.
+            </p>
+            {addresses.length === 0 && (
+              <p style={{ fontSize: '13px', color: '#f59e0b', marginTop: '8px' }}>
+                ℹ️ Please add an address first to set as default
+              </p>
+            )}
           </div>
 
           <div className="form-group">
@@ -161,6 +200,18 @@ export default function SettingsPage() {
                 style={{ marginRight: '8px' }}
               />
               <span>Notify me when someone scans my QR code</span>
+            </label>
+          </div>
+
+          <div style={{ marginBottom: '12px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={settings.notifications.barcodeScans}
+                onChange={(e) => handleChange('notifications.barcodeScans', e.target.checked)}
+                style={{ marginRight: '8px' }}
+              />
+              <span>Notify me when someone scans my barcode</span>
             </label>
           </div>
 

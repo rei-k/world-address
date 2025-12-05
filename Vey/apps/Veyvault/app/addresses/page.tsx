@@ -49,6 +49,20 @@ export default function AddressesPage() {
     }
   };
 
+  const handleSetDefault = async (id: string) => {
+    try {
+      // TODO: API call to set default
+      setAddresses(addresses.map(addr => ({
+        ...addr,
+        isDefault: addr.id === id
+      })));
+      alert('Default address updated. This address will be used for hotel check-ins, financial institutions, etc.');
+    } catch (error) {
+      console.error('Error setting default:', error);
+      alert('Failed to update default address');
+    }
+  };
+
   // Filter and sort addresses
   const filteredAndSortedAddresses = useMemo(() => {
     let result = addresses;
@@ -207,6 +221,7 @@ export default function AddressesPage() {
                   address={address}
                   onDelete={handleDelete}
                   onSetPrimary={handleSetPrimary}
+                  onSetDefault={handleSetDefault}
                 />
               ))}
             </div>
@@ -229,10 +244,13 @@ export default function AddressesPage() {
             Sort by recent, type, or label to organize your addresses
           </li>
           <li style={{ marginBottom: '8px' }}>
-            Generate QR codes for your addresses to share securely
+            Generate QR codes and barcodes for your addresses to share securely
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            Set a primary address for quick checkout on e-commerce sites
           </li>
           <li>
-            Set a primary address for quick checkout on e-commerce sites
+            ⭐ Set a default address to auto-fill your information for hotel check-ins, financial institutions, etc.
           </li>
         </ul>
       </div>

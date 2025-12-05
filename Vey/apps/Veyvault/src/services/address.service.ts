@@ -16,7 +16,8 @@ import {
   type PIDComponents,
 } from '../lib/core';
 
-import type { CreateAddressRequest } from '../types';
+import type { CreateAddressRequest, Address, User, AutoFillData } from '../types';
+import { NotificationService } from './notification.service';
 
 /**
  * Address service for client-side operations
@@ -160,5 +161,60 @@ export class AddressService {
     }
 
     return parts.join(' ');
+  }
+
+  /**
+   * Set an address as the default address
+   * Sends notifications to both Veyvault and VeyPOS
+   * 
+   * @param addressId - Address ID to set as default
+   * @param userId - User ID
+   */
+  static async setDefaultAddress(addressId: string, userId: string): Promise<void> {
+    // TODO: Implement actual API call to set default address
+    // For now, just send notifications
+    
+    // Send notification to Veyvault and VeyPOS
+    await NotificationService.sendDefaultAddressUpdatedNotification(
+      userId,
+      addressId,
+      'Default Address' // TODO: Get actual address label from API
+    );
+  }
+
+  /**
+   * Get auto-fill data for default address
+   * Returns user name, phone, and default address for hotel check-in, financial institutions, etc.
+   * 
+   * @param user - User object with default address ID
+   */
+  static async getAutoFillData(user: User): Promise<AutoFillData | null> {
+    if (!user.defaultAddressId) {
+      return null;
+    }
+
+    // TODO: Implement actual API call to get address data
+    // For now, return mock data structure
+    return null;
+  }
+
+  /**
+   * Register a new address and send notifications
+   * 
+   * @param address - Address data to register
+   * @param userId - User ID
+   */
+  static async registerAddress(
+    address: CreateAddressRequest,
+    userId: string
+  ): Promise<void> {
+    // TODO: Implement actual API call to register address
+    
+    // Send notification to Veyvault and VeyPOS
+    await NotificationService.sendAddressRegisteredNotification(
+      userId,
+      'new-address-id', // TODO: Get actual address ID from API response
+      address.label || address.type
+    );
   }
 }

@@ -7,12 +7,14 @@ interface AddressCardProps {
   address: Address;
   onDelete: (id: string) => void;
   onSetPrimary: (id: string) => void;
+  onSetDefault?: (id: string) => void;
 }
 
 export default function AddressCard({
   address,
   onDelete,
   onSetPrimary,
+  onSetDefault,
 }: AddressCardProps) {
   return (
     <div className="card">
@@ -36,6 +38,18 @@ export default function AddressCard({
                 fontWeight: '500',
               }}>
                 Primary
+              </span>
+            )}
+            {address.isDefault && (
+              <span style={{
+                background: '#dcfce7',
+                color: '#166534',
+                padding: '2px 8px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                fontWeight: '500',
+              }}>
+                ⭐ Default
               </span>
             )}
           </div>
@@ -64,7 +78,7 @@ export default function AddressCard({
           Edit
         </Link>
         <Link href={`/qr/${address.id}`} className="btn btn-secondary">
-          QR Code
+          QR/Barcode
         </Link>
         {!address.isPrimary && (
           <button
@@ -72,6 +86,15 @@ export default function AddressCard({
             className="btn btn-secondary"
           >
             Set as Primary
+          </button>
+        )}
+        {!address.isDefault && onSetDefault && (
+          <button
+            onClick={() => onSetDefault(address.id)}
+            className="btn btn-secondary"
+            title="Set as default for hotel check-ins, financial institutions, etc."
+          >
+            ⭐ Set as Default
           </button>
         )}
         <button
