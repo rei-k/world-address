@@ -1,0 +1,12 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-img-element": "off",
+    "comma-dangle": "off",
+    "curly": "off",
+    "indent": "off",
+    "no-undef": "off",
+    "no-unused-vars": "off"
+  }
+}

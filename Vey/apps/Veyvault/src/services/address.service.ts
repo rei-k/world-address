@@ -7,13 +7,14 @@
 import {
   validateAddress,
   normalizeAddress,
-  encodePID,
+  normalizedAddressToPIDComponents,
   encryptAddress,
   createGeoAddress,
   type AddressInput,
   type ValidationResult,
   type NormalizedAddress,
-} from '@vey/core';
+  type PIDComponents,
+} from '../lib/core';
 
 import type { CreateAddressRequest } from '../types';
 
@@ -65,7 +66,10 @@ export class AddressService {
    * Step 6 from Address Registration Flow: PID Generation
    */
   static generatePID(normalized: NormalizedAddress): string {
-    return encodePID(normalized.components);
+    const pidComponents = normalizedAddressToPIDComponents(normalized);
+    // Convert PID components to string format: Country-Admin1-Admin2-...
+    const parts = Object.values(pidComponents).filter(Boolean);
+    return parts.join('-');
   }
 
   /**
