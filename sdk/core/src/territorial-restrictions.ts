@@ -108,18 +108,36 @@ export const JAPANESE_TERRITORIAL_RESTRICTIONS: TerritorialRestriction[] = [
   },
 ];
 
+// Pre-compute lowercase blocked names for performance
+const BLOCKED_NAMES_LOWERCASE = new Set(
+  JAPANESE_TERRITORIAL_RESTRICTIONS.flatMap(r => 
+    r.blockedNames.map(name => name.toLowerCase())
+  )
+);
+
+// Create a map for quick restriction lookup
+const BLOCKED_NAME_TO_RESTRICTION = new Map<string, TerritorialRestriction>();
+for (const restriction of JAPANESE_TERRITORIAL_RESTRICTIONS) {
+  for (const blockedName of restriction.blockedNames) {
+    BLOCKED_NAME_TO_RESTRICTION.set(blockedName.toLowerCase(), restriction);
+  }
+}
+
 /**
  * Check if a location name is a blocked foreign name for Japanese territories
  */
 export function isBlockedTerritorialName(locationName: string): boolean {
   const normalizedInput = locationName.trim().toLowerCase();
   
-  for (const restriction of JAPANESE_TERRITORIAL_RESTRICTIONS) {
-    for (const blockedName of restriction.blockedNames) {
-      if (normalizedInput === blockedName.toLowerCase() ||
-          normalizedInput.includes(blockedName.toLowerCase())) {
-        return true;
-      }
+  // Quick exact match check
+  if (BLOCKED_NAMES_LOWERCASE.has(normalizedInput)) {
+    return true;
+  }
+  
+  // Substring match check
+  for (const blockedName of BLOCKED_NAMES_LOWERCASE) {
+    if (normalizedInput.includes(blockedName)) {
+      return true;
     }
   }
   
@@ -149,12 +167,16 @@ export function isBlockedLanguageForJapan(languageCode: string): boolean {
 export function getTerritorialRestrictionInfo(locationName: string): TerritorialRestriction | null {
   const normalizedInput = locationName.trim().toLowerCase();
   
-  for (const restriction of JAPANESE_TERRITORIAL_RESTRICTIONS) {
-    for (const blockedName of restriction.blockedNames) {
-      if (normalizedInput === blockedName.toLowerCase() ||
-          normalizedInput.includes(blockedName.toLowerCase())) {
-        return restriction;
-      }
+  // Quick exact match lookup
+  const exactMatch = BLOCKED_NAME_TO_RESTRICTION.get(normalizedInput);
+  if (exactMatch) {
+    return exactMatch;
+  }
+  
+  // Substring match lookup
+  for (const [blockedName, restriction] of BLOCKED_NAME_TO_RESTRICTION) {
+    if (normalizedInput.includes(blockedName)) {
+      return restriction;
     }
   }
   
