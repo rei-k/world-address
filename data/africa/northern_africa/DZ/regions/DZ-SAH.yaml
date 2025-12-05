@@ -1,0 +1,146 @@
+name:
+  en: Sahrawi Refugee Camps
+  local:
+    - lang: ar
+      value: مخيمات اللاجئين الصحراويين
+      script: Arabic
+      direction: rtl
+    - lang: es
+      value: Campamentos de Refugiados Saharauis
+      script: Latin
+      direction: ltr
+parent_country:
+  alpha2: DZ
+  name: Algeria
+custom_code: DZ-SAH
+subregion: Northern Africa (Refugee camps in Tindouf Province)
+languages:
+  - name: Arabic
+    script: Arabic
+    direction: rtl
+    role: primary
+    country_name: مخيمات اللاجئين الصحراويين
+  - name: Hassaniya Arabic
+    script: Arabic
+    direction: rtl
+    role: local
+    country_name: مخيمات اللاجئين الصحراويين
+  - name: Spanish
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Campamentos de Refugiados Saharauis
+  - name: French
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Camps de réfugiés sahraouis
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Sahrawi Refugee Camps
+administrative_divisions:
+  level1:
+    type: Camp
+    label_local: مخيم
+    label_en: Camp
+    count: 5
+    names:
+      - El Aaiun
+      - Awserd
+      - Smara
+      - Dakhla
+      - 27 February
+  level2:
+    type: Daira
+    label_local: دائرة
+    label_en: District
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - building
+        - street_address
+        - daira
+        - camp
+        - tindouf_wilaya
+        - country
+    - context: international
+      order:
+        - recipient
+        - street_address
+        - camp
+        - tindouf
+        - country
+  postal_code:
+    required: false
+    description: Separate address system from Algerian mainland, limited postal infrastructure
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - Camp name is required for delivery
+    - Address system differs significantly from Algeria proper
+    - Use "Tindouf, Algeria" for international delivery
+examples:
+  domestic_raw: Camp El Aaiun, Tindouf
+  domestic_normalized: Camp El Aaiun, Tindouf
+  international: Camp El Aaiun, Tindouf, Algeria
+status:
+  un_member: false
+  recognized: false
+  disputed: false
+  special_administrative_status: true
+  note: UNHCR-administered refugee camps near Tindouf, Algeria, housing Sahrawi refugees. Has distinct address system from Algerian mainland
+geo:
+  center:
+    latitude: 27.67
+    longitude: -8.68
+    accuracy: 10000
+    source: estimated
+pos:
+  currency:
+    code: DZD
+    symbol: د.ج
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: low
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Africa/Algiers
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

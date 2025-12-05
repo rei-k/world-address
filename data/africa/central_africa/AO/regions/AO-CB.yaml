@@ -1,0 +1,150 @@
+name:
+  en: Cabinda
+  local:
+    - lang: pt
+      value: Cabinda
+      script: Latin
+      direction: ltr
+parent_country:
+  alpha2: AO
+  name: Angola
+custom_code: AO-CB
+subregion: Central Africa (Exclave province)
+languages:
+  - name: Portuguese
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Cabinda
+  - name: Kikongo
+    script: Latin
+    direction: ltr
+    role: local
+    country_name: Kabinda
+  - name: Fiote
+    script: Latin
+    direction: ltr
+    role: local
+    country_name: Kabinda
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Cabinda
+administrative_divisions:
+  level1:
+    type: Municipality
+    label_local: Município
+    label_en: Municipality
+    count: 4
+    names:
+      - Cabinda
+      - Belize
+      - Buco-Zau
+      - Cacongo
+  level2:
+    type: Commune
+    label_local: Comuna
+    label_en: Commune
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - building
+        - floor
+        - room
+        - street_address
+        - commune
+        - municipality
+        - province
+        - country
+    - context: international
+      order:
+        - recipient
+        - room
+        - floor
+        - building
+        - street_address
+        - city
+        - cabinda_province
+        - country
+  building:
+    required: false
+    example: Edifício Central
+  floor:
+    required: false
+    example: 3º Andar
+  room:
+    required: false
+    example: Sala 301
+  postal_code:
+    required: false
+    description: Limited postal code system in exclave
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - City and municipality names required
+    - Specify "Cabinda Province" to distinguish from mainland Angola
+    - Geographic exclave separated from Angola proper
+examples:
+  domestic_raw: Avenida Marien Ngouabi, Cabinda
+  domestic_normalized: Avenida Marien Ngouabi, Cabinda
+  international: Avenida Marien Ngouabi, Cabinda, Angola
+status:
+  un_member: false
+  recognized: false
+  disputed: false
+  exclave: true
+  note: Angolan exclave province separated from mainland by Democratic Republic of Congo. Historical separate governance has resulted in some address system variations
+geo:
+  center:
+    latitude: -5.55
+    longitude: 12.2
+    accuracy: 10000
+    source: estimated
+pos:
+  currency:
+    code: AOA
+    symbol: Kz
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: medium
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Africa/Luanda
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

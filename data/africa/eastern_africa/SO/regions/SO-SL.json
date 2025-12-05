@@ -1,0 +1,185 @@
+{
+  "name": {
+    "en": "Somaliland",
+    "local": [
+      {
+        "lang": "so",
+        "value": "Somaliland",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ar",
+        "value": "صوماليلاند",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "parent_country": {
+    "alpha2": "SO",
+    "name": "Somalia"
+  },
+  "custom_code": "SO-SL",
+  "subregion": "Eastern Africa (Self-declared independent state)",
+  "languages": [
+    {
+      "name": "Somali",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Somaliland"
+    },
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "صوماليلاند"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Somaliland"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Gobol",
+      "label_en": "Region",
+      "count": 6,
+      "names": [
+        "Awdal",
+        "Sahil",
+        "Togdheer",
+        "Sool",
+        "Sanaag",
+        "Marodi Jeh"
+      ]
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "Degmo",
+      "label_en": "District"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "street_address",
+          "district",
+          "city",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "city",
+          "region",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "No formal postal code system in use"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City and region names required for delivery",
+      "Treated as separate from Somalia in shipping logistics"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "26th June Road, Hargeisa",
+    "domestic_normalized": "26th June Road, Hargeisa",
+    "international": "26th June Road, Hargeisa, Somaliland"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": false,
+    "disputed": true,
+    "self_declared_independent": true,
+    "note": "Self-declared independent state since 1991, not internationally recognized but has separate address system and postal infrastructure from Somalia"
+  },
+  "geo": {
+    "center": {
+      "latitude": 9.5,
+      "longitude": 44.0,
+      "accuracy": 10000,
+      "source": "estimated"
+    }
+  },
+  "pos": {
+    "currency": {
+      "code": "SOS",
+      "symbol": "Sh",
+      "symbol_position": "before",
+      "decimal_places": 2,
+      "decimal_separator": ".",
+      "thousands_separator": ","
+    },
+    "tax": {
+      "type": "VAT",
+      "rate": {
+        "standard": null
+      },
+      "included_in_price": true,
+      "invoice_requirement": "optional"
+    },
+    "receipt": {
+      "required_fields": [
+        "business_name",
+        "date",
+        "items",
+        "total"
+      ],
+      "paper_width": "80mm",
+      "electronic_allowed": true,
+      "retention_period": "5 years"
+    },
+    "fiscal": {
+      "fiscal_device_required": false,
+      "registration_required": false,
+      "reporting_frequency": "varies"
+    },
+    "payment_methods": [
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "high"
+      },
+      {
+        "type": "credit_card",
+        "name": "Credit Card",
+        "prevalence": "medium"
+      }
+    ],
+    "locale": {
+      "date_format": "YYYY-MM-DD",
+      "time_format": "24h",
+      "timezone": "Africa/Mogadishu",
+      "week_start": "monday"
+    },
+    "business_hours": {
+      "typical_open": "09:00",
+      "typical_close": "18:00",
+      "sunday_trading": true,
+      "public_holidays_trading": false
+    }
+  }
+}

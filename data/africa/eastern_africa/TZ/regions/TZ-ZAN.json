@@ -1,0 +1,215 @@
+{
+  "name": {
+    "en": "Zanzibar",
+    "local": [
+      {
+        "lang": "sw",
+        "value": "Zanzibar",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ar",
+        "value": "زنجبار",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "parent_country": {
+    "alpha2": "TZ",
+    "name": "Tanzania"
+  },
+  "custom_code": "TZ-ZAN",
+  "subregion": "Eastern Africa (Semi-autonomous archipelago)",
+  "languages": [
+    {
+      "name": "Swahili",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Zanzibar"
+    },
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "historical",
+      "country_name": "زنجبار"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "required_for_shipping": true,
+      "country_name": "Zanzibar"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Mkoa",
+      "label_en": "Region",
+      "count": 5,
+      "names": [
+        "Zanzibar Urban/West",
+        "Zanzibar North",
+        "Zanzibar South",
+        "Pemba North",
+        "Pemba South"
+      ]
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "Wilaya",
+      "label_en": "District"
+    },
+    "level3": {
+      "type": "Shehia",
+      "label_local": "Shehia",
+      "label_en": "Ward/Village"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "floor",
+          "room",
+          "street_address",
+          "shehia",
+          "district",
+          "region",
+          "zanzibar",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "region",
+          "zanzibar",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "example": "Stone Town Plaza"
+    },
+    "floor": {
+      "required": false,
+      "example": "2nd Floor"
+    },
+    "room": {
+      "required": false,
+      "example": "Room 203"
+    },
+    "postal_code": {
+      "required": true,
+      "required_for_international": true,
+      "regex": "^[0-9]{5}$",
+      "length": 5,
+      "description": "5-digit postal code (separate from mainland Tanzania postal zones)",
+      "example": "73102"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Specify \"Zanzibar\" to distinguish from mainland Tanzania",
+      "Postal codes begin with 731xx for Zanzibar, 734xx for Pemba",
+      "Administrative hierarchy differs from mainland"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Mizingani Road, Stone Town, Zanzibar 73102",
+    "domestic_normalized": "Mizingani Road, Stone Town, Zanzibar 73102",
+    "international": "Mizingani Road, Stone Town, Zanzibar 73102, Tanzania"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": false,
+    "disputed": false,
+    "semi_autonomous": true,
+    "note": "Semi-autonomous archipelago within Tanzania with separate government, administrative structure, and slightly different address hierarchy from mainland"
+  },
+  "geo": {
+    "center": {
+      "latitude": -6.165,
+      "longitude": 39.2,
+      "accuracy": 10000,
+      "source": "estimated"
+    }
+  },
+  "pos": {
+    "currency": {
+      "code": "TZS",
+      "symbol": "TSh",
+      "symbol_position": "before",
+      "decimal_places": 2,
+      "decimal_separator": ".",
+      "thousands_separator": ","
+    },
+    "tax": {
+      "type": "VAT",
+      "rate": {
+        "standard": null
+      },
+      "included_in_price": true,
+      "invoice_requirement": "optional"
+    },
+    "receipt": {
+      "required_fields": [
+        "business_name",
+        "date",
+        "items",
+        "total"
+      ],
+      "paper_width": "80mm",
+      "electronic_allowed": true,
+      "retention_period": "5 years"
+    },
+    "fiscal": {
+      "fiscal_device_required": false,
+      "registration_required": false,
+      "reporting_frequency": "varies"
+    },
+    "payment_methods": [
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "high"
+      },
+      {
+        "type": "credit_card",
+        "name": "Credit Card",
+        "prevalence": "high"
+      }
+    ],
+    "locale": {
+      "date_format": "YYYY-MM-DD",
+      "time_format": "24h",
+      "timezone": "Africa/Dar_es_Salaam",
+      "week_start": "monday"
+    },
+    "business_hours": {
+      "typical_open": "09:00",
+      "typical_close": "18:00",
+      "sunday_trading": true,
+      "public_holidays_trading": false
+    }
+  }
+}

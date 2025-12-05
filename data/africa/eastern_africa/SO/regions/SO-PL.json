@@ -1,0 +1,188 @@
+{
+  "name": {
+    "en": "Puntland",
+    "local": [
+      {
+        "lang": "so",
+        "value": "Puntland",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ar",
+        "value": "بونتلاند",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "parent_country": {
+    "alpha2": "SO",
+    "name": "Somalia"
+  },
+  "custom_code": "SO-PL",
+  "subregion": "Eastern Africa (Autonomous region)",
+  "languages": [
+    {
+      "name": "Somali",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "Puntland"
+    },
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "بونتلاند"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "Puntland"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Region",
+      "label_local": "Gobol",
+      "label_en": "Region",
+      "count": 9,
+      "names": [
+        "Bari",
+        "Nugal",
+        "Mudug",
+        "Karkaar",
+        "Sool",
+        "Sanaag",
+        "Ayn",
+        "Gardafuul",
+        "Qandala"
+      ]
+    },
+    "level2": {
+      "type": "District",
+      "label_local": "Degmo",
+      "label_en": "District"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "building",
+          "street_address",
+          "district",
+          "city",
+          "region",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street_address",
+          "city",
+          "region",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Limited postal code system"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "City and region names required for delivery",
+      "Part of Somalia but has autonomous administration affecting address practices"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "Nugal Street, Garowe",
+    "domestic_normalized": "Nugal Street, Garowe",
+    "international": "Nugal Street, Garowe, Puntland, Somalia"
+  },
+  "status": {
+    "un_member": false,
+    "recognized": false,
+    "disputed": false,
+    "autonomous_region": true,
+    "note": "Autonomous region within Somalia since 1998, has partial autonomy with different address practices than federal Somalia"
+  },
+  "geo": {
+    "center": {
+      "latitude": 8.4,
+      "longitude": 48.5,
+      "accuracy": 10000,
+      "source": "estimated"
+    }
+  },
+  "pos": {
+    "currency": {
+      "code": "SOS",
+      "symbol": "Sh",
+      "symbol_position": "before",
+      "decimal_places": 2,
+      "decimal_separator": ".",
+      "thousands_separator": ","
+    },
+    "tax": {
+      "type": "VAT",
+      "rate": {
+        "standard": null
+      },
+      "included_in_price": true,
+      "invoice_requirement": "optional"
+    },
+    "receipt": {
+      "required_fields": [
+        "business_name",
+        "date",
+        "items",
+        "total"
+      ],
+      "paper_width": "80mm",
+      "electronic_allowed": true,
+      "retention_period": "5 years"
+    },
+    "fiscal": {
+      "fiscal_device_required": false,
+      "registration_required": false,
+      "reporting_frequency": "varies"
+    },
+    "payment_methods": [
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "high"
+      },
+      {
+        "type": "credit_card",
+        "name": "Credit Card",
+        "prevalence": "medium"
+      }
+    ],
+    "locale": {
+      "date_format": "YYYY-MM-DD",
+      "time_format": "24h",
+      "timezone": "Africa/Mogadishu",
+      "week_start": "monday"
+    },
+    "business_hours": {
+      "typical_open": "09:00",
+      "typical_close": "18:00",
+      "sunday_trading": true,
+      "public_holidays_trading": false
+    }
+  }
+}
