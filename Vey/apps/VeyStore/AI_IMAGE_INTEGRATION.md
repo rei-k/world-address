@@ -72,8 +72,19 @@ export function ProductUpload() {
   };
 
   const handleSaveProduct = async () => {
+    // Extract product name from description
+    // Handle multiple languages and empty descriptions
+    let productName = 'Untitled Product';
+    if (aiTags.descriptions.ja) {
+      const sentences = aiTags.descriptions.ja.split(/[。.]/);
+      productName = sentences[0] || productName;
+    } else if (aiTags.descriptions.en) {
+      const sentences = aiTags.descriptions.en.split(/[.]/);
+      productName = sentences[0] || productName;
+    }
+    
     const product = {
-      name: aiTags.descriptions.ja.split('。')[0], // 最初の文を商品名に
+      name: productName.substring(0, 100), // Limit length
       category: aiTags.category.primary,
       subcategory: aiTags.category.secondary,
       material: aiTags.material.map(m => m.name).join(', '),

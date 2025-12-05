@@ -25,9 +25,11 @@ This document describes the API specifications for AI image recognition capabili
 ### ベースURL
 
 ```
-Production: https://api.vey.world/v1/vision
-Staging: https://api-staging.vey.world/v1/vision
+Production: https://api.vey.world/v1/vision  (Planned - Not yet available)
+Staging: https://api-staging.vey.world/v1/vision  (Planned - Not yet available)
 ```
+
+**Note**: These are planned API endpoints. Implementation will be available in a future release.
 
 ### 対応形式
 

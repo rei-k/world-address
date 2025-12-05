@@ -274,10 +274,16 @@ export default async function handler(
     }
 
     // 3. 顔認証チェック
-    if (kycResult.data.verification.faceMatch.confidence < 0.85) {
+    // Confidence threshold: 0.85 is recommended for financial services KYC
+    // This may need adjustment based on jurisdiction requirements
+    const FACE_MATCH_THRESHOLD = parseFloat(process.env.FACE_MATCH_THRESHOLD || '0.85');
+    
+    if (kycResult.data.verification.faceMatch.confidence < FACE_MATCH_THRESHOLD) {
       return res.status(400).json({
         error: 'Face match failed',
-        reason: 'face_mismatch'
+        reason: 'face_mismatch',
+        confidence: kycResult.data.verification.faceMatch.confidence,
+        threshold: FACE_MATCH_THRESHOLD
       });
     }
 
@@ -342,16 +348,22 @@ async function detectFraud(kycResult: any) {
 }
 
 async function checkAML(extractedData: any) {
-  // AML/CFTデータベースチェック（例）
+  // TODO: Implement actual AML/CFT database checks
+  // This is a PLACEHOLDER - actual implementation required before production use
   const amlDatabases = [
     'OFAC SDN List',
     'EU Sanctions List',
     'UN Sanctions List'
   ];
 
-  // 実際のAML/CFTチェックロジック
-  // ...
-
+  // Actual AML/CFT check logic should:
+  // 1. Query sanctioned persons databases
+  // 2. Check against PEP (Politically Exposed Persons) lists
+  // 3. Verify against watchlists
+  // 4. Return detailed risk assessment
+  
+  // PLACEHOLDER - Always returns clear for demo purposes
+  console.warn('AML check is placeholder - implement actual verification before production');
   return { clear: true };
 }
 
