@@ -1,0 +1,150 @@
+name:
+  en: Bangsamoro Autonomous Region in Muslim Mindanao
+  local:
+    - lang: fil
+      value: Rehiyong Awtonomo ng Bangsamoro sa Muslim Mindanao
+      script: Latin
+      direction: ltr
+    - lang: ar
+      value: منطقة بانجسامورو ذاتية الحكم في مينداناو المسلمة
+      script: Arabic
+      direction: rtl
+parent_country:
+  alpha2: PH
+  name: Philippines
+type: Autonomous Region
+note: Special autonomous region with administrative hierarchy different from mainland Philippines
+languages:
+  - name: Filipino
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Rehiyong Awtonomo ng Bangsamoro
+  - name: Arabic
+    script: Arabic
+    direction: rtl
+    role: official
+    country_name: منطقة بانجسامورو
+  - name: English
+    script: Latin
+    direction: ltr
+    role: official
+    required_for_shipping: true
+    country_name: Bangsamoro Autonomous Region
+administrative_divisions:
+  level1:
+    type: Province
+    label_local: Lalawigan
+    label_en: Province
+    count: 5
+    note: Includes provinces within BARMM jurisdiction
+    names:
+      - Basilan
+      - Lanao del Sur
+      - Maguindanao del Norte
+      - Maguindanao del Sur
+      - Sulu
+      - Tawi-Tawi
+  level2:
+    type: Municipality / City
+    label_local: Bayan / Lungsod
+    label_en: Municipality / City
+  level3:
+    type: Barangay
+    label_local: Barangay
+    label_en: Barangay
+    note: Smallest administrative division unique to Philippines
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - region
+        - province
+        - municipality
+        - barangay
+        - street_address
+        - building
+        - postal_code
+        - country
+    - context: international
+      order:
+        - recipient
+        - building
+        - street_address
+        - barangay
+        - municipality
+        - province
+        - region
+        - postal_code
+        - country
+  postal_code:
+    required: true
+    regex: ^[0-9]{4}$
+    description: 4-digit numeric postal code (same as Philippines)
+    example: '7300'
+validation:
+  allow_latin_transliteration: true
+  dual_script: true
+  rules:
+    - Arabic and Latin scripts both used
+    - Barangay level is important for accurate delivery
+    - Administrative hierarchy differs from mainland Philippines
+    - Unique province and district system
+examples:
+  filipino_script: Barangay Poblacion, Cotabato City, Maguindanao del Norte, BARMM 9600
+  international: Barangay Poblacion, Cotabato City, Maguindanao del Norte 9600, Philippines
+status:
+  autonomous_region: true
+  note: Special autonomous region with unique governance and administrative structure
+geo:
+  center:
+    latitude: 7.2167
+    longitude: 124.2167
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-05T21:23:57.299Z'
+pos:
+  currency:
+    code: PHP
+    symbol: ₱
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: medium
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Manila
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

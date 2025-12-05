@@ -1,0 +1,144 @@
+name:
+  en: Aceh Special Autonomous Province
+  local:
+    - lang: id
+      value: Provinsi Aceh
+      script: Latin
+      direction: ltr
+    - lang: ace
+      value: Nanggroë Acèh Darussalam
+      script: Latin
+      direction: ltr
+parent_country:
+  alpha2: ID
+  name: Indonesia
+type: Special Autonomous Province
+note: Special autonomous province with unique administrative levels and address system
+languages:
+  - name: Indonesian
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Provinsi Aceh
+  - name: Acehnese
+    script: Latin
+    direction: ltr
+    role: regional
+    country_name: Nanggroë Acèh
+    note: Regional language with official status in Aceh
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Aceh
+administrative_divisions:
+  level1:
+    type: Regency / City
+    label_local: Kabupaten / Kota
+    label_en: Regency / City
+    count: 23
+    note: 18 regencies and 5 cities
+  level2:
+    type: District
+    label_local: Kecamatan
+    label_en: District
+  level3:
+    type: Village / Urban Village
+    label_local: Gampong / Kelurahan
+    label_en: Village / Urban Village
+    note: Gampong is unique to Aceh, similar to Desa in other Indonesian provinces
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - street_address
+        - number
+        - gampong
+        - district
+        - regency
+        - province
+        - postal_code
+        - country
+    - context: international
+      order:
+        - recipient
+        - street_address
+        - number
+        - gampong
+        - district
+        - regency
+        - province
+        - postal_code
+        - country
+  postal_code:
+    required: true
+    regex: ^2[0-9]{4}$
+    description: 5-digit numeric postal code starting with 2
+    example: '23111'
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - Uses unique Gampong (village) terminology instead of Desa
+    - Postal codes start with 2
+    - Special autonomous administrative structure
+    - Province name should be included for clarity
+examples:
+  domestic_raw: Jl. Teuku Umar 12, Gampong Kuta Alam, Kuta Alam, Banda Aceh, Aceh, 23111
+  domestic_normalized: Jl. Teuku Umar 12 Gampong Kuta Alam Kuta Alam Banda Aceh Aceh 23111
+  international: Jl. Teuku Umar 12, Banda Aceh 23111, Aceh, Indonesia
+status:
+  special_autonomous_province: true
+  note: Special autonomy status with unique governance including Islamic law (Sharia)
+geo:
+  center:
+    latitude: 4.6951
+    longitude: 96.7494
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-05T21:23:57.299Z'
+pos:
+  currency:
+    code: IDR
+    symbol: Rp
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: medium
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Jakarta
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

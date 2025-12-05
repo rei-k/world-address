@@ -1,0 +1,137 @@
+name:
+  en: Oecusse Special Administrative Region
+  local:
+    - lang: pt
+      value: Região Administrativa Especial de Oecusse
+      script: Latin
+      direction: ltr
+    - lang: tet
+      value: Rejiãu Administrativu Espesiál Oecusse
+      script: Latin
+      direction: ltr
+parent_country:
+  alpha2: TL
+  name: Timor-Leste
+type: Special Administrative Region
+note: Exclave with different address system from mainland Timor-Leste
+languages:
+  - name: Portuguese
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Oecusse
+  - name: Tetum
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Oecusse
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Oecusse
+administrative_divisions:
+  level1:
+    type: Administrative Post
+    label_local: Posto Administrativo
+    label_en: Administrative Post
+    count: 4
+    names:
+      - Nitibe
+      - Oesilo
+      - Pante Macassar
+      - Passabe
+  level2:
+    type: Suco
+    label_local: Suco
+    label_en: Village
+    note: Traditional village administrative unit
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - administrative_post
+        - suco
+        - street_address
+        - building
+        - special_region
+        - country
+    - context: international
+      order:
+        - recipient
+        - building
+        - street_address
+        - suco
+        - administrative_post
+        - special_region
+        - country
+  postal_code:
+    required: false
+    description: Postal codes are not widely used in Oecusse
+    coverage: none
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - Exclave separated from mainland Timor-Leste
+    - Special administrative status with unique governance
+    - Administrative post system different from municipalities
+examples:
+  domestic_raw: Pante Macassar, Oecusse
+  domestic_normalized: Pante Macassar Oecusse
+  international: Pante Macassar, Oecusse Special Administrative Region, Timor-Leste
+status:
+  special_administrative_region: true
+  exclave: true
+  note: Geographically separated exclave with special autonomous status
+geo:
+  center:
+    latitude: -9.2019
+    longitude: 124.3906
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-05T21:23:57.299Z'
+pos:
+  currency:
+    code: USD
+    symbol: $
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: low
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Dili
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

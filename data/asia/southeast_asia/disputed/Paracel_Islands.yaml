@@ -1,0 +1,176 @@
+name:
+  en: Paracel Islands
+  local:
+    - lang: zh
+      value: 西沙群岛
+      script: Han
+      direction: ltr
+    - lang: vi
+      value: Quần đảo Hoàng Sa
+      script: Latin
+      direction: ltr
+iso_codes:
+  alpha2: PCL
+  alpha3: null
+  numeric: null
+  note: Custom code for address mapping purposes
+type: Disputed Territory
+note: Dual territorial claims by China and Vietnam - important for address mapping
+disputed_between:
+  - country: CN
+    name: China
+    claimed_area: Entire Paracel Islands
+    administrative_name: 西沙群岛
+    actual_control: full
+  - country: TW
+    name: Taiwan
+    claimed_area: Entire Paracel Islands
+    administrative_name: 西沙群島
+    actual_control: none
+  - country: VN
+    name: Vietnam
+    claimed_area: Entire Paracel Islands
+    administrative_name: Quần đảo Hoàng Sa
+    actual_control: none
+languages:
+  - name: Chinese
+    script: Han
+    direction: ltr
+    role: official_de_facto
+    country_name: 西沙群岛
+    note: De facto administrative language
+  - name: Vietnamese
+    script: Latin
+    direction: ltr
+    role: official_claimant
+    country_name: Quần đảo Hoàng Sa
+    note: Used by Vietnam in claims
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Paracel Islands
+administrative_divisions:
+  chinese_system:
+    type: District-level Division
+    label_local: 区级行政区
+    label_en: District-level Division
+    parent: Sansha City, Hainan Province
+    note: Xisha District under Sansha City administration
+    actual_control: true
+  vietnamese_system:
+    type: District
+    label_local: Huyện
+    label_en: District
+    parent: Da Nang City
+    note: Hoang Sa District under Vietnamese claim
+    actual_control: false
+address_format:
+  order_variants:
+    - context: chinese_system
+      order:
+        - recipient
+        - island_name
+        - xisha_district
+        - sansha_city
+        - hainan_province
+        - postal_code
+        - country
+    - context: vietnamese_system
+      order:
+        - recipient
+        - island_name
+        - district
+        - city
+        - postal_code
+        - country
+  postal_code:
+    chinese_system:
+      required: true
+      regex: ^573[0-9]{3}$
+      description: Part of Sansha City postal code range
+      example: '573100'
+    vietnamese_system:
+      required: false
+      description: Vietnamese postal codes may apply in claims
+      example: '550000'
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - Currently under Chinese administrative control
+    - Vietnamese address system exists in claims only
+    - International shipping uses Chinese system de facto
+    - Diplomatic sensitivity required
+examples:
+  chinese_system: 西沙群岛, 三沙市, 海南省 573100, 中国
+  vietnamese_system: Quần đảo Hoàng Sa, Đà Nẵng, Việt Nam
+  international: Paracel Islands (Disputed Territory)
+status:
+  disputed: true
+  un_status: disputed_territory
+  administered_by: CN
+  note: Under Chinese control but claimed by Vietnam and Taiwan - dual address system mapping required
+geo:
+  center:
+    latitude: 16.5
+    longitude: 112.0
+    accuracy: 50000
+    source: database
+    captured_at: '2025-12-05T21:23:57.299Z'
+    note: Approximate center of island group
+  bounds:
+    northeast:
+      latitude: 17.5
+      longitude: 113.0
+    southwest:
+      latitude: 15.5
+      longitude: 111.0
+pos:
+  currency_chinese_system:
+    code: CNY
+    symbol: ¥
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  currency_vietnamese_system:
+    code: VND
+    symbol: ₫
+    symbol_position: after
+    decimal_places: 0
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone_chinese: Asia/Shanghai
+    timezone_vietnamese: Asia/Ho_Chi_Minh
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

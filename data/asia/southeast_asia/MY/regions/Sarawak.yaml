@@ -1,0 +1,145 @@
+name:
+  en: Sarawak
+  local:
+    - lang: ms
+      value: Sarawak
+      script: Latin
+      direction: ltr
+parent_country:
+  alpha2: MY
+  name: Malaysia
+type: State
+note: East Malaysian state with address system different from Peninsular Malaysia
+languages:
+  - name: Malay
+    script: Latin
+    direction: ltr
+    role: official
+    country_name: Sarawak
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    required_for_shipping: true
+    country_name: Sarawak
+  - name: Iban
+    script: Latin
+    direction: ltr
+    role: regional
+    note: Largest indigenous ethnic group language
+administrative_divisions:
+  level1:
+    type: Division
+    label_local: Bahagian
+    label_en: Division
+    count: 12
+    note: Kuching, Sri Aman, Sibu, Miri, Limbang, Sarikei, Kapit, Samarahan, Bintulu, Mukah, Betong, Serian
+    names:
+      - Kuching
+      - Sri Aman
+      - Sibu
+      - Miri
+      - Limbang
+      - Sarikei
+      - Kapit
+      - Samarahan
+      - Bintulu
+      - Mukah
+      - Betong
+      - Serian
+  level2:
+    type: District
+    label_local: Daerah
+    label_en: District
+    count: 40
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - street_address
+        - building
+        - district
+        - division
+        - postal_code
+        - state
+        - country
+    - context: international
+      order:
+        - recipient
+        - building
+        - street_address
+        - district
+        - division
+        - postal_code
+        - state
+        - country
+  postal_code:
+    required: true
+    regex: ^9[0-8][0-9]{3}$
+    description: 5-digit postal code starting with 90-98
+    example: '93000'
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - Postal codes start with 90xxx to 98xxx
+    - Different postcode distribution from Peninsular Malaysia
+    - Division-based administrative structure
+examples:
+  domestic_raw: Jalan Tun Abang Haji Openg, Kuching, 93000 Sarawak
+  domestic_normalized: Jalan Tun Abang Haji Openg Kuching 93000 Sarawak
+  international: Jalan Tun Abang Haji Openg, 93000 Kuching, Sarawak, Malaysia
+status:
+  east_malaysia: true
+  note: Part of East Malaysia with unique administrative structure
+geo:
+  center:
+    latitude: 1.5533
+    longitude: 110.3593
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-05T21:23:57.299Z'
+pos:
+  currency:
+    code: MYR
+    symbol: RM
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: GST
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Kuching
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

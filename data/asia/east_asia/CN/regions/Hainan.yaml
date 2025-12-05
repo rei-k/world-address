@@ -1,0 +1,141 @@
+name:
+  en: Hainan Province
+  local:
+    - lang: zh
+      value: 海南省
+      script: Han
+      direction: ltr
+parent_country:
+  alpha2: CN
+  name: China
+type: Province
+note: Island province with address system distinct from mainland China
+languages:
+  - name: Chinese
+    script: Han
+    direction: ltr
+    role: official
+    country_name: 海南省
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Hainan Province
+administrative_divisions:
+  level1:
+    type: Prefecture-level City
+    label_local: 地级市
+    label_en: Prefecture-level City
+    count: 4
+    note: Includes Haikou, Sanya, Sansha, and Danzhou
+    names:
+      - Haikou
+      - Sanya
+      - Sansha
+      - Danzhou
+  level2:
+    type: County-level Division
+    label_local: 县级行政区
+    label_en: County-level Division
+    note: Includes counties, county-level cities, and autonomous counties
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - province
+        - prefecture
+        - county
+        - township
+        - village
+        - street_address
+        - building
+        - postal_code
+        - country
+    - context: international
+      order:
+        - recipient
+        - building
+        - street_address
+        - village
+        - township
+        - county
+        - prefecture
+        - province
+        - postal_code
+        - country
+  postal_code:
+    required: true
+    regex: ^57[0-9]{4}$
+    description: Hainan postal codes start with 57
+    example: '570000'
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - Island-type address system
+    - Postal codes start with 57xxxx
+    - Administrative hierarchy includes special economic zones
+    - Different from mainland hierarchical patterns
+examples:
+  chinese_script: 海南省海口市龙华区滨海大道 570000
+  international: Binhai Avenue, Longhua District, Haikou, Hainan Province 570000, China
+status:
+  island_province: true
+  note: Island province with unique administrative and address characteristics
+geo:
+  center:
+    latitude: 19.1959
+    longitude: 109.7453
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-05T21:23:57.299Z'
+pos:
+  currency:
+    code: CNY
+    symbol: ¥
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: medium
+    - type: mobile
+      name: WeChat Pay
+      prevalence: high
+    - type: mobile
+      name: Alipay
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Shanghai
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: true

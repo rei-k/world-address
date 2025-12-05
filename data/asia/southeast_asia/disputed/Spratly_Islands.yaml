@@ -1,0 +1,221 @@
+name:
+  en: Spratly Islands
+  local:
+    - lang: zh
+      value: 南沙群岛
+      script: Han
+      direction: ltr
+    - lang: vi
+      value: Quần đảo Trường Sa
+      script: Latin
+      direction: ltr
+    - lang: fil
+      value: Kapuluan ng Kalayaan
+      script: Latin
+      direction: ltr
+iso_codes:
+  alpha2: SPRT
+  alpha3: null
+  numeric: null
+  note: Custom code for address mapping purposes
+type: Disputed Territory
+note: Multiple overlapping territorial claims - critical for international shipping address mapping
+disputed_between:
+  - country: CN
+    name: China
+    claimed_area: Entire Spratly Islands
+    administrative_name: 南沙群岛
+  - country: TW
+    name: Taiwan
+    claimed_area: Entire Spratly Islands
+    administrative_name: 南沙群島
+  - country: VN
+    name: Vietnam
+    claimed_area: Entire Spratly Islands
+    administrative_name: Quần đảo Trường Sa
+  - country: PH
+    name: Philippines
+    claimed_area: Parts of Spratly Islands (Kalayaan Island Group)
+    administrative_name: Kalayaan
+  - country: MY
+    name: Malaysia
+    claimed_area: Southern portions
+    administrative_name: null
+  - country: BN
+    name: Brunei
+    claimed_area: Maritime claims only
+    administrative_name: null
+languages:
+  - name: Chinese
+    script: Han
+    direction: ltr
+    role: official_claimant
+    country_name: 南沙群岛
+    note: Used by China and Taiwan
+  - name: Vietnamese
+    script: Latin
+    direction: ltr
+    role: official_claimant
+    country_name: Quần đảo Trường Sa
+    note: Used by Vietnam
+  - name: Filipino
+    script: Latin
+    direction: ltr
+    role: official_claimant
+    country_name: Kapuluan ng Kalayaan
+    note: Used by Philippines
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Spratly Islands
+administrative_divisions:
+  chinese_system:
+    type: County-level Division
+    label_local: 县级行政区
+    label_en: County-level Division
+    parent: Sansha City, Hainan Province
+    note: Administered as part of Sansha City under Chinese claim
+  vietnamese_system:
+    type: District
+    label_local: Huyện
+    label_en: District
+    parent: Khanh Hoa Province
+    note: Administered as Truong Sa District under Vietnamese claim
+  philippine_system:
+    type: Municipality
+    label_local: Bayan
+    label_en: Municipality
+    parent: Palawan Province
+    note: Administered as Kalayaan Municipality under Philippine claim
+address_format:
+  order_variants:
+    - context: chinese_system
+      order:
+        - recipient
+        - island_name
+        - district
+        - sansha_city
+        - hainan_province
+        - postal_code
+        - country
+    - context: vietnamese_system
+      order:
+        - recipient
+        - island_name
+        - district
+        - province
+        - postal_code
+        - country
+    - context: philippine_system
+      order:
+        - recipient
+        - island_name
+        - municipality
+        - province
+        - postal_code
+        - country
+  postal_code:
+    chinese_system:
+      required: true
+      regex: ^573[0-9]{3}$
+      description: Part of Sansha City postal code range
+      example: '573100'
+    vietnamese_system:
+      required: false
+      description: Vietnamese postal codes may apply
+      example: '650000'
+    philippine_system:
+      required: true
+      regex: ^[0-9]{4}$
+      description: Philippine postal code
+      example: '5323'
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - Multiple overlapping address systems
+    - International shipping highly specialized
+    - Requires careful diplomatic handling
+    - Address mapping critical for logistics
+examples:
+  chinese_system: 南沙群岛, 三沙市, 海南省 573100, 中国
+  vietnamese_system: Quần đảo Trường Sa, Khánh Hòa, Việt Nam
+  philippine_system: Kalayaan, Palawan 5323, Philippines
+  international: Spratly Islands (Disputed Territory)
+status:
+  disputed: true
+  un_status: disputed_territory
+  administered_by: multiple
+  note: Exceptionally high value for address mapping - multiple overlapping territorial and postal systems
+geo:
+  center:
+    latitude: 9.8403
+    longitude: 114.2094
+    accuracy: 50000
+    source: database
+    captured_at: '2025-12-05T21:23:57.299Z'
+    note: Approximate center of island group
+  bounds:
+    northeast:
+      latitude: 12.0
+      longitude: 117.0
+    southwest:
+      latitude: 7.0
+      longitude: 111.0
+pos:
+  currency_chinese_system:
+    code: CNY
+    symbol: ¥
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  currency_vietnamese_system:
+    code: VND
+    symbol: ₫
+    symbol_position: after
+    decimal_places: 0
+    decimal_separator: .
+    thousands_separator: ','
+  currency_philippine_system:
+    code: PHP
+    symbol: ₱
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone_chinese: Asia/Shanghai
+    timezone_vietnamese: Asia/Ho_Chi_Minh
+    timezone_philippine: Asia/Manila
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false
