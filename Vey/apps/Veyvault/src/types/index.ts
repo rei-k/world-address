@@ -12,6 +12,7 @@ export interface User {
   name: string;
   phone?: string;
   provider: 'google' | 'apple' | 'line' | 'email';
+  defaultAddressId?: string; // Default address for auto-fill
   createdAt: Date;
   updatedAt: Date;
 }
@@ -27,6 +28,7 @@ export interface Address {
   encryptedData: string; // End-to-end encrypted address data
   label?: string;
   isPrimary: boolean;
+  isDefault: boolean; // Default address for hotel check-in, financial institutions, etc.
   createdAt: Date;
   updatedAt: Date;
 }
@@ -384,4 +386,53 @@ export interface DeliveryHistoryFilter {
   carrierId?: string;
   limit?: number;
   offset?: number;
+}
+
+/**
+ * Notification types for address registration and updates
+ */
+export interface Notification {
+  id: string;
+  userId: string;
+  type: 'address_registered' | 'address_updated' | 'address_deleted' | 'qr_scanned' | 'barcode_scanned';
+  title: string;
+  message: string;
+  data?: Record<string, any>;
+  isRead: boolean;
+  createdAt: Date;
+}
+
+/**
+ * Barcode format options
+ */
+export type BarcodeFormat = 'CODE128' | 'CODE39' | 'EAN13' | 'UPC' | 'ITF14' | 'QR';
+
+/**
+ * Barcode display options
+ */
+export interface BarcodeOptions {
+  format: BarcodeFormat;
+  width?: number;
+  height?: number;
+  displayValue?: boolean;
+  fontSize?: number;
+  margin?: number;
+}
+
+/**
+ * Default address auto-fill data
+ */
+export interface AutoFillData {
+  name: string;
+  phone: string;
+  address: Address;
+}
+
+/**
+ * User profile update request
+ */
+export interface UpdateUserProfileRequest {
+  name?: string;
+  phone?: string;
+  defaultAddressId?: string;
 }
