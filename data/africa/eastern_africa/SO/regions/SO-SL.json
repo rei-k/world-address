@@ -119,7 +119,7 @@
   "geo": {
     "center": {
       "latitude": 9.5,
-      "longitude": 44.0,
+      "longitude": 44,
       "accuracy": 10000,
       "source": "estimated"
     }

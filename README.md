@@ -181,6 +181,14 @@ For detailed information about the Vey ecosystem:
 - **[System Architecture](./Vey/diagrams/system-overview.md)** - Architecture overview
 - **[Use Cases](./docs/vey-ecosystem.md)** - Real-world scenarios and examples
 
+### Countries & Address Systems
+
+For comprehensive information about countries and their address formats:
+- **[Countries & Address Formats Guide](./docs/countries/README.md)** - Detailed introductions to 257 countries/regions and their address systems
+- **[Schema Documentation](./docs/schema/README.md)** - Complete schema definitions
+- **[Territorial Restrictions](./docs/territorial-restrictions.md)** - Japanese territorial naming policies
+- **[Address Examples](./docs/examples/README.md)** - Practical address format examples
+
 ## 📋 概要
 
 このプロジェクトは、世界中の国・地域の住所体系を標準化されたYAML形式およびJSON形式で記述し、以下の用途に活用できるデータを提供します：
@@ -539,6 +547,10 @@ All countries have dedicated directories with files named after their ISO 3166-1
   - Example: `data/americas/north_america/US/overseas/PR.yaml` (Puerto Rico)
 - **Special regions**: `{ISO-CODE}/regions/{region}.yaml`
   - Example: `data/asia/southeast_asia/ID/regions/Papua.yaml` (Papua, Indonesia)
+- **Disputed territories**: `{ISO-CODE}/disputed/{territory}.yaml`
+  - Example: `data/asia/east_asia/JP/disputed/Northern_Territories.yaml` (Japan's Northern Territories)
+  - Example: `data/asia/south_asia/disputed/Kashmir.yaml` (Kashmir region)
+  - Note: For Japan-related disputed territories, Japanese government's official position is prioritized
 
 ---
 
