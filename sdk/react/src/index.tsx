@@ -45,3 +45,7 @@ export type {
   MultilingualAddressFormProps,
 } from './multilingual-components';
 
+// Veyform - Universal Address Form System
+export { VeyformAddressForm } from './VeyformAddressForm';
+export type { VeyformAddressFormProps } from './VeyformAddressForm';
+
