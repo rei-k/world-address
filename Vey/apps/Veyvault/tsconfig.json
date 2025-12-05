@@ -24,7 +24,13 @@
     ],
     "paths": {
       "@/*": [
+        "./*"
+      ],
+      "@/src/*": [
         "./src/*"
+      ],
+      "@/app/*": [
+        "./app/*"
       ]
     },
     "isolatedModules": true

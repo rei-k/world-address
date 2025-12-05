@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import AddressCard from '../components/AddressCard';
 import type { Address } from '../../src/types';
@@ -8,6 +8,9 @@ import type { Address } from '../../src/types';
 export default function AddressesPage() {
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterType, setFilterType] = useState<'all' | 'home' | 'work' | 'other'>('all');
+  const [sortBy, setSortBy] = useState<'recent' | 'type' | 'label'>('recent');
 
   useEffect(() => {
     // TODO: Replace with actual API call
@@ -46,6 +49,42 @@ export default function AddressesPage() {
     }
   };
 
+  // Filter and sort addresses
+  const filteredAndSortedAddresses = useMemo(() => {
+    let result = addresses;
+
+    // Apply type filter
+    if (filterType !== 'all') {
+      result = result.filter(addr => addr.type === filterType);
+    }
+
+    // Apply search filter
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      result = result.filter(addr =>
+        addr.pid.toLowerCase().includes(query) ||
+        addr.label?.toLowerCase().includes(query) ||
+        addr.type.toLowerCase().includes(query)
+      );
+    }
+
+    // Apply sorting
+    result = [...result].sort((a, b) => {
+      switch (sortBy) {
+        case 'recent':
+          return b.updatedAt.getTime() - a.updatedAt.getTime();
+        case 'type':
+          return a.type.localeCompare(b.type);
+        case 'label':
+          return (a.label || '').localeCompare(b.label || '');
+        default:
+          return 0;
+      }
+    });
+
+    return result;
+  }, [addresses, filterType, searchQuery, sortBy]);
+
   if (loading) {
     return (
       <div className="container" style={{ paddingTop: '40px' }}>
@@ -62,7 +101,7 @@ export default function AddressesPage() {
             Address Book
           </h1>
           <p style={{ color: '#6b7280' }}>
-            Manage your addresses from all countries
+            Manage your addresses from all 257 countries
           </p>
         </div>
         <div className="flex gap-2">
@@ -88,16 +127,91 @@ export default function AddressesPage() {
           </Link>
         </div>
       ) : (
-        <div className="grid">
-          {addresses.map(address => (
-            <AddressCard
-              key={address.id}
-              address={address}
-              onDelete={handleDelete}
-              onSetPrimary={handleSetPrimary}
-            />
-          ))}
-        </div>
+        <>
+          {/* Search and Filters */}
+          <div className="card" style={{ marginBottom: '24px' }}>
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+              {/* Search Input */}
+              <div style={{ flex: '1 1 300px' }}>
+                <input
+                  type="text"
+                  placeholder="🔍 Search by PID, label, or type..."
+                  className="form-input"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  style={{ width: '100%' }}
+                />
+              </div>
+
+              {/* Type Filter */}
+              <div style={{ flex: '0 0 150px' }}>
+                <select
+                  className="form-select"
+                  value={filterType}
+                  onChange={(e) => setFilterType(e.target.value as any)}
+                  style={{ width: '100%' }}
+                >
+                  <option value="all">All Types</option>
+                  <option value="home">🏠 Home</option>
+                  <option value="work">🏢 Work</option>
+                  <option value="other">📍 Other</option>
+                </select>
+              </div>
+
+              {/* Sort By */}
+              <div style={{ flex: '0 0 150px' }}>
+                <select
+                  className="form-select"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as any)}
+                  style={{ width: '100%' }}
+                >
+                  <option value="recent">Recent</option>
+                  <option value="type">Type</option>
+                  <option value="label">Label</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Filter Summary */}
+            <div style={{ marginTop: '12px', fontSize: '14px', color: '#6b7280' }}>
+              Showing {filteredAndSortedAddresses.length} of {addresses.length} addresses
+              {searchQuery && ` matching "${searchQuery}"`}
+            </div>
+          </div>
+
+          {/* Address List */}
+          {filteredAndSortedAddresses.length === 0 ? (
+            <div className="card text-center" style={{ padding: '60px 40px' }}>
+              <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>
+                No matching addresses
+              </h3>
+              <p style={{ color: '#6b7280', marginBottom: '24px' }}>
+                Try adjusting your search or filters
+              </p>
+              <button
+                onClick={() => {
+                  setSearchQuery('');
+                  setFilterType('all');
+                }}
+                className="btn btn-secondary"
+              >
+                Clear Filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid">
+              {filteredAndSortedAddresses.map(address => (
+                <AddressCard
+                  key={address.id}
+                  address={address}
+                  onDelete={handleDelete}
+                  onSetPrimary={handleSetPrimary}
+                />
+              ))}
+            </div>
+          )}
+        </>
       )}
 
       <div className="card" style={{ marginTop: '40px' }}>
@@ -106,10 +220,13 @@ export default function AddressesPage() {
         </h3>
         <ul style={{ listStyle: 'disc', paddingLeft: '24px', color: '#6b7280' }}>
           <li style={{ marginBottom: '8px' }}>
-            You can add addresses in both native language and English
+            Use search to quickly find addresses by PID, label, or type
           </li>
           <li style={{ marginBottom: '8px' }}>
-            Postal codes are automatically validated for each country
+            Filter addresses by type (Home, Work, Other) for easier management
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            Sort by recent, type, or label to organize your addresses
           </li>
           <li style={{ marginBottom: '8px' }}>
             Generate QR codes for your addresses to share securely

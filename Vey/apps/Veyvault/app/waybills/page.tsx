@@ -12,6 +12,7 @@ export default function WaybillsPage() {
 
   useEffect(() => {
     loadDeliveries();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   async function loadDeliveries() {

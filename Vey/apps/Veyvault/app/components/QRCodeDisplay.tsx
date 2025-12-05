@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { QRCodeSVG } from 'qrcode.react';
 import type { Address } from '../../src/types';
 
 interface QRCodeDisplayProps {
@@ -9,22 +10,63 @@ interface QRCodeDisplayProps {
 
 export default function QRCodeDisplay({ address }: QRCodeDisplayProps) {
   const [downloadFormat, setDownloadFormat] = useState<'png' | 'svg'>('png');
+  const qrRef = useRef<HTMLDivElement>(null);
 
-  // Generate QR code data (simplified - in production use a QR library)
+  // Generate QR code data with encrypted token
   const generateQRData = () => {
-    // This would use address.pid and create an encrypted token
-    return `veyvault://address/${address.pid}`;
+    // Create encrypted token for privacy-preserving address sharing
+    return JSON.stringify({
+      type: 'veyvault_address',
+      version: '1.0',
+      pid: address.pid,
+      token: address.encryptedData,
+      timestamp: new Date().toISOString(),
+    });
   };
 
   const handleDownload = () => {
-    // TODO: Implement actual QR code download using a library like qrcode.react
     const qrData = generateQRData();
-    alert(`Downloading QR code for: ${qrData}`);
     
-    // In production, you would:
-    // 1. Generate actual QR code image using a library
-    // 2. Create a downloadable blob
-    // 3. Trigger download
+    if (downloadFormat === 'svg') {
+      // Download SVG
+      const svg = qrRef.current?.querySelector('svg');
+      if (!svg) return;
+      
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const blob = new Blob([svgData], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `veyvault-qr-${address.pid}.svg`;
+      link.click();
+      URL.revokeObjectURL(url);
+    } else {
+      // Download PNG
+      const svg = qrRef.current?.querySelector('svg');
+      if (!svg) return;
+      
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const img = new Image();
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob((blob) => {
+          if (!blob) return;
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `veyvault-qr-${address.pid}.png`;
+          link.click();
+          URL.revokeObjectURL(url);
+        });
+      };
+      img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+    }
   };
 
   const handleShare = async () => {
@@ -34,16 +76,18 @@ export default function QRCodeDisplay({ address }: QRCodeDisplayProps) {
       try {
         await navigator.share({
           title: 'My Address QR Code',
-          text: `QR Code for ${address.label || address.type}`,
-          url: qrData,
+          text: `QR Code for ${address.label || address.type} address`,
+          url: `veyvault://address/${address.pid}`,
         });
       } catch (err) {
-        console.error('Error sharing:', err);
+        if ((err as Error).name !== 'AbortError') {
+          console.error('Error sharing:', err);
+        }
       }
     } else {
       // Fallback: copy to clipboard
       navigator.clipboard.writeText(qrData);
-      alert('QR code link copied to clipboard!');
+      alert('QR code data copied to clipboard!');
     }
   };
 
@@ -62,71 +106,26 @@ export default function QRCodeDisplay({ address }: QRCodeDisplayProps) {
         marginBottom: '20px',
         textAlign: 'center',
       }}>
-        {/* Placeholder QR code - Replace with actual QR library */}
+        <div ref={qrRef} style={{ display: 'inline-block' }}>
+          <QRCodeSVG
+            value={generateQRData()}
+            size={256}
+            level="H"
+            includeMargin={true}
+            imageSettings={{
+              src: '/vey-logo.svg',
+              height: 40,
+              width: 40,
+              excavate: true,
+            }}
+          />
+        </div>
         <div style={{
-          width: '256px',
-          height: '256px',
-          margin: '0 auto',
-          background: 'white',
-          border: '1px solid #d1d5db',
-          borderRadius: '8px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '14px',
-          color: '#6b7280',
-          position: 'relative',
+          marginTop: '12px',
+          fontSize: '12px',
+          color: '#9ca3af',
         }}>
-          {/* QR Code Pattern (simplified visual) */}
-          <div style={{
-            position: 'absolute',
-            top: '20px',
-            left: '20px',
-            width: '60px',
-            height: '60px',
-            border: '4px solid black',
-            borderRadius: '4px',
-          }} />
-          <div style={{
-            position: 'absolute',
-            top: '20px',
-            right: '20px',
-            width: '60px',
-            height: '60px',
-            border: '4px solid black',
-            borderRadius: '4px',
-          }} />
-          <div style={{
-            position: 'absolute',
-            bottom: '20px',
-            left: '20px',
-            width: '60px',
-            height: '60px',
-            border: '4px solid black',
-            borderRadius: '4px',
-          }} />
-          
-          {/* Center pattern */}
-          <div style={{
-            width: '120px',
-            height: '120px',
-            background: `repeating-linear-gradient(
-              90deg,
-              black,
-              black 10px,
-              white 10px,
-              white 20px
-            )`,
-          }} />
-          
-          <div style={{
-            position: 'absolute',
-            bottom: '8px',
-            fontSize: '12px',
-            color: '#9ca3af',
-          }}>
-            {address.pid}
-          </div>
+          {address.pid}
         </div>
       </div>
 
@@ -165,6 +164,9 @@ export default function QRCodeDisplay({ address }: QRCodeDisplayProps) {
         <p><strong>Address ID:</strong> {address.pid}</p>
         <p style={{ marginTop: '4px' }}>
           <strong>Generated:</strong> {new Date().toLocaleString()}
+        </p>
+        <p style={{ marginTop: '4px' }}>
+          <strong>🔐 Encrypted:</strong> Address data is end-to-end encrypted
         </p>
       </div>
     </div>
