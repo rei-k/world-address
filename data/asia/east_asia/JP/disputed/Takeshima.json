@@ -169,9 +169,7 @@
     "note": "According to Japanese government policy, this territory must be referred to \nusing the Japanese name (竹島, Takeshima) in Japanese systems. Korean names \n(독도, Dokdo) are blocked in Japanese address forms.\n",
     "allowed_languages": [
       "ja",
-      {
-        "en (using Japanese romanization": "Takeshima)"
-      }
+      "en (using Japanese romanization: Takeshima)"
     ],
     "blocked_languages": [
       "ko (in Japanese systems)"

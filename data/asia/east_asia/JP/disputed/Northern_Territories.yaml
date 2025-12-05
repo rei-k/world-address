@@ -150,10 +150,10 @@ territorial_restrictions:
   
   allowed_languages:
     - ja
-    - en (using Japanese romanization)
+    - "en (using Japanese romanization)"
   
   blocked_languages:
-    - ru (in Japanese systems)
+    - "ru (in Japanese systems)"
 
 references:
   - name: Ministry of Foreign Affairs of Japan - Northern Territories

@@ -159,10 +159,10 @@ territorial_restrictions:
   
   allowed_languages:
     - ja
-    - en (using Japanese romanization: Takeshima)
+    - "en (using Japanese romanization: Takeshima)"
   
   blocked_languages:
-    - ko (in Japanese systems)
+    - "ko (in Japanese systems)"
 
 environmental_note:
   designation: Natural monument

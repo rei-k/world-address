@@ -201,12 +201,12 @@ territorial_restrictions:
   
   allowed_languages:
     - ja
-    - en (using Japanese romanization: Senkaku)
+    - "en (using Japanese romanization: Senkaku)"
   
   blocked_languages:
-    - zh-CN (Simplified Chinese)
-    - zh-TW (Traditional Chinese)
-    - zh (in Japanese systems)
+    - "zh-CN (Simplified Chinese)"
+    - "zh-TW (Traditional Chinese)"
+    - "zh (in Japanese systems)"
 
 strategic_significance:
   fishing_rights: Rich fishing grounds important to all claimants

@@ -208,9 +208,7 @@
     "note": "According to Japanese government policy, these islands must be referred to \nusing the Japanese name (尖閣諸島, Senkaku Islands) in Japanese systems. \nChinese names (钓鱼岛/釣魚島, Diaoyu/Diaoyutai) are blocked in Japanese address forms.\n",
     "allowed_languages": [
       "ja",
-      {
-        "en (using Japanese romanization": "Senkaku)"
-      }
+      "en (using Japanese romanization: Senkaku)"
     ],
     "blocked_languages": [
       "zh-CN (Simplified Chinese)",
