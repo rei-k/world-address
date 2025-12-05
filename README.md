@@ -207,6 +207,7 @@ For detailed information about the Vey ecosystem:
 - **🔍 Search Engine** - Address search and autocomplete capabilities
 - **🤖 AI Integration** - AI-powered address validation and correction
 - **📸 Image Recognition** - OCR, dimension estimation, damage detection, and document scanning
+- **🗺️ Geocoding & Reverse Geocoding** - Convert addresses to coordinates and vice versa (OpenStreetMap Nominatim)
 
 ### Data Quality
 - **99% Average Completeness** - High-quality, comprehensive data coverage
@@ -552,7 +553,7 @@ SDKs for various frameworks and platforms to work with address data.
 
 | Package | Status | Description |
 |---------|--------|-------------|
-| `@vey/core` | 🔨 In Development | Core SDK (validation, formatting, PID, ZKP) |
+| `@vey/core` | 🔨 In Development | Core SDK (validation, formatting, PID, ZKP, **geocoding**) |
 | `@vey/react` | 📋 Planned | React hooks & components |
 | `@vey/vue` | 📋 Planned | Vue composables |
 | `@vey/widget` | 📋 Planned | Universal Shadow Widget (framework-agnostic) |
@@ -575,22 +576,43 @@ npm run build
 ### Basic Usage Example
 
 ```typescript
-import { validateAddress, encodePID, normalizeAddress } from '@vey/core';
+import { 
+  validateAddress, 
+  encodePID, 
+  normalizeAddress,
+  forwardGeocode,
+  reverseGeocode 
+} from '@vey/core';
 
 // Validate address
 const result = validateAddress({
   country: 'JP',
-  postalCode: '100-0001',
-  prefecture: '東京都'
+  postal_code: '100-0001',
+  province: '東京都'
 });
 
 // Normalize address and generate PID
 const normalized = normalizeAddress(address, 'JP');
 const pid = encodePID(normalized);
 console.log(pid); // "JP-13-101-01"
+
+// Forward geocoding (address → coordinates)
+const geocoded = await forwardGeocode({
+  address: {
+    city: 'Tokyo',
+    country: 'JP'
+  }
+});
+console.log(geocoded.coordinates); // { latitude: 35.6812, longitude: 139.7671 }
+
+// Reverse geocoding (coordinates → address)
+const address = await reverseGeocode({
+  coordinates: { latitude: 35.6812, longitude: 139.7671 }
+});
+console.log(address.address); // { country: 'JP', city: 'Tokyo', ... }
 ```
 
-See [SDK README](./sdk/README.md) for complete API specification and examples.
+See [SDK README](./sdk/README.md) and [Geocoding Guide](./docs/geocoding-guide.md) for complete API specification and examples.
 
 ## 🔑 住所PID (Place ID)
 
