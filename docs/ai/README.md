@@ -13,6 +13,17 @@ This directory contains documentation about AI capabilities in the World Address
 | [waybill-ai-capabilities.md](./waybill-ai-capabilities.md) | **送り状AI・アルゴリズム** - 送り状の生成・検索・管理における10のAI機能 |
 | [zkp-quality-ai.md](./zkp-quality-ai.md) | **ZKPクオリティ向上AI** - ゼロ知識証明の安全性・正しさ・性能・UXを向上させる10のAI機能 |
 
+### 画像認識モジュール / Image Recognition Modules
+
+| モジュール | 説明 |
+|---------|------|
+| [Image Recognition Modules](../../ai-modules/README.md) | **AI画像認識モジュール** - OCR、寸法推定、破損検出、書類スキャン |
+| [Package OCR](../../ai-modules/package-ocr/docs/README.md) | **荷物ラベル自動読み取り** - 多言語OCR + AMF正規化 + PID生成 |
+| [Dimension Estimation](../../ai-modules/dimension-estimation/docs/README.md) | **荷物寸法・重量推定** - VeyLockerマッピング + 料金自動算出 |
+| [Damage Detection](../../ai-modules/damage-detection/docs/README.md) | **破損・異常検出** - 証拠記録 + 保険自動化 |
+| [Document OCR](../../ai-modules/document-ocr/docs/README.md) | **書類住所OCR** - 名刺・公共料金・手書き認識 + Veyform統合 |
+| [Integration Guide](../ai-image-recognition-integration.md) | **統合ガイド** - VeyExpress/Veyform統合の完全な例 |
+
 ## 🤖 概要 / Overview
 
 ### AI機能強化戦略
