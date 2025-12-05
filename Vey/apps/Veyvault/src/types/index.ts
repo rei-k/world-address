@@ -13,6 +13,7 @@ export interface User {
   phone?: string;
   provider: 'google' | 'apple' | 'line' | 'email';
   defaultAddressId?: string; // Default address for auto-fill
+  languageSettings?: LanguageSettings; // Language preferences (separate from address input)
   createdAt: Date;
   updatedAt: Date;
 }
@@ -29,6 +30,7 @@ export interface Address {
   label?: string;
   isPrimary: boolean;
   isDefault: boolean; // Default address for hotel check-in, financial institutions, etc.
+  multiLanguageData?: MultiLanguageAddress; // Address in multiple languages
   createdAt: Date;
   updatedAt: Date;
 }
@@ -102,6 +104,11 @@ export interface CreateAddressRequest {
   room?: string;
   label?: string;
   isPrimary?: boolean;
+  // Multi-language support
+  inputLanguage?: string; // Language used for input (native, en, etc.)
+  multiLanguageData?: MultiLanguageAddress; // Pre-translated versions
+  autoTranslate?: boolean; // Auto-translate to other languages
+  translationTargets?: string[]; // Languages to translate to
 }
 
 /**
@@ -435,4 +442,87 @@ export interface UpdateUserProfileRequest {
   name?: string;
   phone?: string;
   defaultAddressId?: string;
+  languageSettings?: LanguageSettings;
+}
+
+/**
+ * Language settings for Veyvault
+ * Separate from address input language
+ */
+export interface LanguageSettings {
+  // App UI language
+  appLanguage: string;
+  
+  // Preferred languages for address input (in order of preference)
+  addressInputLanguages: string[];
+  
+  // Preferred language for labels and placeholders
+  labelLanguage: string;
+  
+  // Enable auto-translation for address fields
+  enableAutoTranslation: boolean;
+  
+  // Languages to auto-translate addresses to
+  translationTargets: string[];
+  
+  // Country-specific language overrides
+  countryLanguageOverrides?: Record<string, string>;
+}
+
+/**
+ * Multi-language address data
+ * Stores address in multiple languages
+ */
+export interface MultiLanguageAddress {
+  // Address in original/native language
+  native: {
+    language: string;
+    addressLine1: string;
+    addressLine2?: string;
+    locality?: string;
+    admin1?: string;
+    admin2?: string;
+  };
+  
+  // English translation
+  english?: {
+    addressLine1: string;
+    addressLine2?: string;
+    locality?: string;
+    admin1?: string;
+    admin2?: string;
+  };
+  
+  // Additional translations
+  translations?: Array<{
+    language: string;
+    addressLine1: string;
+    addressLine2?: string;
+    locality?: string;
+    admin1?: string;
+    admin2?: string;
+  }>;
+  
+  // Delivery-supported languages for this address
+  deliveryLanguages?: string[];
+}
+
+/**
+ * Language preference for address input
+ */
+export interface AddressLanguagePreference {
+  country: string;
+  preferredInputLanguage: string;
+  enabledLanguages: string[]; // Native, English, and delivery languages
+  autoTranslate: boolean;
+}
+
+/**
+ * Translation result for address fields
+ */
+export interface AddressTranslationResult {
+  originalLanguage: string;
+  targetLanguage: string;
+  fields: Record<string, string>;
+  confidence: number;
 }

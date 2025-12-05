@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { CreateAddressRequest } from '../../src/types';
+import type { CreateAddressRequest, MultiLanguageAddress } from '../../src/types';
 import { COUNTRIES } from '../lib/countries';
+import { getTranslationService } from '../../src/services/translation.service';
 
 interface AddressFormProps {
   initialData?: Partial<CreateAddressRequest>;
@@ -11,7 +12,7 @@ interface AddressFormProps {
   isSubmitting?: boolean;
 }
 
-type LanguageTab = 'native' | 'english';
+type LanguageTab = 'native' | 'english' | 'delivery';
 
 export default function AddressForm({
   initialData,
@@ -19,7 +20,9 @@ export default function AddressForm({
   onCancel,
   isSubmitting = false,
 }: AddressFormProps) {
+  const translationService = getTranslationService();
   const [activeTab, setActiveTab] = useState<LanguageTab>('native');
+  const [isTranslating, setIsTranslating] = useState(false);
   const [formData, setFormData] = useState<CreateAddressRequest>({
     type: initialData?.type || 'home',
     country: initialData?.country || '',
@@ -34,9 +37,25 @@ export default function AddressForm({
     room: initialData?.room || '',
     label: initialData?.label || '',
     isPrimary: initialData?.isPrimary || false,
+    inputLanguage: initialData?.inputLanguage || 'native',
+    autoTranslate: initialData?.autoTranslate !== false,
+    translationTargets: initialData?.translationTargets || ['en'],
   });
 
-  const [englishData, setEnglishData] = useState<Partial<CreateAddressRequest>>({});
+  const [multiLanguageData, setMultiLanguageData] = useState<MultiLanguageAddress>({
+    native: {
+      language: '',
+      addressLine1: '',
+      addressLine2: '',
+      locality: '',
+      admin1: '',
+      admin2: '',
+    },
+    english: undefined,
+    translations: [],
+    deliveryLanguages: ['en'],
+  });
+
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const selectedCountry = COUNTRIES.find(c => c.code === formData.country);
@@ -66,23 +85,112 @@ export default function AddressForm({
   };
 
   const handleTabSwitch = async (tab: LanguageTab) => {
-    if (tab === 'english' && activeTab === 'native') {
-      // Auto-translate from native to English
-      // TODO: Implement translation API
-      setEnglishData({
-        addressLine1: formData.addressLine1,
-        addressLine2: formData.addressLine2,
-        admin1: formData.admin1,
-        admin2: formData.admin2,
-        locality: formData.locality,
-      });
-    } else if (tab === 'native' && activeTab === 'english') {
-      // Sync English data back to native
-      if (Object.keys(englishData).length > 0) {
-        setFormData(prev => ({ ...prev, ...englishData }));
-      }
+    if (activeTab === tab) return;
+
+    // Auto-translate when switching tabs if auto-translate is enabled
+    if (formData.autoTranslate && activeTab === 'native' && tab === 'english') {
+      await translateToEnglish();
+    } else if (formData.autoTranslate && activeTab === 'native' && tab === 'delivery') {
+      await translateToDeliveryLanguages();
     }
+    
     setActiveTab(tab);
+  };
+
+  const translateToEnglish = async () => {
+    if (!formData.country || !formData.addressLine1) return;
+
+    setIsTranslating(true);
+    try {
+      const nativeLang = selectedCountry?.nativeLang || 'en';
+      
+      // Translate address fields
+      const fieldsToTranslate: Record<string, string> = {
+        addressLine1: formData.addressLine1,
+        addressLine2: formData.addressLine2 || '',
+        locality: formData.locality || '',
+        admin1: formData.admin1 || '',
+        admin2: formData.admin2 || '',
+      };
+
+      const translatedFields = await translationService.translateAddressFields(
+        fieldsToTranslate,
+        nativeLang,
+        'en'
+      );
+
+      setMultiLanguageData(prev => ({
+        ...prev,
+        native: {
+          language: nativeLang,
+          addressLine1: formData.addressLine1,
+          addressLine2: formData.addressLine2,
+          locality: formData.locality,
+          admin1: formData.admin1,
+          admin2: formData.admin2,
+        },
+        english: {
+          addressLine1: translatedFields.addressLine1,
+          addressLine2: translatedFields.addressLine2,
+          locality: translatedFields.locality,
+          admin1: translatedFields.admin1,
+          admin2: translatedFields.admin2,
+        },
+      }));
+    } catch (error) {
+      console.error('Translation error:', error);
+    } finally {
+      setIsTranslating(false);
+    }
+  };
+
+  const translateToDeliveryLanguages = async () => {
+    if (!formData.country || !formData.addressLine1) return;
+
+    setIsTranslating(true);
+    try {
+      const nativeLang = selectedCountry?.nativeLang || 'en';
+      const deliveryLanguages = selectedCountry?.deliveryLanguages || ['en'];
+      
+      const translations = [];
+      
+      for (const targetLang of deliveryLanguages) {
+        if (targetLang === nativeLang) continue;
+        
+        const fieldsToTranslate: Record<string, string> = {
+          addressLine1: formData.addressLine1,
+          addressLine2: formData.addressLine2 || '',
+          locality: formData.locality || '',
+          admin1: formData.admin1 || '',
+          admin2: formData.admin2 || '',
+        };
+
+        const translatedFields = await translationService.translateAddressFields(
+          fieldsToTranslate,
+          nativeLang,
+          targetLang
+        );
+
+        translations.push({
+          language: targetLang,
+          addressLine1: translatedFields.addressLine1,
+          addressLine2: translatedFields.addressLine2,
+          locality: translatedFields.locality,
+          admin1: translatedFields.admin1,
+          admin2: translatedFields.admin2,
+        });
+      }
+
+      setMultiLanguageData(prev => ({
+        ...prev,
+        translations,
+        deliveryLanguages,
+      }));
+    } catch (error) {
+      console.error('Translation error:', error);
+    } finally {
+      setIsTranslating(false);
+    }
   };
 
   const validateForm = (): boolean => {
@@ -119,7 +227,13 @@ export default function AddressForm({
       return;
     }
 
-    await onSubmit(formData);
+    // Include multi-language data in submission
+    const submitData: CreateAddressRequest = {
+      ...formData,
+      multiLanguageData,
+    };
+
+    await onSubmit(submitData);
   };
 
   return (
@@ -130,7 +244,8 @@ export default function AddressForm({
           borderBottom: '1px solid #e5e7eb',
           marginBottom: '24px',
           display: 'flex',
-          gap: '16px'
+          gap: '16px',
+          alignItems: 'center',
         }}>
           <button
             type="button"
@@ -145,7 +260,7 @@ export default function AddressForm({
               cursor: 'pointer',
             }}
           >
-            {selectedCountry?.nativeLang || 'Native Language'}
+            🌐 {selectedCountry?.nativeLang?.toUpperCase() || 'Native'}
           </button>
           <button
             type="button"
@@ -160,9 +275,124 @@ export default function AddressForm({
               cursor: 'pointer',
             }}
           >
-            English
+            🇬🇧 English
           </button>
+          <button
+            type="button"
+            onClick={() => handleTabSwitch('delivery')}
+            style={{
+              padding: '12px 16px',
+              border: 'none',
+              background: 'transparent',
+              borderBottom: activeTab === 'delivery' ? '2px solid #2563eb' : 'none',
+              color: activeTab === 'delivery' ? '#2563eb' : '#6b7280',
+              fontWeight: activeTab === 'delivery' ? '600' : '400',
+              cursor: 'pointer',
+            }}
+          >
+            🚚 Delivery Languages
+          </button>
+          
+          {/* Translation toggle */}
+          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', fontSize: '14px' }}>
+              <input
+                type="checkbox"
+                checked={formData.autoTranslate}
+                onChange={(e) => handleInputChange('autoTranslate', e.target.checked)}
+                style={{ marginRight: '6px' }}
+              />
+              Auto-translate
+            </label>
+            {isTranslating && (
+              <span style={{ fontSize: '14px', color: '#2563eb' }}>🔄 Translating...</span>
+            )}
+          </div>
         </div>
+
+        {/* Tab Content Info */}
+        {activeTab === 'native' && (
+          <div style={{
+            padding: '12px',
+            background: '#f0fdf4',
+            borderRadius: '6px',
+            marginBottom: '16px',
+            fontSize: '14px',
+            color: '#15803d',
+          }}>
+            ℹ️ Enter address in {selectedCountry?.nativeLang || 'native'} language. 
+            Enable auto-translate to see English and delivery language versions.
+          </div>
+        )}
+        {activeTab === 'english' && (
+          <div style={{
+            padding: '12px',
+            background: '#eff6ff',
+            borderRadius: '6px',
+            marginBottom: '16px',
+            fontSize: '14px',
+            color: '#1e40af',
+          }}>
+            {multiLanguageData.english ? (
+              <>✓ English translation available. You can edit or use auto-translated version.</>
+            ) : (
+              <>ℹ️ English version will be auto-generated when you switch tabs with auto-translate enabled.</>
+            )}
+          </div>
+        )}
+        {activeTab === 'delivery' && (
+          <div style={{
+            padding: '12px',
+            background: '#fef3c7',
+            borderRadius: '6px',
+            marginBottom: '16px',
+            fontSize: '14px',
+            color: '#92400e',
+          }}>
+            🚚 Delivery languages: {selectedCountry?.deliveryLanguages?.join(', ') || 'English'}
+            {multiLanguageData.translations && multiLanguageData.translations.length > 0 && (
+              <> ({multiLanguageData.translations.length} translation{multiLanguageData.translations.length > 1 ? 's' : ''} available)</>
+            )}
+          </div>
+        )}
+
+        {/* Display current tab data */}
+        {activeTab === 'english' && multiLanguageData.english && (
+          <div style={{
+            padding: '12px',
+            background: '#f9fafb',
+            borderRadius: '6px',
+            marginBottom: '16px',
+            fontSize: '13px',
+          }}>
+            <strong>English Translation:</strong>
+            <div>{multiLanguageData.english.addressLine1}</div>
+            {multiLanguageData.english.addressLine2 && <div>{multiLanguageData.english.addressLine2}</div>}
+            {multiLanguageData.english.locality && <div>{multiLanguageData.english.locality}</div>}
+            {multiLanguageData.english.admin2 && <div>{multiLanguageData.english.admin2}</div>}
+            {multiLanguageData.english.admin1 && <div>{multiLanguageData.english.admin1}</div>}
+          </div>
+        )}
+        
+        {activeTab === 'delivery' && multiLanguageData.translations && multiLanguageData.translations.length > 0 && (
+          <div style={{
+            padding: '12px',
+            background: '#f9fafb',
+            borderRadius: '6px',
+            marginBottom: '16px',
+            fontSize: '13px',
+          }}>
+            <strong>Delivery Language Translations:</strong>
+            {multiLanguageData.translations.map((trans, idx) => (
+              <div key={idx} style={{ marginTop: '8px', paddingTop: '8px', borderTop: idx > 0 ? '1px solid #e5e7eb' : 'none' }}>
+                <strong>{trans.language.toUpperCase()}:</strong>
+                <div>{trans.addressLine1}</div>
+                {trans.addressLine2 && <div>{trans.addressLine2}</div>}
+                {trans.locality && <div>{trans.locality}</div>}
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Address Type */}
         <div className="form-group">
