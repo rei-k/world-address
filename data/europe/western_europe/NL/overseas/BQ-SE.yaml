@@ -1,44 +1,34 @@
 name:
-  en: Caribbean Netherlands
+  en: Sint Eustatius
   local:
     - lang: nl
-      value: Caribisch Nederland
+      value: Sint Eustatius
+      script: Latin
+      direction: ltr
+    - lang: en
+      value: Sint Eustatius
       script: Latin
       direction: ltr
 iso_codes:
-  alpha2: BQ
-  alpha3: BES
-  numeric: '535'
+  alpha2: BQ-SE
+  alpha3: null
+  numeric: null
+  note: User-assigned code for Sint Eustatius (part of Caribbean Netherlands BQ)
 continent: North America
 subregion: Caribbean
+part_of: Caribbean Netherlands (BQ)
 languages:
   - name: Dutch
     script: Latin
     role: official
     country_name:
-      nl: Caribisch Nederland
-      en: Caribbean Netherlands
+      nl: Sint Eustatius
+      en: Sint Eustatius
   - name: English
     script: Latin
     role: co-official
     country_name:
-      en: Caribbean Netherlands
-  - name: Papiamentu
-    script: Latin
-    role: co-official
-    country_name:
-      pap: Boneiru / Sint Eustatius / Saba
-      en: Bonaire / Sint Eustatius / Saba
-administrative_divisions:
-  level1:
-    type: Special Municipality
-    label_local: Openbare Lichamen
-    label_en: Special Municipality
-    count: 3
-    names:
-      - Bonaire
-      - Sint Eustatius
-      - Saba
+      en: Sint Eustatius
 address_format:
   order_variants:
     - context: domestic
@@ -46,34 +36,37 @@ address_format:
         - recipient
         - street
         - house_number
-        - city
+        - area
+        - island
         - country
     - context: international
       order:
         - recipient
         - street
         - house_number
-        - city
+        - area
+        - island
         - country
   postal_code:
     required: false
     description: No standardized postal codes
     example: ''
 examples:
-  domestic_raw: Kaya Grandi 12, Kralendijk, Bonaire
-  domestic_normalized: Kaya Grandi 12 Kralendijk Bonaire
-  international: Kaya Grandi 12, Kralendijk, Bonaire, Caribbean Netherlands
+  domestic_raw: Oranjestad 12, Sint Eustatius
+  domestic_normalized: Oranjestad 12 Sint Eustatius
+  international: Oranjestad 12, Sint Eustatius, Caribbean Netherlands
 status:
   un_member: false
   recognized: true
   disputed: false
+  note: Special municipality of the Netherlands
 geo:
   center:
-    latitude: 12.1784
-    longitude: -68.2385
+    latitude: 17.4894
+    longitude: -62.9735
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.667Z'
+    captured_at: '2025-12-05T19:47:00.000Z'
 pos:
   currency:
     code: USD
