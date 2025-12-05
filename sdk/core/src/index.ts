@@ -354,6 +354,8 @@ export type {
   ContinentInfo,
   CountryOption,
   VeyformConfig,
+  LanguageStorageConfig,
+  LanguageChangeCallback,
   AnalyticsEventType,
   AnalyticsEvent,
   FieldConfig,
