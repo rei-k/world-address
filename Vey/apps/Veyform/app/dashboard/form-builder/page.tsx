@@ -93,15 +93,6 @@ export default function FormBuilderPage() {
     if (field === 'postal_code' && format?.postalCode?.example) {
       return format.postalCode.example;
     }
-    if (field === 'building' && format?.building) {
-      return format.building.example || '';
-    }
-    if (field === 'floor' && format?.floor) {
-      return format.floor.example || '';
-    }
-    if (field === 'room' && format?.room) {
-      return format.room.example || '';
-    }
     
     return '';
   };
@@ -334,7 +325,9 @@ export default function FormBuilderPage() {
                 
                 {/* Address Fields */}
                 {currentCountry?.addressFormat.order.map((field) => {
-                  if (field === 'country') return null; // Already shown above
+                  if (field === 'country') {
+                    return null; // Already shown above
+                  }
                   
                   return (
                     <div key={field} className="mb-3">
