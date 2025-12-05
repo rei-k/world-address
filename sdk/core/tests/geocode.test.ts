@@ -518,5 +518,92 @@ describe('Geo-Insurance Use Cases (緯度経度を保険とする技術)', () =>
       expect(match).not.toBeNull();
       expect(match?.pid).toBe('JP-13-101-01');
     });
+
+    it('should handle empty candidates array', () => {
+      const userLocation: GeoCoordinates = {
+        latitude: 35.6815,
+        longitude: 139.7675,
+        accuracy: 20,
+      };
+
+      const match = findBestMatchingAddress(userLocation, [], {
+        toleranceMeters: 500,
+      });
+
+      expect(match).toBeNull();
+    });
+
+    it('should handle very tight tolerance', () => {
+      const userLocation: GeoCoordinates = {
+        latitude: 35.6815,
+        longitude: 139.7675,
+        accuracy: 20,
+      };
+
+      const match = findBestMatchingAddress(userLocation, candidates, {
+        toleranceMeters: 1, // Very tight tolerance
+      });
+
+      // Should not match with such tight tolerance
+      expect(match).toBeNull();
+    });
+
+    it('should handle very loose tolerance', () => {
+      const userLocation: GeoCoordinates = {
+        latitude: 35.6815,
+        longitude: 139.7675,
+        accuracy: 20,
+      };
+
+      const match = findBestMatchingAddress(userLocation, candidates, {
+        toleranceMeters: 100000, // Very loose tolerance
+      });
+
+      // Should match with loose tolerance
+      expect(match).not.toBeNull();
+    });
+  });
+
+  describe('calculateDistance edge cases', () => {
+    it('should calculate distance between same point', () => {
+      const point: GeoCoordinates = {
+        latitude: 35.6812,
+        longitude: 139.7671,
+      };
+
+      const distance = calculateDistance(point, point);
+      expect(distance).toBe(0);
+    });
+
+    it('should calculate distance between antipodal points', () => {
+      const point1: GeoCoordinates = {
+        latitude: 90,
+        longitude: 0,
+      };
+      const point2: GeoCoordinates = {
+        latitude: -90,
+        longitude: 0,
+      };
+
+      const distance = calculateDistance(point1, point2);
+      // Approximate distance to Earth's poles
+      expect(distance).toBeGreaterThan(19000000); // ~20,000 km
+    });
+
+    it('should calculate distance at equator', () => {
+      const point1: GeoCoordinates = {
+        latitude: 0,
+        longitude: 0,
+      };
+      const point2: GeoCoordinates = {
+        latitude: 0,
+        longitude: 1,
+      };
+
+      const distance = calculateDistance(point1, point2);
+      // At equator, 1 degree longitude is ~111 km
+      expect(distance).toBeGreaterThan(100000);
+      expect(distance).toBeLessThan(120000);
+    });
   });
 });

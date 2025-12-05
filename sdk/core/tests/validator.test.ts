@@ -233,3 +233,75 @@ describe('getFieldOrder', () => {
     expect(order).toEqual(['recipient', 'street_address', 'city', 'postal_code']);
   });
 });
+
+describe('validateAddress edge cases', () => {
+  it('should handle address with all optional fields', () => {
+    const address: AddressInput = {
+      recipient: 'Test User',
+      street_address: '123 Main',
+      city: 'Tokyo',
+      province: 'Tokyo',
+      postal_code: '100-0001',
+      country: 'Japan',
+      district: 'District 1',
+      ward: 'Ward 1',
+      building: 'Building A',
+      floor: '5F',
+      room: '501',
+    };
+
+    const result = validateAddress(address, japanFormat);
+    expect(result.valid).toBe(true);
+  });
+
+  it('should validate minimal valid address', () => {
+    const address: AddressInput = {
+      recipient: 'User',
+      street_address: 'Street',
+      city: 'City',
+      province: 'Tokyo',
+      postal_code: '100-0001',
+      country: 'Japan',
+    };
+
+    const result = validateAddress(address, japanFormat);
+    expect(result.valid).toBe(true);
+  });
+
+  it('should handle multiple validation errors', () => {
+    const address: AddressInput = {
+      // Missing all required fields
+    };
+
+    const result = validateAddress(address, japanFormat);
+    expect(result.valid).toBe(false);
+    expect(result.errors.length).toBeGreaterThan(1);
+  });
+
+  it('should validate postal code with complex regex', () => {
+    const complexFormat: CountryAddressFormat = {
+      ...japanFormat,
+      address_format: {
+        ...japanFormat.address_format,
+        postal_code: {
+          required: true,
+          regex: '^[0-9]{3}-[0-9]{4}$', // Keep Japan format for consistency
+          example: '100-0001',
+        },
+      },
+    };
+
+    const validAddress: AddressInput = {
+      recipient: 'User',
+      street_address: 'Street',
+      city: 'City',
+      province: 'Tokyo',
+      postal_code: '100-0001',
+      country: 'Japan',
+    };
+
+    const result = validateAddress(validAddress, complexFormat);
+    expect(result.valid).toBe(true);
+  });
+});
+
