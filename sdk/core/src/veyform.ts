@@ -85,6 +85,22 @@ export interface VeyformConfig {
   
   /** Custom analytics endpoint */
   analyticsEndpoint?: string;
+  
+  /** Enable auto-translation for address fields */
+  enableAutoTranslation?: boolean;
+  
+  /** Translation service configuration */
+  translationService?: {
+    service: 'libretranslate' | 'apertium' | 'argostranslate' | 'mymemory';
+    endpoint?: string;
+    apiKey?: string;
+  };
+  
+  /** Languages to auto-translate addresses to */
+  autoTranslationTargets?: string[];
+  
+  /** Always include native and delivery languages in address forms */
+  includeDeliveryLanguages?: boolean;
 }
 
 /** Analytics event types */
@@ -141,6 +157,17 @@ export interface FormState {
   touched: Record<string, boolean>;
   isValid: boolean;
   completionRate: number;
+  /** Multi-language address data */
+  multiLanguageData?: {
+    native?: Record<string, string>;
+    english?: Record<string, string>;
+    deliveryLanguages?: Array<{
+      language: string;
+      fields: Record<string, string>;
+    }>;
+  };
+  /** Available input languages for current country */
+  availableInputLanguages?: string[];
 }
 
 /**
