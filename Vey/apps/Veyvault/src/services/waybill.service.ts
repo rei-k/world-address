@@ -1,6 +1,12 @@
 /**
  * Waybill Service
  * Handles creation and management of shipping labels (waybills)
+ * 
+ * Enhanced with:
+ * - Storage optimization (caching, compression)
+ * - Webhook notifications
+ * - Carrier integration with circuit breaker
+ * - Multiple storage patterns support
  */
 
 import type {
@@ -12,6 +18,25 @@ import type {
   WalletPass,
   DeliveryHistoryFilter,
 } from '../types';
+
+// Import enhanced services
+import { WaybillStorageService } from './waybill-storage.service';
+import { WaybillWebhookService, WebhookEventType, WaybillWebhookEvents } from './waybill-webhook.service';
+import { CarrierIntegrationService } from './carrier-integration.service';
+
+// Initialize enhanced services
+const storageService = new WaybillStorageService({
+  cacheEnabled: true,
+  cacheTTL: 3600,
+  compressionEnabled: true,
+  encryptionAlgorithm: 'AES-256-GCM',
+  retryAttempts: 3,
+  retryBackoff: 'exponential',
+});
+
+const webhookService = new WaybillWebhookService();
+const webhookEvents = new WaybillWebhookEvents(webhookService);
+const carrierService = new CarrierIntegrationService();
 
 /**
  * Generate QR code data for VeyPOS integration
@@ -31,7 +56,7 @@ export function generateVeyPOSQRCode(waybill: Waybill): string {
 }
 
 /**
- * Create a new waybill
+ * Create a new waybill (enhanced with storage and notifications)
  */
 export async function createWaybill(
   request: CreateWaybillRequest,
@@ -67,7 +92,12 @@ export async function createWaybill(
   // Generate QR code
   waybill.qrCode = generateVeyPOSQRCode(waybill);
 
-  // TODO: Save to database via API
+  // Save to enhanced storage (with caching and compression)
+  await storageService.storeWaybill(waybill);
+
+  // Emit webhook event for waybill creation
+  await webhookEvents.onWaybillCreated(waybill);
+
   return waybill;
 }
 
@@ -299,3 +329,186 @@ function generateTrackingNumber(): string {
   const random = Math.random().toString(36).substr(2, 6).toUpperCase();
   return `${prefix}${timestamp}${random}`;
 }
+
+// ========== Enhanced Functions ==========
+
+/**
+ * Retrieve waybill from storage (with caching)
+ */
+export async function getWaybill(waybillId: string): Promise<Waybill | null> {
+  return await storageService.retrieveWaybill(waybillId);
+}
+
+/**
+ * Batch create waybills (improved performance)
+ */
+export async function createWaybillsBatch(
+  requests: CreateWaybillRequest[],
+  userId: string
+): Promise<Waybill[]> {
+  const waybills = await Promise.all(
+    requests.map(request => createWaybill(request, userId))
+  );
+  return waybills;
+}
+
+/**
+ * Get waybill history with pagination
+ */
+export async function getWaybillHistory(
+  userId: string,
+  options: {
+    limit?: number;
+    offset?: number;
+    status?: Waybill['status'];
+    startDate?: Date;
+    endDate?: Date;
+  } = {}
+): Promise<{ waybills: Waybill[]; total: number }> {
+  return await storageService.getWaybillHistory(userId, options);
+}
+
+/**
+ * Delete waybill
+ */
+export async function deleteWaybill(waybillId: string): Promise<void> {
+  await storageService.deleteWaybill(waybillId);
+}
+
+/**
+ * Get storage metrics
+ */
+export function getStorageMetrics() {
+  return storageService.getMetrics();
+}
+
+/**
+ * Subscribe to waybill webhooks
+ */
+export async function subscribeToWebhooks(params: {
+  userId: string;
+  url: string;
+  events: WebhookEventType[];
+  secret: string;
+}) {
+  return await webhookService.subscribe({
+    userId: params.userId,
+    url: params.url,
+    events: params.events,
+    secret: params.secret,
+    isActive: true,
+    retryConfig: {
+      maxAttempts: 3,
+      backoffMultiplier: 2,
+    },
+  });
+}
+
+/**
+ * Unsubscribe from webhooks
+ */
+export async function unsubscribeFromWebhooks(
+  userId: string,
+  subscriptionId: string
+): Promise<boolean> {
+  return await webhookService.unsubscribe(userId, subscriptionId);
+}
+
+/**
+ * Get webhook queue status
+ */
+export function getWebhookQueueStatus() {
+  return webhookService.getQueueStatus();
+}
+
+/**
+ * Get carrier performance metrics
+ */
+export function getCarrierMetrics(carrierId: string) {
+  return carrierService.getCarrierMetrics(carrierId);
+}
+
+/**
+ * Get all carriers sorted by performance
+ */
+export function getCarriersByPerformance() {
+  return carrierService.getCarriersByPerformance();
+}
+
+/**
+ * Submit delivery with automatic carrier fallback
+ */
+export async function submitDeliveryWithFallback(
+  request: SubmitDeliveryRequest,
+  userId: string,
+  fallbackCarrierIds: string[] = []
+): Promise<DeliveryRequest> {
+  // Retrieve waybill
+  const waybill = await getWaybill(request.waybillId);
+  if (!waybill) {
+    throw new Error('Waybill not found');
+  }
+
+  // Try to generate waybill with carrier (with fallback)
+  const result = await carrierService.generateWaybillWithFallback(
+    request.carrierId,
+    fallbackCarrierIds,
+    {
+      waybill,
+      serviceType: request.carrierServiceId,
+      pickupDate: request.pickupDate,
+    }
+  );
+
+  if (!result.success || !result.data) {
+    throw new Error(result.error?.message || 'Failed to generate waybill with carrier');
+  }
+
+  // Create delivery request
+  const deliveryRequest: DeliveryRequest = {
+    id: generateId(),
+    userId,
+    waybillId: request.waybillId,
+    carrierId: request.carrierId,
+    carrierServiceId: request.carrierServiceId,
+    status: 'new',
+    trackingNumber: result.data.trackingNumber,
+    pickupScheduled: request.pickupDate,
+    estimatedDelivery: result.data.estimatedDelivery,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+
+  // Update waybill with tracking info
+  waybill.status = 'submitted';
+  waybill.trackingNumber = result.data.trackingNumber;
+  waybill.carrierId = request.carrierId;
+  waybill.updatedAt = new Date();
+  await storageService.storeWaybill(waybill);
+
+  // Emit webhook event
+  await webhookEvents.onDeliveryStatusUpdate(deliveryRequest, waybill);
+
+  return deliveryRequest;
+}
+
+/**
+ * Batch submit deliveries
+ */
+export async function submitDeliveriesBatch(
+  requests: SubmitDeliveryRequest[],
+  userId: string
+): Promise<DeliveryRequest[]> {
+  return await Promise.all(
+    requests.map(request => submitDeliveryRequest(request, userId))
+  );
+}
+
+// Export enhanced services for advanced usage
+export {
+  storageService,
+  webhookService,
+  webhookEvents,
+  carrierService,
+  WebhookEventType,
+};
