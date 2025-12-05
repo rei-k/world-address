@@ -240,6 +240,260 @@ const client = createVeyClient({
 });
 ```
 
+## 🌍 Multi-Language Support
+
+Veyform provides comprehensive multi-language support with automatic persistence and synchronization across form fields.
+
+### Basic Language Configuration
+
+```typescript
+import { createVeyform } from '@vey/core';
+
+const veyform = createVeyform({
+  apiKey: 'your-api-key',
+  defaultLanguage: 'en',
+  allowedLanguages: ['en', 'ja', 'zh', 'ko'],
+});
+```
+
+### Language Preference Persistence
+
+Configure automatic language preference saving to localStorage or sessionStorage:
+
+```typescript
+const veyform = createVeyform({
+  apiKey: 'your-api-key',
+  defaultLanguage: 'en',
+  allowedLanguages: ['en', 'ja', 'zh', 'ko'],
+  languageStorage: {
+    enabled: true,                        // Enable persistence
+    storageType: 'localStorage',          // 'localStorage' or 'sessionStorage'
+    storageKey: 'veyform_language_preference' // Custom key (optional)
+  }
+});
+```
+
+### Language Change Callbacks
+
+React to language changes in real-time:
+
+```typescript
+const veyform = createVeyform({
+  apiKey: 'your-api-key',
+  defaultLanguage: 'en',
+  onLanguageChange: (newLanguage, previousLanguage) => {
+    console.log(`Language changed from ${previousLanguage} to ${newLanguage}`);
+    // Update UI, fetch translations, etc.
+  }
+});
+```
+
+### Programmatic Language Control
+
+```typescript
+// Get current language
+const currentLang = veyform.getLanguage();
+console.log('Current language:', currentLang); // 'en'
+
+// Change language
+veyform.setLanguage('ja'); // Changes to Japanese
+
+// Get available languages
+const languages = veyform.getAvailableLanguages();
+console.log('Available languages:', languages); // ['en', 'ja', 'zh', 'ko']
+
+// Clear saved language preference
+veyform.clearLanguagePreference();
+```
+
+### Complete Example with Language Switcher
+
+```typescript
+import { createVeyform } from '@vey/core';
+
+// Initialize with language support
+const veyform = createVeyform({
+  apiKey: 'your-api-key',
+  defaultCountry: 'JP',
+  defaultLanguage: 'en',
+  allowedLanguages: ['en', 'ja', 'zh', 'ko'],
+  languageStorage: {
+    enabled: true,
+    storageType: 'localStorage'
+  },
+  onLanguageChange: (newLang, prevLang) => {
+    console.log(`Language switched from ${prevLang} to ${newLang}`);
+    
+    // Update form fields with new language labels
+    const fields = veyform.getFormFields(veyform.getFormState().country!, newLang);
+    updateFormUI(fields);
+  }
+});
+
+// Language switcher implementation
+function createLanguageSwitcher() {
+  const languages = veyform.getAvailableLanguages();
+  const currentLang = veyform.getLanguage();
+  
+  languages.forEach(lang => {
+    const button = document.createElement('button');
+    button.textContent = lang.toUpperCase();
+    button.className = lang === currentLang ? 'active' : '';
+    button.onclick = () => veyform.setLanguage(lang);
+    document.getElementById('lang-switcher').appendChild(button);
+  });
+}
+
+// Get localized form fields
+veyform.selectCountry('JP');
+const fields = veyform.getFormFields('JP', veyform.getLanguage());
+
+// Fields will have localized labels and placeholders
+fields.forEach(field => {
+  console.log(`${field.name}:`, field.labels[veyform.getLanguage()]);
+  // Example: "postal_code: 郵便番号" (in Japanese)
+});
+```
+
+### React Integration Example
+
+```tsx
+import { createVeyform } from '@vey/core';
+import { useState, useEffect } from 'react';
+
+function AddressForm() {
+  const [veyform] = useState(() => createVeyform({
+    apiKey: 'your-api-key',
+    defaultLanguage: 'en',
+    allowedLanguages: ['en', 'ja', 'zh', 'ko'],
+    languageStorage: { enabled: true },
+    onLanguageChange: (newLang) => {
+      setCurrentLanguage(newLang);
+    }
+  }));
+  
+  const [currentLanguage, setCurrentLanguage] = useState(veyform.getLanguage());
+  const [fields, setFields] = useState([]);
+  
+  useEffect(() => {
+    if (veyform.getFormState().country) {
+      const formFields = veyform.getFormFields(
+        veyform.getFormState().country,
+        currentLanguage
+      );
+      setFields(formFields);
+    }
+  }, [currentLanguage]);
+  
+  return (
+    <div>
+      {/* Language switcher */}
+      <div className="language-switcher">
+        {veyform.getAvailableLanguages().map(lang => (
+          <button
+            key={lang}
+            onClick={() => veyform.setLanguage(lang)}
+            className={lang === currentLanguage ? 'active' : ''}
+          >
+            {lang.toUpperCase()}
+          </button>
+        ))}
+      </div>
+      
+      {/* Form fields with localized labels */}
+      <form>
+        {fields.map(field => (
+          <div key={field.name}>
+            <label>{field.labels[currentLanguage]}</label>
+            <input
+              type="text"
+              placeholder={field.placeholders[currentLanguage]}
+              onChange={(e) => veyform.setFieldValue(field.name, e.target.value)}
+            />
+          </div>
+        ))}
+      </form>
+    </div>
+  );
+}
+```
+
+### Vue Integration Example
+
+```vue
+<script setup lang="ts">
+import { createVeyform } from '@vey/core';
+import { ref, computed, watch } from 'vue';
+
+const veyform = createVeyform({
+  apiKey: 'your-api-key',
+  defaultLanguage: 'en',
+  allowedLanguages: ['en', 'ja', 'zh', 'ko'],
+  languageStorage: { enabled: true },
+  onLanguageChange: (newLang) => {
+    currentLanguage.value = newLang;
+  }
+});
+
+const currentLanguage = ref(veyform.getLanguage());
+const availableLanguages = veyform.getAvailableLanguages();
+
+const fields = computed(() => {
+  const country = veyform.getFormState().country;
+  if (!country) return [];
+  return veyform.getFormFields(country, currentLanguage.value);
+});
+
+function switchLanguage(lang: string) {
+  veyform.setLanguage(lang);
+}
+</script>
+
+<template>
+  <div>
+    <!-- Language switcher -->
+    <div class="language-switcher">
+      <button
+        v-for="lang in availableLanguages"
+        :key="lang"
+        @click="switchLanguage(lang)"
+        :class="{ active: lang === currentLanguage }"
+      >
+        {{ lang.toUpperCase() }}
+      </button>
+    </div>
+    
+    <!-- Form fields with localized labels -->
+    <form>
+      <div v-for="field in fields" :key="field.name">
+        <label>{{ field.labels[currentLanguage] }}</label>
+        <input
+          type="text"
+          :placeholder="field.placeholders[currentLanguage]"
+          @input="veyform.setFieldValue(field.name, $event.target.value)"
+        />
+      </div>
+    </form>
+  </div>
+</template>
+```
+
+### Language Storage Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `enabled` | `boolean` | `true` | Enable/disable language persistence |
+| `storageType` | `'localStorage' \| 'sessionStorage'` | `'localStorage'` | Where to store preference |
+| `storageKey` | `string` | `'veyform_language_preference'` | Custom storage key name |
+
+### Best Practices
+
+1. **Always provide a default language** - Ensures a fallback when no preference is saved
+2. **Limit allowed languages** - Only enable languages you have translations for
+3. **Use language callbacks** - Update UI immediately when language changes
+4. **Enable persistence** - Save user's language preference for better UX
+5. **Validate saved preferences** - The SDK automatically validates saved languages against `allowedLanguages`
+
 ## 📡 Webhooks
 
 ```typescript
