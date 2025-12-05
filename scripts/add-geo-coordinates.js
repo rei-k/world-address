@@ -447,8 +447,8 @@ function addGeoCoordinates() {
           longitude: coords.lon,
           accuracy: 1000,
           source: 'database',
-          captured_at: timestamp
-        }
+          captured_at: timestamp,
+        },
       };
       
       // Convert back to YAML
@@ -457,7 +457,7 @@ function addGeoCoordinates() {
         lineWidth: -1,
         noRefs: true,
         quotingType: '"',
-        forceQuotes: false
+        forceQuotes: false,
       });
       
       // Write back to file

@@ -1,0 +1,185 @@
+{
+  "name": {
+    "en": "West Bank",
+    "local": [
+      {
+        "lang": "ar",
+        "value": "الضفة الغربية",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "parent_country": {
+    "alpha2": "PS",
+    "name": "Palestine"
+  },
+  "type": "Region",
+  "note": "Different address system from Gaza - distinct road naming conventions",
+  "languages": [
+    {
+      "name": "Arabic",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "الضفة الغربية"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "country_name": "West Bank"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Governorate",
+      "label_local": "محافظة",
+      "label_en": "Governorate",
+      "count": 11,
+      "names": [
+        "Jenin",
+        "Tubas",
+        "Tulkarm",
+        "Nablus",
+        "Qalqilya",
+        "Salfit",
+        "Ramallah and al-Bireh",
+        "Jericho",
+        "Jerusalem",
+        "Bethlehem",
+        "Hebron"
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street_address",
+          "building",
+          "neighborhood",
+          "city",
+          "governorate",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "street_address",
+          "neighborhood",
+          "city",
+          "governorate",
+          "West Bank",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": false,
+      "description": "Limited postal code system",
+      "note": "Some areas use Israeli postal codes"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "rules": [
+      "Different road naming system from Gaza",
+      "City and governorate essential for delivery",
+      "Some overlap with Israeli address system in certain areas"
+    ]
+  },
+  "examples": {
+    "domestic_raw": "شارع المنارة، البيرة، رام الله",
+    "domestic_normalized": "شارع المنارة البيرة رام الله",
+    "international": "Al-Manara Street, Al-Bireh, Ramallah, West Bank, Palestine"
+  },
+  "status": {
+    "disputed": true,
+    "special_region": true,
+    "note": "Different address system from Gaza Strip - important for comparative address mapping"
+  },
+  "geo": {
+    "center": {
+      "latitude": 31.9466,
+      "longitude": 35.2333,
+      "accuracy": 1000,
+      "source": "database",
+      "captured_at": "2025-12-05T19:54:11.627Z"
+    },
+    "bounds": {
+      "northeast": {
+        "latitude": 32.5521,
+        "longitude": 35.5739
+      },
+      "southwest": {
+        "latitude": 31.3534,
+        "longitude": 34.8897
+      }
+    }
+  },
+  "pos": {
+    "currency": {
+      "code": "ILS",
+      "symbol": "₪",
+      "symbol_position": "before",
+      "decimal_places": 2,
+      "decimal_separator": ".",
+      "thousands_separator": ","
+    },
+    "tax": {
+      "type": "VAT",
+      "rate": {
+        "standard": null
+      },
+      "included_in_price": true,
+      "invoice_requirement": "optional"
+    },
+    "receipt": {
+      "required_fields": [
+        "business_name",
+        "date",
+        "items",
+        "total"
+      ],
+      "paper_width": "80mm",
+      "electronic_allowed": true,
+      "retention_period": "5 years"
+    },
+    "fiscal": {
+      "fiscal_device_required": false,
+      "registration_required": false,
+      "reporting_frequency": "varies"
+    },
+    "payment_methods": [
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "high"
+      },
+      {
+        "type": "credit_card",
+        "name": "Credit Card",
+        "prevalence": "medium"
+      }
+    ],
+    "locale": {
+      "date_format": "YYYY-MM-DD",
+      "time_format": "24h",
+      "timezone": "Asia/Hebron",
+      "week_start": "monday"
+    },
+    "business_hours": {
+      "typical_open": "09:00",
+      "typical_close": "18:00",
+      "sunday_trading": true,
+      "public_holidays_trading": false
+    }
+  }
+}

@@ -1,0 +1,156 @@
+name:
+  en: Golan Heights
+  local:
+    - lang: ar
+      value: الجولان
+      script: Arabic
+      direction: rtl
+    - lang: he
+      value: רמת הגולן
+      script: Hebrew
+      direction: rtl
+parent_country:
+  primary: SY
+  administered_by: IL
+  note: Disputed territory - de jure Syria, de facto Israel since 1967
+type: Disputed Region
+note: Rare case - two competing address systems (Israeli and Syrian) coexist in one territory - dual PID candidates
+languages:
+  - name: Hebrew
+    script: Hebrew
+    direction: rtl
+    role: administrative
+    country_name: רמת הגולן
+    note: Used in Israeli-administered areas
+  - name: Arabic
+    script: Arabic
+    direction: rtl
+    role: traditional
+    country_name: الجولان
+    note: Used by Druze population and Syrian claimants
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Golan Heights
+administrative_divisions:
+  israeli_system:
+    type: Regional Council
+    label_local: מועצה אזורית
+    label_en: Regional Council
+    count: 1
+    name: Golan Regional Council
+  syrian_system:
+    type: District
+    label_local: منطقة
+    label_en: District
+    note: Quneitra Governorate (pre-1967)
+address_format:
+  order_variants:
+    - context: israeli_system
+      order:
+        - recipient
+        - street_address
+        - settlement
+        - regional_council
+        - postal_code
+        - country
+    - context: syrian_system
+      order:
+        - recipient
+        - street_address
+        - village
+        - district
+        - country
+  postal_code:
+    israeli_system:
+      required: true
+      regex: ^[0-9]{7}$
+      description: Israeli 7-digit postal code
+      example: '1290000'
+    syrian_system:
+      required: false
+      description: Syrian postal codes not in use
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - Two competing address systems exist
+    - Israeli system uses Hebrew/English with 7-digit postal codes
+    - Syrian system uses Arabic without postal codes
+    - AMF-Geo educational case - dual addressing paradigm
+examples:
+  israeli_system: Katzrin, Golan Regional Council 1290000, Israel
+  syrian_system: القنيطرة، الجولان، سوريا
+  international: Golan Heights (Disputed Territory)
+status:
+  disputed: true
+  un_status: occupied_territory
+  administered_by: Israel
+  claimed_by: Syria
+  recognized_by_un_as: Syrian territory under Israeli occupation
+  note: Rare case of two complete address systems in one territory - extremely valuable for AMF research
+geo:
+  center:
+    latitude: 32.9167
+    longitude: 35.7667
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-05T19:54:11.627Z'
+  bounds:
+    northeast:
+      latitude: 33.3167
+      longitude: 36.0167
+    southwest:
+      latitude: 32.7
+      longitude: 35.5667
+pos:
+  currency_israeli_system:
+    code: ILS
+    symbol: ₪
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  currency_syrian_system:
+    code: SYP
+    symbol: £S
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Jerusalem
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

@@ -80,7 +80,7 @@ function main() {
     }
   });
 
-  console.log(`\n✅ Conversion complete!`);
+  console.log('\n✅ Conversion complete!');
   console.log(`   Success: ${successCount}`);
   console.log(`   Errors:  ${errorCount}`);
   console.log(`   Total:   ${yamlFiles.length}`);

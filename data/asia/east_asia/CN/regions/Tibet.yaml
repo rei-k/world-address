@@ -1,0 +1,153 @@
+name:
+  en: Tibet Autonomous Region
+  local:
+    - lang: zh
+      value: 西藏自治区
+      script: Han
+      direction: ltr
+    - lang: bo
+      value: བོད་རང་སྐྱོང་ལྗོངས།
+      script: Tibetan
+      direction: ltr
+parent_country:
+  alpha2: CN
+  name: China
+type: Autonomous Region
+note: Tibetan script and Chinese address coexist - hierarchical rules differ slightly - ideal for extended AMF-Geo learning
+languages:
+  - name: Tibetan
+    script: Tibetan
+    direction: ltr
+    role: official
+    country_name: བོད་རང་སྐྱོང་ལྗོངས།
+  - name: Chinese
+    script: Han
+    direction: ltr
+    role: official
+    country_name: 西藏自治区
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Tibet Autonomous Region
+administrative_divisions:
+  level1:
+    type: Prefecture
+    label_local: 地级市/地区
+    label_en: Prefecture-level City/Prefecture
+    count: 7
+    names:
+      - Lhasa
+      - Shigatse
+      - Chamdo
+      - Nyingchi
+      - Shannan
+      - Nagqu
+      - Ngari
+  level2:
+    type: County
+    label_local: 县
+    label_en: County
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - province
+        - prefecture
+        - county
+        - township
+        - village
+        - street_address
+        - building
+        - postal_code
+        - country
+    - context: international
+      order:
+        - recipient
+        - building
+        - street_address
+        - village
+        - township
+        - county
+        - prefecture
+        - province
+        - postal_code
+        - country
+  postal_code:
+    required: true
+    regex: ^85[0-9]{4}$
+    description: Tibet postal codes start with 85
+    example: '850000'
+validation:
+  allow_latin_transliteration: true
+  dual_script: true
+  rules:
+    - Tibetan and Chinese scripts both used
+    - Hierarchical structure slightly different from standard Chinese provinces
+    - Postal codes start with 85xxxx
+    - Ideal teaching material for extended AMF-Geo
+examples:
+  tibetan_script: བོད་རང་སྐྱོང་ལྗོངས། ལྷ་ས་གྲོང་ཁྱེར། 850000
+  chinese_script: 西藏自治区拉萨市 850000
+  international: Lhasa, Tibet Autonomous Region 850000, China
+status:
+  autonomous_region: true
+  note: Dual script system - Tibetan and Chinese address hierarchies differ
+geo:
+  center:
+    latitude: 29.6520
+    longitude: 91.1720
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-05T19:54:11.627Z'
+pos:
+  currency:
+    code: CNY
+    symbol: ¥
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: medium
+    - type: mobile
+      name: WeChat Pay
+      prevalence: high
+    - type: mobile
+      name: Alipay
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Shanghai
+    week_start: monday
+  business_hours:
+    typical_open: '10:00'
+    typical_close: '19:00'
+    sunday_trading: true
+    public_holidays_trading: true

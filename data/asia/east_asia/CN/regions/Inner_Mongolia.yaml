@@ -1,0 +1,161 @@
+name:
+  en: Inner Mongolia Autonomous Region
+  local:
+    - lang: zh
+      value: 内蒙古自治区
+      script: Han
+      direction: ltr
+    - lang: mn
+      value: ᠥᠪᠥᠷ ᠮᠣᠩᠭᠣᠯ ᠤᠨ ᠥᠪᠡᠷᠲᠡᠭᠡᠨ ᠵᠠᠰᠠᠬᠤ ᠣᠷᠣᠨ
+      script: Mongolian
+      direction: ltr
+parent_country:
+  alpha2: CN
+  name: China
+type: Autonomous Region
+note: Mongolian script coexistence - hierarchical patterns differ from standard Chinese provinces
+languages:
+  - name: Mongolian
+    script: Mongolian
+    direction: ltr
+    role: official
+    country_name: ᠥᠪᠥᠷ ᠮᠣᠩᠭᠣᠯ
+    note: Traditional Mongolian script used
+  - name: Chinese
+    script: Han
+    direction: ltr
+    role: official
+    country_name: 内蒙古自治区
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Inner Mongolia Autonomous Region
+administrative_divisions:
+  level1:
+    type: Prefecture
+    label_local: 盟/市
+    label_en: League/Prefecture-level City
+    count: 12
+    note: Unique "League" system alongside prefecture-level cities
+    names:
+      - Hohhot
+      - Baotou
+      - Wuhai
+      - Chifeng
+      - Tongliao
+      - Ordos
+      - Hulunbuir
+      - Bayannur
+      - Ulanqab
+      - Hinggan League
+      - Xilin Gol League
+      - Alxa League
+  level2:
+    type: County/Banner
+    label_local: 县/旗
+    label_en: County/Banner
+    note: Traditional "Banner" divisions unique to Inner Mongolia
+address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - province
+        - prefecture
+        - county_banner
+        - township
+        - village
+        - street_address
+        - building
+        - postal_code
+        - country
+    - context: international
+      order:
+        - recipient
+        - building
+        - street_address
+        - village
+        - township
+        - county_banner
+        - prefecture
+        - province
+        - postal_code
+        - country
+  postal_code:
+    required: true
+    regex: ^01[0-9]{4}$
+    description: Inner Mongolia postal codes start with 01
+    example: '010000'
+validation:
+  allow_latin_transliteration: true
+  dual_script: true
+  rules:
+    - Mongolian and Chinese scripts both used
+    - Unique "League" and "Banner" administrative divisions
+    - Postal codes start with 01xxxx
+    - Different hierarchical patterns from standard provinces
+examples:
+  mongolian_script: ᠥᠪᠥᠷ ᠮᠣᠩᠭᠣᠯ ᠬᠥᠬᠡᠬᠣᠲᠠ 010000
+  chinese_script: 内蒙古自治区呼和浩特市 010000
+  international: Hohhot, Inner Mongolia Autonomous Region 010000, China
+status:
+  autonomous_region: true
+  note: Dual script system - unique League/Banner administrative structure
+geo:
+  center:
+    latitude: 43.6708
+    longitude: 116.6661
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-05T19:54:11.627Z'
+pos:
+  currency:
+    code: CNY
+    symbol: ¥
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: medium
+    - type: mobile
+      name: WeChat Pay
+      prevalence: high
+    - type: mobile
+      name: Alipay
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Asia/Shanghai
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: true

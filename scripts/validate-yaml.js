@@ -40,7 +40,7 @@ function hasNestedField(obj, fieldPath) {
   let current = obj;
   
   for (const part of parts) {
-    if (current == null || typeof current !== 'object' || !(part in current)) {
+    if (current === null || current === undefined || typeof current !== 'object' || !(part in current)) {
       return false;
     }
     current = current[part];
@@ -64,7 +64,7 @@ function validateYamlFile(filePath) {
       errors.push({
         file: filePath,
         type: 'PARSE_ERROR',
-        message: 'Invalid YAML structure: not an object'
+        message: 'Invalid YAML structure: not an object',
       });
       errorFiles++;
       return false;
@@ -77,12 +77,13 @@ function validateYamlFile(filePath) {
       return true;
     }
     
-    // For regions, overseas territories, claims, stations, and subregions, only require name.en
+    // For regions, overseas territories, claims, stations, subregions, and disputed territories, only require name.en
     const isSpecialRegion = filePath.includes('/regions/') || 
                            filePath.includes('/overseas/') ||
                            filePath.includes('/claims/') ||
                            filePath.includes('/stations/') ||
-                           filePath.includes('/subregions/');
+                           filePath.includes('/subregions/') ||
+                           filePath.includes('/disputed/');
     
     const requiredForThisFile = isSpecialRegion 
       ? ['name.en']
@@ -100,7 +101,7 @@ function validateYamlFile(filePath) {
       errors.push({
         file: filePath,
         type: 'MISSING_FIELDS',
-        message: `Missing required fields: ${missingFields.join(', ')}`
+        message: `Missing required fields: ${missingFields.join(', ')}`,
       });
       errorFiles++;
       return false;
@@ -119,7 +120,7 @@ function validateYamlFile(filePath) {
         errors.push({
           file: filePath,
           type: 'WARNING',
-          message: `Missing recommended fields: ${missingRecommended.join(', ')}`
+          message: `Missing recommended fields: ${missingRecommended.join(', ')}`,
         });
       }
     }
@@ -131,7 +132,7 @@ function validateYamlFile(filePath) {
     errors.push({
       file: filePath,
       type: 'PARSE_ERROR',
-      message: error.message
+      message: error.message,
     });
     errorFiles++;
     return false;
@@ -198,7 +199,7 @@ function main() {
     const errorsByType = {
       PARSE_ERROR: [],
       MISSING_FIELDS: [],
-      WARNING: []
+      WARNING: [],
     };
     
     for (const error of errors) {

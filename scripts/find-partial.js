@@ -38,7 +38,7 @@ function calculateCompleteness(data) {
   }
   return {
     percentage: (presentFields / FULL_SCHEMA_FIELDS.length) * 100,
-    missing
+    missing,
   };
 }
 
@@ -74,7 +74,7 @@ for (const file of yamlFiles) {
           code: data.iso_codes.alpha2,
           name: data.name?.en || 'Unknown',
           completeness: Math.round(result.percentage),
-          missing: result.missing
+          missing: result.missing,
         });
       }
     }

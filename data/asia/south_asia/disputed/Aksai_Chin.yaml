@@ -1,0 +1,173 @@
+name:
+  en: Aksai Chin
+  local:
+    - lang: zh
+      value: 阿克赛钦
+      script: Han
+      direction: ltr
+    - lang: hi
+      value: अक्साई चिन
+      script: Devanagari
+      direction: ltr
+type: Disputed Territory
+note: Chinese and Indian address systems intersect - extremely difficult case even for address researchers
+disputed_between:
+  - country: CN
+    name: China
+    administered_as: Part of Xinjiang and Tibet
+    status: De facto control
+  - country: IN
+    name: India
+    claimed_as: Part of Ladakh (Union Territory)
+    status: De jure claim
+languages:
+  - name: Chinese
+    script: Han
+    direction: ltr
+    role: administrative
+    country_name: 阿克赛钦
+    note: Used in Chinese-administered areas
+  - name: Hindi
+    script: Devanagari
+    direction: ltr
+    role: claimed
+    country_name: अक्साई चिन
+    note: Used in Indian claims
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Aksai Chin
+administrative_divisions:
+  chinese_system:
+    type: County/Prefecture
+    label_local: 县/地区
+    label_en: County/Prefecture
+    note: Administered as part of Hotan Prefecture (Xinjiang) and Ngari Prefecture (Tibet)
+  indian_system:
+    type: Union Territory
+    label_local: केंद्र शासित प्रदेश
+    label_en: Union Territory
+    note: Claimed as part of Ladakh Union Territory
+address_format:
+  order_variants:
+    - context: chinese_system
+      order:
+        - recipient
+        - province
+        - prefecture
+        - county
+        - township
+        - village
+        - street_address
+        - postal_code
+        - country
+    - context: indian_system
+      order:
+        - recipient
+        - street_address
+        - locality
+        - district
+        - state
+        - postal_code
+        - country
+  postal_code:
+    chinese_system:
+      required: true
+      regex: ^[0-9]{6}$
+      description: Chinese 6-digit postal code
+      example: '848000'
+      note: Hotan/Ngari postal codes
+    indian_system:
+      required: true
+      regex: ^[1-2][0-9]{5}$
+      description: Indian PIN code (6 digits)
+      example: '194101'
+      note: Ladakh PIN codes (claimed, not in use)
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - Chinese and Indian address systems intersect
+    - Chinese system in actual use with 6-digit postal codes
+    - Indian system exists only in claims
+    - Extremely difficult case for address standardization
+    - Not typically handled even by address research specialists
+examples:
+  chinese_system: 新疆维吾尔自治区和田地区 阿克赛钦 848000
+  indian_system: Aksai Chin, Ladakh 194101, India (claimed)
+  international: Aksai Chin (Disputed Territory - administered by China, claimed by India)
+status:
+  disputed: true
+  un_status: disputed_territory
+  administered_by: CN
+  claimed_by: IN
+  de_facto_control: China
+  de_jure_claim: India
+  note: Exceptionally complex - address researchers rarely handle this level of difficulty
+geo:
+  center:
+    latitude: 35.0
+    longitude: 79.0
+    accuracy: 50000
+    source: database
+    captured_at: '2025-12-05T19:54:11.627Z'
+    note: Approximate center - highly disputed
+  bounds:
+    northeast:
+      latitude: 36.5
+      longitude: 81.0
+    southwest:
+      latitude: 33.5
+      longitude: 77.0
+pos:
+  currency_chinese_system:
+    code: CNY
+    symbol: ¥
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  currency_indian_system:
+    code: INR
+    symbol: ₹
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: low
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone_chinese: Asia/Urumqi
+    timezone_indian: Asia/Kolkata
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

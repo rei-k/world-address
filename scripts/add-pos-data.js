@@ -568,10 +568,10 @@ function getDefaultPOSData(countryCode) {
   const taxType = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB'].includes(countryCode) 
     ? 'VAT' 
     : ['AU', 'NZ', 'SG', 'IN', 'MY', 'CA'].includes(countryCode)
-    ? 'GST'
-    : ['US'].includes(countryCode)
-    ? 'Sales Tax'
-    : 'VAT';
+      ? 'GST'
+      : ['US'].includes(countryCode)
+        ? 'Sales Tax'
+        : 'VAT';
 
   // Standard tax rate (default 0 - should be updated with actual rates)
   const standardRate = null;
@@ -583,7 +583,7 @@ function getDefaultPOSData(countryCode) {
       symbol_position: 'before',
       decimal_places: currency.decimal_places,
       decimal_separator: '.',
-      thousands_separator: ','
+      thousands_separator: ',',
     },
     tax: {
       type: taxType,
@@ -591,48 +591,48 @@ function getDefaultPOSData(countryCode) {
         standard: standardRate,
       },
       included_in_price: true,
-      invoice_requirement: 'optional'
+      invoice_requirement: 'optional',
     },
     receipt: {
       required_fields: [
         'business_name',
         'date',
         'items',
-        'total'
+        'total',
       ],
       paper_width: '80mm',
       electronic_allowed: true,
-      retention_period: '5 years'
+      retention_period: '5 years',
     },
     fiscal: {
       fiscal_device_required: false,
       registration_required: false,
-      reporting_frequency: 'varies'
+      reporting_frequency: 'varies',
     },
     payment_methods: [
       {
         type: 'cash',
         name: 'Cash',
-        prevalence: 'high'
+        prevalence: 'high',
       },
       {
         type: 'credit_card',
         name: 'Credit Card',
-        prevalence: 'high'
-      }
+        prevalence: 'high',
+      },
     ],
     locale: {
       date_format: 'YYYY-MM-DD',
       time_format: '24h',
       timezone: timezone || 'UTC',
-      week_start: 'monday'
+      week_start: 'monday',
     },
     business_hours: {
       typical_open: '09:00',
       typical_close: '18:00',
       sunday_trading: true,
-      public_holidays_trading: false
-    }
+      public_holidays_trading: false,
+    },
   };
 }
 
@@ -733,7 +733,7 @@ function addPOSToCountry(filePath) {
           'NO_PB': 'NO',
           'NO_QML': 'NO',
           'NZ_ROSS': 'NZ',
-          'UNCLAIMED': 'AQ'
+          'UNCLAIMED': 'AQ',
         };
         countryCode = claimMap[countryCode] || 'AQ';
       }
@@ -755,7 +755,7 @@ function addPOSToCountry(filePath) {
       indent: 2,
       lineWidth: -1,
       noRefs: true,
-      sortKeys: false
+      sortKeys: false,
     });
 
     fs.writeFileSync(filePath, yamlContent, 'utf8');
@@ -815,7 +815,7 @@ function main() {
     }
   });
 
-  console.log(`\n✅ Processing complete!`);
+  console.log('\n✅ Processing complete!');
   console.log(`   Updated: ${updatedCount}`);
   console.log(`   Skipped: ${skippedCount}`);
   console.log(`   Total:   ${yamlFiles.length}`);

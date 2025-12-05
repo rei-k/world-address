@@ -29,7 +29,7 @@ const categories = {
   countries: [],
   autonomous_territories: [],
   overseas_territories: [],
-  antarctica: []
+  antarctica: [],
 };
 
 for (const filePath of yamlFiles) {
@@ -37,7 +37,9 @@ for (const filePath of yamlFiles) {
     const content = fs.readFileSync(filePath, 'utf8');
     const data = yaml.load(content);
     
-    if (!data || !data.iso_codes || !data.iso_codes.alpha2) continue;
+    if (!data || !data.iso_codes || !data.iso_codes.alpha2) {
+      continue;
+    }
     
     const code = data.iso_codes.alpha2;
     const name = data.name?.en || 'Unknown';

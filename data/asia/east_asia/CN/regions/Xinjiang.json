@@ -1,0 +1,221 @@
+{
+  "name": {
+    "en": "Xinjiang Uyghur Autonomous Region",
+    "local": [
+      {
+        "lang": "zh",
+        "value": "新疆维吾尔自治区",
+        "script": "Han",
+        "direction": "ltr"
+      },
+      {
+        "lang": "ug",
+        "value": "شىنجاڭ ئۇيغۇر ئاپتونوم رايونى",
+        "script": "Arabic",
+        "direction": "rtl"
+      }
+    ]
+  },
+  "parent_country": {
+    "alpha2": "CN",
+    "name": "China"
+  },
+  "type": "Autonomous Region",
+  "note": "Uyghur script coexistence - district system differs from standard Chinese provinces",
+  "languages": [
+    {
+      "name": "Uyghur",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "official",
+      "country_name": "شىنجاڭ ئۇيغۇر ئاپتونوم رايونى"
+    },
+    {
+      "name": "Chinese",
+      "script": "Han",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "新疆维吾尔自治区"
+    },
+    {
+      "name": "Kazakh",
+      "script": "Arabic/Cyrillic",
+      "direction": "rtl",
+      "role": "regional",
+      "note": "Used in some areas"
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "country_name": "Xinjiang Uyghur Autonomous Region"
+    }
+  ],
+  "administrative_divisions": {
+    "level1": {
+      "type": "Prefecture",
+      "label_local": "地区/自治州/地级市",
+      "label_en": "Prefecture/Autonomous Prefecture/Prefecture-level City",
+      "count": 14,
+      "note": "Mix of prefectures, autonomous prefectures, and prefecture-level cities",
+      "names": [
+        "Urumqi",
+        "Karamay",
+        "Turpan",
+        "Hami",
+        "Changji Hui Autonomous Prefecture",
+        "Bortala Mongol Autonomous Prefecture",
+        "Bayingolin Mongol Autonomous Prefecture",
+        "Aksu Prefecture",
+        "Kizilsu Kyrgyz Autonomous Prefecture",
+        "Kashgar Prefecture",
+        "Hotan Prefecture",
+        "Ili Kazakh Autonomous Prefecture",
+        "Tacheng Prefecture",
+        "Altay Prefecture"
+      ]
+    },
+    "level2": {
+      "type": "County/City",
+      "label_local": "县/市",
+      "label_en": "County/County-level City"
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "province",
+          "prefecture",
+          "county",
+          "township",
+          "village",
+          "street_address",
+          "building",
+          "postal_code",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "building",
+          "street_address",
+          "village",
+          "township",
+          "county",
+          "prefecture",
+          "province",
+          "postal_code",
+          "country"
+        ]
+      }
+    ],
+    "postal_code": {
+      "required": true,
+      "regex": "^8[3-4][0-9]{4}$",
+      "description": "Xinjiang postal codes start with 83 or 84",
+      "example": "830000"
+    }
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "dual_script": true,
+    "rules": [
+      "Uyghur (Arabic) and Chinese scripts both used",
+      "Multiple autonomous prefectures within the region",
+      "Postal codes start with 83xxxx or 84xxxx",
+      "District system differs from standard Chinese provinces"
+    ]
+  },
+  "examples": {
+    "uyghur_script": "شىنجاڭ ئۇيغۇر ئاپتونوم رايونى ئۈرۈمچى 830000",
+    "chinese_script": "新疆维吾尔自治区乌鲁木齐市 830000",
+    "international": "Urumqi, Xinjiang Uyghur Autonomous Region 830000, China"
+  },
+  "status": {
+    "autonomous_region": true,
+    "note": "Dual/multi-script system - complex autonomous prefecture structure"
+  },
+  "geo": {
+    "center": {
+      "latitude": 41.7688,
+      "longitude": 86.5882,
+      "accuracy": 1000,
+      "source": "database",
+      "captured_at": "2025-12-05T19:54:11.627Z"
+    }
+  },
+  "pos": {
+    "currency": {
+      "code": "CNY",
+      "symbol": "¥",
+      "symbol_position": "before",
+      "decimal_places": 2,
+      "decimal_separator": ".",
+      "thousands_separator": ","
+    },
+    "tax": {
+      "type": "VAT",
+      "rate": {
+        "standard": null
+      },
+      "included_in_price": true,
+      "invoice_requirement": "optional"
+    },
+    "receipt": {
+      "required_fields": [
+        "business_name",
+        "date",
+        "items",
+        "total"
+      ],
+      "paper_width": "80mm",
+      "electronic_allowed": true,
+      "retention_period": "5 years"
+    },
+    "fiscal": {
+      "fiscal_device_required": false,
+      "registration_required": false,
+      "reporting_frequency": "varies"
+    },
+    "payment_methods": [
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "high"
+      },
+      {
+        "type": "credit_card",
+        "name": "Credit Card",
+        "prevalence": "medium"
+      },
+      {
+        "type": "mobile",
+        "name": "WeChat Pay",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Alipay",
+        "prevalence": "high"
+      }
+    ],
+    "locale": {
+      "date_format": "YYYY-MM-DD",
+      "time_format": "24h",
+      "timezone": "Asia/Urumqi",
+      "week_start": "monday"
+    },
+    "business_hours": {
+      "typical_open": "09:00",
+      "typical_close": "18:00",
+      "sunday_trading": true,
+      "public_holidays_trading": true
+    }
+  }
+}

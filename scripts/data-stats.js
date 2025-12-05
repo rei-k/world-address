@@ -179,8 +179,12 @@ function main() {
       console.log(`\n${continent.toUpperCase().replace(/_/g, ' ')}:`);
       for (const country of countries.sort((a, b) => a.countryCode.localeCompare(b.countryCode))) {
         const features = [];
-        if (country.hasPos) features.push('POS');
-        if (country.hasGeo) features.push('GEO');
+        if (country.hasPos) {
+          features.push('POS');
+        }
+        if (country.hasGeo) {
+          features.push('GEO');
+        }
         const featureStr = features.length > 0 ? ` [${features.join(', ')}]` : '';
         console.log(`  ${country.countryCode} - ${country.countryName} (${country.completeness}%)${featureStr}`);
       }
@@ -191,7 +195,7 @@ function main() {
   console.log('\n\n📝 Markdown for README.md:');
   console.log('─'.repeat(60));
   console.log('```');
-  console.log(`### 📊 データ完成度 / Data Completeness`);
+  console.log('### 📊 データ完成度 / Data Completeness');
   console.log('');
   console.log(`- **総国数 / Total Countries**: ${analyzed.length}`);
   console.log(`- **フルスキーマ対応 / Full Schema Support**: ${fullSchemaCountries.length} (${Math.round(fullSchemaCountries.length / analyzed.length * 100)}%)`);

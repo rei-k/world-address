@@ -1,0 +1,181 @@
+name:
+  en: Kashmir
+  local:
+    - lang: ur
+      value: کشمیر
+      script: Arabic
+      direction: rtl
+    - lang: hi
+      value: कश्मीर
+      script: Devanagari
+      direction: ltr
+type: Disputed Territory
+note: Indian and Pakistani address systems intermixed - extremely high value for address mapping analysis
+disputed_between:
+  - country: IN
+    name: India
+    claimed_area: Jammu and Kashmir, Ladakh
+  - country: PK
+    name: Pakistan
+    claimed_area: Azad Kashmir, Gilgit-Baltistan
+  - country: CN
+    name: China
+    claimed_area: Aksai Chin (separate entry)
+languages:
+  - name: Urdu
+    script: Arabic
+    direction: rtl
+    role: official
+    country_name: کشمیر
+    note: Used in Pakistan-administered areas
+  - name: Hindi
+    script: Devanagari
+    direction: ltr
+    role: official
+    country_name: कश्मीर
+    note: Used in India-administered areas
+  - name: Kashmiri
+    script: Arabic/Devanagari
+    direction: varies
+    role: local
+  - name: English
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Kashmir
+administrative_divisions:
+  indian_administered:
+    type: Union Territory
+    label_local: केंद्र शासित प्रदेश
+    label_en: Union Territory
+    count: 2
+    names:
+      - Jammu and Kashmir
+      - Ladakh
+  pakistani_administered:
+    type: Administrative Territory
+    label_local: انتظامی علاقہ
+    label_en: Administrative Territory
+    count: 2
+    names:
+      - Azad Jammu and Kashmir
+      - Gilgit-Baltistan
+address_format:
+  order_variants:
+    - context: indian_system
+      order:
+        - recipient
+        - building
+        - street_address
+        - locality
+        - city
+        - district
+        - state
+        - postal_code
+        - country
+    - context: pakistani_system
+      order:
+        - recipient
+        - house_number
+        - street_address
+        - area
+        - city
+        - district
+        - region
+        - postal_code
+        - country
+  postal_code:
+    indian_system:
+      required: true
+      regex: ^[1-2][0-9]{5}$
+      description: Indian PIN code (6 digits)
+      example: '190001'
+      note: Postal codes for Jammu and Kashmir start with 19
+    pakistani_system:
+      required: true
+      regex: ^[0-9]{5}$
+      description: Pakistani postal code (5 digits)
+      example: '13100'
+validation:
+  allow_latin_transliteration: true
+  rules:
+    - Two completely different address systems coexist
+    - Indian system uses PIN codes starting with 19x or 194
+    - Pakistani system uses 5-digit postal codes
+    - Critical case for address mapping differential analysis
+examples:
+  indian_system: Lal Chowk, Srinagar, Jammu and Kashmir 190001, India
+  pakistani_system: Mall Road, Muzaffarabad, Azad Kashmir 13100, Pakistan
+  international: Kashmir (Disputed Territory)
+status:
+  disputed: true
+  un_status: disputed_territory
+  administered_by: multiple
+  note: Exceptionally high analytical value for address mapping research - Indian and Pakistani systems intermixed
+geo:
+  center:
+    latitude: 34.0837
+    longitude: 74.7973
+    accuracy: 10000
+    source: database
+    captured_at: '2025-12-05T19:54:11.627Z'
+    note: Approximate center of disputed region
+  bounds:
+    northeast:
+      latitude: 36.0
+      longitude: 77.0
+    southwest:
+      latitude: 32.5
+      longitude: 73.5
+pos:
+  currency_indian_system:
+    code: INR
+    symbol: ₹
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  currency_pakistani_system:
+    code: PKR
+    symbol: Rs
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: medium
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone_indian: Asia/Kolkata
+    timezone_pakistani: Asia/Karachi
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false

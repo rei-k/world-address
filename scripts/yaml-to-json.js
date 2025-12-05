@@ -8,7 +8,7 @@ const files = [
   'data/americas/central_america/HN/HN.yaml',
   'data/americas/central_america/NI/NI.yaml',
   'data/americas/central_america/PA/PA.yaml',
-  'data/americas/central_america/SV/SV.yaml'
+  'data/americas/central_america/SV/SV.yaml',
 ];
 
 files.forEach(yamlFile => {
