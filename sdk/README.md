@@ -378,8 +378,8 @@ clearLanguagePreference(): void
 6. **Combine with browser language detection**:
 
 ```typescript
-// Detect browser language
-const browserLang = navigator.language.split('-')[0]; // 'en', 'ja', etc.
+// Detect browser language with safety checks
+const browserLang = navigator.language?.split('-')[0] || 'en';
 
 const veyform = new Veyform({
   apiKey: 'your-api-key',

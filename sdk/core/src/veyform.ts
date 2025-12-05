@@ -249,12 +249,20 @@ export class Veyform {
   private formState: FormState;
 
   constructor(config: VeyformConfig) {
+    // Merge default language storage config with user config
+    const defaultLanguageStorage: LanguageStorageConfig = {
+      type: 'localStorage',
+      key: 'veyform_language'
+    };
+
     this.config = {
       validationLevel: 'strict',
       enableAnalytics: true,
       useContinentFilter: true,
       defaultLanguage: 'en',
-      languageStorage: { type: 'localStorage', key: 'veyform_language' },
+      languageStorage: config.languageStorage
+        ? { ...defaultLanguageStorage, ...config.languageStorage }
+        : defaultLanguageStorage,
       ...config
     };
 
@@ -605,8 +613,8 @@ export class Veyform {
   private detectDeviceType(): 'mobile' | 'desktop' | 'tablet' {
     if (typeof window === 'undefined') return 'desktop';
     
-    // Check if navigator and userAgent exist
-    if (!window.navigator || !window.navigator.userAgent) return 'desktop';
+    // Check if navigator and userAgent exist using optional chaining
+    if (!window.navigator?.userAgent) return 'desktop';
     
     const ua = window.navigator.userAgent;
     if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
