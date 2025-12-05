@@ -1,0 +1,245 @@
+{
+  "name": {
+    "en": "Senkaku Islands",
+    "local": [
+      {
+        "lang": "ja",
+        "value": "尖閣諸島",
+        "script": "Kanji",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "type": "Disputed Territory",
+  "note": "Japan exercises effective control over these islands. China and Taiwan claim sovereignty.",
+  "claimed_by": "JP",
+  "claimed_name_ja": "尖閣諸島",
+  "claimed_name_en": "Senkaku Islands",
+  "disputed_with": [
+    {
+      "country": "CN",
+      "name": "China (PRC)",
+      "claimed_name_zh": "钓鱼岛及其附属岛屿",
+      "claimed_name_zh_traditional": "釣魚島及其附屬島嶼",
+      "claimed_name_en": "Diaoyu Islands",
+      "note": "China claims these islands as inherent Chinese territory"
+    },
+    {
+      "country": "TW",
+      "name": "Taiwan (ROC)",
+      "claimed_name_zh": "釣魚臺列嶼",
+      "claimed_name_en": "Diaoyutai Islands",
+      "note": "Taiwan also claims sovereignty over these islands"
+    }
+  ],
+  "current_administration": {
+    "country": "JP",
+    "status": "Under Japanese control and administration",
+    "note": "Japan exercises effective control as inherent Japanese territory"
+  },
+  "description": {
+    "location": "East China Sea, northeast of Taiwan, west of Okinawa",
+    "area_km2": 6.3,
+    "composition": "Five uninhabited islands and three rocks",
+    "strategic_importance": "Rich fishing grounds, potential undersea oil and gas reserves"
+  },
+  "islands": [
+    {
+      "name_ja": "魚釣島",
+      "name_en": "Uotsuri Island",
+      "name_zh_simplified": "钓鱼岛",
+      "name_zh_traditional": "釣魚島",
+      "area_km2": 3.82,
+      "note": "Largest island in the group"
+    },
+    {
+      "name_ja": "北小島",
+      "name_en": "Kita-kojima",
+      "name_zh_simplified": "北小岛",
+      "name_zh_traditional": "北小島",
+      "area_km2": 0.31,
+      "note": "North small island"
+    },
+    {
+      "name_ja": "南小島",
+      "name_en": "Minami-kojima",
+      "name_zh_simplified": "南小岛",
+      "name_zh_traditional": "南小島",
+      "area_km2": 0.4,
+      "note": "South small island"
+    },
+    {
+      "name_ja": "久場島",
+      "name_en": "Kuba Island",
+      "name_zh_simplified": "黄尾屿",
+      "name_zh_traditional": "黃尾嶼",
+      "area_km2": 0.91,
+      "note": "Also known as Kobisho"
+    },
+    {
+      "name_ja": "大正島",
+      "name_en": "Taisho Island",
+      "name_zh_simplified": "赤尾屿",
+      "name_zh_traditional": "赤尾嶼",
+      "area_km2": 0.065,
+      "note": "Also known as Sekibisho"
+    }
+  ],
+  "official_position": {
+    "japan": "The Senkaku Islands are clearly an inherent part of Japanese territory, in \nlight of historical facts and based upon international law. Indeed, the Senkaku \nIslands are under the valid control of Japan. There exists no issue of territorial \nsovereignty to be resolved concerning the Senkaku Islands.\n",
+    "china": "Diaoyu Dao and its affiliated islands have been China's inherent territory \nsince ancient times. China has indisputable sovereignty over Diaoyu Dao. \nJapan's so-called \"incorporation\" of the islands is illegal and invalid.\n",
+    "taiwan": "The Diaoyutai Islands are part of the territory of the Republic of China. \nHistorical records, geography and international law all support ROC sovereignty \nover these islands.\n"
+  },
+  "languages": [
+    {
+      "name": "Japanese",
+      "code": "ja",
+      "script": "Kanji",
+      "direction": "ltr",
+      "role": "official_administration",
+      "country_name": "尖閣諸島"
+    },
+    {
+      "name": "Chinese (Simplified)",
+      "code": "zh-CN",
+      "script": "Simplified Chinese",
+      "direction": "ltr",
+      "role": "claim",
+      "country_name": "钓鱼岛",
+      "note": "Used by People's Republic of China"
+    },
+    {
+      "name": "Chinese (Traditional)",
+      "code": "zh-TW",
+      "script": "Traditional Chinese",
+      "direction": "ltr",
+      "role": "claim",
+      "country_name": "釣魚島/釣魚臺",
+      "note": "Used by Taiwan (ROC)"
+    },
+    {
+      "name": "English",
+      "code": "en",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "country_name": "Senkaku Islands"
+    }
+  ],
+  "address_format": {
+    "note": "Address format depends on claiming country:\n- For Japan (current administration): Part of Okinawa Prefecture, Ishigaki City\n- For China's claim: Part of Taiwan Province (PRC perspective)\n- For Taiwan's claim: Part of Yilan County (ROC perspective)\n",
+    "japanese_format": {
+      "province": "沖縄県 (Okinawa Prefecture)",
+      "city": "石垣市 (Ishigaki City)",
+      "postal_code": "907-0000",
+      "note": "Japan administers as part of Ishigaki City, Okinawa Prefecture"
+    },
+    "chinese_format_prc": {
+      "province": "台湾省 (Taiwan Province)",
+      "note": "China considers these part of Taiwan Province"
+    },
+    "taiwanese_format_roc": {
+      "county": "宜蘭県 (Yilan County)",
+      "note": "Taiwan considers these part of Yilan County"
+    }
+  },
+  "historical_context": [
+    {
+      "year": 1895,
+      "event": "Japan incorporates the Senkaku Islands into Okinawa Prefecture after confirming no prior control by other nations"
+    },
+    {
+      "year": 1945,
+      "event": "End of World War II - Islands placed under U.S. administration as part of the Ryukyu Islands"
+    },
+    {
+      "year": 1968,
+      "event": "UN survey suggests possible oil reserves in the area"
+    },
+    {
+      "year": 1971,
+      "event": "China and Taiwan begin asserting sovereignty claims"
+    },
+    {
+      "year": 1972,
+      "event": "Okinawa (including Senkaku Islands) reverted to Japan from U.S. administration"
+    },
+    {
+      "year": 2010,
+      "event": "Collision between Chinese fishing trawler and Japanese Coast Guard vessels"
+    },
+    {
+      "year": 2012,
+      "event": "Japanese government purchases three of the islands from private owner"
+    },
+    {
+      "year": "present",
+      "event": "Regular incursions by Chinese government vessels into surrounding waters"
+    }
+  ],
+  "geo": {
+    "center": {
+      "latitude": 25.7458,
+      "longitude": 123.475,
+      "accuracy": 5000,
+      "source": "survey",
+      "note": "Approximate center of the island group"
+    },
+    "bounds": {
+      "northeast": {
+        "latitude": 25.8906,
+        "longitude": 124.0847
+      },
+      "southwest": {
+        "latitude": 25.6183,
+        "longitude": 123.4653
+      }
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z"
+  },
+  "status": {
+    "recognized": false,
+    "disputed": true,
+    "un_member": false,
+    "inhabited": false
+  },
+  "territorial_restrictions": {
+    "note": "According to Japanese government policy, these islands must be referred to \nusing the Japanese name (尖閣諸島, Senkaku Islands) in Japanese systems. \nChinese names (钓鱼岛/釣魚島, Diaoyu/Diaoyutai) are blocked in Japanese address forms.\n",
+    "allowed_languages": [
+      "ja",
+      "en (using Japanese romanization: Senkaku)"
+    ],
+    "blocked_languages": [
+      "zh-CN (Simplified Chinese)",
+      "zh-TW (Traditional Chinese)",
+      "zh (in Japanese systems)"
+    ]
+  },
+  "strategic_significance": {
+    "fishing_rights": "Rich fishing grounds important to all claimants",
+    "resources": "Potential undersea oil and natural gas deposits",
+    "maritime_routes": "Strategic location in East China Sea shipping lanes",
+    "eez": "Affects Exclusive Economic Zone boundaries"
+  },
+  "current_situation": {
+    "japanese_control": "Japan Coast Guard patrols and maintains administrative control",
+    "chinese_activity": "Regular patrols by Chinese government vessels in surrounding waters",
+    "taiwanese_position": "Taiwan maintains diplomatic protest while focusing on fishing rights",
+    "international_concern": "U.S.-Japan Security Treaty covers the islands"
+  },
+  "references": [
+    {
+      "name": "Ministry of Foreign Affairs of Japan - Senkaku Islands",
+      "url": "https://www.mofa.go.jp/region/asia-paci/senkaku/"
+    },
+    {
+      "name": "Japanese Government - Senkaku Islands Q&A",
+      "url": "https://www.cas.go.jp/jp/ryodo/english/senkaku/"
+    },
+    {
+      "name": "Japan Coast Guard - Senkaku Islands",
+      "url": "https://www.kaiho.mlit.go.jp/"
+    }
+  ]
+}

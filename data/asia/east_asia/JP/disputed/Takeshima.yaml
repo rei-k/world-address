@@ -1,0 +1,180 @@
+name:
+  en: Takeshima
+  local:
+    - lang: ja
+      value: 竹島
+      script: Kanji
+      direction: ltr
+
+type: Disputed Territory
+note: Japan claims these islands as inherent Japanese territory. Currently under South Korean control.
+
+claimed_by: JP
+claimed_name_ja: 竹島
+claimed_name_en: Takeshima
+
+disputed_with:
+  - country: KR
+    name: South Korea
+    claimed_name_ko: 독도
+    claimed_name_ko_hanja: 獨島
+    claimed_name_en: Dokdo
+    note: South Korea controls these islands and refers to them as Dokdo
+
+current_administration:
+  country: KR
+  status: Under South Korean control since 1954
+  note: Japan continues to assert sovereignty and seeks peaceful resolution
+
+description:
+  location: Small group of islets in the Sea of Japan (East Sea)
+  coordinates: 37°14'N 131°52'E
+  area_km2: 0.187
+  composition: Two main islets and several smaller rocks
+  
+islands:
+  japanese_names:
+    - name_ja: 男島
+      name_en: Otokonoshima (Male Island)
+      note: Western islet
+    
+    - name_ja: 女島  
+      name_en: Onnanoshima (Female Island)
+      note: Eastern islet
+  
+  korean_names:
+    - name_ko: 서도
+      name_en: Seodo (West Island)
+      note: Western islet
+    
+    - name_ko: 동도
+      name_en: Dongdo (East Island)  
+      note: Eastern islet
+
+official_position:
+  japan: |
+    Takeshima is clearly Japanese territory in light of historical facts and 
+    based on international law. Japan has consistently protested South Korea's 
+    illegal occupation of Takeshima. Japan seeks to resolve the issue peacefully 
+    through dialogue and, if necessary, referral to the International Court of Justice.
+  
+  south_korea: |
+    Dokdo is clearly Korean territory historically, geographically, and by 
+    international law. It is an integral part of Korean territory and no 
+    territorial dispute exists concerning Dokdo.
+
+languages:
+  - name: Japanese
+    code: ja
+    script: Kanji
+    direction: ltr
+    role: official_claim
+    country_name: 竹島
+
+  - name: Korean
+    code: ko
+    script: Hangul
+    direction: ltr
+    role: current_administration
+    country_name: 독도
+    note: Used by current administration
+
+  - name: English
+    code: en
+    script: Latin
+    direction: ltr
+    role: auxiliary
+    country_name: Takeshima
+
+address_format:
+  note: |
+    Address format depends on claiming country:
+    - For Japan's claim: Part of Shimane Prefecture, Oki District
+    - For current administration: Part of Gyeongsangbuk-do Province, Ulleung County
+  
+  japanese_format:
+    province: 島根県 (Shimane Prefecture)
+    city: 隠岐郡 (Oki District)
+    town: 隠岐の島町 (Okinoshima Town)
+    postal_code: "685-0000"
+    note: Japan administers as part of Shimane Prefecture
+  
+  korean_format:
+    province: 경상북도 (Gyeongsangbuk-do)
+    city: 울릉군 (Ulleung County)
+    postal_code: "40240"
+    note: South Korea administers as part of Ulleung County
+
+historical_context:
+  - year: 1618
+    event: Japanese Oya and Murakawa families receive license to fish around Takeshima (Ulleungdo) and use Matsushima (current Takeshima)
+  
+  - year: 1905
+    event: Japan incorporates Takeshima into Shimane Prefecture
+  
+  - year: 1946
+    event: SCAPIN 677 - Allied occupation excludes Takeshima from Japanese administrative authority
+  
+  - year: 1951
+    event: San Francisco Peace Treaty - Does not explicitly mention Takeshima
+  
+  - year: 1952
+    event: South Korea establishes Syngman Rhee Line, including Takeshima within Korean waters
+  
+  - year: 1954
+    event: South Korea begins stationing coast guard personnel on the islands
+  
+  - year: present
+    event: Ongoing diplomatic dispute between Japan and South Korea
+
+geo:
+  center:
+    latitude: 37.2431
+    longitude: 131.8687
+    accuracy: 100
+    source: survey
+    note: Center point between the two main islets
+  
+  bounds:
+    northeast:
+      latitude: 37.2506
+      longitude: 131.8740
+    southwest:
+      latitude: 37.2356
+      longitude: 131.8634
+  
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+
+status:
+  recognized: false
+  disputed: true
+  un_member: false
+
+territorial_restrictions:
+  note: |
+    According to Japanese government policy, this territory must be referred to 
+    using the Japanese name (竹島, Takeshima) in Japanese systems. Korean names 
+    (독도, Dokdo) are blocked in Japanese address forms.
+  
+  allowed_languages:
+    - ja
+    - "en (using Japanese romanization: Takeshima)"
+  
+  blocked_languages:
+    - "ko (in Japanese systems)"
+
+environmental_note:
+  designation: Natural monument
+  biodiversity: Important seabird habitat
+  protection: Both countries claim environmental protection measures
+
+references:
+  - name: Ministry of Foreign Affairs of Japan - Takeshima
+    url: https://www.mofa.go.jp/region/asia-paci/takeshima/
+  
+  - name: Shimane Prefecture - Takeshima Issue
+    url: https://www.pref.shimane.lg.jp/admin/pref/takeshima/
+  
+  - name: Web Takeshima (Japanese Government)
+    url: https://www.cas.go.jp/jp/ryodo/takeshima/
