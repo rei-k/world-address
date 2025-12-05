@@ -249,3 +249,139 @@ export interface SiteAccessHistory {
   details?: string;
   timestamp: Date;
 }
+
+/**
+ * Waybill (Shipping Label) model
+ * Represents a shipping label created for delivery
+ */
+export interface Waybill {
+  id: string;
+  userId: string;
+  senderId: string; // User's own address ID
+  receiverId: string; // Friend's address ID or own address ID
+  senderType: 'self' | 'friend';
+  receiverType: 'self' | 'friend';
+  senderAddress?: Address; // Full address if self, null if friend (ZKP)
+  receiverAddress?: Address; // Full address if self, null if friend (ZKP)
+  senderZkpToken?: string; // ZKP token for friend's address
+  receiverZkpToken?: string; // ZKP token for friend's address
+  qrCode: string; // QR code for VeyPOS scanning
+  status: 'draft' | 'pending' | 'submitted';
+  carrierId?: string;
+  trackingNumber?: string;
+  packageInfo?: {
+    weight?: number;
+    dimensions?: { length: number; width: number; height: number };
+    description?: string;
+    value?: number;
+    currency?: string;
+  };
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+/**
+ * Carrier model
+ * Represents a delivery carrier/service
+ */
+export interface Carrier {
+  id: string;
+  name: string;
+  code: string; // e.g., 'ups', 'fedex', 'dhl', 'yamato'
+  logoUrl?: string;
+  supportedCountries: string[];
+  services: CarrierService[];
+  apiEnabled: boolean;
+}
+
+/**
+ * Carrier service
+ */
+export interface CarrierService {
+  id: string;
+  name: string;
+  type: 'standard' | 'express' | 'overnight' | 'economy';
+  estimatedDays: number;
+  price?: {
+    amount: number;
+    currency: string;
+  };
+}
+
+/**
+ * Delivery request
+ * Request to carrier for pickup/delivery
+ */
+export interface DeliveryRequest {
+  id: string;
+  userId: string;
+  waybillId: string;
+  carrierId: string;
+  carrierServiceId: string;
+  status: 'new' | 'accepted' | 'in_transit' | 'delivered' | 'failed';
+  trackingNumber?: string;
+  pickupScheduled?: Date;
+  estimatedDelivery?: Date;
+  actualDelivery?: Date;
+  cost?: {
+    amount: number;
+    currency: string;
+  };
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+/**
+ * Wallet pass
+ * Google Wallet / Apple Wallet pass for waybill
+ */
+export interface WalletPass {
+  id: string;
+  waybillId: string;
+  userId: string;
+  type: 'google' | 'apple';
+  passUrl: string;
+  passData: string; // JSON data for the pass
+  qrCode: string;
+  expiresAt?: Date;
+  createdAt: Date;
+}
+
+/**
+ * Create waybill request
+ */
+export interface CreateWaybillRequest {
+  senderId: string;
+  receiverId: string;
+  senderType: 'self' | 'friend';
+  receiverType: 'self' | 'friend';
+  packageInfo?: {
+    weight?: number;
+    dimensions?: { length: number; width: number; height: number };
+    description?: string;
+    value?: number;
+    currency?: string;
+  };
+}
+
+/**
+ * Submit delivery request
+ */
+export interface SubmitDeliveryRequest {
+  waybillId: string;
+  carrierId: string;
+  carrierServiceId: string;
+  pickupDate?: Date;
+}
+
+/**
+ * Delivery history filter
+ */
+export interface DeliveryHistoryFilter {
+  status?: 'new' | 'in_transit' | 'delivered' | 'failed';
+  startDate?: Date;
+  endDate?: Date;
+  carrierId?: string;
+  limit?: number;
+  offset?: number;
+}
