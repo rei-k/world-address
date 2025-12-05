@@ -9,6 +9,8 @@ This directory contains documentation about AI capabilities in the World Address
 | ファイル | 説明 |
 |---------|------|
 | [ai-capabilities.md](./ai-capabilities.md) | **AI機能強化戦略** - 検索精度・安全性・相互運用性を向上させる5つのAI機能 |
+| [image-recognition-capabilities.md](./image-recognition-capabilities.md) | **AI画像認識機能** - 商品タグ付け・不正検出・KYC・住所抽出・荷物認識の6つのAI機能 |
+| [image-recognition-api.md](./image-recognition-api.md) | **画像認識API仕様** - AI画像認識機能のREST API仕様とSDKサンプルコード |
 | [search-engine-algorithms.md](./search-engine-algorithms.md) | **検索エンジンアルゴリズム** - 住所クラウド検索エンジンの能力を向上させるアルゴリズムと技術スタック |
 | [waybill-ai-capabilities.md](./waybill-ai-capabilities.md) | **送り状AI・アルゴリズム** - 送り状の生成・検索・管理における10のAI機能 |
 | [zkp-quality-ai.md](./zkp-quality-ai.md) | **ZKPクオリティ向上AI** - ゼロ知識証明の安全性・正しさ・性能・UXを向上させる10のAI機能 |
@@ -24,6 +26,17 @@ This directory contains documentation about AI capabilities in the World Address
 3. **決済接続AI** - 住所ごとに適合する決済候補を優先判断
 4. **提携インデックス管理AI** - 提携状態のインデックス最適化
 5. **攻撃・異常検知AI** - セキュリティ監視と信頼性の確保
+
+### AI画像認識機能
+
+写真から情報を抽出し、手作業を大幅に削減する以下6つのAI画像認識機能について解説しています：
+
+1. **商品画像自動タグ付け** - ジャンル・素材・色を自動抽出、多言語商品説明生成（VeyStore）
+2. **不正出品自動チェック** - 偽物・著作権違反・危険物を自動判定（VeyStore）
+3. **KYC画像認識** - 免許証・パスポートから本人情報を自動抽出、AMF正規化（VeyFinance）
+4. **不正アクティビティ検出** - 偽造書類・DeepFake・不正アカウント検出（VeyFinance）
+5. **画像からの住所抽出** - 宛名画像からAMF補完生成、住所ゼロ入力（Veyvault）
+6. **荷物撮影による送り状生成** - サイズ推定・配送業者選択・QRコード送り状（VeyExpress）
 
 ### 送り状AI・アルゴリズム
 
