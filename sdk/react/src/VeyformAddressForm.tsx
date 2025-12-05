@@ -18,6 +18,7 @@ import type {
   ContinentInfo,
   FieldConfig,
   FormState,
+  AddressInput,
 } from '@vey/core';
 import { createVeyform, CountryRegistry } from '@vey/core';
 
@@ -27,7 +28,7 @@ export interface VeyformAddressFormProps {
   config: VeyformConfig;
   
   /** Callback when form is submitted */
-  onSubmit?: (data: Record<string, string>) => void;
+  onSubmit?: (data: AddressInput) => void;
   
   /** Callback when form state changes */
   onChange?: (state: FormState) => void;
@@ -157,7 +158,7 @@ export const VeyformAddressForm: React.FC<VeyformAddressFormProps> = ({
     e.preventDefault();
     const result = await veyform.submit();
     if (result.success && result.data) {
-      onSubmit?.(result.data);
+      onSubmit?.(result.data as AddressInput);
     }
   };
 
@@ -294,7 +295,7 @@ export const VeyformAddressForm: React.FC<VeyformAddressFormProps> = ({
         </form>
       )}
 
-      <style jsx>{`
+      <style>{`
         .veyform-address-form {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           max-width: 600px;
