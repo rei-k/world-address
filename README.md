@@ -190,6 +190,7 @@ For detailed information about the Vey ecosystem:
 - **🛠️ Developer SDKs** - TypeScript/JavaScript SDK and framework integrations (React, Vue)
 - **🔍 Search Engine** - Address search and autocomplete capabilities
 - **🤖 AI Integration** - AI-powered address validation and correction
+- **📸 Image Recognition** - OCR, dimension estimation, damage detection, and document scanning
 
 ### Data Quality
 - **99% Average Completeness** - High-quality, comprehensive data coverage
@@ -318,6 +319,7 @@ A privacy-preserving cloud address book system powered by Zero-Knowledge Proof (
 - 💻 [Implementation Guide](./docs/cloud-address-book-implementation.md) - Code examples
 - 📚 [API Reference](./docs/zkp-api.md) - Complete API documentation
 - 🤖 [AI Capabilities](./docs/ai/ai-capabilities.md) - AI-powered features
+- 📸 [Image Recognition Modules](./ai-modules/README.md) - OCR, dimension estimation, and damage detection
 
 ### Quick Example
 
