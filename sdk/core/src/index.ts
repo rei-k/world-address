@@ -358,6 +358,8 @@ export type {
   AnalyticsEvent,
   FieldConfig,
   FormState,
+  LanguageStorageConfig,
+  LanguageChangeCallback,
 } from './veyform';
 
 // Country Registry
