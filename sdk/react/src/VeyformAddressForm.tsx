@@ -124,6 +124,7 @@ export const VeyformAddressForm: React.FC<VeyformAddressFormProps> = ({
     if (continent === '' || continent === selectedContinent) {
       setSelectedContinent(null);
     } else {
+      // Type assertion is safe here because continents are sourced from CountryRegistry
       setSelectedContinent(continent as Continent);
     }
   };
@@ -201,7 +202,7 @@ export const VeyformAddressForm: React.FC<VeyformAddressFormProps> = ({
           <select
             className="veyform-continent-select"
             value={selectedContinent || ''}
-            onChange={(e) => handleContinentSelect(e.target.value as Continent)}
+            onChange={(e) => handleContinentSelect(e.target.value)}
           >
             <option value="">
               {currentLanguage === 'ja' ? 'すべての大陸' : currentLanguage === 'zh' ? '所有大陆' : 'All continents'}
