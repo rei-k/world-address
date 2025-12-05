@@ -38,6 +38,9 @@ export interface VeyformAddressFormProps {
   /** Show continent filter tabs */
   showContinentFilter?: boolean;
   
+  /** Continent filter display style (tabs or dropdown) */
+  continentFilterStyle?: 'tabs' | 'dropdown';
+  
   /** Theme */
   theme?: 'light' | 'dark' | 'auto';
   
@@ -54,6 +57,7 @@ export const VeyformAddressForm: React.FC<VeyformAddressFormProps> = ({
   onChange,
   className = '',
   showContinentFilter = true,
+  continentFilterStyle = 'tabs',
   theme = 'light',
   compact = false,
 }) => {
@@ -116,8 +120,13 @@ export const VeyformAddressForm: React.FC<VeyformAddressFormProps> = ({
   }, [selectedCountry, currentLanguage, veyform]);
 
   // Handle continent selection
-  const handleContinentSelect = (continent: Continent) => {
-    setSelectedContinent(continent === selectedContinent ? null : continent);
+  const handleContinentSelect = (continent: Continent | string) => {
+    if (continent === '' || continent === selectedContinent) {
+      setSelectedContinent(null);
+    } else {
+      // Type assertion is safe here because continents are sourced from CountryRegistry
+      setSelectedContinent(continent as Continent);
+    }
   };
 
   // Handle country selection
@@ -172,7 +181,7 @@ export const VeyformAddressForm: React.FC<VeyformAddressFormProps> = ({
       </div>
 
       {/* Continent Filter Tabs */}
-      {showContinentFilter && config.useContinentFilter && (
+      {showContinentFilter && config.useContinentFilter && continentFilterStyle === 'tabs' && (
         <div className="veyform-continent-filter">
           {continents.map(continent => (
             <button
@@ -184,6 +193,26 @@ export const VeyformAddressForm: React.FC<VeyformAddressFormProps> = ({
               {continent.name[currentLanguage as keyof typeof continent.name] || continent.name.en}
             </button>
           ))}
+        </div>
+      )}
+
+      {/* Continent Filter Dropdown */}
+      {showContinentFilter && config.useContinentFilter && continentFilterStyle === 'dropdown' && (
+        <div className="veyform-continent-dropdown">
+          <select
+            className="veyform-continent-select"
+            value={selectedContinent || ''}
+            onChange={(e) => handleContinentSelect(e.target.value)}
+          >
+            <option value="">
+              {currentLanguage === 'ja' ? 'すべての大陸' : currentLanguage === 'zh' ? '所有大陆' : 'All continents'}
+            </option>
+            {continents.map(continent => (
+              <option key={continent.code} value={continent.code}>
+                {continent.name[currentLanguage as keyof typeof continent.name] || continent.name.en}
+              </option>
+            ))}
+          </select>
         </div>
       )}
 
@@ -316,6 +345,20 @@ export const VeyformAddressForm: React.FC<VeyformAddressFormProps> = ({
           border-color: #28a745;
         }
 
+        .veyform-continent-dropdown {
+          margin-bottom: 16px;
+        }
+
+        .veyform-continent-select {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 14px;
+          background: white;
+          cursor: pointer;
+        }
+
         .veyform-country-selector {
           margin-bottom: 24px;
         }
@@ -433,6 +476,7 @@ export const VeyformAddressForm: React.FC<VeyformAddressFormProps> = ({
 
         .veyform-address-form.dark .veyform-language-btn,
         .veyform-address-form.dark .veyform-continent-tab,
+        .veyform-address-form.dark .veyform-continent-select,
         .veyform-address-form.dark .veyform-search-input,
         .veyform-address-form.dark .veyform-country-select,
         .veyform-address-form.dark .veyform-field-input {

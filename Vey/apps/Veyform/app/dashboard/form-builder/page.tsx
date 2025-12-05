@@ -34,6 +34,7 @@ export default function FormBuilderPage() {
   const [selectedCountries, setSelectedCountries] = useState<string[]>(['JP']);
   const [selectedLanguage, setSelectedLanguage] = useState<string>('');
   const [formType, setFormType] = useState<'signup' | 'signin'>('signup');
+  const [continentFilterStyle, setContinentFilterStyle] = useState<'tabs' | 'dropdown'>('tabs');
   
   useEffect(() => {
     // Load countries data
@@ -91,15 +92,6 @@ export default function FormBuilderPage() {
     
     if (field === 'postal_code' && format?.postalCode?.example) {
       return format.postalCode.example;
-    }
-    if (field === 'building' && format?.building) {
-      return format.building.example || '';
-    }
-    if (field === 'floor' && format?.floor) {
-      return format.floor.example || '';
-    }
-    if (field === 'room' && format?.room) {
-      return format.room.example || '';
     }
     
     return '';
@@ -237,6 +229,35 @@ export default function FormBuilderPage() {
                   </button>
                 </div>
               </div>
+              
+              {/* Continent Filter Style Selection */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Continent Filter Style / 大陸フィルタースタイル
+                </label>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => setContinentFilterStyle('tabs')}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      continentFilterStyle === 'tabs'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    Tabs / タブ
+                  </button>
+                  <button
+                    onClick={() => setContinentFilterStyle('dropdown')}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      continentFilterStyle === 'dropdown'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    Dropdown / プルダウン
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -304,7 +325,9 @@ export default function FormBuilderPage() {
                 
                 {/* Address Fields */}
                 {currentCountry?.addressFormat.order.map((field) => {
-                  if (field === 'country') return null; // Already shown above
+                  if (field === 'country') {
+                    return null; // Already shown above
+                  }
                   
                   return (
                     <div key={field} className="mb-3">
@@ -415,6 +438,7 @@ function ${formType === 'signup' ? 'SignUpPage' : 'SignInPage'}() {
         defaultCountry="${defaultCountry}"
         ${showCountryDropdown ? `countries={${JSON.stringify(selectedCountries)}}` : '// Single country mode - no dropdown'}
         language="${selectedLanguage || 'en'}"
+        continentFilterStyle="${continentFilterStyle}"
         onSubmit={(address) => {
           console.log('Address:', address);
         }}

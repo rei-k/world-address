@@ -74,6 +74,9 @@ export interface VeyformConfig {
   /** Use continent filter tabs */
   useContinentFilter?: boolean;
   
+  /** Continent filter display style (tabs or dropdown) */
+  continentFilterStyle?: 'tabs' | 'dropdown';
+  
   /** Validation strictness */
   validationLevel?: 'strict' | 'medium' | 'loose';
   
