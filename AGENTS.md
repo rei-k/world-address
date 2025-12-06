@@ -2,11 +2,11 @@
 
 ## Project Overview
 
-You are working on **World Address YAML**, a comprehensive open-source database of address formats from 257 countries and regions around the world. This project provides structured address data in both YAML and JSON formats, along with SDKs for multiple programming languages and frameworks.
+You are working on **World Address YAML**, a comprehensive open-source database of address formats from 269 countries and regions around the world. This project provides structured address data in both YAML and JSON formats, along with SDKs for multiple programming languages and frameworks.
 
 ### Key Components
 
-1. **Address Data** (`data/`) - Structured address formats for 257 countries/regions
+1. **Address Data** (`data/`) - Structured address formats for 269 countries/regions
 2. **Scripts** (`scripts/`) - Node.js automation scripts for data fetching and validation
 3. **SDKs** (`sdk/`) - Multi-language SDKs (TypeScript/JavaScript, Python, PHP, React, Vue, etc.)
 4. **Documentation** (`docs/`) - Comprehensive documentation and examples

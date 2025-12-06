@@ -1,6 +1,6 @@
 # Veyform - Universal Address Form System
 
-Veyform is a comprehensive address form SDK that provides a beautiful, multilingual address input experience with 257 countries support.
+Veyform is a comprehensive address form SDK that provides a beautiful, multilingual address input experience with 269 countries support.
 
 ## Features
 

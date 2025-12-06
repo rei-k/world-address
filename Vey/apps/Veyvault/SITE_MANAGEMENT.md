@@ -72,7 +72,7 @@ When you find a Veyform-enabled site through Veyvault search, you can click to v
 - ⚡ **Faster checkout** - No typing required
 - 🔒 **Privacy preserved** - Site only gets encrypted address token
 - ✅ **Accurate addresses** - Pre-validated addresses reduce delivery errors
-- 🌍 **Universal** - Works across all 257 supported countries
+- 🌍 **Universal** - Works across all 269 supported countries
 
 ### Example Flow
 

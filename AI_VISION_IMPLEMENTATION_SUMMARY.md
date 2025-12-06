@@ -46,7 +46,7 @@ This PR adds comprehensive documentation and specifications for integrating AI-p
 **対象アプリ**: VeyFinance
 
 **機能**:
-- 運転免許証OCR（日本、米国、257カ国対応）
+- 運転免許証OCR（日本、米国、269カ国対応）
 - パスポートOCR（ICAO 9303準拠）
 - AMF住所正規化とPID生成
 - 顔認証とLiveness Detection
@@ -214,7 +214,7 @@ Authorization: Bearer YOUR_API_KEY
 ### Phase 3: VeyFinance統合（3ヶ月）
 - KYC/AMLフロー統合
 - 顔認証システム
-- 多国展開（257カ国対応）
+- 多国展開（269カ国対応）
 
 ### Phase 4: 画像住所抽出（2ヶ月）
 - 宛名画像OCR

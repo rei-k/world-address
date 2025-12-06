@@ -14,7 +14,7 @@ Veyform provides a flexible form system supporting address formats from around t
 
 ### 主な機能 / Key Features
 
-- 🌍 **Global Address Support**: 257カ国の住所形式に対応
+- 🌍 **Global Address Support**: 269カ国の住所形式に対応
 - 🔄 **Smart Auto-fill**: 住所の自動補完・検証機能
 - 📱 **Responsive Design**: モバイル・タブレット・デスクトップ対応
 - 🔐 **Privacy-First**: 入力された住所は暗号化して保存
@@ -72,7 +72,7 @@ Veyform provides a flexible form system supporting address formats from around t
 │  ┌──────▼──────┐  ┌──────▼──────┐  ┌──────▼──────┐      │
 │  │  Address    │  │ Validation  │  │   Veyvault   │      │
 │  │   Data      │  │   Engine    │  │ Integration │      │
-│  │  (257国)    │  │             │  │             │      │
+│  │  (269国)    │  │             │  │             │      │
 │  └─────────────┘  └─────────────┘  └─────────────┘      │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
@@ -172,7 +172,7 @@ const handleAddressSubmit = (address) => {
 
 ## 🌍 対応国 / Supported Countries
 
-Veyformは257カ国・地域の住所形式に対応しています。各国の住所フォーマットは自動的に適用されます。
+Veyformは269カ国・地域の住所形式に対応しています。各国の住所フォーマットは自動的に適用されます。
 
 - 🇯🇵 日本 (Japan)
 - 🇺🇸 アメリカ合衆国 (United States)

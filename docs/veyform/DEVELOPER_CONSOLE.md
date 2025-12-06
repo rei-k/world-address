@@ -30,7 +30,7 @@ Choose from pre-configured country sets:
 │  ☐ North America (US, CA, MX)          │
 │  ☐ Europe (20 countries)               │
 │  ☐ Southeast Asia (6 countries)        │
-│  ☐ All Countries (257)                 │
+│  ☐ All Countries (269)                 │
 │                                         │
 │  Selected: 3 countries                  │
 │                                         │
@@ -409,7 +409,7 @@ Manage multiple sites with one API key:
 │     [Edit] [View Stats]                │
 │                                         │
 │  2. shop.example.com                    │
-│     Countries: All (257)               │
+│     Countries: All (269)               │
 │     Status: ✓ Active                   │
 │     [Edit] [View Stats]                │
 │                                         │

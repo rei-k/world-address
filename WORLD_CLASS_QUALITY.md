@@ -19,7 +19,7 @@ This document explains what makes @vey/react the **Stripe of address forms** - a
 | **Accessibility** | WCAG 2.1 AA | WCAG 2.1 AA | ✅ Tie |
 | **Customization** | Theming API | Full theming | ✅ Tie |
 | **Focus** | Payments | Addresses | Different domains |
-| **Countries Supported** | Payment methods | 257 address formats | ✅ Vey |
+| **Countries Supported** | Payment methods | 269 address formats | ✅ Vey |
 | **Open Source** | No | Yes (MIT) | ✅ Vey |
 | **Price** | Transaction fees | Free | ✅ Vey |
 
@@ -62,7 +62,7 @@ import { AddressFormPremium } from '@vey/react';
 
 ### 3. Comprehensive Country Support
 
-**257 Countries & Territories** with accurate address formats:
+**269 Countries & Territories** with accurate address formats:
 
 ```tsx
 // US Format
@@ -355,7 +355,7 @@ We studied the industry's best form libraries:
 
 **What makes us different:**
 - 🌍 **Specialized in addresses** - Not a generic form library
-- 📊 **257 countries** - Most comprehensive coverage
+- 📊 **269 countries** - Most comprehensive coverage
 - 🆓 **Free & Open Source** - MIT licensed
 - 🎯 **Opinionated defaults** - Optimized for 90% of use cases
 - 🛠️ **Escape hatches** - Customizable for the other 10%

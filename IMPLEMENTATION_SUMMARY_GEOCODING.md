@@ -32,7 +32,7 @@ This implementation addresses the requirements to introduce various APIs and lib
 
 **Features:**
 - ✅ Free to use (no API key required)
-- ✅ Supports 257 countries
+- ✅ Supports 269 countries
 - ✅ Confidence scoring for results
 - ✅ Alternative results for ambiguous queries
 - ✅ Request timeout and retry handling
