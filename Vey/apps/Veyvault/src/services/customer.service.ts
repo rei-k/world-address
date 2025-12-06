@@ -100,12 +100,24 @@ export async function getCustomerList(
       let aVal: string | number | Date | undefined;
       let bVal: string | number | Date | undefined;
 
-      if (filter.sortBy === 'lastDelivery') {
-        aVal = a.lastDeliveryDate?.getTime();
-        bVal = b.lastDeliveryDate?.getTime();
-      } else {
-        aVal = a[filter.sortBy];
-        bVal = b[filter.sortBy];
+      // Type-safe property access based on sortBy field
+      switch (filter.sortBy) {
+        case 'lastDelivery':
+          aVal = a.lastDeliveryDate?.getTime();
+          bVal = b.lastDeliveryDate?.getTime();
+          break;
+        case 'name':
+          aVal = a.name;
+          bVal = b.name;
+          break;
+        case 'totalDeliveries':
+          aVal = a.totalDeliveries;
+          bVal = b.totalDeliveries;
+          break;
+        case 'createdAt':
+          aVal = a.createdAt.getTime();
+          bVal = b.createdAt.getTime();
+          break;
       }
 
       if (aVal === undefined || aVal === null) return 1;

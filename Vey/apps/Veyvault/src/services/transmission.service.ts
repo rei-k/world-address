@@ -209,16 +209,26 @@ export async function validateAddressForTransmission(
 }
 
 /**
+ * Carrier address format types
+ */
+interface CarrierAddressFormat {
+  pid: string;
+  type: string;
+  encryptedData: string;
+  format: 'jp-standard' | 'international' | 'cn-standard' | 'default';
+}
+
+/**
  * Format address for carrier API
  */
 export function formatAddressForCarrier(
   address: Address,
   carrierId: string
-): Record<string, any> {
+): CarrierAddressFormat {
   // TODO: Implement carrier-specific address formatting
   // Each carrier has different requirements for address format
   
-  const baseFormat = {
+  const baseFormat: Omit<CarrierAddressFormat, 'format'> = {
     pid: address.pid,
     type: address.type,
     // Encrypted data would be decrypted here in production
@@ -246,7 +256,10 @@ export function formatAddressForCarrier(
         format: 'cn-standard',
       };
     default:
-      return baseFormat;
+      return {
+        ...baseFormat,
+        format: 'default',
+      };
   }
 }
 

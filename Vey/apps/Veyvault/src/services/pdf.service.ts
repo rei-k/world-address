@@ -9,6 +9,7 @@ import type {
   CustomerListPDFData,
   PDFGenerationOptions,
   Customer,
+  Address,
 } from '../types';
 
 /**
@@ -504,8 +505,9 @@ export function openPrintPreview(html: string): void {
 /**
  * Format address for display
  */
-function formatAddress(address: any): string {
-  // This is a simplified version - real implementation would use address data
+function formatAddress(address: Address): string {
+  // This is a simplified version - real implementation would decrypt and format address data
+  // In production, this would decrypt the encryptedData and format it properly
   return address.encryptedData || 'Address data encrypted';
 }
 
