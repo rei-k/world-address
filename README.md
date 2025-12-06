@@ -1,7 +1,8 @@
 # 🌍 World Address YAML / JSON
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Data Coverage](https://img.shields.io/badge/Countries-269-green.svg)](./data)
+[![Data Coverage](https://img.shields.io/badge/Entities-325-green.svg)](./data)
+[![Countries & Regions](https://img.shields.io/badge/Countries%20%26%20Regions-269-blue.svg)](./data)
 [![Auto Update](https://img.shields.io/badge/Auto%20Update-Daily-brightgreen.svg)](.github/workflows/auto-fetch-libaddressinput.yml)
 
 世界各国の住所形式をYAML形式とJSON形式で構造化したオープンデータベースです。
@@ -117,7 +118,7 @@ All important applications in the Vey ecosystem with their frontend UI/UX featur
 - **Receipt Preview:** Digital receipt preview before printing with all legally required fields per country
 - **Customer Lookup:** Quick Veyvault integration for registered customer address/delivery preferences
 - **Offline Mode UI:** Clear visual indicators for offline operation with sync status badges
-- **Multi-Language Support:** Language switcher with 269-country address format support
+- **Multi-Language Support:** Language switcher with 325-entity address format support (269 main countries/regions)
 
 #### 🏪 VeyStore - E-Commerce Platform
 **Description:** E-commerce specialized CMS integrated with Vey ecosystem for addressless checkout
@@ -133,7 +134,7 @@ All important applications in the Vey ecosystem with their frontend UI/UX featur
 - **Delivery Options:** Visual delivery method selection with estimated times and carbon offset information
 
 #### 🚚 VeyExpress - Delivery Integration Platform
-**Description:** Multi-carrier delivery integration platform with AI-powered optimization and 269-country support
+**Description:** Multi-carrier delivery integration platform with AI-powered optimization and support for 325 address entities (269 main countries/regions)
 
 **Frontend UI/UX Features:**
 - **Comprehensive Dashboard:** 7-category dashboard with delivery search, active shipments summary, and world map visualization
@@ -146,7 +147,7 @@ All important applications in the Vey ecosystem with their frontend UI/UX featur
 - **Multi-Modal Transport:** Visual selector for parcel/3PL/4PL/sea/rail/air shipping options with cost/time tradeoffs
 
 #### 📝 Veyform - Universal Address Form System
-**Description:** Universal address form SDK supporting 269 countries with multi-language support, smart validation, and analytics
+**Description:** Universal address form SDK supporting 325 address entities (269 main countries/regions) with multi-language support, smart validation, and analytics
 
 **Core Features:**
 - **3-Layer Country Selection:** Continent → Country → Address Hierarchy for intuitive navigation
@@ -184,7 +185,7 @@ For detailed information about the Vey ecosystem:
 ### Countries & Address Systems
 
 For comprehensive information about countries and their address formats:
-- **[Countries & Address Formats Guide](./docs/countries/README.md)** - Detailed introductions to 269 countries/regions and their address systems
+- **[Countries & Address Formats Guide](./docs/countries/README.md)** - Detailed introductions to 325 address entities including 269 countries/regions and their address systems
 - **[Schema Documentation](./docs/schema/README.md)** - Complete schema definitions
 - **[Territorial Restrictions](./docs/territorial-restrictions.md)** - Japanese territorial naming policies
 - **[Address Examples](./docs/examples/README.md)** - Practical address format examples
@@ -200,7 +201,7 @@ For comprehensive information about countries and their address formats:
 ## ✨ Features
 
 ### Core Features
-- **🌐 269 Countries & Regions** - Comprehensive coverage of world address formats
+- **🌐 325 Entities** - Comprehensive coverage: 269 main countries/regions + 56 additional entities (overseas territories, special regions, etc.)
 - **📄 Dual Format** - Both YAML (human-readable) and JSON (machine-readable) formats
 - **🔄 Auto-Updated** - Daily updates from Google's libaddressinput API at midnight JST
 - **✅ Validated Data** - Automated validation of YAML syntax and required fields
@@ -233,7 +234,7 @@ For comprehensive information about countries and their address formats:
 
 Veyエコシステムは6つの主要機能で構成されています：
 
-1. **📝 Address Management** - 269カ国対応のクラウド住所管理
+1. **📝 Address Management** - 325エンティティ対応のクラウド住所管理（主要269カ国・地域 + 56追加エンティティ）
 2. **📱 QR/NFC Sharing** - プライバシー保護された住所共有
 3. **🔐 Privacy Protection** - AES-256暗号化 + ゼロ知識証明
 4. **🛍️ E-commerce Integration** - ワンクリックチェックアウト
@@ -294,11 +295,14 @@ Veyエコシステムは6つの主要機能で構成されています：
 
 ### 📈 データ完成度 / Data Completeness
 
-- **総国数 / Total Countries**: 269
+- **総エンティティ数 / Total Entities**: 325
+  - 主要国・地域 / Main Countries & Regions: 269
+  - 追加エンティティ / Additional Entities: 56
+    (海外領土、特別地域、紛争地域、基地局等 / Overseas territories, special regions, disputed areas, stations, etc.)
 - **フルスキーマ対応 / Full Schema Support**: 269 (100%)
 - **平均完成度 / Average Completeness**: 99%
-- **POS対応 / POS Support**: 269 countries (100%)
-- **緯度経度対応 / Geo-coordinates**: 269 countries (100%)
+- **POS対応 / POS Support**: 269 countries
+- **緯度経度対応 / Geo-coordinates**: 269 countries
 
 完全なデータ統計を見るには:
 ```bash
@@ -946,9 +950,10 @@ For detailed development guide, see [DEVELOPMENT.md](./DEVELOPMENT.md).
 
 ## 📊 収録状況 / Data Coverage
 
-- **Total Countries**: 269
+- **Total Entities**: 325 (269 main countries/regions + 56 additional entities)
+- **Main Countries & Regions**: 269
 - **Continents**: 6 (Africa, Americas, Antarctica, Asia, Europe, Oceania)
-- **Special Territories**: Overseas territories, disputed regions, research stations
+- **Special Territories**: 56 (Overseas territories, disputed regions, research stations, special regions)
 - **Formats**: YAML and JSON
 - **Average Completeness**: 99%
 - **POS Support**: 269 countries (100%)
