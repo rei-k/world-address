@@ -19,6 +19,9 @@ import {
 } from '../types';
 
 export class UPSAdapter extends CarrierAdapter {
+  private accessToken?: string;
+  private tokenExpiresAt?: number;
+
   protected getBaseUrl(): string {
     return this.config.environment === 'production'
       ? 'https://onlinetools.ups.com/api'
@@ -318,10 +321,15 @@ export class UPSAdapter extends CarrierAdapter {
   }
 
   /**
-   * Get OAuth access token
+   * Get OAuth access token (with caching)
    */
   private async getAccessToken(): Promise<string> {
-    // In production, implement token caching
+    // Return cached token if still valid
+    if (this.accessToken && this.tokenExpiresAt && Date.now() < this.tokenExpiresAt) {
+      return this.accessToken;
+    }
+
+    // Fetch new token
     const auth = Buffer.from(`${this.config.apiKey}:${this.config.apiSecret}`).toString('base64');
     
     const response = await axios({
@@ -334,7 +342,11 @@ export class UPSAdapter extends CarrierAdapter {
       data: 'grant_type=client_credentials'
     });
 
-    return response.data.access_token;
+    // Cache token (expires in seconds, convert to ms and subtract 5 min buffer)
+    this.accessToken = response.data.access_token;
+    this.tokenExpiresAt = Date.now() + (response.data.expires_in - 300) * 1000;
+
+    return this.accessToken;
   }
 
   /**

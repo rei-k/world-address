@@ -88,9 +88,13 @@ async function example1_UPS() {
       });
       console.log('Order created:', order);
 
-      // Track shipment
-      const tracking = await ups.trackShipment(order.trackingNumber!);
-      console.log('Tracking:', tracking);
+      // Track shipment (check if tracking number exists first)
+      if (order.trackingNumber) {
+        const tracking = await ups.trackShipment(order.trackingNumber);
+        console.log('Tracking:', tracking);
+      } else {
+        console.log('No tracking number available yet');
+      }
     }
   } catch (error) {
     console.error('UPS error:', error);

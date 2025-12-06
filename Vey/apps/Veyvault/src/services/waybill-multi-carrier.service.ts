@@ -43,15 +43,20 @@ export function initializeGlobalCarriers(): void {
 
 /**
  * Convert Vey Address to Carrier Address format
+ * TODO: Implement actual address decryption and extraction
  */
 function convertVeyAddressToCarrierAddress(address: Address): any {
+  // In production, decrypt address.encryptedData and extract components
+  // For now, return a structure that shows what needs to be extracted
   return {
     country: address.pid.split('/')[0] || 'JP', // Extract from PID
-    province: '', // Extract from encrypted data
-    city: '', // Extract from encrypted data
-    street: '', // Extract from encrypted data
-    postalCode: '', // Extract from encrypted data
-    building: '',
+    province: '', // TODO: Extract from decrypted data
+    city: '', // TODO: Extract from decrypted data
+    street: '', // TODO: Extract from decrypted data
+    postalCode: '', // TODO: Extract from decrypted data
+    building: '', // TODO: Extract from decrypted data
+    // NOTE: This placeholder will cause carrier API failures
+    // Must implement proper address decryption before production use
   };
 }
 

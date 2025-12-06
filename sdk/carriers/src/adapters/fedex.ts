@@ -18,6 +18,9 @@ import {
 } from '../types';
 
 export class FedExAdapter extends CarrierAdapter {
+  private accessToken?: string;
+  private tokenExpiresAt?: number;
+
   protected getBaseUrl(): string {
     return this.config.environment === 'production'
       ? 'https://apis.fedex.com'
@@ -337,10 +340,15 @@ export class FedExAdapter extends CarrierAdapter {
   }
 
   /**
-   * Get OAuth access token
+   * Get OAuth access token (with caching)
    */
   private async getAccessToken(): Promise<string> {
-    // In production, implement token caching
+    // Return cached token if still valid
+    if (this.accessToken && this.tokenExpiresAt && Date.now() < this.tokenExpiresAt) {
+      return this.accessToken;
+    }
+
+    // Fetch new token
     const response = await axios({
       method: 'POST',
       url: `${this.baseUrl}/oauth/token`,
@@ -354,7 +362,11 @@ export class FedExAdapter extends CarrierAdapter {
       })
     });
 
-    return response.data.access_token;
+    // Cache token (expires in seconds, convert to ms and subtract 5 min buffer)
+    this.accessToken = response.data.access_token;
+    this.tokenExpiresAt = Date.now() + (response.data.expires_in - 300) * 1000;
+
+    return this.accessToken;
   }
 
   /**

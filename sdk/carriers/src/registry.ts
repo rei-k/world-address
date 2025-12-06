@@ -175,11 +175,14 @@ export class CarrierRegistry {
    * Find carriers that support a route
    */
   findCarriersForRoute(origin: string, destination: string): CarrierMetadata[] {
-    const isInternational = origin !== destination;
+    // Normalize country codes to uppercase for comparison
+    const normalizedOrigin = origin.toUpperCase();
+    const normalizedDestination = destination.toUpperCase();
+    const isInternational = normalizedOrigin !== normalizedDestination;
     
     return Array.from(this.metadata.values()).filter(carrier => {
-      const supportsOrigin = carrier.regions.includes(origin);
-      const supportsDestination = carrier.regions.includes(destination);
+      const supportsOrigin = carrier.regions.some(r => r.toUpperCase() === normalizedOrigin);
+      const supportsDestination = carrier.regions.some(r => r.toUpperCase() === normalizedDestination);
       const supportsInternational = carrier.features.international;
 
       if (isInternational) {
