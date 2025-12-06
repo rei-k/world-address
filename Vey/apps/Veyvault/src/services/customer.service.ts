@@ -97,24 +97,31 @@ export async function getCustomerList(
   // Apply sorting
   if (filter?.sortBy) {
     result = result.sort((a, b) => {
-      let aVal: any = a[filter.sortBy!];
-      let bVal: any = b[filter.sortBy!];
+      let aVal: string | number | Date | undefined;
+      let bVal: string | number | Date | undefined;
 
       if (filter.sortBy === 'lastDelivery') {
-        aVal = a.lastDeliveryDate?.getTime() || 0;
-        bVal = b.lastDeliveryDate?.getTime() || 0;
+        aVal = a.lastDeliveryDate?.getTime();
+        bVal = b.lastDeliveryDate?.getTime();
+      } else {
+        aVal = a[filter.sortBy];
+        bVal = b[filter.sortBy];
       }
 
       if (aVal === undefined || aVal === null) return 1;
       if (bVal === undefined || bVal === null) return -1;
 
-      if (typeof aVal === 'string') {
+      if (typeof aVal === 'string' && typeof bVal === 'string') {
         return filter.sortOrder === 'desc'
           ? bVal.localeCompare(aVal)
           : aVal.localeCompare(bVal);
       }
 
-      return filter.sortOrder === 'desc' ? bVal - aVal : aVal - bVal;
+      if (typeof aVal === 'number' && typeof bVal === 'number') {
+        return filter.sortOrder === 'desc' ? bVal - aVal : aVal - bVal;
+      }
+
+      return 0;
     });
   }
 

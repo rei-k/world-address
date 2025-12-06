@@ -68,31 +68,35 @@ export async function batchTransmitAddresses(
   request: BatchTransmissionRequest
 ): Promise<BatchTransmissionResult> {
   const results: AddressTransmissionResult[] = [];
-  let successful = 0;
+  // eslint-disable-next-line prefer-const
+  let successful = 0; // Will be incremented when actual transmission is implemented
   let failed = 0;
 
   // Process each waybill sequentially
   for (const waybillId of request.waybillIds) {
     try {
-      // TODO: Fetch waybill and address data
-      const transmissionRequest: AddressTransmissionRequest = {
+      // TODO: Fetch waybill and address data from database/API
+      // For now, this is a placeholder that should be implemented in production
+      // const waybillData = await fetchWaybillById(waybillId);
+      // const senderAddress = await fetchAddressById(waybillData.senderId);
+      // const recipientAddress = await fetchAddressById(waybillData.receiverId);
+      
+      // This is a mock implementation - replace with actual data fetching
+      console.warn(`TODO: Implement actual address fetching for waybill ${waybillId}`);
+      
+      // Skip transmission if addresses are not available
+      const errorResult: AddressTransmissionResult = {
+        id: `trans-${Date.now()}`,
         waybillId,
         carrierId: request.carrierId,
-        addressData: {
-          sender: {} as Address, // TODO: Fetch actual address
-          recipient: {} as Address, // TODO: Fetch actual address
-        },
-        options: request.options,
+        status: 'failed',
+        transmittedAt: new Date(),
+        errorMessage: 'Address data not available - implementation required',
+        retryCount: 0,
       };
-
-      const result = await transmitAddress(transmissionRequest);
-      results.push(result);
-
-      if (result.status === 'confirmed' || result.status === 'sent') {
-        successful++;
-      } else {
-        failed++;
-      }
+      results.push(errorResult);
+      failed++;
+      continue;
     } catch (error) {
       // Record individual failure
       const errorResult: AddressTransmissionResult = {

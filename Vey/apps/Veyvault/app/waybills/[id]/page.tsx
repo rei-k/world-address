@@ -113,7 +113,11 @@ export default function WaybillDetailPage() {
   async function handlePrintWaybill() {
     if (!waybill || !delivery) return;
 
-    // Create mock addresses for display
+    // TODO: In production, fetch actual address data from the API
+    // const senderAddress = await fetchAddressById(waybill.senderId);
+    // const recipientAddress = await fetchAddressById(waybill.receiverId);
+    
+    // Mock addresses for demonstration - replace with actual data in production
     const mockSenderAddress: Address = {
       id: 'addr-sender',
       userId: 'user-123',
@@ -155,7 +159,11 @@ export default function WaybillDetailPage() {
       setTransmitting(true);
       setTransmissionStatus('idle');
 
-      // Mock addresses for transmission
+      // TODO: In production, fetch actual address data from the API
+      // const senderAddress = await fetchAddressById(waybill.senderId);
+      // const recipientAddress = await fetchAddressById(waybill.receiverId);
+      
+      // Mock addresses for demonstration - replace with actual data in production
       const mockSenderAddress: Address = {
         id: 'addr-sender',
         userId: 'user-123',
