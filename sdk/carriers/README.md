@@ -1,23 +1,42 @@
 # @vey/carriers
 
-Carrier integration SDK for Digital Handshake Logistics system. Provides unified interface for integrating with logistics carriers including SF Express (顺丰速运), JD Logistics (京东物流), and more.
+World-class carrier integration SDK for the Vey logistics ecosystem. Provides a unified interface for integrating with major international and regional logistics carriers.
 
 ## Features
 
-- 🚚 **Unified API**: Single interface for multiple carriers
+- 🚚 **Unified API**: Single interface for all carriers (UPS, FedEx, DHL, SF Express, Yamato, etc.)
+- 🤖 **Smart Selection**: AI-powered carrier recommendations based on route, cost, and speed
 - 🔐 **Digital Handshake**: QR/NFC-based pickup and delivery confirmation
 - 📍 **Address Standardization**: Convert addresses to carrier-specific formats
 - 📦 **Pre-validation**: Check delivery possibility before courier arrival
-- 🔄 **Real-time Tracking**: Integrated tracking with webhook support
-- 🌍 **Chinese Logistics**: Specialized support for China's 4-tier address system
+- 🔄 **Real-time Tracking**: Unified tracking across all carriers
+- 🌍 **Global Coverage**: Support for 6+ major carriers covering 200+ countries
+- 📊 **Performance Monitoring**: Track carrier reliability and response times
+- 🔁 **Automatic Fallback**: Intelligent failover when carriers are unavailable
+- 💰 **Rate Comparison**: Compare costs across multiple carriers in real-time
 
 ## Supported Carriers
 
-- ✅ SF Express (顺丰速运) - China's premium logistics provider
-- ✅ JD Logistics (京东物流) - E-commerce logistics specialist
-- 🚧 China Post (中国邮政) - Coming soon
-- 🚧 YTO Express (圆通速递) - Coming soon
-- 🚧 ZTO Express (中通快递) - Coming soon
+### Global Carriers
+- ✅ **UPS** (United Parcel Service) - North America, Europe, Asia, 220+ countries
+- ✅ **FedEx** - Worldwide express delivery, 220+ countries
+- ✅ **DHL Express** - International express shipping, 220+ countries
+
+### Regional Carriers
+
+#### China
+- ✅ **SF Express** (顺丰速运) - China's premium logistics provider
+- ✅ **JD Logistics** (京东物流) - E-commerce logistics specialist
+
+#### Japan
+- ✅ **Yamato Transport** (ヤマト運輸) - Japan's #1 delivery service
+
+### Coming Soon
+- 🚧 **China Post** (中国邮政)
+- 🚧 **Japan Post** (日本郵便)
+- 🚧 **Royal Mail** (UK)
+- 🚧 **USPS** (United States)
+- 🚧 **Canada Post**
 
 ## Installation
 
@@ -27,95 +46,96 @@ npm install @vey/carriers
 
 ## Quick Start
 
-### Basic Usage
+### Installation
 
-```typescript
-import { SFExpressAdapter } from '@vey/carriers';
-
-// Initialize carrier adapter
-const carrier = new SFExpressAdapter({
-  apiKey: 'your-api-key',
-  apiSecret: 'your-api-secret',
-  customerId: 'your-customer-id',
-  environment: 'production' // or 'sandbox'
-});
-
-// Validate shipment before creating order
-const validation = await carrier.validateShipment({
-  sender: {
-    name: '张三',
-    phone: '13800138000',
-    address: {
-      country: 'CN',
-      province: '北京市',
-      city: '北京市',
-      district: '朝阳区',
-      street: '建国路1号',
-      building: 'A座',
-      unit: '1单元',
-      room: '101室'
-    }
-  },
-  recipient: {
-    name: '李四',
-    phone: '13900139000',
-    address: {
-      country: 'CN',
-      province: '上海市',
-      city: '上海市',
-      district: '浦东新区',
-      street: '陆家嘴环路1000号',
-      postalCode: '200120'
-    }
-  },
-  items: [
-    {
-      name: '电子产品',
-      quantity: 1,
-      weight: 2.5,
-      value: 5000,
-      currency: 'CNY'
-    }
-  ],
-  paymentMethod: 'SENDER_PAY'
-});
-
-if (validation.deliverable) {
-  console.log('可配送！预估费用:', validation.estimatedCost);
-} else {
-  console.log('不可配送:', validation.reason);
-}
+```bash
+npm install @vey/carriers
 ```
 
-### Create Pickup Order
+### Basic Usage - UPS
 
 ```typescript
-// Create pickup order
-const order = await carrier.createPickupOrder({
+import { UPSAdapter } from '@vey/carriers';
+
+// Initialize UPS adapter
+const ups = new UPSAdapter({
+  apiKey: 'your-ups-api-key',
+  apiSecret: 'your-ups-secret',
+  customerId: 'your-ups-account',
+  environment: 'production'
+});
+
+// Create shipment
+const order = await ups.createPickupOrder({
   shipment: {
-    sender: { /* ... */ },
-    recipient: { /* ... */ },
-    items: [ /* ... */ ]
+    sender: {
+      name: 'John Doe',
+      phone: '5551234567',
+      address: {
+        country: 'US',
+        province: 'CA',
+        city: 'Los Angeles',
+        street: '123 Main St',
+        postalCode: '90001'
+      }
+    },
+    recipient: {
+      name: 'Jane Smith',
+      phone: '5559876543',
+      address: {
+        country: 'US',
+        province: 'NY',
+        city: 'New York',
+        street: '456 Broadway',
+        postalCode: '10001'
+      }
+    },
+    items: [
+      {
+        name: 'Electronics',
+        quantity: 1,
+        weight: 2.5,
+        value: 500,
+        currency: 'USD'
+      }
+    ],
+    paymentMethod: 'SENDER_PAY'
   },
-  pickupTime: 'ASAP', // or specific Date
+  pickupTime: 'ASAP',
   paymentMethod: 'SENDER_PAY'
 });
 
-console.log('运单号:', order.waybillNumber);
-console.log('追踪链接:', order.trackingUrl);
+console.log('Tracking:', order.trackingNumber);
+console.log('Label:', order.labelUrl);
 ```
 
-### Track Shipment
+### Smart Carrier Selection
 
 ```typescript
-const tracking = await carrier.trackShipment(order.waybillNumber);
+import { globalCarrierRegistry, CarrierFactory } from '@vey/carriers';
 
-console.log('当前状态:', tracking.currentStatus);
-console.log('当前位置:', tracking.currentLocation);
-
-tracking.events.forEach(event => {
-  console.log(`${event.timestamp}: ${event.description} - ${event.location}`);
+// Initialize multiple carriers
+CarrierFactory.initializeCarriers({
+  'ups': { apiKey: '...', apiSecret: '...', customerId: '...', environment: 'production' },
+  'fedex': { apiKey: '...', apiSecret: '...', customerId: '...', environment: 'production' },
+  'dhl-express': { apiKey: '...', apiSecret: '...', customerId: '...', environment: 'production' }
 });
+
+// Get recommendations
+const recommendations = await globalCarrierRegistry.getRecommendations(shipment, {
+  origin: 'US',
+  destination: 'JP',
+  maxCost: 100,
+  maxDeliveryDays: 5
+});
+
+// Use best carrier
+const { result, carrierName } = await globalCarrierRegistry.createShipmentWithBestCarrier(
+  shipment,
+  pickupOrder
+);
+
+console.log(`Shipped with ${carrierName}: ${result.trackingNumber}`);
 ```
 
 ## Digital Handshake Protocol
