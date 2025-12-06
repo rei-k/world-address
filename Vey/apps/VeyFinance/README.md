@@ -16,7 +16,7 @@ VeyFinanceは、AI画像認識を活用したKYC（Know Your Customer）プロ�
 - 📍 **AMF Address Normalization**: 住所の正規化とPID生成
 - 🚫 **Fraud Detection**: 偽造書類・DeepFake検出
 - ✅ **Compliance**: ISO/ICAO準拠、AML/CFT対応
-- 🌍 **257 Countries Support**: グローバル対応
+- 🌍 **269 Countries Support**: グローバル対応
 
 ---
 

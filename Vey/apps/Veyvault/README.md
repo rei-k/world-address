@@ -34,12 +34,12 @@ Veyvault is a next-generation address management application that encrypts and s
 
 Veyvaultは6つの主要機能で構成されています：
 
-1. **📝 Address Management (住所管理)** - 複数の住所をクラウドで一元管理。自動検証、257カ国対応
+1. **📝 Address Management (住所管理)** - 複数の住所をクラウドで一元管理。自動検証、269カ国対応
 2. **📱 QR/NFC Sharing (QR/NFC共有)** - スキャンするだけで友達追加。生住所を見せずにシェア
 3. **🔐 Privacy Protection (プライバシー保護)** - AES-256暗号化とゼロ知識証明で完全保護
 4. **🛍️ E-commerce Integration (EC連携)** - ワンクリックチェックアウト。住所入力不要
 5. **👥 Friend Management (友達管理)** - 友達にギフトを送る時も生住所を見せない
-6. **🌍 International Support (国際対応)** - 257カ国、多言語、現地通貨対応
+6. **🌍 International Support (国際対応)** - 269カ国、多言語、現地通貨対応
 
 ### QR/NFC共有フロー / QR/NFC Sharing Flow
 

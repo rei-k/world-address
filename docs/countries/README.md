@@ -2,9 +2,9 @@
 
 ## 概要 / Overview
 
-このドキュメントでは、World Address YAMLプロジェクトで扱う257の国・地域について、それぞれの住所体系と特徴を詳しく紹介します。
+このドキュメントでは、World Address YAMLプロジェクトで扱う269の国・地域について、それぞれの住所体系と特徴を詳しく紹介します。
 
-This document provides detailed introductions to the 257 countries and regions covered by the World Address YAML project, including their address systems and characteristics.
+This document provides detailed introductions to the 269 countries and regions covered by the World Address YAML project, including their address systems and characteristics.
 
 ---
 

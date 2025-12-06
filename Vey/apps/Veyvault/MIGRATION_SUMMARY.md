@@ -51,7 +51,7 @@ This document summarizes the migration from "Veybook" to "Veyvault" and the addi
 - Faster checkout
 - Privacy preserved (encrypted tokens only)
 - Accurate addresses
-- Universal support for 257 countries
+- Universal support for 269 countries
 
 #### C. Site Access Management
 

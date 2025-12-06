@@ -15,7 +15,7 @@ The `@vey/core` SDK now includes built-in geocoding and reverse geocoding functi
 - 🗺️ Forward geocoding (address → coordinates)
 - 🔄 Reverse geocoding (coordinates → address)
 - 💾 Built-in caching to reduce API calls
-- 🌍 Support for 257 countries
+- 🌍 Support for 269 countries
 - 🆓 Free to use (OpenStreetMap Nominatim)
 - 🔒 No API key required
 - 📊 Confidence scoring for results

@@ -172,11 +172,11 @@ The Vey ecosystem consists of the following core services:
 
 #### 💰 決済処理 / Payment Processing
 
-- **多通貨対応**: 世界257国・地域の通貨に対応
+- **多通貨対応**: 世界269国・地域の通貨に対応
 - **税計算**: 各国の税制（消費税、付加価値税、売上税など）に自動対応
 - **レシート発行**: 各国の法的要件に準拠したレシート生成
 
-**Multi-Currency Support**: Supports currencies from 257 countries/regions worldwide  
+**Multi-Currency Support**: Supports currencies from 269 countries/regions worldwide  
 **Tax Calculation**: Automatically handles various tax systems (consumption tax, VAT, sales tax, etc.)  
 **Receipt Issuance**: Generates receipts compliant with legal requirements in each country
 
@@ -192,11 +192,11 @@ The Vey ecosystem consists of the following core services:
 
 #### 🌐 グローバル対応 / Global Support
 
-- **257国・地域対応**: すべての国の住所形式に対応
+- **269国・地域対応**: すべての国の住所形式に対応
 - **多言語**: 各国の言語でレシート・ラベル発行
 - **現地規制準拠**: 各国の法規制（インボイス制度、財務デバイス等）に対応
 
-**257 Countries/Regions Support**: Supports address formats for all countries  
+**269 Countries/Regions Support**: Supports address formats for all countries  
 **Multi-Language**: Issue receipts and labels in local languages  
 **Local Regulation Compliance**: Complies with local regulations (invoice systems, fiscal devices, etc.)
 
@@ -331,12 +331,12 @@ By integrating Veyvault with social login, you can completely eliminate the hass
 - ✅ **コンバージョン率向上**: チェックアウトの離脱率を削減
 - ✅ **配送ミス削減**: 正確な住所データで配送エラーを防止
 - ✅ **プライバシー保護**: 生住所を保存しないためGDPR等に準拠しやすい
-- ✅ **グローバル対応**: 257国・地域の住所形式に自動対応
+- ✅ **グローバル対応**: 269国・地域の住所形式に自動対応
 
 **Increased Conversion Rate**: Reduce checkout abandonment  
 **Reduced Delivery Errors**: Prevent delivery errors with accurate address data  
 **Privacy Protection**: Easier GDPR compliance by not storing raw addresses  
-**Global Support**: Automatically supports address formats from 257 countries/regions
+**Global Support**: Automatically supports address formats from 269 countries/regions
 
 ---
 
@@ -348,7 +348,7 @@ The Vey ecosystem is built on the following technical foundation:
 
 ### 🗂️ World Address YAML Database
 
-- **257国・地域対応**: すべての国の住所形式データ
+- **269国・地域対応**: すべての国の住所形式データ
 - **YAML/JSON形式**: 人間にもプログラムにも扱いやすい
 - **オープンソース**: MITライセンスで自由に利用可能
 

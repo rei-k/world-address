@@ -9,7 +9,7 @@
 
 - 🎨 **Beautiful UI** - Premium design with smooth animations
 - ♿ **Accessible** - WCAG 2.1 AA compliant
-- 🌍 **Multi-country** - Dynamic fields for 257+ countries
+- 🌍 **Multi-country** - Dynamic fields for 269+ countries
 - ✅ **Smart Validation** - Real-time validation with helpful error messages
 - 🎯 **TypeScript** - Full type safety out of the box
 - 🎭 **Themeable** - Customizable colors, fonts, and spacing
@@ -278,13 +278,13 @@ See [docs/PREMIUM_COMPONENTS.md](./docs/PREMIUM_COMPONENTS.md) for complete API 
 ## 🎯 Why Choose @vey/react?
 
 ### vs. Manual Forms
-- ✅ No need to research address formats for 257 countries
+- ✅ No need to research address formats for 269 countries
 - ✅ Built-in validation rules
 - ✅ Professional UI out of the box
 
 ### vs. Other Solutions
 - ✅ **Better UX** - Stripe-like quality
-- ✅ **More Complete** - 257+ countries with accurate formats
+- ✅ **More Complete** - 269+ countries with accurate formats
 - ✅ **More Flexible** - Use complete forms or individual components
 - ✅ **Better DX** - TypeScript, great docs, helpful errors
 - ✅ **Open Source** - MIT licensed, community-driven

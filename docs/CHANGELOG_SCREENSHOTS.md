@@ -87,7 +87,7 @@ This PR adds screenshots and enhanced feature descriptions to the application RE
 
 ### 1. 📝 Address Management (住所管理)
 - 複数の住所をクラウドで一元管理
-- 257カ国対応
+- 269カ国対応
 - 自動バリデーション
 - PID自動生成
 
@@ -112,7 +112,7 @@ This PR adds screenshots and enhanced feature descriptions to the application RE
 - アクセス権限管理
 
 ### 6. 🌍 International Support (国際対応)
-- 257カ国・地域対応
+- 269カ国・地域対応
 - 多言語インターフェース
 - 現地の住所形式対応
 

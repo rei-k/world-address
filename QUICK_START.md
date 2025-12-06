@@ -45,7 +45,7 @@ export default App;
 
 ## What You Get
 
-✅ **257+ Countries** - Automatically adjusts fields for any country  
+✅ **269+ Countries** - Automatically adjusts fields for any country  
 ✅ **Real-time Validation** - Helpful error messages as users type  
 ✅ **Auto-formatting** - Postal codes formatted correctly  
 ✅ **Beautiful UI** - Stripe-like design that looks professional  

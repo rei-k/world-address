@@ -353,7 +353,7 @@ async function validateProductListing(product) {
 
 **差別化要素**:
 - AI精度: 業界最高水準92%+
-- 多言語対応: 257カ国対応
+- 多言語対応: 269カ国対応
 - カスタマイズ可能ルール
 - API統合（Shopify, WooCommerce）
 
@@ -395,7 +395,7 @@ async function validateProductListing(product) {
 3. 🇬🇧 イギリス
 4. 🇩🇪 ドイツ
 5. 🇫🇷 フランス
-... 257カ国対応（段階的拡張）
+... 269カ国対応（段階的拡張）
 
 **技術仕様**:
 - **OCR Engine**: Tesseract 5.0+, Google Cloud Vision API
@@ -1101,7 +1101,7 @@ async function createZKPWaybill(packagePhoto, recipientPID) {
 
 ### VeyExpressへの統合
 
-VeyExpressは、257カ国対応のマルチキャリア配送統合プラットフォームです。
+VeyExpressは、269カ国対応のマルチキャリア配送統合プラットフォームです。
 
 #### 配送業者自動選択
 
@@ -1207,7 +1207,7 @@ async function selectOptimalCarrier(shipment) {
 - [ ] AML/CFTチェック機能
 
 #### Month 12: 多国展開
-- [ ] 257カ国ID対応（段階的）
+- [ ] 269カ国ID対応（段階的）
 - [ ] 国際規格準拠（ISO, ICAO）
 - [ ] 多言語対応
 

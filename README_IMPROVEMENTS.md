@@ -11,7 +11,7 @@ This document outlines the improvements made to the README.md file in response t
 
 ### 2. **Added Status Badges** 📊
 - **License Badge**: Shows MIT license
-- **Data Coverage Badge**: Displays 257 countries covered
+- **Data Coverage Badge**: Displays 269 countries covered
 - **Auto Update Badge**: Highlights daily automatic updates
 - Makes project status immediately visible
 
