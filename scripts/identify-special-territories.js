@@ -12,7 +12,22 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
+// Configuration constants
 const dataDir = path.join(__dirname, '..', 'data');
+const outputDir = path.join(__dirname, '..', 'docs');
+
+/**
+ * Minimum score required to be classified as "effectively independent"
+ * Based on 6 indicators: currency, ISO, postal, tax, timezone, not UN member
+ * Score >= 4 means high degree of autonomy
+ */
+const MIN_INDEPENDENCE_SCORE = 4;
+
+/**
+ * ISO codes of Special Administrative Regions (SAR)
+ * These territories operate under "One Country, Two Systems" policy
+ */
+const SAR_CODES = ['HK', 'MO'];
 
 /**
  * Recursively find all YAML files
@@ -115,9 +130,8 @@ function categorizeTerritory(data, indicators, filePath) {
 
   // Special Administrative Regions (SAR) - have own currency and customs
   if (indicators.hasOwnCurrency && indicators.hasOwnISO && indicators.isNotUNMember) {
-    // Check if currency is different from parent country
     const isoCode = indicators.isoCode;
-    if (isoCode === 'HK' || isoCode === 'MO') {
+    if (SAR_CODES.includes(isoCode)) {
       categories.push('SAR (Special Administrative Region)');
     }
   }
@@ -140,7 +154,7 @@ function categorizeTerritory(data, indicators, filePath) {
     (indicators.hasOwnTaxSystem ? 1 : 0) +
     (indicators.hasOwnTimezone ? 1 : 0);
 
-  if (independenceScore >= 4 && indicators.isNotUNMember) {
+  if (independenceScore >= MIN_INDEPENDENCE_SCORE && indicators.isNotUNMember) {
     categories.push('Effectively Independent');
   }
 
@@ -351,12 +365,11 @@ function printResults(results) {
  * Generate JSON report
  */
 function generateJSONReport(results) {
-  const reportPath = path.join(__dirname, '..', 'docs', 'special-territories-report.json');
+  const reportPath = path.join(outputDir, 'special-territories-report.json');
 
-  // Ensure docs directory exists
-  const docsDir = path.dirname(reportPath);
-  if (!fs.existsSync(docsDir)) {
-    fs.mkdirSync(docsDir, { recursive: true });
+  // Ensure output directory exists
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
   }
 
   const report = {

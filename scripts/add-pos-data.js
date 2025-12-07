@@ -725,7 +725,7 @@ function addPOSToCountry(filePath) {
         // Caucasus disputed territories use Russian Ruble
         countryCode = 'RU';
         console.log(
-          `  Using Russia (RU) for disputed territory ${path.basename(filePath, '.yaml')}`
+          `  Using Russia (RU) for disputed territory ${path.basename(filePath, '.yaml')}`,
         );
       }
     } else if (
@@ -774,7 +774,7 @@ function addPOSToCountry(filePath) {
 
     if (!posData) {
       console.log(
-        `✗ Skipping ${path.basename(filePath, '.yaml')} - no currency data available for ${countryCode}`
+        `✗ Skipping ${path.basename(filePath, '.yaml')} - no currency data available for ${countryCode}`,
       );
       return false;
     }
