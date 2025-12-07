@@ -148,28 +148,7 @@ This project handles Japanese territories according to the following principles:
 
 ### 日本の領土の分類 / Classification of Japanese Territories
 
-#### 1. 日本の領土 / Japanese Territories
-
-##### 北方領土 (Northern Territories)
-
-- **日本の立場**: 択捉島、国後島、色丹島、歯舞群島は日本固有の領土
-- **ファイル**: `data/asia/east_asia/JP/regions/Northern_Territories.yaml`
-
-##### 竹島 (Takeshima)
-
-- **日本の立場**: 竹島は日本固有の領土
-- **ファイル**: `data/asia/east_asia/JP/regions/Takeshima.yaml`
-
-##### 尖閣諸島 (Senkaku Islands)
-
-- **日本の立場**: 尖閣諸島は日本固有の領土であり、解決すべき領有権の問題は存在しない
-- **ファイル**: `data/asia/east_asia/JP/regions/Senkaku_Islands.yaml`
-
-**重要**: このプロジェクトでは、日本の領土について日本政府の公式見解に基づいて記載します。これは、国際配送システムにおける日本の住所体系の一貫性を保つためです。
-
-#### 2. その他の主要な係争地域 / Other Major Disputed Territories
-
-##### カシミール (Kashmir)
+#### 1. カシミール (Kashmir)
 - **ファイル**: `data/asia/south_asia/disputed/Kashmir.yaml`
 - **係争国**: インド、パキスタン、中国
 

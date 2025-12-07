@@ -1061,10 +1061,6 @@ All countries have dedicated directories with files named after their ISO 3166-1
   - Example: `data/americas/north_america/US/overseas/PR.yaml` (Puerto Rico)
 - **Special regions**: `{ISO-CODE}/regions/{region}.yaml`
   - Example: `data/asia/southeast_asia/ID/regions/Papua.yaml` (Papua, Indonesia)
-  - Example: `data/asia/east_asia/JP/regions/Northern_Territories.yaml` (Japan's Northern Territories)
-  - Example: `data/asia/east_asia/JP/regions/Takeshima.yaml` (Japan's Takeshima)
-  - Example: `data/asia/east_asia/JP/regions/Senkaku_Islands.yaml` (Japan's Senkaku Islands)
-  - Note: Japanese territorial regions reflect the Japanese government's official position
 
 ---
 
@@ -1718,13 +1714,6 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 | Inner_Mongolia | Inner Mongolia | 内モンゴル |
 | Tibet | Tibet | チベット |
 | Xinjiang | Xinjiang | 新疆 |
-
-**日本係争地域 / Japan Disputed Territories:**
-| ファイル名 | 地域名 | 日本語名 |
-|------------|--------|----------|
-| Northern_Territories | Northern Territories | 北方領土 |
-| Senkaku_Islands | Senkaku Islands | 尖閣諸島 |
-| Takeshima | Takeshima | 竹島 |
 
 #### 南アジア / South Asia
 | コード | 国名 | 日本語名 |

@@ -95,42 +95,6 @@ status:
   recognized: true
   disputed: false
 
-# 日本の地域 / Japanese Territories
-# 日本の領土に関する情報
-# Information about Japanese territorial regions
-territories:
-  note: |
-    Japan maintains sovereignty over the following territorial regions.
-    Detailed information about each territory is maintained in separate files under the
-    regions/ subdirectory. These territories are inherent parts of Japanese territory.
-  
-  regions:
-    - name_ja: 北方領土
-      name_en: Northern Territories
-      file: regions/Northern_Territories.yaml
-      comprises:
-        - 択捉島 (Etorofu Island)
-        - 国後島 (Kunashiri Island)
-        - 色丹島 (Shikotan Island)
-        - 歯舞群島 (Habomai Islands)
-      note: Japan considers these as part of Hokkaido Prefecture
-    
-    - name_ja: 竹島
-      name_en: Takeshima
-      file: regions/Takeshima.yaml
-      location: Sea of Japan
-      note: Japan considers this as part of Shimane Prefecture, Oki District
-    
-    - name_ja: 尖閣諸島
-      name_en: Senkaku Islands
-      file: regions/Senkaku_Islands.yaml
-      location: East China Sea
-      note: Administered as part of Okinawa Prefecture, Ishigaki City
-  
-  official_policy: |
-    These territories are inherent parts of Japanese territory based on historical facts
-    and international law. Japan maintains its position through peaceful diplomatic dialogue.
-
 # POS（販売時点情報管理）関連情報
 pos:
   currency:
