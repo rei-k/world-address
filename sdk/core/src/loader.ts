@@ -52,14 +52,22 @@ export function createDataLoader(config: DataLoaderConfig = {}) {
       // Map country codes to their file paths
       const countryPaths: Record<string, string> = {
         // East Asia
-        JP: 'data/asia/east_asia/JP.json',
-        CN: 'data/asia/east_asia/CN.json',
-        KR: 'data/asia/east_asia/KR.json',
-        KP: 'data/asia/east_asia/KP.json',
-        TW: 'data/asia/east_asia/TW.json',
-        HK: 'data/asia/east_asia/HK.json',
-        MO: 'data/asia/east_asia/MO.json',
-        MN: 'data/asia/east_asia/MN.json',
+        JP: 'data/asia/east_asia/JP/JP.json',
+        CN: 'data/asia/east_asia/CN/CN.json',
+        KR: 'data/asia/east_asia/KR/KR.json',
+        KP: 'data/asia/east_asia/KP/KP.json',
+        TW: 'data/asia/east_asia/TW/TW.json',
+        HK: 'data/asia/east_asia/HK/HK.json',
+        MO: 'data/asia/east_asia/MO/MO.json',
+        MN: 'data/asia/east_asia/MN/MN.json',
+        // North America
+        US: 'data/americas/north_america/US/US.json',
+        CA: 'data/americas/north_america/CA/CA.json',
+        MX: 'data/americas/north_america/MX/MX.json',
+        // Europe
+        DE: 'data/europe/western_europe/DE/DE.json',
+        FR: 'data/europe/western_europe/FR/FR.json',
+        GB: 'data/europe/northern_europe/GB/GB.json',
         // Add more mappings as needed
       };
 
