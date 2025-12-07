@@ -138,8 +138,27 @@ export function createAddressPIDCredential(
 /**
  * Generates a UUID v4
  * Simple UUID generator for credential IDs
+ * Note: Uses crypto.randomUUID() for production-grade randomness
  */
 function generateUUID(): string {
+  // In Node.js 14.17+, use crypto.randomUUID()
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  
+  // Fallback for older environments (still cryptographically secure)
+  if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+    const bytes = new Uint8Array(16);
+    crypto.getRandomValues(bytes);
+    bytes[6] = (bytes[6] & 0x0f) | 0x40; // Version 4
+    bytes[8] = (bytes[8] & 0x3f) | 0x80; // Variant 10
+    
+    const hex = Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
+    return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+  }
+  
+  // Non-cryptographic fallback (development only - NOT FOR PRODUCTION)
+  console.warn('Using non-cryptographic UUID generation - DO NOT USE IN PRODUCTION');
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     const r = (Math.random() * 16) | 0;
     const v = c === 'x' ? r : (r & 0x3) | 0x8;
@@ -153,8 +172,11 @@ function generateUUID(): string {
  * In production, this would use a proper cryptographic library
  * to create a digital signature.
  * 
+ * SECURITY WARNING: This is a placeholder implementation.
+ * DO NOT use in production without proper cryptographic signing.
+ * 
  * @param vc - Verifiable Credential to sign
- * @param signingKey - Private key for signing
+ * @param signingKey - Private key for signing (never expose in logs or proof)
  * @param verificationMethod - Verification method reference
  * @returns VC with proof
  */
@@ -164,12 +186,22 @@ export function signCredential(
   verificationMethod: string
 ): VerifiableCredential {
   // Placeholder: In production, use proper cryptographic signing
+  // Example with ed25519 or secp256k1:
+  // const signature = sign(canonicalize(vc), signingKey);
+  
+  // For now, create a hash-based placeholder (NOT SECURE)
+  // In production, this must use actual digital signatures
+  const vcString = JSON.stringify(vc);
+  const placeholderSignature = Buffer.from(vcString).toString('base64').substring(0, 64);
+  
   const proof: Proof = {
     type: 'Ed25519Signature2020',
     created: new Date().toISOString(),
     verificationMethod,
     proofPurpose: 'assertionMethod',
-    proofValue: `z${Buffer.from(JSON.stringify(vc) + signingKey).toString('base64')}`,
+    // CRITICAL: Never include the signing key in the proof!
+    // This is a placeholder - use actual cryptographic signature
+    proofValue: `z${placeholderSignature}`,
   };
 
   return {
@@ -621,8 +653,11 @@ export function getNewPID(oldPid: string, revocationList: RevocationList): strin
 /**
  * Signs a revocation list (placeholder)
  * 
+ * SECURITY WARNING: This is a placeholder implementation.
+ * DO NOT use in production without proper cryptographic signing.
+ * 
  * @param revocationList - Revocation list to sign
- * @param signingKey - Private key for signing
+ * @param signingKey - Private key for signing (never expose in logs or proof)
  * @param verificationMethod - Verification method reference
  * @returns Signed revocation list
  */
@@ -632,12 +667,18 @@ export function signRevocationList(
   verificationMethod: string
 ): RevocationList {
   // Placeholder: In production, use proper cryptographic signing
+  // Example: const signature = sign(canonicalize(revocationList), signingKey);
+  
+  const listString = JSON.stringify(revocationList);
+  const placeholderSignature = Buffer.from(listString).toString('base64').substring(0, 64);
+  
   const proof: Proof = {
     type: 'Ed25519Signature2020',
     created: new Date().toISOString(),
     verificationMethod,
     proofPurpose: 'assertionMethod',
-    proofValue: `z${Buffer.from(JSON.stringify(revocationList) + signingKey).toString('base64')}`,
+    // CRITICAL: Never include the signing key in the proof!
+    proofValue: `z${placeholderSignature}`,
   };
 
   return {

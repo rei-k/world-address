@@ -2,10 +2,15 @@
  * ZKP Performance Benchmarks
  * 
  * This file contains performance benchmarks for all 5 ZKP patterns.
- * Run with: node benchmarks/zkp-benchmarks.js
+ * 
+ * Usage:
+ *   npm run build  # Build the SDK first
+ *   npm run benchmark
+ * 
+ * Note: Requires ES modules. Run with Node.js 18+
  */
 
-import { performance } from 'perf_hooks';
+import { performance } from 'node:perf_hooks';
 import {
   createZKCircuit,
   generateZKMembershipProof,
@@ -18,7 +23,7 @@ import {
   verifyZKVersionProof,
   generateZKLockerProof,
   verifyZKLockerProof,
-} from '../src/zkp';
+} from '../dist/index.mjs';
 
 // Benchmark configuration
 const ITERATIONS = 100;
