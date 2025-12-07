@@ -7,7 +7,6 @@
  * Refactored to use shared utilities
  */
 
-const path = require('path');
 const { transformLibAddressData } = require('./fetch-libaddressinput.js');
 const { createLogger } = require('./utils');
 

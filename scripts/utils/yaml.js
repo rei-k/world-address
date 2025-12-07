@@ -50,7 +50,7 @@ function formatYamlValue(value) {
 
   // Check for characters that require quoting in YAML
   const needsQuoting =
-    /[:\n#\[\]{}&*!|>'"%@`]/.test(value) ||
+    /[:\n#[\]{}&*!|>'"%@`]/.test(value) ||
     value.trim() !== value ||
     /^[-?]/.test(value);
 
@@ -66,10 +66,10 @@ function formatYamlValue(value) {
 /**
  * Convert YAML string to JSON object
  * Note: This is a basic implementation. For production use, consider using a library like js-yaml
- * @param {string} yaml - YAML string
+ * @param {string} _yaml - YAML string (unused - use js-yaml library instead)
  * @returns {Object} Parsed object
  */
-function yamlToJson(yaml) {
+function yamlToJson(_yaml) {
   // This is a placeholder for a basic YAML parser
   // In a real implementation, you would use a library like js-yaml
   throw new Error('YAML to JSON conversion requires js-yaml library');

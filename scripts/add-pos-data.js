@@ -702,9 +702,8 @@ function addPOSToCountry(filePath) {
         countryCode = 'RU';
         console.log(`  Using Russia (RU) for disputed territory ${path.basename(filePath, '.yaml')}`);
       }
-    }
-    // For special regions, try to get parent country code
-    else if (data.parent_country || data.region_of || filePath.includes('/regions/') || filePath.includes('/overseas/')) {
+    } else if (data.parent_country || data.region_of || filePath.includes('/regions/') || filePath.includes('/overseas/')) {
+      // For special regions, try to get parent country code
       const parentCode = getParentCountryCode(data, filePath);
       if (parentCode) {
         console.log(`  Using parent country ${parentCode} for region ${countryCode}`);
