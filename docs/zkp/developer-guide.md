@@ -865,7 +865,9 @@ if (isPIDRevoked(pid, revocationList)) {
 
 ## Troubleshooting
 
-### Issue: "Invalid proof" error
+### Common Issues & Solutions
+
+#### Issue: "Invalid proof" error
 
 **Problem**: Proof verification fails
 
@@ -887,6 +889,12 @@ if (!result.valid) {
   console.error('Verification failed:', result.error);
 }
 ```
+
+**Checklist**:
+- [ ] Circuit ID matches between generation and verification
+- [ ] Address data meets all shipping conditions
+- [ ] Proof timestamp is within valid time window
+- [ ] Public inputs are correctly formatted
 
 ### Issue: "Country code mismatch"
 
@@ -960,6 +968,384 @@ const proof = generateZKSelectiveRevealProof(
   circuit
 );
 ```
+
+---
+
+### Performance Issues
+
+#### Issue: Slow proof generation
+
+**Problem**: ZK proof generation takes too long
+
+**Solutions**:
+1. Use appropriate circuit complexity for your use case
+2. Cache circuits for reuse
+3. Pre-compile circuits during initialization
+4. Consider using simpler proofs when possible
+
+```typescript
+// ❌ Bad - Creating circuit every time
+function handleRequest(pid: string) {
+  const circuit = createZKCircuit('shipping-v1', 'Shipping', 'Validate');
+  const proof = generateZKProof(pid, conditions, circuit, address);
+}
+
+// ✅ Good - Cache and reuse circuit
+const circuitCache = new Map();
+
+function getCircuit(id: string) {
+  if (!circuitCache.has(id)) {
+    circuitCache.set(id, createZKCircuit(id, 'Shipping', 'Validate'));
+  }
+  return circuitCache.get(id);
+}
+
+function handleRequest(pid: string) {
+  const circuit = getCircuit('shipping-v1');
+  const proof = generateZKProof(pid, conditions, circuit, address);
+}
+```
+
+#### Issue: High memory usage
+
+**Problem**: Application uses too much memory with many proofs
+
+**Solutions**:
+1. Don't store all proofs in memory
+2. Use proof compression if available
+3. Clean up old proofs periodically
+4. Stream large proof sets instead of loading all at once
+
+```typescript
+// ❌ Bad - Keep all proofs in memory
+const allProofs = [];
+for (const pid of pids) {
+  allProofs.push(generateZKProof(pid, conditions, circuit, addresses[pid]));
+}
+
+// ✅ Good - Process proofs one at a time
+for (const pid of pids) {
+  const proof = generateZKProof(pid, conditions, circuit, addresses[pid]);
+  await processAndSaveProof(proof); // Save to database, don't keep in memory
+}
+```
+
+---
+
+### Integration Issues
+
+#### Issue: "Module not found" when importing from @vey/core
+
+**Problem**: Cannot import ZKP functions
+
+**Solutions**:
+1. Ensure @vey/core is installed
+2. Check import paths are correct
+3. Verify TypeScript configuration
+
+```bash
+# Install dependencies
+npm install @vey/core
+
+# Check installation
+npm list @vey/core
+```
+
+```typescript
+// ✅ Correct imports
+import {
+  createDIDDocument,
+  generateZKProof,
+  verifyZKProof,
+} from '@vey/core';
+
+// ❌ Wrong - don't import from subdirectories
+import { createDIDDocument } from '@vey/core/zkp';
+```
+
+#### Issue: TypeScript errors with ZKP types
+
+**Problem**: Type errors when using ZKP functions
+
+**Solutions**:
+1. Import types from @vey/core
+2. Check TypeScript version compatibility
+3. Enable strict mode for better type checking
+
+```typescript
+// ✅ Correct type imports
+import type {
+  ZKProof,
+  ZKCircuit,
+  ShippingCondition,
+  ValidationResult,
+} from '@vey/core';
+
+const proof: ZKProof = generateZKProof(pid, conditions, circuit, address);
+```
+
+---
+
+### Security Issues
+
+#### Issue: "Proof replay attack" detected
+
+**Problem**: Same proof used multiple times
+
+**Solutions**:
+1. Add timestamp validation
+2. Use nonces to prevent replay
+3. Implement proof expiration
+4. Track used proofs
+
+```typescript
+// ✅ Add timestamp check
+function verifyProofWithTimestamp(proof: ZKProof, circuit: ZKCircuit) {
+  const result = verifyZKProof(proof, circuit);
+  
+  if (!result.valid) {
+    return { valid: false, error: 'Invalid proof' };
+  }
+  
+  // Check proof age
+  const proofAge = Date.now() - new Date(proof.timestamp).getTime();
+  const maxAge = 5 * 60 * 1000; // 5 minutes
+  
+  if (proofAge > maxAge) {
+    return { valid: false, error: 'Proof expired' };
+  }
+  
+  return { valid: true };
+}
+```
+
+#### Issue: Unauthorized PID resolution
+
+**Problem**: Address accessed without proper authorization
+
+**Solutions**:
+1. Always validate access policy before resolution
+2. Log all access attempts
+3. Use short-lived access tokens
+4. Implement rate limiting
+
+```typescript
+// ✅ Proper access control
+async function resolvePIDSecure(
+  pid: string,
+  actorDid: string,
+  accessToken: string
+) {
+  // 1. Validate access policy
+  const policy = await getAccessPolicy(pid);
+  const hasAccess = validateAccessPolicy(policy, actorDid, 'resolve');
+  
+  if (!hasAccess) {
+    await createAuditLogEntry(pid, actorDid, 'resolve', 'denied', {
+      reason: 'No access permission',
+    });
+    throw new Error('Access denied');
+  }
+  
+  // 2. Validate access token
+  const tokenValid = await validateAccessToken(accessToken, actorDid);
+  if (!tokenValid) {
+    throw new Error('Invalid access token');
+  }
+  
+  // 3. Resolve PID
+  const address = await resolvePID({
+    pid,
+    requesterId: actorDid,
+    accessToken,
+    reason: 'delivery',
+    timestamp: new Date().toISOString(),
+  }, policy, addressData);
+  
+  // 4. Log successful access
+  await createAuditLogEntry(pid, actorDid, 'resolve', 'success', {
+    timestamp: new Date().toISOString(),
+  });
+  
+  return address;
+}
+```
+
+---
+
+### Data Issues
+
+#### Issue: "PID format invalid"
+
+**Problem**: PID doesn't match expected format
+
+**Solutions**:
+1. Validate PID format before use
+2. Use PID encoding helper functions
+3. Check country-specific PID rules
+
+```typescript
+// ✅ Validate PID format
+function validatePIDFormat(pid: string): boolean {
+  // Basic format: COUNTRY-ADMIN1-ADMIN2-...
+  const pattern = /^[A-Z]{2}(-[A-Z0-9]+)+$/;
+  
+  if (!pattern.test(pid)) {
+    console.error('Invalid PID format:', pid);
+    return false;
+  }
+  
+  // Check minimum components
+  const parts = pid.split('-');
+  if (parts.length < 3) {
+    console.error('PID must have at least country-admin1-admin2');
+    return false;
+  }
+  
+  return true;
+}
+
+// Use validation before processing
+if (!validatePIDFormat(pid)) {
+  throw new Error('Invalid PID format');
+}
+```
+
+#### Issue: "Address data incomplete"
+
+**Problem**: Missing required address fields
+
+**Solutions**:
+1. Validate address data before creating proofs
+2. Check country-specific requirements
+3. Provide clear error messages for missing fields
+
+```typescript
+// ✅ Validate address completeness
+function validateAddressData(address: any, country: string): ValidationResult {
+  const errors: string[] = [];
+  
+  // Common required fields
+  if (!address.country) errors.push('Missing country');
+  if (!address.postal_code) errors.push('Missing postal_code');
+  
+  // Country-specific requirements
+  if (country === 'JP') {
+    if (!address.province) errors.push('Missing province (required for Japan)');
+    if (!address.city) errors.push('Missing city (required for Japan)');
+  }
+  
+  if (country === 'US') {
+    if (!address.state) errors.push('Missing state (required for USA)');
+    if (!address.zip_code) errors.push('Missing zip_code (required for USA)');
+  }
+  
+  return {
+    valid: errors.length === 0,
+    errors,
+  };
+}
+
+// Validate before generating proof
+const validation = validateAddressData(address, 'JP');
+if (!validation.valid) {
+  console.error('Address validation failed:', validation.errors);
+  throw new Error(`Invalid address: ${validation.errors.join(', ')}`);
+}
+```
+
+---
+
+### Debugging Tips
+
+#### Enable verbose logging
+
+```typescript
+// Set environment variable
+process.env.ZKP_DEBUG = 'true';
+
+// Or use debug logging
+import { setLogLevel } from '@vey/core';
+setLogLevel('debug');
+
+// Now you'll see detailed logs
+const proof = generateZKProof(pid, conditions, circuit, address);
+// Output: [DEBUG] Generating proof for PID: JP-13-113-01
+//         [DEBUG] Circuit: shipping-v1
+//         [DEBUG] Conditions: {"allowedCountries":["JP"]}
+//         [DEBUG] Proof generated successfully
+```
+
+#### Test with mock data
+
+```typescript
+// Use mock data for testing
+const mockAddress = {
+  country: 'JP',
+  province: '13',
+  city: 'Tokyo',
+  postal_code: '100-0001',
+  street_address: 'Test Street 1-2-3',
+};
+
+const mockCircuit = createZKCircuit('test-v1', 'Test', 'Test circuit');
+const mockConditions = { allowedCountries: ['JP'] };
+
+// Test proof generation
+try {
+  const proof = generateZKProof('JP-13-113-01', mockConditions, mockCircuit, mockAddress);
+  console.log('✅ Proof generation works');
+} catch (error) {
+  console.error('❌ Proof generation failed:', error);
+}
+```
+
+#### Validate step by step
+
+```typescript
+// Break down complex flows into steps
+async function debugCompleteFlow() {
+  console.log('Step 1: Create DID...');
+  const didDoc = createDIDDocument(did, publicKey);
+  console.log('✅ DID created:', didDoc.id);
+  
+  console.log('Step 2: Create credential...');
+  const credential = createAddressPIDCredential(userDid, providerDid, pid, 'JP');
+  console.log('✅ Credential created:', credential.type);
+  
+  console.log('Step 3: Sign credential...');
+  const signed = signCredential(credential, privateKey, method);
+  console.log('✅ Credential signed');
+  
+  console.log('Step 4: Verify credential...');
+  const valid = verifyCredential(signed, publicKey);
+  console.log('✅ Verification result:', valid);
+  
+  // Continue step by step...
+}
+```
+
+---
+
+### Getting Help
+
+If you're still experiencing issues:
+
+1. **Check Examples**: Review [working examples](../../examples/zkp-demo/)
+2. **Read API Docs**: See [API Reference](../zkp-api.md)
+3. **Search Issues**: Check [GitHub Issues](https://github.com/rei-k/world-address/issues)
+4. **Ask Community**: Post in [Discussions](https://github.com/rei-k/world-address/discussions)
+5. **Report Bug**: File a [Bug Report](../../.github/ISSUE_TEMPLATE/bug_report.yml)
+
+**When reporting issues, include**:
+- ZKP function being used
+- Error message and stack trace
+- Minimal code to reproduce
+- @vey/core version
+- Node.js version
+- Operating system
+
+
 
 ---
 

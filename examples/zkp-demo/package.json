@@ -10,6 +10,8 @@
     "locker": "tsx locker-pickup.ts",
     "friend": "tsx friend-sharing.ts",
     "migration": "tsx address-migration.ts",
+    "integration-test": "tsx integration-test.ts",
+    "test": "npm run integration-test",
     "all": "npm run basic && npm run ecommerce && npm run locker && npm run friend && npm run migration"
   },
   "dependencies": {
