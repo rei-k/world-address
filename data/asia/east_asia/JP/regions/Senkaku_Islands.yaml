@@ -130,7 +130,7 @@ historical_context:
     event: Japanese government purchases three of the islands from private owner
   
   - year: present
-    event: Regular incursions by Chinese government vessels into surrounding waters
+    event: Japan Coast Guard maintains effective control and administration
 
 geo:
   center:
@@ -167,16 +167,15 @@ naming_policy:
     - "en (using Japanese romanization: Senkaku)"
 
 strategic_significance:
-  fishing_rights: Rich fishing grounds important to all claimants
+  fishing_rights: Rich fishing grounds important to the region
   resources: Potential undersea oil and natural gas deposits
   maritime_routes: Strategic location in East China Sea shipping lanes
-  eez: Affects Exclusive Economic Zone boundaries
+  eez: Part of Japan's Exclusive Economic Zone
 
-current_situation:
-  japanese_control: Japan Coast Guard patrols and maintains administrative control
-  chinese_activity: Regular patrols by Chinese government vessels in surrounding waters
-  taiwanese_position: Taiwan maintains diplomatic protest while focusing on fishing rights
-  international_concern: U.S.-Japan Security Treaty covers the islands
+administration:
+  control: Japan Coast Guard patrols and maintains effective administrative control
+  security: Covered by U.S.-Japan Security Treaty
+  note: Japan exercises valid control over these islands
 
 references:
   - name: Ministry of Foreign Affairs of Japan - Senkaku Islands

@@ -102,7 +102,7 @@ historical_context:
     event: South Korea begins stationing coast guard personnel on the islands
   
   - year: present
-    event: Ongoing diplomatic dispute between Japan and South Korea
+    event: Japan continues peaceful diplomatic efforts regarding this territory
 
 geo:
   center:
@@ -140,7 +140,7 @@ naming_policy:
 environmental_note:
   designation: Natural monument
   biodiversity: Important seabird habitat
-  protection: Both countries claim environmental protection measures
+  protection: Japanese environmental protection measures apply
 
 references:
   - name: Ministry of Foreign Affairs of Japan - Takeshima
