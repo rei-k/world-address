@@ -4,13 +4,6 @@
 
 This implementation significantly enhances the Vey shipping label (waybill) system by adding support for 6 major international carriers, implementing smart carrier selection, and providing comprehensive integration with the Vey ecosystem.
 
-## Problem Statement (Japanese)
-
-送り状作成のシステムを向上して下さい。あらゆるケースを想定して下さい。Veyシリーズの連携想定します。送り状の型を色んな配送業者から学習してください。
-
-**Translation:**
-"Please improve the shipping label creation system. Consider all cases. Assume integration with the Vey series. Please learn the shipping label formats from various shipping carriers."
-
 ## Solution Delivered
 
 ### ✅ All Requirements Met
