@@ -1,0 +1,136 @@
+name: 📚 Documentation Issue
+description: Report an issue with documentation or suggest improvements
+title: "[Docs]: "
+labels: ["documentation", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping us improve our documentation! Clear documentation helps everyone.
+
+  - type: dropdown
+    id: doc-type
+    attributes:
+      label: Documentation Type
+      description: What type of documentation issue is this?
+      options:
+        - Missing documentation
+        - Incorrect information
+        - Unclear explanation
+        - Typo or formatting
+        - Broken link
+        - Missing example
+        - Outdated content
+        - Translation needed
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: location
+    attributes:
+      label: Location
+      description: Where is the documentation issue?
+      options:
+        - README.md
+        - CONTRIBUTING.md
+        - DEVELOPMENT.md
+        - docs/ directory
+        - SDK README
+        - API documentation
+        - Examples
+        - Code comments
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: file
+    attributes:
+      label: Specific File/URL
+      description: Please provide the specific file path or URL
+      placeholder: "docs/zkp/developer-guide.md or https://..."
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Description
+      description: Describe the documentation issue
+      placeholder: The documentation says... but it should say...
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: Current Documentation
+      description: What does the documentation currently say? (quote or screenshot)
+      placeholder: Current text or screenshot...
+
+  - type: textarea
+    id: suggested
+    attributes:
+      label: Suggested Improvement
+      description: How should it be improved?
+      placeholder: Suggested text or description...
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Example Code/Content
+      description: If applicable, provide example code or content
+      render: markdown
+      placeholder: |
+        ```typescript
+        // Example code that should be in the docs
+        const example = createExample();
+        ```
+
+  - type: dropdown
+    id: audience
+    attributes:
+      label: Target Audience
+      description: Who is this documentation for?
+      options:
+        - Beginners
+        - Intermediate users
+        - Advanced users
+        - Contributors
+        - All users
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this documentation fix?
+      options:
+        - Critical - Blocks understanding
+        - High - Significant confusion
+        - Medium - Minor issue
+        - Low - Nice to have
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context, screenshots, or references
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to submit a PR to fix this documentation issue
+        - label: I am willing to review the updated documentation
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      options:
+        - label: I have checked for similar documentation issues
+          required: true
+        - label: I have provided enough context for the maintainers
+          required: true

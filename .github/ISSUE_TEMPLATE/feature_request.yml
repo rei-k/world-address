@@ -1,0 +1,133 @@
+name: ✨ Feature Request
+description: Suggest a new feature or enhancement
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature! Please provide as much detail as possible to help us understand and evaluate your proposal.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Is your feature request related to a problem? Please describe.
+      placeholder: I'm frustrated when...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like
+      placeholder: I would like to see...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which component should this feature be added to?
+      options:
+        - Data files (YAML/JSON)
+        - SDK Core
+        - Scripts
+        - Documentation
+        - Examples
+        - ZKP Protocol
+        - Vey Applications
+        - New Application
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Critical - Blocking my work
+        - High - Significantly improves workflow
+        - Medium - Nice to have
+        - Low - Minor improvement
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternative solutions or workarounds?
+      placeholder: I have also thought about...
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Describe your use case and how this feature would help
+      placeholder: |
+        As a [type of user], I want to [action] so that [benefit].
+        
+        Example: As an e-commerce developer, I want to validate addresses 
+        in real-time so that users get immediate feedback.
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Example Implementation
+      description: If you have ideas on how this could be implemented, please share
+      render: typescript
+      placeholder: |
+        // Example API or usage
+        const result = newFeature({
+          option: 'value'
+        });
+
+  - type: textarea
+    id: mockup
+    attributes:
+      label: Mockups / Screenshots
+      description: If applicable, add mockups, diagrams, or screenshots
+
+  - type: dropdown
+    id: breaking
+    attributes:
+      label: Breaking Change
+      description: Would this be a breaking change?
+      options:
+        - "No"
+        - "Yes"
+        - "Not sure"
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context, links, or references
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Are you willing to contribute to this feature?
+      options:
+        - label: I am willing to submit a PR for this feature
+        - label: I am willing to help test this feature
+        - label: I am willing to help document this feature
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following
+      options:
+        - label: I have searched for similar feature requests
+          required: true
+        - label: I have checked the roadmap for planned features
+          required: false
+        - label: I have provided a clear use case
+          required: true

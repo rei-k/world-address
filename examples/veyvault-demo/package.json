@@ -6,14 +6,19 @@
   "main": "src/address-book.js",
   "scripts": {
     "start": "node src/address-book.js",
-    "address-book": "node src/address-book.js"
+    "address-book": "node src/address-book.js",
+    "friend-sharing": "node src/friend-sharing.js",
+    "ecommerce": "node src/ecommerce-integration.js",
+    "all": "npm run address-book && npm run friend-sharing && npm run ecommerce"
   },
   "keywords": [
     "veyvault",
     "address-book",
     "privacy",
     "zkp",
-    "vey"
+    "vey",
+    "friend-sharing",
+    "ecommerce"
   ],
   "author": "Vey Team",
   "license": "MIT",

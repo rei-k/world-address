@@ -1,0 +1,22 @@
+{
+  "name": "zkp-demo-examples",
+  "version": "1.0.0",
+  "description": "ZKP Address Protocol demo examples",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "basic": "tsx basic-flow.ts",
+    "ecommerce": "tsx ecommerce-flow.ts",
+    "locker": "tsx locker-pickup.ts",
+    "friend": "tsx friend-sharing.ts",
+    "migration": "tsx address-migration.ts",
+    "all": "npm run basic && npm run ecommerce && npm run locker && npm run friend && npm run migration"
+  },
+  "dependencies": {
+    "@vey/core": "file:../../sdk/core"
+  },
+  "devDependencies": {
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
