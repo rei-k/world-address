@@ -10,33 +10,12 @@
       }
     ]
   },
-  "type": "Disputed Territory",
-  "note": "Japan exercises effective control over these islands. China and Taiwan claim sovereignty.",
-  "claimed_by": "JP",
-  "claimed_name_ja": "尖閣諸島",
-  "claimed_name_en": "Senkaku Islands",
-  "disputed_with": [
-    {
-      "country": "CN",
-      "name": "China (PRC)",
-      "claimed_name_zh": "钓鱼岛及其附属岛屿",
-      "claimed_name_zh_traditional": "釣魚島及其附屬島嶼",
-      "claimed_name_en": "Diaoyu Islands",
-      "note": "China claims these islands as inherent Chinese territory"
-    },
-    {
-      "country": "TW",
-      "name": "Taiwan (ROC)",
-      "claimed_name_zh": "釣魚臺列嶼",
-      "claimed_name_en": "Diaoyutai Islands",
-      "note": "Taiwan also claims sovereignty over these islands"
-    }
-  ],
-  "current_administration": {
-    "country": "JP",
-    "status": "Under Japanese control and administration",
-    "note": "Japan exercises effective control as inherent Japanese territory"
-  },
+  "type": "Japanese Territory",
+  "note": "Inherent Japanese territory under effective Japanese control. Administered as part of Okinawa Prefecture, Ishigaki City.",
+  "belongs_to": "JP",
+  "official_name_ja": "尖閣諸島",
+  "official_name_en": "Senkaku Islands",
+  "note_on_situation": "The Senkaku Islands are inherent Japanese territory under valid Japanese control. \nThere exists no territorial issue to be resolved concerning these islands.\n",
   "description": {
     "location": "East China Sea, northeast of Taiwan, west of Okinawa",
     "area_km2": 6.3,
@@ -85,11 +64,7 @@
       "note": "Also known as Sekibisho"
     }
   ],
-  "official_position": {
-    "japan": "The Senkaku Islands are clearly an inherent part of Japanese territory, in \nlight of historical facts and based upon international law. Indeed, the Senkaku \nIslands are under the valid control of Japan. There exists no issue of territorial \nsovereignty to be resolved concerning the Senkaku Islands.\n",
-    "china": "Diaoyu Dao and its affiliated islands have been China's inherent territory \nsince ancient times. China has indisputable sovereignty over Diaoyu Dao. \nJapan's so-called \"incorporation\" of the islands is illegal and invalid.\n",
-    "taiwan": "The Diaoyutai Islands are part of the territory of the Republic of China. \nHistorical records, geography and international law all support ROC sovereignty \nover these islands.\n"
-  },
+  "official_position": "The Senkaku Islands are clearly an inherent part of Japanese territory, in \nlight of historical facts and based upon international law. The Senkaku \nIslands are under the valid control of Japan. There exists no issue of territorial \nsovereignty to be resolved concerning the Senkaku Islands.\n",
   "languages": [
     {
       "name": "Japanese",
@@ -199,21 +174,16 @@
     "verified_at": "2024-01-01T00:00:00Z"
   },
   "status": {
-    "recognized": false,
-    "disputed": true,
+    "recognized": true,
+    "japanese_territory": true,
     "un_member": false,
     "inhabited": false
   },
-  "territorial_restrictions": {
-    "note": "According to Japanese government policy, these islands must be referred to \nusing the Japanese name (尖閣諸島, Senkaku Islands) in Japanese systems. \nChinese names (钓鱼岛/釣魚島, Diaoyu/Diaoyutai) are blocked in Japanese address forms.\n",
-    "allowed_languages": [
+  "naming_policy": {
+    "note": "These islands are referred to using the Japanese name (尖閣諸島, Senkaku Islands) \nin Japanese systems.\n",
+    "official_languages": [
       "ja",
       "en (using Japanese romanization: Senkaku)"
-    ],
-    "blocked_languages": [
-      "zh-CN (Simplified Chinese)",
-      "zh-TW (Traditional Chinese)",
-      "zh (in Japanese systems)"
     ]
   },
   "strategic_significance": {

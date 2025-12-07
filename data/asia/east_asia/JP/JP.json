@@ -141,40 +141,37 @@
     "recognized": true,
     "disputed": false
   },
-  "disputed_territories": {
-    "note": "Japan claims sovereignty over the following territories which are currently disputed.\nDetailed information about each territory is maintained in separate files under the\ndisputed/ subdirectory. Japan's official position is prioritized in this database.\n",
-    "territories": [
+  "territories": {
+    "note": "Japan maintains sovereignty over the following territorial regions.\nDetailed information about each territory is maintained in separate files under the\nregions/ subdirectory. These territories are inherent parts of Japanese territory.\n",
+    "regions": [
       {
         "name_ja": "北方領土",
         "name_en": "Northern Territories",
-        "file": "disputed/Northern_Territories.yaml",
-        "claimed_islands": [
+        "file": "regions/Northern_Territories.yaml",
+        "comprises": [
           "択捉島 (Etorofu Island)",
           "国後島 (Kunashiri Island)",
           "色丹島 (Shikotan Island)",
           "歯舞群島 (Habomai Islands)"
         ],
-        "status": "Under Russian control, Japan claims as inherent territory",
         "note": "Japan considers these as part of Hokkaido Prefecture"
       },
       {
         "name_ja": "竹島",
         "name_en": "Takeshima",
-        "file": "disputed/Takeshima.yaml",
+        "file": "regions/Takeshima.yaml",
         "location": "Sea of Japan",
-        "status": "Under South Korean control, Japan claims as inherent territory",
         "note": "Japan considers this as part of Shimane Prefecture, Oki District"
       },
       {
         "name_ja": "尖閣諸島",
         "name_en": "Senkaku Islands",
-        "file": "disputed/Senkaku_Islands.yaml",
+        "file": "regions/Senkaku_Islands.yaml",
         "location": "East China Sea",
-        "status": "Under Japanese control, claimed by China and Taiwan",
         "note": "Administered as part of Okinawa Prefecture, Ishigaki City"
       }
     ],
-    "official_policy": "These territories are inherent parts of Japanese territory based on historical facts\nand international law. Japan continues to assert its sovereignty while seeking\npeaceful resolution of disputes through dialogue and diplomatic means.\n"
+    "official_policy": "These territories are inherent parts of Japanese territory based on historical facts\nand international law. Japan maintains its position through peaceful diplomatic dialogue.\n"
   },
   "pos": {
     "currency": {

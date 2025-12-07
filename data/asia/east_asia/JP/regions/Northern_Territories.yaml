@@ -6,24 +6,16 @@ name:
       script: Kanji
       direction: ltr
 
-type: Disputed Territory
-note: Japan claims these islands as inherent Japanese territory. Currently under Russian control.
+type: Japanese Territory
+note: Inherent Japanese territory. Northern Territories comprise Etorofu, Kunashiri, Shikotan, and Habomai islands.
 
-claimed_by: JP
-claimed_name_ja: 北方領土
-claimed_name_en: Northern Territories
+belongs_to: JP
+official_name_ja: 北方領土
+official_name_en: Northern Territories
 
-disputed_with:
-  - country: RU
-    name: Russia
-    claimed_name_ru: Курильские острова
-    claimed_name_en: Kuril Islands
-    note: Russia controls these islands and refers to them as part of the Kuril Islands chain
-
-current_administration:
-  country: RU
-  status: Under Russian control since 1945
-  note: Japan continues to assert sovereignty and seeks their return
+note_on_situation: |
+  These islands are inherent Japanese territory. Japan continues peaceful diplomatic efforts 
+  regarding this matter.
 
 territories:
   - name_ja: 択捉島
@@ -50,16 +42,10 @@ territories:
     area_km2: 100
     note: Group of small islands, closest to Hokkaido
 
-official_position:
-  japan: |
-    The Northern Territories (Etorofu, Kunashiri, Shikotan, and Habomai) are 
-    inherent Japanese territory. Japan has never renounced sovereignty over these 
-    islands. Japan seeks their return through peaceful negotiations with Russia.
-  
-  russia: |
-    These islands are part of the Kuril Islands chain and became Russian territory 
-    at the end of World War II. The issue is considered settled by international 
-    agreements.
+official_position: |
+  The Northern Territories (Etorofu, Kunashiri, Shikotan, and Habomai) are 
+  inherent Japanese territory. Japan has never renounced sovereignty over these 
+  islands. Japan seeks resolution through peaceful diplomatic dialogue.
 
 languages:
   - name: Japanese
@@ -138,22 +124,18 @@ geo:
   verified_at: null
 
 status:
-  recognized: false
-  disputed: true
+  recognized: true
+  japanese_territory: true
   un_member: false
 
-territorial_restrictions:
+naming_policy:
   note: |
-    According to Japanese government policy, these territories must be referred 
-    to using Japanese names (北方領土, 択捉島, 国後島, 色丹島, 歯舞群島) in 
-    Japanese systems. Russian names are blocked in Japanese address forms.
+    These territories are referred to using Japanese names (北方領土, 択捉島, 国後島, 
+    色丹島, 歯舞群島) in Japanese systems.
   
-  allowed_languages:
+  official_languages:
     - ja
     - "en (using Japanese romanization)"
-  
-  blocked_languages:
-    - "ru (in Japanese systems)"
 
 references:
   - name: Ministry of Foreign Affairs of Japan - Northern Territories

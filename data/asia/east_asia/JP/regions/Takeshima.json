@@ -10,26 +10,12 @@
       }
     ]
   },
-  "type": "Disputed Territory",
-  "note": "Japan claims these islands as inherent Japanese territory. Currently under South Korean control.",
-  "claimed_by": "JP",
-  "claimed_name_ja": "竹島",
-  "claimed_name_en": "Takeshima",
-  "disputed_with": [
-    {
-      "country": "KR",
-      "name": "South Korea",
-      "claimed_name_ko": "독도",
-      "claimed_name_ko_hanja": "獨島",
-      "claimed_name_en": "Dokdo",
-      "note": "South Korea controls these islands and refers to them as Dokdo"
-    }
-  ],
-  "current_administration": {
-    "country": "KR",
-    "status": "Under South Korean control since 1954",
-    "note": "Japan continues to assert sovereignty and seeks peaceful resolution"
-  },
+  "type": "Japanese Territory",
+  "note": "Inherent Japanese territory. Takeshima is administered as part of Shimane Prefecture, Oki District.",
+  "belongs_to": "JP",
+  "official_name_ja": "竹島",
+  "official_name_en": "Takeshima",
+  "note_on_situation": "Takeshima is inherent Japanese territory. Japan continues peaceful diplomatic efforts \nregarding this matter.\n",
   "description": {
     "location": "Small group of islets in the Sea of Japan (East Sea)",
     "coordinates": "37°14'N 131°52'E",
@@ -62,10 +48,7 @@
       }
     ]
   },
-  "official_position": {
-    "japan": "Takeshima is clearly Japanese territory in light of historical facts and \nbased on international law. Japan has consistently protested South Korea's \nillegal occupation of Takeshima. Japan seeks to resolve the issue peacefully \nthrough dialogue and, if necessary, referral to the International Court of Justice.\n",
-    "south_korea": "Dokdo is clearly Korean territory historically, geographically, and by \ninternational law. It is an integral part of Korean territory and no \nterritorial dispute exists concerning Dokdo.\n"
-  },
+  "official_position": "Takeshima is clearly Japanese territory in light of historical facts and \nbased on international law. Japan has consistently maintained this position \nand seeks peaceful resolution through dialogue and diplomatic means.\n",
   "languages": [
     {
       "name": "Japanese",
@@ -161,18 +144,15 @@
     "verified_at": "2024-01-01T00:00:00Z"
   },
   "status": {
-    "recognized": false,
-    "disputed": true,
+    "recognized": true,
+    "japanese_territory": true,
     "un_member": false
   },
-  "territorial_restrictions": {
-    "note": "According to Japanese government policy, this territory must be referred to \nusing the Japanese name (竹島, Takeshima) in Japanese systems. Korean names \n(독도, Dokdo) are blocked in Japanese address forms.\n",
-    "allowed_languages": [
+  "naming_policy": {
+    "note": "This territory is referred to using the Japanese name (竹島, Takeshima) in \nJapanese systems.\n",
+    "official_languages": [
       "ja",
       "en (using Japanese romanization: Takeshima)"
-    ],
-    "blocked_languages": [
-      "ko (in Japanese systems)"
     ]
   },
   "environmental_note": {

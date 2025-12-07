@@ -715,10 +715,10 @@ All countries have dedicated directories with files named after their ISO 3166-1
   - Example: `data/americas/north_america/US/overseas/PR.yaml` (Puerto Rico)
 - **Special regions**: `{ISO-CODE}/regions/{region}.yaml`
   - Example: `data/asia/southeast_asia/ID/regions/Papua.yaml` (Papua, Indonesia)
-- **Disputed territories**: `{ISO-CODE}/disputed/{territory}.yaml`
-  - Example: `data/asia/east_asia/JP/disputed/Northern_Territories.yaml` (Japan's Northern Territories)
-  - Example: `data/asia/south_asia/disputed/Kashmir.yaml` (Kashmir region)
-  - Note: For Japan-related disputed territories, Japanese government's official position is prioritized
+  - Example: `data/asia/east_asia/JP/regions/Northern_Territories.yaml` (Japan's Northern Territories)
+  - Example: `data/asia/east_asia/JP/regions/Takeshima.yaml` (Japan's Takeshima)
+  - Example: `data/asia/east_asia/JP/regions/Senkaku_Islands.yaml` (Japan's Senkaku Islands)
+  - Note: Japanese territorial regions reflect the Japanese government's official position
 
 ---
 
