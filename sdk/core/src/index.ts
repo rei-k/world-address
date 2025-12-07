@@ -163,7 +163,36 @@ export {
   // Address Provider Management
   createAddressProvider,
   validateProviderSignature,
+  // 5 ZKP Patterns
+  generateZKMembershipProof,
+  verifyZKMembershipProof,
+  generateZKStructureProof,
+  verifyZKStructureProof,
+  generateZKSelectiveRevealProof,
+  verifyZKSelectiveRevealProof,
+  generateZKVersionProof,
+  verifyZKVersionProof,
+  generateZKLockerProof,
+  verifyZKLockerProof,
 } from './zkp';
+
+// ZKP Cryptographic Utilities
+export {
+  generateEd25519KeyPair,
+  signEd25519,
+  verifyEd25519,
+  hashSHA256,
+  hashSHA512,
+  buildMerkleTree,
+  getMerkleRoot,
+  generateMerkleProof,
+  verifyMerkleProof,
+  generateSecureUUID,
+  generateSecureNonce,
+  publicKeyToMultibase,
+  generateDIDKey,
+  canonicalizeJSON,
+} from './zkp-crypto';
 
 // AMF (Address Mapping Framework)
 export {
