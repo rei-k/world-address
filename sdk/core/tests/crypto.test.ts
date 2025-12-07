@@ -482,6 +482,7 @@ describe('Crypto', () => {
 
     it('should generate key in browser environment', () => {
       const originalWindow = global.window;
+      const originalBtoa = (global as any).btoa;
       
       try {
         const mockCrypto = {
@@ -494,6 +495,8 @@ describe('Crypto', () => {
         };
 
         (global as any).window = { crypto: mockCrypto };
+        // Mock btoa for browser environment simulation
+        (global as any).btoa = (str: string) => Buffer.from(str, 'binary').toString('base64');
 
         const key = generateKey(32);
         expect(key).toBeDefined();
@@ -504,11 +507,17 @@ describe('Crypto', () => {
         } else {
           (global as any).window = originalWindow;
         }
+        if (originalBtoa === undefined) {
+          delete (global as any).btoa;
+        } else {
+          (global as any).btoa = originalBtoa;
+        }
       }
     });
 
     it('should hash data in browser environment', async () => {
       const originalWindow = global.window;
+      const originalBtoa = (global as any).btoa;
       
       try {
         const mockCrypto = {
@@ -523,6 +532,8 @@ describe('Crypto', () => {
         };
 
         (global as any).window = { crypto: mockCrypto };
+        // Mock btoa for browser environment simulation
+        (global as any).btoa = (str: string) => Buffer.from(str, 'binary').toString('base64');
 
         const hash = await hashData('browser hash test');
         expect(hash).toBeDefined();
@@ -532,6 +543,11 @@ describe('Crypto', () => {
           delete (global as any).window;
         } else {
           (global as any).window = originalWindow;
+        }
+        if (originalBtoa === undefined) {
+          delete (global as any).btoa;
+        } else {
+          (global as any).btoa = originalBtoa;
         }
       }
     });
