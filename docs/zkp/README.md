@@ -1,5 +1,19 @@
 # ZKP（ゼロ知識証明）アドレスプロトコル - 完全ガイド
 
+## 🚀 New: Circom/SnarkJS Integration
+
+**Full implementation with real cryptographic circuits now available!**
+
+📖 **[Implementation Summary](./IMPLEMENTATION_SUMMARY.md)** - Complete overview of the circom/snarkjs integration
+
+**Quick Links**:
+- 🔐 [Security Documentation](./security/README.md)
+- 📊 [Performance Benchmarks](../../sdk/core/benchmarks/README.md)
+- 🚀 [Production Migration Guide](./production-migration.md)
+- ⚙️ [Circuit Implementation](../../sdk/core/circuits/README.md)
+
+---
+
 ## 目次
 
 1. [概要](#概要)
