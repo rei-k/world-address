@@ -1,0 +1,30 @@
+{
+  "name": "@vey/veytable",
+  "version": "1.0.0",
+  "description": "VeyTable - In-Store Ordering Application",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "@vey/core": "workspace:*",
+    "swr": "^2.2.0",
+    "zustand": "^4.4.0",
+    "qrcode": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0",
+    "vitest": "^1.0.0"
+  }
+}
