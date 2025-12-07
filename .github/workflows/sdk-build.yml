@@ -1,0 +1,58 @@
+name: SDK Build
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'sdk/**'
+      - '.github/workflows/sdk-build.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'sdk/**'
+      - '.github/workflows/sdk-build.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-sdk:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20]
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: sdk/core/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: sdk/core
+        run: npm ci
+      
+      - name: Build SDK
+        working-directory: sdk/core
+        run: npm run build
+      
+      - name: Check build artifacts
+        working-directory: sdk/core
+        run: |
+          test -f dist/index.js
+          test -f dist/index.mjs
+          test -f dist/index.d.ts
+          echo "✅ All build artifacts generated successfully"
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        if: matrix.node-version == 20
+        with:
+          name: sdk-build-artifacts
+          path: sdk/core/dist/
+          retention-days: 7
