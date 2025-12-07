@@ -9,6 +9,8 @@
     "test:integration:coverage": "vitest run --coverage",
     "test:postgres": "vitest run databases/postgresql.test.ts",
     "test:mongodb": "vitest run databases/mongodb.test.ts",
+    "test:mysql": "vitest run databases/mysql.test.ts",
+    "test:sqlite": "vitest run databases/sqlite.test.ts",
     "test:firebase": "vitest run cloud-services/firebase.test.ts",
     "test:supabase": "vitest run cloud-services/supabase.test.ts"
   },
