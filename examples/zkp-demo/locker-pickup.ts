@@ -264,8 +264,6 @@ async function main() {
 }
 
 // Run the example
-if (require.main === module) {
-  main().catch(console.error);
-}
+main().catch(console.error);
 
 export default main;

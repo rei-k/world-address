@@ -30,7 +30,7 @@ import {
 
 async function main() {
   console.log('🚀 Basic ZKP Address Protocol Flow\n');
-  console.log('=' . repeat(50));
+  console.log('='.repeat(50));
   
   // ============================================================================
   // Step 1: User Registration
