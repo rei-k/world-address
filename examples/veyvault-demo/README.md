@@ -41,6 +41,9 @@ npm run friend-sharing
 # Run e-commerce integration demo
 npm run ecommerce
 
+# Run QR code sharing demo (NEW)
+npm run qr-code
+
 # Run all demos
 npm run all
 ```
@@ -51,8 +54,9 @@ npm run all
 veyvault-demo/
 ├── src/
 │   ├── address-book.js           # Address book management demo
-│   ├── friend-sharing.js         # Friend sharing & QR code demo (NEW)
-│   └── ecommerce-integration.js  # E-commerce checkout demo (NEW)
+│   ├── friend-sharing.js         # Friend sharing & QR code demo
+│   ├── ecommerce-integration.js  # E-commerce checkout demo
+│   └── qr-code-sharing.js        # QR/NFC code generation demo (NEW)
 ├── package.json
 └── README.md
 ```
@@ -128,6 +132,43 @@ Receive packages without the seller ever seeing your raw address.
 - **Merchant knows**: Valid shipping destination (via proof), PID token
 - **Merchant does NOT know**: Street address, building, room
 - **Carrier knows**: Full address (only at delivery time, access logged)
+
+### 5. QR Code & NFC Sharing (NEW)
+
+Share your address via QR code or NFC with privacy controls and time limits.
+
+**Run:** `npm run qr-code`
+
+**Features:**
+- Generate QR codes with selective disclosure
+- NFC-compatible payload format
+- Time-limited access (auto-expiration)
+- Multiple use cases (friends, delivery, locker access)
+
+**Example Scenarios:**
+```
+1. Friend Sharing - QR code reveals only city and postal code
+2. E-commerce - QR code for one-scan checkout
+3. Locker Access - NFC tag reveals only locker ID
+4. Temporary Delivery - Time-limited QR expires in 1 hour
+```
+
+**Example Output:**
+```
+┌─────────────────────────┐
+│ ▄▄▄▄▄ ▄  ▄ ▄▄▄▄▄       │
+│ █   █ ██▄  █   █       │
+│ █▄▄▄█ █ █▄ █▄▄▄█       │
+│ ▄▄▄▄▄▄▄█▄█▄█ ▄ ▄       │
+│ ▄  ▄█▄  ▄▄ █▄▄▄█       │
+│ ▄▄▄▄▄ █▄ █ ▄ ▄ ▄       │
+│ █   █  █ ██▄▄▄██       │
+│ █▄▄▄█ ▄█▄ ▄█ ▄▄▄       │
+└─────────────────────────┘
+   QR Code: eyJ2ZXJzaW9uIjoi...
+
+📱 Scan with Veyvault app
+```
 
 ## 🔐 Privacy Features
 

@@ -604,6 +604,89 @@ For ZKP-related contributions:
 - Test against known attack vectors
 - Document security assumptions
 
+#### ZKP-Specific Contribution Guidelines
+
+When contributing to ZKP functionality:
+
+**Code Quality:**
+- ✅ Add comprehensive tests for all ZKP functions
+- ✅ Include both positive and negative test cases
+- ✅ Test edge cases (expired proofs, invalid inputs, etc.)
+- ✅ Document all ZKP function parameters and return values
+- ✅ Use TypeScript types for better type safety
+
+**Security:**
+- ✅ Validate all inputs before generating proofs
+- ✅ Check proof expiration before verification
+- ✅ Implement replay attack prevention
+- ✅ Log all access attempts for audit
+- ✅ Use constant-time comparisons for sensitive data
+- ❌ Never log private keys or sensitive proof data
+- ❌ Don't implement custom cryptographic primitives
+- ❌ Avoid storing proofs longer than necessary
+
+**Documentation:**
+- ✅ Document which ZKP pattern is being used
+- ✅ Explain what information is revealed vs. hidden
+- ✅ Provide usage examples
+- ✅ Document security assumptions
+- ✅ Add troubleshooting tips
+
+**Testing:**
+- ✅ Test all 5 ZKP patterns (Membership, Structure, Selective Reveal, Version, Locker)
+- ✅ Test all 4 main flows (Registration, Shipping, Delivery, Revocation)
+- ✅ Include integration tests for complete workflows
+- ✅ Test with various country formats
+- ✅ Verify audit logging works correctly
+
+**Example Test Structure:**
+
+```typescript
+describe('ZKP Pattern: Membership Proof', () => {
+  it('should generate valid membership proof', () => {
+    const proof = generateZKMembershipProof(pid, merkleRoot, circuit);
+    expect(proof).toBeDefined();
+    expect(proof.proofType).toBe('membership');
+  });
+
+  it('should verify valid membership proof', () => {
+    const proof = generateZKMembershipProof(pid, merkleRoot, circuit);
+    const result = verifyZKMembershipProof(proof, circuit);
+    expect(result.valid).toBe(true);
+  });
+
+  it('should reject expired proof', () => {
+    const oldProof = { ...proof, timestamp: '2020-01-01T00:00:00Z' };
+    const result = verifyZKMembershipProof(oldProof, circuit);
+    expect(result.valid).toBe(false);
+    expect(result.error).toContain('expired');
+  });
+
+  it('should reject proof with wrong circuit', () => {
+    const proof = generateZKMembershipProof(pid, merkleRoot, circuit1);
+    const result = verifyZKMembershipProof(proof, circuit2);
+    expect(result.valid).toBe(false);
+  });
+});
+```
+
+**Security Review Checklist:**
+
+Before submitting ZKP changes, verify:
+
+- [ ] All user inputs are validated
+- [ ] Proofs include timestamp and expiration
+- [ ] Access control policies are enforced
+- [ ] Audit logs are created for sensitive operations
+- [ ] No private data is logged or exposed
+- [ ] Replay attack prevention is implemented
+- [ ] Error messages don't leak sensitive information
+- [ ] Tests cover security edge cases
+- [ ] Documentation includes security considerations
+- [ ] Code review by another developer completed
+
+
+
 ## 🌍 Internationalization (i18n)
 
 ### Adding Translations
@@ -671,6 +754,78 @@ async function getFormat(country: string) {
   return formatCache.get(country);
 }
 ```
+
+### Performance Testing Guidelines
+
+When making changes that could affect performance:
+
+**Benchmarking:**
+
+```typescript
+// Benchmark ZKP proof generation
+import { performance } from 'perf_hooks';
+
+function benchmarkProofGeneration(iterations = 1000) {
+  const start = performance.now();
+  
+  for (let i = 0; i < iterations; i++) {
+    const proof = generateZKProof(pid, conditions, circuit, address);
+  }
+  
+  const end = performance.now();
+  const avgTime = (end - start) / iterations;
+  
+  console.log(`Average proof generation time: ${avgTime.toFixed(2)}ms`);
+  
+  // Assert performance requirements
+  expect(avgTime).toBeLessThan(100); // Should be under 100ms
+}
+```
+
+**Memory Profiling:**
+
+```typescript
+// Monitor memory usage
+const used = process.memoryUsage();
+console.log('Memory usage:');
+console.log(`  RSS: ${(used.rss / 1024 / 1024).toFixed(2)} MB`);
+console.log(`  Heap Total: ${(used.heapTotal / 1024 / 1024).toFixed(2)} MB`);
+console.log(`  Heap Used: ${(used.heapUsed / 1024 / 1024).toFixed(2)} MB`);
+```
+
+**Performance Targets:**
+
+| Operation | Target | Acceptable | Notes |
+|-----------|--------|------------|-------|
+| ZKP Proof Generation | < 50ms | < 100ms | Per proof |
+| ZKP Proof Verification | < 20ms | < 50ms | Per proof |
+| Address Validation | < 10ms | < 25ms | Per address |
+| PID Encoding | < 5ms | < 10ms | Per PID |
+| Country Data Load | < 100ms | < 200ms | First load only |
+
+**Load Testing:**
+
+```bash
+# Test with many concurrent requests
+npm run perf:load-test
+
+# Profile specific functions
+npm run perf:profile -- generateZKProof
+
+# Check memory leaks
+npm run perf:memory-leak
+```
+
+**Before Submitting:**
+
+- [ ] Run performance benchmarks
+- [ ] Compare with baseline performance
+- [ ] Check for memory leaks
+- [ ] Profile critical paths
+- [ ] Document any performance trade-offs
+- [ ] Add performance tests if adding new features
+
+
 
 ## 🏆 Recognition
 

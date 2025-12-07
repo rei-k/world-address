@@ -9,7 +9,8 @@
     "address-book": "node src/address-book.js",
     "friend-sharing": "node src/friend-sharing.js",
     "ecommerce": "node src/ecommerce-integration.js",
-    "all": "npm run address-book && npm run friend-sharing && npm run ecommerce"
+    "qr-code": "node src/qr-code-sharing.js",
+    "all": "npm run address-book && npm run friend-sharing && npm run ecommerce && npm run qr-code"
   },
   "keywords": [
     "veyvault",
