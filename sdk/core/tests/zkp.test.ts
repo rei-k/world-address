@@ -42,6 +42,9 @@ import {
   verifyZKLockerProof,
 } from '../src/zkp';
 
+// Import cryptographic utilities
+import { generateEd25519KeyPair } from '../src/zkp-crypto';
+
 describe('ZKP Address Protocol - Flow 1: Registration', () => {
   it('should create a DID document', () => {
     const did = 'did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK';
@@ -76,6 +79,8 @@ describe('ZKP Address Protocol - Flow 1: Registration', () => {
   });
 
   it('should sign and verify a credential', () => {
+    const { privateKey, publicKey } = generateEd25519KeyPair();
+    
     const vc = createAddressPIDCredential(
       'did:key:user123',
       'did:web:vey.example',
@@ -85,7 +90,7 @@ describe('ZKP Address Protocol - Flow 1: Registration', () => {
 
     const signedVC = signCredential(
       vc,
-      'private-key',
+      privateKey, // Use real private key
       'did:web:vey.example#key-1'
     );
 
@@ -93,7 +98,7 @@ describe('ZKP Address Protocol - Flow 1: Registration', () => {
     expect(signedVC.proof!.type).toBe('Ed25519Signature2020');
     expect(signedVC.proof!.verificationMethod).toBe('did:web:vey.example#key-1');
 
-    const isValid = verifyCredential(signedVC, 'public-key');
+    const isValid = verifyCredential(signedVC, publicKey); // Use real public key
     expect(isValid).toBe(true);
   });
 
@@ -403,12 +408,14 @@ describe('ZKP Address Protocol - Flow 4: Revocation', () => {
   });
 
   it('should sign revocation list', () => {
+    const { privateKey } = generateEd25519KeyPair();
+    
     const entry = createRevocationEntry('JP-13-113-01', 'address_change');
     const list = createRevocationList('did:web:vey.example', [entry]);
 
     const signedList = signRevocationList(
       list,
-      'private-key',
+      privateKey, // Use real private key
       'did:web:vey.example#key-1'
     );
 
