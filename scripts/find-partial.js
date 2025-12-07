@@ -18,7 +18,7 @@ function hasNestedField(obj, fieldPath) {
   const parts = fieldPath.split('.');
   let current = obj;
   for (const part of parts) {
-    if (current == null || typeof current !== 'object' || !(part in current)) {
+    if (current === null || current === undefined || typeof current !== 'object' || !(part in current)) {
       return false;
     }
     current = current[part];
@@ -78,7 +78,9 @@ for (const file of yamlFiles) {
         });
       }
     }
-  } catch (e) {}
+  } catch (e) {
+    // Ignore errors when reading files
+  }
 }
 
 console.log('Countries with <80% completeness:');
