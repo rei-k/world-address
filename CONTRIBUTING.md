@@ -298,6 +298,8 @@ Fixes #456
 
 ### Bug Report Template
 
+Use the [Bug Report template](.github/ISSUE_TEMPLATE/bug_report.yml) when creating a new issue.
+
 Use the bug report template when creating an issue:
 
 ```markdown
@@ -329,19 +331,14 @@ Any other context about the problem.
 
 ### Feature Request Template
 
-```markdown
-**Is your feature request related to a problem?**
-A clear description of the problem.
+Use the [Feature Request template](.github/ISSUE_TEMPLATE/feature_request.yml) when creating a new issue.
 
-**Describe the solution you'd like**
-What you want to happen.
-
-**Describe alternatives you've considered**
-Other solutions you thought about.
-
-**Additional context**
-Mockups, examples, or other context.
-```
+For detailed feature proposals:
+- Describe the problem or use case
+- Propose a solution with examples
+- Consider alternatives
+- Estimate implementation effort
+- Discuss backward compatibility
 
 ## 📊 Data Contribution Guidelines
 
@@ -400,6 +397,282 @@ Contributors are recognized in:
 - README.md (major contributors)
 - CHANGELOG.md (per release)
 - GitHub contributors page
+
+## 🧪 Testing Guidelines
+
+### Unit Testing
+
+For SDK changes, write comprehensive unit tests:
+
+```typescript
+import { describe, it, expect } from 'vitest';
+import { validateAddress } from '../src/validator';
+
+describe('Address Validation', () => {
+  it('should validate Japanese postal code format', () => {
+    const result = validateAddress(
+      { postal_code: '100-0001', country: 'JP' },
+      jpFormat
+    );
+    expect(result.valid).toBe(true);
+  });
+
+  it('should reject invalid postal code', () => {
+    const result = validateAddress(
+      { postal_code: '12345', country: 'JP' },
+      jpFormat
+    );
+    expect(result.valid).toBe(false);
+    expect(result.errors).toContain('Invalid postal code format');
+  });
+});
+```
+
+### Integration Testing
+
+For complex features, add integration tests:
+
+```typescript
+describe('Complete Address Flow', () => {
+  it('should validate, format, and normalize address', async () => {
+    const format = await loadCountryFormat('JP');
+    
+    // Validate
+    const validation = validateAddress(testAddress, format);
+    expect(validation.valid).toBe(true);
+    
+    // Format
+    const formatted = formatAddress(validation.normalized, format);
+    expect(formatted).toContain('東京都');
+    
+    // Normalize
+    const normalized = normalizeAddress(testAddress, 'JP');
+    expect(normalized.country).toBe('JP');
+  });
+});
+```
+
+### Test Coverage
+
+Aim for:
+- **Unit tests**: 80%+ coverage
+- **Critical paths**: 100% coverage
+- **Edge cases**: Well documented test cases
+- **Error handling**: Test all error scenarios
+
+### Running Tests
+
+```bash
+# Run all tests
+cd sdk/core && npm test
+
+# Run specific test file
+npm test -- validator.test.ts
+
+# Run with coverage
+npm run test:coverage
+
+# Watch mode for development
+npm test -- --watch
+```
+
+## 📖 Documentation Standards
+
+### Code Documentation
+
+Use JSDoc for all public APIs:
+
+```typescript
+/**
+ * Validates an address against country-specific rules.
+ * 
+ * This function checks postal codes, required fields, and format
+ * according to the country's address standards.
+ * 
+ * @param address - The address object to validate
+ * @param countryFormat - Country-specific address format rules
+ * @returns Validation result with normalized address and errors
+ * @throws {ValidationError} If country format is invalid
+ * 
+ * @example
+ * ```typescript
+ * const result = validateAddress(
+ *   { country: 'JP', postal_code: '100-0001' },
+ *   jpFormat
+ * );
+ * if (result.valid) {
+ *   console.log('Address is valid:', result.normalized);
+ * }
+ * ```
+ */
+export function validateAddress(
+  address: AddressInput,
+  countryFormat: CountryFormat
+): ValidationResult {
+  // Implementation
+}
+```
+
+### README Updates
+
+When adding features, update relevant README files:
+
+1. **Main README**: Add to features list if user-facing
+2. **SDK README**: Document new SDK functions
+3. **Examples README**: Add example if applicable
+4. **Changelog**: Add entry for the change
+
+### Writing Examples
+
+Good examples are:
+- **Self-contained**: Work independently
+- **Commented**: Explain each step
+- **Practical**: Show real-world use cases
+- **Complete**: Include error handling
+- **Tested**: Verified to work
+
+Example template:
+
+```typescript
+/**
+ * Example: Validating International Addresses
+ * 
+ * This example shows how to validate addresses from different
+ * countries with their specific requirements.
+ */
+
+import { validateAddress, loadCountryFormat } from '@vey/core';
+
+async function main() {
+  // 1. Load country format
+  const jpFormat = await loadCountryFormat('JP');
+  
+  // 2. Validate Japanese address
+  const jpAddress = {
+    country: 'JP',
+    postal_code: '100-0001',
+    province: '東京都',
+    city: '千代田区',
+  };
+  
+  const result = validateAddress(jpAddress, jpFormat);
+  
+  // 3. Check result
+  if (result.valid) {
+    console.log('✅ Valid address:', result.normalized);
+  } else {
+    console.error('❌ Invalid address:', result.errors);
+  }
+}
+
+main().catch(console.error);
+```
+
+## 🔐 Security Guidelines
+
+### Reporting Security Issues
+
+**DO NOT** open public issues for security vulnerabilities.
+
+Instead:
+1. Email security contact (see SECURITY.md)
+2. Include detailed description
+3. Provide steps to reproduce
+4. Suggest a fix if possible
+
+### Code Security
+
+When contributing code:
+
+- ✅ Validate all user inputs
+- ✅ Sanitize outputs
+- ✅ Use parameterized queries
+- ✅ Avoid eval() and similar
+- ✅ Keep dependencies updated
+- ✅ Follow principle of least privilege
+- ❌ Never commit secrets or API keys
+- ❌ Don't use weak cryptography
+- ❌ Avoid SQL injection risks
+
+### ZKP Security
+
+For ZKP-related contributions:
+
+- Follow cryptographic best practices
+- Use established libraries (no custom crypto)
+- Validate all proofs before use
+- Test against known attack vectors
+- Document security assumptions
+
+## 🌍 Internationalization (i18n)
+
+### Adding Translations
+
+When adding country data:
+
+1. **Include local names**: Add `name.local` with native language
+2. **Multiple scripts**: Support different writing systems
+3. **Character encoding**: Always use UTF-8
+4. **Test rendering**: Verify text displays correctly
+
+Example:
+
+```yaml
+name:
+  en: Japan
+  local:
+    - lang: ja
+      value: 日本
+    - lang: ja-Latn
+      value: Nippon
+
+languages:
+  - name: Japanese
+    code: ja
+    script: Japanese
+    native: 日本語
+```
+
+### Language Codes
+
+- Use ISO 639-1 (2-letter) or ISO 639-3 (3-letter)
+- Include script tag if needed (e.g., `ja-Latn`, `zh-Hans`)
+- Document any non-standard codes
+
+## 🎯 Performance Guidelines
+
+### Data Files
+
+- Keep YAML files < 100KB when possible
+- Use references for repeated data
+- Minimize nesting depth
+- Validate data structure efficiency
+
+### SDK Performance
+
+- Lazy load country data
+- Cache frequently used formats
+- Optimize regex patterns
+- Use efficient data structures
+- Profile critical paths
+
+Example:
+
+```typescript
+// ❌ Bad: Load all countries upfront
+const allFormats = await loadAllCountries();
+
+// ✅ Good: Load on demand
+const formatCache = new Map();
+async function getFormat(country: string) {
+  if (!formatCache.has(country)) {
+    formatCache.set(country, await loadCountryFormat(country));
+  }
+  return formatCache.get(country);
+}
+```
+
+## 🏆 Recognition
 
 ## 📞 Getting Help
 

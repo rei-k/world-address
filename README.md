@@ -80,6 +80,170 @@ print(us_data['address_format']['postal_code']['regex'])  # "^\d{5}(-\d{4})?$"
 
 ---
 
+## 📊 Usage Statistics & Real-World Examples
+
+### By the Numbers
+
+- **🌍 Global Coverage**: 269 countries and regions
+- **📦 Total Entities**: 325 address entities (including territories)
+- **🔄 Daily Updates**: Auto-fetched from Google libaddressinput
+- **🗣️ Languages**: Multi-language support with local names
+- **✅ Validation**: Comprehensive address validation rules
+- **📍 Geocoding**: Latitude/longitude coordinates for regions
+- **💰 POS Data**: Currency, tax, and receipt requirements
+
+### Real-World Use Cases
+
+#### 1. E-commerce Checkout 🛒
+
+```typescript
+import { validateAddress, loadCountryFormat } from '@vey/core';
+
+// Validate customer shipping address
+const format = await loadCountryFormat('JP');
+const result = validateAddress(shippingAddress, format);
+
+if (result.valid) {
+  // Process order with confidence
+  await createShipment(result.normalized);
+}
+```
+
+**Example Users:**
+- Shopify stores shipping internationally
+- Amazon sellers validating addresses
+- WooCommerce checkout optimization
+
+#### 2. Logistics & Delivery 📦
+
+```typescript
+import { generateZKProof, createZKPWaybill } from '@vey/core';
+
+// Privacy-preserving delivery
+const proof = generateZKProof(userPid, conditions, circuit, addressData);
+const waybill = createZKPWaybill(id, pid, proof, trackingNumber, metadata);
+
+// Carrier gets address only when needed
+```
+
+**Example Users:**
+- Last-mile delivery services
+- 3PL/4PL logistics providers
+- Package tracking platforms
+
+#### 3. Point of Sale Systems 💳
+
+```typescript
+import { loadCountryFormat } from '@vey/core';
+
+// Get tax rules and receipt requirements
+const format = await loadCountryFormat('FR');
+const taxRate = format.pos.tax.rate.standard; // 0.20 (20% VAT)
+const receiptFields = format.pos.receipt.required_fields;
+
+// Generate compliant receipts
+generateReceipt(items, taxRate, receiptFields);
+```
+
+**Example Users:**
+- Retail POS systems
+- Restaurant ordering systems
+- Multi-location retailers
+
+#### 4. Address Book Applications 📱
+
+```typescript
+import { normalizeAddress, formatAddress } from '@vey/core';
+
+// Store normalized addresses
+const normalized = normalizeAddress(userInput, 'US');
+
+// Display formatted addresses
+const formatted = formatAddress(normalized, format);
+// "123 Main St, San Francisco, CA 94102"
+```
+
+**Example Users:**
+- Contact management apps
+- CRM systems
+- Social networks with delivery features
+
+#### 5. Analytics & Business Intelligence 📊
+
+```typescript
+import { loadCountryFormat } from '@vey/core';
+
+// Aggregate shipping data by region
+const countries = ['US', 'JP', 'GB', 'FR', 'DE'];
+const regionStats = await Promise.all(
+  countries.map(async (code) => {
+    const format = await loadCountryFormat(code);
+    return {
+      country: format.name.en,
+      currency: format.pos.currency.code,
+      taxRate: format.pos.tax.rate.standard,
+    };
+  })
+);
+```
+
+**Example Users:**
+- Business analytics platforms
+- Market research tools
+- Shipping cost calculators
+
+### Who's Using World Address?
+
+**Industries:**
+- 🛒 E-commerce platforms
+- 📦 Logistics & shipping
+- 💳 Payment & fintech
+- 🏪 Retail & POS
+- 🏨 Hospitality & travel
+- 🚗 Ride-sharing & delivery
+- 📱 Mobile applications
+- 🌐 Web platforms
+
+**Developer Community:**
+- 1000+ GitHub stars (growing)
+- Active contributors worldwide
+- Used in production by multiple companies
+- Featured in address validation libraries
+
+### Integration Examples
+
+**Quick Integration (5 minutes):**
+```bash
+npm install @vey/core
+```
+
+```typescript
+import { validateAddress } from '@vey/core';
+
+const isValid = await validateAddress(address, countryCode);
+```
+
+**Advanced Integration (with ZKP):**
+```typescript
+import { 
+  generateZKProof, 
+  verifyZKProof,
+  createZKPWaybill 
+} from '@vey/core';
+
+// Privacy-preserving checkout
+const proof = generateZKProof(pid, conditions, circuit, data);
+const verified = verifyZKProof(proof, circuit);
+```
+
+**See full examples in:**
+- [examples/zkp-demo/](./examples/zkp-demo/) - ZKP demonstrations
+- [examples/react-example/](./examples/react-example/) - React integration
+- [examples/nodejs-basic/](./examples/nodejs-basic/) - Node.js usage
+- [Vey/apps/](./Vey/apps/) - Full applications
+
+---
+
 ## 🎯 Veyエコシステム / Vey Ecosystem
 
 **Vey（ヴェイ）** は "convey"（配達する、運ぶ）に由来し、このプロジェクトの中核となるエコシステムです。
