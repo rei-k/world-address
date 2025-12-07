@@ -6,7 +6,9 @@
   "main": "src/address-book.js",
   "scripts": {
     "start": "node src/address-book.js",
-    "address-book": "node src/address-book.js"
+    "address-book": "node src/address-book.js",
+    "friends": "node src/friends-management.js",
+    "demo:all": "npm run address-book && echo '' && npm run friends"
   },
   "keywords": [
     "veyvault",

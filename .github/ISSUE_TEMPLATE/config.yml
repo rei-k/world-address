@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/rei-k/world-address/discussions
+    about: Ask questions, share ideas, and discuss with the community
+  - name: 📖 Documentation
+    url: https://github.com/rei-k/world-address#-documentation
+    about: Read the project documentation
+  - name: 🔐 Security Issue
+    url: https://github.com/rei-k/world-address/security/advisories/new
+    about: Report a security vulnerability (private)

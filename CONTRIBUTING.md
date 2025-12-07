@@ -27,24 +27,50 @@ The most valuable contribution is improving the address data:
 3. **Adding POS data**: Add point-of-sale information (currency, tax, receipts)
 4. **Adding geocoding data**: Add latitude/longitude coordinates
 
+**Before you start:**
+- Check if an issue or PR already exists for this country/region
+- Verify your data against official sources (postal services, ISO standards)
+- Review the schema documentation carefully
+
 ### Improving SDKs
 
 We welcome improvements to the SDK packages:
 
-- Bug fixes
-- Performance improvements
-- New features
-- Better documentation
-- Additional examples
+- **Bug fixes**: Fix issues in validation, formatting, or other SDK functions
+- **Performance improvements**: Optimize algorithms or reduce bundle size
+- **New features**: Add new capabilities (discuss in an issue first)
+- **Better documentation**: Improve JSDoc comments or README
+- **Additional examples**: Create examples for different frameworks
 
 ### Documentation
 
 Help us improve documentation:
 
-- Fix typos and errors
-- Improve clarity
-- Add examples
-- Translate to other languages
+- **Fix typos and errors**: Even small improvements matter
+- **Improve clarity**: Make explanations easier to understand
+- **Add examples**: Show real-world usage patterns
+- **Translate to other languages**: Help international users
+- **Create guides**: Write tutorials or how-to guides
+
+### Reporting Bugs
+
+Found a bug? Please report it:
+
+1. **Search existing issues** to avoid duplicates
+2. **Use the bug report template** when creating an issue
+3. **Provide reproduction steps** - we need to reproduce the bug
+4. **Include environment details** - OS, Node version, SDK version
+5. **Add screenshots** if applicable
+
+### Suggesting Enhancements
+
+Have an idea for improvement?
+
+1. **Check existing issues** for similar suggestions
+2. **Use the feature request template**
+3. **Explain the use case** - why is this needed?
+4. **Consider alternatives** - what other approaches exist?
+5. **Be open to discussion** - the maintainers may suggest modifications
 
 ## 💻 Development Setup
 
@@ -421,3 +447,93 @@ Thank you for contributing to World Address YAML! Your efforts help make interna
 ---
 
 **Questions?** Open an issue or discussion - we're here to help! 🚀
+
+---
+
+## 🐛 Detailed Bug Reporting Guide
+
+### What Makes a Good Bug Report?
+
+A good bug report should be:
+- **Reproducible**: Others can follow the steps and see the same issue
+- **Specific**: Clearly describes what's wrong
+- **Complete**: Includes all necessary information
+- **Isolated**: Tests only one issue at a time
+
+### Bug Report Checklist
+
+✅ Use the [bug report template](.github/ISSUE_TEMPLATE/bug_report.md)  
+✅ Search existing issues first  
+✅ Include steps to reproduce  
+✅ Specify environment (OS, Node version, SDK version)  
+✅ Add screenshots if applicable  
+✅ Include error messages or logs  
+
+---
+
+## ✨ Detailed Feature Request Guide
+
+### What Makes a Good Feature Request?
+
+A good feature request should:
+- **Solve a real problem**: Address an actual user need
+- **Be well-scoped**: Clear boundaries and requirements
+- **Consider alternatives**: Show you've thought about different approaches
+- **Include use cases**: Provide concrete examples
+
+### Feature Request Checklist
+
+✅ Use the [feature request template](.github/ISSUE_TEMPLATE/feature_request.md)  
+✅ Check if similar requests exist  
+✅ Explain the problem it solves  
+✅ Provide specific use cases  
+✅ Consider implementation complexity  
+✅ Be open to discussion and modifications  
+
+---
+
+## 🎨 Examples Contribution Guide
+
+### Adding New Framework Examples
+
+We welcome examples for any framework! Structure:
+
+```
+examples/[framework]-example/
+├── README.md          # Setup and usage
+├── package.json       # Dependencies
+└── src/              # Source code
+```
+
+**Requirements:**
+1. ✅ Clear README with setup instructions
+2. ✅ Well-commented code
+3. ✅ Follows framework best practices
+4. ✅ Runs without errors
+5. ✅ Minimal dependencies
+
+**Good Frameworks to Add:** Angular, Svelte, Solid, React Native, Flutter, Python, PHP, Ruby, Go, Java
+
+---
+
+## 🧪 Testing Guidelines
+
+### For Data Changes
+
+```bash
+npm run validate:data  # Validate YAML
+npm run stats:data     # Check completeness
+npm run lint           # Check code style
+```
+
+### For SDK Changes
+
+```bash
+cd sdk/core
+npm run test           # Run all tests
+npm run test:coverage  # Check coverage
+npm run build          # Build SDK
+npm run lint           # Lint code
+```
+
+---

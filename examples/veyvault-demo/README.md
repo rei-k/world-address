@@ -23,8 +23,14 @@ Veyvault is a privacy-first cloud address book that enables:
 # Install dependencies
 npm install
 
-# Run the demo
+# Run the address book demo
 npm run address-book
+
+# Run the friends management demo
+npm run friends
+
+# Run all demos
+npm run demo:all
 ```
 
 ## 📂 Project Structure
@@ -32,8 +38,8 @@ npm run address-book
 ```
 veyvault-demo/
 ├── src/
-│   ├── address-book.js    # Address book management demo
-│   └── zkp-demo.js        # ZKP demonstration (coming soon)
+│   ├── address-book.js         # Address book management demo
+│   └── friends-management.js   # Friends & sharing demo
 ├── package.json
 └── README.md
 ```
