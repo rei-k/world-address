@@ -1,0 +1,23 @@
+{
+  "name": "veyvault-demo",
+  "version": "1.0.0",
+  "description": "Minimal viable Veyvault cloud address book demonstration",
+  "type": "module",
+  "main": "src/address-book.js",
+  "scripts": {
+    "start": "node src/address-book.js",
+    "address-book": "node src/address-book.js"
+  },
+  "keywords": [
+    "veyvault",
+    "address-book",
+    "privacy",
+    "zkp",
+    "vey"
+  ],
+  "author": "Vey Team",
+  "license": "MIT",
+  "dependencies": {
+    "@vey/core": "file:../../sdk/core"
+  }
+}
