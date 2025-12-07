@@ -1,0 +1,22 @@
+{
+  "name": "nextjs-address-form-example",
+  "version": "1.0.0",
+  "description": "Next.js App Router example for @vey/core SDK",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3002",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@vey/core": "file:../../sdk/core"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0"
+  }
+}

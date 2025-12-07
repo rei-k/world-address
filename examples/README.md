@@ -11,8 +11,12 @@ Each example is self-contained and demonstrates best practices for using the Vey
 | Example | Description | Status |
 |---------|-------------|--------|
 | [react-example](./react-example/) | React + TypeScript address form with validation | ✅ Ready |
-| [vue-example](./vue-example/) | Vue 3 composition API example (Coming Soon) | 📋 Planned |
-| [vanilla-js-example](./vanilla-js-example/) | Pure JavaScript example (Coming Soon) | 📋 Planned |
+| [vue-example](./vue-example/) | Vue 3 Composition API with Vite | ✅ Ready |
+| [nextjs-example](./nextjs-example/) | Next.js App Router with Server Components | ✅ Ready |
+| [vanilla-js-example](./vanilla-js-example/) | Pure JavaScript (no build step required) | ✅ Ready |
+| [nodejs-basic](./nodejs-basic/) | Node.js basic usage examples | ✅ Ready |
+| [simple-validation](./simple-validation/) | Simple validation examples | ✅ Ready |
+| [veyvault-demo](./veyvault-demo/) | Veyvault cloud address book demo | ✅ Ready |
 
 ## Running an Example
 
@@ -25,6 +29,36 @@ npm start
 ```
 
 Visit `http://localhost:3000` to see the example in action.
+
+### Vue Example
+
+```bash
+cd examples/vue-example
+npm install
+npm run dev
+```
+
+Visit `http://localhost:3001` to see the example in action.
+
+### Next.js Example
+
+```bash
+cd examples/nextjs-example
+npm install
+npm run dev
+```
+
+Visit `http://localhost:3002` to see the example in action.
+
+### Vanilla JavaScript Example
+
+No build step required! Simply open `index.html` in your browser:
+
+```bash
+cd examples/vanilla-js-example
+# Open index.html in your browser, or use a local server:
+python -m http.server 8000
+```
 
 ## Features Demonstrated
 
