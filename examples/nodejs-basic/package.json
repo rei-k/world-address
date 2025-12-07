@@ -1,0 +1,26 @@
+{
+  "name": "vey-core-basic-example",
+  "version": "1.0.0",
+  "description": "Basic example of using @vey/core SDK",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "validate": "node examples/01-address-validation.js",
+    "format": "node examples/02-address-formatting.js",
+    "pid": "node examples/03-address-pid.js",
+    "country": "node examples/04-country-info.js",
+    "all": "npm run validate && npm run format && npm run pid && npm run country"
+  },
+  "keywords": [
+    "address",
+    "validation",
+    "vey",
+    "world-address"
+  ],
+  "author": "Vey Team",
+  "license": "MIT",
+  "dependencies": {
+    "@vey/core": "file:../../sdk/core"
+  }
+}

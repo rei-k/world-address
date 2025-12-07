@@ -173,6 +173,23 @@ export {
   normalizedAddressToPIDComponents,
 } from './amf';
 
+// PID (Place ID) - Address PID functions
+export {
+  encodePID,
+  decodePID,
+  validatePID,
+  createPID,
+  parsePID,
+  generatePIDFromAddress,
+  addCollisionCounter,
+  removeCollisionCounter,
+  extractPIDPath,
+  comparePIDHierarchy,
+  isPIDParent,
+  getPIDDepth,
+  createWaybillPayload,
+} from './pid';
+
 // Crypto (End-to-end encryption)
 export {
   encryptAddress,
@@ -370,5 +387,11 @@ export {
 export type {
   CountryMetadata,
 } from './country-registry';
+
+// Convenience functions for country information
+import { CountryRegistry } from './country-registry';
+export const getCountryInfo = (code: string) => CountryRegistry.getCountry(code);
+export const getAllCountries = () => CountryRegistry.getAllCountries();
+export const searchCountries = (query: string, language?: 'en' | 'local') => CountryRegistry.searchCountries(query, language);
 
 
