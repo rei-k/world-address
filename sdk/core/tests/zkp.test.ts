@@ -29,6 +29,17 @@ import {
   // Address Provider
   createAddressProvider,
   validateProviderSignature,
+  // Multiple ZKP Patterns
+  generateZKMembershipProof,
+  verifyZKMembershipProof,
+  generateZKStructureProof,
+  verifyZKStructureProof,
+  generateZKSelectiveRevealProof,
+  verifyZKSelectiveRevealProof,
+  generateZKVersionProof,
+  verifyZKVersionProof,
+  generateZKLockerProof,
+  verifyZKLockerProof,
 } from '../src/zkp';
 
 describe('ZKP Address Protocol - Flow 1: Registration', () => {
@@ -443,5 +454,276 @@ describe('ZKP Address Protocol - Address Provider', () => {
     );
 
     expect(isValid).toBe(true);
+  });
+});
+
+describe('ZKP Address Protocol - Multiple Patterns', () => {
+  describe('Pattern 1: ZK-Membership Proof (Address Existence)', () => {
+    it('should generate a membership proof', () => {
+      const circuit = createZKCircuit(
+        'membership-circuit-v1',
+        'Membership Circuit'
+      );
+      const pid = 'JP-13-113-01-T07-B12';
+      const validPids = [
+        'JP-13-113-01-T07-B12',
+        'JP-14-201-05-T03-B08',
+        'US-CA-90210-W01-S05',
+        'GB-ENG-W1A-1AA-B12',
+      ];
+
+      const proof = generateZKMembershipProof(pid, validPids, circuit);
+
+      expect(proof.patternType).toBe('membership');
+      expect(proof.circuitId).toBe(circuit.id);
+      expect(proof.merkleRoot).toBeDefined();
+      expect(proof.merklePath).toBeDefined();
+      expect(proof.leafIndex).toBeGreaterThanOrEqual(0);
+    });
+
+    it('should verify a membership proof', () => {
+      const circuit = createZKCircuit('membership-circuit-v1', 'Membership Circuit');
+      const pid = 'JP-13-113-01';
+      const validPids = ['JP-13-113-01', 'JP-14-201-05', 'US-CA-90210'];
+
+      const proof = generateZKMembershipProof(pid, validPids, circuit);
+      const result = verifyZKMembershipProof(proof, circuit, proof.merkleRoot);
+
+      expect(result.valid).toBe(true);
+      expect(result.circuitId).toBe(circuit.id);
+    });
+
+    it('should reject membership proof with wrong Merkle root', () => {
+      const circuit = createZKCircuit('membership-circuit-v1', 'Membership Circuit');
+      const proof = generateZKMembershipProof(
+        'JP-13-113-01',
+        ['JP-13-113-01', 'JP-14-201-05'],
+        circuit
+      );
+
+      const result = verifyZKMembershipProof(proof, circuit, 'wrong-merkle-root');
+
+      expect(result.valid).toBe(false);
+      expect(result.error).toContain('Merkle root mismatch');
+    });
+  });
+
+  describe('Pattern 2: ZK-Structure Proof (PID Hierarchy)', () => {
+    it('should generate a structure proof', () => {
+      const circuit = createZKCircuit('structure-circuit-v1', 'Structure Circuit');
+      const pid = 'JP-13-113-01-T07-B12-BN02-R342';
+
+      const proof = generateZKStructureProof(pid, 'JP', 8, circuit);
+
+      expect(proof.patternType).toBe('structure');
+      expect(proof.countryCode).toBe('JP');
+      expect(proof.hierarchyDepth).toBe(8);
+      expect(proof.rulesHash).toBeDefined();
+    });
+
+    it('should verify a structure proof', () => {
+      const circuit = createZKCircuit('structure-circuit-v1', 'Structure Circuit');
+      const proof = generateZKStructureProof('JP-13-113-01', 'JP', 4, circuit);
+
+      const result = verifyZKStructureProof(proof, circuit, 'JP');
+
+      expect(result.valid).toBe(true);
+      expect(result.publicInputs).toBeDefined();
+    });
+
+    it('should reject structure proof with wrong country', () => {
+      const circuit = createZKCircuit('structure-circuit-v1', 'Structure Circuit');
+      const proof = generateZKStructureProof('JP-13-113-01', 'JP', 4, circuit);
+
+      const result = verifyZKStructureProof(proof, circuit, 'US');
+
+      expect(result.valid).toBe(false);
+      expect(result.error).toContain('Country code mismatch');
+    });
+  });
+
+  describe('Pattern 3: ZK-Selective Reveal Proof (Partial Disclosure)', () => {
+    it('should generate a selective reveal proof', () => {
+      const circuit = createZKCircuit('selective-reveal-v1', 'Selective Reveal');
+      const fullAddress = {
+        country: 'JP',
+        province: '13',
+        city: 'Shibuya',
+        postal_code: '150-0001',
+        street_address: 'Dogenzaka 1-2-3',
+      };
+
+      const proof = generateZKSelectiveRevealProof(
+        'JP-13-113-01',
+        fullAddress,
+        ['country', 'postal_code'],
+        circuit
+      );
+
+      expect(proof.patternType).toBe('selective-reveal');
+      expect(proof.revealedFields).toEqual(['country', 'postal_code']);
+      expect(proof.revealedValues).toEqual({
+        country: 'JP',
+        postal_code: '150-0001',
+      });
+      expect(proof.disclosureNonce).toBeDefined();
+    });
+
+    it('should verify a selective reveal proof', () => {
+      const circuit = createZKCircuit('selective-reveal-v1', 'Selective Reveal');
+      const fullAddress = {
+        country: 'JP',
+        province: '13',
+        city: 'Shibuya',
+      };
+
+      const proof = generateZKSelectiveRevealProof(
+        'JP-13-113-01',
+        fullAddress,
+        ['country'],
+        circuit
+      );
+
+      const result = verifyZKSelectiveRevealProof(proof, circuit);
+
+      expect(result.valid).toBe(true);
+      expect(result.revealedData).toEqual({ country: 'JP' });
+    });
+
+    it('should handle empty revealed fields gracefully', () => {
+      const circuit = createZKCircuit('selective-reveal-v1', 'Selective Reveal');
+      const fullAddress = { country: 'JP' };
+
+      const proof = generateZKSelectiveRevealProof(
+        'JP-13-113-01',
+        fullAddress,
+        ['nonexistent_field'],
+        circuit
+      );
+
+      expect(proof.revealedValues).toEqual({});
+    });
+  });
+
+  describe('Pattern 4: ZK-Version Proof (Address Update)', () => {
+    it('should generate a version proof', () => {
+      const circuit = createZKCircuit('version-circuit-v1', 'Version Circuit');
+      const oldPid = 'JP-13-113-01-T07-B12';
+      const newPid = 'JP-14-201-05-T03-B08';
+      const userDid = 'did:key:user123';
+
+      const proof = generateZKVersionProof(oldPid, newPid, userDid, circuit);
+
+      expect(proof.patternType).toBe('version');
+      expect(proof.oldPid).toBe(oldPid);
+      expect(proof.newPid).toBe(newPid);
+      expect(proof.migrationTimestamp).toBeDefined();
+      expect(proof.ownershipProof).toBeDefined();
+    });
+
+    it('should verify a version proof', () => {
+      const circuit = createZKCircuit('version-circuit-v1', 'Version Circuit');
+      const oldPid = 'JP-13-113-01';
+      const newPid = 'JP-14-201-05';
+
+      const proof = generateZKVersionProof(oldPid, newPid, 'did:key:user123', circuit);
+
+      // Create revocation list with old PID
+      const revocationEntry = createRevocationEntry(oldPid, 'address_change', newPid);
+      const revocationList = createRevocationList('did:web:vey.example', [revocationEntry]);
+
+      const result = verifyZKVersionProof(proof, circuit, revocationList);
+
+      expect(result.valid).toBe(true);
+    });
+
+    it('should reject version proof if old PID not revoked', () => {
+      const circuit = createZKCircuit('version-circuit-v1', 'Version Circuit');
+      const proof = generateZKVersionProof(
+        'JP-13-113-01',
+        'JP-14-201-05',
+        'did:key:user123',
+        circuit
+      );
+
+      // Create empty revocation list (old PID not revoked)
+      const revocationList = createRevocationList('did:web:vey.example', []);
+
+      const result = verifyZKVersionProof(proof, circuit, revocationList);
+
+      expect(result.valid).toBe(false);
+      expect(result.error).toContain('Old PID not revoked');
+    });
+  });
+
+  describe('Pattern 5: ZK-Locker Proof (Locker Membership)', () => {
+    it('should generate a locker proof', () => {
+      const circuit = createZKCircuit('locker-circuit-v1', 'Locker Circuit');
+      const lockerId = 'LOCKER-A-042';
+      const facilityId = 'FACILITY-SHIBUYA-STATION';
+      const availableLockers = [
+        'LOCKER-A-001',
+        'LOCKER-A-042',
+        'LOCKER-A-099',
+        'LOCKER-B-015',
+      ];
+
+      const proof = generateZKLockerProof(
+        lockerId,
+        facilityId,
+        availableLockers,
+        circuit,
+        'KANTO-TOKYO-SHIBUYA'
+      );
+
+      expect(proof.patternType).toBe('locker');
+      expect(proof.facilityId).toBe(facilityId);
+      expect(proof.zone).toBe('KANTO-TOKYO-SHIBUYA');
+      expect(proof.lockerSetRoot).toBeDefined();
+    });
+
+    it('should verify a locker proof', () => {
+      const circuit = createZKCircuit('locker-circuit-v1', 'Locker Circuit');
+      const availableLockers = ['LOCKER-A-001', 'LOCKER-A-042'];
+
+      const proof = generateZKLockerProof(
+        'LOCKER-A-042',
+        'FACILITY-001',
+        availableLockers,
+        circuit
+      );
+
+      const result = verifyZKLockerProof(proof, circuit, 'FACILITY-001');
+
+      expect(result.valid).toBe(true);
+    });
+
+    it('should reject locker proof with wrong facility ID', () => {
+      const circuit = createZKCircuit('locker-circuit-v1', 'Locker Circuit');
+      const proof = generateZKLockerProof(
+        'LOCKER-A-042',
+        'FACILITY-001',
+        ['LOCKER-A-042'],
+        circuit
+      );
+
+      const result = verifyZKLockerProof(proof, circuit, 'FACILITY-999');
+
+      expect(result.valid).toBe(false);
+      expect(result.error).toContain('Facility ID mismatch');
+    });
+
+    it('should work without zone specification', () => {
+      const circuit = createZKCircuit('locker-circuit-v1', 'Locker Circuit');
+      const proof = generateZKLockerProof(
+        'LOCKER-A-001',
+        'FACILITY-001',
+        ['LOCKER-A-001'],
+        circuit
+      );
+
+      expect(proof.zone).toBeUndefined();
+      expect(proof.facilityId).toBe('FACILITY-001');
+    });
   });
 });
