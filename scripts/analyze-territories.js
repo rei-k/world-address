@@ -220,7 +220,7 @@ function printSimpleReport(results) {
   console.log('📊 Summary:');
   console.log(`   Countries (主権国家): ${simpleCategories.countries.length}`);
   console.log(
-    `   Autonomous Territories (自治領): ${simpleCategories.autonomous_territories.length}`,
+    `   Autonomous Territories (自治領): ${simpleCategories.autonomous_territories.length}`
   );
   console.log(`   Overseas Territories (海外領): ${simpleCategories.overseas_territories.length}`);
   console.log(`   Antarctica (南極): ${simpleCategories.antarctica.length}`);

@@ -2,6 +2,17 @@
 
 This directory contains automation scripts for the world-address-yaml repository.
 
+## 🔄 Recent Refactoring (2025-12-07)
+
+Major refactoring completed to improve maintainability:
+
+- **Data Extraction**: Moved large data constants to `data/` directory (JSON files)
+- **Script Consolidation**: Merged territory classification scripts into unified `analyze-territories.js`
+- **Size Reduction**: Reduced script sizes by 30-83% through data extraction
+- **New Utilities**: Added `utils/data-loader.js` for centralized data access
+
+See [REFACTORING_SUMMARY.md](../REFACTORING_SUMMARY.md) for complete details.
+
 ## Structure
 
 ```
@@ -251,3 +262,109 @@ npm run format
 # Check formatting
 npm run format:check
 ```
+
+## analyze-territories.js
+
+**NEW:** Unified territory classification and analysis tool (consolidates classify_territories.js and identify-special-territories.js).
+
+Analyzes territories in the database with multiple classification modes.
+
+### Usage
+
+```bash
+# Simple classification by file path (default)
+node scripts/analyze-territories.js simple
+
+# Detailed analysis based on autonomy indicators
+node scripts/analyze-territories.js detailed
+
+# Both simple and detailed reports
+node scripts/analyze-territories.js all
+```
+
+### Classification Modes
+
+#### Simple Mode
+Path-based classification into four categories:
+- **Countries (主権国家)** - Sovereign nations
+- **Autonomous Territories (自治領)** - Regions with autonomy
+- **Overseas Territories (海外領)** - Overseas possessions
+- **Antarctica (南極)** - Antarctic territories
+
+#### Detailed Mode
+Analysis based on autonomy indicators:
+- **Effectively Independent Territories** - Score >= 4/6 on independence metrics
+- **Special Administrative Regions (SAR)** - e.g., Hong Kong, Macau
+- **Special Customs Territories** - Own postal/currency/tax systems
+
+Independence scoring based on:
+1. Own currency
+2. Own ISO code
+3. Own postal system
+4. Own tax system
+5. Own timezone
+6. Not a UN member
+
+### Output Example
+
+```
+╔══════════════════════════════════════════════════╗
+║     Simple Territory Classification Report      ║
+╚══════════════════════════════════════════════════╝
+
+📊 Summary:
+   Countries (主権国家): 211
+   Autonomous Territories (自治領): 13
+   Overseas Territories (海外領): 44
+   Antarctica (南極): 1
+   Total: 325 files
+```
+
+## add-pos-data.js
+
+**REFACTORED:** Now uses external data files from `data/` directory.
+
+Script to add POS (Point of Sale) data to country YAML files.
+
+### Usage
+
+```bash
+node scripts/add-pos-data.js
+```
+
+### What it does
+
+1. Loads currency and timezone data from external JSON files
+2. Scans all country YAML files
+3. Adds POS section if missing (currency, tax, receipt, fiscal, payment, locale)
+4. Handles special cases (territories, regions, Antarctica)
+
+### Data Sources
+
+- `data/currency-data.json` - ISO 4217 currency codes
+- `data/timezone-data.json` - IANA timezone mappings
+
+## add-geo-coordinates.js
+
+**REFACTORED:** Now uses external data files from `data/` directory.
+
+Script to add geographic coordinates to country YAML files.
+
+### Usage
+
+```bash
+node scripts/add-geo-coordinates.js
+```
+
+### What it does
+
+1. Loads coordinate data from external JSON files
+2. Scans all country YAML files
+3. Adds geo section if missing (center latitude/longitude)
+4. Handles both regular countries and special regions
+
+### Data Sources
+
+- `data/country-coordinates.json` - Country center coordinates
+- `data/special-region-coordinates.json` - Special region coordinates
+

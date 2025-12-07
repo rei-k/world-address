@@ -25,10 +25,10 @@ function loadData(filename) {
   try {
     const content = fs.readFileSync(dataPath, 'utf8');
     const data = JSON.parse(content);
-    
+
     // Cache the data
     dataCache[filename] = data;
-    
+
     return data;
   } catch (error) {
     throw new Error(`Failed to load data file ${filename}: ${error.message}`);
@@ -88,7 +88,7 @@ function getAllCountryCodes() {
  * Clear the data cache (useful for testing)
  */
 function clearCache() {
-  Object.keys(dataCache).forEach(key => delete dataCache[key]);
+  Object.keys(dataCache).forEach((key) => delete dataCache[key]);
 }
 
 module.exports = {
