@@ -39,11 +39,16 @@ describe('MongoDB Integration Tests', () => {
       return;
     }
 
-    // Safety check: Only drop databases with 'test' in the name
-    if (db && config.database.includes('test')) {
+    // Safety check: Only drop databases with strict 'test' naming pattern
+    const dbName = config.database.toLowerCase();
+    const isTestDb = dbName.startsWith('test_') || dbName.endsWith('_test') || dbName === 'test';
+    
+    if (db && isTestDb) {
       await db.dropDatabase();
     } else {
-      console.warn('⚠️  Database name does not contain "test" - skipping drop for safety');
+      console.warn('⚠️  Database name does not follow test naming pattern - skipping drop for safety');
+      console.warn('   Expected pattern: test_*, *_test, or "test"');
+      console.warn(`   Got: ${config.database}`);
     }
     
     if (client) {
