@@ -39,10 +39,13 @@ describe('MongoDB Integration Tests', () => {
       return;
     }
 
-    // Cleanup
-    if (db) {
+    // Safety check: Only drop databases with 'test' in the name
+    if (db && config.database.includes('test')) {
       await db.dropDatabase();
+    } else {
+      console.warn('⚠️  Database name does not contain "test" - skipping drop for safety');
     }
+    
     if (client) {
       await client.close();
     }

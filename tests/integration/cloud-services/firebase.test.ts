@@ -318,15 +318,26 @@ describe('Firebase Integration Tests', () => {
 
   async function cleanupTestData(): Promise<void> {
     try {
-      // Delete all test addresses
+      // Use batch writes for efficient cleanup
       const addressesSnapshot = await getDocs(collection(firestore, 'addresses'));
-      const deletePromises = addressesSnapshot.docs.map((doc) => deleteDoc(doc.ref));
-      await Promise.all(deletePromises);
-
-      // Delete all test friends
       const friendsSnapshot = await getDocs(collection(firestore, 'friends'));
-      const deleteFriendPromises = friendsSnapshot.docs.map((doc) => deleteDoc(doc.ref));
-      await Promise.all(deleteFriendPromises);
+
+      // Firebase supports batches of up to 500 operations
+      const batchSize = 500;
+      
+      // Delete addresses in batches
+      for (let i = 0; i < addressesSnapshot.docs.length; i += batchSize) {
+        const batch = addressesSnapshot.docs.slice(i, i + batchSize);
+        const deletePromises = batch.map((doc) => deleteDoc(doc.ref));
+        await Promise.all(deletePromises);
+      }
+
+      // Delete friends in batches
+      for (let i = 0; i < friendsSnapshot.docs.length; i += batchSize) {
+        const batch = friendsSnapshot.docs.slice(i, i + batchSize);
+        const deletePromises = batch.map((doc) => deleteDoc(doc.ref));
+        await Promise.all(deletePromises);
+      }
     } catch (error) {
       console.warn('Cleanup error:', error);
     }

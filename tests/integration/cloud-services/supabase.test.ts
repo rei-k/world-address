@@ -31,8 +31,9 @@ describe('Supabase Integration Tests', () => {
       return;
     }
 
-    // Cleanup tables
-    await dropTables();
+    // Cleanup tables using proper delete syntax
+    await supabase.from('friend_entries').delete().not('id', 'is', null);
+    await supabase.from('address_entries').delete().not('id', 'is', null);
   });
 
   beforeEach(async () => {
@@ -40,9 +41,9 @@ describe('Supabase Integration Tests', () => {
       return;
     }
 
-    // Clear test data
-    await supabase.from('friend_entries').delete().neq('id', '');
-    await supabase.from('address_entries').delete().neq('id', '');
+    // Clear test data using proper delete syntax
+    await supabase.from('friend_entries').delete().not('id', 'is', null);
+    await supabase.from('address_entries').delete().not('id', 'is', null);
   });
 
   describe('Connection Tests', () => {
@@ -371,10 +372,5 @@ describe('Supabase Integration Tests', () => {
     // Tables should be created via Supabase dashboard or migrations
     // This is a placeholder for documentation
     console.log('Tables should exist in Supabase project');
-  }
-
-  async function dropTables(): Promise<void> {
-    // Cleanup is done in beforeEach
-    console.log('Cleanup completed');
   }
 });

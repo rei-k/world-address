@@ -119,6 +119,18 @@ export function getDatabaseConfig(): DatabaseConfig {
  * クラウドサービス設定を取得
  */
 export function getCloudServiceConfig(): CloudServiceConfig {
+  let serviceAccountJson: object | undefined;
+  
+  // Safely parse Firebase service account JSON
+  if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
+    try {
+      serviceAccountJson = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
+    } catch (error) {
+      console.error('Failed to parse FIREBASE_SERVICE_ACCOUNT_JSON');
+      serviceAccountJson = undefined;
+    }
+  }
+
   return {
     firebase: {
       apiKey: process.env.FIREBASE_API_KEY || '',
@@ -128,9 +140,7 @@ export function getCloudServiceConfig(): CloudServiceConfig {
       messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
       appId: process.env.FIREBASE_APP_ID,
       serviceAccountKey: process.env.FIREBASE_SERVICE_ACCOUNT_KEY,
-      serviceAccountJson: process.env.FIREBASE_SERVICE_ACCOUNT_JSON
-        ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON)
-        : undefined,
+      serviceAccountJson,
     },
     supabase: {
       url: process.env.SUPABASE_URL || '',

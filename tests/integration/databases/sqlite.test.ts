@@ -83,9 +83,11 @@ describe('SQLite Integration Tests', () => {
       await db.close();
     }
 
-    // Remove test database file
+    // Remove test database file using async operation
     if (fs.existsSync(dbPath)) {
-      fs.unlinkSync(dbPath);
+      await fs.promises.unlink(dbPath).catch(err => {
+        console.warn('Failed to delete test database file:', err.message);
+      });
     }
   });
 
