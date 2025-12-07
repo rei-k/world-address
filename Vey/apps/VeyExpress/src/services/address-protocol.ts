@@ -200,7 +200,28 @@ export class AddressProtocolService {
       localityType: 'town',
     });
 
-    // Add more countries as needed (targeting 254 total)
+    // Add more major countries
+    const additionalCountries = [
+      'CN', 'DE', 'FR', 'IT', 'ES', 'CA', 'AU', 'BR', 'MX', 'KR',
+      'IN', 'RU', 'SG', 'HK', 'TW', 'NL', 'SE', 'NO', 'DK', 'FI',
+      'PL', 'CZ', 'AT', 'CH', 'BE', 'PT', 'GR', 'IE', 'NZ', 'ZA',
+      'IL', 'AE', 'SA', 'TH', 'VN', 'MY', 'PH', 'ID', 'TR', 'EG',
+      'AR', 'CL', 'CO', 'PE', 'UA', 'RO', 'HU', 'CL', 'VE', 'EC',
+    ];
+
+    additionalCountries.forEach(code => {
+      if (!this.countryFormats.has(code)) {
+        this.countryFormats.set(code, {
+          name: code,
+          fields: ['addressLine1', 'locality', 'administrativeArea', 'postalCode'],
+          requiresPostalCode: false,
+          administrativeAreaType: 'region',
+          localityType: 'city',
+        });
+      }
+    });
+
+    // In production, this would load all 254 countries from the world-address data
   }
 
   private normalizePostalCode(postalCode: string, format: RegExp): string {
