@@ -979,6 +979,11 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 | ST | São Tomé and Príncipe | サントメ・プリンシペ |
 | TD | Chad | チャド |
 
+**アンゴラ特別地域 / Angola Special Regions:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| AO-CB | Cabinda | カビンダ |
+
 #### 東アフリカ / Eastern Africa
 | コード | 国名 | 日本語名 |
 |--------|------|----------|
@@ -1000,6 +1005,18 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 | ZM | Zambia | ザンビア |
 | ZW | Zimbabwe | ジンバブエ |
 
+**ソマリア地域 / Somalia Regions:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| SO-JL | Jubaland | ジュバランド |
+| SO-PL | Puntland | プントランド |
+| SO-SL | Somaliland | ソマリランド |
+
+**タンザニア特別地域 / Tanzania Special Regions:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| TZ-ZAN | Zanzibar | ザンジバル |
+
 #### 北アフリカ / Northern Africa
 | コード | 国名 | 日本語名 |
 |--------|------|----------|
@@ -1010,6 +1027,11 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 | SD | Sudan | スーダン |
 | SS | South Sudan | 南スーダン |
 | TN | Tunisia | チュニジア |
+
+**アルジェリア特別地域 / Algeria Special Regions:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| DZ-SAH | Western Sahara Territory | 西サハラ地域 |
 
 #### 南部アフリカ / Southern Africa
 | コード | 国名 | 日本語名 |
@@ -1087,6 +1109,7 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 | GU | Guam | グアム |
 | MP | Northern Mariana Islands | 北マリアナ諸島 |
 | PR | Puerto Rico | プエルトリコ |
+| UM | United States Minor Outlying Islands | 合衆国領有小離島 |
 | VI | United States Virgin Islands | アメリカ領ヴァージン諸島 |
 
 #### 南アメリカ / South America
@@ -1177,6 +1200,21 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 | MO | Macao | マカオ |
 | TW | Taiwan | 台湾 |
 
+**中国特別地域 / China Special Regions:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Hainan | Hainan | 海南 |
+| Inner_Mongolia | Inner Mongolia | 内モンゴル |
+| Tibet | Tibet | チベット |
+| Xinjiang | Xinjiang | 新疆 |
+
+**日本係争地域 / Japan Disputed Territories:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Northern_Territories | Northern Territories | 北方領土 |
+| Senkaku_Islands | Senkaku Islands | 尖閣諸島 |
+| Takeshima | Takeshima | 竹島 |
+
 #### 南アジア / South Asia
 | コード | 国名 | 日本語名 |
 |--------|------|----------|
@@ -1194,6 +1232,12 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 |------------|--------|----------|
 | Andaman_Nicobar | Andaman and Nicobar Islands | アンダマン・ニコバル諸島 |
 | Lakshadweep | Lakshadweep | ラクシャディープ諸島 |
+
+**南アジア係争地域 / South Asia Disputed Territories:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Aksai_Chin | Aksai Chin | アクサイチン |
+| Kashmir | Kashmir | カシミール |
 
 #### 東南アジア / Southeast Asia
 | コード | 国名 | 日本語名 |
@@ -1213,7 +1257,31 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 **インドネシア特別地域 / Indonesia Special Regions:**
 | ファイル名 | 地域名 | 日本語名 |
 |------------|--------|----------|
+| Aceh | Aceh | アチェ |
 | Papua | Papua | パプア |
+
+**マレーシア特別地域 / Malaysia Special Regions:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Labuan | Labuan | ラブアン |
+| Sabah | Sabah | サバ |
+| Sarawak | Sarawak | サラワク |
+
+**フィリピン特別地域 / Philippines Special Regions:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| BARMM | Bangsamoro | バンサモロ |
+
+**東ティモール特別地域 / Timor-Leste Special Regions:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Oecusse | Oecusse | オエクシ |
+
+**東南アジア係争地域 / Southeast Asia Disputed Territories:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Paracel_Islands | Paracel Islands | 西沙諸島 |
+| Spratly_Islands | Spratly Islands | 南沙諸島 |
 
 #### 西アジア / West Asia
 | コード | 国名 | 日本語名 |
@@ -1233,6 +1301,17 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 | SY | Syria | シリア |
 | TR | Turkey | トルコ |
 | YE | Yemen | イエメン |
+
+**パレスチナ地域 / Palestine Regions:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Gaza_Strip | Gaza Strip | ガザ地区 |
+| West_Bank | West Bank | ヨルダン川西岸地区 |
+
+**シリア特別地域 / Syria Special Regions:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Golan_Heights | Golan Heights | ゴラン高原 |
 
 **コーカサス / Caucasus:**
 | コード | 国名 | 日本語名 |
@@ -1278,6 +1357,12 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 | SK | Slovakia | スロバキア |
 | UA | Ukraine | ウクライナ |
 
+**ロシア特別地域 / Russia Special Regions:**
+| ファイル名 | 地域名 | 日本語名 |
+|------------|--------|----------|
+| Chechnya | Chechnya | チェチェン |
+| Dagestan | Dagestan | ダゲスタン |
+
 #### 北ヨーロッパ / Northern Europe
 | コード | 国名 | 日本語名 |
 |--------|------|----------|
@@ -1298,6 +1383,17 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 | FO | Faroe Islands | フェロー諸島 |
 | GL | Greenland | グリーンランド |
 
+**フィンランド特別地域 / Finland Special Regions:**
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| AX | Åland Islands | オーランド諸島 |
+
+**ノルウェー海外領土 / Norway Overseas Territories:**
+| コード | 地域名 | 日本語名 |
+|--------|--------|----------|
+| BV | Bouvet Island | ブーベ島 |
+| SJ | Svalbard and Jan Mayen | スヴァールバル諸島・ヤンマイエン島 |
+
 **イギリス王室属領 / British Crown Dependencies:**
 | コード | 地域名 | 日本語名 |
 |--------|--------|----------|
@@ -1317,6 +1413,7 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 | KY | Cayman Islands | ケイマン諸島 |
 | MS | Montserrat | モントセラト |
 | PN | Pitcairn Islands | ピトケアン諸島 |
+| SBA | Sovereign Base Areas of Akrotiri and Dhekelia | アクロティリおよびデケリア |
 | SH | Saint Helena, Ascension and Tristan da Cunha | セントヘレナ・アセンション・トリスタンダクーニャ |
 | TC | Turks and Caicos Islands | タークス・カイコス諸島 |
 | VG | British Virgin Islands | イギリス領ヴァージン諸島 |
@@ -1352,6 +1449,7 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 **スペイン特別地域 / Spain Special Regions:**
 | ファイル名 | 地域名 | 日本語名 |
 |------------|--------|----------|
+| Balearic_Islands | Balearic Islands | バレアレス諸島 |
 | Canary_Islands | Canary Islands | カナリア諸島 |
 | Ceuta_Melilla | Ceuta and Melilla | セウタ・メリリャ |
 
@@ -1360,6 +1458,7 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 |------------|--------|----------|
 | Azores | Azores | アゾレス諸島 |
 | Madeira | Madeira | マデイラ諸島 |
+| Porto_Santo | Porto Santo | ポルト・サント島 |
 
 #### 西ヨーロッパ / Western Europe
 | コード | 国名 | 日本語名 |
@@ -1377,19 +1476,23 @@ For complete list, see [Supported Countries & Regions](#-対応国地域一覧--
 **フランス海外領土 / French Overseas Territories:**
 | コード | 地域名 | 日本語名 |
 |--------|--------|----------|
+| BL | Saint Barthélemy | サン・バルテルミー |
 | GF | French Guiana | フランス領ギアナ |
 | GP | Guadeloupe | グアドループ |
+| MF | Saint Martin | サン・マルタン |
 | MQ | Martinique | マルティニーク |
 | NC | New Caledonia | ニューカレドニア |
 | PF | French Polynesia | フランス領ポリネシア |
 | PM | Saint Pierre and Miquelon | サンピエール・ミクロン |
 | RE | Réunion | レユニオン |
+| TF | French Southern and Antarctic Lands | フランス領南方・南極地域 |
 | WF | Wallis and Futuna | ウォリス・フツナ |
 | YT | Mayotte | マヨット |
 
 **オランダ海外領土 / Dutch Overseas Territories:**
 | コード | 地域名 | 日本語名 |
 |--------|--------|----------|
+| AW | Aruba | アルバ |
 | BQ | Caribbean Netherlands | カリブ・オランダ |
 | CW | Curaçao | キュラソー |
 | SX | Sint Maarten | シント・マールテン |
