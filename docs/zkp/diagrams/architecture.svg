@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #2c3e50; }
+      .subtitle { font: bold 18px sans-serif; fill: #34495e; }
+      .text { font: 14px sans-serif; fill: #2c3e50; }
+      .small-text { font: 12px sans-serif; fill: #7f8c8d; }
+      .box { fill: #ecf0f1; stroke: #34495e; stroke-width: 2; }
+      .highlight-box { fill: #3498db; stroke: #2980b9; stroke-width: 2; }
+      .success-box { fill: #2ecc71; stroke: #27ae60; stroke-width: 2; }
+      .warning-box { fill: #f39c12; stroke: #e67e22; stroke-width: 2; }
+      .danger-box { fill: #e74c3c; stroke: #c0392b; stroke-width: 2; }
+      .arrow { stroke: #34495e; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .bold-arrow { stroke: #2c3e50; stroke-width: 3; fill: none; marker-end: url(#arrowhead-bold); }
+      .dashed { stroke-dasharray: 5,5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#34495e" />
+    </marker>
+    <marker id="arrowhead-bold" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2c3e50" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" class="title">ZKPアドレスプロトコル - システムアーキテクチャ</text>
+  <text x="600" y="65" text-anchor="middle" class="small-text">Zero-Knowledge Proof Address Protocol - System Architecture</text>
+
+  <!-- Layer 1: User Interface -->
+  <rect x="50" y="100" width="1100" height="150" class="box" rx="10"/>
+  <text x="70" y="130" class="subtitle">Layer 1: ユーザーインターフェース (User Interface)</text>
+  
+  <rect x="80" y="150" width="240" height="80" class="highlight-box" rx="5"/>
+  <text x="200" y="175" text-anchor="middle" class="text" fill="white">モバイルアプリ</text>
+  <text x="200" y="195" text-anchor="middle" class="small-text" fill="white">iOS / Android</text>
+  <text x="200" y="215" text-anchor="middle" class="small-text" fill="white">Veyvault</text>
+
+  <rect x="350" y="150" width="240" height="80" class="highlight-box" rx="5"/>
+  <text x="470" y="175" text-anchor="middle" class="text" fill="white">Webアプリ</text>
+  <text x="470" y="195" text-anchor="middle" class="small-text" fill="white">React / Vue</text>
+  <text x="470" y="215" text-anchor="middle" class="small-text" fill="white">ECサイト統合</text>
+
+  <rect x="620" y="150" width="240" height="80" class="highlight-box" rx="5"/>
+  <text x="740" y="175" text-anchor="middle" class="text" fill="white">ミニプログラム</text>
+  <text x="740" y="195" text-anchor="middle" class="small-text" fill="white">WeChat / Alipay</text>
+  <text x="740" y="215" text-anchor="middle" class="small-text" fill="white">店舗連携</text>
+
+  <rect x="890" y="150" width="240" height="80" class="highlight-box" rx="5"/>
+  <text x="1010" y="175" text-anchor="middle" class="text" fill="white">QR/NFC</text>
+  <text x="1010" y="195" text-anchor="middle" class="small-text" fill="white">非接触決済</text>
+  <text x="1010" y="215" text-anchor="middle" class="small-text" fill="white">ロッカー受取</text>
+
+  <!-- Arrow from Layer 1 to Layer 2 -->
+  <path d="M 600 250 L 600 300" class="bold-arrow"/>
+
+  <!-- Layer 2: Application Logic -->
+  <rect x="50" y="300" width="1100" height="150" class="box" rx="10"/>
+  <text x="70" y="330" class="subtitle">Layer 2: アプリケーションロジック (Application Logic)</text>
+  
+  <rect x="80" y="350" width="240" height="80" class="success-box" rx="5"/>
+  <text x="200" y="375" text-anchor="middle" class="text" fill="white">住所管理</text>
+  <text x="200" y="395" text-anchor="middle" class="small-text" fill="white">Veyvault</text>
+  <text x="200" y="415" text-anchor="middle" class="small-text" fill="white">クラウド住所帳</text>
+
+  <rect x="350" y="350" width="240" height="80" class="success-box" rx="5"/>
+  <text x="470" y="375" text-anchor="middle" class="text" fill="white">ECプラットフォーム</text>
+  <text x="470" y="395" text-anchor="middle" class="small-text" fill="white">VeyStore</text>
+  <text x="470" y="415" text-anchor="middle" class="small-text" fill="white">注文・在庫管理</text>
+
+  <rect x="620" y="350" width="240" height="80" class="success-box" rx="5"/>
+  <text x="740" y="375" text-anchor="middle" class="text" fill="white">配送管理</text>
+  <text x="740" y="395" text-anchor="middle" class="small-text" fill="white">VeyExpress</text>
+  <text x="740" y="415" text-anchor="middle" class="small-text" fill="white">マルチキャリア</text>
+
+  <rect x="890" y="350" width="240" height="80" class="success-box" rx="5"/>
+  <text x="1010" y="375" text-anchor="middle" class="text" fill="white">分析</text>
+  <text x="1010" y="395" text-anchor="middle" class="small-text" fill="white">VeyAnalytics</text>
+  <text x="1010" y="415" text-anchor="middle" class="small-text" fill="white">データ分析</text>
+
+  <!-- Arrow from Layer 2 to Layer 3 -->
+  <path d="M 600 450 L 600 500" class="bold-arrow"/>
+
+  <!-- Layer 3: ZKP Protocol (Main Focus) -->
+  <rect x="50" y="500" width="1100" height="280" class="warning-box" rx="10"/>
+  <text x="70" y="530" class="subtitle" fill="white">Layer 3: ZKPプロトコル (Zero-Knowledge Proof Protocol) ★コア機能★</text>
+  
+  <!-- 5 ZKP Patterns -->
+  <rect x="80" y="550" width="200" height="210" class="box" rx="5"/>
+  <text x="180" y="575" text-anchor="middle" class="subtitle">5つのZKPパターン</text>
+  
+  <text x="90" y="600" class="text">1. Membership</text>
+  <text x="100" y="620" class="small-text">住所存在証明</text>
+  
+  <text x="90" y="645" class="text">2. Structure</text>
+  <text x="100" y="665" class="small-text">PID階層証明</text>
+  
+  <text x="90" y="690" class="text">3. Selective</text>
+  <text x="100" y="710" class="small-text">部分公開証明</text>
+  
+  <text x="90" y="735" class="text">4. Version</text>
+  <text x="100" y="755" class="small-text">住所更新証明</text>
+
+  <!-- Prover -->
+  <rect x="310" y="550" width="240" height="100" class="highlight-box" rx="5"/>
+  <text x="430" y="580" text-anchor="middle" class="text" fill="white">Prover (証明者)</text>
+  <text x="430" y="600" text-anchor="middle" class="small-text" fill="white">• 証明生成</text>
+  <text x="430" y="620" text-anchor="middle" class="small-text" fill="white">• Witness作成</text>
+  <text x="430" y="640" text-anchor="middle" class="small-text" fill="white">• 秘密入力処理</text>
+
+  <!-- Verifier -->
+  <rect x="580" y="550" width="240" height="100" class="highlight-box" rx="5"/>
+  <text x="700" y="580" text-anchor="middle" class="text" fill="white">Verifier (検証者)</text>
+  <text x="700" y="600" text-anchor="middle" class="small-text" fill="white">• 証明検証</text>
+  <text x="700" y="620" text-anchor="middle" class="small-text" fill="white">• 公開入力確認</text>
+  <text x="700" y="640" text-anchor="middle" class="small-text" fill="white">• 結果判定</text>
+
+  <!-- Circuit Management -->
+  <rect x="850" y="550" width="280" height="100" class="highlight-box" rx="5"/>
+  <text x="990" y="580" text-anchor="middle" class="text" fill="white">回路管理</text>
+  <text x="990" y="600" text-anchor="middle" class="small-text" fill="white">• Groth16 / PLONK / Halo2</text>
+  <text x="990" y="620" text-anchor="middle" class="small-text" fill="white">• Circom回路</text>
+  <text x="990" y="640" text-anchor="middle" class="small-text" fill="white">• 検証鍵管理</text>
+
+  <!-- Locker Pattern -->
+  <rect x="310" y="660" width="240" height="100" class="success-box" rx="5"/>
+  <text x="430" y="690" text-anchor="middle" class="text" fill="white">5. Locker</text>
+  <text x="430" y="710" text-anchor="middle" class="small-text" fill="white">ロッカー所属証明</text>
+  <text x="430" y="730" text-anchor="middle" class="small-text" fill="white">匿名配送実現</text>
+
+  <!-- Merkle Tree -->
+  <rect x="580" y="660" width="240" height="100" class="success-box" rx="5"/>
+  <text x="700" y="690" text-anchor="middle" class="text" fill="white">Merkle Tree</text>
+  <text x="700" y="710" text-anchor="middle" class="small-text" fill="white">効率的な証明</text>
+  <text x="700" y="730" text-anchor="middle" class="small-text" fill="white">100万アドレス対応</text>
+
+  <!-- Performance -->
+  <rect x="850" y="660" width="280" height="100" class="success-box" rx="5"/>
+  <text x="990" y="690" text-anchor="middle" class="text" fill="white">パフォーマンス</text>
+  <text x="990" y="710" text-anchor="middle" class="small-text" fill="white">証明生成: &lt; 1秒</text>
+  <text x="990" y="730" text-anchor="middle" class="small-text" fill="white">証明検証: &lt; 100ms</text>
+  <text x="990" y="750" text-anchor="middle" class="small-text" fill="white">証明サイズ: &lt; 1KB</text>
+
+  <!-- Arrow from Layer 3 to Layer 4 -->
+  <path d="M 600 780 L 600 830" class="bold-arrow"/>
+
+  <!-- Layer 4: Identity & Credentials -->
+  <rect x="50" y="830" width="1100" height="130" class="box" rx="10"/>
+  <text x="70" y="860" class="subtitle">Layer 4: ID・クレデンシャル (Identity & Credentials)</text>
+  
+  <rect x="80" y="880" width="250" height="60" class="danger-box" rx="5"/>
+  <text x="205" y="905" text-anchor="middle" class="text" fill="white">DID</text>
+  <text x="205" y="925" text-anchor="middle" class="small-text" fill="white">分散型識別子</text>
+
+  <rect x="360" y="880" width="250" height="60" class="danger-box" rx="5"/>
+  <text x="485" y="905" text-anchor="middle" class="text" fill="white">VC</text>
+  <text x="485" y="925" text-anchor="middle" class="small-text" fill="white">検証可能資格証明</text>
+
+  <rect x="640" y="880" width="250" height="60" class="danger-box" rx="5"/>
+  <text x="765" y="905" text-anchor="middle" class="text" fill="white">失効リスト</text>
+  <text x="765" y="925" text-anchor="middle" class="small-text" fill="white">Revocation List</text>
+
+  <rect x="920" y="880" width="210" height="60" class="danger-box" rx="5"/>
+  <text x="1025" y="905" text-anchor="middle" class="text" fill="white">鍵管理</text>
+  <text x="1025" y="925" text-anchor="middle" class="small-text" fill="white">KMS / HSM</text>
+
+  <!-- Arrow from Layer 4 to Layer 5 -->
+  <path d="M 600 960 L 600 1010" class="bold-arrow"/>
+
+  <!-- Layer 5: Data Layer -->
+  <rect x="50" y="1010" width="1100" height="130" class="box" rx="10"/>
+  <text x="70" y="1040" class="subtitle">Layer 5: データ層 (Data Layer)</text>
+  
+  <rect x="80" y="1060" width="250" height="60" class="highlight-box" rx="5"/>
+  <text x="205" y="1085" text-anchor="middle" class="text" fill="white">住所DB</text>
+  <text x="205" y="1105" text-anchor="middle" class="small-text" fill="white">PostgreSQL</text>
+
+  <rect x="360" y="1060" width="250" height="60" class="highlight-box" rx="5"/>
+  <text x="485" y="1085" text-anchor="middle" class="text" fill="white">PIDレジストリ</text>
+  <text x="485" y="1105" text-anchor="middle" class="small-text" fill="white">Redis</text>
+
+  <rect x="640" y="1060" width="250" height="60" class="highlight-box" rx="5"/>
+  <text x="765" y="1085" text-anchor="middle" class="text" fill="white">監査ログ</text>
+  <text x="765" y="1105" text-anchor="middle" class="small-text" fill="white">MongoDB</text>
+
+  <rect x="920" y="1060" width="210" height="60" class="highlight-box" rx="5"/>
+  <text x="1025" y="1085" text-anchor="middle" class="text" fill="white">Merkle Tree</text>
+  <text x="1025" y="1105" text-anchor="middle" class="small-text" fill="white">ストレージ</text>
+
+  <!-- Security Layer (Side) -->
+  <rect x="50" y="1180" width="1100" height="180" class="danger-box" rx="10"/>
+  <text x="70" y="1210" class="subtitle" fill="white">セキュリティ層 (Security Layer)</text>
+  
+  <rect x="80" y="1230" width="250" height="110" class="box" rx="5"/>
+  <text x="205" y="1255" text-anchor="middle" class="text">Transport</text>
+  <text x="205" y="1275" text-anchor="middle" class="small-text">TLS 1.3</text>
+  <text x="205" y="1295" text-anchor="middle" class="small-text">mTLS</text>
+  <text x="205" y="1315" text-anchor="middle" class="small-text">暗号化通信</text>
+
+  <rect x="360" y="1230" width="250" height="110" class="box" rx="5"/>
+  <text x="485" y="1255" text-anchor="middle" class="text">認証・認可</text>
+  <text x="485" y="1275" text-anchor="middle" class="small-text">OAuth 2.0</text>
+  <text x="485" y="1295" text-anchor="middle" class="small-text">DID Auth</text>
+  <text x="485" y="1315" text-anchor="middle" class="small-text">RBAC</text>
+
+  <rect x="640" y="1230" width="250" height="110" class="box" rx="5"/>
+  <text x="765" y="1255" text-anchor="middle" class="text">データ保護</text>
+  <text x="765" y="1275" text-anchor="middle" class="small-text">ZKP (5パターン)</text>
+  <text x="765" y="1295" text-anchor="middle" class="small-text">E2EE</text>
+  <text x="765" y="1315" text-anchor="middle" class="small-text">AES-256</text>
+
+  <rect x="920" y="1230" width="210" height="110" class="box" rx="5"/>
+  <text x="1025" y="1255" text-anchor="middle" class="text">監査</text>
+  <text x="1025" y="1275" text-anchor="middle" class="small-text">アクセスログ</text>
+  <text x="1025" y="1295" text-anchor="middle" class="small-text">異常検知</text>
+  <text x="1025" y="1315" text-anchor="middle" class="small-text">GDPR/CCPA</text>
+
+</svg>
