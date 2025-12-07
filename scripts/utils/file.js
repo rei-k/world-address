@@ -91,20 +91,20 @@ function getFileStats(filePath) {
  */
 function listFiles(dirPath, options = {}) {
   const { recursive = false, filter = null } = options;
-  
+
   if (!fs.existsSync(dirPath)) {
     return [];
   }
 
   const files = [];
-  
+
   function traverse(currentPath) {
     const items = fs.readdirSync(currentPath);
-    
+
     for (const item of items) {
       const fullPath = path.join(currentPath, item);
       const stats = fs.statSync(fullPath);
-      
+
       if (stats.isDirectory()) {
         if (recursive) {
           traverse(fullPath);
@@ -116,7 +116,7 @@ function listFiles(dirPath, options = {}) {
       }
     }
   }
-  
+
   traverse(dirPath);
   return files;
 }
@@ -129,7 +129,7 @@ function listFiles(dirPath, options = {}) {
 function safeWriteFile(filePath, content) {
   const dir = path.dirname(filePath);
   ensureDir(dir);
-  
+
   const tmpPath = `${filePath}.tmp`;
   fs.writeFileSync(tmpPath, content, 'utf8');
   fs.renameSync(tmpPath, filePath);

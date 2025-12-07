@@ -47,7 +47,7 @@ class Logger {
     const timestamp = new Date().toISOString();
     const levelTag = `[${level.toUpperCase()}]`;
     const prefix = this.prefix ? `[${this.prefix}]` : '';
-    
+
     console.log(
       this._colorize(`${timestamp} ${levelTag}${prefix}`, COLORS.dim),
       this._colorize(message, color),

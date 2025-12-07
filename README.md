@@ -923,6 +923,7 @@ npm install
 | `npm run fetch:libaddressinput` | Fetch libaddressinput data from Google API |
 | `npm run validate:data` | Validate all YAML data files |
 | `npm run stats:data` | Display data completeness statistics |
+| `npm run analyze:special-territories` | Identify effectively independent and special customs territories |
 | `npm run lint` | Lint JavaScript code |
 | `npm run format` | Format code with Prettier |
 

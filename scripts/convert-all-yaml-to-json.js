@@ -2,7 +2,7 @@
 
 /**
  * Script to convert all YAML files to JSON format
- * 
+ *
  * This script finds all YAML files in the data directory and creates
  * corresponding JSON files.
  */
@@ -17,7 +17,7 @@ const yaml = require('js-yaml');
 function findYAMLFiles(dir, fileList = []) {
   const files = fs.readdirSync(dir);
 
-  files.forEach(file => {
+  files.forEach((file) => {
     const filePath = path.join(dir, file);
     const stat = fs.statSync(filePath);
 
@@ -40,14 +40,14 @@ function findYAMLFiles(dir, fileList = []) {
 function convertYAMLToJSON(yamlPath) {
   try {
     const jsonPath = yamlPath.replace('.yaml', '.json');
-    
+
     // Read YAML file
     const yamlContent = fs.readFileSync(yamlPath, 'utf8');
     const data = yaml.load(yamlContent);
-    
+
     // Write JSON file
     fs.writeFileSync(jsonPath, JSON.stringify(data, null, 2) + '\n', 'utf8');
-    
+
     return true;
   } catch (error) {
     console.error(`Error converting ${yamlPath}:`, error.message);
@@ -60,7 +60,7 @@ function convertYAMLToJSON(yamlPath) {
  */
 function main() {
   const dataDir = path.join(__dirname, '..', 'data');
-  
+
   console.log('🔄 Converting all YAML files to JSON...\n');
 
   // Find all YAML files
@@ -71,7 +71,7 @@ function main() {
   let errorCount = 0;
 
   // Convert each file
-  yamlFiles.forEach(file => {
+  yamlFiles.forEach((file) => {
     if (convertYAMLToJSON(file)) {
       successCount++;
       console.log(`✓ ${path.relative(dataDir, file)}`);

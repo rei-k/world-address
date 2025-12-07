@@ -11,7 +11,7 @@ const files = [
   'data/americas/central_america/SV/SV.yaml',
 ];
 
-files.forEach(yamlFile => {
+files.forEach((yamlFile) => {
   const jsonFile = yamlFile.replace('.yaml', '.json');
   const yamlContent = fs.readFileSync(yamlFile, 'utf8');
   const data = yaml.load(yamlContent);

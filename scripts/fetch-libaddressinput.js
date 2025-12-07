@@ -5,7 +5,7 @@
  * https://chromium-i18n.appspot.com/ssl-address/data
  *
  * This script fetches address metadata for all countries and converts it to YAML and JSON format.
- * 
+ *
  * Refactored to use modular utilities for better maintainability.
  */
 
@@ -145,10 +145,10 @@ async function processAllCountries() {
   // Process countries with delay to avoid rate limiting
   for (let i = 0; i < ALL_COUNTRY_CODES.length; i++) {
     const countryCode = ALL_COUNTRY_CODES[i];
-    
+
     // Show progress
     logger.progress(i + 1, ALL_COUNTRY_CODES.length, countryCode);
-    
+
     const result = await fetchCountry(countryCode);
 
     if (result.success) {
@@ -174,7 +174,7 @@ function printSummary(results) {
   logger.section('SUMMARY');
   logger.info(`Total: ${ALL_COUNTRY_CODES.length}`);
   logger.success(`Success: ${results.success.length}`);
-  
+
   if (results.failed.length > 0) {
     logger.error(`Failed: ${results.failed.length}`);
     logger.info('\nFailed countries:');
@@ -211,8 +211,8 @@ if (require.main === module) {
 }
 
 // Export for testing
-module.exports = { 
-  fetchCountry, 
+module.exports = {
+  fetchCountry,
   transformLibAddressData,
   getOutputDirectory,
 };

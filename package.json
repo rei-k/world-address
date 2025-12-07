@@ -9,6 +9,7 @@
     "test:v2": "node scripts/test-libaddressinput-v2.js",
     "validate:data": "node scripts/validate-yaml.js",
     "stats:data": "node scripts/data-stats.js",
+    "analyze:special-territories": "node scripts/identify-special-territories.js",
     "lint": "eslint scripts --ext .js",
     "lint:fix": "eslint scripts --ext .js --fix",
     "format": "prettier --write \"scripts/**/*.js\"",

@@ -50,9 +50,7 @@ function formatYamlValue(value) {
 
   // Check for characters that require quoting in YAML
   const needsQuoting =
-    /[:\n#[\]{}&*!|>'"%@`]/.test(value) ||
-    value.trim() !== value ||
-    /^[-?]/.test(value);
+    /[:\n#[\]{}&*!|>'"%@`]/.test(value) || value.trim() !== value || /^[-?]/.test(value);
 
   if (needsQuoting) {
     // Escape backslashes first, then quotes to avoid double-escaping
