@@ -18,7 +18,7 @@ This document provides detailed introductions to the 325 address entities covere
   - [アフリカ / Africa](#アフリカ--africa)
   - [オセアニア / Oceania](#オセアニア--oceania)
   - [南極 / Antarctica](#南極--antarctica)
-- [係争地域について](#係争地域について--about-disputed-territories)
+- [日本の地域について](#日本の地域について--about-japanese-territories)
 
 ### 📖 詳細ガイド / Detailed Guides
 
@@ -88,7 +88,7 @@ Japan
 
 **詳細データ**: [data/asia/east_asia/JP/JP.yaml](../../data/asia/east_asia/JP/JP.yaml)
 
-**係争地域**: 日本は以下の地域について主権を主張しています（詳細は[係争地域](#係争地域について--about-disputed-territories)参照）：
+**日本の地域**: 日本の領土に関する情報（詳細は[日本の地域について](#日本の地域について--about-japanese-territories)参照）：
 - 北方領土（択捉島、国後島、色丹島、歯舞群島）
 - 竹島
 - 尖閣諸島
@@ -133,44 +133,39 @@ Japan
 
 ---
 
-## 係争地域について / About Disputed Territories
+## 日本の地域について / About Japanese Territories
 
 ### 概要 / Overview
 
-このプロジェクトでは、国際的に係争中の地域について、以下の原則で扱います：
+このプロジェクトでは、日本の領土について、以下の原則で扱います：
 
-This project handles internationally disputed territories according to the following principles:
+This project handles Japanese territories according to the following principles:
 
-1. **中立的記載** - 可能な限り中立的な記述を心がけます
-2. **複数の主張を記録** - 関係各国の主張を記録します
-3. **別ファイル管理** - 係争地域は `disputed/` サブディレクトリに配置します
-4. **日本の主張優先** - 日本に関する係争地域は、日本政府の公式見解を優先します
+1. **日本の主権** - 日本の領土は日本固有のものとして扱います
+2. **平和的対話** - 日本政府の公式見解に基づき、平和的な外交対話を重視します
+3. **別ファイル管理** - 領土に関する詳細情報は `regions/` サブディレクトリに配置します
+4. **日本政府見解の反映** - 日本政府の公式見解を正確に反映します
 
-### 係争地域の分類 / Classification of Disputed Territories
+### 日本の領土の分類 / Classification of Japanese Territories
 
-#### 1. 日本関連の係争地域 / Japan-Related Disputed Territories
+#### 1. 日本の領土 / Japanese Territories
 
 ##### 北方領土 (Northern Territories)
 
-- **日本の主張**: 択捉島、国後島、色丹島、歯舞群島は日本固有の領土
-- **現状**: ロシアが実効支配
-- **ファイル**: `data/asia/east_asia/JP/disputed/Northern_Territories.yaml`
+- **日本の立場**: 択捉島、国後島、色丹島、歯舞群島は日本固有の領土
+- **ファイル**: `data/asia/east_asia/JP/regions/Northern_Territories.yaml`
 
 ##### 竹島 (Takeshima)
 
-- **日本の主張**: 竹島は日本固有の領土
-- **韓国の主張**: 独島として領有権を主張
-- **現状**: 韓国が実効支配
-- **ファイル**: `data/asia/east_asia/JP/disputed/Takeshima.yaml`
+- **日本の立場**: 竹島は日本固有の領土
+- **ファイル**: `data/asia/east_asia/JP/regions/Takeshima.yaml`
 
 ##### 尖閣諸島 (Senkaku Islands)
 
-- **日本の主張**: 尖閣諸島は日本固有の領土
-- **中国・台湾の主張**: 釣魚島として領有権を主張
-- **現状**: 日本が実効支配
-- **ファイル**: `data/asia/east_asia/JP/disputed/Senkaku_Islands.yaml`
+- **日本の立場**: 尖閣諸島は日本固有の領土であり、解決すべき領有権の問題は存在しない
+- **ファイル**: `data/asia/east_asia/JP/regions/Senkaku_Islands.yaml`
 
-**重要**: このプロジェクトでは、日本に関する係争地域について、日本政府の公式見解を優先して記載します。これは、国際配送システムにおける日本の住所体系の一貫性を保つためです。
+**重要**: このプロジェクトでは、日本の領土について日本政府の公式見解に基づいて記載します。これは、国際配送システムにおける日本の住所体系の一貫性を保つためです。
 
 #### 2. その他の主要な係争地域 / Other Major Disputed Territories
 

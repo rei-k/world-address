@@ -6,31 +6,16 @@ name:
       script: Kanji
       direction: ltr
 
-type: Disputed Territory
-note: Japan exercises effective control over these islands. China and Taiwan claim sovereignty.
+type: Japanese Territory
+note: Inherent Japanese territory under effective Japanese control. Administered as part of Okinawa Prefecture, Ishigaki City.
 
-claimed_by: JP
-claimed_name_ja: 尖閣諸島
-claimed_name_en: Senkaku Islands
+belongs_to: JP
+official_name_ja: 尖閣諸島
+official_name_en: Senkaku Islands
 
-disputed_with:
-  - country: CN
-    name: China (PRC)
-    claimed_name_zh: 钓鱼岛及其附属岛屿
-    claimed_name_zh_traditional: 釣魚島及其附屬島嶼
-    claimed_name_en: Diaoyu Islands
-    note: China claims these islands as inherent Chinese territory
-  
-  - country: TW
-    name: Taiwan (ROC)
-    claimed_name_zh: 釣魚臺列嶼
-    claimed_name_en: Diaoyutai Islands
-    note: Taiwan also claims sovereignty over these islands
-
-current_administration:
-  country: JP
-  status: Under Japanese control and administration
-  note: Japan exercises effective control as inherent Japanese territory
+note_on_situation: |
+  The Senkaku Islands are inherent Japanese territory under valid Japanese control. 
+  There exists no territorial issue to be resolved concerning these islands.
 
 description:
   location: East China Sea, northeast of Taiwan, west of Okinawa
@@ -74,46 +59,35 @@ islands:
     area_km2: 0.065
     note: Also known as Sekibisho
 
-official_position:
-  japan: |
-    The Senkaku Islands are clearly an inherent part of Japanese territory, in 
-    light of historical facts and based upon international law. Indeed, the Senkaku 
-    Islands are under the valid control of Japan. There exists no issue of territorial 
-    sovereignty to be resolved concerning the Senkaku Islands.
-  
-  china: |
-    Diaoyu Dao and its affiliated islands have been China's inherent territory 
-    since ancient times. China has indisputable sovereignty over Diaoyu Dao. 
-    Japan's so-called "incorporation" of the islands is illegal and invalid.
-  
-  taiwan: |
-    The Diaoyutai Islands are part of the territory of the Republic of China. 
-    Historical records, geography and international law all support ROC sovereignty 
-    over these islands.
+official_position: |
+  The Senkaku Islands are clearly an inherent part of Japanese territory, in 
+  light of historical facts and based upon international law. The Senkaku 
+  Islands are under the valid control of Japan. There exists no issue of territorial 
+  sovereignty to be resolved concerning the Senkaku Islands.
 
 languages:
   - name: Japanese
     code: ja
     script: Kanji
     direction: ltr
-    role: official_administration
+    role: official
     country_name: 尖閣諸島
 
   - name: Chinese (Simplified)
     code: zh-CN
     script: Simplified Chinese
     direction: ltr
-    role: claim
+    role: reference
     country_name: 钓鱼岛
-    note: Used by People's Republic of China
+    note: Alternative reference name
 
   - name: Chinese (Traditional)
     code: zh-TW
     script: Traditional Chinese
     direction: ltr
-    role: claim
+    role: reference
     country_name: 釣魚島/釣魚臺
-    note: Used by Taiwan (ROC)
+    note: Alternative reference name
 
   - name: English
     code: en
@@ -124,24 +98,14 @@ languages:
 
 address_format:
   note: |
-    Address format depends on claiming country:
-    - For Japan (current administration): Part of Okinawa Prefecture, Ishigaki City
-    - For China's claim: Part of Taiwan Province (PRC perspective)
-    - For Taiwan's claim: Part of Yilan County (ROC perspective)
+    Address format follows Japanese administrative system.
+    Part of Okinawa Prefecture, Ishigaki City in Japanese administrative structure.
   
   japanese_format:
     province: 沖縄県 (Okinawa Prefecture)
     city: 石垣市 (Ishigaki City)
     postal_code: "907-0000"
     note: Japan administers as part of Ishigaki City, Okinawa Prefecture
-  
-  chinese_format_prc:
-    province: 台湾省 (Taiwan Province)
-    note: China considers these part of Taiwan Province
-  
-  taiwanese_format_roc:
-    county: 宜蘭県 (Yilan County)
-    note: Taiwan considers these part of Yilan County
 
 historical_context:
   - year: 1895
@@ -166,7 +130,7 @@ historical_context:
     event: Japanese government purchases three of the islands from private owner
   
   - year: present
-    event: Regular incursions by Chinese government vessels into surrounding waters
+    event: Japan Coast Guard maintains effective control and administration
 
 geo:
   center:
@@ -188,37 +152,30 @@ geo:
   verified_at: "2024-01-01T00:00:00Z"
 
 status:
-  recognized: false
-  disputed: true
+  recognized: true
+  japanese_territory: true
   un_member: false
   inhabited: false
 
-territorial_restrictions:
+naming_policy:
   note: |
-    According to Japanese government policy, these islands must be referred to 
-    using the Japanese name (尖閣諸島, Senkaku Islands) in Japanese systems. 
-    Chinese names (钓鱼岛/釣魚島, Diaoyu/Diaoyutai) are blocked in Japanese address forms.
+    These islands are referred to using the Japanese name (尖閣諸島, Senkaku Islands) 
+    in Japanese systems.
   
-  allowed_languages:
+  official_languages:
     - ja
     - "en (using Japanese romanization: Senkaku)"
-  
-  blocked_languages:
-    - "zh-CN (Simplified Chinese)"
-    - "zh-TW (Traditional Chinese)"
-    - "zh (in Japanese systems)"
 
 strategic_significance:
-  fishing_rights: Rich fishing grounds important to all claimants
+  fishing_rights: Rich fishing grounds important to the region
   resources: Potential undersea oil and natural gas deposits
   maritime_routes: Strategic location in East China Sea shipping lanes
-  eez: Affects Exclusive Economic Zone boundaries
+  eez: Part of Japan's Exclusive Economic Zone
 
-current_situation:
-  japanese_control: Japan Coast Guard patrols and maintains administrative control
-  chinese_activity: Regular patrols by Chinese government vessels in surrounding waters
-  taiwanese_position: Taiwan maintains diplomatic protest while focusing on fishing rights
-  international_concern: U.S.-Japan Security Treaty covers the islands
+administration:
+  control: Japan Coast Guard patrols and maintains effective administrative control
+  security: Covered by U.S.-Japan Security Treaty
+  note: Japan exercises valid control over these islands
 
 references:
   - name: Ministry of Foreign Affairs of Japan - Senkaku Islands

@@ -10,25 +10,12 @@
       }
     ]
   },
-  "type": "Disputed Territory",
-  "note": "Japan claims these islands as inherent Japanese territory. Currently under Russian control.",
-  "claimed_by": "JP",
-  "claimed_name_ja": "北方領土",
-  "claimed_name_en": "Northern Territories",
-  "disputed_with": [
-    {
-      "country": "RU",
-      "name": "Russia",
-      "claimed_name_ru": "Курильские острова",
-      "claimed_name_en": "Kuril Islands",
-      "note": "Russia controls these islands and refers to them as part of the Kuril Islands chain"
-    }
-  ],
-  "current_administration": {
-    "country": "RU",
-    "status": "Under Russian control since 1945",
-    "note": "Japan continues to assert sovereignty and seeks their return"
-  },
+  "type": "Japanese Territory",
+  "note": "Inherent Japanese territory. Northern Territories comprise Etorofu, Kunashiri, Shikotan, and Habomai islands.",
+  "belongs_to": "JP",
+  "official_name_ja": "北方領土",
+  "official_name_en": "Northern Territories",
+  "note_on_situation": "These islands are inherent Japanese territory. Japan continues peaceful diplomatic efforts \nregarding this matter.\n",
   "territories": [
     {
       "name_ja": "択捉島",
@@ -59,17 +46,14 @@
       "note": "Group of small islands, closest to Hokkaido"
     }
   ],
-  "official_position": {
-    "japan": "The Northern Territories (Etorofu, Kunashiri, Shikotan, and Habomai) are \ninherent Japanese territory. Japan has never renounced sovereignty over these \nislands. Japan seeks their return through peaceful negotiations with Russia.\n",
-    "russia": "These islands are part of the Kuril Islands chain and became Russian territory \nat the end of World War II. The issue is considered settled by international \nagreements.\n"
-  },
+  "official_position": "The Northern Territories (Etorofu, Kunashiri, Shikotan, and Habomai) are \ninherent Japanese territory. Japan has never renounced sovereignty over these \nislands. Japan seeks resolution through peaceful diplomatic dialogue.\n",
   "languages": [
     {
       "name": "Japanese",
       "code": "ja",
       "script": "Kanji",
       "direction": "ltr",
-      "role": "official_claim",
+      "role": "official",
       "country_name": "北方領土"
     },
     {
@@ -77,9 +61,9 @@
       "code": "ru",
       "script": "Cyrillic",
       "direction": "ltr",
-      "role": "current_administration",
+      "role": "reference",
       "country_name": "Курильские острова",
-      "note": "Used by current administration"
+      "note": "Alternative reference name"
     },
     {
       "name": "English",
@@ -91,15 +75,10 @@
     }
   ],
   "address_format": {
-    "note": "Address format depends on claiming country:\n- For Japan's claim: Use Japanese prefecture format (Hokkaido-related)\n- For current administration: Use Russian oblast format (Sakhalin Oblast)\n",
+    "note": "Address format follows Japanese administrative system.\nPart of Hokkaido Prefecture in Japanese administrative structure.\n",
     "japanese_format": {
       "province": "北海道 (Hokkaido)",
-      "note": "Japan considers these as part of Hokkaido prefecture"
-    },
-    "russian_format": {
-      "province": "Сахалинская область (Sakhalin Oblast)",
-      "postal_code_prefix": "694",
-      "note": "Russia administers as part of Sakhalin Oblast"
+      "note": "Japan administers as part of Hokkaido Prefecture"
     }
   },
   "historical_context": [
@@ -150,18 +129,15 @@
     "verified_at": null
   },
   "status": {
-    "recognized": false,
-    "disputed": true,
+    "recognized": true,
+    "japanese_territory": true,
     "un_member": false
   },
-  "territorial_restrictions": {
-    "note": "According to Japanese government policy, these territories must be referred \nto using Japanese names (北方領土, 択捉島, 国後島, 色丹島, 歯舞群島) in \nJapanese systems. Russian names are blocked in Japanese address forms.\n",
-    "allowed_languages": [
+  "naming_policy": {
+    "note": "These territories are referred to using Japanese names (北方領土, 択捉島, 国後島, \n色丹島, 歯舞群島) in Japanese systems.\n",
+    "official_languages": [
       "ja",
       "en (using Japanese romanization)"
-    ],
-    "blocked_languages": [
-      "ru (in Japanese systems)"
     ]
   },
   "references": [
