@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1600">
+  <defs>
+    <style>
+      .title { font: bold 26px sans-serif; fill: #2c3e50; }
+      .subtitle { font: bold 20px sans-serif; fill: #34495e; }
+      .section-title { font: bold 16px sans-serif; fill: #2c3e50; }
+      .text { font: 14px sans-serif; fill: #2c3e50; }
+      .small-text { font: 12px sans-serif; fill: #7f8c8d; }
+      .user-box { fill: #3498db; stroke: #2980b9; stroke-width: 3; }
+      .provider-box { fill: #e74c3c; stroke: #c0392b; stroke-width: 3; }
+      .ec-box { fill: #2ecc71; stroke: #27ae60; stroke-width: 3; }
+      .carrier-box { fill: #f39c12; stroke: #e67e22; stroke-width: 3; }
+      .zkp-box { fill: #9b59b6; stroke: #8e44ad; stroke-width: 3; }
+      .data-box { fill: #ecf0f1; stroke: #bdc3c7; stroke-width: 2; }
+      .arrow { stroke: #34495e; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .dashed-arrow { stroke: #7f8c8d; stroke-width: 2; fill: none; stroke-dasharray: 8,4; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#34495e" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="700" y="40" text-anchor="middle" class="title">ZKPアドレスプロトコル - 全体像</text>
+  <text x="700" y="70" text-anchor="middle" class="small-text">Complete Zero-Knowledge Proof Address Ecosystem</text>
+
+  <!-- User Section -->
+  <rect x="50" y="110" width="300" height="200" class="user-box" rx="10"/>
+  <text x="200" y="145" text-anchor="middle" class="subtitle" fill="white">ユーザー</text>
+  <text x="200" y="170" text-anchor="middle" class="text" fill="white">(User / Consumer)</text>
+  
+  <rect x="70" y="190" width="260" height="100" fill="white" rx="5" opacity="0.9"/>
+  <text x="80" y="210" class="section-title">保有データ:</text>
+  <text x="90" y="230" class="small-text">• 完全な生住所</text>
+  <text x="90" y="250" class="small-text">• DID (分散型識別子)</text>
+  <text x="90" y="270" class="small-text">• Address PID VC</text>
+  <text x="90" y="285" class="small-text">• QR/NFCコード</text>
+
+  <!-- Address Provider Section -->
+  <rect x="450" y="110" width="400" height="280" class="provider-box" rx="10"/>
+  <text x="650" y="145" text-anchor="middle" class="subtitle" fill="white">アドレスプロバイダ</text>
+  <text x="650" y="170" text-anchor="middle" class="text" fill="white">(Address Provider / Vey)</text>
+  
+  <rect x="470" y="190" width="360" height="180" fill="white" rx="5" opacity="0.9"/>
+  <text x="480" y="210" class="section-title">機能:</text>
+  <text x="490" y="230" class="small-text">• 住所正規化 (AMF)</text>
+  <text x="490" y="250" class="small-text">• PID生成・管理</text>
+  <text x="490" y="270" class="small-text">• VC発行・署名</text>
+  <text x="490" y="290" class="small-text">• ZK証明生成（Prover）</text>
+  <text x="490" y="310" class="small-text">• ZK証明検証（Verifier）</text>
+  <text x="490" y="330" class="small-text">• Merkle Tree管理</text>
+  <text x="490" y="350" class="small-text">• 監査ログ記録</text>
+
+  <!-- EC Site Section -->
+  <rect x="950" y="110" width="380" height="200" class="ec-box" rx="10"/>
+  <text x="1140" y="145" text-anchor="middle" class="subtitle" fill="white">ECサイト</text>
+  <text x="1140" y="170" text-anchor="middle" class="text" fill="white">(E-Commerce Platform)</text>
+  
+  <rect x="970" y="190" width="340" height="100" fill="white" rx="5" opacity="0.9"/>
+  <text x="980" y="210" class="section-title">保存データ:</text>
+  <text x="990" y="230" class="small-text">• 注文情報</text>
+  <text x="990" y="250" class="small-text">• PIDトークン（匿名化住所参照）</text>
+  <text x="990" y="270" class="small-text">• ZK証明（配送可能性の証明）</text>
+  <text x="990" y="285" class="small-text">❌ 生住所は保存しない</text>
+
+  <!-- Carrier Section -->
+  <rect x="950" y="410" width="380" height="200" class="carrier-box" rx="10"/>
+  <text x="1140" y="445" text-anchor="middle" class="subtitle" fill="white">配送業者</text>
+  <text x="1140" y="470" text-anchor="middle" class="text" fill="white">(Delivery Carrier)</text>
+  
+  <rect x="970" y="490" width="340" height="100" fill="white" rx="5" opacity="0.9"/>
+  <text x="980" y="510" class="section-title">アクセス権限:</text>
+  <text x="990" y="530" class="small-text">• 配送時のみ生住所を閲覧</text>
+  <text x="990" y="550" class="small-text">• アクセス制御ポリシーで制限</text>
+  <text x="990" y="570" class="small-text">• すべてのアクセスをログ記録</text>
+
+  <!-- ZKP Core Section -->
+  <rect x="50" y="410" width="800" height="280" class="zkp-box" rx="10"/>
+  <text x="450" y="445" text-anchor="middle" class="subtitle" fill="white">ZKPプロトコル - 5つのパターン</text>
+  
+  <!-- Pattern boxes -->
+  <rect x="70" y="470" width="150" height="100" fill="white" rx="5" opacity="0.9"/>
+  <text x="145" y="490" text-anchor="middle" class="section-title">1. Membership</text>
+  <text x="80" y="510" class="small-text">住所存在証明</text>
+  <text x="80" y="530" class="small-text">Merkle Tree</text>
+  <text x="80" y="550" class="small-text">+ zk-SNARK</text>
+
+  <rect x="240" y="470" width="150" height="100" fill="white" rx="5" opacity="0.9"/>
+  <text x="315" y="490" text-anchor="middle" class="section-title">2. Structure</text>
+  <text x="250" y="510" class="small-text">PID階層証明</text>
+  <text x="250" y="530" class="small-text">Halo2/PLONK</text>
+
+  <rect x="410" y="470" width="150" height="100" fill="white" rx="5" opacity="0.9"/>
+  <text x="485" y="490" text-anchor="middle" class="section-title">3. Selective</text>
+  <text x="420" y="510" class="small-text">部分公開証明</text>
+  <text x="420" y="530" class="small-text">SD-JWT</text>
+  <text x="420" y="550" class="small-text">+ zk-SNARK</text>
+
+  <rect x="580" y="470" width="130" height="100" fill="white" rx="5" opacity="0.9"/>
+  <text x="645" y="490" text-anchor="middle" class="section-title">4. Version</text>
+  <text x="590" y="510" class="small-text">住所更新証明</text>
+  <text x="590" y="530" class="small-text">zk-SNARK</text>
+
+  <rect x="730" y="470" width="110" height="100" fill="white" rx="5" opacity="0.9"/>
+  <text x="785" y="490" text-anchor="middle" class="section-title">5. Locker</text>
+  <text x="740" y="510" class="small-text">ロッカー</text>
+  <text x="740" y="530" class="small-text">所属証明</text>
+
+  <!-- Technology Stack -->
+  <rect x="70" y="585" width="770" height="90" fill="white" rx="5" opacity="0.9"/>
+  <text x="80" y="605" class="section-title">技術スタック:</text>
+  <text x="90" y="625" class="small-text">• Proof System: Groth16, PLONK, Halo2, Bulletproofs</text>
+  <text x="90" y="645" class="small-text">• Circuit Language: Circom</text>
+  <text x="90" y="665" class="small-text">• Performance: 証明生成 &lt;1秒, 証明検証 &lt;100ms, 証明サイズ &lt;1KB</text>
+
+  <!-- Data Flow Arrows -->
+  <!-- User to Provider -->
+  <path d="M 350 210 L 450 210" class="arrow"/>
+  <text x="400" y="205" text-anchor="middle" class="small-text">1. 住所登録</text>
+
+  <path d="M 450 250 L 350 250" class="arrow"/>
+  <text x="400" y="245" text-anchor="middle" class="small-text">2. PID + VC</text>
+
+  <!-- Provider to EC -->
+  <path d="M 850 200 L 950 200" class="arrow"/>
+  <text x="900" y="195" text-anchor="middle" class="small-text">3. ZK証明</text>
+
+  <!-- User to EC -->
+  <path d="M 200 310 Q 575 360 950 260" class="arrow"/>
+  <text x="575" y="340" text-anchor="middle" class="small-text">4. 注文</text>
+
+  <!-- EC to Carrier -->
+  <path d="M 1140 310 L 1140 410" class="arrow"/>
+  <text x="1160" y="360" text-anchor="middle" class="small-text">5. 配送依頼</text>
+
+  <!-- Carrier to Provider -->
+  <path d="M 950 510 L 850 340" class="arrow"/>
+  <text x="900" y="425" text-anchor="middle" class="small-text">6. PID解決</text>
+
+  <path d="M 850 360 L 950 530" class="arrow"/>
+  <text x="900" y="445" text-anchor="middle" class="small-text">7. 生住所</text>
+
+  <!-- Security Layer -->
+  <rect x="50" y="750" width="1280" height="200" fill="#34495e" rx="10"/>
+  <text x="690" y="785" text-anchor="middle" class="subtitle" fill="white">セキュリティ・コンプライアンス層</text>
+  
+  <rect x="70" y="810" width="300" height="120" class="data-box" rx="5"/>
+  <text x="220" y="835" text-anchor="middle" class="section-title">認証・認可</text>
+  <text x="80" y="855" class="small-text">• DID Authentication</text>
+  <text x="80" y="875" class="small-text">• OAuth 2.0 / OpenID</text>
+  <text x="80" y="895" class="small-text">• RBAC (Role-Based Access)</text>
+  <text x="80" y="915" class="small-text">• mTLS</text>
+
+  <rect x="390" y="810" width="300" height="120" class="data-box" rx="5"/>
+  <text x="540" y="835" text-anchor="middle" class="section-title">データ保護</text>
+  <text x="400" y="855" class="small-text">• ZKP (5パターン)</text>
+  <text x="400" y="875" class="small-text">• E2EE (End-to-End)</text>
+  <text x="400" y="895" class="small-text">• AES-256</text>
+  <text x="400" y="915" class="small-text">• Field-Level Encryption</text>
+
+  <rect x="710" y="810" width="300" height="120" class="data-box" rx="5"/>
+  <text x="860" y="835" text-anchor="middle" class="section-title">監査・コンプライアンス</text>
+  <text x="720" y="855" class="small-text">• Access Logging</text>
+  <text x="720" y="875" class="small-text">• Anomaly Detection</text>
+  <text x="720" y="895" class="small-text">• GDPR/CCPA準拠</text>
+  <text x="720" y="915" class="small-text">• 失効リスト管理</text>
+
+  <rect x="1030" y="810" width="280" height="120" class="data-box" rx="5"/>
+  <text x="1170" y="835" text-anchor="middle" class="section-title">鍵管理</text>
+  <text x="1040" y="855" class="small-text">• HSM/KMS</text>
+  <text x="1040" y="875" class="small-text">• Key Rotation</text>
+  <text x="1040" y="895" class="small-text">• Trusted Setup</text>
+  <text x="1040" y="915" class="small-text">• 検証鍵管理</text>
+
+  <!-- Data Storage Layer -->
+  <rect x="50" y="1000" width="1280" height="180" fill="#16a085" rx="10"/>
+  <text x="690" y="1035" text-anchor="middle" class="subtitle" fill="white">データストレージ層</text>
+  
+  <rect x="70" y="1060" width="280" height="100" class="data-box" rx="5"/>
+  <text x="210" y="1085" text-anchor="middle" class="section-title">住所データベース</text>
+  <text x="80" y="1105" class="small-text">PostgreSQL</text>
+  <text x="80" y="125" class="small-text">• 生住所（暗号化）</text>
+  <text x="80" y="1145" class="small-text">• PID マッピング</text>
+
+  <rect x="370" y="1060" width="280" height="100" class="data-box" rx="5"/>
+  <text x="510" y="1085" text-anchor="middle" class="section-title">PIDレジストリ</text>
+  <text x="380" y="1105" class="small-text">Redis (キャッシュ)</text>
+  <text x="380" y="1125" class="small-text">• 高速PID検索</text>
+  <text x="380" y="1145" class="small-text">• セッション管理</text>
+
+  <rect x="670" y="1060" width="280" height="100" class="data-box" rx="5"/>
+  <text x="810" y="1085" text-anchor="middle" class="section-title">Merkle Tree</text>
+  <text x="680" y="1105" class="small-text">専用ストレージ</text>
+  <text x="680" y="1125" class="small-text">• 100万アドレス対応</text>
+  <text x="680" y="1145" class="small-text">• 効率的な証明生成</text>
+
+  <rect x="970" y="1060" width="340" height="100" class="data-box" rx="5"/>
+  <text x="1140" y="1085" text-anchor="middle" class="section-title">監査ログ</text>
+  <text x="980" y="1105" class="small-text">MongoDB (時系列DB)</text>
+  <text x="980" y="1125" class="small-text">• すべてのアクセス記録</text>
+  <text x="980" y="1145" class="small-text">• コンプライアンスレポート</text>
+
+  <!-- Benefits Section -->
+  <rect x="50" y="1230" width="1280" height="160" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2" rx="10"/>
+  <text x="690" y="1265" text-anchor="middle" class="subtitle">システムのメリット</text>
+  
+  <rect x="70" y="1290" width="300" height="80" fill="white" stroke="#3498db" stroke-width="2" rx="5"/>
+  <text x="220" y="1315" text-anchor="middle" class="section-title">🔐 プライバシー保護</text>
+  <text x="80" y="1335" class="small-text">• 住所情報の選択的開示</text>
+  <text x="80" y="1355" class="small-text">• ゼロ知識証明で秘匿性保証</text>
+
+  <rect x="390" y="1290" width="300" height="80" fill="white" stroke="#2ecc71" stroke-width="2" rx="5"/>
+  <text x="540" y="1315" text-anchor="middle" class="section-title">✅ 検証可能性</text>
+  <text x="400" y="1335" class="small-text">• 配送可能性を数学的に証明</text>
+  <text x="400" y="1355" class="small-text">• 改ざん検知</text>
+
+  <rect x="710" y="1290" width="280" height="80" fill="white" stroke="#f39c12" stroke-width="2" rx="5"/>
+  <text x="850" y="1315" text-anchor="middle" class="section-title">🔄 継続性</text>
+  <text x="720" y="1335" class="small-text">• 引越し後も自動対応</text>
+  <text x="720" y="1355" class="small-text">• サービス断絶なし</text>
+
+  <rect x="1010" y="1290" width="300" height="80" fill="white" stroke="#e74c3c" stroke-width="2" rx="5"/>
+  <text x="1160" y="1315" text-anchor="middle" class="section-title">📊 監査可能性</text>
+  <text x="1020" y="1335" class="small-text">• すべてのアクセスをログ</text>
+  <text x="1020" y="1355" class="small-text">• GDPR/CCPA準拠</text>
+
+  <!-- Footer -->
+  <text x="690" y="1430" text-anchor="middle" class="small-text">Vey - Zero-Knowledge Proof Address Protocol</text>
+  <text x="690" y="1455" text-anchor="middle" class="small-text">プライバシー保護型住所管理・配送システム</text>
+  <text x="690" y="1480" text-anchor="middle" class="small-text">最終更新: 2024-12-07</text>
+
+</svg>
