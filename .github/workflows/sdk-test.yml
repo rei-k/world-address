@@ -1,0 +1,64 @@
+name: SDK Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'sdk/**'
+      - '.github/workflows/sdk-test.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'sdk/**'
+      - '.github/workflows/sdk-test.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test-sdk-core:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20]
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: sdk/core/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: sdk/core
+        run: npm ci
+      
+      - name: Run linter
+        working-directory: sdk/core
+        run: npm run lint
+      
+      - name: Build SDK
+        working-directory: sdk/core
+        run: npm run build
+      
+      - name: Run tests
+        working-directory: sdk/core
+        run: npm test -- --run
+      
+      - name: Generate coverage report
+        working-directory: sdk/core
+        run: npm test -- --coverage --run
+        if: matrix.node-version == 20
+      
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        if: matrix.node-version == 20
+        with:
+          files: ./sdk/core/coverage/coverage-final.json
+          flags: sdk-core
+          name: sdk-core-coverage
+        continue-on-error: true

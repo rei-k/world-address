@@ -1,0 +1,85 @@
+name: Dependency Audit
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - '**/package.json'
+      - '**/package-lock.json'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - '**/package.json'
+      - '**/package-lock.json'
+  schedule:
+    # Run weekly on Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  audit-root:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run npm audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+      
+      - name: Generate audit report
+        run: npm audit --json > audit-report-root.json
+        continue-on-error: true
+      
+      - name: Upload audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-report-root
+          path: audit-report-root.json
+          retention-days: 30
+
+  audit-sdk:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install SDK dependencies
+        working-directory: sdk/core
+        run: npm install
+      
+      - name: Run npm audit for SDK
+        working-directory: sdk/core
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+      
+      - name: Generate SDK audit report
+        working-directory: sdk/core
+        run: npm audit --json > audit-report-sdk.json
+        continue-on-error: true
+      
+      - name: Upload SDK audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-report-sdk
+          path: sdk/core/audit-report-sdk.json
+          retention-days: 30
