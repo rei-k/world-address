@@ -1,0 +1,8 @@
+# Build output
+dist/
+node_modules/
+
+# Temp test files
+test-*.js
+test-*.mjs
+!tests/**
