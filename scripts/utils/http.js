@@ -21,19 +21,14 @@ const http = require('http');
  * @returns {Promise<string>} Response body
  */
 function fetchWithRetry(url, options = {}) {
-  const {
-    maxRetries = 3,
-    retryDelay = 1000,
-    timeout = 30000,
-    exponentialBackoff = true,
-  } = options;
+  const { maxRetries = 3, retryDelay = 1000, timeout = 30000, exponentialBackoff = true } = options;
 
   return new Promise((resolve, reject) => {
     let attempt = 0;
 
     const makeRequest = () => {
       const protocol = url.startsWith('https') ? https : http;
-      
+
       const req = protocol.get(url, { timeout }, (res) => {
         let data = '';
 
@@ -41,21 +36,16 @@ function fetchWithRetry(url, options = {}) {
         if (res.statusCode !== 200) {
           const error = new Error(`HTTP ${res.statusCode}: ${url}`);
           error.statusCode = res.statusCode;
-          
+
           // Retry on server errors (5xx) and rate limiting (429)
-          if (
-            (res.statusCode >= 500 || res.statusCode === 429) &&
-            attempt < maxRetries
-          ) {
-            const delay = exponentialBackoff
-              ? retryDelay * Math.pow(2, attempt)
-              : retryDelay;
-            
+          if ((res.statusCode >= 500 || res.statusCode === 429) && attempt < maxRetries) {
+            const delay = exponentialBackoff ? retryDelay * Math.pow(2, attempt) : retryDelay;
+
             attempt++;
             setTimeout(makeRequest, delay);
             return;
           }
-          
+
           reject(error);
           return;
         }
@@ -73,12 +63,10 @@ function fetchWithRetry(url, options = {}) {
         req.destroy();
         const error = new Error(`Request timeout: ${url}`);
         error.code = 'ETIMEDOUT';
-        
+
         if (attempt < maxRetries) {
-          const delay = exponentialBackoff
-            ? retryDelay * Math.pow(2, attempt)
-            : retryDelay;
-          
+          const delay = exponentialBackoff ? retryDelay * Math.pow(2, attempt) : retryDelay;
+
           attempt++;
           setTimeout(makeRequest, delay);
         } else {
@@ -89,10 +77,8 @@ function fetchWithRetry(url, options = {}) {
       req.on('error', (err) => {
         // Retry on network errors
         if (attempt < maxRetries) {
-          const delay = exponentialBackoff
-            ? retryDelay * Math.pow(2, attempt)
-            : retryDelay;
-          
+          const delay = exponentialBackoff ? retryDelay * Math.pow(2, attempt) : retryDelay;
+
           attempt++;
           setTimeout(makeRequest, delay);
         } else {
@@ -144,11 +130,7 @@ async function fetchJSON(url, options = {}) {
  * @returns {Promise<Array>} Array of results
  */
 async function batchFetch(urls, options = {}) {
-  const {
-    concurrency = 5,
-    onProgress = null,
-    requestOptions = {},
-  } = options;
+  const { concurrency = 5, onProgress = null, requestOptions = {} } = options;
 
   const results = [];
   let completed = 0;

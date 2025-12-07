@@ -2,7 +2,7 @@
 
 /**
  * YAML Validation Script
- * 
+ *
  * Validates all YAML files in the data directory for:
  * - Valid YAML syntax
  * - Required fields presence
@@ -14,18 +14,10 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 // Required fields for country YAML files
-const REQUIRED_FIELDS = [
-  'name.en',
-  'iso_codes.alpha2',
-];
+const REQUIRED_FIELDS = ['name.en', 'iso_codes.alpha2'];
 
 // Optional but recommended fields
-const RECOMMENDED_FIELDS = [
-  'iso_codes.alpha3',
-  'iso_codes.numeric',
-  'continent',
-  'languages',
-];
+const RECOMMENDED_FIELDS = ['iso_codes.alpha3', 'iso_codes.numeric', 'continent', 'languages'];
 
 let totalFiles = 0;
 let validFiles = 0;
@@ -38,14 +30,19 @@ const errors = [];
 function hasNestedField(obj, fieldPath) {
   const parts = fieldPath.split('.');
   let current = obj;
-  
+
   for (const part of parts) {
-    if (current === null || current === undefined || typeof current !== 'object' || !(part in current)) {
+    if (
+      current === null ||
+      current === undefined ||
+      typeof current !== 'object' ||
+      !(part in current)
+    ) {
       return false;
     }
     current = current[part];
   }
-  
+
   return true;
 }
 
@@ -54,12 +51,12 @@ function hasNestedField(obj, fieldPath) {
  */
 function validateYamlFile(filePath) {
   totalFiles++;
-  
+
   try {
     // Read and parse YAML
     const content = fs.readFileSync(filePath, 'utf8');
     const data = yaml.load(content);
-    
+
     if (!data || typeof data !== 'object') {
       errors.push({
         file: filePath,
@@ -69,26 +66,25 @@ function validateYamlFile(filePath) {
       errorFiles++;
       return false;
     }
-    
+
     // Skip validation for special files (meta.yaml, schema.yaml)
     const fileName = path.basename(filePath);
     if (fileName === 'meta.yaml' || fileName === 'schema.yaml') {
       validFiles++;
       return true;
     }
-    
+
     // For regions, overseas territories, claims, stations, subregions, and disputed territories, only require name.en
-    const isSpecialRegion = filePath.includes('/regions/') || 
-                           filePath.includes('/overseas/') ||
-                           filePath.includes('/claims/') ||
-                           filePath.includes('/stations/') ||
-                           filePath.includes('/subregions/') ||
-                           filePath.includes('/disputed/');
-    
-    const requiredForThisFile = isSpecialRegion 
-      ? ['name.en']
-      : REQUIRED_FIELDS;
-    
+    const isSpecialRegion =
+      filePath.includes('/regions/') ||
+      filePath.includes('/overseas/') ||
+      filePath.includes('/claims/') ||
+      filePath.includes('/stations/') ||
+      filePath.includes('/subregions/') ||
+      filePath.includes('/disputed/');
+
+    const requiredForThisFile = isSpecialRegion ? ['name.en'] : REQUIRED_FIELDS;
+
     // Check required fields
     const missingFields = [];
     for (const field of requiredForThisFile) {
@@ -96,7 +92,7 @@ function validateYamlFile(filePath) {
         missingFields.push(field);
       }
     }
-    
+
     if (missingFields.length > 0) {
       errors.push({
         file: filePath,
@@ -106,7 +102,7 @@ function validateYamlFile(filePath) {
       errorFiles++;
       return false;
     }
-    
+
     // Check recommended fields (warnings only) - only for regular countries
     if (!isSpecialRegion) {
       const missingRecommended = [];
@@ -115,7 +111,7 @@ function validateYamlFile(filePath) {
           missingRecommended.push(field);
         }
       }
-      
+
       if (missingRecommended.length > 0) {
         errors.push({
           file: filePath,
@@ -124,10 +120,9 @@ function validateYamlFile(filePath) {
         });
       }
     }
-    
+
     validFiles++;
     return true;
-    
   } catch (error) {
     errors.push({
       file: filePath,
@@ -144,11 +139,11 @@ function validateYamlFile(filePath) {
  */
 function findYamlFiles(dir, fileList = []) {
   const files = fs.readdirSync(dir);
-  
+
   for (const file of files) {
     const filePath = path.join(dir, file);
     const stat = fs.statSync(filePath);
-    
+
     if (stat.isDirectory()) {
       // Skip libaddressinput directory
       if (file !== 'libaddressinput') {
@@ -158,7 +153,7 @@ function findYamlFiles(dir, fileList = []) {
       fileList.push(filePath);
     }
   }
-  
+
   return fileList;
 }
 
@@ -167,22 +162,22 @@ function findYamlFiles(dir, fileList = []) {
  */
 function main() {
   console.log('🔍 Starting YAML validation...\n');
-  
+
   const dataDir = path.join(__dirname, '..', 'data');
-  
+
   if (!fs.existsSync(dataDir)) {
     console.error('❌ Error: data directory not found');
     process.exit(1);
   }
-  
+
   const yamlFiles = findYamlFiles(dataDir);
   console.log(`Found ${yamlFiles.length} YAML files\n`);
-  
+
   // Validate each file
   for (const file of yamlFiles) {
     validateYamlFile(file);
   }
-  
+
   // Print results
   console.log('\n📊 Validation Results:');
   console.log('─'.repeat(50));
@@ -190,24 +185,24 @@ function main() {
   console.log(`✅ Valid files:   ${validFiles}`);
   console.log(`❌ Error files:   ${errorFiles}`);
   console.log('─'.repeat(50));
-  
+
   // Print errors
   if (errors.length > 0) {
     console.log('\n📋 Issues Found:\n');
-    
+
     // Group by type
     const errorsByType = {
       PARSE_ERROR: [],
       MISSING_FIELDS: [],
       WARNING: [],
     };
-    
+
     for (const error of errors) {
       if (errorsByType[error.type]) {
         errorsByType[error.type].push(error);
       }
     }
-    
+
     // Print parse errors
     if (errorsByType.PARSE_ERROR.length > 0) {
       console.log('❌ Parse Errors:');
@@ -218,7 +213,7 @@ function main() {
       }
       console.log();
     }
-    
+
     // Print missing fields
     if (errorsByType.MISSING_FIELDS.length > 0) {
       console.log('❌ Missing Required Fields:');
@@ -229,7 +224,7 @@ function main() {
       }
       console.log();
     }
-    
+
     // Print warnings
     if (errorsByType.WARNING.length > 0) {
       console.log('⚠️  Warnings:');
@@ -241,7 +236,7 @@ function main() {
       console.log();
     }
   }
-  
+
   // Exit with error code if there are errors
   if (errorFiles > 0) {
     console.log('\n❌ Validation failed with errors');

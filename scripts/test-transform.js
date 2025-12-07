@@ -3,7 +3,7 @@
 /**
  * Test script for fetch-libaddressinput.js
  * Tests the transformation logic with mock data
- * 
+ *
  * Refactored to use shared utilities
  */
 
@@ -49,7 +49,7 @@ const mockUSData = {
  */
 function testTransformation(countryCode, mockData) {
   logger.section(`Testing ${countryCode} transformation`);
-  
+
   try {
     const transformed = transformLibAddressData(countryCode, mockData);
     console.log(JSON.stringify(transformed, null, 2));

@@ -18,7 +18,12 @@ function hasNestedField(obj, fieldPath) {
   const parts = fieldPath.split('.');
   let current = obj;
   for (const part of parts) {
-    if (current === null || current === undefined || typeof current !== 'object' || !(part in current)) {
+    if (
+      current === null ||
+      current === undefined ||
+      typeof current !== 'object' ||
+      !(part in current)
+    ) {
       return false;
     }
     current = current[part];
@@ -84,7 +89,7 @@ for (const file of yamlFiles) {
 }
 
 console.log('Countries with <80% completeness:');
-partial.forEach(p => {
+partial.forEach((p) => {
   console.log(`\n${p.code} - ${p.name} (${p.completeness}%)`);
   console.log(`  File: ${p.file}`);
   console.log(`  Missing: ${p.missing.join(', ')}`);

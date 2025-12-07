@@ -188,7 +188,7 @@ function main() {
         }
         const featureStr = features.length > 0 ? ` [${features.join(', ')}]` : '';
         console.log(
-          `  ${country.countryCode} - ${country.countryName} (${country.completeness}%)${featureStr}`,
+          `  ${country.countryCode} - ${country.countryName} (${country.completeness}%)${featureStr}`
         );
       }
     }
@@ -204,10 +204,10 @@ function main() {
   console.log(`  - 主要国・地域 / Main Countries & Regions: ${analyzed.length}`);
   console.log(`  - 追加エンティティ / Additional Entities: ${additionalEntities}`);
   console.log(
-    '    (海外領土、特別地域、紛争地域、基地局等 / Overseas territories, special regions, disputed areas, stations, etc.)',
+    '    (海外領土、特別地域、紛争地域、基地局等 / Overseas territories, special regions, disputed areas, stations, etc.)'
   );
   console.log(
-    `- **フルスキーマ対応 / Full Schema Support**: ${fullSchemaCountries.length} (${Math.round((fullSchemaCountries.length / analyzed.length) * 100)}%)`,
+    `- **フルスキーマ対応 / Full Schema Support**: ${fullSchemaCountries.length} (${Math.round((fullSchemaCountries.length / analyzed.length) * 100)}%)`
   );
   console.log(`- **平均完成度 / Average Completeness**: ${avgCompleteness}%`);
   console.log(`- **POS対応 / POS Support**: ${withPos.length} countries`);
