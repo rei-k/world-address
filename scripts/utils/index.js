@@ -9,6 +9,7 @@ const file = require('./file');
 const yaml = require('./yaml');
 const constants = require('./constants');
 const validation = require('./validation');
+const dataLoader = require('./data-loader');
 
 module.exports = {
   // Logger
@@ -28,4 +29,7 @@ module.exports = {
 
   // Validation
   ...validation,
+
+  // Data loader
+  ...dataLoader,
 };

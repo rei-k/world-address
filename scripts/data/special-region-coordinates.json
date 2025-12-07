@@ -1,0 +1,167 @@
+{
+  "Easter_Island": {
+    "lat": -27.1127,
+    "lon": -109.3497,
+    "name": "Easter Island"
+  },
+  "Desventuradas": {
+    "lat": -26.3453,
+    "lon": -80.0762,
+    "name": "Desventuradas Islands"
+  },
+  "Juan_Fernandez": {
+    "lat": -33.6348,
+    "lon": -78.8311,
+    "name": "Juan Fernández Islands"
+  },
+  "ES-CN": {
+    "lat": 28.2916,
+    "lon": -16.6291,
+    "name": "Canary Islands"
+  },
+  "ES-CE/ES-ML": {
+    "lat": 35.8894,
+    "lon": -5.3213,
+    "name": "Ceuta and Melilla"
+  },
+  "PT-20": {
+    "lat": 38.5244,
+    "lon": -28.0631,
+    "name": "Azores"
+  },
+  "PT-30": {
+    "lat": 32.7607,
+    "lon": -16.9595,
+    "name": "Madeira"
+  },
+  "Papua": {
+    "lat": -4.2699,
+    "lon": 138.0804,
+    "name": "Papua"
+  },
+  "Andaman_Nicobar": {
+    "lat": 11.7401,
+    "lon": 92.6586,
+    "name": "Andaman and Nicobar Islands"
+  },
+  "Lakshadweep": {
+    "lat": 10.5667,
+    "lon": 72.6417,
+    "name": "Lakshadweep"
+  },
+  "AB": {
+    "lat": 43.0015,
+    "lon": 41.0234,
+    "name": "Abkhazia"
+  },
+  "SO": {
+    "lat": 42.2256,
+    "lon": 43.9665,
+    "name": "South Ossetia"
+  },
+  "AR_CLAIM": {
+    "lat": -69,
+    "lon": -55,
+    "name": "Argentine Antarctica"
+  },
+  "AT": {
+    "lat": -70,
+    "lon": 135,
+    "name": "Australian Antarctic Territory"
+  },
+  "BAT": {
+    "lat": -73,
+    "lon": -60,
+    "name": "British Antarctic Territory"
+  },
+  "CL_CLAIM": {
+    "lat": -75,
+    "lon": -71,
+    "name": "Chilean Antarctic Territory"
+  },
+  "FR_ADELIE": {
+    "lat": -66.6667,
+    "lon": 140,
+    "name": "Adélie Land"
+  },
+  "NO_PB": {
+    "lat": -68.8,
+    "lon": -90.5833,
+    "name": "Peter I Island"
+  },
+  "NO_QML": {
+    "lat": -72,
+    "lon": 5,
+    "name": "Queen Maud Land"
+  },
+  "NZ_ROSS": {
+    "lat": -80,
+    "lon": 175,
+    "name": "Ross Dependency"
+  },
+  "UNCLAIMED": {
+    "lat": -80,
+    "lon": -120,
+    "name": "Marie Byrd Land (Unclaimed)"
+  },
+  "AU_CASEY": {
+    "lat": -66.2818,
+    "lon": 110.5275,
+    "name": "Casey Station"
+  },
+  "AU_DAVIS": {
+    "lat": -68.5767,
+    "lon": 77.9674,
+    "name": "Davis Station"
+  },
+  "AU_MAWSON": {
+    "lat": -67.605,
+    "lon": 62.8708,
+    "name": "Mawson Station"
+  },
+  "CN_ZHONGSHAN": {
+    "lat": -69.3733,
+    "lon": 76.3711,
+    "name": "Zhongshan Station"
+  },
+  "DE_NEUMAYER": {
+    "lat": -70.6661,
+    "lon": -8.2667,
+    "name": "Neumayer Station III"
+  },
+  "IN_BHARATI": {
+    "lat": -69.4083,
+    "lon": 76.1833,
+    "name": "Bharati Station"
+  },
+  "IN_MAITRI": {
+    "lat": -70.7653,
+    "lon": 11.7378,
+    "name": "Maitri Station"
+  },
+  "IT_ZUCCHELLI": {
+    "lat": -74.6947,
+    "lon": 164.1169,
+    "name": "Mario Zucchelli Station"
+  },
+  "JP_SYOWA": {
+    "lat": -69.0033,
+    "lon": 39.59,
+    "name": "Syowa Station"
+  },
+  "KR_SEJONG": {
+    "lat": -62.2236,
+    "lon": -58.7861,
+    "name": "King Sejong Station"
+  },
+  "RU_VOSTOK": {
+    "lat": -78.4644,
+    "lon": 106.8378,
+    "name": "Vostok Station"
+  },
+  "US_MCMURDO": {
+    "lat": -77.8467,
+    "lon": 166.6686,
+    "name": "McMurdo Station"
+  }
+}

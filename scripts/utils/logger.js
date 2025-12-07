@@ -50,7 +50,7 @@ class Logger {
 
     console.log(
       this._colorize(`${timestamp} ${levelTag}${prefix}`, COLORS.dim),
-      this._colorize(message, color),
+      this._colorize(message, color)
     );
   }
 
