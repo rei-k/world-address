@@ -52,16 +52,16 @@ languages:
     code: ja
     script: Kanji
     direction: ltr
-    role: official_claim
+    role: official
     country_name: 竹島
 
   - name: Korean
     code: ko
     script: Hangul
     direction: ltr
-    role: current_administration
+    role: reference
     country_name: 독도
-    note: Used by current administration
+    note: Alternative reference name
 
   - name: English
     code: en
@@ -72,9 +72,8 @@ languages:
 
 address_format:
   note: |
-    Address format depends on claiming country:
-    - For Japan's claim: Part of Shimane Prefecture, Oki District
-    - For current administration: Part of Gyeongsangbuk-do Province, Ulleung County
+    Address format follows Japanese administrative system.
+    Part of Shimane Prefecture, Oki District in Japanese administrative structure.
   
   japanese_format:
     province: 島根県 (Shimane Prefecture)
@@ -82,12 +81,6 @@ address_format:
     town: 隠岐の島町 (Okinoshima Town)
     postal_code: "685-0000"
     note: Japan administers as part of Shimane Prefecture
-  
-  korean_format:
-    province: 경상북도 (Gyeongsangbuk-do)
-    city: 울릉군 (Ulleung County)
-    postal_code: "40240"
-    note: South Korea administers as part of Ulleung County
 
 historical_context:
   - year: 1618

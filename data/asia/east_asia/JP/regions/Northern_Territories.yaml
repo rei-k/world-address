@@ -52,16 +52,16 @@ languages:
     code: ja
     script: Kanji
     direction: ltr
-    role: official_claim
+    role: official
     country_name: 北方領土
 
   - name: Russian
     code: ru
     script: Cyrillic
     direction: ltr
-    role: current_administration
+    role: reference
     country_name: Курильские острова
-    note: Used by current administration
+    note: Alternative reference name
 
   - name: English
     code: en
@@ -72,18 +72,12 @@ languages:
 
 address_format:
   note: |
-    Address format depends on claiming country:
-    - For Japan's claim: Use Japanese prefecture format (Hokkaido-related)
-    - For current administration: Use Russian oblast format (Sakhalin Oblast)
+    Address format follows Japanese administrative system.
+    Part of Hokkaido Prefecture in Japanese administrative structure.
   
   japanese_format:
     province: 北海道 (Hokkaido)
-    note: Japan considers these as part of Hokkaido prefecture
-  
-  russian_format:
-    province: Сахалинская область (Sakhalin Oblast)
-    postal_code_prefix: "694"
-    note: Russia administers as part of Sakhalin Oblast
+    note: Japan administers as part of Hokkaido Prefecture
 
 historical_context:
   - year: 1855

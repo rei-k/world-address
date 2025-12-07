@@ -71,7 +71,7 @@
       "code": "ja",
       "script": "Kanji",
       "direction": "ltr",
-      "role": "official_administration",
+      "role": "official",
       "country_name": "尖閣諸島"
     },
     {
@@ -79,18 +79,18 @@
       "code": "zh-CN",
       "script": "Simplified Chinese",
       "direction": "ltr",
-      "role": "claim",
+      "role": "reference",
       "country_name": "钓鱼岛",
-      "note": "Used by People's Republic of China"
+      "note": "Alternative reference name"
     },
     {
       "name": "Chinese (Traditional)",
       "code": "zh-TW",
       "script": "Traditional Chinese",
       "direction": "ltr",
-      "role": "claim",
+      "role": "reference",
       "country_name": "釣魚島/釣魚臺",
-      "note": "Used by Taiwan (ROC)"
+      "note": "Alternative reference name"
     },
     {
       "name": "English",
@@ -102,20 +102,12 @@
     }
   ],
   "address_format": {
-    "note": "Address format depends on claiming country:\n- For Japan (current administration): Part of Okinawa Prefecture, Ishigaki City\n- For China's claim: Part of Taiwan Province (PRC perspective)\n- For Taiwan's claim: Part of Yilan County (ROC perspective)\n",
+    "note": "Address format follows Japanese administrative system.\nPart of Okinawa Prefecture, Ishigaki City in Japanese administrative structure.\n",
     "japanese_format": {
       "province": "沖縄県 (Okinawa Prefecture)",
       "city": "石垣市 (Ishigaki City)",
       "postal_code": "907-0000",
       "note": "Japan administers as part of Ishigaki City, Okinawa Prefecture"
-    },
-    "chinese_format_prc": {
-      "province": "台湾省 (Taiwan Province)",
-      "note": "China considers these part of Taiwan Province"
-    },
-    "taiwanese_format_roc": {
-      "county": "宜蘭県 (Yilan County)",
-      "note": "Taiwan considers these part of Yilan County"
     }
   },
   "historical_context": [
