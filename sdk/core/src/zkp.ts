@@ -967,7 +967,11 @@ export function generateZKSelectiveRevealProof(
   const revealedValues: Record<string, string> = {};
   for (const field of fieldsToReveal) {
     if (field in fullAddress) {
-      revealedValues[field] = (fullAddress as Record<string, unknown>)[field] as string;
+      const value = (fullAddress as Record<string, unknown>)[field];
+      // Only include if value is a string and not null/undefined
+      if (typeof value === 'string') {
+        revealedValues[field] = value;
+      }
     }
   }
 
@@ -1018,7 +1022,8 @@ export function verifyZKSelectiveRevealProof(
   }
 
   // Placeholder: In production, verify actual proof and selective disclosure
-  const valid = !!(proof.proof && proof.revealedFields.length > 0);
+  // Note: A proof with no revealed fields can still be valid (e.g., proving address exists without revealing any data)
+  const valid = !!(proof.proof && proof.revealedFields !== undefined);
 
   return {
     valid,
