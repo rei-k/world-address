@@ -9,6 +9,7 @@
 ## 📋 目次 / Table of Contents
 
 - [ビジョン / Vision](#ビジョン--vision)
+- [ConveyID 配送プロトコル / ConveyID Delivery Protocol](#conveyid-配送プロトコル--conveyid-delivery-protocol)
 - [エコシステム全体像 / Ecosystem Overview](#エコシステム全体像--ecosystem-overview)
 - [アプリケーション一覧 / Applications](#アプリケーション一覧--applications)
 - [アーキテクチャ図 / Architecture Diagrams](#アーキテクチャ図--architecture-diagrams)
@@ -31,6 +32,79 @@
 - **QR/NFC対応**: タップするだけで決済と配送先登録が完了
 - **セキュア**: クレジットカード番号を店に教えないように、住所も直接公開しない
 - **ユニバーサル**: どこでも使える統一規格
+
+---
+
+## 🌐 ConveyID 配送プロトコル / ConveyID Delivery Protocol
+
+**ConveyID** (例: `alice@convey`) は、メールのように簡単に配送依頼ができる世界初のグローバル配送IDプロトコルです。
+
+**ConveyID** (e.g., `alice@convey`) is the world's first global delivery ID protocol that makes sending packages as easy as sending emails.
+
+### 核心コンセプト / Core Concept
+
+```
+send this to alice@convey
+```
+
+- **送り手**: 1行入力するだけ / **Sender**: One-line input only
+- **受け手**: 住所帳から選ぶだけ / **Recipient**: Select from address book
+- **住所**: 配送業者にのみ開示 / **Address**: Only disclosed to carrier
+
+### 主な特徴 / Key Features
+
+#### ✅ プライバシー保護 / Privacy Protection
+- ZKP（ゼロ知識証明）で住所を隠したまま配送可能性を証明
+- Prove delivery feasibility without revealing address using Zero-Knowledge Proof
+
+#### ✅ 双方同意モデル / Mutual Consent Model
+- 送り手と受け手の両方が確認してから配送開始
+- Delivery starts only after both sender and recipient confirm
+
+#### ✅ グローバル名前空間 / Global Namespace
+- `@convey`, `@jp.convey`, `@convey.store` など用途別の名前空間
+- Purpose-specific namespaces like `@convey`, `@jp.convey`, `@convey.store`
+
+#### ✅ 配送ポリシー / Delivery Policies
+- 受け取り側が配送条件を設定可能（重量制限、国際配送可否など）
+- Recipients can set acceptance policies (weight limits, international delivery, etc.)
+
+### 完全仕様書 / Complete Specification
+
+ConveyID プロトコルの詳細な仕様については、以下のドキュメントをご覧ください。
+
+For detailed ConveyID protocol specifications, see the following documents:
+
+- **[ConveyID Protocol Specification](./CONVEY_PROTOCOL.md)** - 完全な技術仕様 / Complete technical specification
+- **[Architecture Diagrams](./CONVEY_PROTOCOL_DIAGRAMS.md)** - プロトコル階層図と状態遷移図 / Protocol layers and state diagrams
+- **[UI/UX Mockups](./CONVEY_UI_UX_MOCKUPS.md)** - ユーザーインターフェース例 / User interface examples
+
+### 配送フロー / Delivery Flow
+
+```
+DRAFT → PENDING_RECIPIENT → PENDING_SENDER → CONFIRMED → DISPATCHED → DELIVERED
+```
+
+1. **送り手が ConveyID 入力** / Sender inputs ConveyID
+2. **受け手に通知** / Recipient receives notification
+3. **受け手が住所選択** / Recipient selects address
+4. **送り手が送料確認** / Sender confirms shipping cost
+5. **配送開始** / Delivery dispatched
+6. **配達完了** / Delivery completed
+
+### 社会的価値 / Social Value
+
+- **世界共通の配送ID** - Stripe の PaymentID と同等の配送版
+- **Global delivery ID** - Delivery equivalent of Stripe's PaymentID
+
+- **フォーム入力廃止** - EC サイトの UX を根本的に改善
+- **Form elimination** - Fundamentally improve e-commerce UX
+
+- **国際配送の簡素化** - AMF × world-address との統合で実現
+- **International delivery simplification** - Realized through AMF × world-address integration
+
+- **プライバシー保護社会** - 住所を公開しない配送システム
+- **Privacy-first society** - Delivery system without exposing addresses
 
 ---
 
