@@ -32,6 +32,7 @@ coverage/
 .env
 .env.local
 .env.*.local
+.env.test
 
 # Temporary files
 tmp/

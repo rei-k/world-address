@@ -1,0 +1,41 @@
+{
+  "name": "@vey/integration-tests",
+  "version": "1.0.0",
+  "description": "Integration tests for database and cloud services",
+  "private": true,
+  "scripts": {
+    "test:integration": "vitest run",
+    "test:integration:watch": "vitest",
+    "test:integration:coverage": "vitest run --coverage",
+    "test:postgres": "vitest run databases/postgresql.test.ts",
+    "test:mongodb": "vitest run databases/mongodb.test.ts",
+    "test:mysql": "vitest run databases/mysql.test.ts",
+    "test:sqlite": "vitest run databases/sqlite.test.ts",
+    "test:firebase": "vitest run cloud-services/firebase.test.ts",
+    "test:supabase": "vitest run cloud-services/supabase.test.ts"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "@types/node": "^20.10.0",
+    "@vitest/coverage-v8": "^1.6.1",
+    "dotenv": "^16.3.1",
+    "firebase": "^10.7.1",
+    "mongodb": "^6.3.0",
+    "mysql2": "^3.6.5",
+    "pg": "^8.11.3",
+    "sqlite3": "^5.1.6",
+    "typescript": "^5.3.3",
+    "vitest": "^1.6.1"
+  },
+  "keywords": [
+    "integration-tests",
+    "database",
+    "cloud-services",
+    "firebase",
+    "supabase",
+    "postgresql",
+    "mongodb"
+  ],
+  "author": "Vey Team",
+  "license": "MIT"
+}
