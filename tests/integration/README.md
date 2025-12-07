@@ -22,10 +22,10 @@ These tests verify that the Vey ecosystem can connect to various databases and c
 
 ### データベース / Databases
 
-- **PostgreSQL** - メインのリレーショナルデータベース
-- **MongoDB** - NoSQLドキュメントデータベース
-- **MySQL/MariaDB** - 代替リレーショナルデータベース
-- **SQLite** - ローカル開発用データベース
+- **PostgreSQL** ✅ - メインのリレーショナルデータベース
+- **MongoDB** ✅ - NoSQLドキュメントデータベース
+- **MySQL/MariaDB** ✅ - 代替リレーショナルデータベース
+- **SQLite** ✅ - ローカル開発用データベース
 
 ### クラウドサービス / Cloud Services
 
@@ -93,6 +93,15 @@ npm run test:integration
 ```bash
 # PostgreSQLのみ
 npm run test:integration -- databases/postgresql.test.ts
+
+# MongoDBのみ
+npm run test:integration -- databases/mongodb.test.ts
+
+# MySQL/MariaDBのみ
+npm run test:integration -- databases/mysql.test.ts
+
+# SQLiteのみ
+npm run test:integration -- databases/sqlite.test.ts
 
 # Firebaseのみ
 npm run test:integration -- cloud-services/firebase.test.ts

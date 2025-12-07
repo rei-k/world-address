@@ -34,7 +34,7 @@ This document summarizes the implementation of database and cloud service connec
 
 #### 2. データベーステスト / Database Tests
 
-##### PostgreSQL
+##### PostgreSQL ✅
 - ✅ 接続テスト
 - ✅ CRUD操作（作成、読み取り、更新、削除）
 - ✅ 一意制約の検証
@@ -49,7 +49,7 @@ This document summarizes the implementation of database and cloud service connec
 - ユーザーDIDによるクエリ
 - 国コードによるフィルタリング
 
-##### MongoDB
+##### MongoDB ✅
 - ✅ 接続テスト
 - ✅ ドキュメントのCRUD操作
 - ✅ 一意インデックスの検証
@@ -62,6 +62,33 @@ This document summarizes the implementation of database and cloud service connec
 - コレクションの検証
 - 国別の集計
 - バルク操作
+
+##### MySQL/MariaDB ✅
+- ✅ 接続テスト
+- ✅ CRUD操作
+- ✅ 一意制約の検証
+- ✅ インデックス付きクエリ
+- ✅ トランザクションサポート
+- ✅ バルク挿入のパフォーマンステスト
+
+**テスト項目** / Test Coverage:
+- 住所エントリの管理
+- 友達エントリの管理
+- 国コードによるフィルタリング
+- トランザクション（コミット/ロールバック）
+
+##### SQLite ✅
+- ✅ 接続テスト
+- ✅ CRUD操作
+- ✅ トランザクションサポート
+- ✅ SQLite固有の機能（PRAGMA、JSON関数）
+- ✅ バルクインサートの最適化
+
+**テスト項目** / Test Coverage:
+- ローカル開発環境での動作確認
+- ファイルベースデータベース
+- トランザクションを使用した高速バルク挿入
+- SQLiteバージョン情報の取得
 
 #### 3. クラウドサービステスト / Cloud Service Tests
 
@@ -206,8 +233,10 @@ Test data is automatically cleaned up after each test execution.
 | 操作 | 期待値 |
 |------|--------|
 | 単一レコード挿入 | < 100ms |
-| 100件のバルク挿入 (PostgreSQL) | < 10秒 |
-| 50件のバルク挿入 (MongoDB) | < 5秒 |
+| PostgreSQL: 100件のバルク挿入 | < 10秒 |
+| MongoDB: 50件のバルク挿入 | < 5秒 |
+| MySQL: 100件のバルク挿入 | < 10秒 |
+| SQLite: 100件のバルク挿入（トランザクション使用） | < 5秒 |
 | インデックス付きクエリ | < 100ms |
 | Firebase複数ドキュメント書き込み (10件) | < 5秒 |
 | Supabaseバルク挿入 (50件) | < 5秒 |
@@ -235,29 +264,25 @@ Test data is automatically cleaned up after each test execution.
 
 ### 追加予定のテスト / Planned Tests
 
-1. **MySQL/MariaDB**
-   - CRUD操作
-   - トランザクション
-   - パフォーマンステスト
-
-2. **SQLite**
-   - ローカル開発環境用
-   - 基本的なCRUD操作
-
-3. **AWS Services**
+1. **AWS Services** 🔄
    - S3ストレージ
    - DynamoDB
    - RDS (PostgreSQL/MySQL)
 
-4. **Google Cloud Platform**
+2. **Google Cloud Platform** 🔄
    - Cloud Storage
    - Cloud Firestore
    - Cloud SQL
 
-5. **Azure Services**
+3. **Azure Services** 🔄
    - Blob Storage
    - Cosmos DB
    - Azure Database for PostgreSQL
+
+4. **Redis** 🔄
+   - キャッシング
+   - セッション管理
+   - Pub/Sub
 
 ### 追加予定の機能 / Planned Features
 
