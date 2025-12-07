@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1800">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #2c3e50; }
+      .subtitle { font: bold 18px sans-serif; fill: #34495e; }
+      .text { font: 14px sans-serif; fill: #2c3e50; }
+      .small-text { font: 12px sans-serif; fill: #7f8c8d; }
+      .pattern-box { fill: #3498db; stroke: #2980b9; stroke-width: 3; }
+      .tech-box { fill: #2ecc71; stroke: #27ae60; stroke-width: 2; }
+      .benefit-box { fill: #f39c12; stroke: #e67e22; stroke-width: 2; }
+      .arrow { stroke: #34495e; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#34495e" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="700" y="40" text-anchor="middle" class="title">5つのZKPパターン詳細</text>
+  <text x="700" y="65" text-anchor="middle" class="small-text">Five Zero-Knowledge Proof Patterns</text>
+
+  <!-- Pattern 1: ZK-Membership Proof -->
+  <rect x="50" y="100" width="600" height="280" class="pattern-box" rx="10"/>
+  <text x="350" y="135" text-anchor="middle" class="subtitle" fill="white">パターン1: ZK-Membership Proof</text>
+  <text x="350" y="160" text-anchor="middle" class="text" fill="white">住所存在証明</text>
+  
+  <rect x="70" y="180" width="560" height="70" class="tech-box" rx="5"/>
+  <text x="350" y="205" text-anchor="middle" class="text" fill="white">技術: Merkle Tree + zk-SNARK / Bulletproofs</text>
+  <text x="350" y="225" text-anchor="middle" class="small-text" fill="white">目的: 住所が有効な住所セットに含まれることを証明</text>
+  <text x="350" y="240" text-anchor="middle" class="small-text" fill="white">（住所そのものは公開しない）</text>
+
+  <rect x="70" y="260" width="560" height="100" class="benefit-box" rx="5"/>
+  <text x="350" y="280" text-anchor="middle" class="text" fill="white">メリット:</text>
+  <text x="90" y="300" class="small-text" fill="white">✓ 住所の具体的な内容は秘匿</text>
+  <text x="90" y="320" class="small-text" fill="white">✓ 登録済み住所であることを証明</text>
+  <text x="90" y="340" class="small-text" fill="white">✓ ECサイトには「有効な配送先である」ことのみ通知</text>
+
+  <!-- Pattern 2: ZK-Structure Proof -->
+  <rect x="750" y="100" width="600" height="280" class="pattern-box" rx="10"/>
+  <text x="1050" y="135" text-anchor="middle" class="subtitle" fill="white">パターン2: ZK-Structure Proof</text>
+  <text x="1050" y="160" text-anchor="middle" class="text" fill="white">PID階層証明</text>
+  
+  <rect x="770" y="180" width="560" height="70" class="tech-box" rx="5"/>
+  <text x="1050" y="205" text-anchor="middle" class="text" fill="white">技術: Halo2 / PLONK / zk-SNARK</text>
+  <text x="1050" y="225" text-anchor="middle" class="small-text" fill="white">目的: PID（階層的住所ID）が正しい構造を持つことを証明</text>
+  <text x="1050" y="240" text-anchor="middle" class="small-text" fill="white">（国 → 都道府県 → 市区町村 → 丁目...）</text>
+
+  <rect x="770" y="260" width="560" height="100" class="benefit-box" rx="5"/>
+  <text x="1050" y="280" text-anchor="middle" class="text" fill="white">メリット:</text>
+  <text x="790" y="300" class="small-text" fill="white">✓ 住所写像論（AMF）の中核</text>
+  <text x="790" y="320" class="small-text" fill="white">✓ 各国固有の階層ルールに対応</text>
+  <text x="790" y="340" class="small-text" fill="white">✓ 配送ルーティングの最適化</text>
+
+  <!-- Pattern 3: ZK-Selective Reveal Proof -->
+  <rect x="50" y="420" width="600" height="320" class="pattern-box" rx="10"/>
+  <text x="350" y="455" text-anchor="middle" class="subtitle" fill="white">パターン3: ZK-Selective Reveal Proof</text>
+  <text x="350" y="480" text-anchor="middle" class="text" fill="white">部分公開証明</text>
+  
+  <rect x="70" y="500" width="560" height="90" class="tech-box" rx="5"/>
+  <text x="350" y="525" text-anchor="middle" class="text" fill="white">技術: SD-JWT (Selective Disclosure JWT) + zk-SNARK</text>
+  <text x="350" y="545" text-anchor="middle" class="small-text" fill="white">目的: ユーザーが選択したフィールドのみを開示</text>
+  <text x="350" y="565" text-anchor="middle" class="small-text" fill="white">残りは秘匿したまま証明</text>
+
+  <rect x="70" y="600" width="560" height="120" class="benefit-box" rx="5"/>
+  <text x="350" y="620" text-anchor="middle" class="text" fill="white">メリット:</text>
+  <text x="90" y="640" class="small-text" fill="white">✓ ECサイトには「国」と「郵便番号範囲」だけ公開</text>
+  <text x="90" y="660" class="small-text" fill="white">✓ 配送業者には完全な住所を公開</text>
+  <text x="90" y="680" class="small-text" fill="white">✓ ユーザー主権で開示範囲をコントロール</text>
+  <text x="90" y="700" class="small-text" fill="white">✓ GDPR/CCPA準拠</text>
+
+  <!-- Pattern 4: ZK-Version Proof -->
+  <rect x="750" y="420" width="600" height="320" class="pattern-box" rx="10"/>
+  <text x="1050" y="455" text-anchor="middle" class="subtitle" fill="white">パターン4: ZK-Version Proof</text>
+  <text x="1050" y="480" text-anchor="middle" class="text" fill="white">住所更新証明</text>
+  
+  <rect x="770" y="500" width="560" height="90" class="tech-box" rx="5"/>
+  <text x="1050" y="525" text-anchor="middle" class="text" fill="white">技術: zk-SNARK</text>
+  <text x="1050" y="545" text-anchor="middle" class="small-text" fill="white">目的: 引越し後、旧PIDと新PIDの</text>
+  <text x="1050" y="565" text-anchor="middle" class="small-text" fill="white">所有者が同一であることを証明</text>
+
+  <rect x="770" y="600" width="560" height="120" class="benefit-box" rx="5"/>
+  <text x="1050" y="620" text-anchor="middle" class="text" fill="white">メリット:</text>
+  <text x="790" y="640" class="small-text" fill="white">✓ 住所変更前後の整合性を保証</text>
+  <text x="790" y="660" class="small-text" fill="white">✓ 旧住所の失効と新住所の有効性を同時に証明</text>
+  <text x="790" y="680" class="small-text" fill="white">✓ QR/NFCで引越し後も継続利用可能</text>
+  <text x="790" y="700" class="small-text" fill="white">✓ サービス断絶なし</text>
+
+  <!-- Pattern 5: ZK-Locker Proof -->
+  <rect x="50" y="780" width="1300" height="320" class="pattern-box" rx="10"/>
+  <text x="700" y="815" text-anchor="middle" class="subtitle" fill="white">パターン5: ZK-Locker Proof</text>
+  <text x="700" y="840" text-anchor="middle" class="text" fill="white">ロッカー所属証明</text>
+  
+  <rect x="70" y="860" width="1260" height="90" class="tech-box" rx="5"/>
+  <text x="700" y="885" text-anchor="middle" class="text" fill="white">技術: ZK-Membership (Merkle Tree + zk-SNARK)</text>
+  <text x="700" y="905" text-anchor="middle" class="small-text" fill="white">目的: 特定のロッカー施設内のロッカーにアクセス権があることを証明</text>
+  <text x="700" y="925" text-anchor="middle" class="small-text" fill="white">（どのロッカーかは秘匿したまま）</text>
+
+  <rect x="70" y="960" width="1260" height="120" class="benefit-box" rx="5"/>
+  <text x="700" y="980" text-anchor="middle" class="text" fill="white">メリット:</text>
+  <text x="90" y="1000" class="small-text" fill="white">✓ どのロッカーかは秘匿したまま、施設内ロッカーへのアクセス権を証明</text>
+  <text x="90" y="1020" class="small-text" fill="white">✓ 匿名受け取りの実現</text>
+  <text x="90" y="1040" class="small-text" fill="white">✓ PUDO (Pick Up Drop Off) ポイント管理に活用</text>
+  <text x="90" y="1060" class="small-text" fill="white">✓ プライバシー保護配送</text>
+
+  <!-- Use Case Matrix -->
+  <rect x="50" y="1140" width="1300" height="600" rx="10" fill="#ecf0f1" stroke="#34495e" stroke-width="2"/>
+  <text x="700" y="1180" text-anchor="middle" class="subtitle">パターン別用途マトリクス</text>
+  
+  <!-- Table Header -->
+  <rect x="80" y="1200" width="300" height="40" fill="#34495e"/>
+  <rect x="400" y="1200" width="200" height="40" fill="#34495e"/>
+  <rect x="620" y="1200" width="280" height="40" fill="#34495e"/>
+  <rect x="920" y="1200" width="400" height="40" fill="#34495e"/>
+  
+  <text x="230" y="1225" text-anchor="middle" class="text" fill="white">用途</text>
+  <text x="500" y="1225" text-anchor="middle" class="text" fill="white">証明タイプ</text>
+  <text x="760" y="1225" text-anchor="middle" class="text" fill="white">使用するZKP</text>
+  <text x="1120" y="1225" text-anchor="middle" class="text" fill="white">公開される情報</text>
+
+  <!-- Row 1 -->
+  <rect x="80" y="1240" width="300" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="400" y="1240" width="200" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="620" y="1240" width="280" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="920" y="1240" width="400" height="80" fill="white" stroke="#bdc3c7"/>
+  
+  <text x="90" y="1265" class="small-text">住所を登録済みか証明</text>
+  <text x="90" y="1285" class="small-text">（ECに住所を出さない）</text>
+  <text x="410" y="1275" class="small-text">所属証明</text>
+  <text x="630" y="1265" class="small-text">ZK-Membership</text>
+  <text x="630" y="1285" class="small-text">+ Merkle-SNARK</text>
+  <text x="930" y="1275" class="small-text">Merkle Root のみ</text>
+
+  <!-- Row 2 -->
+  <rect x="80" y="1320" width="300" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="400" y="1320" width="200" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="620" y="1320" width="280" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="920" y="1320" width="400" height="80" fill="white" stroke="#bdc3c7"/>
+  
+  <text x="90" y="1345" class="small-text">住所階層（PID）が</text>
+  <text x="90" y="1365" class="small-text">正しいか証明</text>
+  <text x="410" y="1355" class="small-text">構造整合性</text>
+  <text x="630" y="1345" class="small-text">ZK-Structure</text>
+  <text x="630" y="1365" class="small-text">(Halo2/PLONK)</text>
+  <text x="930" y="1355" class="small-text">国コード、階層深度</text>
+
+  <!-- Row 3 -->
+  <rect x="80" y="1400" width="300" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="400" y="1400" width="200" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="620" y="1400" width="280" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="920" y="1400" width="400" height="80" fill="white" stroke="#bdc3c7"/>
+  
+  <text x="90" y="1425" class="small-text">ECには住所の一部だけ</text>
+  <text x="90" y="1445" class="small-text">出す</text>
+  <text x="410" y="1435" class="small-text">部分開示</text>
+  <text x="630" y="1425" class="small-text">ZK-Selective Reveal</text>
+  <text x="630" y="1445" class="small-text">(SD-JWT + zk)</text>
+  <text x="930" y="1435" class="small-text">ユーザー選択フィールド</text>
+
+  <!-- Row 4 -->
+  <rect x="80" y="1480" width="300" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="400" y="1480" width="200" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="620" y="1480" width="280" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="920" y="1480" width="400" height="80" fill="white" stroke="#bdc3c7"/>
+  
+  <text x="90" y="1505" class="small-text">引越し後もQR/NFCで</text>
+  <text x="90" y="1525" class="small-text">証明可能にする</text>
+  <text x="410" y="1515" class="small-text">履歴整合性</text>
+  <text x="630" y="1515" class="small-text">ZK-Version Proof</text>
+  <text x="930" y="1515" class="small-text">旧PID、新PID</text>
+
+  <!-- Row 5 -->
+  <rect x="80" y="1560" width="300" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="400" y="1560" width="200" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="620" y="1560" width="280" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="920" y="1560" width="400" height="80" fill="white" stroke="#bdc3c7"/>
+  
+  <text x="90" y="1585" class="small-text">ロッカー受け取りを</text>
+  <text x="90" y="1605" class="small-text">匿名で行う</text>
+  <text x="410" y="1595" class="small-text">包含証明</text>
+  <text x="630" y="1585" class="small-text">ZK-Locker</text>
+  <text x="630" y="1605" class="small-text">(ZK-Membership)</text>
+  <text x="930" y="1595" class="small-text">施設ID、Merkle Root</text>
+
+  <!-- Row 6 -->
+  <rect x="80" y="1640" width="300" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="400" y="1640" width="200" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="620" y="1640" width="280" height="80" fill="white" stroke="#bdc3c7"/>
+  <rect x="920" y="1640" width="400" height="80" fill="white" stroke="#bdc3c7"/>
+  
+  <text x="90" y="1665" class="small-text">配送業者には住所を</text>
+  <text x="90" y="1685" class="small-text">100%出す</text>
+  <text x="410" y="1675" class="small-text">例外開示</text>
+  <text x="630" y="1665" class="small-text">Revealモード</text>
+  <text x="630" y="1685" class="small-text">（ZKP不要）</text>
+  <text x="930" y="1675" class="small-text">完全な住所</text>
+
+</svg>

@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2200">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #2c3e50; }
+      .subtitle { font: bold 18px sans-serif; fill: #34495e; }
+      .text { font: 14px sans-serif; fill: #2c3e50; }
+      .small-text { font: 12px sans-serif; fill: #7f8c8d; }
+      .actor-box { fill: #3498db; stroke: #2980b9; stroke-width: 2; }
+      .message-arrow { stroke: #34495e; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .return-arrow { stroke: #7f8c8d; stroke-width: 2; fill: none; stroke-dasharray: 5,5; marker-end: url(#arrowhead-return); }
+      .note-box { fill: #f39c12; stroke: #e67e22; stroke-width: 1; }
+      .lifeline { stroke: #bdc3c7; stroke-width: 2; stroke-dasharray: 5,5; }
+      .activation { fill: #ecf0f1; stroke: #34495e; stroke-width: 2; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#34495e" />
+    </marker>
+    <marker id="arrowhead-return" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#7f8c8d" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="800" y="40" text-anchor="middle" class="title">ZKPアドレスプロトコル - データフローシーケンス</text>
+  <text x="800" y="65" text-anchor="middle" class="small-text">Complete Flow: EC Order to Delivery with ZKP</text>
+
+  <!-- Actors -->
+  <rect x="50" y="100" width="150" height="60" class="actor-box" rx="5"/>
+  <text x="125" y="135" text-anchor="middle" class="text" fill="white">ユーザー</text>
+  <text x="125" y="155" text-anchor="middle" class="small-text" fill="white">User / Veyvault</text>
+
+  <rect x="300" y="100" width="200" height="60" class="actor-box" rx="5"/>
+  <text x="400" y="135" text-anchor="middle" class="text" fill="white">アドレスプロバイダ</text>
+  <text x="400" y="155" text-anchor="middle" class="small-text" fill="white">Address Provider</text>
+
+  <rect x="600" y="100" width="150" height="60" class="actor-box" rx="5"/>
+  <text x="675" y="135" text-anchor="middle" class="text" fill="white">ECサイト</text>
+  <text x="675" y="155" text-anchor="middle" class="small-text" fill="white">EC Site</text>
+
+  <rect x="850" y="100" width="150" height="60" class="actor-box" rx="5"/>
+  <text x="925" y="135" text-anchor="middle" class="text" fill="white">配送業者</text>
+  <text x="925" y="155" text-anchor="middle" class="small-text" fill="white">Carrier</text>
+
+  <rect x="1100" y="100" width="150" height="60" class="actor-box" rx="5"/>
+  <text x="1175" y="135" text-anchor="middle" class="text" fill="white">失効リスト</text>
+  <text x="1175" y="155" text-anchor="middle" class="small-text" fill="white">Revocation List</text>
+
+  <rect x="1350" y="100" width="150" height="60" class="actor-box" rx="5"/>
+  <text x="1425" y="135" text-anchor="middle" class="text" fill="white">監査ログ</text>
+  <text x="1425" y="155" text-anchor="middle" class="small-text" fill="white">Audit Log</text>
+
+  <!-- Lifelines -->
+  <line x1="125" y1="160" x2="125" y2="2100" class="lifeline"/>
+  <line x1="400" y1="160" x2="400" y2="2100" class="lifeline"/>
+  <line x1="675" y1="160" x2="675" y2="2100" class="lifeline"/>
+  <line x1="925" y1="160" x2="925" y2="2100" class="lifeline"/>
+  <line x1="1175" y1="160" x2="1175" y2="2100" class="lifeline"/>
+  <line x1="1425" y1="160" x2="1425" y2="2100" class="lifeline"/>
+
+  <!-- Phase 1: Address Registration -->
+  <rect x="20" y="200" width="1520" height="30" fill="#34495e"/>
+  <text x="780" y="220" text-anchor="middle" class="text" fill="white">フェーズ1: 住所登録・認証 (Address Registration & Authentication)</text>
+
+  <rect x="100" y="250" width="50" height="100" class="activation"/>
+  <path d="M 125 270 L 400 270" class="message-arrow"/>
+  <text x="260" y="265" class="small-text">1. 住所登録リクエスト</text>
+  <text x="260" y="280" class="small-text">(生住所 + DID)</text>
+
+  <rect x="375" y="270" width="50" height="80" class="activation"/>
+  <rect x="360" y="320" width="280" height="60" class="note-box" rx="3"/>
+  <text x="370" y="340" class="small-text">• 住所正規化 (AMF)</text>
+  <text x="370" y="355" class="small-text">• PID生成</text>
+  <text x="370" y="370" class="small-text">• VC作成・署名</text>
+
+  <path d="M 400 360 L 125 360" class="return-arrow"/>
+  <text x="260" y="355" class="small-text">2. Address PID VC</text>
+  <text x="260" y="370" class="small-text">(検証可能資格証明)</text>
+
+  <!-- Phase 2: EC Order -->
+  <rect x="20" y="420" width="1520" height="30" fill="#27ae60"/>
+  <text x="780" y="440" text-anchor="middle" class="text" fill="white">フェーズ2: EC注文・ZK証明生成 (EC Order & ZK Proof Generation)</text>
+
+  <rect x="100" y="470" width="50" height="60" class="activation"/>
+  <path d="M 125 490 L 675 490" class="message-arrow"/>
+  <text x="400" y="485" class="small-text">3. 商品購入・チェックアウト</text>
+  <text x="400" y="500" class="small-text">(PIDトークン)</text>
+
+  <rect x="650" y="490" width="50" height="100" class="activation"/>
+  <path d="M 675 520 L 400 520" class="message-arrow"/>
+  <text x="535" y="515" class="small-text">4. ZK証明リクエスト</text>
+  <text x="535" y="530" class="small-text">(配送条件)</text>
+
+  <rect x="375" y="520" width="50" height="140" class="activation"/>
+  <rect x="360" y="570" width="280" height="80" class="note-box" rx="3"/>
+  <text x="370" y="590" class="small-text">• 配送条件チェック</text>
+  <text x="370" y="605" class="small-text">• ZK-Membership Proof生成</text>
+  <text x="370" y="620" class="small-text">• Merkle Root計算</text>
+  <text x="370" y="635" class="small-text">• 証明署名</text>
+
+  <path d="M 400 660 L 675 660" class="return-arrow"/>
+  <text x="535" y="655" class="small-text">5. ZK証明 + PIDトークン</text>
+  <text x="535" y="670" class="small-text">(生住所は含まず)</text>
+
+  <!-- Note box for EC Site -->
+  <rect x="750" y="690" width="350" height="70" class="note-box" rx="3"/>
+  <text x="760" y="710" class="small-text">ECサイトが保存するデータ:</text>
+  <text x="760" y="725" class="small-text">• 注文ID</text>
+  <text x="760" y="740" class="small-text">• PIDトークン (匿名化された住所参照)</text>
+  <text x="760" y="755" class="small-text">• ZK証明 (配送可能性の証明)</text>
+
+  <!-- Phase 3: Payment & Waybill -->
+  <rect x="20" y="800" width="1520" height="30" fill="#3498db"/>
+  <text x="780" y="820" text-anchor="middle" class="text" fill="white">フェーズ3: 決済・送り状発行 (Payment & Waybill Generation)</text>
+
+  <rect x="650" y="850" width="50" height="100" class="activation"/>
+  <rect x="530" y="870" width="280" height="70" class="note-box" rx="3"/>
+  <text x="540" y="890" class="small-text">• 決済処理</text>
+  <text x="540" y="905" class="small-text">• ZKP付き送り状作成</text>
+  <text x="540" y="920" class="small-text">• 追跡番号発行</text>
+
+  <path d="M 675 940 L 925 940" class="message-arrow"/>
+  <text x="800" y="935" class="small-text">6. 配送依頼</text>
+  <text x="800" y="950" class="small-text">(ZKP送り状 + PIDトークン)</text>
+
+  <!-- Phase 4: Delivery - Address Resolution -->
+  <rect x="20" y="1000" width="1520" height="30" fill="#e74c3c"/>
+  <text x="780" y="1020" text-anchor="middle" class="text" fill="white">フェーズ4: 配送実行・PID解決 (Delivery Execution & PID Resolution)</text>
+
+  <rect x="900" y="1050" width="50" height="200" class="activation"/>
+  <path d="M 925 1070 L 400 1070" class="message-arrow"/>
+  <text x="660" y="1065" class="small-text">7. PID解決リクエスト</text>
+  <text x="660" y="1080" class="small-text">(アクセストークン + 理由)</text>
+
+  <rect x="375" y="1070" width="50" height="150" class="activation"/>
+  
+  <!-- Access Policy Check -->
+  <rect x="250" y="1100" width="300" height="80" class="note-box" rx="3"/>
+  <text x="260" y="1120" class="small-text">アクセス制御チェック:</text>
+  <text x="260" y="1135" class="small-text">• キャリアDID検証</text>
+  <text x="260" y="1150" class="small-text">• アクセスポリシー確認</text>
+  <text x="260" y="1165" class="small-text">• トークン有効性チェック</text>
+
+  <!-- Check revocation list -->
+  <path d="M 400 1190 L 1175 1190" class="message-arrow"/>
+  <text x="785" y="1185" class="small-text">8. PID失効チェック</text>
+
+  <rect x="1150" y="1190" width="50" height="40" class="activation"/>
+  <path d="M 1175 1225 L 400 1225" class="return-arrow"/>
+  <text x="785" y="1220" class="small-text">9. 失効状態 (有効)</text>
+
+  <!-- Log access -->
+  <path d="M 400 1240 L 1425 1240" class="message-arrow"/>
+  <text x="910" y="1235" class="small-text">10. アクセスログ記録</text>
+
+  <rect x="1400" y="1240" width="50" height="40" class="activation"/>
+  <rect x="1280" y="1260" width="270" height="60" class="note-box" rx="3"/>
+  <text x="1290" y="1280" class="small-text">監査ログ:</text>
+  <text x="1290" y="1295" class="small-text">• アクセス者: キャリアDID</text>
+  <text x="1290" y="1310" class="small-text">• 対象PID、タイムスタンプ</text>
+
+  <!-- Return full address -->
+  <path d="M 400 1320 L 925 1320" class="return-arrow"/>
+  <text x="660" y="1315" class="small-text">11. 完全な住所データ</text>
+  <text x="660" y="1330" class="small-text">(ラストワンマイル配送用)</text>
+
+  <!-- Phase 5: Delivery Tracking -->
+  <rect x="20" y="1380" width="1520" height="30" fill="#9b59b6"/>
+  <text x="780" y="1400" text-anchor="middle" class="text" fill="white">フェーズ5: 配送追跡 (Delivery Tracking)</text>
+
+  <rect x="900" y="1430" width="50" height="240" class="activation"/>
+  
+  <!-- Status updates -->
+  <path d="M 925 1450 L 675 1450" class="message-arrow"/>
+  <text x="800" y="1445" class="small-text">12. 配送ステータス: 出荷</text>
+
+  <rect x="650" y="1450" width="50" height="200" class="activation"/>
+  <path d="M 675 1480 L 125 1480" class="return-arrow"/>
+  <text x="400" y="1475" class="small-text">13. 通知: 配送開始</text>
+
+  <path d="M 925 1520 L 675 1520" class="message-arrow"/>
+  <text x="800" y="1515" class="small-text">14. ステータス: 配達中</text>
+
+  <path d="M 675 1550 L 125 1550" class="return-arrow"/>
+  <text x="400" y="1545" class="small-text">15. 通知: 配達員が向かっています</text>
+
+  <path d="M 925 1590 L 675 1590" class="message-arrow"/>
+  <text x="800" y="1585" class="small-text">16. ステータス: 配達完了</text>
+
+  <path d="M 675 1620 L 125 1620" class="return-arrow"/>
+  <text x="400" y="1615" class="small-text">17. 通知: 配達完了</text>
+
+  <!-- Phase 6: Address Update (Optional) -->
+  <rect x="20" y="1710" width="1520" height="30" fill="#f39c12"/>
+  <text x="780" y="1730" text-anchor="middle" class="text" fill="white">フェーズ6: 住所更新（オプショナル）(Address Update - Optional)</text>
+
+  <rect x="100" y="1760" width="50" height="120" class="activation"/>
+  <path d="M 125 1780 L 400 1780" class="message-arrow"/>
+  <text x="260" y="1775" class="small-text">18. 新住所登録 + 引越し証明</text>
+  <text x="260" y="1790" class="small-text">(旧PID + 新PID + UserDID)</text>
+
+  <rect x="375" y="1780" width="50" height="180" class="activation"/>
+  <rect x="360" y="1820" width="280" height="100" class="note-box" rx="3"/>
+  <text x="370" y="1840" class="small-text">• ZK-Version Proof生成</text>
+  <text x="370" y="1855" class="small-text">  (所有者一致を証明)</text>
+  <text x="370" y="1870" class="small-text">• 新PID発行</text>
+  <text x="370" y="1885" class="small-text">• 旧PIDを失効リストに追加</text>
+  <text x="370" y="1900" class="small-text">• 新VC作成・署名</text>
+
+  <!-- Add to revocation list -->
+  <path d="M 400 1930 L 1175 1930" class="message-arrow"/>
+  <text x="785" y="1925" class="small-text">19. 旧PID失効登録</text>
+  <text x="785" y="1940" class="small-text">(newPid参照付き)</text>
+
+  <rect x="1150" y="1930" width="50" height="40" class="activation"/>
+
+  <!-- Return new credentials -->
+  <path d="M 400 1980 L 125 1980" class="return-arrow"/>
+  <text x="260" y="1975" class="small-text">20. 新Address PID VC</text>
+  <text x="260" y="1990" class="small-text">+ ZK-Version Proof</text>
+
+  <!-- Summary box -->
+  <rect x="50" y="2040" width="1500" height="120" fill="#ecf0f1" stroke="#34495e" stroke-width="2" rx="5"/>
+  <text x="800" y="2070" text-anchor="middle" class="subtitle">データフローサマリー</text>
+  
+  <text x="70" y="2095" class="small-text">✓ ユーザーの生住所はアドレスプロバイダのみが保持</text>
+  <text x="70" y="2115" class="small-text">✓ ECサイトは PIDトークン と ZK証明のみを保存（生住所は見ない）</text>
+  <text x="70" y="2135" class="small-text">✓ 配送業者はラストワンマイルでのみアクセス権を取得（すべてログ記録）</text>
+  <text x="70" y="2155" class="small-text">✓ 住所変更時も継続性を保証（ZK-Version Proofで所有者一致を証明）</text>
+
+</svg>
