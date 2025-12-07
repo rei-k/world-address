@@ -1,0 +1,17 @@
+{
+  "name": "zkp-demo",
+  "version": "1.0.0",
+  "description": "Zero-Knowledge Proof Address Protocol demo",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "demo:registration": "node src/01-registration-flow.js",
+    "demo:shipping": "node src/02-shipping-flow.js",
+    "demo:delivery": "node src/03-delivery-flow.js",
+    "demo:update": "node src/04-address-update-flow.js",
+    "demo:all": "npm run demo:registration && npm run demo:shipping && npm run demo:delivery && npm run demo:update"
+  },
+  "dependencies": {
+    "@vey/core": "file:../../sdk/core"
+  }
+}
