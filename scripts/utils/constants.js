@@ -2,22 +2,14 @@
  * Constants for libaddressinput fetcher
  */
 
-const path = require('path');
-const fs = require('fs');
+const { loadCountryCodes } = require('./data-loader');
 
 // Base URL for Google's libaddressinput API
 const BASE_URL = 'https://chromium-i18n.appspot.com/ssl-address';
 
 // Load country codes from external data file
-const COUNTRY_CODES = (() => {
-  try {
-    const dataPath = path.join(__dirname, '..', 'data', 'country-codes.json');
-    return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-  } catch (error) {
-    console.warn('Warning: Could not load country-codes.json, using empty default');
-    return {};
-  }
-})();
+// This keeps the constants file focused and data separated
+const COUNTRY_CODES = loadCountryCodes();
 
 // Flatten all country codes
 const ALL_COUNTRY_CODES = Object.values(COUNTRY_CODES).flat();

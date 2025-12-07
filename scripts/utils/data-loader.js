@@ -15,6 +15,11 @@ const dataCache = {};
  * @returns {Object} Parsed JSON data
  */
 function loadData(filename) {
+  // Validate filename to prevent directory traversal
+  if (!filename || filename.includes('..') || path.isAbsolute(filename)) {
+    throw new Error(`Invalid filename: ${filename}`);
+  }
+
   // Return cached data if available
   if (dataCache[filename]) {
     return dataCache[filename];
