@@ -636,6 +636,17 @@ export type ZKProofType =
   | 'halo2';       // Halo2
 
 /**
+ * ZKP Pattern Type
+ * Different patterns of ZKP for various use cases in the address protocol
+ */
+export type ZKPPatternType =
+  | 'membership'          // ZK-Membership Proof (Address Existence)
+  | 'structure'           // ZK-Structure Proof (PID Hierarchy)
+  | 'selective-reveal'    // ZK-Selective Reveal (Partial Disclosure)
+  | 'version'             // ZK-Version Proof (Address Update/Migration)
+  | 'locker';             // ZK-Locker Proof (Locker Membership)
+
+/**
  * ZK Circuit Definition
  * ZK circuit metadata
  */
@@ -674,6 +685,93 @@ export interface ZKProof {
   /** Prover identifier (optional) */
   prover?: string;
 }
+
+/**
+ * ZK-Membership Proof
+ * Proves that an address PID belongs to a valid set (Merkle tree) without revealing the address
+ */
+export interface ZKMembershipProof extends ZKProof {
+  /** Pattern type */
+  patternType: 'membership';
+  /** Merkle root of valid address set */
+  merkleRoot: string;
+  /** Merkle path (proof elements) */
+  merklePath?: string[];
+  /** Index in the tree (optional, for verification) */
+  leafIndex?: number;
+}
+
+/**
+ * ZK-Structure Proof
+ * Proves that a PID has correct hierarchical structure without revealing the full address
+ */
+export interface ZKStructureProof extends ZKProof {
+  /** Pattern type */
+  patternType: 'structure';
+  /** Country code (public) */
+  countryCode: string;
+  /** Number of hierarchy levels validated */
+  hierarchyDepth: number;
+  /** Hash of structure validation rules */
+  rulesHash?: string;
+}
+
+/**
+ * ZK-Selective Reveal Proof
+ * Allows partial disclosure of address information with user control
+ */
+export interface ZKSelectiveRevealProof extends ZKProof {
+  /** Pattern type */
+  patternType: 'selective-reveal';
+  /** Revealed fields (e.g., ['country', 'postal_code']) */
+  revealedFields: string[];
+  /** Revealed values */
+  revealedValues: Record<string, string>;
+  /** SD-JWT disclosure nonce */
+  disclosureNonce?: string;
+}
+
+/**
+ * ZK-Version Proof
+ * Proves consistency between old and new PID after address update
+ */
+export interface ZKVersionProof extends ZKProof {
+  /** Pattern type */
+  patternType: 'version';
+  /** Old PID (revoked) */
+  oldPid: string;
+  /** New PID (current) */
+  newPid: string;
+  /** Migration timestamp */
+  migrationTimestamp: string;
+  /** Proof of ownership continuity */
+  ownershipProof?: string;
+}
+
+/**
+ * ZK-Locker Proof
+ * Proves membership in a locker ID set without revealing which specific locker
+ */
+export interface ZKLockerProof extends ZKProof {
+  /** Pattern type */
+  patternType: 'locker';
+  /** Locker facility ID */
+  facilityId: string;
+  /** Locker zone/region */
+  zone?: string;
+  /** Merkle root of available locker IDs */
+  lockerSetRoot: string;
+}
+
+/**
+ * Combined ZKP type (union of all patterns)
+ */
+export type ZKPPattern = 
+  | ZKMembershipProof 
+  | ZKStructureProof 
+  | ZKSelectiveRevealProof 
+  | ZKVersionProof 
+  | ZKLockerProof;
 
 /**
  * ZK Proof Verification Result

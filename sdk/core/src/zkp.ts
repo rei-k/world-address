@@ -695,3 +695,552 @@ export function validateProviderSignature(
   // Placeholder: In production, use proper cryptographic verification
   return !!(signature && provider.verificationKey);
 }
+
+// ============================================================================
+// Multiple ZKP Patterns (5 Types)
+// ============================================================================
+
+/**
+ * Creates a Merkle root from a list of address PIDs
+ * 
+ * @param pids - Array of PIDs to include in the tree
+ * @returns Merkle root hash
+ */
+function createMerkleRoot(pids: string[]): string {
+  // Placeholder: In production, use actual Merkle tree implementation
+  // This would hash all PIDs and build a binary tree
+  const concatenated = pids.sort().join('|');
+  return `merkle_${Buffer.from(concatenated).toString('base64').substring(0, 32)}`;
+}
+
+/**
+ * Generates a Merkle path for a specific PID
+ * 
+ * @param pid - Target PID
+ * @param pids - All PIDs in the tree
+ * @returns Merkle path (array of hashes)
+ */
+function generateMerklePath(pid: string, pids: string[]): { path: string[]; index: number } {
+  // Placeholder: In production, compute actual Merkle path
+  const index = pids.indexOf(pid);
+  const path = pids
+    .filter((_, i) => i !== index)
+    .slice(0, Math.ceil(Math.log2(pids.length)))
+    .map(p => `hash_${Buffer.from(p).toString('base64').substring(0, 16)}`);
+  
+  return { path, index };
+}
+
+// ============================================================================
+// Pattern 1: ZK-Membership Proof (Address Existence)
+// ============================================================================
+
+/**
+ * Generates a ZK-Membership Proof
+ * Proves that an address PID exists in a valid set without revealing which one
+ * 
+ * @param pid - Address PID to prove membership of
+ * @param validPids - Set of all valid PIDs (Merkle tree leaves)
+ * @param circuit - ZK circuit for membership proof
+ * @returns ZK-Membership Proof
+ * 
+ * @example
+ * ```ts
+ * const proof = generateZKMembershipProof(
+ *   'JP-13-113-01-T07-B12',
+ *   ['JP-13-113-01-T07-B12', 'JP-14-201-05-T03-B08', ...],
+ *   circuit
+ * );
+ * ```
+ */
+export function generateZKMembershipProof(
+  pid: string,
+  validPids: string[],
+  circuit: ZKCircuit
+): import('./types').ZKMembershipProof {
+  // Generate Merkle root and path
+  const merkleRoot = createMerkleRoot(validPids);
+  const { path, index } = generateMerklePath(pid, validPids);
+
+  // Placeholder: In production, generate actual zk-SNARK proof
+  const proof = Buffer.from(
+    JSON.stringify({ pid, merkleRoot, merklePath: path })
+  ).toString('base64');
+
+  return {
+    circuitId: circuit.id,
+    proofType: circuit.proofType,
+    patternType: 'membership',
+    proof,
+    publicInputs: {
+      merkleRoot,
+      timestamp: new Date().toISOString(),
+    },
+    timestamp: new Date().toISOString(),
+    merkleRoot,
+    merklePath: path,
+    leafIndex: index,
+  };
+}
+
+/**
+ * Verifies a ZK-Membership Proof
+ * 
+ * @param proof - Membership proof to verify
+ * @param circuit - ZK circuit used
+ * @param merkleRoot - Expected Merkle root of valid PIDs
+ * @returns Verification result
+ */
+export function verifyZKMembershipProof(
+  proof: import('./types').ZKMembershipProof,
+  circuit: ZKCircuit,
+  merkleRoot: string
+): ZKProofVerificationResult {
+  // Verify circuit ID matches
+  if (proof.circuitId !== circuit.id) {
+    return {
+      valid: false,
+      circuitId: proof.circuitId,
+      error: 'Circuit ID mismatch',
+      verifiedAt: new Date().toISOString(),
+    };
+  }
+
+  // Verify Merkle root matches
+  if (proof.merkleRoot !== merkleRoot) {
+    return {
+      valid: false,
+      circuitId: proof.circuitId,
+      error: 'Merkle root mismatch',
+      verifiedAt: new Date().toISOString(),
+    };
+  }
+
+  // Placeholder: In production, verify actual zk-SNARK proof
+  const valid = !!(proof.proof && proof.merklePath);
+
+  return {
+    valid,
+    circuitId: proof.circuitId,
+    publicInputs: proof.publicInputs,
+    verifiedAt: new Date().toISOString(),
+    error: valid ? undefined : 'Invalid membership proof',
+  };
+}
+
+// ============================================================================
+// Pattern 2: ZK-Structure Proof (PID Hierarchy)
+// ============================================================================
+
+/**
+ * Generates a ZK-Structure Proof
+ * Proves that a PID has correct hierarchical structure (Country > Admin1 > Admin2 > ...)
+ * 
+ * @param pid - Address PID to validate structure
+ * @param countryCode - Country code (public)
+ * @param hierarchyDepth - Number of hierarchy levels to validate
+ * @param circuit - ZK circuit for structure proof
+ * @returns ZK-Structure Proof
+ * 
+ * @example
+ * ```ts
+ * const proof = generateZKStructureProof(
+ *   'JP-13-113-01-T07-B12-BN02-R342',
+ *   'JP',
+ *   8,
+ *   circuit
+ * );
+ * ```
+ */
+export function generateZKStructureProof(
+  pid: string,
+  countryCode: string,
+  hierarchyDepth: number,
+  circuit: ZKCircuit
+): import('./types').ZKStructureProof {
+  // Validate PID structure
+  const pidParts = pid.split('-');
+  
+  // Placeholder: In production, generate actual Halo2/PLONK proof
+  // that validates hierarchical consistency
+  const rulesHash = `rules_${Buffer.from(countryCode).toString('base64')}`;
+  const proof = Buffer.from(
+    JSON.stringify({ pid, countryCode, hierarchyDepth, rulesHash })
+  ).toString('base64');
+
+  return {
+    circuitId: circuit.id,
+    proofType: circuit.proofType,
+    patternType: 'structure',
+    proof,
+    publicInputs: {
+      countryCode,
+      hierarchyDepth,
+      pidLength: pidParts.length,
+      timestamp: new Date().toISOString(),
+    },
+    timestamp: new Date().toISOString(),
+    countryCode,
+    hierarchyDepth,
+    rulesHash,
+  };
+}
+
+/**
+ * Verifies a ZK-Structure Proof
+ * 
+ * @param proof - Structure proof to verify
+ * @param circuit - ZK circuit used
+ * @param expectedCountry - Expected country code
+ * @returns Verification result
+ */
+export function verifyZKStructureProof(
+  proof: import('./types').ZKStructureProof,
+  circuit: ZKCircuit,
+  expectedCountry?: string
+): ZKProofVerificationResult {
+  // Verify circuit ID
+  if (proof.circuitId !== circuit.id) {
+    return {
+      valid: false,
+      circuitId: proof.circuitId,
+      error: 'Circuit ID mismatch',
+      verifiedAt: new Date().toISOString(),
+    };
+  }
+
+  // Verify country if specified
+  if (expectedCountry && proof.countryCode !== expectedCountry) {
+    return {
+      valid: false,
+      circuitId: proof.circuitId,
+      error: 'Country code mismatch',
+      verifiedAt: new Date().toISOString(),
+    };
+  }
+
+  // Placeholder: In production, verify actual proof
+  const valid = !!(proof.proof && proof.hierarchyDepth > 0);
+
+  return {
+    valid,
+    circuitId: proof.circuitId,
+    publicInputs: proof.publicInputs,
+    verifiedAt: new Date().toISOString(),
+    error: valid ? undefined : 'Invalid structure proof',
+  };
+}
+
+// ============================================================================
+// Pattern 3: ZK-Selective Reveal Proof (Partial Disclosure)
+// ============================================================================
+
+/**
+ * Generates a ZK-Selective Reveal Proof
+ * Allows partial disclosure of address fields with user control
+ * 
+ * @param pid - Address PID
+ * @param fullAddress - Complete address data (private)
+ * @param fieldsToReveal - Fields to reveal (e.g., ['country', 'postal_code'])
+ * @param circuit - ZK circuit for selective disclosure
+ * @returns ZK-Selective Reveal Proof
+ * 
+ * @example
+ * ```ts
+ * const proof = generateZKSelectiveRevealProof(
+ *   'JP-13-113-01',
+ *   { country: 'JP', province: '13', city: 'Shibuya', postal_code: '150-0001' },
+ *   ['country', 'postal_code'],
+ *   circuit
+ * );
+ * // EC site sees only: { country: 'JP', postal_code: '150-0001' }
+ * // Carrier sees: full address
+ * ```
+ */
+export function generateZKSelectiveRevealProof(
+  pid: string,
+  fullAddress: AddressInput,
+  fieldsToReveal: string[],
+  circuit: ZKCircuit
+): import('./types').ZKSelectiveRevealProof {
+  // Extract revealed values
+  const revealedValues: Record<string, string> = {};
+  for (const field of fieldsToReveal) {
+    if (field in fullAddress) {
+      const value = (fullAddress as Record<string, unknown>)[field];
+      // Only include if value is a string and not null/undefined
+      if (typeof value === 'string') {
+        revealedValues[field] = value;
+      }
+    }
+  }
+
+  // Generate disclosure nonce for SD-JWT compatibility
+  const disclosureNonce = `nonce_${generateUUID().substring(0, 16)}`;
+
+  // Placeholder: In production, generate actual SD-JWT + zk-SNARK proof
+  const proof = Buffer.from(
+    JSON.stringify({ pid, revealedFields: fieldsToReveal, disclosureNonce })
+  ).toString('base64');
+
+  return {
+    circuitId: circuit.id,
+    proofType: circuit.proofType,
+    patternType: 'selective-reveal',
+    proof,
+    publicInputs: {
+      pid,
+      revealedFields: fieldsToReveal,
+      timestamp: new Date().toISOString(),
+    },
+    timestamp: new Date().toISOString(),
+    revealedFields: fieldsToReveal,
+    revealedValues,
+    disclosureNonce,
+  };
+}
+
+/**
+ * Verifies a ZK-Selective Reveal Proof
+ * 
+ * @param proof - Selective reveal proof to verify
+ * @param circuit - ZK circuit used
+ * @returns Verification result with revealed data
+ */
+export function verifyZKSelectiveRevealProof(
+  proof: import('./types').ZKSelectiveRevealProof,
+  circuit: ZKCircuit
+): ZKProofVerificationResult & { revealedData?: Record<string, string> } {
+  // Verify circuit ID
+  if (proof.circuitId !== circuit.id) {
+    return {
+      valid: false,
+      circuitId: proof.circuitId,
+      error: 'Circuit ID mismatch',
+      verifiedAt: new Date().toISOString(),
+    };
+  }
+
+  // Placeholder: In production, verify actual proof and selective disclosure
+  // Note: A proof with no revealed fields can still be valid (e.g., proving address exists without revealing any data)
+  const valid = !!(proof.proof && proof.revealedFields !== undefined);
+
+  return {
+    valid,
+    circuitId: proof.circuitId,
+    publicInputs: proof.publicInputs,
+    revealedData: valid ? proof.revealedValues : undefined,
+    verifiedAt: new Date().toISOString(),
+    error: valid ? undefined : 'Invalid selective reveal proof',
+  };
+}
+
+// ============================================================================
+// Pattern 4: ZK-Version Proof (Address Update/Migration)
+// ============================================================================
+
+/**
+ * Generates a ZK-Version Proof
+ * Proves consistency between old and new PID after address change
+ * 
+ * @param oldPid - Previous PID (revoked)
+ * @param newPid - New PID (current)
+ * @param userDid - User's DID (proof of ownership)
+ * @param circuit - ZK circuit for version proof
+ * @returns ZK-Version Proof
+ * 
+ * @example
+ * ```ts
+ * const proof = generateZKVersionProof(
+ *   'JP-13-113-01-T07-B12',
+ *   'JP-14-201-05-T03-B08',
+ *   'did:key:user123',
+ *   circuit
+ * );
+ * ```
+ */
+export function generateZKVersionProof(
+  oldPid: string,
+  newPid: string,
+  userDid: string,
+  circuit: ZKCircuit
+): import('./types').ZKVersionProof {
+  const migrationTimestamp = new Date().toISOString();
+
+  // Generate ownership proof (placeholder)
+  const ownershipProof = `ownership_${Buffer.from(userDid).toString('base64').substring(0, 16)}`;
+
+  // Placeholder: In production, generate actual zk-SNARK proof
+  // proving that same user owns both old and new PIDs
+  const proof = Buffer.from(
+    JSON.stringify({ oldPid, newPid, userDid, migrationTimestamp })
+  ).toString('base64');
+
+  return {
+    circuitId: circuit.id,
+    proofType: circuit.proofType,
+    patternType: 'version',
+    proof,
+    publicInputs: {
+      oldPid,
+      newPid,
+      migrationTimestamp,
+      timestamp: migrationTimestamp,
+    },
+    timestamp: migrationTimestamp,
+    oldPid,
+    newPid,
+    migrationTimestamp,
+    ownershipProof,
+  };
+}
+
+/**
+ * Verifies a ZK-Version Proof
+ * 
+ * @param proof - Version proof to verify
+ * @param circuit - ZK circuit used
+ * @param revocationList - Revocation list to check old PID status
+ * @returns Verification result
+ */
+export function verifyZKVersionProof(
+  proof: import('./types').ZKVersionProof,
+  circuit: ZKCircuit,
+  revocationList?: RevocationList
+): ZKProofVerificationResult {
+  // Verify circuit ID
+  if (proof.circuitId !== circuit.id) {
+    return {
+      valid: false,
+      circuitId: proof.circuitId,
+      error: 'Circuit ID mismatch',
+      verifiedAt: new Date().toISOString(),
+    };
+  }
+
+  // Check if old PID is in revocation list
+  if (revocationList && !isPIDRevoked(proof.oldPid, revocationList)) {
+    return {
+      valid: false,
+      circuitId: proof.circuitId,
+      error: 'Old PID not revoked',
+      verifiedAt: new Date().toISOString(),
+    };
+  }
+
+  // Placeholder: In production, verify actual proof
+  const valid = !!(proof.proof && proof.oldPid && proof.newPid);
+
+  return {
+    valid,
+    circuitId: proof.circuitId,
+    publicInputs: proof.publicInputs,
+    verifiedAt: new Date().toISOString(),
+    error: valid ? undefined : 'Invalid version proof',
+  };
+}
+
+// ============================================================================
+// Pattern 5: ZK-Locker Proof (Locker Membership)
+// ============================================================================
+
+/**
+ * Generates a ZK-Locker Proof
+ * Proves that user has access to a locker in a facility without revealing which one
+ * 
+ * @param lockerId - Specific locker ID (private)
+ * @param facilityId - Locker facility identifier (public)
+ * @param availableLockers - All locker IDs in facility
+ * @param circuit - ZK circuit for locker membership
+ * @param zone - Optional zone/region
+ * @returns ZK-Locker Proof
+ * 
+ * @example
+ * ```ts
+ * const proof = generateZKLockerProof(
+ *   'LOCKER-A-042',
+ *   'FACILITY-SHIBUYA-STATION',
+ *   ['LOCKER-A-001', 'LOCKER-A-002', ..., 'LOCKER-A-100'],
+ *   circuit,
+ *   'KANTO-TOKYO-SHIBUYA'
+ * );
+ * ```
+ */
+export function generateZKLockerProof(
+  lockerId: string,
+  facilityId: string,
+  availableLockers: string[],
+  circuit: ZKCircuit,
+  zone?: string
+): import('./types').ZKLockerProof {
+  // Generate Merkle root for locker set
+  const lockerSetRoot = createMerkleRoot(availableLockers);
+  const { path } = generateMerklePath(lockerId, availableLockers);
+
+  // Placeholder: In production, generate actual ZK-Membership proof
+  const proof = Buffer.from(
+    JSON.stringify({ lockerId, facilityId, lockerSetRoot, merklePath: path })
+  ).toString('base64');
+
+  return {
+    circuitId: circuit.id,
+    proofType: circuit.proofType,
+    patternType: 'locker',
+    proof,
+    publicInputs: {
+      facilityId,
+      lockerSetRoot,
+      zone,
+      timestamp: new Date().toISOString(),
+    },
+    timestamp: new Date().toISOString(),
+    facilityId,
+    zone,
+    lockerSetRoot,
+  };
+}
+
+/**
+ * Verifies a ZK-Locker Proof
+ * 
+ * @param proof - Locker proof to verify
+ * @param circuit - ZK circuit used
+ * @param expectedFacilityId - Expected facility ID
+ * @returns Verification result
+ */
+export function verifyZKLockerProof(
+  proof: import('./types').ZKLockerProof,
+  circuit: ZKCircuit,
+  expectedFacilityId?: string
+): ZKProofVerificationResult {
+  // Verify circuit ID
+  if (proof.circuitId !== circuit.id) {
+    return {
+      valid: false,
+      circuitId: proof.circuitId,
+      error: 'Circuit ID mismatch',
+      verifiedAt: new Date().toISOString(),
+    };
+  }
+
+  // Verify facility ID if specified
+  if (expectedFacilityId && proof.facilityId !== expectedFacilityId) {
+    return {
+      valid: false,
+      circuitId: proof.circuitId,
+      error: 'Facility ID mismatch',
+      verifiedAt: new Date().toISOString(),
+    };
+  }
+
+  // Placeholder: In production, verify actual proof
+  const valid = !!(proof.proof && proof.lockerSetRoot);
+
+  return {
+    valid,
+    circuitId: proof.circuitId,
+    publicInputs: proof.publicInputs,
+    verifiedAt: new Date().toISOString(),
+    error: valid ? undefined : 'Invalid locker proof',
+  };
+}

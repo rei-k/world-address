@@ -617,3 +617,282 @@ APIレート制限は以下の通りです：
 - `delivery.failed` - 配送が失敗した
 
 Webhook設定については、プロバイダのダッシュボードを参照してください。
+
+---
+
+## 5つのZKPパターンAPI
+
+### Pattern 1: ZK-Membership Proof
+
+#### generateZKMembershipProof
+
+住所が有効なPIDセットに含まれることを証明するZK-Membership Proofを生成します。
+
+**Signature:**
+```typescript
+function generateZKMembershipProof(
+  pid: string,
+  validPids: string[],
+  circuit: ZKCircuit
+): ZKMembershipProof
+```
+
+**Parameters:**
+- `pid` (string): 証明対象の住所PID
+- `validPids` (string[]): 有効なPIDの配列（Merkle Treeの葉ノード）
+- `circuit` (ZKCircuit): メンバーシップ証明用のZK回路
+
+**Returns:**
+- `ZKMembershipProof`: Merkle証明を含むZK-Membership Proof
+
+**Example:**
+```typescript
+const proof = generateZKMembershipProof(
+  'JP-13-113-01-T07-B12',
+  ['JP-13-113-01-T07-B12', 'JP-14-201-05-T03-B08', ...],
+  circuit
+);
+```
+
+#### verifyZKMembershipProof
+
+ZK-Membership Proofを検証します。
+
+**Signature:**
+```typescript
+function verifyZKMembershipProof(
+  proof: ZKMembershipProof,
+  circuit: ZKCircuit,
+  merkleRoot: string
+): ZKProofVerificationResult
+```
+
+**Parameters:**
+- `proof` (ZKMembershipProof): 検証するメンバーシップ証明
+- `circuit` (ZKCircuit): 使用されたZK回路
+- `merkleRoot` (string): 期待されるMerkle Root
+
+**Returns:**
+- `ZKProofVerificationResult`: 検証結果
+
+---
+
+### Pattern 2: ZK-Structure Proof
+
+#### generateZKStructureProof
+
+PIDの階層構造が正当であることを証明するZK-Structure Proofを生成します。
+
+**Signature:**
+```typescript
+function generateZKStructureProof(
+  pid: string,
+  countryCode: string,
+  hierarchyDepth: number,
+  circuit: ZKCircuit
+): ZKStructureProof
+```
+
+**Parameters:**
+- `pid` (string): 検証対象の住所PID
+- `countryCode` (string): 国コード（公開情報）
+- `hierarchyDepth` (number): 階層の深度
+- `circuit` (ZKCircuit): 構造証明用のZK回路
+
+**Returns:**
+- `ZKStructureProof`: PID構造証明
+
+**Example:**
+```typescript
+const proof = generateZKStructureProof(
+  'JP-13-113-01-T07-B12-BN02-R342',
+  'JP',
+  8,
+  circuit
+);
+```
+
+#### verifyZKStructureProof
+
+ZK-Structure Proofを検証します。
+
+**Signature:**
+```typescript
+function verifyZKStructureProof(
+  proof: ZKStructureProof,
+  circuit: ZKCircuit,
+  expectedCountry?: string
+): ZKProofVerificationResult
+```
+
+---
+
+### Pattern 3: ZK-Selective Reveal Proof
+
+#### generateZKSelectiveRevealProof
+
+住所の一部フィールドのみを選択的に開示するZK-Selective Reveal Proofを生成します。
+
+**Signature:**
+```typescript
+function generateZKSelectiveRevealProof(
+  pid: string,
+  fullAddress: AddressInput,
+  fieldsToReveal: string[],
+  circuit: ZKCircuit
+): ZKSelectiveRevealProof
+```
+
+**Parameters:**
+- `pid` (string): 住所PID
+- `fullAddress` (AddressInput): 完全な住所データ（秘密情報）
+- `fieldsToReveal` (string[]): 公開するフィールド名の配列
+- `circuit` (ZKCircuit): 選択的開示用のZK回路
+
+**Returns:**
+- `ZKSelectiveRevealProof`: 部分開示証明
+
+**Example:**
+```typescript
+const proof = generateZKSelectiveRevealProof(
+  'JP-13-113-01',
+  { country: 'JP', province: '13', city: 'Shibuya', postal_code: '150-0001' },
+  ['country', 'postal_code'], // これらのみ公開
+  circuit
+);
+// 結果: { country: 'JP', postal_code: '150-0001' } のみ開示
+```
+
+#### verifyZKSelectiveRevealProof
+
+ZK-Selective Reveal Proofを検証し、開示されたデータを取得します。
+
+**Signature:**
+```typescript
+function verifyZKSelectiveRevealProof(
+  proof: ZKSelectiveRevealProof,
+  circuit: ZKCircuit
+): ZKProofVerificationResult & { revealedData?: Record<string, string> }
+```
+
+**Returns:**
+- 検証結果と開示データ（`revealedData`フィールド）
+
+---
+
+### Pattern 4: ZK-Version Proof
+
+#### generateZKVersionProof
+
+住所更新時の新旧PID間の所有者一致を証明するZK-Version Proofを生成します。
+
+**Signature:**
+```typescript
+function generateZKVersionProof(
+  oldPid: string,
+  newPid: string,
+  userDid: string,
+  circuit: ZKCircuit
+): ZKVersionProof
+```
+
+**Parameters:**
+- `oldPid` (string): 旧住所のPID（失効済み）
+- `newPid` (string): 新住所のPID（現在有効）
+- `userDid` (string): ユーザーのDID（所有者証明）
+- `circuit` (ZKCircuit): バージョン証明用のZK回路
+
+**Returns:**
+- `ZKVersionProof`: 住所移行証明
+
+**Example:**
+```typescript
+const proof = generateZKVersionProof(
+  'JP-13-113-01-T07-B12',
+  'JP-14-201-05-T03-B08',
+  'did:key:user123',
+  circuit
+);
+```
+
+#### verifyZKVersionProof
+
+ZK-Version Proofを検証します。失効リストと照合して旧PIDの失効状態も確認します。
+
+**Signature:**
+```typescript
+function verifyZKVersionProof(
+  proof: ZKVersionProof,
+  circuit: ZKCircuit,
+  revocationList?: RevocationList
+): ZKProofVerificationResult
+```
+
+---
+
+### Pattern 5: ZK-Locker Proof
+
+#### generateZKLockerProof
+
+ロッカー施設内のロッカーへのアクセス権を証明するZK-Locker Proofを生成します。
+
+**Signature:**
+```typescript
+function generateZKLockerProof(
+  lockerId: string,
+  facilityId: string,
+  availableLockers: string[],
+  circuit: ZKCircuit,
+  zone?: string
+): ZKLockerProof
+```
+
+**Parameters:**
+- `lockerId` (string): 具体的なロッカーID（秘密情報）
+- `facilityId` (string): ロッカー施設ID（公開情報）
+- `availableLockers` (string[]): 施設内の全ロッカーID
+- `circuit` (ZKCircuit): ロッカー証明用のZK回路
+- `zone` (string, optional): 配送ゾーン（公開情報）
+
+**Returns:**
+- `ZKLockerProof`: ロッカーアクセス証明
+
+**Example:**
+```typescript
+const proof = generateZKLockerProof(
+  'LOCKER-A-042',                 // 秘匿
+  'FACILITY-SHIBUYA-STATION',     // 公開
+  ['LOCKER-A-001', ..., 'LOCKER-A-100'],
+  circuit,
+  'KANTO-TOKYO-SHIBUYA'           // 公開
+);
+```
+
+#### verifyZKLockerProof
+
+ZK-Locker Proofを検証します。
+
+**Signature:**
+```typescript
+function verifyZKLockerProof(
+  proof: ZKLockerProof,
+  circuit: ZKCircuit,
+  expectedFacilityId?: string
+): ZKProofVerificationResult
+```
+
+---
+
+## ZKPパターン選択ガイド
+
+適切なZKPパターンを選択するためのガイドライン：
+
+| ユースケース | 推奨パターン | 理由 |
+|------------|------------|------|
+| ECサイトに住所を見せずに注文 | ZK-Membership | 住所の存在のみ証明 |
+| PIDの正当性検証 | ZK-Structure | 階層構造の整合性証明 |
+| ECには一部、配送業者には全部開示 | ZK-Selective Reveal | 開示範囲の柔軟な制御 |
+| 引越し後の住所更新 | ZK-Version | 新旧PID間の所有権証明 |
+| 匿名ロッカー受け取り | ZK-Locker | ロッカー番号秘匿で施設アクセス証明 |
+
+複数のパターンを組み合わせることで、より複雑なプライバシー要件にも対応できます。
