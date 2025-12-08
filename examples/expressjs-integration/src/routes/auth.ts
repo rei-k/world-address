@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import { validateLogin } from '../middleware/validation.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
 import { LoginRequest, LoginResponse } from '../types/index.js';
@@ -32,17 +32,16 @@ router.post('/login', validateLogin, asyncHandler(async (req: Request, res: Resp
 
   // Generate JWT token
   const jwtSecret = process.env.JWT_SECRET || 'default-secret-change-this';
-  const expiresIn = process.env.JWT_EXPIRES_IN || '24h';
 
   const token = jwt.sign(
     { id: user.id, username: user.username },
     jwtSecret,
-    { expiresIn }
+    { expiresIn: '24h' }
   );
 
   const response: LoginResponse = {
     token,
-    expiresIn
+    expiresIn: '24h'
   };
 
   res.json(response);

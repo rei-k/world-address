@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+.pnpm-store/
 package-lock.json
 
 # Next.js
@@ -8,14 +9,29 @@ package-lock.json
 
 # Production
 /build
+dist/
 
 # Environment variables
 .env
 .env.local
 .env*.local
+.env.test
+.env.production
 
 # Vercel
 .vercel
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test coverage
+coverage/
+.nyc_output/
 
 # TypeScript
 *.tsbuildinfo
@@ -26,7 +42,18 @@ next-env.d.ts
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Optional caches
+.npm
+.eslintcache
+.stylelintcache

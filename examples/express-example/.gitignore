@@ -3,7 +3,7 @@ node_modules/
 .pnpm-store/
 package-lock.json
 
-# Build output
+# Build outputs
 dist/
 build/
 
@@ -26,19 +26,16 @@ pnpm-debug.log*
 coverage/
 .nyc_output/
 
-# IDE
-.vscode/
+# IDE and editors
 .idea/
+.vscode/
 *.swp
 *.swo
 *~
 
-# OS
+# OS files
 .DS_Store
 Thumbs.db
-
-# TypeScript
-*.tsbuildinfo
 
 # Temporary files
 tmp/
@@ -48,4 +45,3 @@ temp/
 # Optional caches
 .npm
 .eslintcache
-.stylelintcache
