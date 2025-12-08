@@ -43,6 +43,7 @@ temp/
 
 # Vite
 vite.config.ts.timestamp-*
+vite.config.js.timestamp-*
 
 # TypeScript
 *.tsbuildinfo

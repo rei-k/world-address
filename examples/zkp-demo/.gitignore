@@ -43,6 +43,7 @@ temp/
 
 # TypeScript
 *.tsbuildinfo
+*.d.ts.map
 
 # Optional caches
 .npm
