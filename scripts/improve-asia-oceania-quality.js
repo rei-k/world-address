@@ -204,10 +204,20 @@ function improveYamlFile(filePath) {
         
         if (!lang.direction) {
           // Most languages are ltr, special cases for rtl
-          const rtlLanguages = ['Arabic', 'Hebrew', 'Persian', 'Urdu'];
+          const rtlLanguages = ['Arabic', 'Hebrew', 'Persian', 'Urdu', 'Persian (Farsi)'];
           lang.direction = rtlLanguages.includes(lang.name) ? 'rtl' : 'ltr';
           modified = true;
           logger.info(`${countryCode || fileName}: Added direction for ${lang.name}`);
+        }
+        
+        // Fix incorrect direction for Persian/Urdu/Arabic/Hebrew
+        if (lang.direction === 'ltr') {
+          const rtlLanguages = ['Arabic', 'Hebrew', 'Persian', 'Urdu', 'Persian (Farsi)'];
+          if (rtlLanguages.includes(lang.name)) {
+            lang.direction = 'rtl';
+            modified = true;
+            logger.info(`${countryCode || fileName}: Fixed direction for ${lang.name} to rtl`);
+          }
         }
       }
     }
