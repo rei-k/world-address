@@ -1,0 +1,78 @@
+name:
+  en: Troll Research Station
+  local: Trollstasjonen
+operating_country:
+  name: Norway
+  alpha2: 'NO'
+  program: Norwegian Polar Institute (Norsk Polarinstitutt)
+location:
+  coordinates:
+    latitude: -72.0114
+    longitude: 2.535
+  region: Jutulsessen, Queen Maud Land (Dronning Maud Land)
+  claim_area: Norway (Queen Maud Land)
+operational:
+  type: year_round
+  established: 1990
+  capacity_winter: 8
+  capacity_summer: 45
+address_format:
+  mail_routing:
+    via_country: Norway
+    via_city: Tromsø
+    postal_code: '9296'
+  example: Name, Troll Station, Norwegian Polar Institute, Fram Centre, P.O. Box 6606 Langnes, 9296 Tromsø, Norway
+status:
+  active: true
+  note: Norway's only year-round Antarctic station; major logistics hub for Dronning Maud Land
+geo:
+  center:
+    latitude: -72.0114
+    longitude: 2.535
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-08T06:51:00.000Z'
+pos:
+  currency:
+    code: NOK
+    symbol: kr
+    symbol_position: after
+    decimal_places: 2
+    decimal_separator: ','
+    thousands_separator: ' '
+  tax:
+    type: VAT
+    rate:
+      standard: 0.25
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: medium
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: DD.MM.YYYY
+    time_format: 24h
+    timezone: Europe/Oslo
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '17:00'
+    sunday_trading: false
+    public_holidays_trading: false

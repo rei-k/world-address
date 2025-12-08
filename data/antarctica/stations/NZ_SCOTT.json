@@ -1,0 +1,103 @@
+{
+  "name": {
+    "en": "Scott Base"
+  },
+  "operating_country": {
+    "name": "New Zealand",
+    "alpha2": "NZ",
+    "program": "Antarctica New Zealand"
+  },
+  "location": {
+    "coordinates": {
+      "latitude": -77.8492,
+      "longitude": 166.7619
+    },
+    "region": "Pram Point, Ross Island",
+    "claim_area": "New Zealand (Ross Dependency)"
+  },
+  "operational": {
+    "type": "year_round",
+    "established": 1957,
+    "capacity_winter": 12,
+    "capacity_summer": 130
+  },
+  "address_format": {
+    "mail_routing": {
+      "via_country": "New Zealand",
+      "via_city": "Christchurch",
+      "postal_code": "8053"
+    },
+    "example": "Name, Scott Base, c/o Antarctica New Zealand, Private Bag 4745, Christchurch 8053, New Zealand"
+  },
+  "status": {
+    "active": true,
+    "note": "New Zealand's only Antarctic research station; 3 km from US McMurdo Station"
+  },
+  "geo": {
+    "center": {
+      "latitude": -77.8492,
+      "longitude": 166.7619,
+      "accuracy": 1000,
+      "source": "database",
+      "captured_at": "2025-12-08T06:51:00.000Z"
+    }
+  },
+  "pos": {
+    "currency": {
+      "code": "NZD",
+      "symbol": "$",
+      "symbol_position": "before",
+      "decimal_places": 2,
+      "decimal_separator": ".",
+      "thousands_separator": ","
+    },
+    "tax": {
+      "type": "GST",
+      "rate": {
+        "standard": 0.15
+      },
+      "included_in_price": true,
+      "invoice_requirement": "optional"
+    },
+    "receipt": {
+      "required_fields": [
+        "business_name",
+        "date",
+        "items",
+        "total"
+      ],
+      "paper_width": "80mm",
+      "electronic_allowed": true,
+      "retention_period": "7 years"
+    },
+    "fiscal": {
+      "fiscal_device_required": false,
+      "registration_required": false,
+      "reporting_frequency": "varies"
+    },
+    "payment_methods": [
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "high"
+      },
+      {
+        "type": "credit_card",
+        "name": "Credit Card",
+        "prevalence": "high"
+      }
+    ],
+    "locale": {
+      "date_format": "DD/MM/YYYY",
+      "time_format": "12h",
+      "timezone": "Pacific/Auckland",
+      "week_start": "monday"
+    },
+    "business_hours": {
+      "typical_open": "09:00",
+      "typical_close": "17:00",
+      "sunday_trading": true,
+      "public_holidays_trading": false
+    }
+  }
+}

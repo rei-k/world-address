@@ -1,0 +1,77 @@
+name:
+  en: Marambio Base
+  local: Base Marambio
+operating_country:
+  name: Argentina
+  alpha2: AR
+  program: Instituto Antártico Argentino (IAA) / Fuerza Aérea Argentina
+location:
+  coordinates:
+    latitude: -64.2417
+    longitude: -56.6261
+  region: Marambio Island (Seymour Island), Antarctic Peninsula
+  claim_area: Argentina (Argentine Antarctica)
+operational:
+  type: year_round
+  established: 1969
+  capacity_winter: 70
+  capacity_summer: 165
+address_format:
+  mail_routing:
+    via_country: Argentina
+    via_city: Buenos Aires
+  example: Name, Base Marambio, Instituto Antártico Argentino, Cerrito 1248, C1010 AAZ Buenos Aires, Argentina
+status:
+  active: true
+  note: Main Argentine Antarctic air logistics hub; first station with wheeled aircraft runway in Antarctica
+geo:
+  center:
+    latitude: -64.2417
+    longitude: -56.6261
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-08T06:51:00.000Z'
+pos:
+  currency:
+    code: ARS
+    symbol: $
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: ','
+    thousands_separator: .
+  tax:
+    type: VAT
+    rate:
+      standard: 0.21
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: DD/MM/YYYY
+    time_format: 24h
+    timezone: America/Argentina/Buenos_Aires
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false
