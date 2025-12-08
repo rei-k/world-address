@@ -142,6 +142,63 @@ pos:
     - type: credit_card
       name: クレジットカード
       prevalence: high
+      brands:
+        - brand: Visa
+          accepted: true
+          prevalence: high
+          features:
+            contactless: true
+            chip_and_pin: true
+            online_payment: true
+            recurring: true
+        - brand: Mastercard
+          accepted: true
+          prevalence: high
+          features:
+            contactless: true
+            chip_and_pin: true
+            online_payment: true
+            recurring: true
+        - brand: JCB
+          accepted: true
+          prevalence: high
+          features:
+            contactless: true
+            chip_and_pin: true
+            online_payment: true
+            recurring: true
+        - brand: American Express
+          accepted: true
+          prevalence: medium
+          features:
+            contactless: true
+            chip_and_pin: true
+            online_payment: true
+            recurring: true
+        - brand: Diners Club
+          accepted: true
+          prevalence: medium
+          features:
+            contactless: true
+            chip_and_pin: true
+            online_payment: true
+            recurring: true
+        - brand: Discover
+          accepted: false
+          prevalence: low
+          features:
+            contactless: false
+            chip_and_pin: false
+            online_payment: false
+            recurring: false
+        - brand: UnionPay
+          accepted: true
+          prevalence: medium
+          features:
+            contactless: true
+            chip_and_pin: true
+            online_payment: true
+            recurring: false
     - type: mobile
       name: Suica/PASMO
       prevalence: high
