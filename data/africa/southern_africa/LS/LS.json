@@ -78,6 +78,16 @@
     "regex": "^[0-9]{3}$",
     "example": "100"
   },
+  "validation": {
+    "rules": [
+      "District is required",
+      "Postal codes are partially implemented"
+    ]
+  },
+  "examples": {
+    "domestic": "Kingsway Rd, Maseru, Maseru District, Lesotho",
+    "international": "Kingsway Rd, Maseru District, 100, Lesotho"
+  },
   "geo": {
     "center": {
       "latitude": -29.61,

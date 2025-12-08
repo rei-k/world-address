@@ -51,6 +51,13 @@ postal_code:
   stability: low
   regex: ^[0-9]{5}$
   example: '9000'
+validation:
+  rules:
+    - Region is required
+    - Postal codes are being introduced
+examples:
+  domestic: 154 Independence Ave, Windhoek, Khomas Region, Namibia
+  international: 154 Independence Ave, Khomas Region, 9000, Namibia
 geo:
   center:
     latitude: -22.9576

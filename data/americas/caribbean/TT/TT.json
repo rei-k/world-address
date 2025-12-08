@@ -1,6 +1,14 @@
 {
   "name": {
-    "en": "Trinidad and Tobago"
+    "en": "Trinidad and Tobago",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Trinidad and Tobago",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
   },
   "iso_codes": {
     "alpha2": "TT",

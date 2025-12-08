@@ -1,6 +1,14 @@
 {
   "name": {
-    "en": "Jamaica"
+    "en": "Jamaica",
+    "local": [
+      {
+        "lang": "jam",
+        "value": "Jamaica",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
   },
   "iso_codes": {
     "alpha2": "JM",

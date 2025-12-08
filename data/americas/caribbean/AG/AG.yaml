@@ -1,5 +1,10 @@
 name:
   en: Antigua and Barbuda
+  local:
+    - lang: en
+      value: Antigua and Barbuda
+      script: Latin
+      direction: ltr
 iso_codes:
   alpha2: AG
   alpha3: ATG
