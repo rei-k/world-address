@@ -1,8 +1,6 @@
 # Docker Compose for World Address YAML Development
 # Complete development environment with all services
 
-version: '3.8'
-
 services:
   # Main application
   app:
