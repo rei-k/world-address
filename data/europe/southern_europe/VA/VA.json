@@ -60,6 +60,26 @@
     }
   },
   "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
     "postal_code": {
       "required": true,
       "regex": "^00120$",
