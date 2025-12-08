@@ -1,0 +1,8 @@
+# Kubernetes Namespace for World Address YAML
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: world-address
+  labels:
+    app: world-address
+    environment: production

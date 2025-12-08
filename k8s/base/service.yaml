@@ -1,0 +1,23 @@
+# Service for World Address YAML Application
+apiVersion: v1
+kind: Service
+metadata:
+  name: world-address-service
+  namespace: world-address
+  labels:
+    app: world-address
+    component: app
+spec:
+  type: ClusterIP
+  selector:
+    app: world-address
+    component: app
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3000
+    protocol: TCP
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800

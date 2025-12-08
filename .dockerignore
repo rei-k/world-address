@@ -1,0 +1,73 @@
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build artifacts
+dist/
+build/
+*.tgz
+
+# Test files
+coverage/
+.nyc_output/
+tests/
+**/*.test.ts
+**/*.test.js
+**/*.spec.ts
+**/*.spec.js
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+
+# Documentation
+docs/
+*.md
+!README.md
+!LICENSE
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Development
+.editorconfig
+.eslintrc.*
+.prettierrc.*
+tsconfig.json
+vitest.config.ts
+
+# Examples
+examples/
+
+# Infrastructure
+infrastructure/
+docker-compose*.yml
+Dockerfile*
+!Dockerfile

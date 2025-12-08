@@ -1,0 +1,19 @@
+# ConfigMap for World Address YAML Application Configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: world-address-config
+  namespace: world-address
+  labels:
+    app: world-address
+data:
+  NODE_ENV: "production"
+  LOG_LEVEL: "info"
+  POSTGRES_DB: "world_address"
+  POSTGRES_HOST: "postgres-service"
+  POSTGRES_PORT: "5432"
+  REDIS_HOST: "redis-service"
+  REDIS_PORT: "6379"
+  MONGODB_HOST: "mongodb-service"
+  MONGODB_PORT: "27017"
+  MONGODB_DB: "world_address"

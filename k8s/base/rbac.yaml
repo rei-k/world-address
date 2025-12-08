@@ -1,0 +1,41 @@
+# ServiceAccount for World Address YAML Application
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: world-address-sa
+  namespace: world-address
+  labels:
+    app: world-address
+---
+# Role for World Address YAML Application
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: world-address-role
+  namespace: world-address
+  labels:
+    app: world-address
+rules:
+- apiGroups: [""]
+  resources: ["configmaps", "secrets"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+---
+# RoleBinding for World Address YAML Application
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: world-address-rolebinding
+  namespace: world-address
+  labels:
+    app: world-address
+subjects:
+- kind: ServiceAccount
+  name: world-address-sa
+  namespace: world-address
+roleRef:
+  kind: Role
+  name: world-address-role
+  apiGroup: rbac.authorization.k8s.io
