@@ -1,6 +1,20 @@
 {
   "name": {
-    "en": "Barbados"
+    "en": "Barbados",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Barbados",
+        "script": "Latin",
+        "direction": "ltr"
+      },
+      {
+        "lang": "bajan",
+        "value": "Bim",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
   },
   "iso_codes": {
     "alpha2": "BB",

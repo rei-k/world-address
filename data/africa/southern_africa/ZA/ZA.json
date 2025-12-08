@@ -24,6 +24,8 @@
     "alpha3": "ZAF",
     "numeric": "710"
   },
+  "continent": "Africa",
+  "subregion": "Southern Africa",
   "languages": [
     {
       "name": "English",

@@ -1,6 +1,14 @@
 {
   "name": {
-    "en": "Saint Vincent and the Grenadines"
+    "en": "Saint Vincent and the Grenadines",
+    "local": [
+      {
+        "lang": "en",
+        "value": "Saint Vincent and the Grenadines",
+        "script": "Latin",
+        "direction": "ltr"
+      }
+    ]
   },
   "iso_codes": {
     "alpha2": "VC",

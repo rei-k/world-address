@@ -1,5 +1,10 @@
 name:
   en: Saint Kitts and Nevis
+  local:
+    - lang: en
+      value: Saint Kitts and Nevis
+      script: Latin
+      direction: ltr
 iso_codes:
   alpha2: KN
   alpha3: KNA

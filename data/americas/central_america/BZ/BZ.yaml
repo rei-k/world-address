@@ -54,6 +54,13 @@ postal_code:
   required_for_international: true
   regex: ^[A-Z]{2}-[0-9]{4}$
   example: BZ-1102
+validation:
+  rules:
+    - District は必須
+    - 郵便番号は導入途上で存在しない地域も多い
+examples:
+  domestic: 12 Albert St, Belize City, Belize District, Belize
+  international: 12 Albert St, Belize District, BZ-1102, Belize
 geo:
   center:
     latitude: 17.1899
