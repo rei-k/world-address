@@ -45,6 +45,30 @@
     }
   },
   "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      },
+      {
+        "context": "international",
+        "order": [
+          "recipient",
+          "street",
+          "house_number",
+          "postal_code",
+          "city",
+          "country"
+        ]
+      }
+    ],
     "postal_code": {
       "required": true,
       "regex": "^[0-9]{5}$",
@@ -54,7 +78,13 @@
   },
   "examples": {
     "domestic_raw": "Adrianou 1, 10558 Athina",
+    "domestic_normalized": "Adrianou 1 10558 Athina",
     "international": "Adrianou 1, 10558 Athens, Greece"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
   },
   "geo": {
     "center": {

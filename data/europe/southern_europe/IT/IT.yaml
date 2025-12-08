@@ -30,6 +30,25 @@ administrative_divisions:
     label_en: Region
     count: 20
 address_format:
+  order_variants:
+    - context: domestic
+      order:
+        - recipient
+        - street
+        - house_number
+        - postal_code
+        - city
+        - province
+        - country
+    - context: international
+      order:
+        - recipient
+        - street
+        - house_number
+        - postal_code
+        - city
+        - province
+        - country
   postal_code:
     required: true
     regex: ^[0-9]{5}$
@@ -37,7 +56,12 @@ address_format:
     example: '00184'
 examples:
   domestic_raw: Via Nazionale 1, 00184 Roma
+  domestic_normalized: Via Nazionale 1 00184 Roma
   international: Via Nazionale 1, 00184 Roma, Italy
+status:
+  un_member: true
+  recognized: true
+  disputed: false
 geo:
   center:
     latitude: 41.8719
