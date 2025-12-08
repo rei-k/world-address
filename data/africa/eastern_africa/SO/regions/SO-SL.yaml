@@ -126,7 +126,7 @@ status:
 geo:
   center:
     latitude: 9.5
-    longitude: 44
+    longitude: 44.0
     accuracy: 10000
     source: estimated
 pos:
