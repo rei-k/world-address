@@ -320,18 +320,21 @@ Example (Japan):
 
 ### China's Autonomous Regions / 中国の自治区
 
-**中国には5つの自治区と複数の特別行政区があります。**
+**中国には5つの自治区と特別な省があります。**
 
-**China has 5 autonomous regions with distinct cultural and administrative characteristics:**
+**China has 5 autonomous regions and special provinces with distinct cultural and administrative characteristics:**
 
+**Autonomous Regions (自治区):**
 - **Xinjiang Uyghur Autonomous Region (新疆ウイグル自治区)**: Largest autonomous region, predominantly Muslim Uyghur population, uses both Simplified Chinese and Uyghur (Arabic script)
 - **Tibet Autonomous Region (チベット自治区)**: High-altitude region, Tibetan Buddhist culture, uses Tibetan script and Simplified Chinese
 - **Inner Mongolia (内モンゴル自治区)**: Mongolian ethnic autonomous region, uses Mongolian Cyrillic and Traditional Mongolian scripts alongside Simplified Chinese
-- **Hainan Province (海南省)**: Tropical island province in the South China Sea, special economic zone status, tourism-focused development
 - **Ningxia Hui Autonomous Region (寧夏回族自治区)**: Hui Muslim majority region (not included in regions/ as it follows standard mainland system)
 - **Guangxi Zhuang Autonomous Region (広西チワン族自治区)**: Zhuang ethnic autonomous region (not included in regions/ as it follows standard mainland system)
 
-**Note**: Only autonomous regions with significantly different addressing, linguistic, or administrative characteristics have dedicated regional files.
+**Special Provinces (特別省):**
+- **Hainan Province (海南省)**: Tropical island province in the South China Sea, special economic zone status, tourism-focused development
+
+**Note**: Only autonomous regions and provinces with significantly different addressing, linguistic, or administrative characteristics have dedicated regional files.
 
 ### Southeast Asian Special Regions / 東南アジアの特別地域
 
@@ -348,7 +351,7 @@ Example (Japan):
 - **BARMM (バンサモロ自治地域)**: Bangsamoro Autonomous Region in Muslim Mindanao, self-governing region with special autonomy
 
 **Timor-Leste's Enclave:**
-- **Oecusse (オエクシ特別行政区)**: Exclave separated from mainland Timor-Leste
+- **Oecusse (オエクシ特別行政区)**: Enclave surrounded by Indonesian territory, separated from mainland Timor-Leste
 
 ### Disputed Territories / 係争地域
 
