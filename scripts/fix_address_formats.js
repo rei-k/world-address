@@ -56,7 +56,7 @@ function fixAddressFormat(filePath, countryCode) {
 // Main execution
 console.log('🔧 Fixing address format structures in Americas...\n');
 
-const baseDir = '/home/runner/work/world-address/world-address/data/americas';
+const baseDir = path.join(__dirname, '../data/americas');
 const regions = ['caribbean', 'central_america', 'north_america', 'south_america'];
 
 // Files that need fixing

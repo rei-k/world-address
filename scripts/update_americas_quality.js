@@ -5,7 +5,8 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 // Load tax data
-const taxData = JSON.parse(fs.readFileSync('/tmp/americas_tax_data.json', 'utf8'));
+const taxDataPath = path.join(__dirname, 'americas_tax_data.json');
+const taxData = JSON.parse(fs.readFileSync(taxDataPath, 'utf8'));
 
 // Function to update a YAML file
 function updateYAMLFile(filePath, region, countryCode) {
@@ -104,7 +105,7 @@ function updateYAMLFile(filePath, region, countryCode) {
 // Main execution
 console.log('🚀 Updating Americas YAML files with quality improvements...\n');
 
-const baseDir = '/home/runner/work/world-address/world-address/data/americas';
+const baseDir = path.join(__dirname, '../data/americas');
 const regions = ['caribbean', 'central_america', 'north_america', 'south_america'];
 
 let totalUpdated = 0;

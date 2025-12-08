@@ -5,7 +5,8 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 // Load payment methods data
-const paymentData = JSON.parse(fs.readFileSync('/tmp/americas_payment_methods.json', 'utf8'));
+const paymentDataPath = path.join(__dirname, 'americas_payment_methods.json');
+const paymentData = JSON.parse(fs.readFileSync(paymentDataPath, 'utf8'));
 
 // Function to update payment methods in a YAML file
 function updatePaymentMethods(filePath, countryCode) {
@@ -56,7 +57,7 @@ function updatePaymentMethods(filePath, countryCode) {
 // Main execution
 console.log('💳 Adding country-specific payment methods...\n');
 
-const baseDir = '/home/runner/work/world-address/world-address/data/americas';
+const baseDir = path.join(__dirname, '../data/americas');
 
 // List of countries with specific payment methods
 const countriesToUpdate = {

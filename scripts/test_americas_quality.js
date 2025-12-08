@@ -6,7 +6,7 @@ const yaml = require('js-yaml');
 
 console.log('🧪 Testing Americas Data Quality Improvements...\n');
 
-const baseDir = '/home/runner/work/world-address/world-address/data/americas';
+const baseDir = path.join(__dirname, '../data/americas');
 const regions = ['caribbean', 'central_america', 'north_america', 'south_america'];
 
 let totalCountries = 0;
