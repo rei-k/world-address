@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: FJ
   alpha3: FJI
-  numeric: '242'
+  numeric: "242"
 continent: Oceania
 subregion: Melanesia
 languages:
@@ -22,16 +22,19 @@ languages:
     role: official
     country_name: Fiji
     required_for_shipping: true
+    code: en
   - name: Fijian
     script: Latin
     direction: ltr
     role: official
     country_name: Viti
+    code: fj
   - name: Hindi
     script: Devanagari
     direction: ltr
     role: official
     country_name: फ़िजी
+    code: hi
 administrative_divisions:
   level1:
     type: Division
@@ -80,7 +83,9 @@ geo:
     longitude: 178.065
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.672Z'
+    captured_at: "2025-12-03T16:54:11.672Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: FJD
@@ -88,11 +93,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.15
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -121,7 +126,13 @@ pos:
     timezone: Pacific/Fiji
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

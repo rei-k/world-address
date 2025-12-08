@@ -22,7 +22,8 @@
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Wilayah Persekutuan Labuan"
+      "country_name": "Wilayah Persekutuan Labuan",
+      "code": "ms"
     },
     {
       "name": "English",
@@ -30,7 +31,8 @@
       "direction": "ltr",
       "role": "auxiliary",
       "required_for_shipping": true,
-      "country_name": "Federal Territory of Labuan"
+      "country_name": "Federal Territory of Labuan",
+      "code": "en"
     }
   ],
   "administrative_divisions": {
@@ -100,7 +102,9 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-05T21:23:57.299Z"
-    }
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z"
   },
   "pos": {
     "currency": {
@@ -159,5 +163,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

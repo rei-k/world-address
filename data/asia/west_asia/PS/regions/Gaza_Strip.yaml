@@ -16,11 +16,13 @@ languages:
     direction: rtl
     role: official
     country_name: قطاع غزة
+    code: ar
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     country_name: Gaza Strip
+    code: en
 administrative_divisions:
   level1:
     type: Governorate
@@ -75,7 +77,7 @@ geo:
     longitude: 34.3088
     accuracy: 1000
     source: database
-    captured_at: '2025-12-05T19:54:11.627Z'
+    captured_at: "2025-12-05T19:54:11.627Z"
   bounds:
     northeast:
       latitude: 31.5869
@@ -83,6 +85,8 @@ geo:
     southwest:
       latitude: 31.2203
       longitude: 34.2164
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: ILS
@@ -90,7 +94,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -123,7 +127,13 @@ pos:
     timezone: Asia/Gaza
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

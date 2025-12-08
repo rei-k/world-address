@@ -14,7 +14,9 @@ parent_country:
   administered_by: IL
   note: Disputed territory - de jure Syria, de facto Israel since 1967
 type: Disputed Region
-note: Rare case - two competing address systems (Israeli and Syrian) coexist in one territory - dual PID candidates
+note: >-
+  Rare case - two competing address systems (Israeli and Syrian) coexist in one territory - dual PID
+  candidates
 languages:
   - name: Hebrew
     script: Hebrew
@@ -22,17 +24,20 @@ languages:
     role: administrative
     country_name: רמת הגולן
     note: Used in Israeli-administered areas
+    code: he
   - name: Arabic
     script: Arabic
     direction: rtl
     role: traditional
     country_name: الجولان
     note: Used by Druze population and Syrian claimants
+    code: ar
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     country_name: Golan Heights
+    code: en
 administrative_divisions:
   israeli_system:
     type: Regional Council
@@ -67,7 +72,7 @@ address_format:
       required: true
       regex: ^[0-9]{7}$
       description: Israeli 7-digit postal code
-      example: '1290000'
+      example: "1290000"
     syrian_system:
       required: false
       description: Syrian postal codes not in use
@@ -95,7 +100,7 @@ geo:
     longitude: 35.7667
     accuracy: 1000
     source: database
-    captured_at: '2025-12-05T19:54:11.627Z'
+    captured_at: "2025-12-05T19:54:11.627Z"
   bounds:
     northeast:
       latitude: 33.3167
@@ -103,6 +108,8 @@ geo:
     southwest:
       latitude: 32.7
       longitude: 35.5667
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency_israeli_system:
     code: ILS
@@ -110,14 +117,14 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   currency_syrian_system:
     code: SYP
     symbol: £S
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -150,7 +157,13 @@ pos:
     timezone: Asia/Jerusalem
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

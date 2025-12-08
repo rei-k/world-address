@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: KH
   alpha3: KHM
-  numeric: '116'
+  numeric: "116"
 continent: Asia
 subregion: Southeast Asia
 languages:
@@ -16,10 +16,14 @@ languages:
     script: Khmer
     role: official
     country_name: កម្ពុជា
+    code: km
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Cambodia
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Province/Municipality
@@ -56,12 +60,12 @@ address_format:
     example: Olympic Mall
   room:
     required: false
-    example: '301'
+    example: "301"
   postal_code:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric
-    example: '120101'
+    example: "120101"
 examples:
   domestic_raw: Phnom Penh, Chamkarmon, Olympic Mall 301, 120101
   domestic_normalized: Olympic Mall 301 Chamkarmon Phnom Penh 120101
@@ -76,7 +80,9 @@ geo:
     longitude: 104.991
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.619Z'
+    captured_at: "2025-12-03T16:54:11.619Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: KHR
@@ -84,11 +90,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.1
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -117,7 +123,13 @@ pos:
     timezone: Asia/Phnom_Penh
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

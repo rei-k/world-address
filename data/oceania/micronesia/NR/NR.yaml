@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: NR
   alpha3: NRU
-  numeric: '520'
+  numeric: "520"
 continent: Oceania
 subregion: Micronesia
 languages:
@@ -17,12 +17,14 @@ languages:
     direction: ltr
     role: official
     country_name: Naoero
+    code: na
   - name: English
     script: Latin
     direction: ltr
     role: official
     country_name: Nauru
     required_for_shipping: true
+    code: en
 administrative_divisions:
   level1:
     type: District
@@ -61,7 +63,9 @@ geo:
     longitude: 166.9315
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.674Z'
+    captured_at: "2025-12-03T16:54:11.674Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: AUD
@@ -69,11 +73,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: None
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -102,7 +106,13 @@ pos:
     timezone: Pacific/Nauru
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

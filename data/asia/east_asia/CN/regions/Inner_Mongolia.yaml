@@ -21,16 +21,19 @@ languages:
     role: official
     country_name: ᠥᠪᠥᠷ ᠮᠣᠩᠭᠣᠯ
     note: Traditional Mongolian script used
+    code: mn
   - name: Chinese
     script: Han
     direction: ltr
     role: official
     country_name: 内蒙古自治区
+    code: zh
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     country_name: Inner Mongolia Autonomous Region
+    code: en
 administrative_divisions:
   level1:
     type: Prefecture
@@ -86,7 +89,7 @@ address_format:
     required: true
     regex: ^01[0-9]{4}$
     description: Inner Mongolia postal codes start with 01
-    example: '010000'
+    example: "010000"
 validation:
   allow_latin_transliteration: true
   dual_script: true
@@ -108,7 +111,9 @@ geo:
     longitude: 116.6661
     accuracy: 1000
     source: database
-    captured_at: '2025-12-05T19:54:11.627Z'
+    captured_at: "2025-12-05T19:54:11.627Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: CNY
@@ -116,7 +121,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -155,7 +160,13 @@ pos:
     timezone: Asia/Shanghai
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: true
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

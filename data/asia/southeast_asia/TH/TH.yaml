@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: TH
   alpha3: THA
-  numeric: '764'
+  numeric: "764"
 continent: Asia
 subregion: Southeast Asia
 languages:
@@ -16,11 +16,15 @@ languages:
     script: Thai
     role: official
     country_name: ประเทศไทย
+    code: th
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     required_for_shipping: true
     country_name: Thailand
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Province
@@ -57,12 +61,12 @@ address_format:
     example: เซ็นทรัลเวิลด์
   room:
     required: false
-    example: '1205'
+    example: "1205"
   postal_code:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric
-    example: '10330'
+    example: "10330"
 examples:
   domestic_raw: เซ็นทรัลเวิลด์, ปทุมวัน, กรุงเทพฯ 10330
   domestic_normalized: เซ็นทรัลเวิลด์ ปทุมวัน กรุงเทพฯ 10330
@@ -77,7 +81,9 @@ geo:
     longitude: 100.9925
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.622Z'
+    captured_at: "2025-12-03T16:54:11.622Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: THB
@@ -85,11 +91,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.07
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -118,7 +124,13 @@ pos:
     timezone: Asia/Bangkok
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

@@ -11,7 +11,7 @@ parent_country:
 iso_codes:
   alpha2: CX
   alpha3: CXR
-  numeric: '162'
+  numeric: "162"
 subregion: Indian Ocean
 languages:
   - name: English
@@ -20,14 +20,17 @@ languages:
     role: official
     country_name: Christmas Island
     required_for_shipping: true
+    code: en
   - name: Chinese
     script: Han
     direction: ltr
     role: community
+    code: zh
   - name: Malay
     script: Latin
     direction: ltr
     role: community
+    code: ms
 address_format:
   order_variants:
     - context: domestic
@@ -48,12 +51,12 @@ address_format:
     required: true
     regex: ^6798$
     description: Single postcode for Christmas Island
-    example: '6798'
+    example: "6798"
 validation:
   allow_latin_transliteration: true
   rules:
     - Christmas Island uses Australian postal system
-    - 'Single postcode: 6798'
+    - "Single postcode: 6798"
 examples:
   domestic_raw: 123 Murray Road, Settlement, Christmas Island 6798
   domestic_normalized: 123 Murray Road Settlement 6798
@@ -69,7 +72,9 @@ geo:
     longitude: 105.6904
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.669Z'
+    captured_at: "2025-12-03T16:54:11.669Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: AUD
@@ -77,7 +82,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -110,7 +115,13 @@ pos:
     timezone: Indian/Christmas
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

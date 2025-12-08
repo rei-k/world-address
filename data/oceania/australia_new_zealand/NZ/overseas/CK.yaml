@@ -16,7 +16,7 @@ parent_country:
 iso_codes:
   alpha2: CK
   alpha3: COK
-  numeric: '184'
+  numeric: "184"
 subregion: Polynesia
 languages:
   - name: English
@@ -25,6 +25,7 @@ languages:
     role: official
     country_name: Cook Islands
     required_for_shipping: true
+    code: en
   - name: Cook Islands Māori
     script: Latin
     direction: ltr
@@ -76,7 +77,9 @@ geo:
     longitude: -159.7777
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.670Z'
+    captured_at: "2025-12-03T16:54:11.670Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: NZD
@@ -84,7 +87,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -117,7 +120,13 @@ pos:
     timezone: Pacific/Rarotonga
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

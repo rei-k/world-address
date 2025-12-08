@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: PH
   alpha3: PHL
-  numeric: '608'
+  numeric: "608"
 continent: Asia
 subregion: Southeast Asia
 languages:
@@ -16,11 +16,14 @@ languages:
     script: Latin
     role: official
     country_name: Pilipinas
+    direction: ltr
   - name: English
     script: Latin
     role: official
     required_for_shipping: true
     country_name: Philippines
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Region
@@ -64,12 +67,12 @@ address_format:
     example: 15F
   room:
     required: false
-    example: '1503'
+    example: "1503"
   postal_code:
     required: true
     regex: ^[0-9]{4}$
     description: 4-digit numeric
-    example: '1004'
+    example: "1004"
 examples:
   domestic_raw: RCBC Plaza, Makati City 1004
   domestic_normalized: RCBC Plaza Makati City 1004
@@ -84,7 +87,9 @@ geo:
     longitude: 121.774
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.621Z'
+    captured_at: "2025-12-03T16:54:11.621Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: PHP
@@ -92,11 +97,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.12
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -125,7 +130,13 @@ pos:
     timezone: Asia/Manila
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: NP
   alpha3: NPL
-  numeric: '524'
+  numeric: "524"
 continent: Asia
 subregion: South Asia
 languages:
@@ -16,10 +16,14 @@ languages:
     script: Devanagari
     role: official
     country_name: नेपाल
+    code: ne
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Nepal
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Province
@@ -56,12 +60,12 @@ address_format:
     example: Civil Mall
   room:
     required: false
-    example: '407'
+    example: "407"
   postal_code:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric
-    example: '44600'
+    example: "44600"
 examples:
   domestic_raw: Civil Mall, Kathmandu 44600
   domestic_normalized: Civil Mall Kathmandu 44600
@@ -76,7 +80,9 @@ geo:
     longitude: 84.124
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.617Z'
+    captured_at: "2025-12-03T16:54:11.617Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: NPR
@@ -84,11 +90,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.13
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -117,7 +123,13 @@ pos:
     timezone: Asia/Kathmandu
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

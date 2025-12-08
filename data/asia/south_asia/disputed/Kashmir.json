@@ -42,7 +42,8 @@
       "direction": "rtl",
       "role": "official",
       "country_name": "کشمیر",
-      "note": "Used in Pakistan-administered areas"
+      "note": "Used in Pakistan-administered areas",
+      "code": "ur"
     },
     {
       "name": "Hindi",
@@ -50,7 +51,8 @@
       "direction": "ltr",
       "role": "official",
       "country_name": "कश्मीर",
-      "note": "Used in India-administered areas"
+      "note": "Used in India-administered areas",
+      "code": "hi"
     },
     {
       "name": "Kashmiri",
@@ -63,7 +65,8 @@
       "script": "Latin",
       "direction": "ltr",
       "role": "auxiliary",
-      "country_name": "Kashmir"
+      "country_name": "Kashmir",
+      "code": "en"
     }
   ],
   "administrative_divisions": {
@@ -173,7 +176,9 @@
         "latitude": 32.5,
         "longitude": 73.5
       }
-    }
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z"
   },
   "pos": {
     "currency_indian_system": {
@@ -241,5 +246,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

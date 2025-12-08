@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: BT
   alpha3: BTN
-  numeric: '064'
+  numeric: "064"
 continent: Asia
 subregion: South Asia
 languages:
@@ -16,10 +16,14 @@ languages:
     script: Tibetan
     role: official
     country_name: འབྲུག་ཡུལ་
+    code: dz
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Bhutan
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: District
@@ -54,12 +58,12 @@ address_format:
     example: Tashi Commercial Complex
   room:
     required: false
-    example: '102'
+    example: "102"
   postal_code:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric
-    example: '11001'
+    example: "11001"
 examples:
   domestic_raw: Tashi Commercial Complex, Thimphu 11001
   domestic_normalized: Tashi Commercial Complex Thimphu 11001
@@ -74,7 +78,9 @@ geo:
     longitude: 90.4336
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.614Z'
+    captured_at: "2025-12-03T16:54:11.614Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: BTN
@@ -82,11 +88,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: None
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -115,7 +121,13 @@ pos:
     timezone: Asia/Thimphu
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

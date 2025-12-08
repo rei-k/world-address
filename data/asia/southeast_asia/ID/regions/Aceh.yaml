@@ -20,6 +20,7 @@ languages:
     direction: ltr
     role: official
     country_name: Provinsi Aceh
+    code: id
   - name: Acehnese
     script: Latin
     direction: ltr
@@ -32,6 +33,7 @@ languages:
     role: auxiliary
     required_for_shipping: true
     country_name: Aceh
+    code: en
 administrative_divisions:
   level1:
     type: Regency / City
@@ -76,7 +78,7 @@ address_format:
     required: true
     regex: ^2[0-9]{4}$
     description: 5-digit numeric postal code starting with 2
-    example: '23111'
+    example: "23111"
 validation:
   allow_latin_transliteration: true
   rules:
@@ -97,7 +99,9 @@ geo:
     longitude: 96.7494
     accuracy: 1000
     source: database
-    captured_at: '2025-12-05T21:23:57.299Z'
+    captured_at: "2025-12-05T21:23:57.299Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: IDR
@@ -105,7 +109,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -138,7 +142,13 @@ pos:
     timezone: Asia/Jakarta
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

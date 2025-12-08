@@ -70,11 +70,11 @@ function testBasicTransformation() {
     // Verify postal code info
     console.assert(
       result.postal_code_pattern === '(\\d{5})(?:[ \\-](\\d{4}))?',
-      'Postal pattern should match'
+      'Postal pattern should match',
     );
     console.assert(
       result.postal_code_examples === '95014~22162-1010',
-      'Postal examples should match'
+      'Postal examples should match',
     );
 
     // Verify sub-regions
@@ -146,7 +146,7 @@ function testSubRegionTransformation() {
     // Verify CA-specific postal pattern
     console.assert(
       result.postal_code_pattern === '9[0-5]\\d{3}(?:-\\d{4})?',
-      'CA postal pattern should match'
+      'CA postal pattern should match',
     );
 
     // Verify sub-keys (cities)
@@ -189,7 +189,7 @@ function testEdgeCases() {
     const partialResult = transformData('ZZ', partialData);
     console.assert(
       partialResult.postal_code_pattern === '\\d{5}',
-      'Should preserve postal pattern'
+      'Should preserve postal pattern',
     );
     console.assert(partialResult.required_fields === 'AC', 'Should preserve required fields');
     console.assert(!partialResult.format, 'Format should be undefined');

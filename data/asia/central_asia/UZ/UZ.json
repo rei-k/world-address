@@ -28,20 +28,26 @@
       "name": "Uzbek",
       "script": "Latin",
       "role": "official",
-      "country_name": "Oʻzbekiston"
+      "country_name": "Oʻzbekiston",
+      "code": "uz",
+      "direction": "ltr"
     },
     {
       "name": "Russian",
       "script": "Cyrillic",
       "role": "auxiliary",
-      "country_name": "Узбекистан"
+      "country_name": "Узбекистан",
+      "code": "ru",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
       "required_for_shipping": true,
-      "country_name": "Uzbekistan"
+      "country_name": "Uzbekistan",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -122,7 +128,9 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.606Z"
-    }
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z"
   },
   "pos": {
     "currency": {
@@ -136,7 +144,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.12
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -181,5 +189,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

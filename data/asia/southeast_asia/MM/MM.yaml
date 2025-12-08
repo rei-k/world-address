@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: MM
   alpha3: MMR
-  numeric: '104'
+  numeric: "104"
 continent: Asia
 subregion: Southeast Asia
 languages:
@@ -16,10 +16,14 @@ languages:
     script: Myanmar
     role: official
     country_name: မြန်မာ
+    code: my
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Myanmar
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: State/Region/Union Territory
@@ -56,12 +60,12 @@ address_format:
     example: Sule Square
   room:
     required: false
-    example: '502'
+    example: "502"
   postal_code:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric
-    example: '11181'
+    example: "11181"
 examples:
   domestic_raw: Sule Square, Yangon 11181
   domestic_normalized: Sule Square Yangon 11181
@@ -76,7 +80,9 @@ geo:
     longitude: 95.956
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.620Z'
+    captured_at: "2025-12-03T16:54:11.620Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: MMK
@@ -84,11 +90,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: Commercial Tax
     rate:
-      standard: null
+      standard: 0.05
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -117,7 +123,13 @@ pos:
     timezone: Asia/Yangon
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

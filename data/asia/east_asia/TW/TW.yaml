@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: TW
   alpha3: TWN
-  numeric: '158'
+  numeric: "158"
 continent: Asia
 subregion: East Asia
 languages:
@@ -16,11 +16,15 @@ languages:
     script: Han
     role: official
     country_name: 臺灣
+    code: zh
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     required_for_shipping: true
     country_name: Taiwan
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: County/City
@@ -62,13 +66,13 @@ address_format:
     example: 35F
   room:
     required: false
-    example: '3501'
+    example: "3501"
   postal_code:
     required: true
     regex: ^[0-9]{3}([0-9]{2})?$
     length: 3-5
     description: 3 to 5 digit numeric code
-    example: '100'
+    example: "100"
 validation:
   allow_latin_transliteration: true
   rules:
@@ -88,7 +92,9 @@ geo:
     longitude: 120.9605
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.612Z'
+    captured_at: "2025-12-03T16:54:11.612Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: TWD
@@ -96,11 +102,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.05
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -129,7 +135,13 @@ pos:
     timezone: Asia/Taipei
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: TL
   alpha3: TLS
-  numeric: '626'
+  numeric: "626"
 continent: Asia
 subregion: Southeast Asia
 languages:
@@ -20,14 +20,18 @@ languages:
     script: Latin
     role: official
     country_name: Timor-Leste
+    direction: ltr
   - name: Tetum
     script: Latin
     role: official
     country_name: Timór-Leste
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: East Timor
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Municipality
@@ -62,7 +66,7 @@ address_format:
     example: Hotel Timor
   room:
     required: false
-    example: '201'
+    example: "201"
   postal_code:
     required: false
     description: Postal codes are not widely used
@@ -81,7 +85,9 @@ geo:
     longitude: 125.7275
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.622Z'
+    captured_at: "2025-12-03T16:54:11.622Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: USD
@@ -89,11 +95,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: None
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -122,7 +128,13 @@ pos:
     timezone: Asia/Dili
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

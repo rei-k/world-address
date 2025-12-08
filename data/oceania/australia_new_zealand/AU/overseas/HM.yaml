@@ -11,7 +11,7 @@ parent_country:
 iso_codes:
   alpha2: HM
   alpha3: HMD
-  numeric: '334'
+  numeric: "334"
 subregion: Sub-Antarctic
 languages:
   - name: English
@@ -20,6 +20,7 @@ languages:
     role: official
     country_name: Heard Island and McDonald Islands
     required_for_shipping: true
+    code: en
 administrative_divisions:
   note: No permanent population; administered from Australia
 address_format:
@@ -44,7 +45,9 @@ geo:
     longitude: 73.5042
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.669Z'
+    captured_at: "2025-12-03T16:54:11.669Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: AUD
@@ -52,7 +55,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -85,7 +88,13 @@ pos:
     timezone: Indian/Kerguelen
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

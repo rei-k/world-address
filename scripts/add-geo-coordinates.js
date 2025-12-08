@@ -83,7 +83,7 @@ function addGeoCoordinates() {
         coords = SPECIAL_REGION_COORDINATES[countryCode];
         if (!coords) {
           console.log(
-            `⚠️  No coordinates found for special region code: ${countryCode} (${filePath})`
+            `⚠️  No coordinates found for special region code: ${countryCode} (${filePath})`,
           );
           notFoundCount++;
           return;

@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: LA
   alpha3: LAO
-  numeric: '418'
+  numeric: "418"
 continent: Asia
 subregion: Southeast Asia
 languages:
@@ -16,10 +16,14 @@ languages:
     script: Lao
     role: official
     country_name: ປະເທດລາວ
+    code: lo
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Laos
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Province/Prefecture
@@ -56,7 +60,7 @@ address_format:
     example: That Luang Plaza
   room:
     required: false
-    example: '305'
+    example: "305"
   postal_code:
     required: false
     description: Postal codes exist but are not widely used
@@ -75,7 +79,9 @@ geo:
     longitude: 102.4955
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.620Z'
+    captured_at: "2025-12-03T16:54:11.620Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: LAK
@@ -83,11 +89,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.1
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -116,7 +122,13 @@ pos:
     timezone: Asia/Vientiane
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

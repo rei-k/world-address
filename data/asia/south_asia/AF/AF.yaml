@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: AF
   alpha3: AFG
-  numeric: '004'
+  numeric: "004"
 continent: Asia
 subregion: South Asia
 languages:
@@ -20,14 +20,20 @@ languages:
     script: Arabic
     role: official
     country_name: افغانستان
+    code: ps
+    direction: ltr
   - name: Dari
     script: Arabic
     role: official
     country_name: افغانستان
+    code: prs
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Afghanistan
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Province
@@ -62,12 +68,12 @@ address_format:
     example: Serena Hotel
   room:
     required: false
-    example: '203'
+    example: "203"
   postal_code:
     required: false
     description: Postal codes exist (4-digit) but are not consistently used
     coverage: partial
-    example: '1001'
+    example: "1001"
 examples:
   domestic_raw: Serena Hotel, Kabul 1001
   domestic_normalized: Serena Hotel Kabul 1001
@@ -82,7 +88,9 @@ geo:
     longitude: 67.71
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.612Z'
+    captured_at: "2025-12-03T16:54:11.612Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: AFN
@@ -90,11 +98,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: None
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -123,7 +131,13 @@ pos:
     timezone: Asia/Kabul
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

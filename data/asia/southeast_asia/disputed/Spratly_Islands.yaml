@@ -52,12 +52,14 @@ languages:
     role: official_claimant
     country_name: 南沙群岛
     note: Used by China and Taiwan
+    code: zh
   - name: Vietnamese
     script: Latin
     direction: ltr
     role: official_claimant
     country_name: Quần đảo Trường Sa
     note: Used by Vietnam
+    code: vi
   - name: Filipino
     script: Latin
     direction: ltr
@@ -69,6 +71,7 @@ languages:
     direction: ltr
     role: auxiliary
     country_name: Spratly Islands
+    code: en
 administrative_divisions:
   chinese_system:
     type: County-level Division
@@ -120,16 +123,16 @@ address_format:
       required: true
       regex: ^573[0-9]{3}$
       description: Part of Sansha City postal code range
-      example: '573100'
+      example: "573100"
     vietnamese_system:
       required: false
       description: Vietnamese postal codes may apply
-      example: '650000'
+      example: "650000"
     philippine_system:
       required: true
       regex: ^[0-9]{4}$
       description: Philippine postal code
-      example: '5323'
+      example: "5323"
 validation:
   allow_latin_transliteration: true
   rules:
@@ -146,22 +149,26 @@ status:
   disputed: true
   un_status: disputed_territory
   administered_by: multiple
-  note: Exceptionally high value for address mapping - multiple overlapping territorial and postal systems
+  note: >-
+    Exceptionally high value for address mapping - multiple overlapping territorial and postal
+    systems
 geo:
   center:
     latitude: 9.8403
     longitude: 114.2094
     accuracy: 50000
     source: database
-    captured_at: '2025-12-05T21:23:57.299Z'
+    captured_at: "2025-12-05T21:23:57.299Z"
     note: Approximate center of island group
   bounds:
     northeast:
-      latitude: 12.0
-      longitude: 117.0
+      latitude: 12
+      longitude: 117
     southwest:
-      latitude: 7.0
-      longitude: 111.0
+      latitude: 7
+      longitude: 111
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency_chinese_system:
     code: CNY
@@ -169,21 +176,21 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   currency_vietnamese_system:
     code: VND
     symbol: ₫
     symbol_position: after
     decimal_places: 0
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   currency_philippine_system:
     code: PHP
     symbol: ₱
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -215,7 +222,13 @@ pos:
     timezone_philippine: Asia/Manila
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

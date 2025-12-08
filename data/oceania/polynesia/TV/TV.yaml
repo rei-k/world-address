@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: TV
   alpha3: TUV
-  numeric: '798'
+  numeric: "798"
 continent: Oceania
 subregion: Polynesia
 languages:
@@ -23,6 +23,7 @@ languages:
     role: official
     country_name: Tuvalu
     required_for_shipping: true
+    code: en
 administrative_divisions:
   level1:
     type: Island Council
@@ -60,7 +61,9 @@ geo:
     longitude: 177.6493
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.675Z'
+    captured_at: "2025-12-03T16:54:11.675Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: AUD
@@ -68,11 +71,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: None
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -101,7 +104,13 @@ pos:
     timezone: Pacific/Funafuti
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

@@ -22,13 +22,17 @@
       "name": "Dhivehi",
       "script": "Thaana",
       "role": "official",
-      "country_name": "ދިވެހި"
+      "country_name": "ދިވެހި",
+      "code": "dv",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
-      "country_name": "Maldives"
+      "country_name": "Maldives",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -100,7 +104,9 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.616Z"
-    }
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z"
   },
   "pos": {
     "currency": {
@@ -112,9 +118,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "GST",
       "rate": {
-        "standard": null
+        "standard": 0.08
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -159,5 +165,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

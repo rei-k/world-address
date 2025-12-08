@@ -16,12 +16,14 @@ languages:
     direction: ltr
     role: official
     country_name: Sarawak
+    code: ms
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     required_for_shipping: true
     country_name: Sarawak
+    code: en
   - name: Iban
     script: Latin
     direction: ltr
@@ -33,7 +35,9 @@ administrative_divisions:
     label_local: Bahagian
     label_en: Division
     count: 12
-    note: Kuching, Sri Aman, Sibu, Miri, Limbang, Sarikei, Kapit, Samarahan, Bintulu, Mukah, Betong, Serian
+    note: >-
+      Kuching, Sri Aman, Sibu, Miri, Limbang, Sarikei, Kapit, Samarahan, Bintulu, Mukah, Betong,
+      Serian
     names:
       - Kuching
       - Sri Aman
@@ -78,7 +82,7 @@ address_format:
     required: true
     regex: ^9[0-8][0-9]{3}$
     description: 5-digit postal code starting with 90-98
-    example: '93000'
+    example: "93000"
 validation:
   allow_latin_transliteration: true
   rules:
@@ -98,7 +102,9 @@ geo:
     longitude: 110.3593
     accuracy: 1000
     source: database
-    captured_at: '2025-12-05T21:23:57.299Z'
+    captured_at: "2025-12-05T21:23:57.299Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: MYR
@@ -106,7 +112,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: GST
     rate:
@@ -139,7 +145,13 @@ pos:
     timezone: Asia/Kuching
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn
