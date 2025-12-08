@@ -1,5 +1,6 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import GitHubProvider from 'next-auth/providers/github';
 
 // Demo users (replace with database in production)
 const DEMO_USERS = [
@@ -9,6 +10,13 @@ const DEMO_USERS = [
 
 export const authOptions: NextAuthOptions = {
   providers: [
+    // OAuth2 - GitHub Provider
+    // Enable GitHub OAuth in production by setting GITHUB_ID and GITHUB_SECRET
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID || '',
+      clientSecret: process.env.GITHUB_SECRET || ''
+    }),
+    // Credentials Provider for demo purposes
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
