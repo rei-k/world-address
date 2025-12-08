@@ -14,7 +14,7 @@
 ## 📋 Table of Contents
 
 - [Quick Start](#-quick-start)
-- [Overview](#-概要)
+- [Overview](#-概要--overview)
 - [Vey Ecosystem](#-veyエコシステム--vey-ecosystem)
 - [Project Status](#-プロジェクトステータス--project-status)
 - [Features](#-features)
