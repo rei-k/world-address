@@ -1,0 +1,43 @@
+{
+  "name": "@vey/webauthn",
+  "version": "1.0.0",
+  "description": "WebAuthn/FIDO2 SDK for Vey - Passwordless biometric authentication",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "vitest",
+    "lint": "eslint src --ext .ts"
+  },
+  "keywords": [
+    "webauthn",
+    "fido2",
+    "biometric",
+    "passkey",
+    "authentication",
+    "passwordless",
+    "vey"
+  ],
+  "author": "Vey Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rei-k/world-address-yaml"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "tsup": "^8.0.0",
+    "vitest": "^1.0.0"
+  }
+}
