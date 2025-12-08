@@ -5,4 +5,3 @@ metadata:
   name: world-address
   labels:
     app: world-address
-    environment: production

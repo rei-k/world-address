@@ -45,31 +45,22 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "500m"
+        # TODO: Implement proper HTTP health check endpoints
+        # These probes should call /health and /ready endpoints
+        # that verify database connectivity and application state
         livenessProbe:
-          exec:
-            command:
-            - node
-            - -e
-            - console.log('healthy')
+          httpGet:
+            path: /health
+            port: 3000
           initialDelaySeconds: 30
           periodSeconds: 10
           timeoutSeconds: 5
           failureThreshold: 3
         readinessProbe:
-          exec:
-            command:
-            - node
-            - -e
-            - console.log('ready')
+          httpGet:
+            path: /ready
+            port: 3000
           initialDelaySeconds: 10
           periodSeconds: 5
           timeoutSeconds: 3
           failureThreshold: 2
-        volumeMounts:
-        - name: data
-          mountPath: /app/data
-          readOnly: true
-      volumes:
-      - name: data
-        configMap:
-          name: world-address-data

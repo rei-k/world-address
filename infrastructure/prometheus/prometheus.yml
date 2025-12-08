@@ -47,24 +47,28 @@ scrape_configs:
         target_label: namespace
 
   # PostgreSQL metrics (using postgres_exporter)
-  - job_name: 'postgres'
-    static_configs:
-      - targets: ['postgres-exporter:9187']
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: instance
-        regex: '(.*):(.*)'
-        replacement: '$1'
+  # Note: Deploy postgres-exporter separately or use bitnami/postgres-exporter
+  # Uncomment when postgres-exporter is deployed
+  # - job_name: 'postgres'
+  #   static_configs:
+  #     - targets: ['postgres-exporter:9187']
+  #   relabel_configs:
+  #     - source_labels: [__address__]
+  #       target_label: instance
+  #       regex: '(.*):(.*)'
+  #       replacement: '$1'
 
   # Redis metrics (using redis_exporter)
-  - job_name: 'redis'
-    static_configs:
-      - targets: ['redis-exporter:9121']
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: instance
-        regex: '(.*):(.*)'
-        replacement: '$1'
+  # Note: Deploy redis-exporter separately or use oliver006/redis_exporter
+  # Uncomment when redis-exporter is deployed
+  # - job_name: 'redis'
+  #   static_configs:
+  #     - targets: ['redis-exporter:9121']
+  #   relabel_configs:
+  #     - source_labels: [__address__]
+  #       target_label: instance
+  #       regex: '(.*):(.*)'
+  #       replacement: '$1'
 
   # Node exporter for system metrics
   - job_name: 'node-exporter'
