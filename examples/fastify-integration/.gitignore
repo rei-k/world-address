@@ -1,0 +1,19 @@
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Node dependencies
+node_modules
+
+# Logs
+*.log*
+pino-*.log
+
+# Misc
+.DS_Store
+
+# Local env files
+.env
+.env.*
+!.env.example
