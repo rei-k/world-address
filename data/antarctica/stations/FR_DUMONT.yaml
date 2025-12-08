@@ -1,0 +1,78 @@
+name:
+  en: Dumont d'Urville Station
+  local: Base Dumont d'Urville
+operating_country:
+  name: France
+  alpha2: FR
+  program: Institut Polaire Français Paul-Émile Victor (IPEV)
+location:
+  coordinates:
+    latitude: -66.6628
+    longitude: 140.0014
+  region: Petrel Island, Adélie Land
+  claim_area: France (Adélie Land)
+operational:
+  type: year_round
+  established: 1956
+  capacity_winter: 30
+  capacity_summer: 120
+address_format:
+  mail_routing:
+    via_country: France
+    via_city: Paris
+    postal_code: '75009'
+  example: Name, Base Dumont d'Urville, Terres Australes et Antarctiques Françaises, Rue de l'Amiral Mouchez, 75013 Paris, France
+status:
+  active: true
+  note: Main French coastal Antarctic research station; serves as logistics hub for Concordia Station
+geo:
+  center:
+    latitude: -66.6628
+    longitude: 140.0014
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-08T06:51:00.000Z'
+pos:
+  currency:
+    code: EUR
+    symbol: €
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: null
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 5 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: high
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: YYYY-MM-DD
+    time_format: 24h
+    timezone: Europe/Paris
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '18:00'
+    sunday_trading: true
+    public_holidays_trading: false
