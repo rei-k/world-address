@@ -6,6 +6,12 @@ node_modules/
 dist/
 build/
 *.tsbuildinfo
+.next/
+.nuxt/
+.output/
+.nitro/
+.cache/
+out/
 
 # IDE and editors
 .idea/
