@@ -17,6 +17,19 @@ languages:
     direction: ltr
     role: official
     country_name: Sénégal
+    code: fr
+    field_labels:
+      recipient: Destinataire
+      building: Bâtiment
+      floor: Étage
+      room: Chambre
+      street_address: Adresse
+      district: District
+      ward: Quartier
+      city: Ville
+      province: Province
+      postal_code: Code Postal
+      country: Pays
   - name: Wolof
     script: Latin
     direction: ltr
@@ -112,7 +125,7 @@ pos:
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.18
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -134,6 +147,9 @@ pos:
       prevalence: high
     - type: credit_card
       name: Credit Card
+      prevalence: high
+    - type: mobile
+      name: Mobile Money
       prevalence: high
   locale:
     date_format: YYYY-MM-DD

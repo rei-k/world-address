@@ -23,7 +23,21 @@
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Cabo Verde"
+      "country_name": "Cabo Verde",
+      "code": "pt",
+      "field_labels": {
+        "recipient": "Destinatário",
+        "building": "Edifício",
+        "floor": "Andar",
+        "room": "Sala",
+        "street_address": "Endereço",
+        "district": "Distrito",
+        "ward": "Bairro",
+        "city": "Cidade",
+        "province": "Província",
+        "postal_code": "Código Postal",
+        "country": "País"
+      }
     },
     {
       "name": "Kriolu",
@@ -136,7 +150,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.15
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -166,6 +180,11 @@
       {
         "type": "credit_card",
         "name": "Credit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mobile Money",
         "prevalence": "high"
       }
     ],

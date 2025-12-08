@@ -23,7 +23,21 @@
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Côte d’Ivoire"
+      "country_name": "Côte d’Ivoire",
+      "code": "fr",
+      "field_labels": {
+        "recipient": "Destinataire",
+        "building": "Bâtiment",
+        "floor": "Étage",
+        "room": "Chambre",
+        "street_address": "Adresse",
+        "district": "District",
+        "ward": "Quartier",
+        "city": "Ville",
+        "province": "Province",
+        "postal_code": "Code Postal",
+        "country": "Pays"
+      }
     }
   ],
   "administrative_divisions": {
@@ -155,7 +169,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.18
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -185,6 +199,11 @@
       {
         "type": "credit_card",
         "name": "Credit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mobile Money",
         "prevalence": "high"
       }
     ],

@@ -17,12 +17,38 @@ languages:
     direction: ltr
     role: official
     country_name: Moçambique
+    code: pt
+    field_labels:
+      recipient: Destinatário
+      building: Edifício
+      floor: Andar
+      room: Sala
+      street_address: Endereço
+      district: Distrito
+      ward: Bairro
+      city: Cidade
+      province: Província
+      postal_code: Código Postal
+      country: País
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     required_for_shipping: true
     country_name: Mozambique
+    code: en
+    field_labels:
+      recipient: Recipient
+      building: Building
+      floor: Floor
+      room: Room
+      street_address: Street Address
+      district: District
+      ward: Ward
+      city: City
+      province: Province
+      postal_code: Postal Code
+      country: Country
 administrative_divisions:
   level1:
     type: Province
@@ -112,7 +138,7 @@ pos:
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.16
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -134,6 +160,9 @@ pos:
       prevalence: high
     - type: credit_card
       name: Credit Card
+      prevalence: high
+    - type: mobile
+      name: Mobile Money
       prevalence: high
   locale:
     date_format: YYYY-MM-DD

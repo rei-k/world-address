@@ -28,7 +28,21 @@
       "script": "Latin",
       "direction": "ltr",
       "role": "official_administrative",
-      "required_for_shipping": true
+      "required_for_shipping": true,
+      "code": "en",
+      "field_labels": {
+        "recipient": "Recipient",
+        "building": "Building",
+        "floor": "Floor",
+        "room": "Room",
+        "street_address": "Street Address",
+        "district": "District",
+        "ward": "Ward",
+        "city": "City",
+        "province": "Province",
+        "postal_code": "Postal Code",
+        "country": "Country"
+      }
     }
   ],
   "administrative_divisions": {
@@ -102,7 +116,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.15
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -132,6 +146,11 @@
       {
         "type": "credit_card",
         "name": "Credit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mobile Money",
         "prevalence": "high"
       }
     ],

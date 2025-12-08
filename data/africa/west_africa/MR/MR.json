@@ -29,7 +29,21 @@
       "script": "Arabic",
       "direction": "rtl",
       "role": "official",
-      "country_name": "موريتانيا"
+      "country_name": "موريتانيا",
+      "code": "ar",
+      "field_labels": {
+        "recipient": "المستلم",
+        "building": "المبنى",
+        "floor": "الطابق",
+        "room": "الغرفة",
+        "street_address": "عنوان الشارع",
+        "district": "المقاطعة",
+        "ward": "الحي",
+        "city": "المدينة",
+        "province": "المحافظة",
+        "postal_code": "الرمز البريدي",
+        "country": "الدولة"
+      }
     },
     {
       "name": "French",
@@ -37,7 +51,21 @@
       "direction": "ltr",
       "role": "auxiliary",
       "required_for_shipping": true,
-      "country_name": "Mauritanie"
+      "country_name": "Mauritanie",
+      "code": "fr",
+      "field_labels": {
+        "recipient": "Destinataire",
+        "building": "Bâtiment",
+        "floor": "Étage",
+        "room": "Chambre",
+        "street_address": "Adresse",
+        "district": "District",
+        "ward": "Quartier",
+        "city": "Ville",
+        "province": "Province",
+        "postal_code": "Code Postal",
+        "country": "Pays"
+      }
     }
   ],
   "administrative_divisions": {
@@ -153,7 +181,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.16
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -183,6 +211,11 @@
       {
         "type": "credit_card",
         "name": "Credit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mobile Money",
         "prevalence": "high"
       }
     ],

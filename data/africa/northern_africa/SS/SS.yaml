@@ -22,11 +22,37 @@ languages:
     role: official
     required_for_shipping: true
     country_name: South Sudan
+    code: en
+    field_labels:
+      recipient: Recipient
+      building: Building
+      floor: Floor
+      room: Room
+      street_address: Street Address
+      district: District
+      ward: Ward
+      city: City
+      province: Province
+      postal_code: Postal Code
+      country: Country
   - name: Arabic
     script: Arabic
     direction: rtl
     role: co-official
     country_name: جنوب السودان
+    code: ar
+    field_labels:
+      recipient: المستلم
+      building: المبنى
+      floor: الطابق
+      room: الغرفة
+      street_address: عنوان الشارع
+      district: المقاطعة
+      ward: الحي
+      city: المدينة
+      province: المحافظة
+      postal_code: الرمز البريدي
+      country: الدولة
 administrative_divisions:
   level1:
     type: State
@@ -112,7 +138,7 @@ pos:
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -134,6 +160,9 @@ pos:
       prevalence: high
     - type: credit_card
       name: Credit Card
+      prevalence: high
+    - type: mobile
+      name: Mobile Money
       prevalence: high
   locale:
     date_format: YYYY-MM-DD
