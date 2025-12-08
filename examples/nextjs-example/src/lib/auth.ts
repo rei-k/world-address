@@ -4,6 +4,7 @@
 
 import { NextRequest } from 'next/server';
 import * as jwt from 'jsonwebtoken';
+import type { StringValue } from 'ms';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-jwt-secret-change-in-production';
 const API_KEY_HEADER = 'x-api-key';
@@ -31,13 +32,13 @@ export interface JWTPayload {
  * @param expiresIn - Token expiration (default: 24h)
  * @returns JWT token string
  */
-export function generateJWT(userId: string, email: string, expiresIn: string = '24h'): string {
+export function generateJWT(userId: string, email: string, expiresIn: StringValue = '24h'): string {
   const payload: JWTPayload = {
     userId,
     email
   };
 
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: expiresIn as any });
+  return jwt.sign(payload, JWT_SECRET, { expiresIn });
 }
 
 /**

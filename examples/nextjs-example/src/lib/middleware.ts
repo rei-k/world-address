@@ -19,7 +19,53 @@ class RateLimiter {
   }
 
   /**
-   * Check if request is allowed
+   * Get maximum requests allowed
+   */
+  getMaxRequests(): number {
+    return this.maxRequests;
+  }
+
+  /**
+   * Check if request is allowed (peek without incrementing)
+   * @param identifier - Unique identifier (IP, API key, user ID)
+   * @returns Object with allowed status and remaining requests
+   */
+  peek(identifier: string): { allowed: boolean; remaining: number; resetTime: number } {
+    const now = Date.now();
+    const record = this.requests.get(identifier);
+
+    // Clean up expired records
+    if (record && record.resetTime < now) {
+      this.requests.delete(identifier);
+    }
+
+    const current = this.requests.get(identifier);
+
+    if (!current) {
+      return {
+        allowed: true,
+        remaining: this.maxRequests - 1,
+        resetTime: now + this.windowMs
+      };
+    }
+
+    if (current.count >= this.maxRequests) {
+      return {
+        allowed: false,
+        remaining: 0,
+        resetTime: current.resetTime
+      };
+    }
+
+    return {
+      allowed: true,
+      remaining: this.maxRequests - current.count - 1,
+      resetTime: current.resetTime
+    };
+  }
+
+  /**
+   * Check if request is allowed and increment counter
    * @param identifier - Unique identifier (IP, API key, user ID)
    * @returns Object with allowed status and remaining requests
    */
@@ -104,7 +150,7 @@ export function rateLimitMiddleware(
       {
         status: 429,
         headers: {
-          'X-RateLimit-Limit': limiter['maxRequests'].toString(),
+          'X-RateLimit-Limit': limiter.getMaxRequests().toString(),
           'X-RateLimit-Remaining': '0',
           'X-RateLimit-Reset': result.resetTime.toString(),
           'Retry-After': retryAfter.toString()
@@ -124,9 +170,9 @@ export function addRateLimitHeaders(
   limiter: RateLimiter,
   identifier: string
 ): NextResponse {
-  const result = limiter.check(identifier);
+  const result = limiter.peek(identifier);
   
-  response.headers.set('X-RateLimit-Limit', limiter['maxRequests'].toString());
+  response.headers.set('X-RateLimit-Limit', limiter.getMaxRequests().toString());
   response.headers.set('X-RateLimit-Remaining', result.remaining.toString());
   response.headers.set('X-RateLimit-Reset', result.resetTime.toString());
 
