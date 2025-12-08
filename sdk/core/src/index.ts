@@ -194,6 +194,22 @@ export {
   canonicalizeJSON,
 } from './zkp-crypto';
 
+// ZKP Circuit Integration (Circom/snarkjs)
+export {
+  generateCircomMembershipProof,
+  verifyCircomMembershipProof,
+  generateCircomStructureProof,
+  verifyCircomStructureProof,
+  generateCircomSelectiveRevealProof,
+  verifyCircomSelectiveRevealProof,
+  generateCircomVersionProof,
+  verifyCircomVersionProof,
+  generateCircomLockerProof,
+  verifyCircomLockerProof,
+  serializeProof,
+  deserializeProof,
+} from './zkp-circuits';
+
 // AMF (Address Mapping Framework)
 export {
   normalizeAddress,
