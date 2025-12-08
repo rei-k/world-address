@@ -1448,3 +1448,29 @@ export function verifyZKLockerProof(
     };
   }
 }
+
+
+// ============================================================================
+// Resume ZKP Functions Export
+// ============================================================================
+
+// Re-export all resume ZKP functions
+export {
+  // Resume Verifiable Credentials
+  createResumeCredential,
+  createEmploymentCredential,
+  createEducationCredential,
+  createCertificationCredential,
+  signResumeCredential,
+  verifyResumeCredential,
+  
+  // Resume ZKP Pattern Functions
+  generateZKResumeMembershipProof,
+  verifyZKResumeMembershipProof,
+  generateZKResumeSelectiveRevealProof,
+  verifyZKResumeSelectiveRevealProof,
+  generateZKResumeQualificationProof,
+  verifyZKResumeQualificationProof,
+  generateZKResumeSkillProof,
+  verifyZKResumeSkillProof,
+} from './zkp-resume';

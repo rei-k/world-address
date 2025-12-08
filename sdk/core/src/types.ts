@@ -552,6 +552,11 @@ export type VCType =
   | 'AddressPIDCredential'          // Address PID VC
   | 'DeliveryCapabilityCredential'  // Delivery capability VC
   | 'AddressVerificationCredential' // Address verification VC
+  | 'ResumeCredential'              // Complete Resume VC
+  | 'EmploymentCredential'          // Employment verification VC
+  | 'EducationCredential'           // Education credential VC
+  | 'CertificationCredential'       // Professional certification VC
+  | 'SkillCredential'               // Skill verification VC
   | string;
 
 /**
@@ -603,6 +608,129 @@ export interface CredentialSubject {
   [key: string]: unknown;
 }
 
+// ============================================================================
+// Resume/CV Data Types
+// ============================================================================
+
+/**
+ * Employment Record
+ * Single employment entry in resume
+ */
+export interface EmploymentRecord {
+  /** Company/Organization name */
+  company: string;
+  /** Job title */
+  jobTitle: string;
+  /** Position level */
+  positionLevel?: 'junior' | 'mid' | 'senior' | 'executive';
+  /** Start date (ISO 8601) */
+  startDate: string;
+  /** End date (ISO 8601), null if current */
+  endDate?: string | null;
+  /** Job description */
+  description?: string;
+  /** Skills used in this role */
+  skills?: string[];
+  /** Verifier DID (if employment is verified) */
+  verifierDid?: string;
+  /** Verification timestamp */
+  verifiedAt?: string;
+}
+
+/**
+ * Education Record
+ * Educational qualification entry
+ */
+export interface EducationRecord {
+  /** Institution name */
+  institution: string;
+  /** Degree/qualification type */
+  degree: string;
+  /** Field of study */
+  fieldOfStudy: string;
+  /** Degree level (bachelor, master, phd, etc.) */
+  degreeLevel?: 'associate' | 'bachelor' | 'master' | 'doctorate' | 'diploma';
+  /** Graduation/Completion year */
+  completionYear: number;
+  /** GPA or grade (optional) */
+  grade?: string;
+  /** Institution DID (if verified) */
+  institutionDid?: string;
+  /** Verification timestamp */
+  verifiedAt?: string;
+}
+
+/**
+ * Certification Record
+ * Professional certification or license
+ */
+export interface CertificationRecord {
+  /** Certification name */
+  name: string;
+  /** Issuing organization */
+  issuer: string;
+  /** Issue date */
+  issueDate: string;
+  /** Expiration date (if applicable) */
+  expirationDate?: string;
+  /** Credential ID */
+  credentialId?: string;
+  /** Issuer DID (if verified) */
+  issuerDid?: string;
+  /** Verification timestamp */
+  verifiedAt?: string;
+}
+
+/**
+ * Skill Entry
+ * Skill with proficiency level
+ */
+export interface SkillEntry {
+  /** Skill name */
+  name: string;
+  /** Skill category */
+  category: 'programming' | 'design' | 'management' | 'language' | 'technical' | 'soft-skill' | 'other';
+  /** Proficiency level (1-5 scale: 1=beginner, 5=expert) */
+  proficiency: 1 | 2 | 3 | 4 | 5;
+  /** Years of experience with this skill */
+  yearsOfExperience?: number;
+  /** Endorsements or verifications */
+  endorsements?: Array<{
+    endorserDid: string;
+    endorsedAt: string;
+  }>;
+}
+
+/**
+ * Complete Resume Data
+ * Full resume/CV information
+ */
+export interface ResumeData {
+  /** User DID */
+  userDid: string;
+  /** Full name */
+  fullName: string;
+  /** Email (optional, for contact) */
+  email?: string;
+  /** Employment history */
+  employment: EmploymentRecord[];
+  /** Education history */
+  education: EducationRecord[];
+  /** Certifications and licenses */
+  certifications: CertificationRecord[];
+  /** Skills */
+  skills: SkillEntry[];
+  /** Languages spoken */
+  languages?: Array<{
+    language: string;
+    proficiency: 'basic' | 'conversational' | 'fluent' | 'native';
+  }>;
+  /** Resume creation timestamp */
+  createdAt: string;
+  /** Last updated timestamp */
+  updatedAt: string;
+}
+
 /**
  * Cryptographic Proof
  * Signature/proof attached to VC
@@ -644,7 +772,11 @@ export type ZKPPatternType =
   | 'structure'           // ZK-Structure Proof (PID Hierarchy)
   | 'selective-reveal'    // ZK-Selective Reveal (Partial Disclosure)
   | 'version'             // ZK-Version Proof (Address Update/Migration)
-  | 'locker';             // ZK-Locker Proof (Locker Membership)
+  | 'locker'              // ZK-Locker Proof (Locker Membership)
+  | 'resume-membership'   // ZK-Resume-Membership Proof (Employment Verification)
+  | 'resume-selective'    // ZK-Resume-Selective Reveal (Partial Credential Disclosure)
+  | 'resume-qualification' // ZK-Resume-Qualification Proof (Education/Certification)
+  | 'resume-skill';       // ZK-Resume-Skill Proof (Skill Level Verification)
 
 /**
  * ZK Circuit Definition
@@ -764,6 +896,77 @@ export interface ZKLockerProof extends ZKProof {
 }
 
 /**
+ * ZK-Resume-Membership Proof
+ * Proves employment at a verified organization without revealing specific details
+ */
+export interface ZKResumeMembershipProof extends ZKProof {
+  /** Pattern type */
+  patternType: 'resume-membership';
+  /** Merkle root of verified organizations */
+  organizationSetRoot: string;
+  /** Merkle path (proof elements) */
+  merklePath?: string[];
+  /** Employment period commitment hash (private) */
+  periodCommitment?: string;
+  /** Position level (junior/mid/senior) - optional public */
+  positionLevel?: 'junior' | 'mid' | 'senior' | 'executive';
+}
+
+/**
+ * ZK-Resume-Selective Reveal Proof
+ * Allows partial disclosure of resume information with user control
+ */
+export interface ZKResumeSelectiveRevealProof extends ZKProof {
+  /** Pattern type */
+  patternType: 'resume-selective';
+  /** Revealed fields (e.g., ['company', 'jobTitle', 'yearsOfExperience']) */
+  revealedFields: string[];
+  /** Revealed values */
+  revealedValues: Record<string, string>;
+  /** SD-JWT disclosure nonce */
+  disclosureNonce?: string;
+}
+
+/**
+ * ZK-Resume-Qualification Proof
+ * Proves educational qualifications or certifications without revealing all details
+ */
+export interface ZKResumeQualificationProof extends ZKProof {
+  /** Pattern type */
+  patternType: 'resume-qualification';
+  /** Qualification type (degree/certification) */
+  qualificationType: 'degree' | 'certification' | 'license';
+  /** Institution/Issuer hash (private) */
+  institutionHash: string;
+  /** Completion year (optional public) */
+  completionYear?: number;
+  /** Qualification level (bachelor/master/phd, etc.) */
+  qualificationLevel?: string;
+  /** Field of study hash (private unless revealed) */
+  fieldOfStudyHash?: string;
+}
+
+/**
+ * ZK-Resume-Skill Proof
+ * Proves skill proficiency level without revealing full skill set
+ */
+export interface ZKResumeSkillProof extends ZKProof {
+  /** Pattern type */
+  patternType: 'resume-skill';
+  /** Skill category (e.g., 'programming', 'design', 'management') */
+  skillCategory: string;
+  /** Minimum proficiency level proven (1-5 scale) */
+  minProficiencyLevel: number;
+  /** Skill set commitment hash (proves possession without revealing all) */
+  skillSetCommitment: string;
+  /** Years of experience range (optional public) */
+  experienceYearsRange?: {
+    min: number;
+    max: number;
+  };
+}
+
+/**
  * Combined ZKP type (union of all patterns)
  */
 export type ZKPPattern = 
@@ -771,7 +974,11 @@ export type ZKPPattern =
   | ZKStructureProof 
   | ZKSelectiveRevealProof 
   | ZKVersionProof 
-  | ZKLockerProof;
+  | ZKLockerProof
+  | ZKResumeMembershipProof
+  | ZKResumeSelectiveRevealProof
+  | ZKResumeQualificationProof
+  | ZKResumeSkillProof;
 
 /**
  * ZK Proof Verification Result
