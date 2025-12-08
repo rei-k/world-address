@@ -320,7 +320,7 @@ Example (Japan):
 
 ### China's Autonomous Regions / 中国の自治区
 
-**中国には5つの自治区と1つの特別な省があります。**
+**中国には5つの自治区と1つの特別省があります。**
 
 **China has 5 autonomous regions and 1 special province with distinct cultural and administrative characteristics:**
 
@@ -361,7 +361,7 @@ Example (Japan):
 
 - **Taiwan (TW)**: Maintains independent postal system, uses TWD currency
 - **Palestine (PS)**: Partial recognition, limited postal infrastructure
-  - **Gaza Strip (ガザ地区)**: Coastal exclave separated from West Bank, administratively separate
+  - **Gaza Strip (ガザ地区)**: Coastal exclave separated from West Bank by Israeli territory
   - **West Bank (ヨルダン川西岸地区)**: West of Jordan River, complex administrative status
 - **Paracel Islands (PCL)**: Disputed between China, Vietnam, Taiwan
 - **Spratly Islands (SPRT)**: Disputed among China, Vietnam, Philippines, Malaysia, Taiwan, Brunei
