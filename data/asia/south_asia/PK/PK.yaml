@@ -84,6 +84,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.617Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 37.0841
+      longitude: 77.8374
+    southwest:
+      latitude: 23.6345
+      longitude: 60.8728
 pos:
   currency:
     code: PKR

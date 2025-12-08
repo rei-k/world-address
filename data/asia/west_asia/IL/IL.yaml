@@ -87,6 +87,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.624Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 33.3356
+      longitude: 35.895
+    southwest:
+      latitude: 29.4971
+      longitude: 34.2674
 pos:
   currency:
     code: ILS

@@ -79,6 +79,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.628Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 42.1069
+      longitude: 44.8176
+    southwest:
+      latitude: 35.8215
+      longitude: 25.6688
 pos:
   currency:
     code: TRY

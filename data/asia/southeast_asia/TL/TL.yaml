@@ -88,6 +88,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.622Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: -8.1274
+      longitude: 127.3088
+    southwest:
+      latitude: -9.5043
+      longitude: 124.0464
 pos:
   currency:
     code: USD

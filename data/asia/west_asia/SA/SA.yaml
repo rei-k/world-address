@@ -79,6 +79,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.627Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 32.1543
+      longitude: 55.6667
+    southwest:
+      latitude: 16.3792
+      longitude: 34.4957
 pos:
   currency:
     code: SAR

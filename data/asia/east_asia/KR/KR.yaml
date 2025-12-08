@@ -95,6 +95,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.610Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 38.6122
+      longitude: 131.8694
+    southwest:
+      latitude: 33.1906
+      longitude: 125.0657
 pos:
   currency:
     code: KRW

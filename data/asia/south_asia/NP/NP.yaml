@@ -83,6 +83,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.617Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 30.4469
+      longitude: 88.2015
+    southwest:
+      latitude: 26.3479
+      longitude: 80.0586
 pos:
   currency:
     code: NPR

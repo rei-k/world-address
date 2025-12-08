@@ -88,6 +88,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.609Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 43.0089
+      longitude: 130.6968
+    southwest:
+      latitude: 37.6732
+      longitude: 124.3154
 pos:
   currency:
     code: KPW

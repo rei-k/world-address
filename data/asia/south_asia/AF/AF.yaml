@@ -91,6 +91,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.612Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 38.4907
+      longitude: 74.8894
+    southwest:
+      latitude: 29.3772
+      longitude: 60.5284
 pos:
   currency:
     code: AFN

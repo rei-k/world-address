@@ -81,6 +81,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.613Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 26.6312
+      longitude: 92.6727
+    southwest:
+      latitude: 20.7434
+      longitude: 88.0284
 pos:
   currency:
     code: BDT

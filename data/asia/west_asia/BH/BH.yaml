@@ -77,6 +77,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.623Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 26.2824
+      longitude: 50.8213
+    southwest:
+      latitude: 25.7967
+      longitude: 50.4542
 pos:
   currency:
     code: BHD

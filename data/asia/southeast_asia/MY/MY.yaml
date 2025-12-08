@@ -89,6 +89,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.620Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 7.3634
+      longitude: 119.2671
+    southwest:
+      latitude: 0.855
+      longitude: 99.6433
 pos:
   currency:
     code: MYR

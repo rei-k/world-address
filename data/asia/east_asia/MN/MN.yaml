@@ -95,6 +95,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.610Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 52.1543
+      longitude: 119.9245
+    southwest:
+      latitude: 41.5675
+      longitude: 87.7495
 pos:
   currency:
     code: MNT

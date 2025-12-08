@@ -93,6 +93,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.603Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 43.2384
+      longitude: 80.2599
+    southwest:
+      latitude: 39.1728
+      longitude: 69.2649
 pos:
   currency:
     code: KGS

@@ -85,6 +85,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.625Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 33.3747
+      longitude: 39.3012
+    southwest:
+      latitude: 29.185
+      longitude: 34.9596
 pos:
   currency:
     code: JOD

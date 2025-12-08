@@ -99,6 +99,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.606Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 45.5749
+      longitude: 73.1322
+    southwest:
+      latitude: 37.1843
+      longitude: 55.9977
 pos:
   currency:
     code: UZS

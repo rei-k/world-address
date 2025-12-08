@@ -91,6 +91,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.623Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 23.3927
+      longitude: 109.4646
+    southwest:
+      latitude: 8.5598
+      longitude: 102.1445
 pos:
   currency:
     code: VND

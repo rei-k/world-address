@@ -96,6 +96,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.616Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 9.8351
+      longitude: 81.8811
+    southwest:
+      latitude: 5.9169
+      longitude: 79.6522
 pos:
   currency:
     code: LKR

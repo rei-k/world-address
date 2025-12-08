@@ -90,6 +90,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.621Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 21.1207
+      longitude: 126.6044
+    southwest:
+      latitude: 4.6448
+      longitude: 116.9283
 pos:
   currency:
     code: PHP

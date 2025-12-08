@@ -73,6 +73,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.627Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 26.1551
+      longitude: 51.636
+    southwest:
+      latitude: 24.4821
+      longitude: 50.7439
 pos:
   currency:
     code: QAR

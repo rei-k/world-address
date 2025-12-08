@@ -96,6 +96,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.621Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 1.4707
+      longitude: 104.0077
+    southwest:
+      latitude: 1.1304
+      longitude: 103.6057
 pos:
   currency:
     code: SGD

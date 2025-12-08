@@ -78,6 +78,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.625Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 39.777
+      longitude: 63.3333
+    southwest:
+      latitude: 25.0642
+      longitude: 44.0311
 pos:
   currency:
     code: IRR

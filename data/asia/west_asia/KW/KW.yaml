@@ -79,6 +79,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.625Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 30.0956
+      longitude: 48.5177
+    southwest:
+      latitude: 28.5243
+      longitude: 46.5687
 pos:
   currency:
     code: KWD

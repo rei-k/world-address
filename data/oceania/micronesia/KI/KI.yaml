@@ -70,6 +70,13 @@ geo:
     captured_at: "2025-12-03T16:54:11.674Z"
   verified: true
   verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 4.7197
+      longitude: -150.2083
+    southwest:
+      latitude: -11.4461
+      longitude: 169.5344
 pos:
   currency:
     code: AUD

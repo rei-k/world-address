@@ -99,7 +99,17 @@
       "captured_at": "2025-12-03T16:54:11.627Z"
     },
     "verified": true,
-    "verified_at": "2024-01-01T00:00:00Z"
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 32.5468,
+        "longitude": 35.5731
+      },
+      "southwest": {
+        "latitude": 31.2164,
+        "longitude": 34.2165
+      }
+    }
   },
   "pos": {
     "currency": {
