@@ -452,6 +452,28 @@ export {
   getDefaultCreditCardBrands,
 } from './payment';
 
+// WebAuthn / FIDO2 Biometric Authentication
+export type {
+  WebAuthnRegistrationOptions,
+  WebAuthnAuthenticationOptions,
+  WebAuthnRegistrationResult,
+  WebAuthnAuthenticationResult,
+  WebAuthnConfig,
+} from './webauthn';
+
+export {
+  isWebAuthnSupported,
+  isPlatformAuthenticatorAvailable,
+  isConditionalUIAvailable,
+  generateChallenge,
+  registerCredential,
+  authenticateCredential,
+  parseClientDataJSON,
+  verifyOrigin,
+  WebAuthnClient,
+  createWebAuthnClient,
+} from './webauthn';
+
 // Convenience functions for country information
 import { CountryRegistry } from './country-registry';
 export const getCountryInfo = (code: string) => CountryRegistry.getCountry(code);

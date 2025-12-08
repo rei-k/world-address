@@ -12,6 +12,22 @@ export { WebhookEventType, WebhookPayload };
 export interface WebhookConfig {
   secret: string;
   tolerance?: number; // Timestamp tolerance in seconds
+  retries?: {
+    maxAttempts?: number; // Maximum retry attempts (default: 3)
+    backoff?: 'linear' | 'exponential'; // Backoff strategy (default: exponential)
+    initialDelay?: number; // Initial delay in ms (default: 1000)
+    maxDelay?: number; // Maximum delay in ms (default: 60000)
+  };
+}
+
+/**
+ * Retry configuration with defaults
+ */
+export interface RetryConfig {
+  maxAttempts: number;
+  backoff: 'linear' | 'exponential';
+  initialDelay: number;
+  maxDelay: number;
 }
 
 /**
@@ -61,35 +77,91 @@ export interface DeliveryStatusData {
 }
 
 /**
- * Create HMAC signature for payload (Node.js environment)
- * Note: This implementation requires Node.js. For browser environments,
- * use the Web Crypto API with SubtleCrypto.
+ * Create HMAC-SHA256 signature for payload
+ * Works in both Node.js and browser environments
  */
-export function createSignature(payload: string, secret: string): string {
-  // Simple base64 encoding for signature (simplified implementation)
-  // In production, use proper HMAC-SHA256 with crypto module
-  const combined = payload + secret;
-  let hash = 0;
-  for (let i = 0; i < combined.length; i++) {
-    const char = combined.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash; // Convert to 32bit integer
+export async function createSignature(payload: string, secret: string): Promise<string> {
+  // Try to use Node.js crypto module first
+  if (typeof globalThis !== 'undefined' && (globalThis as any).crypto?.subtle) {
+    // Use Web Crypto API (available in both modern Node.js and browsers)
+    const encoder = new TextEncoder();
+    const keyData = encoder.encode(secret);
+    const messageData = encoder.encode(payload);
+    
+    const cryptoKey = await (globalThis as any).crypto.subtle.importKey(
+      'raw',
+      keyData,
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['sign']
+    );
+    
+    const signature = await (globalThis as any).crypto.subtle.sign('HMAC', cryptoKey, messageData);
+    const hashArray = Array.from(new Uint8Array(signature));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return `sha256=${hashHex}`;
   }
-  // Convert to base64-like string using btoa (available in both Node.js 16+ and browsers)
-  const hashStr = Math.abs(hash).toString(36);
-  return `sha256=${hashStr}`;
+  
+  // Fallback for older Node.js environments
+  try {
+    const crypto = await import('crypto');
+    const hmac = crypto.createHmac('sha256', secret);
+    hmac.update(payload);
+    return `sha256=${hmac.digest('hex')}`;
+  } catch (err) {
+    throw new Error('Crypto API not available. Please use Node.js 16+ or a modern browser.');
+  }
+}
+
+/**
+ * Create HMAC-SHA256 signature synchronously (Node.js only)
+ */
+export function createSignatureSync(payload: string, secret: string): string {
+  try {
+    // Dynamic require to avoid bundler issues
+    const crypto = require('crypto');
+    const hmac = crypto.createHmac('sha256', secret);
+    hmac.update(payload);
+    return `sha256=${hmac.digest('hex')}`;
+  } catch (err) {
+    throw new Error('Synchronous signature creation requires Node.js with crypto module.');
+  }
 }
 
 /**
  * Verify webhook signature
  */
-export function verifySignature(
+export async function verifySignature(
+  payload: string,
+  signature: string,
+  secret: string,
+  tolerance: number = 300
+): Promise<boolean> {
+  const expectedSignature = await createSignature(payload, secret);
+
+  // Constant-time comparison to prevent timing attacks
+  if (signature.length !== expectedSignature.length) {
+    return false;
+  }
+
+  let result = 0;
+  for (let i = 0; i < signature.length; i++) {
+    result |= signature.charCodeAt(i) ^ expectedSignature.charCodeAt(i);
+  }
+
+  return result === 0;
+}
+
+/**
+ * Verify webhook signature synchronously (Node.js only)
+ */
+export function verifySignatureSync(
   payload: string,
   signature: string,
   secret: string,
   tolerance: number = 300
 ): boolean {
-  const expectedSignature = createSignature(payload, secret);
+  const expectedSignature = createSignatureSync(payload, secret);
 
   // Constant-time comparison to prevent timing attacks
   if (signature.length !== expectedSignature.length) {
@@ -181,7 +253,7 @@ export class WebhookRegistry {
 
       // Verify signature if provided
       if (signature) {
-        const isValid = verifySignature(
+        const isValid = await verifySignature(
           bodyStr,
           signature,
           this.config.secret,
@@ -210,6 +282,124 @@ export class WebhookRegistry {
       };
     }
   }
+}
+
+/**
+ * Calculate delay for retry attempt
+ */
+function calculateRetryDelay(
+  attempt: number,
+  config: RetryConfig
+): number {
+  if (config.backoff === 'linear') {
+    return Math.min(config.initialDelay * attempt, config.maxDelay);
+  }
+  // Exponential backoff with jitter
+  const exponentialDelay = config.initialDelay * Math.pow(2, attempt - 1);
+  const jitter = Math.random() * 0.3 * exponentialDelay; // Add 0-30% jitter
+  return Math.min(exponentialDelay + jitter, config.maxDelay);
+}
+
+/**
+ * Sleep utility for retry delays
+ */
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/**
+ * Webhook delivery client with retry logic
+ */
+export class WebhookDelivery {
+  private config: RetryConfig;
+
+  constructor(retryConfig?: WebhookConfig['retries']) {
+    this.config = {
+      maxAttempts: retryConfig?.maxAttempts ?? 3,
+      backoff: retryConfig?.backoff ?? 'exponential',
+      initialDelay: retryConfig?.initialDelay ?? 1000,
+      maxDelay: retryConfig?.maxDelay ?? 60000,
+    };
+  }
+
+  /**
+   * Deliver webhook with automatic retries
+   */
+  async deliver(
+    url: string,
+    payload: WebhookPayload,
+    secret: string
+  ): Promise<{ success: boolean; attempts: number; error?: string }> {
+    const body = JSON.stringify(payload);
+    const signature = await createSignature(body, secret);
+
+    for (let attempt = 1; attempt <= this.config.maxAttempts; attempt++) {
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Vey-Signature': signature,
+            'X-Vey-Event': payload.event,
+            'X-Vey-Delivery-Attempt': attempt.toString(),
+          },
+          body,
+        });
+
+        if (response.ok) {
+          return { success: true, attempts: attempt };
+        }
+
+        // Don't retry for client errors (4xx), only server errors (5xx)
+        if (response.status >= 400 && response.status < 500) {
+          return {
+            success: false,
+            attempts: attempt,
+            error: `Client error: ${response.status} ${response.statusText}`,
+          };
+        }
+
+        // Server error - retry if we have attempts left
+        if (attempt < this.config.maxAttempts) {
+          const delay = calculateRetryDelay(attempt, this.config);
+          await sleep(delay);
+          continue;
+        }
+
+        return {
+          success: false,
+          attempts: attempt,
+          error: `Server error after ${attempt} attempts: ${response.status}`,
+        };
+      } catch (err) {
+        // Network error - retry if we have attempts left
+        if (attempt < this.config.maxAttempts) {
+          const delay = calculateRetryDelay(attempt, this.config);
+          await sleep(delay);
+          continue;
+        }
+
+        return {
+          success: false,
+          attempts: attempt,
+          error: err instanceof Error ? err.message : 'Network error',
+        };
+      }
+    }
+
+    return {
+      success: false,
+      attempts: this.config.maxAttempts,
+      error: 'Max retry attempts reached',
+    };
+  }
+}
+
+/**
+ * Create a webhook delivery client with retry logic
+ */
+export function createWebhookDelivery(config?: WebhookConfig['retries']): WebhookDelivery {
+  return new WebhookDelivery(config);
 }
 
 /**
