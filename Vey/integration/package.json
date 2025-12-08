@@ -1,0 +1,80 @@
+{
+  "name": "@vey/integration",
+  "version": "1.0.0",
+  "description": "Vey Integration SDK - ZKP Address Protocol with ConveyID delivery system",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./zkp-integration": {
+      "types": "./dist/zkp-integration.d.ts",
+      "import": "./dist/zkp-integration.mjs",
+      "require": "./dist/zkp-integration.js"
+    },
+    "./convey-protocol": {
+      "types": "./dist/convey-protocol.d.ts",
+      "import": "./dist/convey-protocol.mjs",
+      "require": "./dist/convey-protocol.js"
+    },
+    "./delivery-flow": {
+      "types": "./dist/delivery-flow.d.ts",
+      "import": "./dist/delivery-flow.mjs",
+      "require": "./dist/delivery-flow.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/*.ts --format cjs,esm --dts",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "example:ecommerce": "ts-node examples/ecommerce-checkout.ts",
+    "lint": "eslint src tests examples --ext .ts",
+    "lint:fix": "eslint src tests examples --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"examples/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\" \"examples/**/*.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "vey",
+    "zkp",
+    "zero-knowledge-proof",
+    "address",
+    "delivery",
+    "conveyid",
+    "privacy",
+    "integration"
+  ],
+  "author": "Vey Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rei-k/world-address-yaml"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitest/coverage-v8": "^1.6.1",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "ts-node": "^10.9.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "dependencies": {
+    "@vey/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "@noble/curves": "^2.0.1",
+    "@noble/hashes": "^2.0.1"
+  }
+}
