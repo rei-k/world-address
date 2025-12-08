@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biometric Authentication Example - Vey WebAuthn SDK</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔐 Biometric Authentication</h1>
+      <p>Passwordless authentication with WebAuthn/FIDO2</p>
+    </header>
+
+    <!-- Platform Detection -->
+    <section class="card">
+      <h2>📱 Platform Detection</h2>
+      <div id="platform-info">
+        <p>Checking device capabilities...</p>
+      </div>
+    </section>
+
+    <!-- Authentication State -->
+    <section class="card">
+      <div id="auth-state">
+        <!-- Will be populated by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="card" id="registration-section">
+      <h2>📝 Register New Passkey</h2>
+      <p>Create a new passkey for passwordless authentication</p>
+      
+      <div class="form-group">
+        <label for="username">Username (email)</label>
+        <input 
+          type="email" 
+          id="username" 
+          placeholder="user@example.com"
+          value="demo@veyvault.com"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="displayName">Display Name</label>
+        <input 
+          type="text" 
+          id="displayName" 
+          placeholder="Your Name"
+          value="Demo User"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="credentialName">Credential Name (optional)</label>
+        <input 
+          type="text" 
+          id="credentialName" 
+          placeholder="e.g., iPhone 13 Face ID"
+        >
+      </div>
+
+      <button id="register-btn" class="btn btn-primary">
+        👆 Register Passkey
+      </button>
+
+      <div id="registration-result" class="result"></div>
+    </section>
+
+    <!-- Authentication Section -->
+    <section class="card" id="authentication-section">
+      <h2>🔑 Sign In</h2>
+      <p>Authenticate with your registered passkey</p>
+
+      <button id="auth-btn" class="btn btn-success">
+        🔐 Sign In with Passkey
+      </button>
+
+      <button id="auth-conditional-btn" class="btn btn-outline" style="display:none">
+        ✨ Sign In with Autofill
+      </button>
+
+      <div id="authentication-result" class="result"></div>
+    </section>
+
+    <!-- Passkey Management Section -->
+    <section class="card">
+      <h2>🔑 Passkey Management</h2>
+      <p>Manage your registered passkeys</p>
+
+      <div class="actions">
+        <button id="refresh-passkeys-btn" class="btn btn-outline">
+          🔄 Refresh List
+        </button>
+        <button id="export-passkeys-btn" class="btn btn-outline">
+          📤 Export
+        </button>
+        <button id="clear-all-btn" class="btn btn-danger">
+          🗑️ Clear All
+        </button>
+      </div>
+
+      <div id="passkeys-list">
+        <!-- Will be populated by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Logout Section (shown when authenticated) -->
+    <section class="card" id="logout-section" style="display:none">
+      <button id="logout-btn" class="btn btn-danger">
+        🚪 Logout
+      </button>
+    </section>
+
+    <footer>
+      <p>
+        <strong>Note:</strong> This is a demo using a mock backend. 
+        In production, implement proper server-side verification.
+      </p>
+      <p>
+        <a href="../../sdk/webauthn/README.md" target="_blank">SDK Documentation</a> |
+        <a href="https://www.w3.org/TR/webauthn/" target="_blank">WebAuthn Spec</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Include the SDK (in production, use npm install @vey/webauthn) -->
+  <script type="module" src="../../sdk/webauthn/src/index.ts"></script>
+  
+  <!-- Mock Server -->
+  <script type="module" src="mock-server.js"></script>
+  
+  <!-- Main App -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
