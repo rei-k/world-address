@@ -80,8 +80,8 @@
   },
   "validation": {
     "rules": [
-      "District は必須",
-      "郵便番号は一部のみ導入"
+      "District is required",
+      "Postal codes are partially implemented"
     ]
   },
   "examples": {

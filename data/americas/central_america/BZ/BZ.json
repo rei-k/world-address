@@ -86,8 +86,8 @@
   },
   "validation": {
     "rules": [
-      "District は必須",
-      "郵便番号は導入途上で存在しない地域も多い"
+      "District is required",
+      "Postal codes are being introduced but many areas still lack them"
     ]
   },
   "examples": {

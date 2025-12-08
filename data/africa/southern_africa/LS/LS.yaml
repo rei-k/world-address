@@ -56,8 +56,8 @@ postal_code:
   example: '100'
 validation:
   rules:
-    - District は必須
-    - 郵便番号は一部のみ導入
+    - District is required
+    - Postal codes are partially implemented
 examples:
   domestic: Kingsway Rd, Maseru, Maseru District, Lesotho
   international: Kingsway Rd, Maseru District, 100, Lesotho

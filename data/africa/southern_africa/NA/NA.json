@@ -77,8 +77,8 @@
   },
   "validation": {
     "rules": [
-      "Region は必須",
-      "郵便番号は導入途上"
+      "Region is required",
+      "Postal codes are being introduced"
     ]
   },
   "examples": {

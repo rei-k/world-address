@@ -5,10 +5,6 @@ name:
       value: Barbados
       script: Latin
       direction: ltr
-    - lang: bajan
-      value: Bim
-      script: Latin
-      direction: ltr
 iso_codes:
   alpha2: BB
   alpha3: BRB
