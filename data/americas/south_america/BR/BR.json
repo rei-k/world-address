@@ -151,14 +151,34 @@
     },
     "payment_methods": [
       {
-        "type": "cash",
-        "name": "Cash",
+        "type": "qr_code",
+        "name": "Pix",
         "prevalence": "high"
       },
       {
         "type": "credit_card",
         "name": "Credit Card",
         "prevalence": "high"
+      },
+      {
+        "type": "debit_card",
+        "name": "Debit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mercado Pago",
+        "prevalence": "high"
+      },
+      {
+        "type": "boleto",
+        "name": "Boleto Bancário",
+        "prevalence": "medium"
+      },
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "medium"
       }
     ],
     "locale": {

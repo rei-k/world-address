@@ -138,11 +138,23 @@ pos:
     registration_required: false
     reporting_frequency: varies
   payment_methods:
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+    - type: debit_card
+      name: Debit Card
+      prevalence: high
     - type: cash
       name: Cash
       prevalence: high
-    - type: credit_card
-      name: Credit Card
+    - type: qr_code
+      name: CoDi
+      prevalence: medium
+    - type: transfer
+      name: SPEI
+      prevalence: medium
+    - type: cash_voucher
+      name: OXXO
       prevalence: high
   locale:
     date_format: YYYY-MM-DD

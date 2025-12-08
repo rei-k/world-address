@@ -117,12 +117,24 @@ pos:
     registration_required: false
     reporting_frequency: varies
   payment_methods:
-    - type: cash
-      name: Cash
-      prevalence: high
     - type: credit_card
       name: Credit Card
       prevalence: high
+    - type: transfer
+      name: PSE
+      prevalence: high
+    - type: mobile
+      name: Nequi
+      prevalence: high
+    - type: mobile
+      name: Daviplata
+      prevalence: high
+    - type: transfer
+      name: Transfiya
+      prevalence: medium
+    - type: cash
+      name: Cash
+      prevalence: medium
   locale:
     date_format: YYYY-MM-DD
     time_format: 24h

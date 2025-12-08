@@ -164,13 +164,23 @@
     },
     "payment_methods": [
       {
-        "type": "cash",
-        "name": "Cash",
+        "type": "credit_card",
+        "name": "Credit Card",
         "prevalence": "high"
       },
       {
-        "type": "credit_card",
-        "name": "Credit Card",
+        "type": "mobile",
+        "name": "Yape",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Plin",
+        "prevalence": "medium"
+      },
+      {
+        "type": "cash",
+        "name": "Cash",
         "prevalence": "high"
       }
     ],

@@ -85,12 +85,18 @@ pos:
     registration_required: false
     reporting_frequency: varies
   payment_methods:
-    - type: cash
-      name: Cash
-      prevalence: high
     - type: credit_card
       name: Credit Card
       prevalence: high
+    - type: debit_card
+      name: Debit Card
+      prevalence: high
+    - type: transfer
+      name: SINPE Móvil
+      prevalence: high
+    - type: cash
+      name: Cash
+      prevalence: medium
   locale:
     date_format: YYYY-MM-DD
     time_format: 24h
