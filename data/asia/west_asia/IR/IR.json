@@ -23,7 +23,8 @@
       "script": "Arabic",
       "role": "official",
       "country_name": "ایران",
-      "direction": "rtl"
+      "direction": "rtl",
+      "code": "fa"
     },
     {
       "name": "English",

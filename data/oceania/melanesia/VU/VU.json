@@ -44,7 +44,8 @@
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Vanuatu"
+      "country_name": "Vanuatu",
+      "code": "fr"
     },
     {
       "name": "Bislama",

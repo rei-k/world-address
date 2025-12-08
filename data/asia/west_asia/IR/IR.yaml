@@ -17,6 +17,7 @@ languages:
     role: official
     country_name: ایران
     direction: rtl
+    code: fa
   - name: English
     script: Latin
     role: auxiliary

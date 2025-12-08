@@ -31,7 +31,8 @@
       "script": "Latin",
       "role": "auxiliary",
       "country_name": "Liban",
-      "direction": "ltr"
+      "direction": "ltr",
+      "code": "fr"
     },
     {
       "name": "English",

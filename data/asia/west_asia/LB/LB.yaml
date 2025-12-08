@@ -23,6 +23,7 @@ languages:
     role: auxiliary
     country_name: Liban
     direction: ltr
+    code: fr
   - name: English
     script: Latin
     role: auxiliary

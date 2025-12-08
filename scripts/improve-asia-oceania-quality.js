@@ -144,6 +144,8 @@ const LANGUAGE_CODES = {
   Nauruan: 'na',
   Palauan: 'pau',
   Chuukese: 'chk',
+  'Persian (Farsi)': 'fa',
+  French: 'fr',
 };
 
 let filesModified = 0;

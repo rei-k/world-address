@@ -32,6 +32,7 @@ languages:
     direction: ltr
     role: official
     country_name: Vanuatu
+    code: fr
   - name: Bislama
     script: Latin
     direction: ltr
