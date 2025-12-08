@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: KN
   alpha3: KNA
-  numeric: '659'
+  numeric: "659"
 continent: North America
 subregion: Caribbean
 languages:
@@ -67,7 +67,7 @@ geo:
     longitude: -62.783
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.571Z'
+    captured_at: "2025-12-03T16:54:11.571Z"
 pos:
   currency:
     code: XCD
@@ -75,11 +75,12 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.17
+      tourism: 0.1
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -108,7 +109,7 @@ pos:
     timezone: America/St_Kitts
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false

@@ -40,7 +40,8 @@
   "address_format": {
     "order_variants": [
       {
-        "domestic_es": [
+        "context": "domestic_es",
+        "order": [
           "recipient",
           "building",
           "street_address",
@@ -51,7 +52,8 @@
         ]
       },
       {
-        "international": [
+        "context": "international",
+        "order": [
           "recipient",
           "building",
           "street_address",
@@ -92,9 +94,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "IVA",
       "rate": {
-        "standard": null
+        "standard": 0.13
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -139,5 +141,6 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
-  }
+  },
+  "subregion": "Central America"
 }

@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: CU
   alpha3: CUB
-  numeric: '192'
+  numeric: "192"
 continent: North America
 subregion: Caribbean
 languages:
@@ -104,7 +104,7 @@ postal_code:
   required_for_international: true
   stability: high
   regex: ^[0-9]{5}$
-  example: '10400'
+  example: "10400"
   description: Código Postal (5 dígitos). Consejos y Municipios están codificados por rango.
 validation:
   allow_latin_transliteration: true
@@ -128,7 +128,7 @@ geo:
     longitude: -77.7812
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.567Z'
+    captured_at: "2025-12-03T16:54:11.567Z"
 pos:
   currency:
     code: CUP
@@ -136,13 +136,15 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: Sales Tax
     rate:
       standard: null
+      notes: Variable sales tax and turnover tax; no unified VAT system
     included_in_price: true
     invoice_requirement: optional
+    type_local: Impuesto sobre Ventas
   receipt:
     required_fields:
       - business_name
@@ -169,7 +171,7 @@ pos:
     timezone: America/Havana
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false

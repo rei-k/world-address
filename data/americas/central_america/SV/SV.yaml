@@ -6,7 +6,7 @@ name:
 iso_codes:
   alpha2: SV
   alpha3: SLV
-  numeric: '222'
+  numeric: "222"
 continent: North America
 languages:
   - name: Spanish
@@ -23,7 +23,8 @@ administrative_divisions:
     type: Colonia / Barrio / Residencial
 address_format:
   order_variants:
-    - domestic_es:
+    - context: domestic_es
+      order:
         - recipient
         - building
         - street_address
@@ -31,7 +32,8 @@ address_format:
         - municipio
         - departamento
         - country
-    - international:
+    - context: international
+      order:
         - recipient
         - building
         - street_address
@@ -43,7 +45,7 @@ postal_code:
   stability: medium
   required_for_international: true
   regex: ^[0-9]{4}$
-  example: '01101'
+  example: "01101"
 examples:
   domestic: Calle Principal, Colonia Escalón, San Salvador, El Salvador
   international: Calle Principal, Colonia Escalón, San Salvador, 01101, El Salvador
@@ -53,7 +55,7 @@ geo:
     longitude: -88.8965
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.576Z'
+    captured_at: "2025-12-03T16:54:11.576Z"
 pos:
   currency:
     code: USD
@@ -61,11 +63,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: IVA
     rate:
-      standard: null
+      standard: 0.13
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -94,7 +96,8 @@ pos:
     timezone: America/El_Salvador
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+subregion: Central America

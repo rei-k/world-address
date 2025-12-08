@@ -1,0 +1,146 @@
+{
+  "caribbean": {
+    "AG": {
+      "tax": {"type": "VAT", "type_local": "VAT", "rate": {"standard": 0.17}},
+      "subregion": "Caribbean"
+    },
+    "BB": {
+      "tax": {"type": "VAT", "type_local": "VAT", "rate": {"standard": 0.175}},
+      "subregion": "Caribbean"
+    },
+    "BS": {
+      "tax": {"type": "VAT", "type_local": "VAT", "rate": {"standard": 0.10}},
+      "subregion": "Caribbean"
+    },
+    "CU": {
+      "tax": {"type": "Sales Tax", "type_local": "Impuesto sobre Ventas", "rate": {"standard": null, "notes": "Variable sales tax and turnover tax; no unified VAT system"}},
+      "subregion": "Caribbean"
+    },
+    "DM": {
+      "tax": {"type": "VAT", "type_local": "VAT", "rate": {"standard": 0.15}},
+      "subregion": "Caribbean"
+    },
+    "DO": {
+      "tax": {"type": "ITBIS", "type_local": "ITBIS", "rate": {"standard": 0.18}},
+      "subregion": "Caribbean"
+    },
+    "GD": {
+      "tax": {"type": "VAT", "type_local": "VAT", "rate": {"standard": 0.15}},
+      "subregion": "Caribbean"
+    },
+    "HT": {
+      "tax": {"type": "TCA", "type_local": "TCA", "rate": {"standard": 0.10}},
+      "subregion": "Caribbean"
+    },
+    "JM": {
+      "tax": {"type": "GCT", "type_local": "GCT", "rate": {"standard": 0.15}},
+      "subregion": "Caribbean"
+    },
+    "KN": {
+      "tax": {"type": "VAT", "type_local": "VAT", "rate": {"standard": 0.17, "tourism": 0.10}},
+      "subregion": "Caribbean"
+    },
+    "LC": {
+      "tax": {"type": "VAT", "type_local": "VAT", "rate": {"standard": 0.125}},
+      "subregion": "Caribbean"
+    },
+    "TT": {
+      "tax": {"type": "VAT", "type_local": "VAT", "rate": {"standard": 0.125}},
+      "subregion": "Caribbean"
+    },
+    "VC": {
+      "tax": {"type": "VAT", "type_local": "VAT", "rate": {"standard": 0.16}},
+      "subregion": "Caribbean"
+    }
+  },
+  "central_america": {
+    "BZ": {
+      "tax": {"type": "GST", "type_local": "GST", "rate": {"standard": 0.125}},
+      "subregion": "Central America"
+    },
+    "CR": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.13}},
+      "subregion": "Central America"
+    },
+    "GT": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.12}},
+      "subregion": "Central America"
+    },
+    "HN": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.15}},
+      "subregion": "Central America"
+    },
+    "NI": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.15}},
+      "subregion": "Central America"
+    },
+    "PA": {
+      "tax": {"type": "ITBMS", "type_local": "ITBMS", "rate": {"standard": 0.07}},
+      "subregion": "Central America"
+    },
+    "SV": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.13}},
+      "subregion": "Central America"
+    }
+  },
+  "north_america": {
+    "CA": {
+      "tax": {"type": "GST/HST", "type_local": "GST/HST", "rate": {"standard": 0.05, "notes": "Federal GST is 5%. HST varies by province: ON 13%, NB/NL/PE 15%, NS 14%"}},
+      "subregion": "Northern America"
+    },
+    "MX": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.16}},
+      "subregion": "Central America"
+    }
+  },
+  "south_america": {
+    "AR": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.21}},
+      "subregion": "Southern America"
+    },
+    "BO": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.13}},
+      "subregion": "Southern America"
+    },
+    "BR": {
+      "tax": {"type": "ICMS/PIS/COFINS", "type_local": "ICMS/PIS/COFINS", "rate": {"standard": null, "notes": "Complex multi-layer system. State ICMS 17-20%, federal PIS/COFINS 3.65-9.25%"}},
+      "subregion": "Southern America"
+    },
+    "CL": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.19}},
+      "subregion": "Southern America"
+    },
+    "CO": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.19, "reduced": 0.05}},
+      "subregion": "Southern America"
+    },
+    "EC": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.15}},
+      "subregion": "Southern America"
+    },
+    "GY": {
+      "tax": {"type": "VAT", "type_local": "VAT", "rate": {"standard": 0.14}},
+      "subregion": "Southern America"
+    },
+    "PE": {
+      "tax": {"type": "IGV", "type_local": "IGV", "rate": {"standard": 0.18}},
+      "subregion": "Southern America"
+    },
+    "PY": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.10, "reduced": 0.05}},
+      "subregion": "Southern America"
+    },
+    "SR": {
+      "tax": {"type": "VAT", "type_local": "OB", "rate": {"standard": 0.10}},
+      "subregion": "Southern America"
+    },
+    "UY": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.22, "reduced": 0.10}},
+      "subregion": "Southern America"
+    },
+    "VE": {
+      "tax": {"type": "IVA", "type_local": "IVA", "rate": {"standard": 0.16, "reduced": 0.08}},
+      "subregion": "Southern America"
+    }
+  }
+}

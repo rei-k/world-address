@@ -10,7 +10,7 @@ name:
 iso_codes:
   alpha2: BZ
   alpha3: BLZ
-  numeric: '084'
+  numeric: "084"
 continent: North America
 subregion: Central America
 languages:
@@ -67,7 +67,7 @@ geo:
     longitude: -88.4976
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.573Z'
+    captured_at: "2025-12-03T16:54:11.573Z"
 pos:
   currency:
     code: BZD
@@ -75,11 +75,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: GST
     rate:
-      standard: null
+      standard: 0.125
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -108,7 +108,7 @@ pos:
     timezone: America/Belize
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false

@@ -113,9 +113,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "GST",
       "rate": {
-        "standard": null
+        "standard": 0.125
       },
       "included_in_price": true,
       "invoice_requirement": "optional"

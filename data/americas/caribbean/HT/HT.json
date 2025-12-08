@@ -133,9 +133,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "TCA",
       "rate": {
-        "standard": null
+        "standard": 0.1
       },
       "included_in_price": true,
       "invoice_requirement": "optional"

@@ -94,7 +94,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.17
       },
       "included_in_price": true,
       "invoice_requirement": "optional"

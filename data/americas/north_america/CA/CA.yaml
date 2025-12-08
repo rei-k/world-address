@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: CA
   alpha3: CAN
-  numeric: '124'
+  numeric: "124"
 continent: North America
 subregion: Northern America
 languages:
@@ -104,7 +104,7 @@ geo:
     longitude: -106.3468
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.577Z'
+    captured_at: "2025-12-03T16:54:11.577Z"
 pos:
   currency:
     code: CAD
@@ -112,11 +112,12 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: GST
+    type: GST/HST
     rate:
-      standard: null
+      standard: 0.05
+      notes: "Federal GST is 5%. HST varies by province: ON 13%, NB/NL/PE 15%, NS 14%"
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -145,7 +146,7 @@ pos:
     timezone: America/Toronto
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false

@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: AG
   alpha3: ATG
-  numeric: '028'
+  numeric: "028"
 continent: North America
 subregion: Caribbean
 languages:
@@ -55,7 +55,7 @@ geo:
     longitude: -61.7964
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.564Z'
+    captured_at: "2025-12-03T16:54:11.564Z"
 pos:
   currency:
     code: XCD
@@ -63,11 +63,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.17
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -96,7 +96,7 @@ pos:
     timezone: America/Antigua
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false

@@ -130,9 +130,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "IVA",
       "rate": {
-        "standard": null
+        "standard": 0.19
       },
       "included_in_price": true,
       "invoice_requirement": "optional"

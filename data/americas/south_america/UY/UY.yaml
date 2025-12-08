@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: UY
   alpha3: URY
-  numeric: '858'
+  numeric: "858"
 continent: South America
 subregion: Southern America
 languages:
@@ -62,7 +62,7 @@ address_format:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric postal code
-    example: '11000'
+    example: "11000"
 validation:
   allow_latin_transliteration: true
   rules:
@@ -82,7 +82,7 @@ geo:
     longitude: -55.7658
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.597Z'
+    captured_at: "2025-12-03T16:54:11.597Z"
 pos:
   currency:
     code: UYU
@@ -90,11 +90,12 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: IVA
     rate:
-      standard: null
+      standard: 0.22
+      reduced: 0.1
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -123,7 +124,7 @@ pos:
     timezone: America/Montevideo
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
