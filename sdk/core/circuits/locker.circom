@@ -79,6 +79,9 @@ template LockerSelector() {
     signal output outLeft;
     signal output outRight;
     
+    // Constrain index to be binary (0 or 1)
+    index * (index - 1) === 0;
+    
     // If index == 0: outLeft = left, outRight = right
     // If index == 1: outLeft = right, outRight = left
     outLeft <== (right - left) * index + left;

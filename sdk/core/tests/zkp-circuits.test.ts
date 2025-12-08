@@ -21,6 +21,10 @@ import {
   deserializeProof,
 } from '../src/zkp-circuits';
 
+// Performance thresholds
+const PROOF_GENERATION_TIMEOUT_MS = 5000; // Acceptable for development (<1s target for production)
+const VERIFICATION_TIMEOUT_MS = 100;      // Should be <50ms in production
+
 // Skip these tests if circuits are not compiled
 const CIRCUITS_AVAILABLE = process.env.SKIP_CIRCUIT_TESTS !== 'true';
 
@@ -281,8 +285,8 @@ describe('ZKP Circuit Integration', () => {
       const duration = endTime - startTime;
       console.log(`Membership proof generation: ${duration}ms`);
       
-      // Should complete within 5 seconds (target: <1s for production)
-      expect(duration).toBeLessThan(5000);
+      // Should complete within acceptable time (target: <1s for production)
+      expect(duration).toBeLessThan(PROOF_GENERATION_TIMEOUT_MS);
       
       const isValid = await verifyCircomMembershipProof(proof, publicSignals);
       expect(isValid).toBe(true);
@@ -302,8 +306,8 @@ describe('ZKP Circuit Integration', () => {
       const duration = endTime - startTime;
       console.log(`Proof verification: ${duration}ms`);
       
-      // Verification should be very fast (<50ms target)
-      expect(duration).toBeLessThan(100);
+      // Verification should be very fast (<50ms target for production)
+      expect(duration).toBeLessThan(VERIFICATION_TIMEOUT_MS);
       expect(isValid).toBe(true);
     }, 30000);
   });

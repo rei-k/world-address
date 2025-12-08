@@ -1,5 +1,5 @@
 /**
- * @vey/core - ZKP Circuit Integration
+ * @Vey/core - ZKP Circuit Integration
  * 
  * This module provides integration with compiled circom circuits for production ZKP.
  * It bridges the TypeScript SDK with actual zk-SNARK proof generation and verification.
@@ -8,6 +8,10 @@
 import { groth16 } from 'snarkjs';
 import { hashSHA256, buildMerkleTree, getMerkleRoot, generateMerkleProof } from './zkp-crypto';
 import type { ZKCircuit, ZKProof } from './types';
+
+// Constants for circuit parameters
+const MERKLE_TREE_DEPTH = 20; // Membership proof: supports up to 2^20 = 1,048,576 addresses
+const LOCKER_TREE_DEPTH = 10; // Locker proof: supports up to 2^10 = 1,024 lockers per facility
 
 // Circuit paths (relative to build directory)
 const CIRCUIT_PATHS = {
@@ -55,7 +59,11 @@ async function loadVerificationKey(circuitType: keyof typeof CIRCUIT_PATHS): Pro
   }
   
   // In browser environment, verification keys should be bundled or fetched
-  throw new Error('Browser verification key loading not implemented. Bundle vkey files.');
+  // Implementation options:
+  // 1. Bundle vkey files with webpack/vite as JSON modules
+  // 2. Fetch from CDN at runtime
+  // 3. Embed as base64 strings in the bundle
+  throw new Error('Browser verification key loading not implemented. Please bundle verification keys or implement runtime fetching.');
 }
 
 /**
@@ -80,7 +88,7 @@ export async function generateCircomMembershipProof(
   
   // Calculate path indices from index
   let currentIndex = index;
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < MERKLE_TREE_DEPTH; i++) {
     pathIndices.push(currentIndex % 2);
     currentIndex = Math.floor(currentIndex / 2);
   }
@@ -303,10 +311,10 @@ export async function generateCircomLockerProof(
   const pathElements = path.map(h => BigInt('0x' + h));
   const nonceHash = BigInt('0x' + hashSHA256(nonce));
   
-  // Calculate path indices (depth 10 for lockers)
+  // Calculate path indices for locker tree
   const pathIndices = [];
   let currentIndex = index;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < LOCKER_TREE_DEPTH; i++) {
     pathIndices.push(currentIndex % 2);
     currentIndex = Math.floor(currentIndex / 2);
   }
