@@ -209,6 +209,15 @@ payment_methods:          # 主要決済手段
   - type: string          # 決済種別（cash / credit_card / debit_card / mobile / qr_code）
     name: string          # 決済名（例: Suica, PayPay, Alipay）
     prevalence: string    # 普及度（high / medium / low）
+    brands:               # クレジットカードブランド（type: credit_card の場合）
+      - brand: string     # ブランド名（Visa / Mastercard / JCB / American Express / Diners Club / Discover / UnionPay）
+        accepted: boolean # 受け入れ可否
+        prevalence: string # 普及度（high / medium / low）
+        features:         # 機能・特徴
+          contactless: boolean     # タッチ決済対応
+          chip_and_pin: boolean    # ICチップ&PIN対応
+          online_payment: boolean  # オンライン決済対応
+          recurring: boolean       # 定期決済対応
 
 locale:                   # ロケール情報
   date_format: string     # 日付形式（例: "YYYY/MM/DD", "MM/DD/YYYY", "DD.MM.YYYY"）
@@ -221,6 +230,76 @@ business_hours:           # 営業時間慣習
   typical_close: string   # 一般的な閉店時間（例: "20:00"）
   sunday_trading: boolean # 日曜営業の一般性
   public_holidays_trading: boolean # 祝日営業の一般性
+```
+
+### クレジットカード決済情報の例
+
+```yaml
+# 日本のクレジットカード対応例
+payment_methods:
+  - type: cash
+    name: Cash
+    prevalence: high
+  - type: credit_card
+    name: Credit Card
+    prevalence: high
+    brands:
+      - brand: Visa
+        accepted: true
+        prevalence: high
+        features:
+          contactless: true
+          chip_and_pin: true
+          online_payment: true
+          recurring: true
+      - brand: Mastercard
+        accepted: true
+        prevalence: high
+        features:
+          contactless: true
+          chip_and_pin: true
+          online_payment: true
+          recurring: true
+      - brand: JCB
+        accepted: true
+        prevalence: high
+        features:
+          contactless: true
+          chip_and_pin: true
+          online_payment: true
+          recurring: true
+      - brand: American Express
+        accepted: true
+        prevalence: medium
+        features:
+          contactless: true
+          chip_and_pin: true
+          online_payment: true
+          recurring: true
+      - brand: Diners Club
+        accepted: true
+        prevalence: medium
+        features:
+          contactless: true
+          chip_and_pin: true
+          online_payment: true
+          recurring: true
+      - brand: Discover
+        accepted: false
+        prevalence: low
+        features:
+          contactless: false
+          chip_and_pin: false
+          online_payment: false
+          recurring: false
+      - brand: UnionPay
+        accepted: true
+        prevalence: medium
+        features:
+          contactless: true
+          chip_and_pin: true
+          online_payment: true
+          recurring: false
 ```
 
 ## 🌍 緯度経度レベル（Geo-coordinates Level）型

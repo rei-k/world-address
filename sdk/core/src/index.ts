@@ -417,6 +417,25 @@ export type {
   CountryMetadata,
 } from './country-registry';
 
+// Payment & Credit Card
+export type {
+  CreditCardBrand,
+  CreditCardBrandInfo,
+  PaymentMethodType,
+  PaymentMethod,
+  CardValidationResult,
+} from './payment';
+
+export {
+  CREDIT_CARD_PATTERNS,
+  detectCardBrand,
+  validateLuhn,
+  validateCardNumber,
+  formatCardNumber,
+  maskCardNumber,
+  getDefaultCreditCardBrands,
+} from './payment';
+
 // Convenience functions for country information
 import { CountryRegistry } from './country-registry';
 export const getCountryInfo = (code: string) => CountryRegistry.getCountry(code);
