@@ -23,12 +23,26 @@ languages:
     country_name:
       ar: الصحراء الغربية
       en: Western Sahara
+    code: ar
+    field_labels:
+      recipient: المستلم
+      building: المبنى
+      floor: الطابق
+      room: الغرفة
+      street_address: عنوان الشارع
+      district: المقاطعة
+      ward: الحي
+      city: المدينة
+      province: المحافظة
+      postal_code: الرمز البريدي
+      country: الدولة
   - name: Spanish
     script: Latin
     role: historical
     country_name:
       es: Sáhara Occidental
       en: Western Sahara
+    code: es
   - name: Hassaniya Arabic
     script: Arabic
     direction: rtl
@@ -89,7 +103,7 @@ pos:
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.2
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -111,6 +125,9 @@ pos:
       prevalence: high
     - type: credit_card
       name: Credit Card
+      prevalence: high
+    - type: mobile
+      name: Mobile Money
       prevalence: high
   locale:
     date_format: YYYY-MM-DD

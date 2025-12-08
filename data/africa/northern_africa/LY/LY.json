@@ -23,7 +23,21 @@
       "script": "Arabic",
       "direction": "rtl",
       "role": "official",
-      "country_name": "ليبيا"
+      "country_name": "ليبيا",
+      "code": "ar",
+      "field_labels": {
+        "recipient": "المستلم",
+        "building": "المبنى",
+        "floor": "الطابق",
+        "room": "الغرفة",
+        "street_address": "عنوان الشارع",
+        "district": "المقاطعة",
+        "ward": "الحي",
+        "city": "المدينة",
+        "province": "المحافظة",
+        "postal_code": "الرمز البريدي",
+        "country": "الدولة"
+      }
     },
     {
       "name": "English",
@@ -31,7 +45,21 @@
       "direction": "ltr",
       "role": "auxiliary",
       "required_for_shipping": true,
-      "country_name": "Libya"
+      "country_name": "Libya",
+      "code": "en",
+      "field_labels": {
+        "recipient": "Recipient",
+        "building": "Building",
+        "floor": "Floor",
+        "room": "Room",
+        "street_address": "Street Address",
+        "district": "District",
+        "ward": "Ward",
+        "city": "City",
+        "province": "Province",
+        "postal_code": "Postal Code",
+        "country": "Country"
+      }
     }
   ],
   "administrative_divisions": {
@@ -134,7 +162,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -164,6 +192,11 @@
       {
         "type": "credit_card",
         "name": "Credit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mobile Money",
         "prevalence": "high"
       }
     ],

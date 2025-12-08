@@ -17,6 +17,19 @@ languages:
     direction: ltr
     role: official
     country_name: Guiné-Bissau
+    code: pt
+    field_labels:
+      recipient: Destinatário
+      building: Edifício
+      floor: Andar
+      room: Sala
+      street_address: Endereço
+      district: Distrito
+      ward: Bairro
+      city: Cidade
+      province: Província
+      postal_code: Código Postal
+      country: País
   - name: Crioulo (Kriolu)
     script: Latin
     direction: ltr
@@ -105,7 +118,7 @@ pos:
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.15
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -127,6 +140,9 @@ pos:
       prevalence: high
     - type: credit_card
       name: Credit Card
+      prevalence: high
+    - type: mobile
+      name: Mobile Money
       prevalence: high
   locale:
     date_format: YYYY-MM-DD

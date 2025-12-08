@@ -20,6 +20,19 @@ languages:
     direction: rtl
     role: primary
     country_name: مخيمات اللاجئين الصحراويين
+    code: ar
+    field_labels:
+      recipient: المستلم
+      building: المبنى
+      floor: الطابق
+      room: الغرفة
+      street_address: عنوان الشارع
+      district: المقاطعة
+      ward: الحي
+      city: المدينة
+      province: المحافظة
+      postal_code: الرمز البريدي
+      country: الدولة
   - name: Hassaniya Arabic
     script: Arabic
     direction: rtl
@@ -35,12 +48,38 @@ languages:
     direction: ltr
     role: auxiliary
     country_name: Camps de réfugiés sahraouis
+    code: fr
+    field_labels:
+      recipient: Destinataire
+      building: Bâtiment
+      floor: Étage
+      room: Chambre
+      street_address: Adresse
+      district: District
+      ward: Quartier
+      city: Ville
+      province: Province
+      postal_code: Code Postal
+      country: Pays
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     required_for_shipping: true
     country_name: Sahrawi Refugee Camps
+    code: en
+    field_labels:
+      recipient: Recipient
+      building: Building
+      floor: Floor
+      room: Room
+      street_address: Street Address
+      district: District
+      ward: Ward
+      city: City
+      province: Province
+      postal_code: Postal Code
+      country: Country
 administrative_divisions:
   level1:
     type: Camp
@@ -134,6 +173,9 @@ pos:
     - type: credit_card
       name: Credit Card
       prevalence: low
+    - type: mobile
+      name: Mobile Money
+      prevalence: high
   locale:
     date_format: YYYY-MM-DD
     time_format: 24h

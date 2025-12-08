@@ -29,21 +29,50 @@
       "script": "Arabic",
       "direction": "rtl",
       "role": "official",
-      "country_name": "المغرب"
+      "country_name": "المغرب",
+      "code": "ar",
+      "field_labels": {
+        "recipient": "المستلم",
+        "building": "المبنى",
+        "floor": "الطابق",
+        "room": "الغرفة",
+        "street_address": "عنوان الشارع",
+        "district": "المقاطعة",
+        "ward": "الحي",
+        "city": "المدينة",
+        "province": "المحافظة",
+        "postal_code": "الرمز البريدي",
+        "country": "الدولة"
+      }
     },
     {
       "name": "French",
       "script": "Latin",
       "direction": "ltr",
       "role": "auxiliary",
-      "country_name": "Maroc"
+      "country_name": "Maroc",
+      "code": "fr",
+      "field_labels": {
+        "recipient": "Destinataire",
+        "building": "Bâtiment",
+        "floor": "Étage",
+        "room": "Chambre",
+        "street_address": "Adresse",
+        "district": "District",
+        "ward": "Quartier",
+        "city": "Ville",
+        "province": "Province",
+        "postal_code": "Code Postal",
+        "country": "Pays"
+      }
     },
     {
       "name": "Berber",
       "script": "Tifinagh",
       "direction": "ltr",
       "role": "co-official",
-      "country_name": "ⵍⵎⵖⵔⵉⴱ"
+      "country_name": "ⵍⵎⵖⵔⵉⴱ",
+      "code": "ber"
     },
     {
       "name": "English",
@@ -51,7 +80,21 @@
       "direction": "ltr",
       "role": "auxiliary",
       "required_for_shipping": true,
-      "country_name": "Morocco"
+      "country_name": "Morocco",
+      "code": "en",
+      "field_labels": {
+        "recipient": "Recipient",
+        "building": "Building",
+        "floor": "Floor",
+        "room": "Room",
+        "street_address": "Street Address",
+        "district": "District",
+        "ward": "Ward",
+        "city": "City",
+        "province": "Province",
+        "postal_code": "Postal Code",
+        "country": "Country"
+      }
     }
   ],
   "administrative_divisions": {
@@ -165,7 +208,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.2
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -195,6 +238,11 @@
       {
         "type": "credit_card",
         "name": "Credit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mobile Money",
         "prevalence": "high"
       }
     ],

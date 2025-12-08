@@ -172,7 +172,7 @@ pos:
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.15
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -194,6 +194,9 @@ pos:
       prevalence: high
     - type: credit_card
       name: Credit Card
+      prevalence: high
+    - type: mobile
+      name: Mobile Money
       prevalence: high
   locale:
     date_format: YYYY-MM-DD

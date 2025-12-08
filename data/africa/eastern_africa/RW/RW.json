@@ -35,14 +35,29 @@
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Rwanda"
+      "country_name": "Rwanda",
+      "code": "rw"
     },
     {
       "name": "French",
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Rwanda"
+      "country_name": "Rwanda",
+      "code": "fr",
+      "field_labels": {
+        "recipient": "Destinataire",
+        "building": "Bâtiment",
+        "floor": "Étage",
+        "room": "Chambre",
+        "street_address": "Adresse",
+        "district": "District",
+        "ward": "Quartier",
+        "city": "Ville",
+        "province": "Province",
+        "postal_code": "Code Postal",
+        "country": "Pays"
+      }
     },
     {
       "name": "English",
@@ -50,14 +65,42 @@
       "direction": "ltr",
       "role": "official",
       "required_for_shipping": true,
-      "country_name": "Rwanda"
+      "country_name": "Rwanda",
+      "code": "en",
+      "field_labels": {
+        "recipient": "Recipient",
+        "building": "Building",
+        "floor": "Floor",
+        "room": "Room",
+        "street_address": "Street Address",
+        "district": "District",
+        "ward": "Ward",
+        "city": "City",
+        "province": "Province",
+        "postal_code": "Postal Code",
+        "country": "Country"
+      }
     },
     {
       "name": "Swahili",
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Rwanda"
+      "country_name": "Rwanda",
+      "code": "sw",
+      "field_labels": {
+        "recipient": "Mpokeaji",
+        "building": "Jengo",
+        "floor": "Sakafu",
+        "room": "Chumba",
+        "street_address": "Anwani ya Barabara",
+        "district": "Wilaya",
+        "ward": "Kata",
+        "city": "Jiji",
+        "province": "Mkoa",
+        "postal_code": "Nambari ya Posta",
+        "country": "Nchi"
+      }
     }
   ],
   "administrative_divisions": {
@@ -168,7 +211,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.18
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -198,6 +241,11 @@
       {
         "type": "credit_card",
         "name": "Credit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mobile Money",
         "prevalence": "high"
       }
     ],

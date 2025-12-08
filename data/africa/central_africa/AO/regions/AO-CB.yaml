@@ -16,6 +16,19 @@ languages:
     direction: ltr
     role: official
     country_name: Cabinda
+    code: pt
+    field_labels:
+      recipient: Destinatário
+      building: Edifício
+      floor: Andar
+      room: Sala
+      street_address: Endereço
+      district: Distrito
+      ward: Bairro
+      city: Cidade
+      province: Província
+      postal_code: Código Postal
+      country: País
   - name: Kikongo
     script: Latin
     direction: ltr
@@ -32,6 +45,19 @@ languages:
     role: auxiliary
     required_for_shipping: true
     country_name: Cabinda
+    code: en
+    field_labels:
+      recipient: Recipient
+      building: Building
+      floor: Floor
+      room: Room
+      street_address: Street Address
+      district: District
+      ward: Ward
+      city: City
+      province: Province
+      postal_code: Postal Code
+      country: Country
 administrative_divisions:
   level1:
     type: Municipality
@@ -138,6 +164,9 @@ pos:
     - type: credit_card
       name: Credit Card
       prevalence: medium
+    - type: mobile
+      name: Mobile Money
+      prevalence: high
   locale:
     date_format: YYYY-MM-DD
     time_format: 24h

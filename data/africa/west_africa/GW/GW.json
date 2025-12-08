@@ -23,7 +23,21 @@
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Guiné-Bissau"
+      "country_name": "Guiné-Bissau",
+      "code": "pt",
+      "field_labels": {
+        "recipient": "Destinatário",
+        "building": "Edifício",
+        "floor": "Andar",
+        "room": "Sala",
+        "street_address": "Endereço",
+        "district": "Distrito",
+        "ward": "Bairro",
+        "city": "Cidade",
+        "province": "Província",
+        "postal_code": "Código Postal",
+        "country": "País"
+      }
     },
     {
       "name": "Crioulo (Kriolu)",
@@ -138,7 +152,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.15
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -168,6 +182,11 @@
       {
         "type": "credit_card",
         "name": "Credit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mobile Money",
         "prevalence": "high"
       }
     ],

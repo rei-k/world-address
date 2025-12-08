@@ -30,14 +30,42 @@
       "direction": "ltr",
       "role": "official",
       "required_for_shipping": true,
-      "country_name": "Uganda"
+      "country_name": "Uganda",
+      "code": "en",
+      "field_labels": {
+        "recipient": "Recipient",
+        "building": "Building",
+        "floor": "Floor",
+        "room": "Room",
+        "street_address": "Street Address",
+        "district": "District",
+        "ward": "Ward",
+        "city": "City",
+        "province": "Province",
+        "postal_code": "Postal Code",
+        "country": "Country"
+      }
     },
     {
       "name": "Swahili",
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Uganda"
+      "country_name": "Uganda",
+      "code": "sw",
+      "field_labels": {
+        "recipient": "Mpokeaji",
+        "building": "Jengo",
+        "floor": "Sakafu",
+        "room": "Chumba",
+        "street_address": "Anwani ya Barabara",
+        "district": "Wilaya",
+        "ward": "Kata",
+        "city": "Jiji",
+        "province": "Mkoa",
+        "postal_code": "Nambari ya Posta",
+        "country": "Nchi"
+      }
     }
   ],
   "administrative_divisions": {
@@ -147,7 +175,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.18
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -177,6 +205,11 @@
       {
         "type": "credit_card",
         "name": "Credit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mobile Money",
         "prevalence": "high"
       }
     ],

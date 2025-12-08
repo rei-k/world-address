@@ -30,7 +30,21 @@
       "direction": "ltr",
       "role": "official",
       "required_for_shipping": true,
-      "country_name": "Zimbabwe"
+      "country_name": "Zimbabwe",
+      "code": "en",
+      "field_labels": {
+        "recipient": "Recipient",
+        "building": "Building",
+        "floor": "Floor",
+        "room": "Room",
+        "street_address": "Street Address",
+        "district": "District",
+        "ward": "Ward",
+        "city": "City",
+        "province": "Province",
+        "postal_code": "Postal Code",
+        "country": "Country"
+      }
     },
     {
       "name": "Shona",
@@ -44,7 +58,8 @@
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Zimbabwe"
+      "country_name": "Zimbabwe",
+      "code": "nr"
     }
   ],
   "administrative_divisions": {
@@ -149,7 +164,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.145
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -179,6 +194,11 @@
       {
         "type": "credit_card",
         "name": "Credit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mobile Money",
         "prevalence": "high"
       }
     ],
