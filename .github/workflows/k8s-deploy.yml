@@ -1,0 +1,105 @@
+name: Deploy to Kubernetes
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+      version:
+        description: 'Docker image version tag'
+        required: true
+        type: string
+  workflow_run:
+    workflows: ["Docker Build and Push"]
+    types:
+      - completed
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment || 'staging' }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.28.0'
+      
+      - name: Configure kubectl
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
+      
+      - name: Set environment variables
+        run: |
+          if [ "${{ github.event.inputs.environment }}" = "production" ]; then
+            echo "NAMESPACE=world-address-prod" >> $GITHUB_ENV
+            echo "K8S_DIR=k8s/production" >> $GITHUB_ENV
+          else
+            echo "NAMESPACE=world-address-staging" >> $GITHUB_ENV
+            echo "K8S_DIR=k8s/staging" >> $GITHUB_ENV
+          fi
+          echo "VERSION=${{ github.event.inputs.version || github.sha }}" >> $GITHUB_ENV
+      
+      - name: Create namespace if not exists
+        run: |
+          kubectl create namespace ${{ env.NAMESPACE }} --dry-run=client -o yaml | kubectl apply -f -
+      
+      - name: Apply Kubernetes manifests
+        run: |
+          # Apply base manifests
+          kubectl apply -f k8s/base/ -n ${{ env.NAMESPACE }}
+          
+          # Apply environment-specific manifests if they exist
+          if [ -d "${{ env.K8S_DIR }}" ]; then
+            kubectl apply -f ${{ env.K8S_DIR }}/ -n ${{ env.NAMESPACE }}
+          fi
+      
+      - name: Update deployment image
+        run: |
+          kubectl set image deployment/world-address-app \
+            app=ghcr.io/${{ github.repository }}:${{ env.VERSION }} \
+            -n ${{ env.NAMESPACE }}
+      
+      - name: Wait for rollout
+        run: |
+          kubectl rollout status deployment/world-address-app -n ${{ env.NAMESPACE }} --timeout=5m
+      
+      - name: Verify deployment
+        run: |
+          kubectl get pods -n ${{ env.NAMESPACE }} -l app=world-address,component=app
+          kubectl get services -n ${{ env.NAMESPACE }}
+      
+      - name: Run smoke tests
+        run: |
+          # Get the service endpoint
+          SERVICE_IP=$(kubectl get svc world-address-service -n ${{ env.NAMESPACE }} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+          if [ -z "$SERVICE_IP" ]; then
+            SERVICE_IP=$(kubectl get svc world-address-service -n ${{ env.NAMESPACE }} -o jsonpath='{.spec.clusterIP}')
+          fi
+          
+          # Basic health check (customize based on your app)
+          echo "Service endpoint: $SERVICE_IP"
+          # Add your smoke tests here
+      
+      - name: Notify deployment status
+        if: always()
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            echo "✅ Deployment to ${{ env.NAMESPACE }} succeeded"
+          else
+            echo "❌ Deployment to ${{ env.NAMESPACE }} failed"
+          fi

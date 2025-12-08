@@ -1,0 +1,103 @@
+# Prometheus Alert Rules for World Address YAML
+groups:
+  - name: world-address-alerts
+    interval: 30s
+    rules:
+      # Application availability
+      - alert: ApplicationDown
+        expr: up{job="world-address-app"} == 0
+        for: 5m
+        labels:
+          severity: critical
+          component: app
+        annotations:
+          summary: "World Address application is down"
+          description: "Application {{ $labels.pod }} has been down for more than 5 minutes"
+
+      # High error rate
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+          component: app
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value }} (5% threshold)"
+
+      # High latency
+      - alert: HighLatency
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 1
+        for: 10m
+        labels:
+          severity: warning
+          component: app
+        annotations:
+          summary: "High request latency"
+          description: "P95 latency is {{ $value }}s (1s threshold)"
+
+      # High CPU usage
+      - alert: HighCPUUsage
+        expr: rate(process_cpu_seconds_total[5m]) > 0.8
+        for: 15m
+        labels:
+          severity: warning
+          component: app
+        annotations:
+          summary: "High CPU usage"
+          description: "CPU usage is {{ $value }} on {{ $labels.pod }}"
+
+      # High memory usage
+      - alert: HighMemoryUsage
+        expr: process_resident_memory_bytes / 1024 / 1024 > 450
+        for: 10m
+        labels:
+          severity: warning
+          component: app
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is {{ $value }}MB on {{ $labels.pod }}"
+
+      # Database connection issues
+      - alert: PostgresDown
+        expr: up{job="postgres"} == 0
+        for: 2m
+        labels:
+          severity: critical
+          component: database
+        annotations:
+          summary: "PostgreSQL is down"
+          description: "PostgreSQL database has been down for more than 2 minutes"
+
+      # Redis connection issues
+      - alert: RedisDown
+        expr: up{job="redis"} == 0
+        for: 2m
+        labels:
+          severity: critical
+          component: cache
+        annotations:
+          summary: "Redis is down"
+          description: "Redis cache has been down for more than 2 minutes"
+
+      # Pod restarts
+      - alert: PodRestartingTooOften
+        expr: rate(kube_pod_container_status_restarts_total{namespace="world-address"}[15m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          component: kubernetes
+        annotations:
+          summary: "Pod restarting too often"
+          description: "Pod {{ $labels.pod }} is restarting {{ $value }} times per minute"
+
+      # Storage space
+      - alert: HighDiskUsage
+        expr: (node_filesystem_avail_bytes / node_filesystem_size_bytes) < 0.1
+        for: 10m
+        labels:
+          severity: warning
+          component: storage
+        annotations:
+          summary: "High disk usage"
+          description: "Disk usage is above 90% on {{ $labels.node }}"

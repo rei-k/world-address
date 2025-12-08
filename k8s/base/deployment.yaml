@@ -1,0 +1,66 @@
+# Deployment for World Address YAML Application
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: world-address-app
+  namespace: world-address
+  labels:
+    app: world-address
+    component: app
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: world-address
+      component: app
+  template:
+    metadata:
+      labels:
+        app: world-address
+        component: app
+    spec:
+      serviceAccountName: world-address-sa
+      containers:
+      - name: app
+        image: world-address:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: world-address-config
+        - secretRef:
+            name: world-address-secrets
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        # TODO: Implement proper HTTP health check endpoints
+        # These probes should call /health and /ready endpoints
+        # that verify database connectivity and application state
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 2
