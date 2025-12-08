@@ -150,7 +150,13 @@
 ```
 data/asia/
   ├── east_asia/
-  │   ├── CN/CN.yaml              # China / 中国
+  │   ├── CN/                     # China / 中国
+  │   │   ├── CN.yaml
+  │   │   └── regions/
+  │   │       ├── Hainan.yaml             # Hainan Province / 海南省
+  │   │       ├── Inner_Mongolia.yaml     # Inner Mongolia / 内モンゴル自治区
+  │   │       ├── Tibet.yaml              # Tibet Autonomous Region / チベット自治区
+  │   │       └── Xinjiang.yaml           # Xinjiang Uyghur Autonomous Region / 新疆ウイグル自治区
   │   ├── HK/HK.yaml              # Hong Kong / 香港（中国特別行政区）
   │   ├── MO/MO.yaml              # Macao / マカオ（中国特別行政区）
   │   ├── TW/TW.yaml              # Taiwan / 台湾（独自体系）
@@ -165,14 +171,26 @@ data/asia/
   │   ├── ID/                     # Indonesia / インドネシア
   │   │   ├── ID.yaml
   │   │   └── regions/
-  │   │       └── Papua.yaml      # West Papua / 西パプア（オセアニア寄り）
+  │   │       ├── Aceh.yaml               # Aceh Province / アチェ州（特別自治州）
+  │   │       └── Papua.yaml              # West Papua / 西パプア（オセアニア寄り）
   │   ├── LA/LA.yaml              # Laos / ラオス
-  │   ├── MY/MY.yaml              # Malaysia / マレーシア
+  │   ├── MY/                     # Malaysia / マレーシア
+  │   │   ├── MY.yaml
+  │   │   └── regions/
+  │   │       ├── Labuan.yaml             # Labuan Federal Territory / ラブアン連邦直轄領
+  │   │       ├── Sabah.yaml              # Sabah State / サバ州
+  │   │       └── Sarawak.yaml            # Sarawak State / サラワク州
   │   ├── MM/MM.yaml              # Myanmar / ミャンマー
-  │   ├── PH/PH.yaml              # Philippines / フィリピン
+  │   ├── PH/                     # Philippines / フィリピン
+  │   │   ├── PH.yaml
+  │   │   └── regions/
+  │   │       └── BARMM.yaml              # Bangsamoro Autonomous Region / バンサモロ自治地域
   │   ├── SG/SG.yaml              # Singapore / シンガポール
   │   ├── TH/TH.yaml              # Thailand / タイ
-  │   ├── TL/TL.yaml              # Timor-Leste / 東ティモール
+  │   ├── TL/                     # Timor-Leste / 東ティモール
+  │   │   ├── TL.yaml
+  │   │   └── regions/
+  │   │       └── Oecusse.yaml            # Oecusse Enclave / オエクシ特別行政区
   │   ├── VN/VN.yaml              # Vietnam / ベトナム
   │   ├── PCL/PCL.yaml            # Paracel Islands / 西沙諸島（係争地）
   │   └── SPRT/SPRT.yaml          # Spratly Islands / 南沙諸島（係争地）
@@ -184,8 +202,8 @@ data/asia/
   │   ├── IN/                     # India / インド
   │   │   ├── IN.yaml
   │   │   └── regions/
-  │   │       ├── Andaman_Nicobar.yaml  # Andaman and Nicobar Islands
-  │   │       └── Lakshadweep.yaml      # Lakshadweep Islands
+  │   │       ├── Andaman_Nicobar.yaml    # Andaman and Nicobar Islands / アンダマン・ニコバル諸島
+  │   │       └── Lakshadweep.yaml        # Lakshadweep Islands / ラクシャディープ諸島
   │   ├── MV/MV.yaml              # Maldives / モルディブ
   │   ├── NP/NP.yaml              # Nepal / ネパール
   │   ├── PK/PK.yaml              # Pakistan / パキスタン
@@ -203,10 +221,17 @@ data/asia/
   │   ├── IR/IR.yaml              # Iran / イラン
   │   ├── IQ/IQ.yaml              # Iraq / イラク
   │   ├── IL/IL.yaml              # Israel / イスラエル
-  │   ├── PS/PS.yaml              # Palestine / パレスチナ（部分承認地域）
+  │   ├── PS/                     # Palestine / パレスチナ（部分承認地域）
+  │   │   ├── PS.yaml
+  │   │   └── regions/
+  │   │       ├── Gaza_Strip.yaml         # Gaza Strip / ガザ地区
+  │   │       └── West_Bank.yaml          # West Bank / ヨルダン川西岸地区
   │   ├── JO/JO.yaml              # Jordan / ヨルダン
   │   ├── LB/LB.yaml              # Lebanon / レバノン
-  │   ├── SY/SY.yaml              # Syria / シリア
+  │   ├── SY/                     # Syria / シリア
+  │   │   ├── SY.yaml
+  │   │   └── regions/
+  │   │       └── Golan_Heights.yaml      # Golan Heights / ゴラン高原（係争地）
   │   ├── SA/SA.yaml              # Saudi Arabia / サウジアラビア
   │   ├── AE/AE.yaml              # United Arab Emirates / アラブ首長国連邦
   │   ├── QA/QA.yaml              # Qatar / カタール
@@ -293,6 +318,41 @@ Example (Japan):
 - Different languages (Traditional Chinese vs Simplified)
 - Separate customs and immigration
 
+### China's Autonomous Regions / 中国の自治区
+
+**中国には5つの自治区と1つの特別省があります。**
+
+**China has 5 autonomous regions and 1 special province with distinct cultural and administrative characteristics:**
+
+**Autonomous Regions (自治区):**
+- **Xinjiang Uyghur Autonomous Region (新疆ウイグル自治区)**: Largest autonomous region, predominantly Muslim Uyghur population, uses both Simplified Chinese and Uyghur (Arabic script)
+- **Tibet Autonomous Region (チベット自治区)**: High-altitude region, Tibetan Buddhist culture, uses Tibetan script and Simplified Chinese
+- **Inner Mongolia (内モンゴル自治区)**: Mongolian ethnic autonomous region, uses Mongolian Cyrillic and Traditional Mongolian scripts alongside Simplified Chinese
+- **Ningxia Hui Autonomous Region (寧夏回族自治区)**: Hui Muslim majority region (not included in regions/ as it follows standard mainland system)
+- **Guangxi Zhuang Autonomous Region (広西チワン族自治区)**: Zhuang ethnic autonomous region (not included in regions/ as it follows standard mainland system)
+
+**Special Provinces (特別省):**
+- **Hainan Province (海南省)**: Tropical island province in the South China Sea, special economic zone status, tourism-focused development
+
+**Note**: Only autonomous regions and provinces with significantly different addressing, linguistic, or administrative characteristics have dedicated regional files.
+
+### Southeast Asian Special Regions / 東南アジアの特別地域
+
+**Malaysia's Federal Territories and Borneo States:**
+- **Labuan (ラブアン連邦直轄領)**: Federal territory, offshore financial center
+- **Sabah (サバ州)**: East Malaysia state on Borneo island
+- **Sarawak (サラワク州)**: Largest state, located on Borneo island
+
+**Indonesia's Special Autonomous Provinces:**
+- **Aceh (アチェ州)**: Special autonomous province with Islamic Sharia law
+- **Papua (西パプア)**: Special autonomous region close to Oceania
+
+**Philippines' Autonomous Region:**
+- **BARMM (バンサモロ自治地域)**: Bangsamoro Autonomous Region in Muslim Mindanao, self-governing region with special autonomy
+
+**Timor-Leste's Enclave:**
+- **Oecusse (オエクシ特別行政区)**: Enclave surrounded by Indonesian territory, separated from mainland Timor-Leste
+
 ### Disputed Territories / 係争地域
 
 以下の地域は国際的に係争中：
@@ -301,8 +361,11 @@ Example (Japan):
 
 - **Taiwan (TW)**: Maintains independent postal system, uses TWD currency
 - **Palestine (PS)**: Partial recognition, limited postal infrastructure
+  - **Gaza Strip (ガザ地区)**: Coastal exclave separated from West Bank by Israeli territory
+  - **West Bank (ヨルダン川西岸地区)**: West of Jordan River, complex administrative status
 - **Paracel Islands (PCL)**: Disputed between China, Vietnam, Taiwan
 - **Spratly Islands (SPRT)**: Disputed among China, Vietnam, Philippines, Malaysia, Taiwan, Brunei
+- **Golan Heights (ゴラン高原)**: Disputed between Syria and Israel, occupied by Israel since 1967
 - **Kashmir**: Disputed between India, Pakistan, China (included in respective country data)
 
 ### Island Nations Address Challenges / 島嶼国の住所課題
