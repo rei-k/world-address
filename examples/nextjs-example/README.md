@@ -1,22 +1,28 @@
 # Next.js 14 Address Form Example
 
-This example demonstrates how to use the `@vey/core` SDK with Next.js 14 App Router.
+This example demonstrates how to use the `@vey/core` SDK with Next.js 14 App Router, including API routes and authentication.
 
 ## Features
 
 - ✅ **Next.js 14 App Router** - Uses the latest App Router architecture
 - ✅ **Server and Client Components** - Optimal performance with RSC
-- ✅ **TypeScript** - Full type safety
+- ✅ **API Routes** - Full CRUD API for addresses
+- ✅ **Authentication** - NextAuth.js integration with credentials provider
+- ✅ **TypeScript** - Full type safety with Zod validation
 - ✅ **Real-time validation** - Client-side validation with immediate feedback
 - ✅ **Country-specific validation** - Different rules for different countries
-- ✅ **Responsive design** - Mobile-first approach
-- ✅ **API Routes** - Example API endpoint for address submission
+- ✅ **Responsive design** - Tailwind CSS for modern UI
+- ✅ **Webhooks** - Webhook integration support
+- ✅ **Server Actions** - Modern data mutations with Server Actions
 
 ## Quick Start
 
 ```bash
 # Install dependencies
 npm install
+
+# Copy environment variables
+cp .env.example .env.local
 
 # Start development server
 npm run dev
