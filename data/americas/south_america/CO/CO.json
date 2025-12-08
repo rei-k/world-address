@@ -129,9 +129,10 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "IVA",
       "rate": {
-        "standard": null
+        "standard": 0.19,
+        "reduced": 0.05
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -154,14 +155,34 @@
     },
     "payment_methods": [
       {
-        "type": "cash",
-        "name": "Cash",
-        "prevalence": "high"
-      },
-      {
         "type": "credit_card",
         "name": "Credit Card",
         "prevalence": "high"
+      },
+      {
+        "type": "transfer",
+        "name": "PSE",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Nequi",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Daviplata",
+        "prevalence": "high"
+      },
+      {
+        "type": "transfer",
+        "name": "Transfiya",
+        "prevalence": "medium"
+      },
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "medium"
       }
     ],
     "locale": {

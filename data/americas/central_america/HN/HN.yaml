@@ -6,7 +6,7 @@ name:
 iso_codes:
   alpha2: HN
   alpha3: HND
-  numeric: '340'
+  numeric: "340"
 continent: North America
 languages:
   - name: Spanish
@@ -25,7 +25,8 @@ administrative_divisions:
     type: Colonia / Barrio
 address_format:
   order_variants:
-    - domestic_es:
+    - context: domestic_es
+      order:
         - recipient
         - building
         - street_address
@@ -33,7 +34,8 @@ address_format:
         - municipio
         - departamento
         - country
-    - international:
+    - context: international
+      order:
         - recipient
         - building
         - street_address
@@ -45,7 +47,7 @@ postal_code:
   stability: low
   required_for_international: true
   regex: ^[0-9]{5}$
-  example: '21101'
+  example: "21101"
 examples:
   domestic: Colonia Palmira, Avenida República Argentina, Tegucigalpa, Honduras
   international: Colonia Palmira, Avenida República Argentina, Tegucigalpa, 21101, Honduras
@@ -55,7 +57,7 @@ geo:
     longitude: -86.2419
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.575Z'
+    captured_at: "2025-12-03T16:54:11.575Z"
 pos:
   currency:
     code: HNL
@@ -63,11 +65,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: IVA
     rate:
-      standard: null
+      standard: 0.15
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -96,7 +98,8 @@ pos:
     timezone: America/Tegucigalpa
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+subregion: Central America

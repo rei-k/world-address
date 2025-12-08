@@ -114,10 +114,11 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.1
       },
       "included_in_price": true,
-      "invoice_requirement": "optional"
+      "invoice_requirement": "optional",
+      "type_local": "OB"
     },
     "receipt": {
       "required_fields": [

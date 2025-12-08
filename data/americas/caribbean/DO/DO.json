@@ -116,9 +116,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "ITBIS",
       "rate": {
-        "standard": null
+        "standard": 0.18
       },
       "included_in_price": true,
       "invoice_requirement": "optional"

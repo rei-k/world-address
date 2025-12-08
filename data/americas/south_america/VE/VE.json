@@ -140,9 +140,10 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "IVA",
       "rate": {
-        "standard": null
+        "standard": 0.16,
+        "reduced": 0.08
       },
       "included_in_price": true,
       "invoice_requirement": "optional"

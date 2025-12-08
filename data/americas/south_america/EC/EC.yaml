@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: EC
   alpha3: ECU
-  numeric: '218'
+  numeric: "218"
 continent: South America
 subregion: Western South America
 languages:
@@ -80,7 +80,7 @@ address_format:
     required: true
     regex: ^[0-9]{6}$
     description: 6-digit numeric postal code
-    example: '170150'
+    example: "170150"
 validation:
   allow_latin_transliteration: true
   rules:
@@ -100,7 +100,7 @@ geo:
     longitude: -78.1834
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.595Z'
+    captured_at: "2025-12-03T16:54:11.595Z"
 pos:
   currency:
     code: USD
@@ -108,11 +108,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: IVA
     rate:
-      standard: null
+      standard: 0.15
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -141,7 +141,7 @@ pos:
     timezone: America/Guayaquil
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false

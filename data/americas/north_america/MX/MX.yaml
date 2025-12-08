@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: MX
   alpha3: MEX
-  numeric: '484'
+  numeric: "484"
 continent: North America
 subregion: Central America / Mexico
 languages:
@@ -89,7 +89,7 @@ address_format:
     required_for_international: true
     stability: high
     regex: ^[0-9]{5}$
-    example: '06700'
+    example: "06700"
     description: Código Postal (5-digit). Defines delivery zone; colonia selection must match CP.
 validation:
   rules:
@@ -109,7 +109,7 @@ geo:
     longitude: -102.5528
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.578Z'
+    captured_at: "2025-12-03T16:54:11.578Z"
 pos:
   currency:
     code: MXN
@@ -117,11 +117,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: IVA
     rate:
-      standard: null
+      standard: 0.16
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -138,11 +138,23 @@ pos:
     registration_required: false
     reporting_frequency: varies
   payment_methods:
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+    - type: debit_card
+      name: Debit Card
+      prevalence: high
     - type: cash
       name: Cash
       prevalence: high
-    - type: credit_card
-      name: Credit Card
+    - type: qr_code
+      name: CoDi
+      prevalence: medium
+    - type: transfer
+      name: SPEI
+      prevalence: medium
+    - type: cash_voucher
+      name: OXXO
       prevalence: high
   locale:
     date_format: YYYY-MM-DD
@@ -150,7 +162,7 @@ pos:
     timezone: America/Mexico_City
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false

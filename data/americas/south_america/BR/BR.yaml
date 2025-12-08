@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: BR
   alpha3: BRA
-  numeric: '076'
+  numeric: "076"
 continent: South America
 subregion: South America
 languages:
@@ -84,7 +84,7 @@ geo:
     longitude: -51.9253
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.591Z'
+    captured_at: "2025-12-03T16:54:11.591Z"
 pos:
   currency:
     code: BRL
@@ -92,11 +92,12 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: ICMS/PIS/COFINS
     rate:
       standard: null
+      notes: Complex multi-layer system. State ICMS 17-20%, federal PIS/COFINS 3.65-9.25%
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -113,19 +114,31 @@ pos:
     registration_required: false
     reporting_frequency: varies
   payment_methods:
-    - type: cash
-      name: Cash
+    - type: qr_code
+      name: Pix
       prevalence: high
     - type: credit_card
       name: Credit Card
       prevalence: high
+    - type: debit_card
+      name: Debit Card
+      prevalence: high
+    - type: mobile
+      name: Mercado Pago
+      prevalence: high
+    - type: boleto
+      name: Boleto Bancário
+      prevalence: medium
+    - type: cash
+      name: Cash
+      prevalence: medium
   locale:
     date_format: YYYY-MM-DD
     time_format: 24h
     timezone: America/Sao_Paulo
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false

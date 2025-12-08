@@ -156,9 +156,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "IVA",
       "rate": {
-        "standard": null
+        "standard": 0.16
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -181,13 +181,33 @@
     },
     "payment_methods": [
       {
+        "type": "credit_card",
+        "name": "Credit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "debit_card",
+        "name": "Debit Card",
+        "prevalence": "high"
+      },
+      {
         "type": "cash",
         "name": "Cash",
         "prevalence": "high"
       },
       {
-        "type": "credit_card",
-        "name": "Credit Card",
+        "type": "qr_code",
+        "name": "CoDi",
+        "prevalence": "medium"
+      },
+      {
+        "type": "transfer",
+        "name": "SPEI",
+        "prevalence": "medium"
+      },
+      {
+        "type": "cash_voucher",
+        "name": "OXXO",
         "prevalence": "high"
       }
     ],

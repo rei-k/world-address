@@ -6,7 +6,7 @@ name:
 iso_codes:
   alpha2: CR
   alpha3: CRI
-  numeric: '188'
+  numeric: "188"
 continent: North America
 languages:
   - name: Spanish
@@ -24,7 +24,8 @@ administrative_divisions:
     type: Distrito
 address_format:
   order_variants:
-    - domestic_es:
+    - context: domestic_es
+      order:
         - recipient
         - building
         - street_address
@@ -32,7 +33,8 @@ address_format:
         - canton
         - provincia
         - country
-    - international:
+    - context: international
+      order:
         - recipient
         - building
         - street_address
@@ -44,7 +46,7 @@ postal_code:
   required_for_international: true
   stability: medium
   regex: ^[0-9]{5}$
-  example: '10101'
+  example: "10101"
 examples:
   domestic: Avenida Central, San José, Costa Rica
   international: Avenida Central, San José, 10101, Costa Rica
@@ -54,7 +56,7 @@ geo:
     longitude: -83.7534
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.574Z'
+    captured_at: "2025-12-03T16:54:11.574Z"
 pos:
   currency:
     code: CRC
@@ -62,11 +64,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: IVA
     rate:
-      standard: null
+      standard: 0.13
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -83,19 +85,26 @@ pos:
     registration_required: false
     reporting_frequency: varies
   payment_methods:
-    - type: cash
-      name: Cash
-      prevalence: high
     - type: credit_card
       name: Credit Card
       prevalence: high
+    - type: debit_card
+      name: Debit Card
+      prevalence: high
+    - type: transfer
+      name: SINPE Móvil
+      prevalence: high
+    - type: cash
+      name: Cash
+      prevalence: medium
   locale:
     date_format: YYYY-MM-DD
     time_format: 24h
     timezone: America/Costa_Rica
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+subregion: Central America

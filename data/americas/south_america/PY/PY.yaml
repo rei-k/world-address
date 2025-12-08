@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: PY
   alpha3: PRY
-  numeric: '600'
+  numeric: "600"
 continent: South America
 subregion: Southern America
 languages:
@@ -71,7 +71,7 @@ address_format:
     required: true
     regex: ^[0-9]{4}$
     description: 4-digit numeric postal code
-    example: '1209'
+    example: "1209"
 validation:
   allow_latin_transliteration: true
   rules:
@@ -91,7 +91,7 @@ geo:
     longitude: -58.4438
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.596Z'
+    captured_at: "2025-12-03T16:54:11.596Z"
 pos:
   currency:
     code: PYG
@@ -99,11 +99,12 @@ pos:
     symbol_position: before
     decimal_places: 0
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: IVA
     rate:
-      standard: null
+      standard: 0.1
+      reduced: 0.05
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -132,7 +133,7 @@ pos:
     timezone: America/Asuncion
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false

@@ -102,7 +102,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.125
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -125,13 +125,23 @@
     },
     "payment_methods": [
       {
-        "type": "cash",
-        "name": "Cash",
+        "type": "credit_card",
+        "name": "Credit Card",
         "prevalence": "high"
       },
       {
-        "type": "credit_card",
-        "name": "Credit Card",
+        "type": "debit_card",
+        "name": "Debit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Mobile Payment",
+        "prevalence": "medium"
+      },
+      {
+        "type": "cash",
+        "name": "Cash",
         "prevalence": "high"
       }
     ],

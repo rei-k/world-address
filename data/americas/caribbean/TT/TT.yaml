@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: TT
   alpha3: TTO
-  numeric: '780'
+  numeric: "780"
 continent: North America
 subregion: Caribbean
 languages:
@@ -50,7 +50,7 @@ postal_code:
   required_for_international: true
   stability: high
   regex: ^[0-9]{6}$
-  example: '500123'
+  example: "500123"
 validation:
   rules:
     - Region/Borough/City は必須
@@ -63,7 +63,7 @@ geo:
     longitude: -61.2225
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.572Z'
+    captured_at: "2025-12-03T16:54:11.572Z"
 pos:
   currency:
     code: TTD
@@ -71,11 +71,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.125
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -92,11 +92,17 @@ pos:
     registration_required: false
     reporting_frequency: varies
   payment_methods:
-    - type: cash
-      name: Cash
-      prevalence: high
     - type: credit_card
       name: Credit Card
+      prevalence: high
+    - type: debit_card
+      name: Debit Card
+      prevalence: high
+    - type: mobile
+      name: Mobile Payment
+      prevalence: medium
+    - type: cash
+      name: Cash
       prevalence: high
   locale:
     date_format: YYYY-MM-DD
@@ -104,7 +110,7 @@ pos:
     timezone: America/Port_of_Spain
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false

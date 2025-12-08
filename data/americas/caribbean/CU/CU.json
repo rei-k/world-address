@@ -179,12 +179,14 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "Sales Tax",
       "rate": {
-        "standard": null
+        "standard": null,
+        "notes": "Variable sales tax and turnover tax; no unified VAT system"
       },
       "included_in_price": true,
-      "invoice_requirement": "optional"
+      "invoice_requirement": "optional",
+      "type_local": "Impuesto sobre Ventas"
     },
     "receipt": {
       "required_fields": [

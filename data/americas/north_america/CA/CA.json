@@ -150,9 +150,10 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "GST",
+      "type": "GST/HST",
       "rate": {
-        "standard": null
+        "standard": 0.05,
+        "notes": "Federal GST is 5%. HST varies by province: ON 13%, NB/NL/PE 15%, NS 14%"
       },
       "included_in_price": true,
       "invoice_requirement": "optional"

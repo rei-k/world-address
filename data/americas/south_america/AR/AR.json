@@ -127,9 +127,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "IVA",
       "rate": {
-        "standard": null
+        "standard": 0.21
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -152,14 +152,34 @@
     },
     "payment_methods": [
       {
-        "type": "cash",
-        "name": "Cash",
+        "type": "mobile",
+        "name": "Mercado Pago",
+        "prevalence": "high"
+      },
+      {
+        "type": "debit_card",
+        "name": "Debit Card",
         "prevalence": "high"
       },
       {
         "type": "credit_card",
         "name": "Credit Card",
+        "prevalence": "medium"
+      },
+      {
+        "type": "qr_code",
+        "name": "Transferencias 3.0",
         "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Ualá",
+        "prevalence": "medium"
+      },
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "medium"
       }
     ],
     "locale": {

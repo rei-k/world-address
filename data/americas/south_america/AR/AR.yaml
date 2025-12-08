@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: AR
   alpha3: ARG
-  numeric: '032'
+  numeric: "032"
 continent: South America
 subregion: Southern America
 languages:
@@ -85,7 +85,7 @@ geo:
     longitude: -63.6167
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.589Z'
+    captured_at: "2025-12-03T16:54:11.589Z"
 pos:
   currency:
     code: ARS
@@ -93,11 +93,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: IVA
     rate:
-      standard: null
+      standard: 0.21
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -114,19 +114,31 @@ pos:
     registration_required: false
     reporting_frequency: varies
   payment_methods:
-    - type: cash
-      name: Cash
+    - type: mobile
+      name: Mercado Pago
+      prevalence: high
+    - type: debit_card
+      name: Debit Card
       prevalence: high
     - type: credit_card
       name: Credit Card
+      prevalence: medium
+    - type: qr_code
+      name: Transferencias 3.0
       prevalence: high
+    - type: mobile
+      name: Ualá
+      prevalence: medium
+    - type: cash
+      name: Cash
+      prevalence: medium
   locale:
     date_format: YYYY-MM-DD
     time_format: 24h
     timezone: America/Argentina/Buenos_Aires
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false

@@ -1,0 +1,91 @@
+{
+  "BR": {
+    "payment_methods": [
+      {"type": "qr_code", "name": "Pix", "prevalence": "high"},
+      {"type": "credit_card", "name": "Credit Card", "prevalence": "high"},
+      {"type": "debit_card", "name": "Debit Card", "prevalence": "high"},
+      {"type": "mobile", "name": "Mercado Pago", "prevalence": "high"},
+      {"type": "boleto", "name": "Boleto Bancário", "prevalence": "medium"},
+      {"type": "cash", "name": "Cash", "prevalence": "medium"}
+    ]
+  },
+  "MX": {
+    "payment_methods": [
+      {"type": "credit_card", "name": "Credit Card", "prevalence": "high"},
+      {"type": "debit_card", "name": "Debit Card", "prevalence": "high"},
+      {"type": "cash", "name": "Cash", "prevalence": "high"},
+      {"type": "qr_code", "name": "CoDi", "prevalence": "medium"},
+      {"type": "transfer", "name": "SPEI", "prevalence": "medium"},
+      {"type": "cash_voucher", "name": "OXXO", "prevalence": "high"}
+    ]
+  },
+  "AR": {
+    "payment_methods": [
+      {"type": "mobile", "name": "Mercado Pago", "prevalence": "high"},
+      {"type": "debit_card", "name": "Debit Card", "prevalence": "high"},
+      {"type": "credit_card", "name": "Credit Card", "prevalence": "medium"},
+      {"type": "qr_code", "name": "Transferencias 3.0", "prevalence": "high"},
+      {"type": "mobile", "name": "Ualá", "prevalence": "medium"},
+      {"type": "cash", "name": "Cash", "prevalence": "medium"}
+    ]
+  },
+  "CO": {
+    "payment_methods": [
+      {"type": "credit_card", "name": "Credit Card", "prevalence": "high"},
+      {"type": "transfer", "name": "PSE", "prevalence": "high"},
+      {"type": "mobile", "name": "Nequi", "prevalence": "high"},
+      {"type": "mobile", "name": "Daviplata", "prevalence": "high"},
+      {"type": "transfer", "name": "Transfiya", "prevalence": "medium"},
+      {"type": "cash", "name": "Cash", "prevalence": "medium"}
+    ]
+  },
+  "CL": {
+    "payment_methods": [
+      {"type": "credit_card", "name": "Credit Card", "prevalence": "high"},
+      {"type": "debit_card", "name": "Debit Card", "prevalence": "high"},
+      {"type": "mobile", "name": "MACH", "prevalence": "medium"},
+      {"type": "transfer", "name": "Transbank", "prevalence": "high"},
+      {"type": "cash", "name": "Cash", "prevalence": "medium"}
+    ]
+  },
+  "PE": {
+    "payment_methods": [
+      {"type": "credit_card", "name": "Credit Card", "prevalence": "high"},
+      {"type": "mobile", "name": "Yape", "prevalence": "high"},
+      {"type": "mobile", "name": "Plin", "prevalence": "medium"},
+      {"type": "cash", "name": "Cash", "prevalence": "high"}
+    ]
+  },
+  "CR": {
+    "payment_methods": [
+      {"type": "credit_card", "name": "Credit Card", "prevalence": "high"},
+      {"type": "debit_card", "name": "Debit Card", "prevalence": "high"},
+      {"type": "transfer", "name": "SINPE Móvil", "prevalence": "high"},
+      {"type": "cash", "name": "Cash", "prevalence": "medium"}
+    ]
+  },
+  "UY": {
+    "payment_methods": [
+      {"type": "credit_card", "name": "Credit Card", "prevalence": "high"},
+      {"type": "debit_card", "name": "Debit Card", "prevalence": "high"},
+      {"type": "mobile", "name": "Prex", "prevalence": "medium"},
+      {"type": "cash", "name": "Cash", "prevalence": "medium"}
+    ]
+  },
+  "JM": {
+    "payment_methods": [
+      {"type": "credit_card", "name": "Credit Card", "prevalence": "high"},
+      {"type": "debit_card", "name": "Debit Card", "prevalence": "high"},
+      {"type": "mobile", "name": "Mobile Wallet", "prevalence": "medium"},
+      {"type": "cash", "name": "Cash", "prevalence": "high"}
+    ]
+  },
+  "TT": {
+    "payment_methods": [
+      {"type": "credit_card", "name": "Credit Card", "prevalence": "high"},
+      {"type": "debit_card", "name": "Debit Card", "prevalence": "high"},
+      {"type": "mobile", "name": "Mobile Payment", "prevalence": "medium"},
+      {"type": "cash", "name": "Cash", "prevalence": "high"}
+    ]
+  }
+}

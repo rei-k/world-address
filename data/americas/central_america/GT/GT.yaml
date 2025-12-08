@@ -6,7 +6,7 @@ name:
 iso_codes:
   alpha2: GT
   alpha3: GTM
-  numeric: '320'
+  numeric: "320"
 continent: North America
 languages:
   - name: Spanish
@@ -27,7 +27,8 @@ administrative_divisions:
     type: Colonia / Barrio
 address_format:
   order_variants:
-    - domestic_es:
+    - context: domestic_es
+      order:
         - recipient
         - building
         - street_address
@@ -36,7 +37,8 @@ address_format:
         - municipio
         - departamento
         - country
-    - international:
+    - context: international
+      order:
         - recipient
         - building
         - street_address
@@ -49,7 +51,7 @@ postal_code:
   required_for_international: true
   stability: medium
   regex: ^[0-9]{5}$
-  example: '01001'
+  example: "01001"
 examples:
   domestic: 7a Avenida 12-23, Zona 1, Ciudad de Guatemala, Guatemala
   international: 7a Avenida 12-23, Zona 1, Ciudad de Guatemala, 01001, Guatemala
@@ -59,7 +61,7 @@ geo:
     longitude: -90.2308
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.574Z'
+    captured_at: "2025-12-03T16:54:11.574Z"
 pos:
   currency:
     code: GTQ
@@ -67,11 +69,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: IVA
     rate:
-      standard: null
+      standard: 0.12
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -100,7 +102,8 @@ pos:
     timezone: America/Guatemala
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+subregion: Central America

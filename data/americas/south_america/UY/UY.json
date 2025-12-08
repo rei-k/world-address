@@ -123,9 +123,10 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "IVA",
       "rate": {
-        "standard": null
+        "standard": 0.22,
+        "reduced": 0.1
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -148,14 +149,24 @@
     },
     "payment_methods": [
       {
-        "type": "cash",
-        "name": "Cash",
-        "prevalence": "high"
-      },
-      {
         "type": "credit_card",
         "name": "Credit Card",
         "prevalence": "high"
+      },
+      {
+        "type": "debit_card",
+        "name": "Debit Card",
+        "prevalence": "high"
+      },
+      {
+        "type": "mobile",
+        "name": "Prex",
+        "prevalence": "medium"
+      },
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "medium"
       }
     ],
     "locale": {

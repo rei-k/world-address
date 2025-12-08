@@ -108,7 +108,8 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.17,
+        "tourism": 0.1
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
