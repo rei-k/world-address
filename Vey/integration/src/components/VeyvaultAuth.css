@@ -1,0 +1,497 @@
+/**
+ * Veyvault Authentication Components Styles
+ * Beautiful, accessible, and responsive styles for Veyvault OAuth components
+ */
+
+/* =================================================================
+   Veyvault Button Styles
+   ================================================================= */
+
+.vey-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.vey-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.vey-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+}
+
+/* Button Themes */
+.vey-button-default {
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.vey-button-default:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4338CA 0%, #6D28D9 100%);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+  transform: translateY(-1px);
+}
+
+.vey-button-default:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+.vey-button-dark {
+  background: #1F2937;
+  color: white;
+  border: 1px solid #374151;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.vey-button-dark:hover:not(:disabled) {
+  background: #111827;
+  border-color: #4B5563;
+  transform: translateY(-1px);
+}
+
+.vey-button-light {
+  background: white;
+  color: #1F2937;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vey-button-light:hover:not(:disabled) {
+  background: #F9FAFB;
+  border-color: #D1D5DB;
+  transform: translateY(-1px);
+}
+
+.vey-button-secondary {
+  background: #F3F4F6;
+  color: #374151;
+  border: 1px solid #D1D5DB;
+}
+
+.vey-button-secondary:hover:not(:disabled) {
+  background: #E5E7EB;
+  border-color: #9CA3AF;
+}
+
+.vey-button-primary {
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.vey-button-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4338CA 0%, #6D28D9 100%);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+}
+
+/* Button Sizes */
+.vey-button-small {
+  padding: 8px 16px;
+  font-size: 14px;
+  gap: 8px;
+}
+
+.vey-button-medium {
+  padding: 12px 24px;
+  font-size: 16px;
+  gap: 12px;
+}
+
+.vey-button-large {
+  padding: 16px 32px;
+  font-size: 18px;
+  gap: 14px;
+}
+
+/* Button Text */
+.vey-button-text {
+  white-space: nowrap;
+}
+
+/* Veyvault Logo */
+.vey-logo {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+/* =================================================================
+   QR Login Styles
+   ================================================================= */
+
+.vey-qr-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.vey-qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-height: 300px;
+  justify-content: center;
+}
+
+.vey-qr-code {
+  border-radius: 8px;
+  border: 8px solid #F3F4F6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vey-qr-instruction {
+  margin: 0;
+  color: #6B7280;
+  font-size: 14px;
+  text-align: center;
+}
+
+.vey-qr-loading,
+.vey-qr-scanned,
+.vey-qr-approved,
+.vey-qr-expired {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.vey-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #F3F4F6;
+  border-top-color: #4F46E5;
+  border-radius: 50%;
+  animation: vey-spin 0.8s linear infinite;
+}
+
+@keyframes vey-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vey-checkmark {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: white;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  animation: vey-checkmark-pop 0.3s ease;
+}
+
+@keyframes vey-checkmark-pop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* =================================================================
+   Consent Screen Styles
+   ================================================================= */
+
+.vey-consent-screen {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.vey-consent-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.vey-consent-logo img {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.vey-consent-logo-placeholder {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.vey-consent-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  color: #1F2937;
+}
+
+.vey-consent-title strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+.vey-consent-permissions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #F9FAFB;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+}
+
+.vey-consent-permission {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.vey-consent-permission-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #10B981;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.vey-consent-permission-text {
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.vey-consent-notice {
+  margin-bottom: 24px;
+  color: #6B7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.vey-consent-notice p {
+  margin: 0 0 12px;
+}
+
+.vey-consent-notice ul {
+  margin: 12px 0;
+  padding-left: 24px;
+}
+
+.vey-consent-notice li {
+  margin: 8px 0;
+}
+
+.vey-consent-privacy {
+  padding: 12px;
+  background: #EFF6FF;
+  border: 1px solid #DBEAFE;
+  border-radius: 6px;
+  color: #1E40AF !important;
+  font-weight: 500 !important;
+}
+
+.vey-consent-options {
+  margin-bottom: 24px;
+}
+
+.vey-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.vey-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #4F46E5;
+}
+
+.vey-checkbox span {
+  color: #374151;
+  font-size: 14px;
+}
+
+.vey-consent-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.vey-consent-actions .vey-button {
+  flex: 1;
+}
+
+/* =================================================================
+   Responsive Styles
+   ================================================================= */
+
+@media (max-width: 640px) {
+  .vey-consent-screen {
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .vey-button-large {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+
+  .vey-consent-actions {
+    flex-direction: column-reverse;
+  }
+
+  .vey-consent-actions .vey-button {
+    width: 100%;
+  }
+}
+
+/* =================================================================
+   Dark Mode Support
+   ================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  .vey-qr-login {
+    background: #1F2937;
+  }
+
+  .vey-qr-instruction {
+    color: #9CA3AF;
+  }
+
+  .vey-qr-code {
+    border-color: #374151;
+  }
+
+  .vey-consent-screen {
+    background: #1F2937;
+  }
+
+  .vey-consent-title {
+    color: #F9FAFB;
+  }
+
+  .vey-consent-title strong {
+    color: white;
+  }
+
+  .vey-consent-permissions {
+    background: #111827;
+    border-color: #374151;
+  }
+
+  .vey-consent-permission-text {
+    color: #D1D5DB;
+  }
+
+  .vey-consent-notice {
+    color: #9CA3AF;
+  }
+
+  .vey-checkbox span {
+    color: #D1D5DB;
+  }
+}
+
+/* =================================================================
+   Accessibility Enhancements
+   ================================================================= */
+
+/* Focus visible for keyboard navigation */
+.vey-button:focus-visible {
+  outline: 3px solid #4F46E5;
+  outline-offset: 2px;
+}
+
+.vey-checkbox input:focus-visible {
+  outline: 2px solid #4F46E5;
+  outline-offset: 2px;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .vey-button,
+  .vey-spinner,
+  .vey-checkmark {
+    animation: none;
+    transition: none;
+  }
+
+  .vey-button:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .vey-button-default,
+  .vey-button-primary {
+    border: 2px solid currentColor;
+  }
+
+  .vey-consent-permissions {
+    border-width: 2px;
+  }
+}
+
+/* =================================================================
+   Print Styles
+   ================================================================= */
+
+@media print {
+  .vey-button,
+  .vey-qr-login,
+  .vey-consent-screen {
+    box-shadow: none;
+  }
+}
