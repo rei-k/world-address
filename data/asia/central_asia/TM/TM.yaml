@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: TM
   alpha3: TKM
-  numeric: '795'
+  numeric: "795"
 continent: Asia
 subregion: Central Asia
 languages:
@@ -20,14 +20,20 @@ languages:
     script: Latin
     role: official
     country_name: Türkmenistan
+    code: tk
+    direction: ltr
   - name: Russian
     script: Cyrillic
     role: auxiliary
     country_name: Туркменистан
+    code: ru
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Turkmenistan
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Region
@@ -64,12 +70,12 @@ address_format:
     example: Berkarar Mall
   room:
     required: false
-    example: '304'
+    example: "304"
   postal_code:
     required: true
     regex: ^[0-9]{6}$
     description: 6-digit numeric
-    example: '744000'
+    example: "744000"
 examples:
   domestic_raw: Berkarar Mall, Ashgabat 744000
   domestic_normalized: Berkarar Mall Ashgabat 744000
@@ -84,7 +90,16 @@ geo:
     longitude: 59.5563
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.605Z'
+    captured_at: "2025-12-03T16:54:11.605Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 42.7975
+      longitude: 66.6841
+    southwest:
+      latitude: 35.1413
+      longitude: 52.4416
 pos:
   currency:
     code: TMT
@@ -92,11 +107,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.15
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -125,7 +140,13 @@ pos:
     timezone: Asia/Ashgabat
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

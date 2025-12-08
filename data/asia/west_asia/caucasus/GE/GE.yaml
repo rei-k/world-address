@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: GE
   alpha3: GEO
-  numeric: '268'
+  numeric: "268"
 continent: Asia
 subregion: West Asia
 languages:
@@ -16,10 +16,13 @@ languages:
     script: Georgian
     role: official
     country_name: საქართველო
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Georgia
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Region
@@ -53,7 +56,7 @@ address_format:
     required: true
     regex: ^[0-9]{4}$
     description: 4-digit numeric
-    example: '0105'
+    example: "0105"
 examples:
   domestic_raw: Rustaveli Avenue, Tbilisi 0105
   domestic_normalized: Rustaveli Avenue Tbilisi 0105
@@ -68,7 +71,16 @@ geo:
     longitude: 43.3569
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.630Z'
+    captured_at: "2025-12-03T16:54:11.630Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 43.5864
+      longitude: 46.7365
+    southwest:
+      latitude: 41.0537
+      longitude: 40.0101
 pos:
   currency:
     code: GEL
@@ -76,7 +88,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -109,7 +121,13 @@ pos:
     timezone: Asia/Tbilisi
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

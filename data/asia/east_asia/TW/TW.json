@@ -22,14 +22,18 @@
       "name": "Chinese",
       "script": "Han",
       "role": "official",
-      "country_name": "臺灣"
+      "country_name": "臺灣",
+      "code": "zh",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
       "required_for_shipping": true,
-      "country_name": "Taiwan"
+      "country_name": "Taiwan",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -118,6 +122,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.612Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 25.2954,
+        "longitude": 122.0067
+      },
+      "southwest": {
+        "latitude": 21.8972,
+        "longitude": 120.0385
+      }
     }
   },
   "pos": {
@@ -132,7 +148,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.05
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -177,5 +193,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

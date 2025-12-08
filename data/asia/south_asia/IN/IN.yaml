@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: IN
   alpha3: IND
-  numeric: '356'
+  numeric: "356"
 continent: Asia
 subregion: South Asia
 languages:
@@ -94,12 +94,12 @@ address_format:
     example: 12F
   room:
     required: false
-    example: '1208'
+    example: "1208"
   postal_code:
     required: true
     regex: ^[0-9]{6}$
     description: 6-digit numeric
-    example: '110001'
+    example: "110001"
 examples:
   domestic_raw: DLF Cyber City, Gurgaon, Haryana 122002
   domestic_normalized: DLF Cyber City Gurgaon Haryana 122002
@@ -114,7 +114,16 @@ geo:
     longitude: 78.9629
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.615Z'
+    captured_at: "2025-12-03T16:54:11.615Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 35.5138
+      longitude: 97.3953
+    southwest:
+      latitude: 6.7477
+      longitude: 68.1623
 pos:
   currency:
     code: INR
@@ -122,11 +131,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: GST
     rate:
-      standard: null
+      standard: 0.18
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -155,7 +164,13 @@ pos:
     timezone: Asia/Kolkata
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

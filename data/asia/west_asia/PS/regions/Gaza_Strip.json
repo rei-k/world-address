@@ -22,14 +22,16 @@
       "script": "Arabic",
       "direction": "rtl",
       "role": "official",
-      "country_name": "قطاع غزة"
+      "country_name": "قطاع غزة",
+      "code": "ar"
     },
     {
       "name": "English",
       "script": "Latin",
       "direction": "ltr",
       "role": "auxiliary",
-      "country_name": "Gaza Strip"
+      "country_name": "Gaza Strip",
+      "code": "en"
     }
   ],
   "administrative_divisions": {
@@ -113,7 +115,9 @@
         "latitude": 31.2203,
         "longitude": 34.2164
       }
-    }
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z"
   },
   "pos": {
     "currency": {
@@ -172,5 +176,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

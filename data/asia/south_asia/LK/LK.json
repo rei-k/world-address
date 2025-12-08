@@ -29,14 +29,16 @@
       "script": "Sinhala",
       "direction": "ltr",
       "role": "official",
-      "country_name": "ශ්‍රී ලංකාව"
+      "country_name": "ශ්‍රී ලංකාව",
+      "code": "si"
     },
     {
       "name": "Tamil",
       "script": "Tamil",
       "direction": "ltr",
       "role": "official",
-      "country_name": "இலங்கை"
+      "country_name": "இலங்கை",
+      "code": "ta"
     },
     {
       "name": "English",
@@ -44,7 +46,8 @@
       "direction": "ltr",
       "role": "auxiliary",
       "required_for_shipping": true,
-      "country_name": "Sri Lanka"
+      "country_name": "Sri Lanka",
+      "code": "en"
     }
   ],
   "administrative_divisions": {
@@ -123,6 +126,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.616Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 9.8351,
+        "longitude": 81.8811
+      },
+      "southwest": {
+        "latitude": 5.9169,
+        "longitude": 79.6522
+      }
     }
   },
   "pos": {
@@ -137,7 +152,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.18
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -182,5 +197,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

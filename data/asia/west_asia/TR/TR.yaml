@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: TR
   alpha3: TUR
-  numeric: '792'
+  numeric: "792"
 continent: Asia
 subregion: West Asia
 languages:
@@ -16,10 +16,14 @@ languages:
     script: Latin
     role: official
     country_name: Türkiye
+    code: tr
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Turkey
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Province
@@ -57,7 +61,7 @@ address_format:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric
-    example: '34340'
+    example: "34340"
 examples:
   domestic_raw: Kanyon AVM, Şişli, İstanbul 34340
   domestic_normalized: Kanyon AVM Şişli İstanbul 34340
@@ -72,7 +76,16 @@ geo:
     longitude: 35.2433
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.628Z'
+    captured_at: "2025-12-03T16:54:11.628Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 42.1069
+      longitude: 44.8176
+    southwest:
+      latitude: 35.8215
+      longitude: 25.6688
 pos:
   currency:
     code: TRY
@@ -80,11 +93,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.2
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -113,7 +126,13 @@ pos:
     timezone: Europe/Istanbul
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: KW
   alpha3: KWT
-  numeric: '414'
+  numeric: "414"
 continent: Asia
 subregion: West Asia
 languages:
@@ -16,10 +16,14 @@ languages:
     script: Arabic
     role: official
     country_name: الكويت
+    code: ar
+    direction: rtl
   - name: English
     script: Latin
     role: auxiliary
     country_name: Kuwait
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Governorate
@@ -57,7 +61,7 @@ address_format:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric
-    example: '13001'
+    example: "13001"
 examples:
   domestic_raw: Block 1, Street 10, Building 5, Hawalli 13001
   domestic_normalized: Block 1 Street 10 Building 5 Hawalli 13001
@@ -72,7 +76,16 @@ geo:
     longitude: 47.4818
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.625Z'
+    captured_at: "2025-12-03T16:54:11.625Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 30.0956
+      longitude: 48.5177
+    southwest:
+      latitude: 28.5243
+      longitude: 46.5687
 pos:
   currency:
     code: KWD
@@ -80,11 +93,11 @@ pos:
     symbol_position: before
     decimal_places: 3
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: None
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -113,7 +126,13 @@ pos:
     timezone: Asia/Kuwait
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

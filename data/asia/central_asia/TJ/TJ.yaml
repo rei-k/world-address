@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: TJ
   alpha3: TJK
-  numeric: '762'
+  numeric: "762"
 continent: Asia
 subregion: Central Asia
 languages:
@@ -20,14 +20,20 @@ languages:
     script: Cyrillic
     role: official
     country_name: Тоҷикистон
+    code: tg
+    direction: ltr
   - name: Russian
     script: Cyrillic
     role: auxiliary
     country_name: Таджикистан
+    code: ru
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Tajikistan
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Region/Autonomous Region/Capital District
@@ -62,12 +68,12 @@ address_format:
     example: Dushanbe Hyatt
   room:
     required: false
-    example: '210'
+    example: "210"
   postal_code:
     required: true
     regex: ^[0-9]{6}$
     description: 6-digit numeric
-    example: '734025'
+    example: "734025"
 examples:
   domestic_raw: Dushanbe Hyatt, Dushanbe 734025
   domestic_normalized: Dushanbe Hyatt Dushanbe 734025
@@ -82,7 +88,16 @@ geo:
     longitude: 71.2761
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.605Z'
+    captured_at: "2025-12-03T16:54:11.605Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 41.0442
+      longitude: 75.1372
+    southwest:
+      latitude: 36.6711
+      longitude: 67.3872
 pos:
   currency:
     code: TJS
@@ -90,11 +105,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.18
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -123,7 +138,13 @@ pos:
     timezone: Asia/Dushanbe
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

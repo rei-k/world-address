@@ -22,13 +22,17 @@
       "name": "Khmer",
       "script": "Khmer",
       "role": "official",
-      "country_name": "កម្ពុជា"
+      "country_name": "កម្ពុជា",
+      "code": "km",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
-      "country_name": "Cambodia"
+      "country_name": "Cambodia",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -103,6 +107,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.619Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 14.6904,
+        "longitude": 107.6277
+      },
+      "southwest": {
+        "latitude": 10.4091,
+        "longitude": 102.348
+      }
     }
   },
   "pos": {
@@ -117,7 +133,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.1
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -162,5 +178,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

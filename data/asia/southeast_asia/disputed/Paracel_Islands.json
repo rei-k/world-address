@@ -54,7 +54,8 @@
       "direction": "ltr",
       "role": "official_de_facto",
       "country_name": "西沙群岛",
-      "note": "De facto administrative language"
+      "note": "De facto administrative language",
+      "code": "zh"
     },
     {
       "name": "Vietnamese",
@@ -62,14 +63,16 @@
       "direction": "ltr",
       "role": "official_claimant",
       "country_name": "Quần đảo Hoàng Sa",
-      "note": "Used by Vietnam in claims"
+      "note": "Used by Vietnam in claims",
+      "code": "vi"
     },
     {
       "name": "English",
       "script": "Latin",
       "direction": "ltr",
       "role": "auxiliary",
-      "country_name": "Paracel Islands"
+      "country_name": "Paracel Islands",
+      "code": "en"
     }
   ],
   "administrative_divisions": {
@@ -168,7 +171,9 @@
         "latitude": 15.5,
         "longitude": 111
       }
-    }
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z"
   },
   "pos": {
     "currency_chinese_system": {
@@ -231,5 +236,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

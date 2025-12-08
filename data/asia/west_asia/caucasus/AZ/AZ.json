@@ -22,13 +22,16 @@
       "name": "Azerbaijani",
       "script": "Latin",
       "role": "official",
-      "country_name": "Azərbaycan"
+      "country_name": "Azərbaycan",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
-      "country_name": "Azerbaijan"
+      "country_name": "Azerbaijan",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -93,6 +96,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.630Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 41.9104,
+        "longitude": 50.3928
+      },
+      "southwest": {
+        "latitude": 38.3927,
+        "longitude": 44.774
+      }
     }
   },
   "pos": {
@@ -152,5 +167,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

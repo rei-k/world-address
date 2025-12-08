@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: MN
   alpha3: MNG
-  numeric: '496'
+  numeric: "496"
 continent: Asia
 subregion: East Asia
 languages:
@@ -17,12 +17,14 @@ languages:
     direction: ltr
     role: official
     country_name: Монгол улс
+    code: mn
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     required_for_shipping: true
     country_name: Mongolia
+    code: en
 administrative_divisions:
   level1:
     type: Aimag/Capital City
@@ -64,13 +66,13 @@ address_format:
     example: 8F
   room:
     required: false
-    example: '801'
+    example: "801"
   postal_code:
     required: true
     regex: ^[0-9]{5}$
     length: 5
     description: 5-digit numeric code
-    example: '15141'
+    example: "15141"
 validation:
   allow_latin_transliteration: true
   rules:
@@ -90,7 +92,16 @@ geo:
     longitude: 103.8467
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.610Z'
+    captured_at: "2025-12-03T16:54:11.610Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 52.1543
+      longitude: 119.9245
+    southwest:
+      latitude: 41.5675
+      longitude: 87.7495
 pos:
   currency:
     code: MNT
@@ -98,11 +109,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.1
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -131,7 +142,13 @@ pos:
     timezone: Asia/Ulaanbaatar
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

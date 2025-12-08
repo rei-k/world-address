@@ -11,7 +11,7 @@ parent_country:
 iso_codes:
   alpha2: CC
   alpha3: CCK
-  numeric: '166'
+  numeric: "166"
 subregion: Indian Ocean
 languages:
   - name: English
@@ -20,6 +20,7 @@ languages:
     role: official
     country_name: Cocos (Keeling) Islands
     required_for_shipping: true
+    code: en
   - name: Cocos Malay
     script: Latin
     direction: ltr
@@ -44,12 +45,12 @@ address_format:
     required: true
     regex: ^6799$
     description: Single postcode for Cocos Islands
-    example: '6799'
+    example: "6799"
 validation:
   allow_latin_transliteration: true
   rules:
     - Cocos Islands uses Australian postal system
-    - 'Single postcode: 6799'
+    - "Single postcode: 6799"
     - Include island name (Home Island or West Island)
 examples:
   domestic_raw: 123 Main Street, Home Island, Cocos (Keeling) Islands 6799
@@ -66,7 +67,9 @@ geo:
     longitude: 96.871
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.668Z'
+    captured_at: "2025-12-03T16:54:11.668Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: AUD
@@ -74,7 +77,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -107,7 +110,13 @@ pos:
     timezone: Indian/Cocos
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

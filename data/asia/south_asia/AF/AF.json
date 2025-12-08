@@ -28,19 +28,25 @@
       "name": "Pashto",
       "script": "Arabic",
       "role": "official",
-      "country_name": "افغانستان"
+      "country_name": "افغانستان",
+      "code": "ps",
+      "direction": "ltr"
     },
     {
       "name": "Dari",
       "script": "Arabic",
       "role": "official",
-      "country_name": "افغانستان"
+      "country_name": "افغانستان",
+      "code": "prs",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
-      "country_name": "Afghanistan"
+      "country_name": "Afghanistan",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -113,6 +119,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.612Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 38.4907,
+        "longitude": 74.8894
+      },
+      "southwest": {
+        "latitude": 29.3772,
+        "longitude": 60.5284
+      }
     }
   },
   "pos": {
@@ -125,9 +143,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "None",
       "rate": {
-        "standard": null
+        "standard": 0
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -172,5 +190,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

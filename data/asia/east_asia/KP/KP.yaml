@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: KP
   alpha3: PRK
-  numeric: '408'
+  numeric: "408"
 continent: Asia
 subregion: East Asia
 languages:
@@ -17,11 +17,13 @@ languages:
     direction: ltr
     role: official
     country_name: 조선민주주의인민공화국
+    code: ko
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     country_name: North Korea
+    code: en
 administrative_divisions:
   level1:
     type: Province/Direct-administered City
@@ -83,7 +85,16 @@ geo:
     longitude: 127.5101
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.609Z'
+    captured_at: "2025-12-03T16:54:11.609Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 43.0089
+      longitude: 130.6968
+    southwest:
+      latitude: 37.6732
+      longitude: 124.3154
 pos:
   currency:
     code: KPW
@@ -91,11 +102,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: None
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -124,7 +135,13 @@ pos:
     timezone: Asia/Pyongyang
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

@@ -22,13 +22,17 @@
       "name": "Arabic",
       "script": "Arabic",
       "role": "official",
-      "country_name": "اليمن"
+      "country_name": "اليمن",
+      "code": "ar",
+      "direction": "rtl"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
-      "country_name": "Yemen"
+      "country_name": "Yemen",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -89,6 +93,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.629Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 19,
+        "longitude": 54.5305
+      },
+      "southwest": {
+        "latitude": 12.111,
+        "longitude": 42.5332
+      }
     }
   },
   "pos": {
@@ -101,9 +117,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "Sales Tax",
       "rate": {
-        "standard": null
+        "standard": 0.05
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -148,5 +164,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

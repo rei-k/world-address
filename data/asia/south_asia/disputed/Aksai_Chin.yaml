@@ -10,7 +10,9 @@ name:
       script: Devanagari
       direction: ltr
 type: Disputed Territory
-note: Chinese and Indian address systems intersect - extremely difficult case even for address researchers
+note: >-
+  Chinese and Indian address systems intersect - extremely difficult case even for address
+  researchers
 disputed_between:
   - country: CN
     name: China
@@ -27,17 +29,20 @@ languages:
     role: administrative
     country_name: 阿克赛钦
     note: Used in Chinese-administered areas
+    code: zh
   - name: Hindi
     script: Devanagari
     direction: ltr
     role: claimed
     country_name: अक्साई चिन
     note: Used in Indian claims
+    code: hi
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     country_name: Aksai Chin
+    code: en
 administrative_divisions:
   chinese_system:
     type: County/Prefecture
@@ -76,13 +81,13 @@ address_format:
       required: true
       regex: ^[0-9]{6}$
       description: Chinese 6-digit postal code
-      example: '848000'
+      example: "848000"
       note: Hotan/Ngari postal codes
     indian_system:
       required: true
       regex: ^[1-2][0-9]{5}$
       description: Indian PIN code (6 digits)
-      example: '194101'
+      example: "194101"
       note: Ladakh PIN codes (claimed, not in use)
 validation:
   allow_latin_transliteration: true
@@ -106,19 +111,21 @@ status:
   note: Exceptionally complex - address researchers rarely handle this level of difficulty
 geo:
   center:
-    latitude: 35.0
-    longitude: 79.0
+    latitude: 35
+    longitude: 79
     accuracy: 50000
     source: database
-    captured_at: '2025-12-05T19:54:11.627Z'
+    captured_at: "2025-12-05T19:54:11.627Z"
     note: Approximate center - highly disputed
   bounds:
     northeast:
       latitude: 36.5
-      longitude: 81.0
+      longitude: 81
     southwest:
       latitude: 33.5
-      longitude: 77.0
+      longitude: 77
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency_chinese_system:
     code: CNY
@@ -126,14 +133,14 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   currency_indian_system:
     code: INR
     symbol: ₹
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -167,7 +174,13 @@ pos:
     timezone_indian: Asia/Kolkata
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

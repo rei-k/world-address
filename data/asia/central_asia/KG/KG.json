@@ -28,19 +28,25 @@
       "name": "Kyrgyz",
       "script": "Cyrillic",
       "role": "official",
-      "country_name": "Кыргызстан"
+      "country_name": "Кыргызстан",
+      "code": "ky",
+      "direction": "ltr"
     },
     {
       "name": "Russian",
       "script": "Cyrillic",
       "role": "official",
-      "country_name": "Киргизия"
+      "country_name": "Киргизия",
+      "code": "ru",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
-      "country_name": "Kyrgyzstan"
+      "country_name": "Kyrgyzstan",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -115,6 +121,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.603Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 43.2384,
+        "longitude": 80.2599
+      },
+      "southwest": {
+        "latitude": 39.1728,
+        "longitude": 69.2649
+      }
     }
   },
   "pos": {
@@ -129,7 +147,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.12
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -174,5 +192,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

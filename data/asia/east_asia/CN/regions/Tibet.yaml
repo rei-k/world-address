@@ -13,7 +13,9 @@ parent_country:
   alpha2: CN
   name: China
 type: Autonomous Region
-note: Tibetan script and Chinese address coexist - hierarchical rules differ slightly - ideal for extended AMF-Geo learning
+note: >-
+  Tibetan script and Chinese address coexist - hierarchical rules differ slightly - ideal for
+  extended AMF-Geo learning
 languages:
   - name: Tibetan
     script: Tibetan
@@ -25,11 +27,13 @@ languages:
     direction: ltr
     role: official
     country_name: 西藏自治区
+    code: zh
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     country_name: Tibet Autonomous Region
+    code: en
 administrative_divisions:
   level1:
     type: Prefecture
@@ -78,7 +82,7 @@ address_format:
     required: true
     regex: ^85[0-9]{4}$
     description: Tibet postal codes start with 85
-    example: '850000'
+    example: "850000"
 validation:
   allow_latin_transliteration: true
   dual_script: true
@@ -96,11 +100,13 @@ status:
   note: Dual script system - Tibetan and Chinese address hierarchies differ
 geo:
   center:
-    latitude: 29.6520
-    longitude: 91.1720
+    latitude: 29.652
+    longitude: 91.172
     accuracy: 1000
     source: database
-    captured_at: '2025-12-05T19:54:11.627Z'
+    captured_at: "2025-12-05T19:54:11.627Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: CNY
@@ -108,7 +114,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -147,7 +153,13 @@ pos:
     timezone: Asia/Shanghai
     week_start: monday
   business_hours:
-    typical_open: '10:00'
-    typical_close: '19:00'
+    typical_open: "10:00"
+    typical_close: "19:00"
     sunday_trading: true
     public_holidays_trading: true
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

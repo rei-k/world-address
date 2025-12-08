@@ -30,7 +30,8 @@
       "direction": "rtl",
       "role": "administrative",
       "country_name": "רמת הגולן",
-      "note": "Used in Israeli-administered areas"
+      "note": "Used in Israeli-administered areas",
+      "code": "he"
     },
     {
       "name": "Arabic",
@@ -38,14 +39,16 @@
       "direction": "rtl",
       "role": "traditional",
       "country_name": "الجولان",
-      "note": "Used by Druze population and Syrian claimants"
+      "note": "Used by Druze population and Syrian claimants",
+      "code": "ar"
     },
     {
       "name": "English",
       "script": "Latin",
       "direction": "ltr",
       "role": "auxiliary",
-      "country_name": "Golan Heights"
+      "country_name": "Golan Heights",
+      "code": "en"
     }
   ],
   "administrative_divisions": {
@@ -139,7 +142,9 @@
         "latitude": 32.7,
         "longitude": 35.5667
       }
-    }
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z"
   },
   "pos": {
     "currency_israeli_system": {
@@ -206,5 +211,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

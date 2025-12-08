@@ -22,14 +22,18 @@
       "name": "Vietnamese",
       "script": "Latin",
       "role": "official",
-      "country_name": "Việt Nam"
+      "country_name": "Việt Nam",
+      "code": "vi",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
       "required_for_shipping": true,
-      "country_name": "Vietnam"
+      "country_name": "Vietnam",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -112,6 +116,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.623Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 23.3927,
+        "longitude": 109.4646
+      },
+      "southwest": {
+        "latitude": 8.5598,
+        "longitude": 102.1445
+      }
     }
   },
   "pos": {
@@ -126,7 +142,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.1
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -171,5 +187,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

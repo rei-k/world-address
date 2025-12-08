@@ -39,7 +39,8 @@
       "direction": "ltr",
       "role": "administrative",
       "country_name": "阿克赛钦",
-      "note": "Used in Chinese-administered areas"
+      "note": "Used in Chinese-administered areas",
+      "code": "zh"
     },
     {
       "name": "Hindi",
@@ -47,14 +48,16 @@
       "direction": "ltr",
       "role": "claimed",
       "country_name": "अक्साई चिन",
-      "note": "Used in Indian claims"
+      "note": "Used in Indian claims",
+      "code": "hi"
     },
     {
       "name": "English",
       "script": "Latin",
       "direction": "ltr",
       "role": "auxiliary",
-      "country_name": "Aksai Chin"
+      "country_name": "Aksai Chin",
+      "code": "en"
     }
   ],
   "administrative_divisions": {
@@ -159,7 +162,9 @@
         "latitude": 33.5,
         "longitude": 77
       }
-    }
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z"
   },
   "pos": {
     "currency_chinese_system": {
@@ -227,5 +232,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

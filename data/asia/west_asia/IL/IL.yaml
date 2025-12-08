@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: IL
   alpha3: ISR
-  numeric: '376'
+  numeric: "376"
 continent: Asia
 subregion: West Asia
 languages:
@@ -20,14 +20,20 @@ languages:
     script: Hebrew
     role: official
     country_name: יִשְׂרָאֵל
+    code: he
+    direction: rtl
   - name: Arabic
     script: Arabic
     role: recognized
     country_name: إسرائيل
+    code: ar
+    direction: rtl
   - name: English
     script: Latin
     role: auxiliary
     country_name: Israel
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: District
@@ -63,7 +69,7 @@ address_format:
     required: true
     regex: ^[0-9]{7}$
     description: 7-digit numeric
-    example: '6100001'
+    example: "6100001"
 examples:
   domestic_raw: Azrieli Center, Tel Aviv 6100001
   domestic_normalized: Azrieli Center Tel Aviv 6100001
@@ -78,7 +84,16 @@ geo:
     longitude: 34.8516
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.624Z'
+    captured_at: "2025-12-03T16:54:11.624Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 33.3356
+      longitude: 35.895
+    southwest:
+      latitude: 29.4971
+      longitude: 34.2674
 pos:
   currency:
     code: ILS
@@ -86,11 +101,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.17
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -119,7 +134,13 @@ pos:
     timezone: Asia/Jerusalem
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

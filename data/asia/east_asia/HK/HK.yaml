@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: HK
   alpha3: HKG
-  numeric: '344'
+  numeric: "344"
 continent: Asia
 subregion: East Asia
 languages:
@@ -17,12 +17,14 @@ languages:
     direction: ltr
     role: official
     country_name: 香港
+    code: zh
   - name: English
     script: Latin
     direction: ltr
     role: official
     required_for_shipping: true
     country_name: Hong Kong
+    code: en
 administrative_divisions:
   level1:
     type: District
@@ -60,7 +62,7 @@ address_format:
     example: 12F
   room:
     required: false
-    example: '1205'
+    example: "1205"
   postal_code:
     required: false
     description: No postal code system in Hong Kong
@@ -84,7 +86,16 @@ geo:
     longitude: 114.1694
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.607Z'
+    captured_at: "2025-12-03T16:54:11.607Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 22.5597
+      longitude: 114.4346
+    southwest:
+      latitude: 22.1533
+      longitude: 113.8353
 pos:
   currency:
     code: HKD
@@ -92,11 +103,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: None
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -125,7 +136,13 @@ pos:
     timezone: Asia/Hong_Kong
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

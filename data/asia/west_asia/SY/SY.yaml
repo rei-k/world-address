@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: SY
   alpha3: SYR
-  numeric: '760'
+  numeric: "760"
 continent: Asia
 subregion: West Asia
 languages:
@@ -16,10 +16,14 @@ languages:
     script: Arabic
     role: official
     country_name: سوريا
+    code: ar
+    direction: rtl
   - name: English
     script: Latin
     role: auxiliary
     country_name: Syria
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Governorate
@@ -66,7 +70,16 @@ geo:
     longitude: 38.9968
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.628Z'
+    captured_at: "2025-12-03T16:54:11.628Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 37.3195
+      longitude: 42.3745
+    southwest:
+      latitude: 32.3117
+      longitude: 35.7278
 pos:
   currency:
     code: SYP
@@ -74,11 +87,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: None
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -107,7 +120,13 @@ pos:
     timezone: Asia/Damascus
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

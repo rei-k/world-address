@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: FM
   alpha3: FSM
-  numeric: '583'
+  numeric: "583"
 continent: Oceania
 subregion: Micronesia
 languages:
@@ -18,6 +18,7 @@ languages:
     role: official
     country_name: Federated States of Micronesia
     required_for_shipping: true
+    code: en
 administrative_divisions:
   level1:
     type: State
@@ -50,7 +51,7 @@ address_format:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit US-style ZIP code (969xx series)
-    example: '96941'
+    example: "96941"
 validation:
   allow_latin_transliteration: true
   rules:
@@ -70,7 +71,16 @@ geo:
     longitude: 150.5508
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.673Z'
+    captured_at: "2025-12-03T16:54:11.673Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 10.0897
+      longitude: 163.0367
+    southwest:
+      latitude: 1.0267
+      longitude: 137.3333
 pos:
   currency:
     code: USD
@@ -78,11 +88,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: None
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -111,7 +121,13 @@ pos:
     timezone: Pacific/Pohnpei
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

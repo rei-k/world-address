@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: MY
   alpha3: MYS
-  numeric: '458'
+  numeric: "458"
 continent: Asia
 subregion: Southeast Asia
 languages:
@@ -16,11 +16,15 @@ languages:
     script: Latin
     role: official
     country_name: Malaysia
+    code: ms
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     required_for_shipping: true
     country_name: Malaysia
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: State/Federal Territory
@@ -62,12 +66,12 @@ address_format:
     example: 41F
   room:
     required: false
-    example: '4101'
+    example: "4101"
   postal_code:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric
-    example: '50088'
+    example: "50088"
 examples:
   domestic_raw: Petronas Twin Towers, Kuala Lumpur 50088
   domestic_normalized: Petronas Twin Towers Kuala Lumpur 50088
@@ -82,7 +86,16 @@ geo:
     longitude: 101.9758
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.620Z'
+    captured_at: "2025-12-03T16:54:11.620Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 7.3634
+      longitude: 119.2671
+    southwest:
+      latitude: 0.855
+      longitude: 99.6433
 pos:
   currency:
     code: MYR
@@ -90,11 +103,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: GST
     rate:
-      standard: null
+      standard: 0.08
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -123,7 +136,13 @@ pos:
     timezone: Asia/Kuala_Lumpur
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

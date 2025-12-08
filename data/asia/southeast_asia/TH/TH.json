@@ -22,14 +22,18 @@
       "name": "Thai",
       "script": "Thai",
       "role": "official",
-      "country_name": "ประเทศไทย"
+      "country_name": "ประเทศไทย",
+      "code": "th",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
       "required_for_shipping": true,
-      "country_name": "Thailand"
+      "country_name": "Thailand",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -104,6 +108,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.622Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 20.4648,
+        "longitude": 105.6363
+      },
+      "southwest": {
+        "latitude": 5.6133,
+        "longitude": 97.3439
+      }
     }
   },
   "pos": {
@@ -118,7 +134,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.07
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -163,5 +179,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

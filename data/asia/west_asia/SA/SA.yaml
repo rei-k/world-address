@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: SA
   alpha3: SAU
-  numeric: '682'
+  numeric: "682"
 continent: Asia
 subregion: West Asia
 languages:
@@ -16,10 +16,14 @@ languages:
     script: Arabic
     role: official
     country_name: المملكة العربية السعودية
+    code: ar
+    direction: rtl
   - name: English
     script: Latin
     role: auxiliary
     country_name: Saudi Arabia
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Province
@@ -57,7 +61,7 @@ address_format:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric
-    example: '12233'
+    example: "12233"
 examples:
   domestic_raw: King Fahd Road, Riyadh 12233
   domestic_normalized: King Fahd Road Riyadh 12233
@@ -72,7 +76,16 @@ geo:
     longitude: 45.0792
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.627Z'
+    captured_at: "2025-12-03T16:54:11.627Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 32.1543
+      longitude: 55.6667
+    southwest:
+      latitude: 16.3792
+      longitude: 34.4957
 pos:
   currency:
     code: SAR
@@ -80,11 +93,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.15
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -113,7 +126,13 @@ pos:
     timezone: Asia/Riyadh
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

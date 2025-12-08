@@ -16,7 +16,7 @@ name:
 iso_codes:
   alpha2: VU
   alpha3: VUT
-  numeric: '548'
+  numeric: "548"
 continent: Oceania
 subregion: Melanesia
 languages:
@@ -26,16 +26,19 @@ languages:
     role: official
     country_name: Vanuatu
     required_for_shipping: true
+    code: en
   - name: French
     script: Latin
     direction: ltr
     role: official
     country_name: Vanuatu
+    code: fr
   - name: Bislama
     script: Latin
     direction: ltr
     role: official
     country_name: Vanuatu
+    code: bi
 administrative_divisions:
   level1:
     type: Province
@@ -75,7 +78,16 @@ geo:
     longitude: 166.9592
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.673Z'
+    captured_at: "2025-12-03T16:54:11.673Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: -13.0733
+      longitude: 170.2368
+    southwest:
+      latitude: -20.2489
+      longitude: 166.5244
 pos:
   currency:
     code: VUV
@@ -83,11 +95,11 @@ pos:
     symbol_position: before
     decimal_places: 0
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.15
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -116,7 +128,13 @@ pos:
     timezone: Pacific/Efate
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

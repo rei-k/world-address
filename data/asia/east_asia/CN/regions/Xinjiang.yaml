@@ -25,16 +25,19 @@ languages:
     direction: ltr
     role: official
     country_name: 新疆维吾尔自治区
+    code: zh
   - name: Kazakh
     script: Arabic/Cyrillic
     direction: rtl
     role: regional
     note: Used in some areas
+    code: kk
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     country_name: Xinjiang Uyghur Autonomous Region
+    code: en
 administrative_divisions:
   level1:
     type: Prefecture
@@ -91,7 +94,7 @@ address_format:
     required: true
     regex: ^8[3-4][0-9]{4}$
     description: Xinjiang postal codes start with 83 or 84
-    example: '830000'
+    example: "830000"
 validation:
   allow_latin_transliteration: true
   dual_script: true
@@ -113,7 +116,9 @@ geo:
     longitude: 86.5882
     accuracy: 1000
     source: database
-    captured_at: '2025-12-05T19:54:11.627Z'
+    captured_at: "2025-12-05T19:54:11.627Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency:
     code: CNY
@@ -121,7 +126,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -160,7 +165,13 @@ pos:
     timezone: Asia/Urumqi
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: true
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

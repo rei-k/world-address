@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: KG
   alpha3: KGZ
-  numeric: '417'
+  numeric: "417"
 continent: Asia
 subregion: Central Asia
 languages:
@@ -20,14 +20,20 @@ languages:
     script: Cyrillic
     role: official
     country_name: Кыргызстан
+    code: ky
+    direction: ltr
   - name: Russian
     script: Cyrillic
     role: official
     country_name: Киргизия
+    code: ru
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Kyrgyzstan
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Region/City
@@ -64,12 +70,12 @@ address_format:
     example: Bishkek Park Mall
   room:
     required: false
-    example: '403'
+    example: "403"
   postal_code:
     required: true
     regex: ^[0-9]{6}$
     description: 6-digit numeric
-    example: '720001'
+    example: "720001"
 examples:
   domestic_raw: Bishkek Park Mall, Bishkek 720001
   domestic_normalized: Bishkek Park Mall Bishkek 720001
@@ -84,7 +90,16 @@ geo:
     longitude: 74.7661
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.603Z'
+    captured_at: "2025-12-03T16:54:11.603Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 43.2384
+      longitude: 80.2599
+    southwest:
+      latitude: 39.1728
+      longitude: 69.2649
 pos:
   currency:
     code: KGS
@@ -92,11 +107,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.12
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -125,7 +140,13 @@ pos:
     timezone: Asia/Bishkek
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

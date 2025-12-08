@@ -10,7 +10,9 @@ name:
       script: Devanagari
       direction: ltr
 type: Disputed Territory
-note: Indian and Pakistani address systems intermixed - extremely high value for address mapping analysis
+note: >-
+  Indian and Pakistani address systems intermixed - extremely high value for address mapping
+  analysis
 disputed_between:
   - country: IN
     name: India
@@ -28,12 +30,14 @@ languages:
     role: official
     country_name: کشمیر
     note: Used in Pakistan-administered areas
+    code: ur
   - name: Hindi
     script: Devanagari
     direction: ltr
     role: official
     country_name: कश्मीर
     note: Used in India-administered areas
+    code: hi
   - name: Kashmiri
     script: Arabic/Devanagari
     direction: varies
@@ -43,6 +47,7 @@ languages:
     direction: ltr
     role: auxiliary
     country_name: Kashmir
+    code: en
 administrative_divisions:
   indian_administered:
     type: Union Territory
@@ -89,13 +94,13 @@ address_format:
       required: true
       regex: ^[1-2][0-9]{5}$
       description: Indian PIN code (6 digits)
-      example: '190001'
+      example: "190001"
       note: Postal codes for Jammu and Kashmir start with 19
     pakistani_system:
       required: true
       regex: ^[0-9]{5}$
       description: Pakistani postal code (5 digits)
-      example: '13100'
+      example: "13100"
 validation:
   allow_latin_transliteration: true
   rules:
@@ -111,22 +116,26 @@ status:
   disputed: true
   un_status: disputed_territory
   administered_by: multiple
-  note: Exceptionally high analytical value for address mapping research - Indian and Pakistani systems intermixed
+  note: >-
+    Exceptionally high analytical value for address mapping research - Indian and Pakistani systems
+    intermixed
 geo:
   center:
     latitude: 34.0837
     longitude: 74.7973
     accuracy: 10000
     source: database
-    captured_at: '2025-12-05T19:54:11.627Z'
+    captured_at: "2025-12-05T19:54:11.627Z"
     note: Approximate center of disputed region
   bounds:
     northeast:
-      latitude: 36.0
-      longitude: 77.0
+      latitude: 36
+      longitude: 77
     southwest:
       latitude: 32.5
       longitude: 73.5
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
 pos:
   currency_indian_system:
     code: INR
@@ -134,14 +143,14 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   currency_pakistani_system:
     code: PKR
     symbol: Rs
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -175,7 +184,13 @@ pos:
     timezone_pakistani: Asia/Karachi
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

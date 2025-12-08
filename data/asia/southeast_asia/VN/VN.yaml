@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: VN
   alpha3: VNM
-  numeric: '704'
+  numeric: "704"
 continent: Asia
 subregion: Southeast Asia
 languages:
@@ -16,11 +16,15 @@ languages:
     script: Latin
     role: official
     country_name: Việt Nam
+    code: vi
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     required_for_shipping: true
     country_name: Vietnam
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Province/Municipality
@@ -64,12 +68,12 @@ address_format:
     example: 52F
   room:
     required: false
-    example: '5203'
+    example: "5203"
   postal_code:
     required: true
     regex: ^[0-9]{6}$
     description: 6-digit numeric
-    example: '700000'
+    example: "700000"
 examples:
   domestic_raw: Bitexco Financial Tower, Quận 1, Thành phố Hồ Chí Minh 700000
   domestic_normalized: Bitexco Financial Tower Quận 1 Thành phố Hồ Chí Minh 700000
@@ -84,7 +88,16 @@ geo:
     longitude: 108.2772
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.623Z'
+    captured_at: "2025-12-03T16:54:11.623Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 23.3927
+      longitude: 109.4646
+    southwest:
+      latitude: 8.5598
+      longitude: 102.1445
 pos:
   currency:
     code: VND
@@ -92,11 +105,11 @@ pos:
     symbol_position: before
     decimal_places: 0
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.1
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -125,7 +138,13 @@ pos:
     timezone: Asia/Ho_Chi_Minh
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

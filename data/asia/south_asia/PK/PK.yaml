@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: PK
   alpha3: PAK
-  numeric: '586'
+  numeric: "586"
 continent: Asia
 subregion: South Asia
 languages:
@@ -16,11 +16,15 @@ languages:
     script: Arabic
     role: official
     country_name: پاکستان
+    code: ur
+    direction: rtl
   - name: English
     script: Latin
     role: official
     required_for_shipping: true
     country_name: Pakistan
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Province/Territory
@@ -57,12 +61,12 @@ address_format:
     example: Centaurus Mall
   room:
     required: false
-    example: '702'
+    example: "702"
   postal_code:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric
-    example: '44000'
+    example: "44000"
 examples:
   domestic_raw: Centaurus Mall, Islamabad 44000
   domestic_normalized: Centaurus Mall Islamabad 44000
@@ -77,7 +81,16 @@ geo:
     longitude: 69.3451
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.617Z'
+    captured_at: "2025-12-03T16:54:11.617Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 37.0841
+      longitude: 77.8374
+    southwest:
+      latitude: 23.6345
+      longitude: 60.8728
 pos:
   currency:
     code: PKR
@@ -85,11 +98,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: Sales Tax
     rate:
-      standard: null
+      standard: 0.18
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -118,7 +131,13 @@ pos:
     timezone: Asia/Karachi
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: WS
   alpha3: WSM
-  numeric: '882'
+  numeric: "882"
 continent: Oceania
 subregion: Polynesia
 languages:
@@ -17,12 +17,14 @@ languages:
     direction: ltr
     role: official
     country_name: Samoa
+    code: sm
   - name: English
     script: Latin
     direction: ltr
     role: official
     country_name: Samoa
     required_for_shipping: true
+    code: en
 administrative_divisions:
   level1:
     type: District
@@ -63,7 +65,16 @@ geo:
     longitude: -172.1046
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.676Z'
+    captured_at: "2025-12-03T16:54:11.676Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: -13.4321
+      longitude: -171.4152
+    southwest:
+      latitude: -14.0579
+      longitude: -172.8098
 pos:
   currency:
     code: WST
@@ -71,11 +82,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: VAGST
     rate:
-      standard: null
+      standard: 0.15
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -104,7 +115,13 @@ pos:
     timezone: Pacific/Apia
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

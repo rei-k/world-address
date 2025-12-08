@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: JO
   alpha3: JOR
-  numeric: '400'
+  numeric: "400"
 continent: Asia
 subregion: West Asia
 languages:
@@ -17,12 +17,14 @@ languages:
     direction: rtl
     role: official
     country_name: الأردن
+    code: ar
   - name: English
     script: Latin
     direction: ltr
     role: auxiliary
     required_for_shipping: true
     country_name: Jordan
+    code: en
 administrative_divisions:
   level1:
     type: Governorate
@@ -60,12 +62,12 @@ address_format:
     required: true
     regex: ^[0-9]{5}$
     description: 5-digit numeric postal code
-    example: '11118'
+    example: "11118"
 validation:
   allow_latin_transliteration: true
   rules:
     - Governorate name is required
-    - 'Postal code format: 5 digits'
+    - "Postal code format: 5 digits"
 examples:
   domestic_raw: شارع الملك عبدالله الثاني، عمّان 11118
   domestic_normalized: King Abdullah II Street, Amman 11118
@@ -80,7 +82,16 @@ geo:
     longitude: 36.2384
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.625Z'
+    captured_at: "2025-12-03T16:54:11.625Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 33.3747
+      longitude: 39.3012
+    southwest:
+      latitude: 29.185
+      longitude: 34.9596
 pos:
   currency:
     code: JOD
@@ -88,11 +99,11 @@ pos:
     symbol_position: before
     decimal_places: 3
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: Sales Tax
     rate:
-      standard: null
+      standard: 0.16
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -121,7 +132,13 @@ pos:
     timezone: Asia/Amman
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

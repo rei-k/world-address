@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: AU
   alpha3: AUS
-  numeric: '036'
+  numeric: "036"
 continent: Oceania
 subregion: Australia and New Zealand
 languages:
@@ -18,6 +18,7 @@ languages:
     role: official
     country_name: Australia
     required_for_shipping: true
+    code: en
 administrative_divisions:
   level1:
     type: State / Territory
@@ -62,7 +63,7 @@ address_format:
     required: true
     regex: ^[0-9]{4}$
     description: 4-digit numeric postcode
-    example: '2000'
+    example: "2000"
 validation:
   allow_latin_transliteration: true
   rules:
@@ -83,7 +84,16 @@ geo:
     longitude: 133.7751
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.668Z'
+    captured_at: "2025-12-03T16:54:11.668Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: -9.2218
+      longitude: 159.2556
+    southwest:
+      latitude: -54.7772
+      longitude: 112.9211
 pos:
   currency:
     code: AUD
@@ -91,11 +101,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: GST
     rate:
-      standard: null
+      standard: 0.1
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -124,7 +134,13 @@ pos:
     timezone: Australia/Sydney
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

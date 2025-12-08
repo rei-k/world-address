@@ -69,7 +69,7 @@ console.log(`Autonomous Territories (自治領): ${categories.autonomous_territo
 console.log(`Overseas Territories (海外領): ${categories.overseas_territories.length}`);
 console.log(`Antarctica (南極): ${categories.antarctica.length}`);
 console.log(
-  `\nTotal: ${categories.countries.length + categories.autonomous_territories.length + categories.overseas_territories.length + categories.antarctica.length}`
+  `\nTotal: ${categories.countries.length + categories.autonomous_territories.length + categories.overseas_territories.length + categories.antarctica.length}`,
 );
 
 console.log('\n=== Details ===\n');

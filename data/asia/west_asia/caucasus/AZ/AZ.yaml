@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: AZ
   alpha3: AZE
-  numeric: '031'
+  numeric: "031"
 continent: Asia
 subregion: West Asia
 languages:
@@ -16,10 +16,13 @@ languages:
     script: Latin
     role: official
     country_name: Azərbaycan
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Azerbaijan
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: District/City
@@ -68,7 +71,16 @@ geo:
     longitude: 47.5769
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.630Z'
+    captured_at: "2025-12-03T16:54:11.630Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 41.9104
+      longitude: 50.3928
+    southwest:
+      latitude: 38.3927
+      longitude: 44.774
 pos:
   currency:
     code: AZN
@@ -76,7 +88,7 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
@@ -109,7 +121,13 @@ pos:
     timezone: Asia/Baku
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

@@ -22,13 +22,16 @@
       "name": "Armenian",
       "script": "Armenian",
       "role": "official",
-      "country_name": "Հայաստան"
+      "country_name": "Հայաստան",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
-      "country_name": "Armenia"
+      "country_name": "Armenia",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -93,6 +96,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.629Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 41.3007,
+        "longitude": 46.6344
+      },
+      "southwest": {
+        "latitude": 38.8404,
+        "longitude": 43.4472
+      }
     }
   },
   "pos": {
@@ -152,5 +167,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

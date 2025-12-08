@@ -12,7 +12,7 @@ name:
 iso_codes:
   alpha2: MO
   alpha3: MAC
-  numeric: '446'
+  numeric: "446"
 continent: Asia
 subregion: East Asia
 languages:
@@ -20,15 +20,20 @@ languages:
     script: Han
     role: official
     country_name: 澳門
+    code: zh
+    direction: ltr
   - name: Portuguese
     script: Latin
     role: official
     country_name: Macau
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     required_for_shipping: true
     country_name: Macao
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Parish
@@ -65,7 +70,7 @@ address_format:
     example: 15F
   room:
     required: false
-    example: '1502'
+    example: "1502"
   postal_code:
     required: false
     description: No postal code system in Macao
@@ -89,7 +94,16 @@ geo:
     longitude: 113.5439
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.611Z'
+    captured_at: "2025-12-03T16:54:11.611Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 22.2168
+      longitude: 113.5989
+    southwest:
+      latitude: 22.1099
+      longitude: 113.5281
 pos:
   currency:
     code: MOP
@@ -97,11 +111,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
-    type: VAT
+    type: None
     rate:
-      standard: null
+      standard: 0
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -130,7 +144,13 @@ pos:
     timezone: Asia/Macau
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn

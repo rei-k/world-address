@@ -22,14 +22,18 @@
       "name": "Malay",
       "script": "Latin",
       "role": "official",
-      "country_name": "Malaysia"
+      "country_name": "Malaysia",
+      "code": "ms",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
       "required_for_shipping": true,
-      "country_name": "Malaysia"
+      "country_name": "Malaysia",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -110,6 +114,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.620Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 7.3634,
+        "longitude": 119.2671
+      },
+      "southwest": {
+        "latitude": 0.855,
+        "longitude": 99.6433
+      }
     }
   },
   "pos": {
@@ -124,7 +140,7 @@
     "tax": {
       "type": "GST",
       "rate": {
-        "standard": null
+        "standard": 0.08
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -169,5 +185,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

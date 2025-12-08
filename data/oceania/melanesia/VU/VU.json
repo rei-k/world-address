@@ -36,21 +36,24 @@
       "direction": "ltr",
       "role": "official",
       "country_name": "Vanuatu",
-      "required_for_shipping": true
+      "required_for_shipping": true,
+      "code": "en"
     },
     {
       "name": "French",
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Vanuatu"
+      "country_name": "Vanuatu",
+      "code": "fr"
     },
     {
       "name": "Bislama",
       "script": "Latin",
       "direction": "ltr",
       "role": "official",
-      "country_name": "Vanuatu"
+      "country_name": "Vanuatu",
+      "code": "bi"
     }
   ],
   "administrative_divisions": {
@@ -106,6 +109,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.673Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": -13.0733,
+        "longitude": 170.2368
+      },
+      "southwest": {
+        "latitude": -20.2489,
+        "longitude": 166.5244
+      }
     }
   },
   "pos": {
@@ -120,7 +135,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.15
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -165,5 +180,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

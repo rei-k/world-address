@@ -22,14 +22,17 @@
       "name": "Filipino",
       "script": "Latin",
       "role": "official",
-      "country_name": "Pilipinas"
+      "country_name": "Pilipinas",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "official",
       "required_for_shipping": true,
-      "country_name": "Philippines"
+      "country_name": "Philippines",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -112,6 +115,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.621Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 21.1207,
+        "longitude": 126.6044
+      },
+      "southwest": {
+        "latitude": 4.6448,
+        "longitude": 116.9283
+      }
     }
   },
   "pos": {
@@ -126,7 +141,7 @@
     "tax": {
       "type": "VAT",
       "rate": {
-        "standard": null
+        "standard": 0.12
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -171,5 +186,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

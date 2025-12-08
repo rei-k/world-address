@@ -75,7 +75,8 @@
       "direction": "ltr",
       "role": "official_claimant",
       "country_name": "南沙群岛",
-      "note": "Used by China and Taiwan"
+      "note": "Used by China and Taiwan",
+      "code": "zh"
     },
     {
       "name": "Vietnamese",
@@ -83,7 +84,8 @@
       "direction": "ltr",
       "role": "official_claimant",
       "country_name": "Quần đảo Trường Sa",
-      "note": "Used by Vietnam"
+      "note": "Used by Vietnam",
+      "code": "vi"
     },
     {
       "name": "Filipino",
@@ -98,7 +100,8 @@
       "script": "Latin",
       "direction": "ltr",
       "role": "auxiliary",
-      "country_name": "Spratly Islands"
+      "country_name": "Spratly Islands",
+      "code": "en"
     }
   ],
   "administrative_divisions": {
@@ -220,7 +223,9 @@
         "latitude": 7,
         "longitude": 111
       }
-    }
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z"
   },
   "pos": {
     "currency_chinese_system": {
@@ -292,5 +297,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

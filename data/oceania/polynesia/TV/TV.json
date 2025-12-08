@@ -31,7 +31,8 @@
       "direction": "ltr",
       "role": "official",
       "country_name": "Tuvalu",
-      "required_for_shipping": true
+      "required_for_shipping": true,
+      "code": "en"
     }
   ],
   "administrative_divisions": {
@@ -85,6 +86,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.675Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": -5.6417,
+        "longitude": 179.8628
+      },
+      "southwest": {
+        "latitude": -10.8017,
+        "longitude": 176.0646
+      }
     }
   },
   "pos": {
@@ -97,9 +110,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "None",
       "rate": {
-        "standard": null
+        "standard": 0
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -144,5 +157,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

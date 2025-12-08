@@ -22,13 +22,17 @@
       "name": "Dzongkha",
       "script": "Tibetan",
       "role": "official",
-      "country_name": "འབྲུག་ཡུལ་"
+      "country_name": "འབྲུག་ཡུལ་",
+      "code": "dz",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
-      "country_name": "Bhutan"
+      "country_name": "Bhutan",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -101,6 +105,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.614Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 28.3238,
+        "longitude": 92.1252
+      },
+      "southwest": {
+        "latitude": 26.7022,
+        "longitude": 88.7464
+      }
     }
   },
   "pos": {
@@ -113,9 +129,9 @@
       "thousands_separator": ","
     },
     "tax": {
-      "type": "VAT",
+      "type": "None",
       "rate": {
-        "standard": null
+        "standard": 0
       },
       "included_in_price": true,
       "invoice_requirement": "optional"
@@ -160,5 +176,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

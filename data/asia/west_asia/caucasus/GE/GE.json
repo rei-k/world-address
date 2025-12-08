@@ -22,13 +22,16 @@
       "name": "Georgian",
       "script": "Georgian",
       "role": "official",
-      "country_name": "საქართველო"
+      "country_name": "საქართველო",
+      "direction": "ltr"
     },
     {
       "name": "English",
       "script": "Latin",
       "role": "auxiliary",
-      "country_name": "Georgia"
+      "country_name": "Georgia",
+      "code": "en",
+      "direction": "ltr"
     }
   ],
   "administrative_divisions": {
@@ -93,6 +96,18 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-03T16:54:11.630Z"
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 43.5864,
+        "longitude": 46.7365
+      },
+      "southwest": {
+        "latitude": 41.0537,
+        "longitude": 40.0101
+      }
     }
   },
   "pos": {
@@ -152,5 +167,12 @@
       "sunday_trading": true,
       "public_holidays_trading": false
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

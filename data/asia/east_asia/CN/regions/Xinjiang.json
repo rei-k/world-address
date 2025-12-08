@@ -35,21 +35,24 @@
       "script": "Han",
       "direction": "ltr",
       "role": "official",
-      "country_name": "新疆维吾尔自治区"
+      "country_name": "新疆维吾尔自治区",
+      "code": "zh"
     },
     {
       "name": "Kazakh",
       "script": "Arabic/Cyrillic",
       "direction": "rtl",
       "role": "regional",
-      "note": "Used in some areas"
+      "note": "Used in some areas",
+      "code": "kk"
     },
     {
       "name": "English",
       "script": "Latin",
       "direction": "ltr",
       "role": "auxiliary",
-      "country_name": "Xinjiang Uyghur Autonomous Region"
+      "country_name": "Xinjiang Uyghur Autonomous Region",
+      "code": "en"
     }
   ],
   "administrative_divisions": {
@@ -148,7 +151,9 @@
       "accuracy": 1000,
       "source": "database",
       "captured_at": "2025-12-05T19:54:11.627Z"
-    }
+    },
+    "verified": true,
+    "verified_at": "2024-01-01T00:00:00Z"
   },
   "pos": {
     "currency": {
@@ -217,5 +222,12 @@
       "sunday_trading": true,
       "public_holidays_trading": true
     }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn"
   }
 }

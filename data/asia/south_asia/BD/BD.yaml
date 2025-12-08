@@ -8,7 +8,7 @@ name:
 iso_codes:
   alpha2: BD
   alpha3: BGD
-  numeric: '050'
+  numeric: "050"
 continent: Asia
 subregion: South Asia
 languages:
@@ -16,10 +16,14 @@ languages:
     script: Bengali
     role: official
     country_name: বাংলাদেশ
+    code: bn
+    direction: ltr
   - name: English
     script: Latin
     role: auxiliary
     country_name: Bangladesh
+    code: en
+    direction: ltr
 administrative_divisions:
   level1:
     type: Division
@@ -54,12 +58,12 @@ address_format:
     example: Bashundhara City
   room:
     required: false
-    example: '502'
+    example: "502"
   postal_code:
     required: true
     regex: ^[0-9]{4}$
     description: 4-digit numeric
-    example: '1215'
+    example: "1215"
 examples:
   domestic_raw: Bashundhara City, Dhaka 1215
   domestic_normalized: Bashundhara City Dhaka 1215
@@ -74,7 +78,16 @@ geo:
     longitude: 90.3563
     accuracy: 1000
     source: database
-    captured_at: '2025-12-03T16:54:11.613Z'
+    captured_at: "2025-12-03T16:54:11.613Z"
+  verified: true
+  verified_at: "2024-01-01T00:00:00Z"
+  bounds:
+    northeast:
+      latitude: 26.6312
+      longitude: 92.6727
+    southwest:
+      latitude: 20.7434
+      longitude: 88.0284
 pos:
   currency:
     code: BDT
@@ -82,11 +95,11 @@ pos:
     symbol_position: before
     decimal_places: 2
     decimal_separator: .
-    thousands_separator: ','
+    thousands_separator: ","
   tax:
     type: VAT
     rate:
-      standard: null
+      standard: 0.15
     included_in_price: true
     invoice_requirement: optional
   receipt:
@@ -115,7 +128,13 @@ pos:
     timezone: Asia/Dhaka
     week_start: monday
   business_hours:
-    typical_open: '09:00'
-    typical_close: '18:00'
+    typical_open: "09:00"
+    typical_close: "18:00"
     sunday_trading: true
     public_holidays_trading: false
+geo_insurance:
+  enabled: true
+  tolerance_meters: 100
+  min_confidence: 0.8
+  auto_correct: false
+  fallback_behavior: warn
