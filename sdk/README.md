@@ -15,7 +15,7 @@ A comprehensive SDK for handling international address formats, validation, and 
 | `@vey/vue` | 📋 **計画中 / Planned** | Vue composables and components |
 | `@vey/angular` | 📋 **計画中 / Planned** | Angular modules |
 | `@vey/widget` | 📋 **計画中 / Planned** | Universal Shadow Widget (framework-agnostic) |
-| `@vey/webhooks` | 📋 **計画中 / Planned** | Webhook utilities and handlers |
+| `@vey/webhooks` | ✅ **ドキュメント完備 / Documented** | Webhook utilities and handlers - [README](./webhooks/README.md) |
 | `@vey/qr-nfc` | 📋 **計画中 / Planned** | QR code and NFC integration |
 | `@vey/graphql` | 📋 **計画中 / Planned** | GraphQL schema and resolvers |
 | `@vey/grpc` | 📋 **計画中 / Planned** | gRPC protocol definitions |
@@ -496,6 +496,8 @@ function switchLanguage(lang: string) {
 
 ## 📡 Webhooks
 
+Handle real-time address and delivery events with automatic retries and signature verification.
+
 ```typescript
 import { createWebhookHandler } from '@vey/webhooks';
 
@@ -515,6 +517,10 @@ handler.onDeliveryStatus((event, data, payload) => {
 app.post('/webhook', handler.expressMiddleware());
 ```
 
+📖 **[Complete Webhook Guide](./webhooks/README.md)** - Comprehensive documentation with examples for Express, Fastify, Next.js, and more.
+
+📖 **[Webhook Integration Guide](../docs/webhook-integration.md)** - Production-ready integration patterns and best practices.
+
 ## 📱 QR/NFC
 
 ```typescript
@@ -532,6 +538,37 @@ if (nfc.supported) {
   console.log('NFC address:', record.data);
 }
 ```
+
+## 🔐 WebAuthn Authentication
+
+Passwordless biometric authentication for address verification and transaction signing.
+
+```typescript
+import { WebAuthnClient } from '@vey/webauthn';
+
+const client = new WebAuthnClient({
+  rpId: 'yourdomain.com',
+  rpName: 'Your App',
+  apiEndpoint: '/api/webauthn',
+});
+
+// Register passkey
+const result = await client.register({
+  userId: user.id,
+  userName: user.email,
+  userDisplayName: user.name,
+  challenge: serverChallenge,
+});
+
+// Authenticate with biometric
+const authResult = await client.authenticate({
+  challenge: serverChallenge,
+});
+```
+
+📖 **[WebAuthn SDK Documentation](./webauthn/README.md)** - Complete API reference and usage examples.
+
+📖 **[WebAuthn Integration Guide](../docs/webauthn-integration.md)** - Step-by-step integration guide with client/server examples.
 
 ## 🔑 Address PID (Place ID)
 
@@ -658,12 +695,37 @@ The SDK supports 200+ countries with detailed address format information. See th
 npx veyform-sdk countries
 ```
 
+## 📚 Documentation
+
+### Integration Guides
+
+- **[Comprehensive Integration Guide](../docs/integration-guide.md)** - Complete guide for all SDKs and frameworks
+- **[WebAuthn Integration Guide](../docs/webauthn-integration.md)** - Biometric authentication integration
+- **[Webhook Integration Guide](../docs/webhook-integration.md)** - Event-driven architecture implementation
+- **[Troubleshooting Guide](../docs/troubleshooting.md)** - Common issues and solutions
+
+### SDK Documentation
+
+- **[Core SDK](./core/README.md)** - Address validation, formatting, PID, ZKP
+- **[Webhooks SDK](./webhooks/README.md)** - Event handling and delivery
+- **[WebAuthn SDK](./webauthn/README.md)** - Passwordless authentication
+- **[QR/NFC SDK](./qr-nfc/README.md)** - QR code and NFC integration
+
+### Examples
+
+- [Express.js Integration](../examples/expressjs-integration)
+- [Next.js Example](../examples/nextjs-example)
+- [React Example](../examples/react-example)
+- [Vue Example](../examples/vue-example)
+- [Biometric Auth Example](../examples/biometric-auth-example)
+
 ## 📄 License
 
 MIT
 
 ## 🔗 Links
 
-- [World Address YAML Data](https://github.com/rei-k/world-address-yaml)
-- [Documentation](#)
-- [Examples](#)
+- [GitHub Repository](https://github.com/rei-k/world-address)
+- [Documentation](../docs)
+- [Examples](../examples)
+- [World Address YAML Data](../data)
