@@ -3,7 +3,7 @@
  */
 
 import { NextRequest } from 'next/server';
-import { sign, verify } from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-jwt-secret-change-in-production';
 const API_KEY_HEADER = 'x-api-key';
@@ -31,13 +31,13 @@ export interface JWTPayload {
  * @param expiresIn - Token expiration (default: 24h)
  * @returns JWT token string
  */
-export function generateJWT(userId: string, email: string, expiresIn = '24h'): string {
+export function generateJWT(userId: string, email: string, expiresIn: string = '24h'): string {
   const payload: JWTPayload = {
     userId,
     email
   };
 
-  return sign(payload, JWT_SECRET, { expiresIn });
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: expiresIn as any });
 }
 
 /**
@@ -47,7 +47,7 @@ export function generateJWT(userId: string, email: string, expiresIn = '24h'): s
  */
 export function verifyJWT(token: string): JWTPayload | null {
   try {
-    const decoded = verify(token, JWT_SECRET) as JWTPayload;
+    const decoded = jwt.verify(token, JWT_SECRET) as JWTPayload;
     return decoded;
   } catch (error) {
     return null;
