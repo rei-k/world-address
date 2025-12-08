@@ -17,6 +17,8 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "benchmark": "node benchmarks/zkp-benchmarks.mjs",
+    "setup:circuits": "./setup-circuits.sh",
+    "compile:circuits": "circom circuits/membership.circom --r1cs --wasm --sym -o build/ && circom circuits/structure.circom --r1cs --wasm --sym -o build/ && circom circuits/selective-reveal.circom --r1cs --wasm --sym -o build/ && circom circuits/version.circom --r1cs --wasm --sym -o build/ && circom circuits/locker.circom --r1cs --wasm --sym -o build/",
     "lint": "eslint src tests --ext .ts",
     "lint:fix": "eslint src tests --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
