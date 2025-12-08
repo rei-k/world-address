@@ -1,0 +1,103 @@
+{
+  "name": {
+    "en": "Presidente Eduardo Frei Montalva Base",
+    "local": "Base Presidente Eduardo Frei Montalva"
+  },
+  "operating_country": {
+    "name": "Chile",
+    "alpha2": "CL",
+    "program": "Instituto Antártico Chileno (INACH) / Fuerza Aérea de Chile"
+  },
+  "location": {
+    "coordinates": {
+      "latitude": -62.1953,
+      "longitude": -58.9831
+    },
+    "region": "King George Island, South Shetland Islands",
+    "claim_area": "Chile (Chilean Antarctic Territory)"
+  },
+  "operational": {
+    "type": "year_round",
+    "established": 1969,
+    "capacity_winter": 80,
+    "capacity_summer": 150
+  },
+  "address_format": {
+    "mail_routing": {
+      "via_country": "Chile",
+      "via_city": "Punta Arenas"
+    },
+    "example": "Name, Base Frei, Instituto Antártico Chileno, Plaza Muñoz Gamero 1055, 6200000 Punta Arenas, Chile"
+  },
+  "status": {
+    "active": true,
+    "note": "Largest Chilean Antarctic station; includes airstrip and civilian settlement Villa Las Estrellas"
+  },
+  "geo": {
+    "center": {
+      "latitude": -62.1953,
+      "longitude": -58.9831,
+      "accuracy": 1000,
+      "source": "database",
+      "captured_at": "2025-12-08T06:51:00.000Z"
+    }
+  },
+  "pos": {
+    "currency": {
+      "code": "CLP",
+      "symbol": "$",
+      "symbol_position": "before",
+      "decimal_places": 0,
+      "decimal_separator": ",",
+      "thousands_separator": "."
+    },
+    "tax": {
+      "type": "VAT",
+      "rate": {
+        "standard": 0.19
+      },
+      "included_in_price": true,
+      "invoice_requirement": "optional"
+    },
+    "receipt": {
+      "required_fields": [
+        "business_name",
+        "date",
+        "items",
+        "total"
+      ],
+      "paper_width": "80mm",
+      "electronic_allowed": true,
+      "retention_period": "5 years"
+    },
+    "fiscal": {
+      "fiscal_device_required": false,
+      "registration_required": false,
+      "reporting_frequency": "varies"
+    },
+    "payment_methods": [
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "high"
+      },
+      {
+        "type": "credit_card",
+        "name": "Credit Card",
+        "prevalence": "high"
+      }
+    ],
+    "locale": {
+      "date_format": "DD-MM-YYYY",
+      "time_format": "24h",
+      "timezone": "America/Santiago",
+      "week_start": "monday"
+    },
+    "business_hours": {
+      "typical_open": "09:00",
+      "typical_close": "18:00",
+      "sunday_trading": true,
+      "public_holidays_trading": false
+    }
+  }
+}

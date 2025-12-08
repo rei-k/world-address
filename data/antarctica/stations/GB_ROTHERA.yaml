@@ -1,0 +1,77 @@
+name:
+  en: Rothera Research Station
+operating_country:
+  name: United Kingdom
+  alpha2: GB
+  program: British Antarctic Survey (BAS)
+location:
+  coordinates:
+    latitude: -67.5678
+    longitude: -68.1283
+  region: Rothera Point, Adelaide Island
+  claim_area: United Kingdom (British Antarctic Territory)
+operational:
+  type: year_round
+  established: 1975
+  capacity_winter: 22
+  capacity_summer: 100
+address_format:
+  mail_routing:
+    via_country: United Kingdom
+    via_city: Cambridge
+    postal_code: CB3 0ET
+  example: Name, Rothera Research Station, c/o British Antarctic Survey, High Cross, Madingley Road, Cambridge CB3 0ET, United Kingdom
+status:
+  active: true
+  note: Largest British Antarctic facility; main hub for UK Antarctic operations
+geo:
+  center:
+    latitude: -67.5678
+    longitude: -68.1283
+    accuracy: 1000
+    source: database
+    captured_at: '2025-12-08T06:51:00.000Z'
+pos:
+  currency:
+    code: GBP
+    symbol: £
+    symbol_position: before
+    decimal_places: 2
+    decimal_separator: .
+    thousands_separator: ','
+  tax:
+    type: VAT
+    rate:
+      standard: 0.20
+    included_in_price: true
+    invoice_requirement: optional
+  receipt:
+    required_fields:
+      - business_name
+      - date
+      - items
+      - total
+    paper_width: 80mm
+    electronic_allowed: true
+    retention_period: 6 years
+  fiscal:
+    fiscal_device_required: false
+    registration_required: false
+    reporting_frequency: varies
+  payment_methods:
+    - type: cash
+      name: Cash
+      prevalence: medium
+    - type: credit_card
+      name: Credit Card
+      prevalence: high
+  locale:
+    date_format: DD/MM/YYYY
+    time_format: 24h
+    timezone: Europe/London
+    week_start: monday
+  business_hours:
+    typical_open: '09:00'
+    typical_close: '17:00'
+    sunday_trading: true
+    public_holidays_trading: false
