@@ -205,8 +205,6 @@ const regionStats = await Promise.all(
 - 🌐 Web platforms
 
 **Developer Community:**
-- 1000+ GitHub stars (growing)
-- Active contributors worldwide
 - Used in production by multiple companies
 - Featured in address validation libraries
 
