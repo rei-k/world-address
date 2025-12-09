@@ -74,6 +74,11 @@ export type {
   TranslationServiceConfig,
   TranslationRequest,
   TranslationResult,
+  // Postal code lookup types
+  PostalCodeLookupService,
+  PostalCodeLookupRequest,
+  PostalCodeLookupResult,
+  PostalCodeLookupConfig,
 } from './types';
 
 // Client
@@ -278,7 +283,18 @@ export {
   batchTranslate,
   clearTranslationCache,
   getTranslationCacheStats,
+  translateAddressFields,
 } from './translation';
+
+// Postal Code Lookup
+export {
+  lookupPostalCode,
+  autoFillAddress,
+  isPostalCodeLookupAvailable,
+  getSupportedCountries,
+  clearPostalCodeCache,
+  getPostalCodeCacheStats,
+} from './postal-lookup';
 
 // Logistics & Shipping
 export type {
