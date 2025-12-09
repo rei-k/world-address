@@ -144,3 +144,88 @@ geo_insurance:
   min_confidence: 0.8
   auto_correct: false
   fallback_behavior: warn
+
+# Shipping Carriers
+shipping_carriers:
+  - name: Australia Post
+    type: postal
+    scope: national
+    website: https://auspost.com.au/
+    tracking_url: https://auspost.com.au/mypost/track/#/details/{tracking_number}
+    api_available: true
+    coverage: "Nationwide coverage including remote areas and islands"
+    
+  - name: StarTrack
+    type: courier
+    scope: national
+    website: https://startrack.com.au/
+    tracking_url: https://startrack.com.au/track?id={tracking_number}
+    api_available: true
+    coverage: "Nationwide express and freight delivery"
+    notes: "Australia Post's premium delivery service"
+    
+  - name: Toll IPEC
+    type: courier
+    scope: national
+    website: https://www.toll.com.au/
+    tracking_url: https://www.toll.com.au/tools/track?consignmentNumber={tracking_number}
+    api_available: true
+    coverage: "Nationwide freight and parcel delivery"
+    
+  - name: TNT Australia
+    type: courier
+    scope: national
+    website: https://www.tnt.com.au/
+    tracking_url: https://www.tnt.com/express/en_au/site/tracking.html?searchType=con&cons={tracking_number}
+    api_available: true
+    coverage: "Nationwide and international express"
+    notes: "Now part of FedEx Group"
+    
+  - name: Aramex Australia
+    type: courier
+    scope: regional
+    countries: [AU, NZ]
+    website: https://www.aramex.com.au/
+    tracking_url: https://www.aramex.com/au/en/track/shipments?ShipmentNumber={tracking_number}
+    api_available: true
+    coverage: "Australia, New Zealand, and international"
+    
+  - name: CouriersPlease
+    type: courier
+    scope: national
+    website: https://www.couriersplease.com.au/
+    tracking_url: https://www.couriersplease.com.au/tools/track?trackingNumber={tracking_number}
+    api_available: true
+    coverage: "Nationwide delivery network"
+    
+  - name: Allied Express
+    type: courier
+    scope: national
+    website: https://www.alliedexpress.com.au/
+    tracking_url: https://www.alliedexpress.com.au/track?connote={tracking_number}
+    api_available: true
+    coverage: "Nationwide express delivery"
+    
+  - name: DHL Express Australia
+    type: express
+    scope: global
+    website: https://www.dhl.com/au-en/home.html
+    tracking_url: https://www.dhl.com/en/express/tracking.html?AWB={tracking_number}
+    api_available: true
+    coverage: "International express delivery"
+    
+  - name: FedEx Australia
+    type: express
+    scope: global
+    website: https://www.fedex.com/en-au/home.html
+    tracking_url: https://www.fedex.com/fedextrack/?trknbr={tracking_number}
+    api_available: true
+    coverage: "International express delivery"
+    
+  - name: UPS Australia
+    type: express
+    scope: global
+    website: https://www.ups.com/au/en/Home.page
+    tracking_url: https://www.ups.com/track?tracknum={tracking_number}
+    api_available: true
+    coverage: "International express delivery"

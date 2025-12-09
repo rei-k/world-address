@@ -159,3 +159,114 @@ geo_insurance:
   min_confidence: 0.8
   auto_correct: false
   fallback_behavior: warn
+
+# 配送业者列表（Shipping Carriers）
+shipping_carriers:
+  - name: China Post
+    name_local: 中国邮政
+    type: postal
+    scope: national
+    website: https://www.chinapost.com.cn/
+    tracking_url: https://www.ems.com.cn/queryList?mailNoList={tracking_number}
+    api_available: true
+    coverage: "Nationwide coverage including rural areas"
+    
+  - name: EMS China
+    name_local: 中国邮政速递物流
+    type: postal
+    scope: regional
+    countries: [CN, HK, MO, TW, JP, KR, SG, TH, MY, VN, ID, PH]
+    website: https://www.ems.com.cn/
+    tracking_url: https://www.ems.com.cn/queryList?mailNoList={tracking_number}
+    api_available: true
+    coverage: "Domestic and international express postal service"
+    
+  - name: SF Express
+    name_local: 顺丰速运
+    type: courier
+    scope: national
+    website: https://www.sf-express.com/
+    tracking_url: https://www.sf-express.com/cn/sc/dynamic_function/waybill/#search/bill-number/{tracking_number}
+    api_available: true
+    coverage: "Nationwide express delivery with international services"
+    notes: "Leading private courier in China"
+    
+  - name: ZTO Express
+    name_local: 中通快递
+    type: courier
+    scope: national
+    website: https://www.zto.com/
+    tracking_url: https://www.zto.com/GuestService/Bill?txtBill={tracking_number}
+    api_available: true
+    coverage: "Nationwide e-commerce delivery"
+    
+  - name: YTO Express
+    name_local: 圆通速递
+    type: courier
+    scope: national
+    website: https://www.yto.net.cn/
+    tracking_url: https://www.yto.net.cn/service/waybill.html?waybillNo={tracking_number}
+    api_available: true
+    coverage: "Nationwide parcel delivery"
+    
+  - name: STO Express
+    name_local: 申通快递
+    type: courier
+    scope: national
+    website: https://www.sto.cn/
+    tracking_url: https://www.sto.cn/index.php/Home/Query/queryWaybill?waybillNo={tracking_number}
+    api_available: true
+    coverage: "Nationwide express delivery network"
+    
+  - name: Best Express
+    name_local: 百世快递
+    type: courier
+    scope: national
+    website: https://www.best-inc.com/
+    tracking_url: https://www.800best.com/track.php?waybillno={tracking_number}
+    api_available: true
+    coverage: "Nationwide logistics and delivery"
+    
+  - name: JD Logistics
+    name_local: 京东物流
+    type: courier
+    scope: national
+    website: https://www.jdl.com/
+    tracking_url: https://www.jdl.com/#/track/result?waybillCode={tracking_number}
+    api_available: true
+    coverage: "Nationwide same-day and next-day delivery"
+    notes: "JD.com's logistics arm"
+    
+  - name: Cainiao Network
+    name_local: 菜鸟网络
+    type: courier
+    scope: national
+    website: https://www.cainiao.com/
+    tracking_url: https://www.cainiao.com/track.html?mailNo={tracking_number}
+    api_available: true
+    coverage: "Alibaba's logistics platform integrating multiple carriers"
+    notes: "Platform coordinating multiple delivery services"
+    
+  - name: DHL China
+    type: express
+    scope: global
+    website: https://www.dhl.com/cn-zh/home.html
+    tracking_url: https://www.dhl.com/en/express/tracking.html?AWB={tracking_number}
+    api_available: true
+    coverage: "International express delivery"
+    
+  - name: FedEx China
+    type: express
+    scope: global
+    website: https://www.fedex.com/zh-cn/home.html
+    tracking_url: https://www.fedex.com/fedextrack/?trknbr={tracking_number}
+    api_available: true
+    coverage: "International express delivery"
+    
+  - name: UPS China
+    type: express
+    scope: global
+    website: https://www.ups.com/cn/zh/Home.page
+    tracking_url: https://www.ups.com/track?tracknum={tracking_number}
+    api_available: true
+    coverage: "International express delivery"

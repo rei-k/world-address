@@ -333,5 +333,118 @@
     "min_confidence": 0.8,
     "auto_correct": false,
     "fallback_behavior": "warn"
-  }
+  },
+  "shipping_carriers": [
+    {
+      "name": "Japan Post",
+      "name_local": "日本郵便",
+      "type": "postal",
+      "scope": "national",
+      "website": "https://www.post.japanpost.jp/",
+      "tracking_url": "https://trackings.post.japanpost.jp/services/srv/search/direct?reqCodeNo1={tracking_number}",
+      "api_available": true,
+      "coverage": "Nationwide coverage including remote islands"
+    },
+    {
+      "name": "Yamato Transport",
+      "name_local": "ヤマト運輸",
+      "type": "courier",
+      "scope": "national",
+      "website": "https://www.kuronekoyamato.co.jp/",
+      "tracking_url": "https://toi.kuronekoyamato.co.jp/cgi-bin/tneko?number={tracking_number}",
+      "api_available": true,
+      "coverage": "Nationwide with next-day delivery in most areas",
+      "notes": "Also known as Kuroneko Yamato (Black Cat)"
+    },
+    {
+      "name": "Sagawa Express",
+      "name_local": "佐川急便",
+      "type": "courier",
+      "scope": "national",
+      "website": "https://www.sagawa-exp.co.jp/",
+      "tracking_url": "https://k2k.sagawa-exp.co.jp/p/web/okurijosearch.do?okurijoNo={tracking_number}",
+      "api_available": true,
+      "coverage": "Nationwide courier service"
+    },
+    {
+      "name": "DHL Express Japan",
+      "type": "express",
+      "scope": "global",
+      "website": "https://www.dhl.com/jp-en/home.html",
+      "tracking_url": "https://www.dhl.com/en/express/tracking.html?AWB={tracking_number}",
+      "api_available": true,
+      "coverage": "International and domestic express delivery"
+    },
+    {
+      "name": "FedEx Japan",
+      "type": "express",
+      "scope": "global",
+      "website": "https://www.fedex.com/ja-jp/home.html",
+      "tracking_url": "https://www.fedex.com/fedextrack/?trknbr={tracking_number}",
+      "api_available": true,
+      "coverage": "International express delivery"
+    },
+    {
+      "name": "UPS Japan",
+      "type": "express",
+      "scope": "global",
+      "website": "https://www.ups.com/jp/ja/Home.page",
+      "tracking_url": "https://www.ups.com/track?tracknum={tracking_number}",
+      "api_available": true,
+      "coverage": "International express delivery"
+    },
+    {
+      "name": "TNT Express",
+      "type": "express",
+      "scope": "global",
+      "website": "https://www.tnt.com/",
+      "tracking_url": "https://www.tnt.com/express/en_jp/site/tracking.html?searchType=con&cons={tracking_number}",
+      "api_available": true,
+      "coverage": "International express delivery (FedEx company)",
+      "notes": "Now part of FedEx Group"
+    },
+    {
+      "name": "EMS (Express Mail Service)",
+      "name_local": "国際スピード郵便",
+      "type": "postal",
+      "scope": "regional",
+      "countries": [
+        "JP",
+        "CN",
+        "KR",
+        "TW",
+        "HK",
+        "SG",
+        "TH",
+        "MY",
+        "ID",
+        "PH",
+        "VN"
+      ],
+      "website": "https://www.post.japanpost.jp/int/ems/",
+      "tracking_url": "https://trackings.post.japanpost.jp/services/srv/search/direct?reqCodeNo1={tracking_number}",
+      "api_available": true,
+      "coverage": "International express postal service (Asia focus)"
+    },
+    {
+      "name": "Seino Transportation",
+      "name_local": "西濃運輸",
+      "type": "courier",
+      "scope": "national",
+      "website": "https://www.seino.co.jp/",
+      "tracking_url": "https://track.seino.co.jp/kamotsu/GempyoNoShokai.do?denpyoNo={tracking_number}",
+      "api_available": false,
+      "coverage": "Nationwide freight and parcel delivery"
+    },
+    {
+      "name": "Fukuyama Transporting",
+      "name_local": "福山通運",
+      "type": "courier",
+      "scope": "national",
+      "website": "https://www.fukutsu.co.jp/",
+      "tracking_url": "https://corp.fukutsu.co.jp/situation/tracking_no_hunt?user_no={tracking_number}",
+      "api_available": false,
+      "coverage": "Nationwide logistics and delivery"
+    }
+  ]
 }

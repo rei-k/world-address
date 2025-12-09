@@ -133,3 +133,82 @@ pos:
     typical_close: '18:00'
     sunday_trading: true
     public_holidays_trading: false
+
+# 配送业者列表（Shipping Carriers / Versanddienstleister）
+shipping_carriers:
+  - name: Deutsche Post DHL
+    name_local: Deutsche Post DHL
+    type: postal
+    scope: national
+    website: https://www.deutschepost.de/
+    tracking_url: https://www.dhl.de/de/privatkunden/pakete-empfangen/verfolgen.html?piececode={tracking_number}
+    api_available: true
+    coverage: "Nationwide postal and parcel delivery"
+    notes: "National postal service with global DHL integration"
+    
+  - name: DHL Paket
+    type: courier
+    scope: national
+    website: https://www.dhl.de/
+    tracking_url: https://www.dhl.de/de/privatkunden/pakete-empfangen/verfolgen.html?piececode={tracking_number}
+    api_available: true
+    coverage: "Nationwide parcel delivery"
+    
+  - name: DHL Express Germany
+    type: express
+    scope: global
+    website: https://www.dhl.de/en/express.html
+    tracking_url: https://www.dhl.com/en/express/tracking.html?AWB={tracking_number}
+    api_available: true
+    coverage: "International express delivery"
+    
+  - name: DPD Germany
+    type: courier
+    scope: regional
+    countries: [DE, AT, CH, NL, BE, LU, FR, PL, CZ]
+    website: https://www.dpd.com/de/
+    tracking_url: https://tracking.dpd.de/parcelstatus?query={tracking_number}
+    api_available: true
+    coverage: "Nationwide and European delivery network"
+    
+  - name: Hermes Germany
+    type: courier
+    scope: national
+    website: https://www.myhermes.de/
+    tracking_url: https://www.myhermes.de/empfangen/sendungsverfolgung/?parcelNumber={tracking_number}
+    api_available: true
+    coverage: "Nationwide parcel delivery with ParcelShop network"
+    
+  - name: GLS Germany
+    type: courier
+    scope: regional
+    countries: [DE, AT, CH, NL, BE, LU, FR, IT, ES, PL, CZ, DK, SE]
+    website: https://gls-group.eu/DE/de/home
+    tracking_url: https://gls-group.eu/DE/de/paketverfolgung?match={tracking_number}
+    api_available: true
+    coverage: "European parcel delivery network"
+    
+  - name: UPS Germany
+    type: express
+    scope: global
+    website: https://www.ups.com/de/de/Home.page
+    tracking_url: https://www.ups.com/track?tracknum={tracking_number}
+    api_available: true
+    coverage: "International express delivery"
+    
+  - name: FedEx Germany
+    type: express
+    scope: global
+    website: https://www.fedex.com/de-de/home.html
+    tracking_url: https://www.fedex.com/fedextrack/?trknbr={tracking_number}
+    api_available: true
+    coverage: "International express delivery"
+    
+  - name: TNT Germany
+    type: express
+    scope: global
+    website: https://www.tnt.com/
+    tracking_url: https://www.tnt.com/express/de_de/site/tracking.html?searchType=con&cons={tracking_number}
+    api_available: true
+    coverage: "International express (FedEx company)"
+    notes: "Now part of FedEx Group"

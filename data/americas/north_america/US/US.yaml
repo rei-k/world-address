@@ -252,3 +252,81 @@ geo:
     accuracy: 1000
     source: database
     captured_at: "2025-12-03T16:54:11.581Z"
+
+# 配送業者リスト（Shipping Carriers）
+shipping_carriers:
+  - name: USPS (United States Postal Service)
+    type: postal
+    scope: national
+    website: https://www.usps.com/
+    tracking_url: https://tools.usps.com/go/TrackConfirmAction?tLabels={tracking_number}
+    api_available: true
+    coverage: "Nationwide including all states, territories, and military bases"
+    
+  - name: UPS (United Parcel Service)
+    type: courier
+    scope: global
+    website: https://www.ups.com/
+    tracking_url: https://www.ups.com/track?tracknum={tracking_number}
+    api_available: true
+    coverage: "Domestic and international delivery"
+    
+  - name: FedEx
+    type: express
+    scope: global
+    website: https://www.fedex.com/
+    tracking_url: https://www.fedex.com/fedextrack/?trknbr={tracking_number}
+    api_available: true
+    coverage: "Domestic and international express delivery"
+    
+  - name: DHL Express USA
+    type: express
+    scope: global
+    website: https://www.dhl.com/us-en/home.html
+    tracking_url: https://www.dhl.com/en/express/tracking.html?AWB={tracking_number}
+    api_available: true
+    coverage: "International express delivery"
+    
+  - name: Amazon Logistics
+    type: courier
+    scope: national
+    website: https://www.amazon.com/
+    tracking_url: https://www.amazon.com/gp/css/shiptrack/view.html?orderID={tracking_number}
+    api_available: false
+    coverage: "Amazon orders delivery across USA"
+    notes: "Amazon-exclusive delivery service"
+    
+  - name: OnTrac
+    type: courier
+    scope: regional
+    countries: [US]
+    website: https://www.ontrac.com/
+    tracking_url: https://www.ontrac.com/tracking/?number={tracking_number}
+    api_available: true
+    coverage: "Western US states (CA, AZ, NV, OR, WA, UT, CO, ID)"
+    
+  - name: LaserShip
+    type: courier
+    scope: regional
+    countries: [US]
+    website: https://www.lasership.com/
+    tracking_url: https://www.lasership.com/track/{tracking_number}
+    api_available: true
+    coverage: "Eastern US states"
+    notes: "Now part of OnTrac"
+    
+  - name: R+L Carriers
+    type: courier
+    scope: national
+    website: https://www.rlcarriers.com/
+    tracking_url: https://www2.rlcarriers.com/freight/shipping/shipment-tracing?pro={tracking_number}
+    api_available: true
+    coverage: "LTL freight across USA and Canada"
+    
+  - name: Old Dominion Freight Line
+    type: courier
+    scope: national
+    website: https://www.odfl.com/
+    tracking_url: https://www.odfl.com/us/en/tracking/shipment.html?pro={tracking_number}
+    api_available: true
+    coverage: "LTL freight nationwide"
