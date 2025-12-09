@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Postal Code Auto-Fill & Translation Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .language-selector {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .language-btn {
+      padding: 8px 16px;
+      border: 2px solid #667eea;
+      background: white;
+      color: #667eea;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .language-btn:hover {
+      background: #f0f4ff;
+    }
+
+    .language-btn.active {
+      background: #667eea;
+      color: white;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #333;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .required {
+      color: #dc3545;
+      margin-left: 2px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .postal-code-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .postal-code-group input {
+      flex: 1;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #5568d3;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: #f0f4ff;
+      color: #667eea;
+    }
+
+    .btn-secondary:hover {
+      background: #e0e8ff;
+    }
+
+    .btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .status {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+
+    .status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+
+    .status.info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+      display: block;
+    }
+
+    .feature-demo {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .feature-demo h3 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .feature-demo p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .supported-countries {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .country-badge {
+      padding: 6px 12px;
+      background: white;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #667eea;
+      border: 1px solid #e0e0e0;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ffffff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .example-codes {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .example-code {
+      padding: 4px 10px;
+      background: #e0e8ff;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #667eea;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .example-code:hover {
+      background: #d0d8ef;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌍 World Address Auto-Fill Demo</h1>
+    <p class="subtitle">Postal code auto-fill and translation powered by free APIs</p>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+      <button class="language-btn active" data-lang="en">🇺🇸 English</button>
+      <button class="language-btn" data-lang="ja">🇯🇵 日本語</button>
+      <button class="language-btn" data-lang="zh">🇨🇳 中文</button>
+      <button class="language-btn" data-lang="ko">🇰🇷 한국어</button>
+    </div>
+
+    <!-- Status Messages -->
+    <div id="status" class="status"></div>
+
+    <!-- Feature Demos -->
+    <div class="feature-demo">
+      <h3>✨ Feature 1: Postal Code Auto-Fill</h3>
+      <p>Enter a postal code and click "Auto-Fill" to automatically populate city, province, and coordinates from free APIs (Zippopotam.us or GeoNames).</p>
+      <div class="supported-countries">
+        <span class="country-badge">🇺🇸 US</span>
+        <span class="country-badge">🇯🇵 JP</span>
+        <span class="country-badge">🇬🇧 GB</span>
+        <span class="country-badge">🇩🇪 DE</span>
+        <span class="country-badge">🇫🇷 FR</span>
+        <span class="country-badge">🇨🇦 CA</span>
+        <span class="country-badge">+60 more</span>
+      </div>
+    </div>
+
+    <div class="feature-demo">
+      <h3>🌐 Feature 2: Auto-Translation</h3>
+      <p>Switch languages and click "Translate Fields" to automatically translate all address fields using LibreTranslate, Apertium, or Argos.</p>
+    </div>
+
+    <!-- Address Form -->
+    <form id="address-form">
+      <div class="form-group">
+        <label for="country">Country <span class="required">*</span></label>
+        <select id="country" required>
+          <option value="">Select a country</option>
+          <option value="US">🇺🇸 United States</option>
+          <option value="JP">🇯🇵 Japan</option>
+          <option value="GB">🇬🇧 United Kingdom</option>
+          <option value="DE">🇩🇪 Germany</option>
+          <option value="FR">🇫🇷 France</option>
+          <option value="CA">🇨🇦 Canada</option>
+          <option value="AU">🇦🇺 Australia</option>
+          <option value="KR">🇰🇷 South Korea</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="postal-code">Postal Code <span class="required">*</span></label>
+        <div class="postal-code-group">
+          <input type="text" id="postal-code" placeholder="Enter postal code" required>
+          <button type="button" id="autofill-btn" class="btn btn-primary">
+            🔍 Auto-Fill
+          </button>
+        </div>
+        <div class="example-codes" id="example-codes"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" placeholder="City name">
+      </div>
+
+      <div class="form-group">
+        <label for="province">State/Province</label>
+        <input type="text" id="province" placeholder="State or province">
+      </div>
+
+      <div class="form-group">
+        <label for="street-address">Street Address</label>
+        <input type="text" id="street-address" placeholder="Street address">
+      </div>
+
+      <div class="button-group">
+        <button type="button" id="translate-btn" class="btn btn-secondary">
+          🌐 Translate Fields
+        </button>
+        <button type="submit" class="btn btn-primary">
+          ✅ Validate & Submit
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script type="module">
+    // This is a demonstration UI
+    // In production, you would import and use the actual @vey/core library
+
+    // Example postal codes for different countries
+    const exampleCodes = {
+      'US': ['90210', '10001', '60601'],
+      'JP': ['100-0001', '150-0001', '541-0041'],
+      'GB': ['SW1A 1AA', 'EC1A 1BB', 'W1A 0AX'],
+      'DE': ['10115', '80331', '20095'],
+      'FR': ['75001', '69001', '13001'],
+      'CA': ['M5H 2N2', 'V6B 4Y8', 'H2Y 1C6'],
+      'AU': ['2000', '3000', '4000'],
+      'KR': ['03082', '06620', '04524']
+    };
+
+    let currentLanguage = 'en';
+    let selectedCountry = '';
+
+    // Language button handlers
+    document.querySelectorAll('.language-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.language-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentLanguage = btn.dataset.lang;
+        showStatus(`Language changed to: ${btn.textContent}`, 'info');
+      });
+    });
+
+    // Country selector
+    document.getElementById('country').addEventListener('change', (e) => {
+      selectedCountry = e.target.value;
+      if (selectedCountry && exampleCodes[selectedCountry]) {
+        const exampleCodesDiv = document.getElementById('example-codes');
+        exampleCodesDiv.innerHTML = exampleCodes[selectedCountry]
+          .map(code => `<span class="example-code" data-code="${code}">Try: ${code}</span>`)
+          .join('');
+        
+        // Add click handlers to example codes
+        exampleCodesDiv.querySelectorAll('.example-code').forEach(el => {
+          el.addEventListener('click', () => {
+            document.getElementById('postal-code').value = el.dataset.code;
+          });
+        });
+      }
+    });
+
+    // Auto-fill button
+    document.getElementById('autofill-btn').addEventListener('click', async () => {
+      const postalCode = document.getElementById('postal-code').value;
+      const country = selectedCountry;
+
+      if (!country) {
+        showStatus('Please select a country first', 'error');
+        return;
+      }
+
+      if (!postalCode) {
+        showStatus('Please enter a postal code', 'error');
+        return;
+      }
+
+      const btn = document.getElementById('autofill-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="loading"></span> Loading...';
+
+      try {
+        // Simulate API call (in production, use actual @vey/core functions)
+        await simulatePostalCodeLookup(country, postalCode);
+        
+        showStatus(`✅ Successfully auto-filled address for postal code: ${postalCode}`, 'success');
+      } catch (error) {
+        showStatus(`❌ Error: ${error.message}`, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '🔍 Auto-Fill';
+      }
+    });
+
+    // Translate button
+    document.getElementById('translate-btn').addEventListener('click', async () => {
+      const btn = document.getElementById('translate-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="loading"></span> Translating...';
+
+      try {
+        // Simulate translation (in production, use actual @vey/core functions)
+        await simulateTranslation();
+        
+        showStatus(`✅ Successfully translated fields to ${currentLanguage}`, 'success');
+      } catch (error) {
+        showStatus(`❌ Translation error: ${error.message}`, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '🌐 Translate Fields';
+      }
+    });
+
+    // Form submit
+    document.getElementById('address-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      showStatus('✅ Form is valid! (This is a demo - no actual submission)', 'success');
+    });
+
+    function showStatus(message, type) {
+      const status = document.getElementById('status');
+      status.textContent = message;
+      status.className = `status ${type}`;
+      
+      if (type === 'success' || type === 'info') {
+        setTimeout(() => {
+          status.className = 'status';
+        }, 5000);
+      }
+    }
+
+    // Simulated postal code lookup
+    async function simulatePostalCodeLookup(country, postalCode) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Simulated data
+      const mockData = {
+        'US': { '90210': { city: 'Beverly Hills', province: 'California' }, '10001': { city: 'New York', province: 'New York' } },
+        'JP': { '100-0001': { city: 'Chiyoda', province: 'Tokyo' }, '150-0001': { city: 'Shibuya', province: 'Tokyo' } },
+        'GB': { 'SW1A 1AA': { city: 'London', province: 'England' } },
+        'DE': { '10115': { city: 'Berlin', province: 'Berlin' } },
+        'FR': { '75001': { city: 'Paris', province: 'Île-de-France' } },
+        'CA': { 'M5H 2N2': { city: 'Toronto', province: 'Ontario' } },
+      };
+
+      const normalizedCode = postalCode.replace(/\s/g, '').toUpperCase();
+      const countryData = mockData[country] || {};
+      const result = Object.keys(countryData).find(key => 
+        key.replace(/\s/g, '').toUpperCase() === normalizedCode
+      );
+
+      if (result) {
+        const data = countryData[result];
+        document.getElementById('city').value = data.city;
+        document.getElementById('province').value = data.province;
+      } else {
+        throw new Error('Postal code not found. This is a demo - use example codes above.');
+      }
+    }
+
+    // Simulated translation
+    async function simulateTranslation() {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const city = document.getElementById('city').value;
+      const province = document.getElementById('province').value;
+      
+      if (!city && !province) {
+        throw new Error('No fields to translate. Please fill in some address fields first.');
+      }
+
+      // In production, this would call the actual translation API
+      showStatus('Translation complete! (This is a demo)', 'info');
+    }
+  </script>
+</body>
+</html>

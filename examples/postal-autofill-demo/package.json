@@ -1,0 +1,15 @@
+{
+  "name": "postal-autofill-demo",
+  "version": "1.0.0",
+  "description": "Demo of postal code auto-fill and translation features",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@vey/core": "file:../../sdk/core"
+  },
+  "devDependencies": {}
+}
