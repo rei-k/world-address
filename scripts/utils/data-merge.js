@@ -56,10 +56,18 @@ const FIELD_MERGE_RULES = {
  * @returns {boolean} True if empty
  */
 function isEmpty(value) {
-  if (value === null || value === undefined) return true;
-  if (typeof value === 'string') return value.trim() === '';
-  if (Array.isArray(value)) return value.length === 0;
-  if (typeof value === 'object') return Object.keys(value).length === 0;
+  if (value === null || value === undefined) {
+    return true;
+  }
+  if (typeof value === 'string') {
+    return value.trim() === '';
+  }
+  if (Array.isArray(value)) {
+    return value.length === 0;
+  }
+  if (typeof value === 'object') {
+    return Object.keys(value).length === 0;
+  }
   return false;
 }
 
@@ -96,8 +104,12 @@ function deepMerge(target, source) {
  * @returns {Array} Merged array
  */
 function mergeArrays(existing, incoming) {
-  if (!Array.isArray(existing)) return incoming;
-  if (!Array.isArray(incoming)) return existing;
+  if (!Array.isArray(existing)) {
+    return incoming;
+  }
+  if (!Array.isArray(incoming)) {
+    return existing;
+  }
 
   // Use Set to remove duplicates while preserving order
   const merged = [...existing];
@@ -120,29 +132,33 @@ function mergeArrays(existing, incoming) {
  */
 function mergeField(fieldName, existingValue, newValue, strategy) {
   switch (strategy) {
-    case MERGE_STRATEGIES.PRESERVE_EXISTING:
-      return existingValue !== undefined ? existingValue : newValue;
+  case MERGE_STRATEGIES.PRESERVE_EXISTING:
+    return existingValue !== undefined ? existingValue : newValue;
 
-    case MERGE_STRATEGIES.UPDATE_WITH_NEW:
-      return newValue !== undefined ? newValue : existingValue;
+  case MERGE_STRATEGIES.UPDATE_WITH_NEW:
+    return newValue !== undefined ? newValue : existingValue;
 
-    case MERGE_STRATEGIES.MERGE_ARRAYS:
-      return mergeArrays(existingValue, newValue);
+  case MERGE_STRATEGIES.MERGE_ARRAYS:
+    return mergeArrays(existingValue, newValue);
 
-    case MERGE_STRATEGIES.DEEP_MERGE:
-      if (typeof existingValue === 'object' && typeof newValue === 'object') {
-        return deepMerge(existingValue || {}, newValue || {});
-      }
-      return newValue !== undefined ? newValue : existingValue;
+  case MERGE_STRATEGIES.DEEP_MERGE:
+    if (typeof existingValue === 'object' && typeof newValue === 'object') {
+      return deepMerge(existingValue || {}, newValue || {});
+    }
+    return newValue !== undefined ? newValue : existingValue;
 
-    case MERGE_STRATEGIES.PREFER_NON_EMPTY:
-      if (!isEmpty(existingValue)) return existingValue;
-      if (!isEmpty(newValue)) return newValue;
+  case MERGE_STRATEGIES.PREFER_NON_EMPTY:
+    if (!isEmpty(existingValue)) {
       return existingValue;
+    }
+    if (!isEmpty(newValue)) {
+      return newValue;
+    }
+    return existingValue;
 
-    default:
-      logger.warn(`Unknown merge strategy: ${strategy}, using UPDATE_WITH_NEW`);
-      return newValue !== undefined ? newValue : existingValue;
+  default:
+    logger.warn(`Unknown merge strategy: ${strategy}, using UPDATE_WITH_NEW`);
+    return newValue !== undefined ? newValue : existingValue;
   }
 }
 
@@ -157,7 +173,7 @@ function detectConflicts(existing, incoming) {
 
   // Only check fields that should be preserved but have different values
   const preservedFields = Object.keys(FIELD_MERGE_RULES).filter(
-    (field) => FIELD_MERGE_RULES[field] === MERGE_STRATEGIES.PRESERVE_EXISTING
+    (field) => FIELD_MERGE_RULES[field] === MERGE_STRATEGIES.PRESERVE_EXISTING,
   );
 
   for (const field of preservedFields) {
@@ -165,8 +181,12 @@ function detectConflicts(existing, incoming) {
     const incomingVal = incoming[field];
 
     // Skip if either is undefined or they're the same
-    if (existingVal === undefined || incomingVal === undefined) continue;
-    if (JSON.stringify(existingVal) === JSON.stringify(incomingVal)) continue;
+    if (existingVal === undefined || incomingVal === undefined) {
+      continue;
+    }
+    if (JSON.stringify(existingVal) === JSON.stringify(incomingVal)) {
+      continue;
+    }
 
     conflicts.push({
       field,
@@ -323,7 +343,7 @@ function generateMergeReport(mergeResult, countryCode) {
   }
 
   if (changes.fields && changes.fields.length > 0) {
-    lines.push(`\nField Changes:`);
+    lines.push('\nField Changes:');
     changes.fields.forEach((change, i) => {
       lines.push(`  ${i + 1}. ${change.field} (${change.strategy})`);
     });

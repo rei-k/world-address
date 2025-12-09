@@ -67,10 +67,18 @@ function hasField(obj, path) {
   }
 
   // Check if value is not empty
-  if (current === null || current === undefined) return false;
-  if (typeof current === 'string') return current.trim() !== '';
-  if (Array.isArray(current)) return current.length > 0;
-  if (typeof current === 'object') return Object.keys(current).length > 0;
+  if (current === null || current === undefined) {
+    return false;
+  }
+  if (typeof current === 'string') {
+    return current.trim() !== '';
+  }
+  if (Array.isArray(current)) {
+    return current.length > 0;
+  }
+  if (typeof current === 'object') {
+    return Object.keys(current).length > 0;
+  }
 
   return true;
 }
@@ -362,28 +370,28 @@ function generateQualityReport(qualityReport) {
   lines.push(`\nData Quality Report for ${countryCode}`);
   lines.push('='.repeat(50));
   lines.push(`Quality Score: ${score}/100 ${passed ? '✓ PASSED' : '✗ FAILED'}`);
-  lines.push(`\nSummary:`);
+  lines.push('\nSummary:');
   lines.push(`  Critical Issues: ${summary.critical}`);
   lines.push(`  Warnings: ${summary.warnings}`);
   lines.push(`  Suggestions: ${suggestions.length}`);
   lines.push(`  Anomalies: ${anomalies.length}`);
 
   if (issues.length > 0) {
-    lines.push(`\nIssues:`);
+    lines.push('\nIssues:');
     issues.forEach((issue, i) => {
       lines.push(`  ${i + 1}. [${issue.severity.toUpperCase()}] ${issue.message}`);
     });
   }
 
   if (suggestions.length > 0 && suggestions.length <= 5) {
-    lines.push(`\nSuggestions:`);
+    lines.push('\nSuggestions:');
     suggestions.slice(0, 5).forEach((sug, i) => {
       lines.push(`  ${i + 1}. ${sug.message}`);
     });
   }
 
   if (anomalies.length > 0 && anomalies.length <= 3) {
-    lines.push(`\nAnomalies:`);
+    lines.push('\nAnomalies:');
     anomalies.slice(0, 3).forEach((anom, i) => {
       lines.push(`  ${i + 1}. ${anom.message}`);
     });

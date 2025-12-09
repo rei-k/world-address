@@ -18,7 +18,6 @@ const {
   fetchJSON,
   writeJSON,
   writeText,
-  readJSON,
   jsonToYaml,
   ensureDir,
   BASE_URL,
@@ -299,7 +298,7 @@ async function fetchCountry(countryCode) {
     // Only save if quality check passes or if it's a new file
     if (!qualityReport.passed && changes.type !== 'new') {
       logger.error(
-        `Quality check failed for ${countryCode} (Score: ${qualityReport.score}/100), skipping update`
+        `Quality check failed for ${countryCode} (Score: ${qualityReport.score}/100), skipping update`,
       );
       stats.countries.failed++;
       return {
