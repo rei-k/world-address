@@ -14,7 +14,8 @@ import type {
   Language,
   AddressField,
   ValidationResult,
-  AddressInput 
+  AddressInput,
+  PostalCodeLookupResult,
 } from './types';
 
 /** Continent codes */
@@ -965,6 +966,230 @@ export class Veyform {
    */
   getFormState(): FormState {
     return { ...this.formState };
+  }
+
+  /**
+   * Lookup address by postal code and auto-fill form fields
+   * 
+   * Performs postal code lookup using free APIs (Zippopotam.us or GeoNames)
+   * and automatically fills in city, province, and other available fields.
+   * 
+   * Supported countries: 60+ via Zippopotam.us (free, no API key)
+   * Worldwide coverage via GeoNames (free tier with registration)
+   * 
+   * @param postalCode - Postal code to lookup
+   * @param options - Lookup options
+   * @param options.overwriteExisting - Whether to overwrite user-entered values (default: false)
+   * @param options.geonamesUsername - GeoNames username for worldwide coverage
+   * @returns Promise<PostalCodeLookupResult> - Lookup result with address data
+   * 
+   * @example
+   * ```typescript
+   * // Auto-fill from postal code (US)
+   * const result = await veyform.autoFillFromPostalCode('90210');
+   * console.log(result.city); // "Beverly Hills"
+   * console.log(result.province); // "California"
+   * 
+   * // Auto-fill from postal code (Japan)
+   * const result = await veyform.autoFillFromPostalCode('100-0001');
+   * console.log(result.city); // City name
+   * console.log(result.province); // Prefecture name
+   * 
+   * // With GeoNames for worldwide coverage
+   * const result = await veyform.autoFillFromPostalCode('12345', {
+   *   geonamesUsername: 'your_username'
+   * });
+   * ```
+   * 
+   * @throws Error if postal code lookup fails or country not selected
+   */
+  async autoFillFromPostalCode(
+    postalCode: string,
+    options: {
+      overwriteExisting?: boolean;
+      geonamesUsername?: string;
+    } = {}
+  ): Promise<PostalCodeLookupResult> {
+    if (!this.formState.country) {
+      throw new Error('Country must be selected before postal code lookup');
+    }
+
+    // Dynamically import to avoid circular dependencies
+    const { lookupPostalCode, autoFillAddress } = await import('./postal-lookup');
+    
+    const lookupResult = await lookupPostalCode(
+      {
+        countryCode: this.formState.country,
+        postalCode,
+      },
+      {
+        preferredService: 'zippopotam',
+        enableFallback: true,
+        geonamesUsername: options.geonamesUsername,
+      }
+    );
+
+    // Auto-fill form with lookup result
+    const currentAddress = this.formState.values as AddressInput;
+    const filledAddress = autoFillAddress(currentAddress, lookupResult, {
+      overwriteExisting: options.overwriteExisting,
+    });
+
+    // Update form state
+    for (const field in filledAddress) {
+      if (filledAddress[field as keyof AddressInput]) {
+        this.setFieldValue(field, filledAddress[field as keyof AddressInput] as string);
+      }
+    }
+
+    return lookupResult;
+  }
+
+  /**
+   * Check if postal code auto-fill is available for current country
+   * 
+   * @param geonamesUsername - Optional GeoNames username for worldwide coverage
+   * @returns Whether postal code lookup is available
+   * 
+   * @example
+   * ```typescript
+   * if (veyform.isPostalCodeAutoFillAvailable()) {
+   *   // Show postal code auto-fill button
+   * }
+   * ```
+   */
+  async isPostalCodeAutoFillAvailable(geonamesUsername?: string): Promise<boolean> {
+    if (!this.formState.country) {
+      return false;
+    }
+
+    const { isPostalCodeLookupAvailable } = await import('./postal-lookup');
+    return isPostalCodeLookupAvailable(this.formState.country, { geonamesUsername });
+  }
+
+  /**
+   * Translate all address fields to target language
+   * 
+   * Translates form field values using free translation APIs when switching
+   * between languages. Preserves non-translatable fields (postal code, country, etc.).
+   * 
+   * Supported translation services:
+   * - LibreTranslate (free tier available)
+   * - Apertium (free, open source)
+   * - Argos Translate (free, local deployment)
+   * 
+   * @param targetLanguage - Target language code (ISO 639-1)
+   * @param options - Translation options
+   * @param options.service - Translation service to use (default: 'libretranslate')
+   * @param options.endpoint - Custom API endpoint for LibreTranslate
+   * @param options.apiKey - API key if required
+   * 
+   * @example
+   * ```typescript
+   * // Translate Japanese address to English
+   * veyform.setFieldValue('city', '東京');
+   * veyform.setFieldValue('province', '東京都');
+   * 
+   * await veyform.translateFields('en', {
+   *   service: 'libretranslate',
+   *   endpoint: 'https://libretranslate.com'
+   * });
+   * 
+   * console.log(veyform.getFormState().values.city); // "Tokyo"
+   * ```
+   * 
+   * @throws Error if translation fails
+   */
+  async translateFields(
+    targetLanguage: string,
+    options: {
+      service?: 'libretranslate' | 'apertium' | 'argostranslate';
+      endpoint?: string;
+      apiKey?: string;
+    } = {}
+  ): Promise<void> {
+    const currentLanguage = this.formState.language;
+    
+    if (currentLanguage === targetLanguage) {
+      return; // No translation needed
+    }
+
+    // Dynamically import to avoid circular dependencies
+    const { translateAddressFields } = await import('./translation');
+    
+    const translatedAddress = await translateAddressFields(
+      this.formState.values,
+      currentLanguage,
+      targetLanguage,
+      {
+        service: options.service || 'libretranslate',
+        endpoint: options.endpoint,
+        apiKey: options.apiKey,
+      }
+    );
+
+    // Update form state with translated values
+    for (const field in translatedAddress) {
+      const value = translatedAddress[field];
+      if (value !== undefined) {
+        this.formState.values[field] = value;
+      }
+    }
+  }
+
+  /**
+   * Change language and optionally translate existing field values
+   * 
+   * Enhanced version of setLanguage() that can automatically translate
+   * existing form field values when switching languages.
+   * 
+   * @param language - Target language code
+   * @param options - Translation options
+   * @param options.translateFields - Whether to translate existing field values (default: false)
+   * @param options.translationService - Translation service to use
+   * @param options.translationEndpoint - Custom translation API endpoint
+   * @param options.translationApiKey - Translation API key if required
+   * 
+   * @example
+   * ```typescript
+   * // Change language without translation
+   * veyform.setLanguageWithTranslation('ja');
+   * 
+   * // Change language AND translate existing values
+   * await veyform.setLanguageWithTranslation('ja', {
+   *   translateFields: true,
+   *   translationService: 'libretranslate',
+   *   translationEndpoint: 'https://libretranslate.com'
+   * });
+   * ```
+   */
+  async setLanguageWithTranslation(
+    language: string,
+    options: {
+      translateFields?: boolean;
+      translationService?: 'libretranslate' | 'apertium' | 'argostranslate';
+      translationEndpoint?: string;
+      translationApiKey?: string;
+    } = {}
+  ): Promise<void> {
+    const previousLanguage = this.formState.language;
+    
+    // Change the language first
+    this.setLanguage(language);
+    
+    // Optionally translate existing field values
+    if (options.translateFields && Object.keys(this.formState.values).length > 0) {
+      try {
+        await this.translateFields(language, {
+          service: options.translationService,
+          endpoint: options.translationEndpoint,
+          apiKey: options.translationApiKey,
+        });
+      } catch (error) {
+        console.warn('Field translation failed during language switch:', error);
+        // Don't revert language change even if translation fails
+      }
+    }
   }
 
   /**
