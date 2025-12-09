@@ -130,3 +130,90 @@ pos:
     typical_close: '18:00'
     sunday_trading: true
     public_holidays_trading: false
+
+# Shipping Carriers
+shipping_carriers:
+  - name: Royal Mail
+    type: postal
+    scope: national
+    website: https://www.royalmail.com/
+    tracking_url: https://www.royalmail.com/track-your-item?trackNumber={tracking_number}
+    api_available: true
+    coverage: "Nationwide including Northern Ireland and offshore islands"
+    
+  - name: Parcelforce Worldwide
+    type: courier
+    scope: national
+    website: https://www.parcelforce.com/
+    tracking_url: https://www.parcelforce.com/track-trace?trackNumber={tracking_number}
+    api_available: true
+    coverage: "UK domestic and international express delivery"
+    notes: "Royal Mail's express parcel service"
+    
+  - name: DPD UK
+    type: courier
+    scope: regional
+    countries: [GB, IE]
+    website: https://www.dpd.co.uk/
+    tracking_url: https://www.dpd.co.uk/apps/tracking/?reference={tracking_number}
+    api_available: true
+    coverage: "UK and Ireland delivery network"
+    
+  - name: Hermes UK (Evri)
+    type: courier
+    scope: national
+    website: https://www.evri.com/
+    tracking_url: https://www.evri.com/track-a-parcel?trackingNumber={tracking_number}
+    api_available: true
+    coverage: "Nationwide parcel delivery"
+    notes: "Rebranded to Evri in 2022"
+    
+  - name: Yodel
+    type: courier
+    scope: national
+    website: https://www.yodel.co.uk/
+    tracking_url: https://www.yodel.co.uk/tracking/{tracking_number}
+    api_available: true
+    coverage: "UK mainland delivery"
+    
+  - name: Amazon Logistics UK
+    type: courier
+    scope: national
+    website: https://www.amazon.co.uk/
+    tracking_url: https://www.amazon.co.uk/gp/css/shiptrack/view.html?orderID={tracking_number}
+    api_available: false
+    coverage: "Amazon orders delivery across UK"
+    notes: "Amazon-exclusive delivery service"
+    
+  - name: DHL Express UK
+    type: express
+    scope: global
+    website: https://www.dhl.com/gb-en/home.html
+    tracking_url: https://www.dhl.com/en/express/tracking.html?AWB={tracking_number}
+    api_available: true
+    coverage: "International express delivery"
+    
+  - name: FedEx UK
+    type: express
+    scope: global
+    website: https://www.fedex.com/en-gb/home.html
+    tracking_url: https://www.fedex.com/fedextrack/?trknbr={tracking_number}
+    api_available: true
+    coverage: "International express delivery"
+    
+  - name: UPS UK
+    type: express
+    scope: global
+    website: https://www.ups.com/gb/en/Home.page
+    tracking_url: https://www.ups.com/track?tracknum={tracking_number}
+    api_available: true
+    coverage: "International and domestic express delivery"
+    
+  - name: TNT UK
+    type: express
+    scope: global
+    website: https://www.tnt.com/
+    tracking_url: https://www.tnt.com/express/en_gb/site/tracking.html?searchType=con&cons={tracking_number}
+    api_available: true
+    coverage: "International express (FedEx company)"
+    notes: "Now part of FedEx Group"

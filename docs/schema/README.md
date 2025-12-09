@@ -302,6 +302,74 @@ payment_methods:
           recurring: false
 ```
 
+## 🚚 配送業者レベル（Shipping Carriers Level）型
+
+各国で利用可能な配送業者のリストを提供するスキーマです。
+グローバル・リージョナル・ローカル・国限定など、配送業者の範囲を明確にします。
+
+### 配送業者の定義
+
+```yaml
+shipping_carriers:              # 配送業者リスト
+  - name: string                # 配送業者名
+    name_local: string          # 現地名（オプション）
+    type: string                # postal / courier / express（郵便 / 宅配 / 速達）
+    scope: string               # global / regional / national / local（グローバル / 地域 / 国内 / ローカル）
+    countries: [string]         # 対応国コード（scopeがregionalの場合）
+    website: string             # 公式サイトURL
+    tracking_url: string        # 追跡URLパターン（{tracking_number}をプレースホルダーとして使用）
+    api_available: boolean      # API提供有無
+    coverage: string            # カバレッジ説明（オプション）
+    notes: string               # 備考（オプション）
+```
+
+### スコープの定義
+
+- **global**: 世界中で利用可能（例: DHL, FedEx, UPS）
+- **regional**: 特定の地域（複数国）で利用可能（例: EMS Asia, Aramex Middle East）
+- **national**: 特定の国内のみ（例: Japan Post, USPS）
+- **local**: 特定の地域・都市のみ（例: 地域宅配業者）
+
+### 配送業者データの例
+
+```yaml
+# 日本の配送業者例
+shipping_carriers:
+  - name: Japan Post
+    name_local: 日本郵便
+    type: postal
+    scope: national
+    website: https://www.post.japanpost.jp/
+    tracking_url: https://trackings.post.japanpost.jp/services/srv/search/direct?reqCodeNo1={tracking_number}
+    api_available: true
+    coverage: "Nationwide coverage including remote islands"
+    
+  - name: Yamato Transport
+    name_local: ヤマト運輸
+    type: courier
+    scope: national
+    website: https://www.kuronekoyamato.co.jp/
+    tracking_url: https://toi.kuronekoyamato.co.jp/cgi-bin/tneko?number={tracking_number}
+    api_available: true
+    coverage: "Nationwide with next-day delivery in most areas"
+    
+  - name: DHL Express
+    type: express
+    scope: global
+    website: https://www.dhl.com/
+    tracking_url: https://www.dhl.com/en/express/tracking.html?AWB={tracking_number}
+    api_available: true
+    coverage: "International and domestic express delivery"
+    
+  - name: FedEx
+    type: express
+    scope: global
+    website: https://www.fedex.com/
+    tracking_url: https://www.fedex.com/fedextrack/?trknbr={tracking_number}
+    api_available: true
+    coverage: "International express delivery"
+```
+
 ## 🌍 緯度経度レベル（Geo-coordinates Level）型
 
 緯度経度を用いた住所との関係性・検証機能を提供するスキーマです。
