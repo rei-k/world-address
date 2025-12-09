@@ -294,6 +294,9 @@ export async function translateAddressFields(
           countryCode: address.country,
         },
       });
+    } else if (value !== undefined) {
+      // Preserve empty strings and other values as-is
+      translatedAddress[field] = value;
     }
   }
 
@@ -318,14 +321,14 @@ export async function translateAddressFields(
 
   // Copy non-translatable fields as-is
   for (const field of nonTranslatableFields) {
-    if (address[field]) {
+    if (address[field] !== undefined) {
       translatedAddress[field] = address[field];
     }
   }
 
   // Copy any other fields that weren't processed
   for (const field in address) {
-    if (!translatedAddress[field] && address[field]) {
+    if (translatedAddress[field] === undefined && address[field] !== undefined) {
       translatedAddress[field] = address[field];
     }
   }

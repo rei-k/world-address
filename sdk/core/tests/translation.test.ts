@@ -8,6 +8,7 @@ import {
   batchTranslate,
   clearTranslationCache,
   getTranslationCacheStats,
+  translateAddressFields,
 } from '../src/translation';
 import type { TranslationRequest, TranslationServiceConfig } from '../src/types';
 
@@ -518,6 +519,166 @@ describe('Translation', () => {
       const stats = getTranslationCacheStats();
       expect(stats.size).toBe(0);
       expect(stats.entries).toHaveLength(0);
+    });
+  });
+
+  describe('translateAddressFields', () => {
+    it('should translate address fields from Japanese to English', async () => {
+      const mockResponse = { translatedText: 'Translated' };
+      const fetchMock = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => mockResponse,
+      });
+      global.fetch = fetchMock;
+
+      const address = {
+        country: 'JP',
+        postal_code: '100-0001',
+        city: '千代田区',
+        province: '東京都',
+        street_address: '千代田1-1',
+      };
+
+      const config: TranslationServiceConfig = {
+        service: 'libretranslate',
+        endpoint: 'https://libretranslate.com',
+      };
+
+      const translated = await translateAddressFields(address, 'ja', 'en', config);
+
+      // Translatable fields should be translated
+      expect(translated.city).toBe('Translated');
+      expect(translated.province).toBe('Translated');
+      expect(translated.street_address).toBe('Translated');
+
+      // Non-translatable fields should be preserved
+      expect(translated.country).toBe('JP');
+      expect(translated.postal_code).toBe('100-0001');
+    });
+
+    it('should return same address when source and target language are the same', async () => {
+      const address = {
+        country: 'JP',
+        city: 'Tokyo',
+        province: 'Tokyo',
+      };
+
+      const config: TranslationServiceConfig = {
+        service: 'libretranslate',
+      };
+
+      const translated = await translateAddressFields(address, 'en', 'en', config);
+
+      expect(translated).toEqual(address);
+      expect(translated).not.toBe(address); // Should be a new object
+    });
+
+    it('should preserve non-translatable fields', async () => {
+      const mockResponse = { translatedText: 'Translated' };
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const address = {
+        country: 'US',
+        postal_code: '90210',
+        city: 'Beverly Hills',
+        province: 'California',
+        floor: '12',
+        room: '1205',
+        unit: 'A',
+      };
+
+      const config: TranslationServiceConfig = {
+        service: 'libretranslate',
+      };
+
+      const translated = await translateAddressFields(address, 'en', 'ja', config);
+
+      // Non-translatable fields should remain unchanged
+      expect(translated.postal_code).toBe('90210');
+      expect(translated.country).toBe('US');
+      expect(translated.floor).toBe('12');
+      expect(translated.room).toBe('1205');
+      expect(translated.unit).toBe('A');
+
+      // Translatable fields should be translated
+      expect(translated.city).toBe('Translated');
+      expect(translated.province).toBe('Translated');
+    });
+
+    it('should handle empty or undefined fields', async () => {
+      const mockResponse = { translatedText: 'Translated' };
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const address = {
+        country: 'US',
+        postal_code: '90210',
+        city: 'Beverly Hills',
+        province: '', // Empty
+        street_address: undefined, // Undefined
+      };
+
+      const config: TranslationServiceConfig = {
+        service: 'libretranslate',
+      };
+
+      const translated = await translateAddressFields(address, 'en', 'ja', config);
+
+      // Only non-empty fields should be translated
+      expect(translated.city).toBe('Translated');
+      expect(translated.province).toBe(''); // Preserved as empty
+      expect(translated.street_address).toBeUndefined(); // Preserved as undefined
+    });
+
+    it('should handle translation errors gracefully', async () => {
+      const fetchMock = vi.fn().mockRejectedValue(new Error('API Error'));
+      global.fetch = fetchMock;
+
+      const address = {
+        country: 'JP',
+        city: '東京',
+        province: '東京都',
+      };
+
+      const config: TranslationServiceConfig = {
+        service: 'libretranslate',
+      };
+
+      // Should not throw, but return original address
+      const translated = await translateAddressFields(address, 'ja', 'en', config);
+
+      expect(translated).toEqual(address);
+    });
+
+    it('should batch translate multiple fields efficiently', async () => {
+      const mockResponse = { translatedText: 'Translated' };
+      const fetchMock = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => mockResponse,
+      });
+      global.fetch = fetchMock;
+
+      const address = {
+        recipient: '山田太郎',
+        building: '新宿ビル',
+        city: '新宿区',
+        province: '東京都',
+        street_address: '西新宿1-1-1',
+      };
+
+      const config: TranslationServiceConfig = {
+        service: 'libretranslate',
+      };
+
+      await translateAddressFields(address, 'ja', 'en', config);
+
+      // Should call API for each translatable field
+      expect(fetchMock).toHaveBeenCalledTimes(5);
     });
   });
 });
