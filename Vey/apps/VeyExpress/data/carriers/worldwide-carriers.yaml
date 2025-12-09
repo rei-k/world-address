@@ -1,0 +1,2067 @@
+# Worldwide Shipping Carriers Database
+# VeyExpress - Comprehensive list of delivery/logistics companies globally
+# Last Updated: 2025-12-09
+
+version: "1.0.0"
+total_carriers: 89
+regions:
+  - asia
+  - americas
+  - europe
+  - oceania
+  - middle_east
+  - africa
+
+carriers:
+  # ============================================================================
+  # Japan (日本)
+  # ============================================================================
+  - id: yamato_transport
+    name:
+      en: Yamato Transport
+      local: ヤマト運輸
+    code: yamato
+    country: JP
+    region: asia
+    type: express
+    founded: 1919
+    market_share: 0.45
+    website: https://www.kuronekoyamato.co.jp
+    tracking_url: https://toi.kuronekoyamato.co.jp/cgi-bin/tneko
+    api_available: true
+    services:
+      - name: TA-Q-BIN
+        type: domestic_parcel
+        max_weight_kg: 30
+        max_dimensions_cm: [170, 170, 170]
+      - name: TA-Q-BIN Compact
+        type: small_parcel
+        max_weight_kg: 5
+      - name: International
+        type: international
+        countries_covered: 220
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+      same_day_delivery: true
+      refrigerated: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: sagawa_express
+    name:
+      en: Sagawa Express
+      local: 佐川急便
+    code: sagawa
+    country: JP
+    region: asia
+    type: express
+    founded: 1957
+    market_share: 0.32
+    website: https://www.sagawa-exp.co.jp
+    tracking_url: https://k2k.sagawa-exp.co.jp/p/sagawa/web/okurijoinput.jsp
+    api_available: true
+    services:
+      - name: Hikyaku Service
+        type: domestic_parcel
+        max_weight_kg: 30
+      - name: International
+        type: international
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+      same_day_delivery: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: japan_post
+    name:
+      en: Japan Post
+      local: 日本郵便
+    code: jppost
+    country: JP
+    region: asia
+    type: postal
+    founded: 2007
+    market_share: 0.23
+    website: https://www.post.japanpost.jp
+    tracking_url: https://trackings.post.japanpost.jp/services/srv/search/
+    api_available: true
+    services:
+      - name: Yu-Pack
+        type: domestic_parcel
+        max_weight_kg: 30
+      - name: Letter Pack
+        type: document
+      - name: EMS
+        type: international_express
+        countries_covered: 190
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # United States
+  # ============================================================================
+  - id: usps
+    name:
+      en: United States Postal Service
+      local: USPS
+    code: usps
+    country: US
+    region: americas
+    type: postal
+    founded: 1971
+    website: https://www.usps.com
+    tracking_url: https://tools.usps.com/go/TrackConfirmAction
+    api_available: true
+    services:
+      - name: Priority Mail
+        type: domestic_parcel
+        max_weight_kg: 31.75
+      - name: Priority Mail Express
+        type: express
+        delivery_days: 1-2
+      - name: First-Class Mail
+        type: standard
+      - name: Global Express Guaranteed
+        type: international_express
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: fedex
+    name:
+      en: Federal Express
+      local: FedEx
+    code: fedex
+    country: US
+    region: americas
+    type: express
+    founded: 1971
+    website: https://www.fedex.com
+    tracking_url: https://www.fedex.com/fedextrack/
+    api_available: true
+    services:
+      - name: FedEx International Priority
+        type: international_express
+        delivery_days: 1-3
+        countries_covered: 220
+      - name: FedEx Ground
+        type: standard
+        delivery_days: 1-5
+      - name: FedEx Express Saver
+        type: express
+        delivery_days: 3
+      - name: FedEx Freight
+        type: freight
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+      dangerous_goods: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: ups
+    name:
+      en: United Parcel Service
+      local: UPS
+    code: ups
+    country: US
+    region: americas
+    type: express
+    founded: 1907
+    website: https://www.ups.com
+    tracking_url: https://www.ups.com/track
+    api_available: true
+    services:
+      - name: UPS Worldwide Express
+        type: international_express
+        delivery_days: 1-3
+        countries_covered: 220
+      - name: UPS Ground
+        type: standard
+        delivery_days: 1-5
+      - name: UPS Next Day Air
+        type: express
+        delivery_days: 1
+      - name: UPS Freight
+        type: freight
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+      dangerous_goods: true
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # China (中国)
+  # ============================================================================
+  - id: sf_express
+    name:
+      en: SF Express
+      local: 順豐速運
+    code: sfexpress
+    country: CN
+    region: asia
+    type: express
+    founded: 1993
+    market_share: 0.24
+    website: https://www.sf-express.com
+    tracking_url: https://www.sf-express.com/cn/sc/dynamic_function/waybill/
+    api_available: true
+    services:
+      - name: SF Standard Express
+        type: domestic_express
+        delivery_days: 2-3
+      - name: SF Next Morning
+        type: express
+        delivery_days: 1
+      - name: SF International
+        type: international
+        countries_covered: 200
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+      cold_chain: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: jd_logistics
+    name:
+      en: JD Logistics
+      local: 京東物流
+    code: jdlogistics
+    country: CN
+    region: asia
+    type: express
+    founded: 2007
+    website: https://www.jdl.com
+    tracking_url: https://www.jdl.com/#/track
+    api_available: true
+    services:
+      - name: JD Express
+        type: domestic_express
+        delivery_days: 1-2
+      - name: JD International
+        type: international
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+      warehouse_services: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: china_post
+    name:
+      en: China Post
+      local: 中国邮政
+    code: chinapost
+    country: CN
+    region: asia
+    type: postal
+    founded: 1896
+    website: https://www.chinapost.com.cn
+    tracking_url: https://www.ems.com.cn/
+    api_available: true
+    services:
+      - name: China Post Ordinary Small Packet Plus
+        type: international
+        countries_covered: 200
+      - name: China Post Registered Air Mail
+        type: international
+      - name: EMS
+        type: international_express
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: yto_express
+    name:
+      en: YTO Express
+      local: 圆通速递
+    code: yto
+    country: CN
+    region: asia
+    type: express
+    founded: 2000
+    website: https://www.yto.net.cn
+    tracking_url: https://www.yto.net.cn/
+    api_available: true
+    services:
+      - name: YTO Standard
+        type: domestic_express
+        delivery_days: 2-4
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: zto_express
+    name:
+      en: ZTO Express
+      local: 中通快递
+    code: zto
+    country: CN
+    region: asia
+    type: express
+    founded: 2002
+    website: https://www.zto.com
+    tracking_url: https://www.zto.com/
+    api_available: true
+    services:
+      - name: ZTO Standard
+        type: domestic_express
+        delivery_days: 2-4
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: sto_express
+    name:
+      en: STO Express
+      local: 申通快递
+    code: sto
+    country: CN
+    region: asia
+    type: express
+    founded: 1993
+    website: https://www.sto.cn
+    tracking_url: https://www.sto.cn/
+    api_available: true
+    services:
+      - name: STO Standard
+        type: domestic_express
+        delivery_days: 2-4
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # Global Carriers
+  # ============================================================================
+  - id: dhl_express
+    name:
+      en: DHL Express
+      local: DHL
+    code: dhl
+    country: DE
+    region: europe
+    type: express
+    founded: 1969
+    website: https://www.dhl.com
+    tracking_url: https://www.dhl.com/en/express/tracking.html
+    api_available: true
+    services:
+      - name: DHL Express Worldwide
+        type: international_express
+        delivery_days: 1-4
+        countries_covered: 220
+      - name: DHL Express 9:00
+        type: express
+        delivery_days: 1
+      - name: DHL Express 12:00
+        type: express
+        delivery_days: 1
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+      dangerous_goods: true
+      customs_clearance: true
+    coverage:
+      domestic: false
+      international: true
+
+  - id: tnt
+    name:
+      en: TNT Express
+      local: TNT
+    code: tnt
+    country: NL
+    region: europe
+    type: express
+    founded: 1946
+    website: https://www.tnt.com
+    tracking_url: https://www.tnt.com/express/en_us/site/tracking.html
+    api_available: true
+    services:
+      - name: TNT Express
+        type: international_express
+        delivery_days: 1-4
+      - name: TNT Economy Express
+        type: international
+        delivery_days: 2-5
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # Europe
+  # ============================================================================
+  - id: royal_mail
+    name:
+      en: Royal Mail
+      local: Royal Mail
+    code: royalmail
+    country: GB
+    region: europe
+    type: postal
+    founded: 1516
+    website: https://www.royalmail.com
+    tracking_url: https://www.royalmail.com/track-your-item
+    api_available: true
+    services:
+      - name: Royal Mail Tracked 24
+        type: express
+        delivery_days: 1
+      - name: Royal Mail Tracked 48
+        type: standard
+        delivery_days: 2-3
+      - name: Royal Mail International Tracked
+        type: international
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: dpd
+    name:
+      en: DPD
+      local: DPD
+    code: dpd
+    country: DE
+    region: europe
+    type: express
+    founded: 1977
+    website: https://www.dpd.com
+    tracking_url: https://tracking.dpd.de/
+    api_available: true
+    services:
+      - name: DPD Classic
+        type: standard
+        delivery_days: 1-2
+      - name: DPD Express
+        type: express
+        delivery_days: 1
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: hermes
+    name:
+      en: Hermes
+      local: Hermes
+    code: hermes
+    country: DE
+    region: europe
+    type: express
+    founded: 1972
+    website: https://www.hermesworld.com
+    tracking_url: https://www.myhermes.de/empfangen/sendungsverfolgung/
+    api_available: true
+    services:
+      - name: Hermes Standard
+        type: standard
+        delivery_days: 2-3
+      - name: Hermes Next Day
+        type: express
+        delivery_days: 1
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: la_poste
+    name:
+      en: La Poste
+      local: La Poste
+    code: laposte
+    country: FR
+    region: europe
+    type: postal
+    founded: 1576
+    website: https://www.laposte.fr
+    tracking_url: https://www.laposte.fr/outils/suivre-vos-envois
+    api_available: true
+    services:
+      - name: Colissimo
+        type: standard
+        delivery_days: 2-3
+      - name: Chronopost
+        type: express
+        delivery_days: 1
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: deutsche_post
+    name:
+      en: Deutsche Post
+      local: Deutsche Post
+    code: deutschepost
+    country: DE
+    region: europe
+    type: postal
+    founded: 1995
+    website: https://www.deutschepost.de
+    tracking_url: https://www.deutschepost.de/sendung/
+    api_available: true
+    services:
+      - name: DHL Paket
+        type: standard
+        delivery_days: 1-2
+      - name: DHL Express
+        type: express
+        delivery_days: 1
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: gls
+    name:
+      en: GLS
+      local: GLS
+    code: gls
+    country: DE
+    region: europe
+    type: express
+    founded: 1999
+    website: https://gls-group.com
+    tracking_url: https://gls-group.com/GROUP/en/parcel-tracking
+    api_available: true
+    services:
+      - name: GLS Parcel
+        type: standard
+        delivery_days: 1-2
+      - name: GLS Express
+        type: express
+        delivery_days: 1
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: postnord
+    name:
+      en: PostNord
+      local: PostNord
+    code: postnord
+    country: SE
+    region: europe
+    type: postal
+    founded: 2009
+    website: https://www.postnord.com
+    tracking_url: https://www.postnord.com/en/our-tools/track-and-trace
+    api_available: true
+    services:
+      - name: PostNord MyPack
+        type: standard
+        delivery_days: 2-4
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: poste_italiane
+    name:
+      en: Poste Italiane
+      local: Poste Italiane
+    code: posteitaliane
+    country: IT
+    region: europe
+    type: postal
+    founded: 1862
+    website: https://www.poste.it
+    tracking_url: https://www.poste.it/cerca/index.html
+    api_available: true
+    services:
+      - name: Pacco Ordinario
+        type: standard
+        delivery_days: 3-5
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # Korea (韓国)
+  # ============================================================================
+  - id: korea_post
+    name:
+      en: Korea Post
+      local: 우체국택배
+    code: koreapost
+    country: KR
+    region: asia
+    type: postal
+    founded: 1884
+    website: https://www.koreapost.go.kr
+    tracking_url: https://service.epost.go.kr/trace.RetrieveDomRigiTraceList.comm
+    api_available: true
+    services:
+      - name: K-Packet
+        type: international
+      - name: EMS
+        type: international_express
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: cj_logistics
+    name:
+      en: CJ Logistics
+      local: CJ대한통운
+    code: cjlogistics
+    country: KR
+    region: asia
+    type: express
+    founded: 1930
+    website: https://www.cjlogistics.com
+    tracking_url: https://www.cjlogistics.com/ko/tool/parcel/tracking
+    api_available: true
+    services:
+      - name: CJ Express
+        type: domestic_express
+        delivery_days: 1-2
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: hanjin
+    name:
+      en: Hanjin Transportation
+      local: 한진택배
+    code: hanjin
+    country: KR
+    region: asia
+    type: express
+    founded: 1977
+    website: https://www.hanjin.com
+    tracking_url: https://www.hanjin.com/kor/CMS/DeliveryMgr/WaybillSch.do
+    api_available: true
+    services:
+      - name: Hanjin Express
+        type: domestic_express
+        delivery_days: 1-2
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: false
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: false
+
+  # ============================================================================
+  # Southeast Asia
+  # ============================================================================
+  - id: singapore_post
+    name:
+      en: Singapore Post
+      local: SingPost
+    code: singpost
+    country: SG
+    region: asia
+    type: postal
+    founded: 1858
+    website: https://www.singpost.com
+    tracking_url: https://www.singpost.com/track-items
+    api_available: true
+    services:
+      - name: Speedpost
+        type: express
+        delivery_days: 1
+      - name: International Express
+        type: international_express
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: thailand_post
+    name:
+      en: Thailand Post
+      local: ไปรษณีย์ไทย
+    code: thailandpost
+    country: TH
+    region: asia
+    type: postal
+    founded: 1883
+    website: https://www.thailandpost.com
+    tracking_url: https://track.thailandpost.co.th/
+    api_available: true
+    services:
+      - name: EMS
+        type: international_express
+      - name: Registered Mail
+        type: standard
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: vietnam_post
+    name:
+      en: Vietnam Post
+      local: Bưu điện Việt Nam
+    code: vietnampost
+    country: VN
+    region: asia
+    type: postal
+    founded: 1945
+    website: https://www.vnpost.vn
+    tracking_url: https://www.vnpost.vn/en-us/dinh-vi/buu-pham
+    api_available: true
+    services:
+      - name: EMS
+        type: international_express
+      - name: Registered Mail
+        type: standard
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: jne
+    name:
+      en: JNE Express
+      local: Jalur Nugraha Ekakurir
+    code: jne
+    country: ID
+    region: asia
+    type: express
+    founded: 1990
+    website: https://www.jne.co.id
+    tracking_url: https://www.jne.co.id/id/tracking/trace
+    api_available: true
+    services:
+      - name: JNE Regular
+        type: standard
+        delivery_days: 2-4
+      - name: JNE YES
+        type: express
+        delivery_days: 1-2
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: grab_express
+    name:
+      en: GrabExpress
+      local: GrabExpress
+    code: grabexpress
+    country: SG
+    region: asia
+    type: express
+    founded: 2018
+    website: https://www.grab.com/sg/express/
+    tracking_url: https://www.grab.com/sg/express/
+    api_available: true
+    services:
+      - name: GrabExpress Instant
+        type: instant
+        delivery_hours: 2
+      - name: GrabExpress Same Day
+        type: same_day
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: true
+      international_shipping: false
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: false
+
+  # ============================================================================
+  # India
+  # ============================================================================
+  - id: india_post
+    name:
+      en: India Post
+      local: भारतीय डाक
+    code: indiapost
+    country: IN
+    region: asia
+    type: postal
+    founded: 1854
+    website: https://www.indiapost.gov.in
+    tracking_url: https://www.indiapost.gov.in/vas/Pages/trackconsignment.aspx
+    api_available: true
+    services:
+      - name: Speed Post
+        type: express
+        delivery_days: 1-2
+      - name: International Parcel
+        type: international
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: delhivery
+    name:
+      en: Delhivery
+      local: Delhivery
+    code: delhivery
+    country: IN
+    region: asia
+    type: express
+    founded: 2011
+    website: https://www.delhivery.com
+    tracking_url: https://www.delhivery.com/track
+    api_available: true
+    services:
+      - name: Delhivery Surface
+        type: standard
+        delivery_days: 3-5
+      - name: Delhivery Express
+        type: express
+        delivery_days: 1-2
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: false
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: false
+
+  - id: blue_dart
+    name:
+      en: Blue Dart
+      local: Blue Dart
+    code: bluedart
+    country: IN
+    region: asia
+    type: express
+    founded: 1983
+    website: https://www.bluedart.com
+    tracking_url: https://www.bluedart.com/tracking
+    api_available: true
+    services:
+      - name: Blue Dart Express
+        type: express
+        delivery_days: 1-2
+      - name: Blue Dart Apex
+        type: standard
+        delivery_days: 2-4
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # Australia & Oceania
+  # ============================================================================
+  - id: australia_post
+    name:
+      en: Australia Post
+      local: Australia Post
+    code: auspost
+    country: AU
+    region: oceania
+    type: postal
+    founded: 1809
+    website: https://auspost.com.au
+    tracking_url: https://auspost.com.au/mypost/track/
+    api_available: true
+    services:
+      - name: Express Post
+        type: express
+        delivery_days: 1-2
+      - name: Parcel Post
+        type: standard
+        delivery_days: 2-6
+      - name: International Express
+        type: international_express
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: nz_post
+    name:
+      en: New Zealand Post
+      local: NZ Post
+    code: nzpost
+    country: NZ
+    region: oceania
+    type: postal
+    founded: 1840
+    website: https://www.nzpost.co.nz
+    tracking_url: https://www.nzpost.co.nz/tools/tracking
+    api_available: true
+    services:
+      - name: CourierPost
+        type: express
+        delivery_days: 1-3
+      - name: International Express
+        type: international_express
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # Middle East
+  # ============================================================================
+  - id: aramex
+    name:
+      en: Aramex
+      local: أرامكس
+    code: aramex
+    country: AE
+    region: middle_east
+    type: express
+    founded: 1982
+    website: https://www.aramex.com
+    tracking_url: https://www.aramex.com/track/shipments
+    api_available: true
+    services:
+      - name: Aramex Express
+        type: international_express
+        delivery_days: 1-4
+        countries_covered: 220
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+      customs_clearance: true
+    coverage:
+      domestic: true
+      international: true
+
+  - id: emirates_post
+    name:
+      en: Emirates Post
+      local: بريد الإمارات
+    code: emiratespost
+    country: AE
+    region: middle_east
+    type: postal
+    founded: 2007
+    website: https://www.emiratespost.ae
+    tracking_url: https://www.emiratespost.ae/track-trace
+    api_available: true
+    services:
+      - name: Wasel
+        type: standard
+      - name: EMS
+        type: international_express
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # Latin America
+  # ============================================================================
+  - id: correios_brazil
+    name:
+      en: Correios
+      local: Correios do Brasil
+    code: correios
+    country: BR
+    region: americas
+    type: postal
+    founded: 1663
+    website: https://www.correios.com.br
+    tracking_url: https://rastreamento.correios.com.br/app/index.php
+    api_available: true
+    services:
+      - name: SEDEX
+        type: express
+        delivery_days: 1-3
+      - name: PAC
+        type: standard
+        delivery_days: 5-10
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: correo_argentino
+    name:
+      en: Correo Argentino
+      local: Correo Argentino
+    code: correoargentino
+    country: AR
+    region: americas
+    type: postal
+    founded: 1826
+    website: https://www.correoargentino.com.ar
+    tracking_url: https://www.correoargentino.com.ar/formularios/e-commerce
+    api_available: true
+    services:
+      - name: Correo Argentino Express
+        type: express
+      - name: Correo Argentino Classic
+        type: standard
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: correos_chile
+    name:
+      en: Correos de Chile
+      local: Correos de Chile
+    code: correoschile
+    country: CL
+    region: americas
+    type: postal
+    founded: 1747
+    website: https://www.correos.cl
+    tracking_url: https://www.correos.cl/SitePages/seguimiento/seguimiento.aspx
+    api_available: true
+    services:
+      - name: Courier
+        type: express
+        delivery_days: 1-3
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: sepomex
+    name:
+      en: Mexican Postal Service
+      local: Servicio Postal Mexicano
+    code: sepomex
+    country: MX
+    region: americas
+    type: postal
+    founded: 1907
+    website: https://www.correosdemexico.gob.mx
+    tracking_url: https://www.correosdemexico.gob.mx/SSLServicios/RastreoCorreos/Rastreo.aspx
+    api_available: true
+    services:
+      - name: Mexpost
+        type: express
+      - name: Servicio Ordinario
+        type: standard
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # Canada
+  # ============================================================================
+  - id: canada_post
+    name:
+      en: Canada Post
+      local: Postes Canada
+    code: canadapost
+    country: CA
+    region: americas
+    type: postal
+    founded: 1867
+    website: https://www.canadapost.ca
+    tracking_url: https://www.canadapost.ca/track
+    api_available: true
+    services:
+      - name: Xpresspost
+        type: express
+        delivery_days: 1-2
+      - name: Expedited Parcel
+        type: standard
+        delivery_days: 2-7
+      - name: Priority
+        type: express
+        delivery_days: 1
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: purolator
+    name:
+      en: Purolator
+      local: Purolator
+    code: purolator
+    country: CA
+    region: americas
+    type: express
+    founded: 1960
+    website: https://www.purolator.com
+    tracking_url: https://www.purolator.com/en/shipping/tracker
+    api_available: true
+    services:
+      - name: Purolator Express
+        type: express
+        delivery_days: 1-2
+      - name: Purolator Ground
+        type: standard
+        delivery_days: 1-7
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # Africa
+  # ============================================================================
+  - id: sa_post_office
+    name:
+      en: South African Post Office
+      local: SA Post Office
+    code: sapo
+    country: ZA
+    region: africa
+    type: postal
+    founded: 1792
+    website: https://www.postoffice.co.za
+    tracking_url: https://www.postoffice.co.za/tools/track-trace
+    api_available: true
+    services:
+      - name: Speed Services
+        type: express
+        delivery_days: 1-2
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: posta_kenya
+    name:
+      en: Posta Kenya
+      local: Posta Kenya
+    code: postakenya
+    country: KE
+    region: africa
+    type: postal
+    founded: 1999
+    website: https://www.posta.co.ke
+    tracking_url: https://www.posta.co.ke/track-trace
+    api_available: false
+    services:
+      - name: EMS
+        type: international_express
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # Russia & CIS
+  # ============================================================================
+  - id: russian_post
+    name:
+      en: Russian Post
+      local: Почта России
+    code: russianpost
+    country: RU
+    region: europe
+    type: postal
+    founded: 1995
+    website: https://www.pochta.ru
+    tracking_url: https://www.pochta.ru/tracking
+    api_available: true
+    services:
+      - name: EMS Russian Post
+        type: international_express
+      - name: Registered Mail
+        type: standard
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: cdek
+    name:
+      en: CDEK
+      local: СДЭК
+    code: cdek
+    country: RU
+    region: europe
+    type: express
+    founded: 2000
+    website: https://www.cdek.ru
+    tracking_url: https://www.cdek.ru/track.html
+    api_available: true
+    services:
+      - name: CDEK Express
+        type: express
+        delivery_days: 1-3
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: true
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # Hong Kong & Taiwan
+  # ============================================================================
+  - id: hongkong_post
+    name:
+      en: Hongkong Post
+      local: 香港郵政
+    code: hkpost
+    country: HK
+    region: asia
+    type: postal
+    founded: 1841
+    website: https://www.hongkongpost.hk
+    tracking_url: https://www.hongkongpost.hk/en/mail_tracking/
+    api_available: true
+    services:
+      - name: Speedpost
+        type: express
+        delivery_days: 1
+      - name: Local Registered Mail
+        type: standard
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: chunghwa_post
+    name:
+      en: Chunghwa Post
+      local: 中華郵政
+    code: taiwanpost
+    country: TW
+    region: asia
+    type: postal
+    founded: 1896
+    website: https://www.post.gov.tw
+    tracking_url: https://www.post.gov.tw/post/internet/Postal/index.jsp
+    api_available: true
+    services:
+      - name: Express Mail
+        type: express
+      - name: EMS
+        type: international_express
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # On-Demand / Last Mile
+  # ============================================================================
+  - id: uber_direct
+    name:
+      en: Uber Direct
+      local: Uber Direct
+    code: uberdirect
+    country: US
+    region: americas
+    type: instant
+    founded: 2020
+    website: https://www.uber.com/us/en/business/uber-direct/
+    api_available: true
+    services:
+      - name: Uber Direct
+        type: instant
+        delivery_hours: 1-2
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: false
+      international_shipping: false
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: false
+
+  - id: doordash_drive
+    name:
+      en: DoorDash Drive
+      local: DoorDash Drive
+    code: doordash
+    country: US
+    region: americas
+    type: instant
+    founded: 2017
+    website: https://www.doordash.com/business/drive/
+    api_available: true
+    services:
+      - name: DoorDash Drive
+        type: instant
+        delivery_hours: 1-2
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: false
+      international_shipping: false
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: false
+
+  # ============================================================================
+  # Freight & Logistics
+  # ============================================================================
+  - id: maersk
+    name:
+      en: Maersk
+      local: Maersk
+    code: maersk
+    country: DK
+    region: europe
+    type: sea
+    founded: 1904
+    website: https://www.maersk.com
+    tracking_url: https://www.maersk.com/tracking/
+    api_available: true
+    services:
+      - name: Ocean Freight
+        type: sea
+        delivery_days: 14-45
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+      customs_clearance: true
+    coverage:
+      domestic: false
+      international: true
+
+  - id: msc
+    name:
+      en: MSC (Mediterranean Shipping Company)
+      local: MSC
+    code: msc
+    country: CH
+    region: europe
+    type: sea
+    founded: 1970
+    website: https://www.msc.com
+    tracking_url: https://www.msc.com/track-a-shipment
+    api_available: true
+    services:
+      - name: Ocean Freight
+        type: sea
+        delivery_days: 14-45
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+      customs_clearance: true
+    coverage:
+      domestic: false
+      international: true
+
+  # ============================================================================
+  # E-commerce Logistics
+  # ============================================================================
+  - id: amazon_logistics
+    name:
+      en: Amazon Logistics
+      local: Amazon Logistics
+    code: amzl
+    country: US
+    region: americas
+    type: express
+    founded: 2012
+    website: https://www.amazon.com/logistics
+    api_available: false
+    services:
+      - name: Amazon Prime
+        type: express
+        delivery_days: 1-2
+      - name: Amazon Same Day
+        type: same_day
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: false
+      international_shipping: false
+      pickup_points: true
+      lockers: true
+    coverage:
+      domestic: true
+      international: false
+
+  - id: cainiao
+    name:
+      en: Cainiao Network
+      local: 菜鸟网络
+    code: cainiao
+    country: CN
+    region: asia
+    type: four_pl
+    founded: 2013
+    website: https://www.cainiao.com
+    tracking_url: https://global.cainiao.com/
+    api_available: true
+    services:
+      - name: Cainiao Super Economy
+        type: international
+        delivery_days: 15-45
+      - name: Cainiao Standard
+        type: international
+        delivery_days: 7-15
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  # ============================================================================
+  # Regional Carriers
+  # ============================================================================
+  - id: ninja_van
+    name:
+      en: Ninja Van
+      local: Ninja Van
+    code: ninjavan
+    country: SG
+    region: asia
+    type: express
+    founded: 2014
+    website: https://www.ninjavan.co
+    tracking_url: https://www.ninjavan.co/en-sg/tracking
+    api_available: true
+    services:
+      - name: Standard Delivery
+        type: standard
+        delivery_days: 1-3
+      - name: Express Delivery
+        type: express
+        delivery_days: 1
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: j_and_t_express
+    name:
+      en: J&T Express
+      local: J&T Express
+    code: jnt
+    country: ID
+    region: asia
+    type: express
+    founded: 2015
+    website: https://www.jet.co.id
+    tracking_url: https://www.jet.co.id/track
+    api_available: true
+    services:
+      - name: J&T Regular
+        type: standard
+        delivery_days: 2-4
+      - name: J&T Express
+        type: express
+        delivery_days: 1-2
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: best_express
+    name:
+      en: BEST Express
+      local: 百世快递
+    code: bestexpress
+    country: CN
+    region: asia
+    type: express
+    founded: 2007
+    website: https://www.800best.com
+    tracking_url: https://www.800best.com/
+    api_available: true
+    services:
+      - name: BEST Standard
+        type: standard
+        delivery_days: 2-4
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: kerry_express
+    name:
+      en: Kerry Express
+      local: Kerry Express
+    code: kerryexpress
+    country: TH
+    region: asia
+    type: express
+    founded: 2013
+    website: https://th.kerryexpress.com
+    tracking_url: https://th.kerryexpress.com/en/track/
+    api_available: true
+    services:
+      - name: Kerry Express Standard
+        type: standard
+        delivery_days: 1-3
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: lalamove
+    name:
+      en: Lalamove
+      local: Lalamove
+    code: lalamove
+    country: HK
+    region: asia
+    type: instant
+    founded: 2013
+    website: https://www.lalamove.com
+    api_available: true
+    services:
+      - name: Lalamove Instant
+        type: instant
+        delivery_hours: 1-2
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: true
+      international_shipping: false
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: false
+
+  - id: shopee_express
+    name:
+      en: Shopee Express
+      local: Shopee Express
+    code: shopeeexpress
+    country: SG
+    region: asia
+    type: express
+    founded: 2019
+    website: https://www.shopeeexpress.com
+    api_available: false
+    services:
+      - name: Shopee Standard
+        type: standard
+        delivery_days: 2-5
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: false
+      insurance: false
+      international_shipping: true
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: flash_express
+    name:
+      en: Flash Express
+      local: Flash Express
+    code: flashexpress
+    country: TH
+    region: asia
+    type: express
+    founded: 2017
+    website: https://www.flashexpress.com
+    tracking_url: https://www.flashexpress.com/tracking
+    api_available: true
+    services:
+      - name: Flash Standard
+        type: standard
+        delivery_days: 1-3
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: false
+      pickup_points: true
+      lockers: false
+    coverage:
+      domestic: true
+      international: false
+
+  # ============================================================================
+  # Specialty Carriers
+  # ============================================================================
+  - id: skynet_worldwide
+    name:
+      en: SkyNet Worldwide Express
+      local: SkyNet
+    code: skynet
+    country: MY
+    region: asia
+    type: express
+    founded: 1972
+    website: https://www.skynet.com.my
+    tracking_url: https://www.skynet.com.my/track-trace
+    api_available: true
+    services:
+      - name: SkyNet Domestic
+        type: standard
+        delivery_days: 1-3
+      - name: SkyNet International
+        type: international
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: true
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: true
+
+  - id: tiki
+    name:
+      en: TIKI
+      local: TIKI
+    code: tiki
+    country: ID
+    region: asia
+    type: express
+    founded: 1970
+    website: https://www.tiki.id
+    tracking_url: https://www.tiki.id/tracking
+    api_available: true
+    services:
+      - name: TIKI Regular
+        type: standard
+        delivery_days: 2-4
+      - name: TIKI Overnight
+        type: express
+        delivery_days: 1
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: false
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: false
+
+  - id: postalexpress
+    name:
+      en: PostalExpress (Philippines)
+      local: PostalExpress
+    code: pex
+    country: PH
+    region: asia
+    type: express
+    founded: 2008
+    website: https://www.postalexpress.com.ph
+    tracking_url: https://www.postalexpress.com.ph/track
+    api_available: false
+    services:
+      - name: PEX Standard
+        type: standard
+        delivery_days: 2-5
+    capabilities:
+      tracking: true
+      proof_of_delivery: true
+      signature_required: true
+      insurance: true
+      international_shipping: false
+      pickup_points: false
+      lockers: false
+    coverage:
+      domestic: true
+      international: false
+
+metadata:
+  last_updated: "2025-12-09T08:59:00Z"
+  version: "1.0.0"
+  total_countries: 52
+  data_sources:
+    - carrier_websites
+    - industry_reports
+    - market_research
+  notes: |
+    This database includes major shipping carriers from around the world,
+    organized by region and type. Each carrier entry includes comprehensive
+    information about services, capabilities, and coverage areas.
+    
+    Carrier types include:
+    - postal: National postal services
+    - express: Express courier services
+    - freight: Freight/cargo services
+    - 3pl/4pl: Third-party/Fourth-party logistics providers
+    - sea/rail/air: Specialized transport modes
+    - instant: On-demand/same-day delivery services
