@@ -163,6 +163,62 @@ function mergeField(fieldName, existingValue, newValue, strategy) {
 }
 
 /**
+ * Deep equality comparison
+ * @param {*} a - First value
+ * @param {*} b - Second value
+ * @returns {boolean} True if deeply equal
+ */
+function deepEqual(a, b) {
+  if (a === b) {
+    return true;
+  }
+
+  if (a === null || b === null || a === undefined || b === undefined) {
+    return a === b;
+  }
+
+  if (typeof a !== typeof b) {
+    return false;
+  }
+
+  if (typeof a !== 'object') {
+    return a === b;
+  }
+
+  // Handle arrays
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length !== b.length) {
+      return false;
+    }
+    for (let i = 0; i < a.length; i++) {
+      if (!deepEqual(a[i], b[i])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // Handle objects
+  const keysA = Object.keys(a).sort();
+  const keysB = Object.keys(b).sort();
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+  if (!deepEqual(keysA, keysB)) {
+    return false;
+  }
+
+  for (const key of keysA) {
+    if (!deepEqual(a[key], b[key])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/**
  * Detect conflicts between existing and new data
  * @param {Object} existing - Existing data
  * @param {Object} incoming - Incoming data
@@ -184,7 +240,7 @@ function detectConflicts(existing, incoming) {
     if (existingVal === undefined || incomingVal === undefined) {
       continue;
     }
-    if (JSON.stringify(existingVal) === JSON.stringify(incomingVal)) {
+    if (deepEqual(existingVal, incomingVal)) {
       continue;
     }
 
@@ -252,10 +308,7 @@ function mergeData(existingData, newLibAddressData, options = {}) {
     mergedData[field] = mergedValue;
 
     // Track changes if enabled
-    if (
-      trackChanges &&
-      JSON.stringify(existingValue) !== JSON.stringify(mergedValue)
-    ) {
+    if (trackChanges && !deepEqual(existingValue, mergedValue)) {
       changedFields.push({
         field,
         strategy,
@@ -361,6 +414,7 @@ module.exports = {
   detectConflicts,
   generateMergeReport,
   deepMerge,
+  deepEqual,
   mergeArrays,
   isEmpty,
 };

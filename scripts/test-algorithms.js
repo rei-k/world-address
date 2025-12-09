@@ -189,7 +189,7 @@ function testQualityChecking() {
 function testArrayMerging() {
   logger.section('Test 4: Array Merging');
 
-  const { mergeArrays } = require('./utils/data-merge');
+  const { mergeArrays } = require('./utils');
 
   const existing = ['en', 'ja'];
   const incoming = ['ja', 'zh', 'ko'];
@@ -213,7 +213,7 @@ function testArrayMerging() {
 function testDeepMerge() {
   logger.section('Test 5: Deep Object Merge');
 
-  const { deepMerge } = require('./utils/data-merge');
+  const { deepMerge } = require('./utils');
 
   const target = {
     metadata: {

@@ -296,6 +296,8 @@ async function fetchCountry(countryCode) {
     }
 
     // Only save if quality check passes or if it's a new file
+    // Note: New files are allowed with lower quality scores because they might
+    // be incomplete data from the API that we'll improve over time
     if (!qualityReport.passed && changes.type !== 'new') {
       logger.error(
         `Quality check failed for ${countryCode} (Score: ${qualityReport.score}/100), skipping update`,

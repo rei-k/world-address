@@ -267,18 +267,27 @@ function detectAnomalies(data) {
 
   // Check for metadata freshness
   if (hasField(data, 'metadata.fetched_at')) {
-    const fetchedAt = new Date(data.metadata.fetched_at);
-    const now = new Date();
-    const daysDiff = (now - fetchedAt) / (1000 * 60 * 60 * 24);
+    try {
+      const fetchedAt = new Date(data.metadata.fetched_at);
+      
+      // Validate that the date is valid
+      if (!isNaN(fetchedAt.getTime())) {
+        const now = new Date();
+        const daysDiff = (now - fetchedAt) / (1000 * 60 * 60 * 24);
 
-    if (daysDiff > 90) {
-      anomalies.push({
-        type: 'stale_data',
-        severity: SEVERITY.INFO,
-        field: 'metadata.fetched_at',
-        value: data.metadata.fetched_at,
-        message: `Data is ${Math.floor(daysDiff)} days old`,
-      });
+        if (daysDiff > 90) {
+          anomalies.push({
+            type: 'stale_data',
+            severity: SEVERITY.INFO,
+            field: 'metadata.fetched_at',
+            value: data.metadata.fetched_at,
+            message: `Data is ${Math.floor(daysDiff)} days old`,
+          });
+        }
+      }
+    } catch (error) {
+      // Invalid date format, skip freshness check
+      logger.debug(`Invalid date format in metadata.fetched_at: ${data.metadata.fetched_at}`);
     }
   }
 
