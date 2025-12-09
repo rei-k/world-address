@@ -1447,7 +1447,12 @@ export interface Suggestion {
  */
 export type PostalCodeLookupService = 
   | 'zippopotam'
-  | 'geonames';
+  | 'geonames'
+  | 'postcodeio'
+  | 'dawa'
+  | 'zipcodebase'
+  | 'opendatasoft'
+  | 'local-data';
 
 /**
  * Postal code lookup request

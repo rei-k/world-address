@@ -296,6 +296,26 @@ export {
   getPostalCodeCacheStats,
 } from './postal-lookup';
 
+// Extended Postal Code Lookup
+export {
+  lookupPostalCodeExtended,
+  isExtendedLookupAvailable,
+  getExtendedSupportedCountries,
+  clearExtendedPostalCodeCache,
+  getExtendedCacheStats,
+} from './postal-lookup-extended';
+export type { ExtendedPostalLookupConfig } from './postal-lookup-extended';
+
+// Unified Postal Code Lookup
+export {
+  lookupPostalCodeUnified,
+  isUnifiedLookupAvailable,
+  getAllSupportedCountries,
+  getAvailableSources,
+  getRecommendedConfig,
+} from './postal-lookup-unified';
+export type { UnifiedPostalLookupConfig } from './postal-lookup-unified';
+
 // Logistics & Shipping
 export type {
   // Core carrier types
