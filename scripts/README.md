@@ -2,6 +2,20 @@
 
 This directory contains automation scripts for the world-address-yaml repository.
 
+## 🚀 Latest Updates (2024-12-09)
+
+**New AI-Powered Algorithms Added:**
+
+- **Intelligent Data Merging**: Smart algorithm for merging libaddressinput data with existing country data
+- **Data Quality Checker**: Comprehensive quality assessment with scoring (0-100)
+- **Conflict Detection**: Automatic detection and resolution of data conflicts
+- **Anomaly Detection**: AI-driven detection of data anomalies and outliers
+
+See documentation:
+- [libaddressinput Update Rules](../docs/libaddressinput-update-rules.md) - Complete rules and guidelines
+- [libaddressinput AI Algorithms](../docs/libaddressinput-ai-algorithms.md) - Detailed algorithm documentation
+- [libaddressinput v2 Algorithm](../docs/libaddressinput-v2-algorithm.md) - Version 2 improvements
+
 ## 🔄 Recent Refactoring (2025-12-07)
 
 Major refactoring completed to improve maintainability:
@@ -23,11 +37,82 @@ scripts/
 │   ├── file.js                # File system utilities
 │   ├── yaml.js                # YAML conversion utilities
 │   ├── validation.js          # Data validation utilities
+│   ├── data-merge.js          # 🆕 Intelligent data merging algorithms
+│   ├── data-quality.js        # 🆕 Data quality checker and scorer
+│   ├── data-loader.js         # Data loading utilities
 │   ├── constants.js           # Configuration constants
 │   └── index.js               # Central export point
-├── fetch-libaddressinput.js   # Main data fetcher script
+├── fetch-libaddressinput.js   # Legacy data fetcher (v1)
+├── fetch-libaddressinput-v2.js # Enhanced data fetcher (v2)
+├── fetch-libaddressinput-v3.js # 🆕 AI-powered fetcher with merge & quality check
+├── test-algorithms.js         # 🆕 Test suite for merge and quality algorithms
 └── test-transform.js          # Transformation tests
 ```
+
+## 🤖 fetch-libaddressinput-v3.js (Recommended)
+
+**NEW:** Enhanced version with AI-powered data quality and intelligent merging.
+
+Fetches address data from Google's libaddressinput API with advanced features:
+
+### Features
+
+- ✨ **Intelligent Data Merging** - Preserves custom fields while updating libaddressinput data
+- 🔍 **Quality Checking** - Scores data quality (0-100) with detailed reports
+- ⚠️ **Conflict Detection** - Detects and resolves data conflicts automatically
+- 🎯 **Change Tracking** - Tracks what changed and why
+- 📊 **Comprehensive Statistics** - Detailed merge and quality statistics
+- 🛡️ **Safety First** - Only updates if quality check passes
+
+### Usage
+
+```bash
+# Run using npm script (recommended)
+npm run fetch:libaddressinput:v3
+
+# Or run directly
+node scripts/fetch-libaddressinput-v3.js
+```
+
+### Algorithm Overview
+
+```
+1. Fetch hierarchical data from API
+2. Load existing country data
+3. Intelligently merge with field-level strategies:
+   - PRESERVE_EXISTING: Custom fields (name, languages, etc.)
+   - UPDATE_WITH_NEW: libaddressinput section
+   - DEEP_MERGE: Metadata
+4. Check data quality (required fields, consistency, anomalies)
+5. Resolve conflicts automatically
+6. Save only if quality check passes
+```
+
+See [AI Algorithms Documentation](../docs/libaddressinput-ai-algorithms.md) for details.
+
+## fetch-libaddressinput-v2.js
+
+Enhanced version with hierarchical data fetching and intelligent updates.
+
+### Features
+
+- ✨ **Hierarchical data fetching** - Recursively fetches all sub-regions
+- 🔍 **Change detection** - Only updates files when data has changed
+- 🔄 **Automatic retry** on network failures with exponential backoff
+- ⏱️ **Rate limiting** to avoid API throttling
+- 📊 **Progress tracking** with detailed statistics
+
+### Usage
+
+```bash
+# Run using npm script
+npm run fetch:libaddressinput
+
+# Or run directly
+node scripts/fetch-libaddressinput-v2.js
+```
+
+See [v2 Algorithm Documentation](../docs/libaddressinput-v2-algorithm.md) for details.
 
 ## fetch-libaddressinput.js
 
