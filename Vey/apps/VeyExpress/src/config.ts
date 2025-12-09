@@ -25,6 +25,16 @@ export const VeyExpressConfig = {
 
   // Carrier Configuration
   carriers: {
+    // Comprehensive carrier database
+    // See: ./data/carriers/worldwide-carriers.yaml
+    // Total carriers: 65 from 52 countries across 6 regions
+    database: {
+      path: './data/carriers/worldwide-carriers.json',
+      version: '1.0.0',
+      total: 65,
+      regions: ['asia', 'americas', 'europe', 'oceania', 'middle_east', 'africa'],
+    },
+    // Legacy supported carriers list (maintained for backward compatibility)
     supported: [
       // United States
       'usps',

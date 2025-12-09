@@ -89,26 +89,39 @@ Making delivery and logistics **as simple as email and credit cards**.
 
 ## 🔗 Supported Carriers
 
-### 🇯🇵 Japan
-- ヤマト運輸 (Yamato Transport)
-- 佐川急便 (Sagawa Express)
-- 日本郵便 (Japan Post)
+**65 carriers from 52 countries** - [Complete Carrier Database](./data/carriers/README.md)
 
-### 🇺🇸 United States
-- USPS
-- UPS
-- FedEx
-- DHL
+### 🌏 Asia (36 carriers)
+- **Japan**: ヤマト運輸 (Yamato Transport), 佐川急便 (Sagawa Express), 日本郵便 (Japan Post)
+- **China**: SF Express, JD Logistics, China Post, YTO, ZTO, STO, BEST Express, Cainiao
+- **Korea**: Korea Post, CJ Logistics, Hanjin
+- **Southeast Asia**: Singapore Post, Thailand Post, Vietnam Post, JNE, GrabExpress, Ninja Van, J&T Express, Kerry Express, Lalamove, Shopee Express, Flash Express, SkyNet
+- **India**: India Post, Delhivery, Blue Dart
+- **Hong Kong & Taiwan**: Hongkong Post, Chunghwa Post
 
-### 🇨🇳 China
-- SF Express (順豐速運)
-- JD Logistics (京東物流)
+### 🌎 Americas (12 carriers)
+- **United States**: USPS, FedEx, UPS, Amazon Logistics, Uber Direct, DoorDash Drive
+- **Canada**: Canada Post, Purolator
+- **Latin America**: Correios (Brazil), Correo Argentino, Correos de Chile, Sepomex (Mexico)
 
-### 🌍 Global
-- DHL
-- TNT
-- Aramex
-- And many more...
+### 🌍 Europe (15 carriers)
+- **Global**: DHL Express, TNT
+- **Regional**: Royal Mail (UK), DPD, Hermes, La Poste (France), Deutsche Post, GLS, PostNord (Sweden), Poste Italiane (Italy), Russian Post, CDEK
+
+### 🌏 Oceania (2 carriers)
+- Australia Post, New Zealand Post
+
+### 🌍 Middle East (2 carriers)
+- Aramex (UAE), Emirates Post
+
+### 🌍 Africa (2 carriers)
+- South African Post Office, Posta Kenya
+
+### 🚢 Freight & Logistics (4 carriers)
+- Maersk, MSC, TIKI, PostalExpress
+
+**See [Carrier Database Documentation](./data/carriers/README.md) for complete details**
+
 
 ---
 
