@@ -5,8 +5,10 @@
   "private": true,
   "scripts": {
     "fetch:libaddressinput": "node scripts/fetch-libaddressinput-v2.js",
+    "fetch:libaddressinput:v3": "node scripts/fetch-libaddressinput-v3.js",
     "test:scripts": "node scripts/test-transform.js",
     "test:v2": "node scripts/test-libaddressinput-v2.js",
+    "test:algorithms": "node scripts/test-algorithms.js",
     "test:integration": "cd tests/integration && npm run test:integration",
     "test:integration:coverage": "cd tests/integration && npm run test:integration:coverage",
     "validate:data": "node scripts/validate-yaml.js",

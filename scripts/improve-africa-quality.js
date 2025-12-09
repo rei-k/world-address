@@ -25,7 +25,7 @@ const FIELD_LABELS = {
     city: 'City',
     province: 'Province',
     postal_code: 'Postal Code',
-    country: 'Country'
+    country: 'Country',
   },
   fr: {
     recipient: 'Destinataire',
@@ -38,7 +38,7 @@ const FIELD_LABELS = {
     city: 'Ville',
     province: 'Province',
     postal_code: 'Code Postal',
-    country: 'Pays'
+    country: 'Pays',
   },
   ar: {
     recipient: 'المستلم',
@@ -51,7 +51,7 @@ const FIELD_LABELS = {
     city: 'المدينة',
     province: 'المحافظة',
     postal_code: 'الرمز البريدي',
-    country: 'الدولة'
+    country: 'الدولة',
   },
   pt: {
     recipient: 'Destinatário',
@@ -64,7 +64,7 @@ const FIELD_LABELS = {
     city: 'Cidade',
     province: 'Província',
     postal_code: 'Código Postal',
-    country: 'País'
+    country: 'País',
   },
   sw: {
     recipient: 'Mpokeaji',
@@ -77,7 +77,7 @@ const FIELD_LABELS = {
     city: 'Jiji',
     province: 'Mkoa',
     postal_code: 'Nambari ya Posta',
-    country: 'Nchi'
+    country: 'Nchi',
   },
   af: {
     recipient: 'Ontvanger',
@@ -90,8 +90,8 @@ const FIELD_LABELS = {
     city: 'Stad',
     province: 'Provinsie',
     postal_code: 'Poskode',
-    country: 'Land'
-  }
+    country: 'Land',
+  },
 };
 
 // Language code mappings
@@ -121,7 +121,7 @@ const LANGUAGE_CODES = {
   'Amharic': 'am',
   'Tigrinya': 'ti',
   'Somali': 'so',
-  'Oromo': 'om'
+  'Oromo': 'om',
 };
 
 // VAT rates by country (approximate standard rates as of 2024)
@@ -180,7 +180,7 @@ const VAT_RATES = {
   'UG': 0.18, // Uganda
   'ZM': 0.16, // Zambia
   'ZW': 0.145, // Zimbabwe
-  'EH': 0.20  // Western Sahara (uses Moroccan system)
+  'EH': 0.20,  // Western Sahara (uses Moroccan system)
 };
 
 function improveCountryData(yamlPath) {
@@ -226,7 +226,7 @@ function improveCountryData(yamlPath) {
         data.pos.payment_methods.push({
           type: 'mobile',
           name: 'Mobile Money',
-          prevalence: 'high'
+          prevalence: 'high',
         });
         modified = true;
       }
@@ -238,7 +238,7 @@ function improveCountryData(yamlPath) {
         indent: 2,
         lineWidth: -1,
         noRefs: true,
-        quotingType: "'"
+        quotingType: "'",
       });
       fs.writeFileSync(yamlPath, updatedYaml, 'utf8');
       
@@ -262,7 +262,7 @@ function main() {
     'data/africa/eastern_africa',
     'data/africa/northern_africa',
     'data/africa/southern_africa',
-    'data/africa/west_africa'
+    'data/africa/west_africa',
   ];
   
   console.log('🌍 Improving African country data quality...\n');
@@ -294,7 +294,7 @@ function main() {
     });
   });
   
-  console.log(`\n✅ Processing complete!`);
+  console.log('\n✅ Processing complete!');
   console.log(`   Processed: ${totalProcessed} countries`);
   console.log(`   Modified:  ${totalModified} countries`);
 }

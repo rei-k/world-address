@@ -16,7 +16,7 @@ const FIELD_LABELS = {
     city: 'City',
     province: 'Province',
     postal_code: 'Postal Code',
-    country: 'Country'
+    country: 'Country',
   },
   fr: {
     recipient: 'Destinataire',
@@ -29,7 +29,7 @@ const FIELD_LABELS = {
     city: 'Ville',
     province: 'Province',
     postal_code: 'Code Postal',
-    country: 'Pays'
+    country: 'Pays',
   },
   ar: {
     recipient: 'المستلم',
@@ -42,7 +42,7 @@ const FIELD_LABELS = {
     city: 'المدينة',
     province: 'المحافظة',
     postal_code: 'الرمز البريدي',
-    country: 'الدولة'
+    country: 'الدولة',
   },
   so: {
     recipient: 'Soo hel',
@@ -55,7 +55,7 @@ const FIELD_LABELS = {
     city: 'Magaalada',
     province: 'Gobolka',
     postal_code: 'Lambarka Boostada',
-    country: 'Dalka'
+    country: 'Dalka',
   },
   sw: {
     recipient: 'Mpokeaji',
@@ -68,7 +68,7 @@ const FIELD_LABELS = {
     city: 'Jiji',
     province: 'Mkoa',
     postal_code: 'Nambari ya Posta',
-    country: 'Nchi'
+    country: 'Nchi',
   },
   pt: {
     recipient: 'Destinatário',
@@ -81,8 +81,8 @@ const FIELD_LABELS = {
     city: 'Cidade',
     province: 'Província',
     postal_code: 'Código Postal',
-    country: 'País'
-  }
+    country: 'País',
+  },
 };
 
 const LANGUAGE_CODES = {
@@ -91,7 +91,7 @@ const LANGUAGE_CODES = {
   'Arabic': 'ar',
   'Portuguese': 'pt',
   'Swahili': 'sw',
-  'Somali': 'so'
+  'Somali': 'so',
 };
 
 function improveRegionData(yamlPath) {
@@ -122,7 +122,7 @@ function improveRegionData(yamlPath) {
         data.pos.payment_methods.push({
           type: 'mobile',
           name: 'Mobile Money',
-          prevalence: 'high'
+          prevalence: 'high',
         });
         modified = true;
       }
@@ -133,7 +133,7 @@ function improveRegionData(yamlPath) {
         indent: 2,
         lineWidth: -1,
         noRefs: true,
-        quotingType: "'"
+        quotingType: "'",
       });
       fs.writeFileSync(yamlPath, updatedYaml, 'utf8');
       
@@ -159,7 +159,7 @@ function main() {
     'data/africa/eastern_africa/SO/regions/SO-JL.yaml',
     'data/africa/eastern_africa/TZ/regions/TZ-ZAN.yaml',
     'data/africa/central_africa/AO/regions/AO-CB.yaml',
-    'data/africa/northern_africa/DZ/regions/DZ-SAH.yaml'
+    'data/africa/northern_africa/DZ/regions/DZ-SAH.yaml',
   ];
   
   let totalProcessed = 0;
@@ -179,7 +179,7 @@ function main() {
     }
   });
   
-  console.log(`\n✅ Processing complete!`);
+  console.log('\n✅ Processing complete!');
   console.log(`   Processed: ${totalProcessed} regions`);
   console.log(`   Modified:  ${totalModified} regions`);
 }

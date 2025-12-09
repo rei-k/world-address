@@ -45,7 +45,7 @@ function updatePaymentMethods(filePath, countryCode) {
       lineWidth: -1,
       noRefs: true,
       quotingType: '"',
-      forceQuotes: false
+      forceQuotes: false,
     });
     fs.writeFileSync(filePath, yamlStr, 'utf8');
     return true;
@@ -70,7 +70,7 @@ const countriesToUpdate = {
   'central_america/CR': 'CR',
   'south_america/UY': 'UY',
   'caribbean/JM': 'JM',
-  'caribbean/TT': 'TT'
+  'caribbean/TT': 'TT',
 };
 
 let totalUpdated = 0;
@@ -89,7 +89,7 @@ Object.entries(countriesToUpdate).forEach(([relativePath, countryCode]) => {
   if (wasUpdated) {
     totalUpdated++;
   } else {
-    console.log(`  ℹ️  No changes needed`);
+    console.log('  ℹ️  No changes needed');
   }
   console.log('');
 });

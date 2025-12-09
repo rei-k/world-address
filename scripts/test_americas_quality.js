@@ -14,17 +14,21 @@ let withTaxRates = 0;
 let withLocalTaxType = 0;
 let withSubregion = 0;
 let withEnhancedPayments = 0;
-let issuesFound = [];
+const issuesFound = [];
 
 regions.forEach(region => {
   const regionDir = path.join(baseDir, region);
-  if (!fs.existsSync(regionDir)) return;
+  if (!fs.existsSync(regionDir)) {
+    return;
+  }
   
   const countries = fs.readdirSync(regionDir);
   
   countries.forEach(countryCode => {
     const yamlFile = path.join(regionDir, countryCode, `${countryCode}.yaml`);
-    if (!fs.existsSync(yamlFile)) return;
+    if (!fs.existsSync(yamlFile)) {
+      return;
+    }
     
     totalCountries++;
     const data = yaml.load(fs.readFileSync(yamlFile, 'utf8'));

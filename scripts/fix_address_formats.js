@@ -30,7 +30,7 @@ function fixAddressFormat(filePath, countryCode) {
       
       return {
         context: contextName,
-        order: orderArray
+        order: orderArray,
       };
     }
     
@@ -44,7 +44,7 @@ function fixAddressFormat(filePath, countryCode) {
       lineWidth: -1,
       noRefs: true,
       quotingType: '"',
-      forceQuotes: false
+      forceQuotes: false,
     });
     fs.writeFileSync(filePath, yamlStr, 'utf8');
     return true;
@@ -65,7 +65,7 @@ const filesToFix = [
   'central_america/GT/GT.yaml',
   'central_america/HN/HN.yaml',
   'central_america/PA/PA.yaml',
-  'central_america/SV/SV.yaml'
+  'central_america/SV/SV.yaml',
 ];
 
 let totalUpdated = 0;
@@ -80,7 +80,7 @@ filesToFix.forEach(filePath => {
   if (wasUpdated) {
     totalUpdated++;
   } else {
-    console.log(`  ℹ️  No changes needed`);
+    console.log('  ℹ️  No changes needed');
   }
   console.log('');
 });

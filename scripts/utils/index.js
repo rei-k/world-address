@@ -10,6 +10,8 @@ const yaml = require('./yaml');
 const constants = require('./constants');
 const validation = require('./validation');
 const dataLoader = require('./data-loader');
+const dataMerge = require('./data-merge');
+const dataQuality = require('./data-quality');
 
 module.exports = {
   // Logger
@@ -32,4 +34,10 @@ module.exports = {
 
   // Data loader
   ...dataLoader,
+
+  // Data merge utilities
+  ...dataMerge,
+
+  // Data quality checker
+  ...dataQuality,
 };

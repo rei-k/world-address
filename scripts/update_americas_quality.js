@@ -13,10 +13,15 @@ function updateYAMLFile(filePath, region, countryCode) {
   const data = yaml.load(fs.readFileSync(filePath, 'utf8'));
   
   let regionData;
-  if (region === 'caribbean') regionData = taxData.caribbean[countryCode];
-  else if (region === 'central_america') regionData = taxData.central_america[countryCode];
-  else if (region === 'north_america') regionData = taxData.north_america[countryCode];
-  else if (region === 'south_america') regionData = taxData.south_america[countryCode];
+  if (region === 'caribbean') {
+    regionData = taxData.caribbean[countryCode];
+  } else if (region === 'central_america') {
+    regionData = taxData.central_america[countryCode];
+  } else if (region === 'north_america') {
+    regionData = taxData.north_america[countryCode];
+  } else if (region === 'south_america') {
+    regionData = taxData.south_america[countryCode];
+  }
   
   if (!regionData) {
     console.log(`⚠️  No tax data for ${countryCode} in ${region}`);
@@ -80,7 +85,7 @@ function updateYAMLFile(filePath, region, countryCode) {
         if (!data.pos.tax.rate.notes || data.pos.tax.rate.notes !== taxInfo.rate.notes) {
           data.pos.tax.rate.notes = taxInfo.rate.notes;
           updated = true;
-          console.log(`  ✓ Added tax rate notes`);
+          console.log('  ✓ Added tax rate notes');
         }
       }
     }
@@ -93,7 +98,7 @@ function updateYAMLFile(filePath, region, countryCode) {
       lineWidth: -1,
       noRefs: true,
       quotingType: '"',
-      forceQuotes: false
+      forceQuotes: false,
     });
     fs.writeFileSync(filePath, yamlStr, 'utf8');
     return true;
@@ -115,7 +120,9 @@ regions.forEach(region => {
   console.log(`\n📂 Processing ${region.replace('_', ' ').toUpperCase()}...`);
   
   const regionDir = path.join(baseDir, region);
-  if (!fs.existsSync(regionDir)) return;
+  if (!fs.existsSync(regionDir)) {
+    return;
+  }
   
   const countries = fs.readdirSync(regionDir);
   
@@ -123,7 +130,9 @@ regions.forEach(region => {
     const countryDir = path.join(regionDir, countryCode);
     const yamlFile = path.join(countryDir, `${countryCode}.yaml`);
     
-    if (!fs.existsSync(yamlFile)) return;
+    if (!fs.existsSync(yamlFile)) {
+      return;
+    }
     
     totalFiles++;
     console.log(`\n${countryCode}:`);
@@ -132,11 +141,11 @@ regions.forEach(region => {
     if (wasUpdated) {
       totalUpdated++;
     } else {
-      console.log(`  ℹ️  No changes needed`);
+      console.log('  ℹ️  No changes needed');
     }
   });
 });
 
-console.log(`\n\n✅ Complete!`);
+console.log('\n\n✅ Complete!');
 console.log(`   Files processed: ${totalFiles}`);
 console.log(`   Files updated: ${totalUpdated}`);
