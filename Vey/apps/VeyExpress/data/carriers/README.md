@@ -4,11 +4,11 @@
 
 ## Overview
 
-This directory contains comprehensive data for 89 major shipping and logistics carriers from around the world. The data is provided in both YAML and JSON formats for easy integration with various systems.
+This directory contains comprehensive data for 65 major shipping and logistics carriers from around the world. The data is provided in both YAML and JSON formats for easy integration with various systems.
 
 ## 📊 Database Statistics
 
-- **Total Carriers**: 89
+- **Total Carriers**: 65
 - **Countries Covered**: 52
 - **Regions**: 6 (Asia, Americas, Europe, Oceania, Middle East, Africa)
 - **Version**: 1.0.0

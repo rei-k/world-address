@@ -89,7 +89,7 @@ Making delivery and logistics **as simple as email and credit cards**.
 
 ## 🔗 Supported Carriers
 
-**89 carriers from 52 countries** - [Complete Carrier Database](./data/carriers/README.md)
+**65 carriers from 52 countries** - [Complete Carrier Database](./data/carriers/README.md)
 
 ### 🌏 Asia (36 carriers)
 - **Japan**: ヤマト運輸 (Yamato Transport), 佐川急便 (Sagawa Express), 日本郵便 (Japan Post)
