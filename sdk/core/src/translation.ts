@@ -212,3 +212,126 @@ export function getTranslationCacheStats() {
     entries: Array.from(translationCache.keys()),
   };
 }
+
+/**
+ * Translate address fields from one language to another
+ * 
+ * Translates all non-empty address fields while preserving field structure.
+ * Useful when switching language tabs in address forms.
+ * 
+ * @param address - Address with fields in source language
+ * @param sourceLang - Source language code
+ * @param targetLang - Target language code
+ * @param config - Translation service configuration
+ * @returns Address with translated field values
+ * 
+ * @example
+ * ```typescript
+ * const address = {
+ *   country: 'JP',
+ *   city: '千代田区',
+ *   province: '東京都',
+ *   street_address: '千代田1-1',
+ * };
+ * 
+ * const translated = await translateAddressFields(
+ *   address,
+ *   'ja',
+ *   'en',
+ *   { service: 'libretranslate', endpoint: 'https://libretranslate.com' }
+ * );
+ * 
+ * console.log(translated.city); // "Chiyoda"
+ * console.log(translated.province); // "Tokyo"
+ * ```
+ */
+export async function translateAddressFields(
+  address: Record<string, string | undefined>,
+  sourceLang: string,
+  targetLang: string,
+  config: TranslationServiceConfig
+): Promise<Record<string, string | undefined>> {
+  // If source and target are the same, return as-is
+  if (sourceLang === targetLang) {
+    return { ...address };
+  }
+
+  const translatedAddress: Record<string, string | undefined> = {};
+  
+  // Fields that should be translated
+  const translatableFields = [
+    'recipient',
+    'building',
+    'street_address',
+    'district',
+    'ward',
+    'city',
+    'province',
+  ];
+
+  // Fields that should NOT be translated
+  const nonTranslatableFields = [
+    'postal_code',
+    'country', // ISO code
+    'floor',
+    'room',
+    'unit',
+  ];
+
+  // Prepare batch translation requests
+  const requests: Array<{ field: string; request: TranslationRequest }> = [];
+  
+  for (const field of translatableFields) {
+    const value = address[field];
+    if (value && typeof value === 'string' && value.trim()) {
+      requests.push({
+        field,
+        request: {
+          text: value,
+          sourceLang,
+          targetLang,
+          field,
+          countryCode: address.country,
+        },
+      });
+    } else if (value !== undefined) {
+      // Preserve empty strings and other values as-is
+      translatedAddress[field] = value;
+    }
+  }
+
+  // Translate all fields in batch
+  if (requests.length > 0) {
+    try {
+      const results = await batchTranslate(
+        requests.map(r => r.request),
+        config
+      );
+
+      // Map results back to fields
+      requests.forEach((req, index) => {
+        translatedAddress[req.field] = results[index].translatedText;
+      });
+    } catch (error) {
+      console.error('Address field translation failed:', error);
+      // On error, return original address
+      return { ...address };
+    }
+  }
+
+  // Copy non-translatable fields as-is
+  for (const field of nonTranslatableFields) {
+    if (address[field] !== undefined) {
+      translatedAddress[field] = address[field];
+    }
+  }
+
+  // Copy any other fields that weren't processed
+  for (const field in address) {
+    if (translatedAddress[field] === undefined && address[field] !== undefined) {
+      translatedAddress[field] = address[field];
+    }
+  }
+
+  return translatedAddress;
+}

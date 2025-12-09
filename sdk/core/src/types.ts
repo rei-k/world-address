@@ -1437,3 +1437,64 @@ export interface Suggestion {
   /** Priority */
   priority: 'high' | 'medium' | 'low';
 }
+
+// ============================================================================
+// Postal Code Lookup Types
+// ============================================================================
+
+/**
+ * Postal code lookup service provider
+ */
+export type PostalCodeLookupService = 
+  | 'zippopotam'
+  | 'geonames';
+
+/**
+ * Postal code lookup request
+ */
+export interface PostalCodeLookupRequest {
+  /** Country code (ISO 3166-1 alpha-2) */
+  countryCode: string;
+  /** Postal code to lookup */
+  postalCode: string;
+}
+
+/**
+ * Postal code lookup result
+ */
+export interface PostalCodeLookupResult {
+  /** Postal code */
+  postalCode: string;
+  /** Country code */
+  countryCode: string;
+  /** Country name */
+  countryName?: string;
+  /** City name */
+  city?: string;
+  /** Province/State name */
+  province?: string;
+  /** Province/State code */
+  provinceCode?: string;
+  /** District name */
+  district?: string;
+  /** Geographic coordinates */
+  coordinates?: GeoCoordinates;
+  /** Service used for lookup */
+  source: PostalCodeLookupService;
+  /** Whether result was cached */
+  cached?: boolean;
+}
+
+/**
+ * Postal code lookup configuration
+ */
+export interface PostalCodeLookupConfig {
+  /** Preferred service provider */
+  preferredService?: PostalCodeLookupService;
+  /** Enable fallback to other services on failure */
+  enableFallback?: boolean;
+  /** Request timeout in milliseconds */
+  timeout?: number;
+  /** GeoNames.org username (required for GeoNames API) */
+  geonamesUsername?: string;
+}
