@@ -46,6 +46,24 @@ export {
   type DeliveryCompletion,
 } from './delivery-flow';
 
+// Recipient resolver - Email-like delivery recipient determination
+export {
+  RecipientResolver,
+  createRecipientResolver,
+  createDefaultAcceptancePolicy,
+  createPermissiveAcceptancePolicy,
+  createStrictAcceptancePolicy,
+  createDefaultAddressSelectionRules,
+  mergeAcceptancePolicies,
+  type RecipientInfo,
+  type AddressSelectionRule,
+  type AddressCondition,
+  type RecipientValidationResult,
+  type DeliveryAcceptanceResult,
+  type PackageDetails,
+  type DeliveryRequestInfo,
+} from './recipient-resolver';
+
 // Re-export core ZKP types for convenience
 export type {
   DIDDocument,
