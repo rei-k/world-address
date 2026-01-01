@@ -21,6 +21,11 @@
       "import": "./dist/convey-protocol.mjs",
       "require": "./dist/convey-protocol.js"
     },
+    "./recipient-resolver": {
+      "types": "./dist/recipient-resolver.d.ts",
+      "import": "./dist/recipient-resolver.mjs",
+      "require": "./dist/recipient-resolver.js"
+    },
     "./delivery-flow": {
       "types": "./dist/delivery-flow.d.ts",
       "import": "./dist/delivery-flow.mjs",
@@ -32,6 +37,7 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "example:ecommerce": "ts-node examples/ecommerce-checkout.ts",
+    "example:recipient-resolver": "ts-node examples/recipient-resolver-usage.ts",
     "lint": "eslint src tests examples --ext .ts",
     "lint:fix": "eslint src tests examples --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"examples/**/*.ts\"",
