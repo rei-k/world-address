@@ -14,6 +14,13 @@
 
 import { ZKPIntegration, type AddressRegistration, type ConveyDeliveryRequest, type DeliveryAcceptance } from './zkp-integration';
 import { hashSHA256, generateSecureNonce } from '../../../sdk/core/src/zkp-crypto';
+import { 
+  RecipientResolver,
+  createRecipientResolver,
+  type DeliveryAcceptancePolicy,
+  type AddressSelectionRule,
+  createDefaultAddressSelectionRules,
+} from './recipient-resolver';
 
 // ============================================================================
 // Types & Interfaces
@@ -41,20 +48,12 @@ export interface ConveyUser {
   acceptancePolicy: DeliveryAcceptancePolicy;
   /** Registered addresses */
   addresses: AddressRegistration[];
+  /** Address selection rules */
+  addressSelectionRules?: AddressSelectionRule[];
 }
 
-export interface DeliveryAcceptancePolicy {
-  /** Automatically accept from friends */
-  autoAcceptFriends: boolean;
-  /** Automatically accept from verified senders */
-  autoAcceptVerified: boolean;
-  /** Require manual approval for all */
-  requireManualApproval: boolean;
-  /** Blocked ConveyIDs */
-  blockedSenders: string[];
-  /** Allowed namespaces only */
-  allowedNamespaces?: string[];
-}
+// Re-export DeliveryAcceptancePolicy from recipient-resolver
+export type { DeliveryAcceptancePolicy } from './recipient-resolver';
 
 export interface DeliveryRequest {
   /** Request ID */
@@ -200,9 +199,11 @@ export class ConveyProtocol {
   private zkpIntegration: ZKPIntegration;
   private user: ConveyUser | null = null;
   private pendingRequests: Map<string, DeliveryRequest> = new Map();
+  private recipientResolver: RecipientResolver;
 
   constructor(zkpIntegration: ZKPIntegration) {
     this.zkpIntegration = zkpIntegration;
+    this.recipientResolver = createRecipientResolver();
   }
 
   /**
@@ -223,6 +224,7 @@ export class ConveyProtocol {
       displayName,
       acceptancePolicy,
       addresses: [],
+      addressSelectionRules: createDefaultAddressSelectionRules(),
     };
 
     return this.user;
@@ -255,8 +257,12 @@ export class ConveyProtocol {
       throw new Error('User not registered. Call registerUser() first.');
     }
 
-    // Validate recipient ConveyID
-    const recipientId = parseConveyID(recipientConveyId);
+    // Validate recipient ConveyID using RecipientResolver
+    const validation = this.recipientResolver.validateRecipient(recipientConveyId);
+    if (!validation.valid || !validation.conveyId) {
+      throw new Error(validation.error || 'Invalid recipient ConveyID');
+    }
+    const recipientId = validation.conveyId;
 
     // Generate request ID
     const requestId = hashSHA256(`${this.user.conveyId.full}:${recipientConveyId}:${Date.now()}:${generateSecureNonce()}`);
@@ -293,27 +299,31 @@ export class ConveyProtocol {
       throw new Error(`Request is not for this user. Expected ${this.user.conveyId.full}, got ${request.to.full}`);
     }
 
-    // Check if sender is blocked
-    if (this.user.acceptancePolicy.blockedSenders.includes(request.from.full)) {
-      await this.rejectDeliveryRequest(request.id, 'Sender is blocked');
-      return;
-    }
+    // Use RecipientResolver to check if delivery should be accepted
+    const acceptance = this.recipientResolver.shouldAcceptDelivery(
+      {
+        from: request.from,
+        to: request.to,
+        package: request.package,
+        message: request.message,
+        requestedAt: request.requestedAt,
+      },
+      this.user.acceptancePolicy
+    );
 
-    // Check namespace restrictions
-    if (this.user.acceptancePolicy.allowedNamespaces) {
-      if (!this.user.acceptancePolicy.allowedNamespaces.includes(request.from.namespace)) {
-        await this.rejectDeliveryRequest(request.id, 'Sender namespace not allowed');
-        return;
-      }
+    // If rejected automatically, reject the request
+    if (!acceptance.accepted && !acceptance.requiresManualApproval) {
+      await this.rejectDeliveryRequest(request.id, acceptance.reason);
+      return;
     }
 
     // Store pending request
     this.pendingRequests.set(request.id, request);
 
-    // Auto-accept based on policy
-    if (this.user.acceptancePolicy.autoAcceptVerified && !this.user.acceptancePolicy.requireManualApproval) {
-      // In production, check if sender is verified
-      // For demo, we'll require manual approval
+    // Auto-accept if policy allows
+    if (acceptance.accepted && acceptance.autoAccepted) {
+      // In production, would auto-accept and select address
+      console.log(`Auto-accepted delivery from ${request.from.full}: ${acceptance.reason}`);
     }
   }
 
@@ -322,7 +332,7 @@ export class ConveyProtocol {
    */
   async acceptDeliveryRequest(
     requestId: string,
-    selectedAddressIndex: number = 0
+    selectedAddressIndex?: number
   ): Promise<DeliveryResponse> {
     if (!this.user) {
       throw new Error('User not registered');
@@ -337,10 +347,30 @@ export class ConveyProtocol {
       throw new Error(`Request already ${request.status}`);
     }
 
-    // Select address
-    const selectedAddress = this.user.addresses[selectedAddressIndex];
-    if (!selectedAddress) {
-      throw new Error('No address available');
+    // Select address using RecipientResolver if no index provided
+    let selectedAddress: AddressRegistration;
+    if (selectedAddressIndex !== undefined) {
+      selectedAddress = this.user.addresses[selectedAddressIndex];
+      if (!selectedAddress) {
+        throw new Error('Invalid address index');
+      }
+    } else {
+      // Use RecipientResolver to automatically select address based on rules
+      const autoSelected = this.recipientResolver.selectDeliveryAddress(
+        {
+          from: request.from,
+          to: request.to,
+          package: request.package,
+          message: request.message,
+          requestedAt: request.requestedAt,
+        },
+        this.user.addresses,
+        this.user.addressSelectionRules
+      );
+      if (!autoSelected) {
+        throw new Error('No address available');
+      }
+      selectedAddress = autoSelected;
     }
 
     // Generate ZKP proof based on preferences
@@ -370,7 +400,7 @@ export class ConveyProtocol {
       zkpProof: {
         type: acceptance.proofType,
         proof: acceptance.proof,
-        publicSignals: acceptance.publicSignals,
+        publicSignals: acceptance.publicSignals || [],
       },
       respondedAt: new Date().toISOString(),
     };
@@ -458,6 +488,51 @@ export class ConveyProtocol {
    */
   getCurrentUser(): ConveyUser | null {
     return this.user;
+  }
+
+  /**
+   * Add verified sender
+   */
+  addVerifiedSender(conveyId: string): void {
+    this.recipientResolver.addVerifiedSender(conveyId);
+  }
+
+  /**
+   * Remove verified sender
+   */
+  removeVerifiedSender(conveyId: string): void {
+    this.recipientResolver.removeVerifiedSender(conveyId);
+  }
+
+  /**
+   * Add friend
+   */
+  addFriend(conveyId: string): void {
+    this.recipientResolver.addFriend(conveyId);
+  }
+
+  /**
+   * Remove friend
+   */
+  removeFriend(conveyId: string): void {
+    this.recipientResolver.removeFriend(conveyId);
+  }
+
+  /**
+   * Get recipient resolver instance
+   */
+  getRecipientResolver(): RecipientResolver {
+    return this.recipientResolver;
+  }
+
+  /**
+   * Update address selection rules
+   */
+  updateAddressSelectionRules(rules: AddressSelectionRule[]): void {
+    if (!this.user) {
+      throw new Error('User not registered');
+    }
+    this.user.addressSelectionRules = rules;
   }
 }
 
