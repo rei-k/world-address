@@ -594,11 +594,31 @@ Pattern 3: QR Code Sharing
 
 **Vey** derives from "convey" (to deliver, to transport) and represents the core ecosystem of this project.
 
+### 3層アーキテクチャ / 3-Layer Architecture
+
+**Veyは配送インフラです。暗号プロジェクトではありません。**
+
+**Vey is delivery infrastructure, not a crypto project.**
+
+Veyエコシステムは、役割を明確に分離した3つの層で構成されています：
+
+The Vey ecosystem consists of three layers with clearly separated roles:
+
+1. **第1層：通信プロトコル (Communication Protocol)** - 配送を動かす中核（単純・高速・確実）
+2. **第2層：住所帳 (Address Book)** - UX・人間的な信頼（メールの連絡先帳と同じ）
+3. **第3層：ゼロ知識証明 (ZKP)** - 技術的信頼を裏側で支える（ユーザーには見せない）
+
+**Layer 1: Protocol** - Core delivery mechanism (Simple, Fast, Reliable)  
+**Layer 2: Address Book** - Human trust and UX (Like email contacts)  
+**Layer 3: ZKP** - Technical trust behind the scenes (Invisible to users)
+
+**📖 詳細仕様**: [3層アーキテクチャ完全仕様書 / 3-Layer Architecture Specification](./Vey/3_LAYER_ARCHITECTURE.md)
+
 ### Vision
 
 - 📧 **Email-like Delivery**: Simple and reliable delivery system like email addresses
 - 💳 **Credit Card-like Convenience**: Easy address handling with QR/NFC support
-- 🔐 **Privacy First**: Zero-knowledge proof for delivery without exposing addresses
+- ✅ **Privacy First**: Delivery history verification without exposing addresses
 
 ### Core Applications
 
@@ -607,10 +627,14 @@ All important applications in the Vey ecosystem with their frontend UI/UX featur
 #### 📱 Veyvault - Cloud Address Book
 **Description:** Cloud address book with social login integration, QR/NFC support, and end-to-end encryption
 
+**💡 これは「第2層：住所帳」の実装です**  
+**💡 This is the implementation of "Layer 2: Address Book"**
+
 **Frontend UI/UX Features:**
 - **Address Management Interface:** Clean, card-based layout for managing multiple addresses (home, work, other) with easy add/edit/delete actions
 - **QR/NFC Sharing Flow:** Visual step-by-step QR code generation and scanning interface with real-time friend request notifications
 - **Friend Management Dashboard:** Contact list with privacy-preserving friend connections, showing delivery permissions without exposing raw addresses
+- **Delivery History Verification:** Shows "Delivery History Confirmed" or "Verified" status (ZKP operates behind the scenes)
 - **One-Click Checkout Widget:** Embedded widget for e-commerce sites enabling instant address selection without re-entering information
 - **Mobile Wallet Integration:** Seamless Google Wallet/Apple Wallet pass design with QR codes for quick access
 - **Responsive Design:** Optimized for web (React/Next.js), mobile (React Native), and mini-programs (WeChat/Alipay)
@@ -635,7 +659,7 @@ All important applications in the Vey ecosystem with their frontend UI/UX featur
 - **Addressless Checkout Flow:** Streamlined checkout with Veyvault "Select Address" button replacing traditional address forms
 - **Product Catalog:** Grid/list view toggle with filtering, sorting, and search functionality
 - **Shopping Cart:** Persistent cart with real-time inventory updates and shipping cost estimation
-- **ZKP Privacy Indicator:** Visual badges showing privacy protection status and secure delivery verification
+- **Privacy Protection:** Visual badges showing delivery history and trusted destination status (ZKP operates behind the scenes)
 - **Multi-Language Store:** Language and currency selector with automatic content localization
 - **Responsive Themes:** Customizable themes optimized for mobile, tablet, and desktop shopping experiences
 - **Order Tracking Dashboard:** Real-time order status with map-based delivery tracking integration
