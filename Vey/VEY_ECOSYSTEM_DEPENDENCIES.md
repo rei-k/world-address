@@ -102,7 +102,7 @@ export interface AddressAbstraction {
 ```
 
 **なぜ真似できないか / Why It Cannot Be Copied:**
-- ✅ 248カ国の住所データ構造を理解している
+- ✅ 269カ国・地域の住所データ構造を理解している
 - ✅ PID（Privacy ID）システムが必要
 - ✅ ConveyID プロトコルの実装
 - ✅ グローバルな名前空間管理
@@ -419,20 +419,13 @@ export interface IntegratedPaymentSystem {
 
 ### 1. グローバル住所データベース / Global Address Database
 
-**Vey 独自の資産 / Vey's Unique Asset:**
-```
-248カ国・地域の住所データ
-  • YAML/JSON 形式
-  • 階層構造（PID）
-  • 多言語対応
-  • API 提供
-
-248 countries/regions address data
-  • YAML/JSON format
-  • Hierarchical structure (PID)
-  • Multi-language support
-  • API provided
-```
+**なぜ真似できないか / Why It Cannot Be Replicated:**
+1. ✅ **269カ国・地域の住所データ** - 構築に数年
+2. ✅ **ConveyID プロトコル** - 標準化に時間
+3. ✅ **ZKP 実装** - 高度な専門知識
+4. ✅ **マルチキャリア統合** - 個別交渉が必要
+5. ✅ **オフライン接点** - 店舗システム統合
+6. ✅ **エコシステム効果** - 全てが揃って初めて機能
 
 **競合が持たない理由 / Why Competitors Don't Have This:**
 - ⏱️ 構築に数年かかる
