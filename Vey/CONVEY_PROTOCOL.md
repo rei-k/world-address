@@ -1,8 +1,8 @@
 # 🌐 ConveyID Delivery Protocol Specification
 
-**Version:** 1.0.0  
-**Date:** 2025-12-07  
-**Status:** Final Specification
+**Version:** 1.1.0  
+**Date:** 2026-01-02  
+**Status:** Production Specification
 
 ---
 
@@ -10,7 +10,7 @@
 
 **ConveyID** (e.g., `alice@convey`) is a global delivery ID protocol that enables users to initiate delivery requests as easily as sending an email, without exposing their physical addresses.
 
-- **Sender**: Simply enters a ConveyID in one line
+- **Sender**: Simply enters a ConveyID in one line (外向き: "宛先コード" / "Destination Code")
 - **Recipient**: Selects a delivery address from their address book
 - **Physical Address**: Only disclosed to the delivery carrier (ZKP-compatible)
 
@@ -18,7 +18,17 @@ This protocol allows deliveries worldwide without requiring address exchange.
 
 ### One-Line Summary
 
-> **ConveyID is the world's first "email-like delivery protocol" that fundamentally improves international delivery UX and security through address privacy, ZKP protection, mutual consent, and global ID support.**
+> **ConveyID is the world's first "email-like delivery protocol" that fundamentally improves international delivery UX and security through address privacy, gradual ZKP introduction, mutual consent, and global ID support.**
+
+### Version 1.1.0 Updates
+
+**New in v1.1.0** (2026-01-02):
+- ✅ **Delivery Trust Levels**: 3-tier delivery history system (Basic/Continuous/Verified)
+- ✅ **First-Time Delivery Exception Routes**: Official support for new users
+- ✅ **Responsibility Boundaries**: Clear snapshot and liability definitions
+- ✅ **Gradual ZKP Introduction**: 3-phase approach (Signature → Merkle → Full ZKP)
+- ✅ **User-Facing Terminology**: Simplified external terminology mapping
+- ✅ **Ecosystem Dependencies**: Explicit documentation of Vey uniqueness
 
 ---
 
@@ -39,6 +49,11 @@ This protocol allows deliveries worldwide without requiring address exchange.
 - [13. Implementation Guidelines](#13-implementation-guidelines)
 - [14. API Specification](#14-api-specification)
 - [15. Security Considerations](#15-security-considerations)
+- [16. Delivery Trust Levels (NEW v1.1.0)](#16-delivery-trust-levels-new-v110)
+- [17. First-Time Delivery Exceptions (NEW v1.1.0)](#17-first-time-delivery-exceptions-new-v110)
+- [18. Responsibility Boundaries (NEW v1.1.0)](#18-responsibility-boundaries-new-v110)
+- [19. Gradual ZKP Introduction (NEW v1.1.0)](#19-gradual-zkp-introduction-new-v110)
+- [20. Terminology Mapping (NEW v1.1.0)](#20-terminology-mapping-new-v110)
 
 ---
 
@@ -1183,6 +1198,442 @@ compliance:
 
 ---
 
+## 16. Delivery Trust Levels (NEW v1.1.0)
+
+### Overview
+
+ConveyID v1.1.0 introduces a 3-tier delivery trust system to differentiate between first-time deliveries and established delivery relationships.
+
+### Trust Levels
+
+```typescript
+export enum DeliveryTrustLevel {
+  NONE = 0,      // No delivery history
+  BASIC = 1,     // At least 1 successful delivery
+  CONTINUOUS = 2, // 3+ deliveries in last 90 days
+  VERIFIED = 3,   // Direct delivery with ID verification
+}
+```
+
+### Level Determination
+
+| Level | Criteria | UI Display | Benefits |
+|-------|----------|------------|----------|
+| **None (0)** | No delivery history | `新規` / `New` | Standard rates, requires approval |
+| **Basic (1)** | 1+ successful delivery | `✓ 配送実績あり` | Standard service |
+| **Continuous (2)** | 3+ deliveries (90 days) | `✓✓ 継続配送先` | 5-10% discount, priority |
+| **Verified (3)** | Direct + ID verified | `✓✓✓ 本人確認済み` | 10-15% discount, premium |
+
+### Implementation
+
+```typescript
+interface DeliveryHistoryRecord {
+  addressId: string;
+  trustLevel: DeliveryTrustLevel;
+  totalDeliveries: number;
+  recentDeliveries: number;
+  directDeliveries: number;
+  verifiedDeliveries: number;
+  firstDeliveryDate: string;
+  lastDeliveryDate: string;
+  lastDeliveryWithinDays: number;
+}
+
+function calculateDeliveryTrustLevel(
+  history: DeliveryHistoryRecord
+): DeliveryTrustLevel {
+  if (history.totalDeliveries === 0) return DeliveryTrustLevel.NONE;
+  
+  if (
+    history.recentDeliveries >= 3 &&
+    history.directDeliveries >= history.totalDeliveries * 0.9 &&
+    history.verifiedDeliveries >= history.totalDeliveries * 0.5 &&
+    history.lastDeliveryWithinDays <= 90
+  ) {
+    return DeliveryTrustLevel.VERIFIED;
+  }
+  
+  if (
+    history.recentDeliveries >= 3 &&
+    history.lastDeliveryWithinDays <= 90
+  ) {
+    return DeliveryTrustLevel.CONTINUOUS;
+  }
+  
+  return DeliveryTrustLevel.BASIC;
+}
+```
+
+**See Also**: [Delivery Trust System Documentation](./DELIVERY_TRUST_SYSTEM.md)
+
+---
+
+## 17. First-Time Delivery Exceptions (NEW v1.1.0)
+
+### Problem
+
+Without delivery history, new users face barriers to receiving deliveries. This creates a "cold start" problem.
+
+### Solution: 4 Official Exception Routes
+
+#### Route 1: Recipient Pre-Approval
+
+```
+1. Sender creates delivery request
+2. Recipient receives "First-Time Delivery" notification
+3. Recipient explicitly approves (address + approval button)
+4. Delivery proceeds
+```
+
+**Security**:
+- ✅ Explicit recipient consent
+- ✅ Sender identity verification via ConveyID
+- ✅ Item description disclosed upfront
+
+#### Route 2: Depot/Locker Delivery
+
+```
+1. Sender creates delivery request
+2. Recipient selects public locker as destination
+3. Carrier delivers to locker
+4. Recipient picks up from locker
+```
+
+**Benefits**:
+- 🏢 No home address disclosure
+- 🔐 Privacy protection
+- ⏰ 24/7 pickup availability
+
+#### Route 3: One-Time Address Token
+
+```
+1. Sender creates delivery request
+2. Recipient issues one-time address token
+3. Address disclosed to carrier only (encrypted)
+4. Token auto-deleted after delivery
+```
+
+**Security**:
+- 🔐 Encrypted temporary token
+- ⏱️ Expires in 24-72 hours
+- 🗑️ Auto-deleted after use
+- 👁️ Access logging
+
+#### Route 4: Friend/Acquaintance Introduction
+
+```
+1. Existing user introduces new user
+2. Trust level inherited (1 level lower)
+3. New user's first delivery approved
+4. Valid for first 3-5 deliveries
+```
+
+**Trust Inheritance**:
+- 📊 Introducer must be Level 2+
+- 🔄 New user starts 1 level lower
+- ⏱️ Valid for 90 days
+
+### API Example
+
+```typescript
+interface FirstTimeDeliveryRequest {
+  requestId: string;
+  senderConveyId: string;
+  recipientConveyId: string;
+  itemDescription: string;
+  requiresApproval: true;
+  approvalStatus: 'pending' | 'approved' | 'rejected';
+  exceptionRoute: 'approval' | 'locker' | 'one_time' | 'introduction';
+}
+```
+
+**See Also**: [Delivery Trust System - Exception Routes](./DELIVERY_TRUST_SYSTEM.md#初回配送例外ルート--first-time-delivery-exception-routes)
+
+---
+
+## 18. Responsibility Boundaries (NEW v1.1.0)
+
+### Problem
+
+Unclear responsibility boundaries lead to disputes about:
+- Misdeliveries
+- Address changes during transit
+- Rejected deliveries
+
+### Solution: Clear Boundary Definitions
+
+#### Boundary 1: Snapshot at Delivery ID Resolution
+
+```typescript
+interface DeliverySnapshot {
+  snapshotId: string;
+  deliveryId: string;
+  resolvedAddress: string; // encrypted
+  resolvedAt: string;
+  validUntil: string;
+  addressVersion: number;
+  snapshotHash: string; // immutable proof
+}
+```
+
+**Principle:**
+> "Address information at Delivery ID resolution time is frozen as a snapshot"
+
+**Responsibility:**
+- ✅ Vey responsible for correct address resolution
+- ✅ Address changes after snapshot apply to next delivery only
+- ✅ Snapshot is immutable
+
+#### Boundary 2: Carrier Responsibility After Dispatch
+
+```
+┌─────────────────┐
+│  Delivery ID    │  ← Vey Responsibility
+│  Resolution     │     (Address resolution)
+└────────┬────────┘
+         │ 📸 Snapshot
+         ▼
+┌─────────────────┐
+│  Address        │  ← Vey Responsibility
+│  Transmission   │     (Address transmission)
+└────────┬────────┘
+         │ 🚚 Dispatch
+         ▼
+┌─────────────────┐
+│  Physical       │  ← Carrier Responsibility
+│  Delivery       │     (Physical delivery)
+└─────────────────┘
+```
+
+**Carrier Responsibilities:**
+- 📦 Physical delivery execution
+- 🚚 Tracking updates
+- 📞 Recipient communication
+- 🔄 Redelivery attempts
+
+**Outside Vey's Responsibility:**
+- ❌ Delivery delays (weather, traffic)
+- ❌ Package damage (transit accidents)
+- ❌ Recipient absence
+- ❌ Address changes after dispatch
+
+#### Boundary 3: Address Changes Apply to Next Delivery
+
+**Principle:**
+> "Address changes do not affect in-transit orders"
+
+**Implementation:**
+
+```typescript
+interface AddressChangePolicy {
+  effectiveFrom: 'next_delivery';
+  inTransitDeliveries: 'use_old_address';
+  notifyUser: true;
+  warningMessage: string;
+}
+```
+
+**User Notification:**
+```
+⚠️ Address Change Notice
+
+New address will be used from next delivery.
+
+In-transit orders (2):
+  • Order #12345 → Old Address
+  • Order #12346 → Old Address
+
+Future orders → New Address
+
+[OK]
+```
+
+#### Boundary 4: Rejected Delivery Responsibility
+
+| Rejection Reason | Responsible Party | Shipping Refund | Item Refund |
+|------------------|-------------------|-----------------|-------------|
+| Recipient refused (no reason) | Recipient | None | None |
+| Incorrect address (Vey's fault) | Vey | Full | Full |
+| Incorrect address (Sender's fault) | Sender | None | Full (to sender) |
+| Unable to deliver (Carrier's fault) | Carrier | Full | Full |
+| Recipient absent (redeliver possible) | Shared | Partial | None |
+
+**See Also**: [Delivery Trust System - Responsibility Boundaries](./DELIVERY_TRUST_SYSTEM.md#責任境界の定義--responsibility-boundaries)
+
+---
+
+## 19. Gradual ZKP Introduction (NEW v1.1.0)
+
+### Problem
+
+Full ZKP implementation from day one creates heavy operational burden and delays launch.
+
+### Solution: 3-Phase Gradual Introduction
+
+#### Phase 1: Signature + Log Proof (MVP - 6 months)
+
+**Timeline:** MVP ~ First 6 months  
+**Technical Requirements:** Low  
+**Security Level:** Basic
+
+```typescript
+interface SignatureProof {
+  deliveryId: string;
+  signature: string; // Ed25519
+  signerDid: string; // Carrier DID
+  dataHash: string;
+  timestamp: string;
+  type: 'signature_proof';
+}
+```
+
+**Benefits:**
+- ✅ Easy to implement
+- ✅ Low operational cost
+- ✅ Tamper-proof records
+- ✅ Integrates with existing systems
+
+**Limitations:**
+- ⚠️ Limited privacy protection
+- ⚠️ Address encrypted but not hidden
+
+#### Phase 2: Merkle Inclusion Proof (6-12 months)
+
+**Timeline:** 6-12 months  
+**Technical Requirements:** Medium  
+**Security Level:** Enhanced
+
+```typescript
+interface MerkleInclusionProof {
+  deliveryId: string;
+  merkleRoot: string;
+  merklePath: string[];
+  leafHash: string;
+  treeDepth: number;
+  type: 'merkle_proof';
+}
+```
+
+**Benefits:**
+- ✅ Proves membership in delivery set
+- ✅ Hides individual delivery details
+- ✅ Efficient verification
+- ✅ Blockchain integration possible
+
+**Limitations:**
+- ⚠️ Not full ZKP
+- ⚠️ Some information may leak
+
+#### Phase 3: Full ZKP (zk-SNARK) (After 1 year)
+
+**Timeline:** 1+ years  
+**Technical Requirements:** High  
+**Security Level:** Maximum
+
+```typescript
+interface ZKSNARKProof {
+  deliveryId: string;
+  proof: string; // zk-SNARK proof
+  publicSignals: string[];
+  verificationKeyHash: string;
+  circuitType: 'membership' | 'structure' | 'selective_reveal';
+  type: 'zksnark_proof';
+}
+```
+
+**Benefits:**
+- ✅ Maximum privacy protection
+- ✅ Address completely hidden
+- ✅ Selective disclosure
+- ✅ International compliance
+
+**Requirements:**
+- 🔐 Trusted Setup Ceremony
+- 🧪 Formal Circuit Verification
+- 🛡️ External Security Audit
+- 💻 High-performance proof servers
+
+### Migration Strategy
+
+```
+Phase 1 (MVP)     Phase 2 (Growth)   Phase 3 (Mature)
+[0-6 months]      [6-12 months]      [12+ months]
+     │                  │                  │
+     ▼                  ▼                  ▼
+Signature+Log      Merkle Tree         Full ZKP
+✓ Low cost         ✓ Better privacy    ✓ Best privacy
+✓ Fast launch      ✓ Medium cost       ✓ Higher cost
+```
+
+**Parallel Operation:**
+```
+Month 0-6:   Phase 1 only
+Month 6-12:  Phase 1 + Phase 2 (hybrid)
+Month 12-18: Phase 1 + Phase 2 + Phase 3 (hybrid)
+Month 18+:   Phase 2 + Phase 3 (Phase 1 deprecation)
+```
+
+**See Also**: [Delivery Trust System - ZKP Gradual Introduction](./DELIVERY_TRUST_SYSTEM.md#zkp段階導入--gradual-zkp-introduction)
+
+---
+
+## 20. Terminology Mapping (NEW v1.1.0)
+
+### Problem
+
+Internal technical terminology creates high explanation cost for non-technical users.
+
+### Solution: Separate Internal and External Terminology
+
+| Internal Term | External (Japanese) | External (English) | Usage Context |
+|---------------|--------------------|--------------------|---------------|
+| **Delivery ID** | 宛先コード | Destination Code | UI, Documentation |
+| **ConveyID** | 配送アドレス | Delivery Address | UI, Marketing |
+| **ZKP** | ー (not displayed) | ー (not displayed) | Internal only |
+| **実在性証明** | 配送実績 | Delivery History | UI, User-facing |
+| **PID** | 住所番号 | Address Number | Internal only |
+| **Merkle Tree** | 配送記録 | Delivery Records | Internal only |
+| **zk-SNARK** | 高度な暗号化 | Advanced Encryption | Docs (simplified) |
+| **Commitment** | 保証証明 | Proof of Guarantee | Internal only |
+| **Verification Key** | 検証コード | Verification Code | Technical docs only |
+| **Trusted Setup** | セキュリティ設定 | Security Setup | Admin interface |
+
+### UI/UX Guidelines
+
+#### ❌ Avoid These Expressions
+
+```
+✗ "Generating ZKP proof..."
+✗ "Registering to Merkle tree..."
+✗ "Select PID-A"
+✗ "Verifying commitment hash..."
+```
+
+#### ✅ Use These Instead
+
+```
+✓ "Confirming delivery address..."
+✓ "Checking delivery history..."
+✓ "Select address"
+✓ "Verifying delivery records..."
+```
+
+### Documentation Usage
+
+**Technical Documentation** (Internal terminology):
+- 📘 Developer Guides
+- 📗 API Reference
+- 📕 Architecture Diagrams
+
+**User Documentation** (External terminology):
+- 📙 User Guides
+- 📔 FAQ
+- 📰 Marketing Materials
+
+**See Also**: [Delivery Trust System - Terminology Mapping](./DELIVERY_TRUST_SYSTEM.md#用語対応表--terminology-mapping)
+
+---
+
 ## Appendix E: Glossary
 
 | Term | Definition |
@@ -1205,6 +1656,7 @@ compliance:
 | Version | Date | Changes |
 |---------|------|---------|
 | 1.0.0 | 2025-12-07 | Initial comprehensive specification |
+| 1.1.0 | 2026-01-02 | Added delivery trust levels, first-time exceptions, responsibility boundaries, gradual ZKP, terminology mapping |
 
 ---
 

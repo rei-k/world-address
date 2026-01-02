@@ -75,7 +75,9 @@ ConveyID プロトコルの詳細な仕様については、以下のドキュ�
 
 For detailed ConveyID protocol specifications, see the following documents:
 
-- **[ConveyID Protocol Specification](./CONVEY_PROTOCOL.md)** - 完全な技術仕様 / Complete technical specification
+- **[ConveyID Protocol Specification](./CONVEY_PROTOCOL.md)** - 完全な技術仕様 / Complete technical specification (v1.1.0)
+- **[Delivery Trust System](./DELIVERY_TRUST_SYSTEM.md)** - 配送信頼度システム / Delivery trust levels and exception routes (NEW)
+- **[Vey Ecosystem Dependencies](./VEY_ECOSYSTEM_DEPENDENCIES.md)** - エコシステムの独自性 / Why only Vey can do this (NEW)
 - **[Architecture Diagrams](./CONVEY_PROTOCOL_DIAGRAMS.md)** - プロトコル階層図と状態遷移図 / Protocol layers and state diagrams
 - **[UI/UX Mockups](./CONVEY_UI_UX_MOCKUPS.md)** - ユーザーインターフェース例 / User interface examples
 
