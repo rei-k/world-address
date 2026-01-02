@@ -4,6 +4,9 @@
 **Date:** 2025-12-07  
 **Status:** Final Specification
 
+**💡 これは「第1層：通信プロトコル」の実装です**  
+**💡 This is the implementation of "Layer 1: Communication Protocol"**
+
 ---
 
 ## Executive Summary
@@ -12,13 +15,22 @@
 
 - **Sender**: Simply enters a ConveyID in one line
 - **Recipient**: Selects a delivery address from their address book
-- **Physical Address**: Only disclosed to the delivery carrier (ZKP-compatible)
+- **Physical Address**: Only disclosed to the delivery carrier
 
 This protocol allows deliveries worldwide without requiring address exchange.
 
+### Design Principles / 設計方針
+
+**単純・高速・確実**  
+**Simple, Fast, Reliable**
+
+このプロトコル層は配送を動かす中核です。ZKPは使用せず、配送が「送れる」ことを最優先します。
+
+This protocol layer is the core that makes delivery work. We do not use ZKP here; priority is on making delivery work.
+
 ### One-Line Summary
 
-> **ConveyID is the world's first "email-like delivery protocol" that fundamentally improves international delivery UX and security through address privacy, ZKP protection, mutual consent, and global ID support.**
+> **ConveyID is the world's first "email-like delivery protocol" that fundamentally improves international delivery UX through address privacy, mutual consent, and global ID support.**
 
 ---
 
@@ -220,15 +232,33 @@ Physical address is disclosed **only to the delivery carrier** (or via ZKP dista
 
 ---
 
-## 4. Privacy Protection with ZKP
+## 4. Privacy Protection
 
 ### 4.1 Principle
 
 ConveyID **does not hold addresses**. Addresses are managed internally via **PID (Privacy ID for address mapping)** and resolved to the delivery carrier only when necessary.
 
-### 4.2 ZKP (Zero-Knowledge Proof) Applications
+### 4.2 Privacy Protection Layers
 
-#### 4.2.1 Delivery Feasibility Proof
+ConveyIDのプライバシー保護は3層構造で実現されています：
+
+ConveyID's privacy protection is realized through a 3-layer architecture:
+
+1. **第1層（通信）**: 配送IDによる住所の秘匿
+2. **第2層（住所帳）**: ユーザーによる配送先管理
+3. **第3層（ZKP）**: 配送実績の技術的証明（裏側の技術）
+
+**Layer 1 (Protocol)**: Address concealment via delivery ID  
+**Layer 2 (Address Book)**: User manages delivery destinations  
+**Layer 3 (ZKP)**: Technical proof of delivery history (behind the scenes)
+
+### 4.3 ZKP (Zero-Knowledge Proof) - Behind the Scenes
+
+**注**: ZKPは裏側の技術であり、ユーザーには「配達実績あり」「確認済み」として表示されます。
+
+**Note**: ZKP is behind-the-scenes technology, displayed to users as "Delivery History Confirmed" or "Verified".
+
+#### 4.3.1 Delivery Feasibility Proof
 
 Prove delivery capability **without revealing address**:
 
@@ -236,7 +266,9 @@ Prove delivery capability **without revealing address**:
 "This delivery is possible without revealing the exact address"
 ```
 
-#### 4.2.2 Distance Range Disclosure
+UIでの表示: "配達実績あり" / Display: "Delivery History Confirmed"
+
+#### 4.3.2 Distance Range Disclosure
 
 For shipping cost calculation, disclose **distance range only**:
 
@@ -245,6 +277,8 @@ For shipping cost calculation, disclose **distance range only**:
 "Same prefecture: Yes"
 "International: No"
 ```
+
+UIでの表示: "国内配送可能" / Display: "Domestic Delivery Available"
 
 **Example ZKP Protocol:**
 ```json
@@ -260,7 +294,11 @@ For shipping cost calculation, disclose **distance range only**:
 }
 ```
 
-#### 4.2.3 Address Non-Disclosure
+**注**: これらの証明は裏側で動作し、ユーザーには技術的詳細を見せません。
+
+**Note**: These proofs operate behind the scenes; technical details are not shown to users.
+
+#### 4.3.3 Address Non-Disclosure
 
 ```
 EC Site / SNS → Cannot see address

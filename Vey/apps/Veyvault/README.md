@@ -4,6 +4,13 @@
 
 **Veyvault** is a cloud address vault application that securely manages your addresses.
 
+**💡 これは「第2層：住所帳」の実装です**  
+**💡 This is the implementation of "Layer 2: Address Book"**
+
+人間が「安心して送れる」ための層。メールの連絡先帳と同じ立ち位置で、配送先を管理します。
+
+A layer for humans to "feel safe sending". Manage delivery destinations like email contacts.
+
 ---
 
 ## 📋 概要 / Overview
@@ -12,14 +19,23 @@ Veyvaultは、ユーザーの住所情報を暗号化してクラウド上で安
 
 Veyvault is a next-generation address management application that encrypts and securely manages user address information in the cloud, seamlessly integrating with e-commerce sites and delivery services.
 
+### 設計思想 / Design Philosophy
+
+**人間の記憶・関係性の拡張**  
+**Extension of human memory and relationships**
+
+Veyvaultは技術的な信頼ではなく、人間の記憶と関係性を拡張するためのツールです。「この人には以前も送った」という人間的な信頼を、技術で支えます。
+
+Veyvault is not about technical trust, but about extending human memory and relationships. We support human trust like "I've sent to this person before" with technology.
+
 ### 主な機能 / Key Features
 
 - 📝 **住所管理**: 自宅、職場、実家など複数の住所を登録・管理
 - 👥 **友達管理**: QR/NFCで友達を追加し、生住所を見ずに配送先指定
-- 🔐 **プライバシー保護**: エンドツーエンド暗号化とゼロ知識証明
+- ✅ **配送実績確認**: 過去に配送が成功した相手を確認（裏側でZKPを使用）
 - 🛍️ **ECサイト連携**: ワンクリックチェックアウト
 - 💳 **ウォレット統合**: Google Wallet/Apple Wallet対応
-- 🌍 **国際対応**: 248カ国の住所形式をサポート
+- 🌍 **国際対応**: 269カ国の住所形式をサポート
 - 🔍 **サイト検索**: Veyformを採用しているサイトを検索可能
 - ⚡ **ワンクリック購入/予約**: 検索したサイトで住所入力なしで買い物・予約
 - 🔓 **アクセス管理**: サイトへの住所アクセス権を後から解除可能
@@ -36,7 +52,7 @@ Veyvaultは6つの主要機能で構成されています：
 
 1. **📝 Address Management (住所管理)** - 複数の住所をクラウドで一元管理。自動検証、269カ国対応
 2. **📱 QR/NFC Sharing (QR/NFC共有)** - スキャンするだけで友達追加。生住所を見せずにシェア
-3. **🔐 Privacy Protection (プライバシー保護)** - AES-256暗号化とゼロ知識証明で完全保護
+3. **✅ Delivery History (配送実績)** - 過去の配送成功を確認。信頼できる配送先を管理
 4. **🛍️ E-commerce Integration (EC連携)** - ワンクリックチェックアウト。住所入力不要
 5. **👥 Friend Management (友達管理)** - 友達にギフトを送る時も生住所を見せない
 6. **🌍 International Support (国際対応)** - 269カ国、多言語、現地通貨対応
@@ -58,12 +74,29 @@ Veyvaultは6つの主要機能で構成されています：
 
 ![ZKP Flow](../../../docs/images/features/zkp-flow.svg)
 
-**住所を公開せずに配送可能性を証明:**
+**配送可能性を証明（裏側の技術）:**
+
+**注**: これは第3層（ZKP）の実装です。ユーザーには技術用語を見せず、「配達実績あり」「確認済み」として表示されます。
+
+**Note**: This is Layer 3 (ZKP) implementation. Users don't see technical terms, only "Delivery History Confirmed" or "Verified".
 
 - 🔒 **ECサイトは生住所を見ない** - トークンのみで配送を管理
-- ✅ **配送可能性を証明** - ZK証明で配送エリア内であることを検証
+- ✅ **配送可能性を証明** - 配送エリア内であることを検証（裏側でZKPを使用）
 - 📊 **完全な監査証跡** - すべてのアクセスをログに記録
 - 🔑 **ユーザーが完全管理** - 住所データの主権はユーザーに
+
+### UX表現ガイドライン / UX Expression Guidelines
+
+Veyvaultでは、技術用語をユーザーに見せず、人間的な言葉で表現します：
+
+In Veyvault, we use human-friendly language instead of technical terms:
+
+| ❌ 技術用語（使わない） | ✅ 人間的な表現（使う） |
+|---------------------|---------------------|
+| "ZKP検証済み" | "配達実績あり" |
+| "ゼロ知識証明" | "確認済み" |
+| "Proof verified" | "信頼できる配送先" |
+| "Merkle tree validation" | （表示しない） |
 
 ### システムアーキテクチャ / System Architecture
 
