@@ -41,6 +41,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Village",
+      "label_local": "Village",
       "label_local_ch": "Påsgan / Taotao tåsi variants exist",
       "label_en": "Village",
       "count": 19,

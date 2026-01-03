@@ -59,6 +59,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Province",
+      "label_local": "Province",
       "label_en": "Province",
       "count": 6
     }

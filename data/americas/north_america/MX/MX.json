@@ -41,6 +41,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Estado",
+      "label_local": "Estado",
       "label_es": "Estado",
       "label_en": "State",
       "count": 32,
@@ -48,6 +49,7 @@
     },
     "level2": {
       "type": "Municipio / Alcaldía",
+      "label_local": "Municipio / Alcaldía",
       "label_es": "Municipio / Alcaldía (CDMX)",
       "label_en": "Municipality",
       "count": null,
@@ -55,6 +57,7 @@
     },
     "level3": {
       "type": "Colonia / Fraccionamiento / Barrio / Unidad Habitacional",
+      "label_local": "Colonia",
       "label_es": "Colonia",
       "label_en": "Neighborhood",
       "count": null,
@@ -62,6 +65,7 @@
     },
     "level4": {
       "type": "Calle / Avenida / Andador",
+      "label_local": "Calle",
       "label_es": "Calle",
       "label_en": "Street",
       "count": null

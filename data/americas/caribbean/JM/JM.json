@@ -31,6 +31,8 @@
   "administrative_divisions": {
     "level1": {
       "type": "Parish",
+      "label_local": "Parish",
+      "label_en": "Parish",
       "count": 14,
       "source": "../../data/jm_parishes.json"
     },

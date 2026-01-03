@@ -1,0 +1,1009 @@
+{
+  "name": {
+    "en": "China (Universal Format)",
+    "local": [
+      {
+        "lang": "zh",
+        "value": "中国（万能格式）",
+        "script": "Han",
+        "direction": "ltr"
+      }
+    ]
+  },
+  "iso_codes": {
+    "alpha2": "CN",
+    "alpha3": "CHN",
+    "numeric": "156"
+  },
+  "continent": "Asia",
+  "subregion": "East Asia",
+  "format_type": "universal",
+  "note": "Universal address format for China that handles all regions, provinces, autonomous regions, and special administrative regions in a single comprehensive format. This includes support for multi-script regions (Tibetan, Uyghur, Mongolian), standard provinces, municipalities, and special territories.",
+  "languages": [
+    {
+      "name": "Chinese",
+      "script": "Han",
+      "direction": "ltr",
+      "role": "official",
+      "country_name": "中国",
+      "code": "zh",
+      "coverage": "nationwide"
+    },
+    {
+      "name": "Tibetan",
+      "script": "Tibetan",
+      "direction": "ltr",
+      "role": "regional_official",
+      "country_name": "བོད་རང་སྐྱོང་ལྗོངས།",
+      "code": "bo",
+      "regions": [
+        "Tibet Autonomous Region"
+      ]
+    },
+    {
+      "name": "Uyghur",
+      "script": "Arabic",
+      "direction": "rtl",
+      "role": "regional_official",
+      "country_name": "شىنجاڭ ئۇيغۇر ئاپتونوم رايونى",
+      "code": "ug",
+      "regions": [
+        "Xinjiang Uyghur Autonomous Region"
+      ]
+    },
+    {
+      "name": "Mongolian",
+      "script": "Mongolian",
+      "direction": "ltr",
+      "role": "regional_official",
+      "country_name": "ᠥᠪᠥᠷ ᠮᠣᠩᠭᠣᠯ",
+      "code": "mn",
+      "regions": [
+        "Inner Mongolia Autonomous Region"
+      ]
+    },
+    {
+      "name": "Kazakh",
+      "script": "Arabic/Cyrillic",
+      "direction": "rtl",
+      "role": "regional_minority",
+      "code": "kk",
+      "regions": [
+        "Xinjiang Uyghur Autonomous Region (partial)"
+      ]
+    },
+    {
+      "name": "English",
+      "script": "Latin",
+      "direction": "ltr",
+      "role": "auxiliary",
+      "required_for_shipping": true,
+      "country_name": "China",
+      "code": "en",
+      "coverage": "international_shipping"
+    }
+  ],
+  "administrative_divisions": {
+    "provinces": {
+      "count": 23,
+      "type": "Province",
+      "label_local": "省",
+      "label_en": "Province",
+      "postal_code_ranges": [
+        {
+          "region": "Northeast",
+          "codes": [
+            "10-15",
+            "16-17"
+          ],
+          "provinces": [
+            "Liaoning",
+            "Jilin",
+            "Heilongjiang"
+          ]
+        },
+        {
+          "region": "North",
+          "codes": [
+            "01-05",
+            "06-07",
+            10
+          ],
+          "provinces": [
+            "Beijing",
+            "Tianjin",
+            "Hebei",
+            "Shanxi",
+            "Inner Mongolia"
+          ]
+        },
+        {
+          "region": "East",
+          "codes": [
+            "20-21",
+            "31-32",
+            "33-34",
+            "35-36",
+            37
+          ],
+          "provinces": [
+            "Shanghai",
+            "Jiangsu",
+            "Zhejiang",
+            "Anhui",
+            "Fujian",
+            "Jiangxi",
+            "Shandong"
+          ]
+        },
+        {
+          "region": "Central",
+          "codes": [
+            "41-43",
+            "44-45"
+          ],
+          "provinces": [
+            "Henan",
+            "Hubei",
+            "Hunan",
+            "Guangdong",
+            "Guangxi"
+          ]
+        },
+        {
+          "region": "South",
+          "codes": [
+            57
+          ],
+          "provinces": [
+            "Hainan"
+          ]
+        },
+        {
+          "region": "Southwest",
+          "codes": [
+            "50-53",
+            "61-62",
+            "63-64",
+            "65-66",
+            "67-68",
+            85
+          ],
+          "provinces": [
+            "Chongqing",
+            "Sichuan",
+            "Guizhou",
+            "Yunnan",
+            "Tibet"
+          ]
+        },
+        {
+          "region": "Northwest",
+          "codes": [
+            "71-72",
+            "73-74",
+            "83-84"
+          ],
+          "provinces": [
+            "Shaanxi",
+            "Gansu",
+            "Qinghai",
+            "Ningxia",
+            "Xinjiang"
+          ]
+        }
+      ]
+    },
+    "autonomous_regions": {
+      "count": 5,
+      "type": "Autonomous Region",
+      "label_local": "自治区",
+      "label_en": "Autonomous Region",
+      "list": [
+        {
+          "name": "Inner Mongolia",
+          "name_local": "内蒙古自治区",
+          "postal_prefix": "01",
+          "scripts": [
+            "Han",
+            "Mongolian"
+          ],
+          "admin_structure": "League/Banner"
+        },
+        {
+          "name": "Guangxi",
+          "name_local": "广西壮族自治区",
+          "postal_prefix": "53",
+          "scripts": [
+            "Han"
+          ]
+        },
+        {
+          "name": "Tibet",
+          "name_local": "西藏自治区",
+          "postal_prefix": "85",
+          "scripts": [
+            "Han",
+            "Tibetan"
+          ]
+        },
+        {
+          "name": "Ningxia",
+          "name_local": "宁夏回族自治区",
+          "postal_prefix": "75",
+          "scripts": [
+            "Han",
+            "Arabic"
+          ]
+        },
+        {
+          "name": "Xinjiang",
+          "name_local": "新疆维吾尔自治区",
+          "postal_prefix": [
+            "83",
+            "84"
+          ],
+          "scripts": [
+            "Han",
+            "Arabic",
+            "Cyrillic"
+          ]
+        }
+      ]
+    },
+    "municipalities": {
+      "count": 4,
+      "type": "Municipality",
+      "label_local": "直辖市",
+      "label_en": "Direct-controlled Municipality",
+      "list": [
+        {
+          "name": "Beijing",
+          "name_local": "北京市",
+          "postal_prefix": "10"
+        },
+        {
+          "name": "Shanghai",
+          "name_local": "上海市",
+          "postal_prefix": "20"
+        },
+        {
+          "name": "Tianjin",
+          "name_local": "天津市",
+          "postal_prefix": "30"
+        },
+        {
+          "name": "Chongqing",
+          "name_local": "重庆市",
+          "postal_prefix": "40"
+        }
+      ]
+    },
+    "special_administrative_regions": {
+      "count": 2,
+      "type": "Special Administrative Region",
+      "label_local": "特别行政区",
+      "label_en": "Special Administrative Region",
+      "list": [
+        {
+          "name": "Hong Kong",
+          "name_local": "香港特别行政区",
+          "separate_postal_system": true,
+          "note": "See HK/ directory for details"
+        },
+        {
+          "name": "Macau",
+          "name_local": "澳门特别行政区",
+          "separate_postal_system": true,
+          "note": "See MO/ directory for details"
+        }
+      ]
+    }
+  },
+  "address_format": {
+    "order_variants": [
+      {
+        "context": "domestic_standard",
+        "description": "Standard provinces and municipalities",
+        "order": [
+          "recipient",
+          "province",
+          "city",
+          "district",
+          "street_address",
+          "building",
+          "floor",
+          "room",
+          "postal_code",
+          "country"
+        ],
+        "applicable_to": [
+          "Standard provinces",
+          "Municipalities"
+        ]
+      },
+      {
+        "context": "domestic_autonomous_region",
+        "description": "Autonomous regions with special administrative divisions",
+        "order": [
+          "recipient",
+          "autonomous_region",
+          "prefecture_or_league",
+          "county_or_banner",
+          "township",
+          "village",
+          "street_address",
+          "building",
+          "postal_code",
+          "country"
+        ],
+        "applicable_to": [
+          "Inner Mongolia (with League/Banner system)",
+          "Xinjiang (with multi-script support)",
+          "Tibet (with dual-script support)",
+          "Ningxia",
+          "Guangxi"
+        ]
+      },
+      {
+        "context": "international",
+        "description": "International shipping format with Pinyin",
+        "order": [
+          "recipient",
+          "room",
+          "floor",
+          "building",
+          "street_address",
+          "district",
+          "city",
+          "province_or_region",
+          "postal_code",
+          "country"
+        ],
+        "requirements": [
+          "Latin transliteration required",
+          "Province name must be included",
+          "Postal code mandatory"
+        ]
+      }
+    ],
+    "building": {
+      "required": false,
+      "label_local": "楼/大厦",
+      "label_en": "Building/Tower",
+      "example": "SOHO现代城C座"
+    },
+    "floor": {
+      "required": false,
+      "label_local": "层/楼",
+      "label_en": "Floor",
+      "example": "12F"
+    },
+    "room": {
+      "required": false,
+      "label_local": "室/房间",
+      "label_en": "Room/Unit",
+      "example": "1201"
+    },
+    "postal_code": {
+      "required": true,
+      "regex": "^[0-9]{6}$",
+      "length": 6,
+      "coverage": "nationwide",
+      "description": "6-digit numeric code, varies by region",
+      "examples": {
+        "standard": "100000",
+        "beijing": "100000",
+        "shanghai": "200000",
+        "tibet": "850000",
+        "xinjiang": "830000",
+        "inner_mongolia": "010000",
+        "hainan": "570000"
+      }
+    }
+  },
+  "regional_variations": {
+    "multi_script_regions": [
+      {
+        "region": "Tibet Autonomous Region",
+        "postal_prefix": "85",
+        "scripts": [
+          {
+            "script": "Tibetan",
+            "direction": "ltr",
+            "example": "བོད་རང་སྐྱོང་ལྗོངས། ལྷ་ས་གྲོང་ཁྱེར། 850000"
+          },
+          {
+            "script": "Han",
+            "direction": "ltr",
+            "example": "西藏自治区拉萨市 850000"
+          }
+        ],
+        "admin_levels": [
+          "Prefecture",
+          "County",
+          "Township",
+          "Village"
+        ]
+      },
+      {
+        "region": "Xinjiang Uyghur Autonomous Region",
+        "postal_prefix": [
+          "83",
+          "84"
+        ],
+        "scripts": [
+          {
+            "script": "Arabic (Uyghur)",
+            "direction": "rtl",
+            "example": "شىنجاڭ ئۇيغۇر ئاپتونوم رايونى ئۈرۈمچى 830000"
+          },
+          {
+            "script": "Han",
+            "direction": "ltr",
+            "example": "新疆维吾尔自治区乌鲁木齐市 830000"
+          },
+          {
+            "script": "Cyrillic (Kazakh, in some areas)",
+            "direction": "ltr"
+          }
+        ],
+        "admin_levels": [
+          "Prefecture/Autonomous Prefecture",
+          "County/City",
+          "Township",
+          "Village"
+        ]
+      },
+      {
+        "region": "Inner Mongolia Autonomous Region",
+        "postal_prefix": "01",
+        "scripts": [
+          {
+            "script": "Mongolian",
+            "direction": "ltr",
+            "example": "ᠥᠪᠥᠷ ᠮᠣᠩᠭᠣᠯ ᠬᠥᠬᠡᠬᠣᠲᠠ 010000"
+          },
+          {
+            "script": "Han",
+            "direction": "ltr",
+            "example": "内蒙古自治区呼和浩特市 010000"
+          }
+        ],
+        "admin_levels": [
+          "League/Prefecture-level City",
+          "Banner/County",
+          "Township",
+          "Village"
+        ],
+        "unique_features": [
+          "Traditional League (盟) system",
+          "Banner (旗) instead of County"
+        ]
+      }
+    ],
+    "island_regions": [
+      {
+        "region": "Hainan Province",
+        "postal_prefix": "57",
+        "type": "island_province",
+        "characteristics": [
+          "Island-type address system",
+          "Special economic zones",
+          "Different hierarchical patterns"
+        ],
+        "admin_levels": [
+          "Prefecture-level City",
+          "County-level Division",
+          "Township"
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "allow_latin_transliteration": true,
+    "postal_code_validation": {
+      "general": "required",
+      "regex": "^[0-9]{6}$",
+      "regional_prefixes": {
+        "beijing": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
+        "shanghai": [
+          "20",
+          "21"
+        ],
+        "tianjin": [
+          "30"
+        ],
+        "chongqing": [
+          "40",
+          "41",
+          "42",
+          "43",
+          "44",
+          "45",
+          "46",
+          "47",
+          "48",
+          "49"
+        ],
+        "tibet": [
+          "85",
+          "86"
+        ],
+        "xinjiang": [
+          "83",
+          "84"
+        ],
+        "inner_mongolia": [
+          "01",
+          "02",
+          "03"
+        ],
+        "hainan": [
+          "57"
+        ]
+      }
+    },
+    "script_validation": {
+      "rules": [
+        "Multi-script regions must support both local and Han scripts",
+        "International shipping requires Latin transliteration (Pinyin)",
+        "Province or region name must always be included",
+        "Postal code alone is insufficient for delivery"
+      ]
+    },
+    "regional_rules": {
+      "autonomous_regions": [
+        {
+          "Tibet": "Support Tibetan and Chinese scripts"
+        },
+        {
+          "Xinjiang": "Support Uyghur (Arabic), Chinese, and optionally Kazakh"
+        },
+        {
+          "Inner Mongolia": "Support Mongolian and Chinese scripts"
+        }
+      ],
+      "municipalities": [
+        {
+          "Beijing": "Standard format"
+        },
+        {
+          "Shanghai": "Standard format"
+        },
+        {
+          "Tianjin": "Standard format"
+        },
+        {
+          "Chongqing": "Standard format but larger area"
+        }
+      ]
+    }
+  },
+  "examples": {
+    "standard_domestic": "北京市朝阳区建国路88号SOHO现代城C座1201室 100000",
+    "standard_international": "Room 1201, Tower C, SOHO Modern City, 88 Jianguo Road, Chaoyang District, Beijing 100000, China",
+    "tibet_tibetan": "བོད་རང་སྐྱོང་ལྗོངས། ལྷ་ས་གྲོང་ཁྱེར། 850000",
+    "tibet_chinese": "西藏自治区拉萨市 850000",
+    "tibet_international": "Lhasa, Tibet Autonomous Region 850000, China",
+    "xinjiang_uyghur": "شىنجاڭ ئۇيغۇر ئاپتونوم رايونى ئۈرۈمچى 830000",
+    "xinjiang_chinese": "新疆维吾尔自治区乌鲁木齐市 830000",
+    "xinjiang_international": "Urumqi, Xinjiang Uyghur Autonomous Region 830000, China",
+    "inner_mongolia_mongolian": "ᠥᠪᠥᠷ ᠮᠣᠩᠭᠣᠯ ᠬᠥᠬᠡᠬᠣᠲᠠ 010000",
+    "inner_mongolia_chinese": "内蒙古自治区呼和浩特市 010000",
+    "inner_mongolia_international": "Hohhot, Inner Mongolia Autonomous Region 010000, China",
+    "hainan_domestic": "海南省海口市龙华区滨海大道 570000",
+    "hainan_international": "Binhai Avenue, Longhua District, Haikou, Hainan Province 570000, China"
+  },
+  "status": {
+    "un_member": true,
+    "recognized": true,
+    "disputed": false
+  },
+  "geo": {
+    "center": {
+      "latitude": 35.8617,
+      "longitude": 104.1954,
+      "accuracy": 1000,
+      "source": "database",
+      "captured_at": "2026-01-03T15:43:11.607Z"
+    },
+    "verified": true,
+    "verified_at": "2026-01-03T00:00:00Z",
+    "bounds": {
+      "northeast": {
+        "latitude": 53.5608,
+        "longitude": 134.7728
+      },
+      "southwest": {
+        "latitude": 18.1973,
+        "longitude": 73.4994
+      }
+    },
+    "regional_centers": [
+      {
+        "name": "Beijing",
+        "latitude": 39.9042,
+        "longitude": 116.4074
+      },
+      {
+        "name": "Shanghai",
+        "latitude": 31.2304,
+        "longitude": 121.4737
+      },
+      {
+        "name": "Lhasa (Tibet)",
+        "latitude": 29.652,
+        "longitude": 91.172
+      },
+      {
+        "name": "Urumqi (Xinjiang)",
+        "latitude": 43.8256,
+        "longitude": 87.6168
+      },
+      {
+        "name": "Hohhot (Inner Mongolia)",
+        "latitude": 40.8414,
+        "longitude": 111.7519
+      },
+      {
+        "name": "Haikou (Hainan)",
+        "latitude": 20.0444,
+        "longitude": 110.1999
+      }
+    ]
+  },
+  "pos": {
+    "currency": {
+      "code": "CNY",
+      "symbol": "¥",
+      "symbol_position": "before",
+      "decimal_places": 2,
+      "decimal_separator": ".",
+      "thousands_separator": ","
+    },
+    "tax": {
+      "type": "VAT",
+      "rate": {
+        "standard": 0.13,
+        "reduced": [
+          {
+            "rate": 0.09,
+            "category": "Basic necessities, books, agricultural products"
+          },
+          {
+            "rate": 0.06,
+            "category": "Services, intangible assets"
+          }
+        ]
+      },
+      "included_in_price": true,
+      "invoice_requirement": "optional",
+      "notes": [
+        "Tax rates may vary for special economic zones",
+        "Different rates for different product categories"
+      ]
+    },
+    "receipt": {
+      "required_fields": [
+        "business_name",
+        "tax_id",
+        "date",
+        "items",
+        "subtotal",
+        "tax_amount",
+        "total"
+      ],
+      "paper_width": "80mm",
+      "electronic_allowed": true,
+      "retention_period": "5 years",
+      "special_invoice": "Available for VAT-registered businesses"
+    },
+    "fiscal": {
+      "fiscal_device_required": false,
+      "registration_required": true,
+      "reporting_frequency": "monthly",
+      "notes": [
+        "Golden Tax System for VAT invoices",
+        "Real-name registration for businesses"
+      ]
+    },
+    "payment_methods": [
+      {
+        "type": "cash",
+        "name": "Cash",
+        "prevalence": "high",
+        "note": "CNY only"
+      },
+      {
+        "type": "mobile",
+        "name": "WeChat Pay",
+        "name_local": "微信支付",
+        "prevalence": "very_high",
+        "features": [
+          "qr_code",
+          "peer_to_peer",
+          "in_app_payment"
+        ],
+        "market_share": "~40%"
+      },
+      {
+        "type": "mobile",
+        "name": "Alipay",
+        "name_local": "支付宝",
+        "prevalence": "very_high",
+        "features": [
+          "qr_code",
+          "peer_to_peer",
+          "in_app_payment"
+        ],
+        "market_share": "~50%"
+      },
+      {
+        "type": "credit_card",
+        "name": "Credit Card",
+        "prevalence": "high",
+        "brands": [
+          {
+            "brand": "UnionPay",
+            "accepted": true,
+            "prevalence": "very_high",
+            "domestic": true
+          },
+          {
+            "brand": "Visa",
+            "accepted": true,
+            "prevalence": "high"
+          },
+          {
+            "brand": "Mastercard",
+            "accepted": true,
+            "prevalence": "high"
+          },
+          {
+            "brand": "JCB",
+            "accepted": true,
+            "prevalence": "medium"
+          },
+          {
+            "brand": "American Express",
+            "accepted": true,
+            "prevalence": "medium"
+          }
+        ]
+      },
+      {
+        "type": "debit_card",
+        "name": "Debit Card",
+        "prevalence": "very_high",
+        "note": "UnionPay predominant"
+      }
+    ],
+    "locale": {
+      "date_format": "YYYY-MM-DD",
+      "time_format": "24h",
+      "timezone_variations": {
+        "standard": "Asia/Shanghai",
+        "unofficial_xinjiang": "Asia/Urumqi",
+        "note": "China uses single timezone (UTC+8) officially, but Xinjiang unofficially uses UTC+6"
+      },
+      "week_start": "monday",
+      "calendar": "Gregorian (official), Lunar (cultural)"
+    },
+    "business_hours": {
+      "typical_open": "09:00",
+      "typical_close": "18:00",
+      "sunday_trading": true,
+      "public_holidays_trading": "varies",
+      "notes": [
+        "Business hours vary significantly by region and industry",
+        "Southern regions tend to open/close later",
+        "Tourist areas in Tibet and Xinjiang may have extended hours"
+      ]
+    }
+  },
+  "geo_insurance": {
+    "enabled": true,
+    "tolerance_meters": 100,
+    "min_confidence": 0.8,
+    "auto_correct": false,
+    "fallback_behavior": "warn",
+    "regional_variations": {
+      "urban_areas": {
+        "tolerance_meters": 50,
+        "min_confidence": 0.85
+      },
+      "rural_areas": {
+        "tolerance_meters": 200,
+        "min_confidence": 0.75
+      },
+      "mountainous_regions": {
+        "tolerance_meters": 500,
+        "min_confidence": 0.7,
+        "note": "Tibet, Xinjiang, parts of Sichuan/Yunnan"
+      }
+    }
+  },
+  "shipping_carriers": [
+    {
+      "name": "China Post",
+      "name_local": "中国邮政",
+      "type": "postal",
+      "scope": "national",
+      "website": "https://www.chinapost.com.cn/",
+      "tracking_url": "https://www.ems.com.cn/queryList?mailNoList={tracking_number}",
+      "api_available": true,
+      "coverage": "Nationwide coverage including all autonomous regions, Tibet, Xinjiang, rural areas"
+    },
+    {
+      "name": "EMS China",
+      "name_local": "中国邮政速递物流",
+      "type": "postal",
+      "scope": "regional",
+      "countries": [
+        "CN",
+        "HK",
+        "MO",
+        "TW",
+        "JP",
+        "KR",
+        "SG",
+        "TH",
+        "MY",
+        "VN",
+        "ID",
+        "PH"
+      ],
+      "website": "https://www.ems.com.cn/",
+      "tracking_url": "https://www.ems.com.cn/queryList?mailNoList={tracking_number}",
+      "api_available": true,
+      "coverage": "Domestic and international express postal service"
+    },
+    {
+      "name": "SF Express",
+      "name_local": "顺丰速运",
+      "type": "courier",
+      "scope": "national",
+      "website": "https://www.sf-express.com/",
+      "tracking_url": "https://www.sf-express.com/cn/sc/dynamic_function/waybill/#search/bill-number/{tracking_number}",
+      "api_available": true,
+      "coverage": "Nationwide express delivery with international services, covers all regions including Tibet and Xinjiang",
+      "notes": "Leading private courier in China"
+    },
+    {
+      "name": "ZTO Express",
+      "name_local": "中通快递",
+      "type": "courier",
+      "scope": "national",
+      "website": "https://www.zto.com/",
+      "tracking_url": "https://www.zto.com/GuestService/Bill?txtBill={tracking_number}",
+      "api_available": true,
+      "coverage": "Nationwide e-commerce delivery"
+    },
+    {
+      "name": "YTO Express",
+      "name_local": "圆通速递",
+      "type": "courier",
+      "scope": "national",
+      "website": "https://www.yto.net.cn/",
+      "tracking_url": "https://www.yto.net.cn/service/waybill.html?waybillNo={tracking_number}",
+      "api_available": true,
+      "coverage": "Nationwide parcel delivery"
+    },
+    {
+      "name": "STO Express",
+      "name_local": "申通快递",
+      "type": "courier",
+      "scope": "national",
+      "website": "https://www.sto.cn/",
+      "tracking_url": "https://www.sto.cn/index.php/Home/Query/queryWaybill?waybillNo={tracking_number}",
+      "api_available": true,
+      "coverage": "Nationwide express delivery network"
+    },
+    {
+      "name": "Best Express",
+      "name_local": "百世快递",
+      "type": "courier",
+      "scope": "national",
+      "website": "https://www.best-inc.com/",
+      "tracking_url": "https://www.800best.com/track.php?waybillno={tracking_number}",
+      "api_available": true,
+      "coverage": "Nationwide logistics and delivery"
+    },
+    {
+      "name": "JD Logistics",
+      "name_local": "京东物流",
+      "type": "courier",
+      "scope": "national",
+      "website": "https://www.jdl.com/",
+      "tracking_url": "https://www.jdl.com/#/track/result?waybillCode={tracking_number}",
+      "api_available": true,
+      "coverage": "Nationwide same-day and next-day delivery",
+      "notes": "JD.com's logistics arm"
+    },
+    {
+      "name": "Cainiao Network",
+      "name_local": "菜鸟网络",
+      "type": "courier",
+      "scope": "national",
+      "website": "https://www.cainiao.com/",
+      "tracking_url": "https://www.cainiao.com/track.html?mailNo={tracking_number}",
+      "api_available": true,
+      "coverage": "Alibaba's logistics platform integrating multiple carriers",
+      "notes": "Platform coordinating multiple delivery services"
+    },
+    {
+      "name": "DHL China",
+      "type": "express",
+      "scope": "global",
+      "website": "https://www.dhl.com/cn-zh/home.html",
+      "tracking_url": "https://www.dhl.com/en/express/tracking.html?AWB={tracking_number}",
+      "api_available": true,
+      "coverage": "International express delivery"
+    },
+    {
+      "name": "FedEx China",
+      "type": "express",
+      "scope": "global",
+      "website": "https://www.fedex.com/zh-cn/home.html",
+      "tracking_url": "https://www.fedex.com/fedextrack/?trknbr={tracking_number}",
+      "api_available": true,
+      "coverage": "International express delivery"
+    },
+    {
+      "name": "UPS China",
+      "type": "express",
+      "scope": "global",
+      "website": "https://www.ups.com/cn/zh/Home.page",
+      "tracking_url": "https://www.ups.com/track?tracknum={tracking_number}",
+      "api_available": true,
+      "coverage": "International express delivery"
+    }
+  ],
+  "special_features": {
+    "universal_compatibility": [
+      "Handles all 34 provincial-level divisions",
+      "Supports multi-script regions (Tibetan, Uyghur, Mongolian)",
+      "Unified postal code validation",
+      "Regional administrative structure awareness",
+      "Single format for domestic and international addressing"
+    ],
+    "geocoding_support": {
+      "enabled": true,
+      "providers": [
+        "Baidu Maps API",
+        "Amap (AutoNavi)",
+        "Tencent Maps"
+      ],
+      "coverage": "Complete coverage of all regions including remote areas",
+      "accuracy": {
+        "urban": "building-level",
+        "rural": "village-level",
+        "remote": "township-level"
+      }
+    },
+    "reverse_geocoding": {
+      "enabled": true,
+      "accuracy": {
+        "urban": "< 10m",
+        "rural": "< 100m",
+        "remote": "< 500m"
+      },
+      "multi_script_output": true
+    },
+    "address_intelligence": {
+      "auto_complete": true,
+      "address_suggestion": true,
+      "postal_code_inference": true,
+      "region_detection": true,
+      "script_detection": true,
+      "transliteration": true
+    }
+  }
+}

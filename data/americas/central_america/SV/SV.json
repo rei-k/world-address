@@ -27,6 +27,9 @@
   "administrative_divisions": {
     "level1": {
       "type": "Departamento",
+      "label_local": "Departamento",
+      "label_es": "Departamento",
+      "label_en": "Department",
       "count": 14
     },
     "level2": {

@@ -29,6 +29,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Provincia",
+      "label_local": "Provincia",
       "label_en": "Province",
       "source": "../../data/do_provincias.json"
     },

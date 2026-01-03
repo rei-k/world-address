@@ -29,6 +29,8 @@
   "administrative_divisions": {
     "level1": {
       "type": "Quarter",
+      "label_local": "Quarter",
+      "label_en": "Quarter",
       "count": 10,
       "source": "../../data/lc_quarters.json"
     },

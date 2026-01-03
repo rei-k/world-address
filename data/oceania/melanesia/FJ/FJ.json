@@ -53,6 +53,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Division",
+      "label_local": "Division",
       "label_en": "Division",
       "count": 4
     },
