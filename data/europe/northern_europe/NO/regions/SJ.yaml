@@ -26,7 +26,7 @@ languages:
 administrative_divisions:
   level1:
     type: Settlement
-    label_local: Settlement / Bosetting
+    label_local: Settlement / Bosettning
     label_en: Settlement
     count: 5
     description: 'Main settlements: Longyearbyen, Ny-Ålesund, Barentsburg, Hornsund, Svea'
