@@ -26,6 +26,7 @@ languages:
 administrative_divisions:
   level1:
     type: Parish
+    label_local: Parish
     label_en: Parish
     count: 6
     source: ../../data/gd_parishes.json

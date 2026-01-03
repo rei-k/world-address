@@ -28,6 +28,7 @@ languages:
 administrative_divisions:
   level1:
     type: Municipality
+    label_local: Municipality
     label_en: Municipality
     count: 33
 address_format:

@@ -22,6 +22,7 @@ languages:
 administrative_divisions:
   level1:
     type: State / Territory
+    label_local: State / Territory
     label_en: State
     count: 8
     names:
@@ -35,6 +36,7 @@ administrative_divisions:
       - Northern Territory
   level2:
     type: Local Government Area
+    label_local: Local Government Area
     label_en: LGA
 address_format:
   order_variants:

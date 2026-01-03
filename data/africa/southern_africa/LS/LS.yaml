@@ -37,6 +37,8 @@ languages:
 administrative_divisions:
   level1:
     type: District
+    label_local: District
+    label_en: District
     count: 10
     source: ../../data/ls_districts.json
   level2:

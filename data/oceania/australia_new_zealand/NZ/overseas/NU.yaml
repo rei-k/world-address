@@ -34,6 +34,7 @@ languages:
 administrative_divisions:
   level1:
     type: Village
+    label_local: Village
     label_en: Village
     count: 14
 address_format:

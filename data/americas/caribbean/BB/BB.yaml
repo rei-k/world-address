@@ -20,6 +20,8 @@ languages:
 administrative_divisions:
   level1:
     type: Parish
+    label_local: Parish
+    label_en: Parish
     count: 11
     source: ../../data/bb_parishes.json
   level2:

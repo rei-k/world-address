@@ -18,6 +18,8 @@ languages:
 administrative_divisions:
   level1:
     type: Region / Borough / City
+    label_local: Region / Borough / City
+    label_en: Region / Borough / City
     source: ../../data/tt_level1.json
   level2:
     type: Community / Locality / Ward

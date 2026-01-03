@@ -17,6 +17,8 @@ languages:
 administrative_divisions:
   level1:
     type: Provincia / Comarca
+    label_local: Provincia / Comarca
+    label_en: Province / Indigenous Territory
   level2:
     type: Distrito
   level3:

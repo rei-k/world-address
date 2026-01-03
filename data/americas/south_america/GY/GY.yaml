@@ -21,6 +21,7 @@ languages:
 administrative_divisions:
   level1:
     type: Region
+    label_local: Region
     label_en: Region
     count: 10
   level2:

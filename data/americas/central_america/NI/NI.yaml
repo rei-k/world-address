@@ -17,6 +17,8 @@ languages:
 administrative_divisions:
   level1:
     type: Departamento / Región Autónoma
+    label_local: Departamento / Región Autónoma
+    label_en: Department / Autonomous Region
   level2:
     type: Municipio
   level3:

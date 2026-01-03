@@ -34,6 +34,7 @@ languages:
 administrative_divisions:
   level1:
     type: Atoll
+    label_local: Atoll
     label_en: Atoll
     count: 3
     names:

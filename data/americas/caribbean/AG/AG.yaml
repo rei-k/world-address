@@ -18,6 +18,8 @@ languages:
 administrative_divisions:
   level1:
     type: Parish
+    label_local: Parish
+    label_en: Parish
     source: ../../data/ag_parishes.json
   level2:
     type: Village / Town / Island (Barbuda)
