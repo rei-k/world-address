@@ -17,6 +17,9 @@ languages:
 administrative_divisions:
   level1:
     type: Provincia
+    label_local: Provincia
+    label_es: Provincia
+    label_en: Province
     count: 7
   level2:
     type: Cantón

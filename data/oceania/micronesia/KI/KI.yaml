@@ -27,6 +27,7 @@ languages:
 administrative_divisions:
   level1:
     type: Island Group
+    label_local: Island Group
     label_en: Island Group
     count: 3
     names:

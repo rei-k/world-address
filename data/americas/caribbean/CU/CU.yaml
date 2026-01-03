@@ -29,24 +29,28 @@ languages:
 administrative_divisions:
   level1:
     type: Provincia
+    label_local: Provincia
     label_es: Provincia
     label_en: Province
     count: 15
     source: ../../data/cu_provincias.json
   level2:
     type: Municipio
+    label_local: Municipio
     label_es: Municipio
     label_en: Municipality
     count: null
     source: ../../data/cu_municipios.json
   level3:
     type: Consejo Popular
+    label_local: Consejo Popular
     label_es: Consejo Popular
     label_en: Community Council
     description: This unit is mandatory for commercial/international routing.
     source: ../../data/cu_consejos.json
   level4:
     type: Barrio / Reparto
+    label_local: Barrio / Reparto
     label_es: Barrio / Reparto
     label_en: Neighborhood
     source: ../../data/cu_barrios.json

@@ -25,6 +25,7 @@ languages:
 administrative_divisions:
   level1:
     type: Island / District
+    label_local: Island / District
     label_en: Island / District
     count: 32
     source: ../../data/bs_districts.json

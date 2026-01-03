@@ -28,18 +28,21 @@ languages:
 administrative_divisions:
   level1:
     type: Municipio
+    label_local: Municipio
     label_es: Municipio
     label_en: Municipality
     count: 78
     source: ../../data/pr_municipios.json
   level2:
     type: Barrio
+    label_local: Barrio
     label_es: Barrio
     label_en: District / Community
     count: null
     source: ../../data/pr_barrios.json
   level3:
     type: Sector / Urbanización / Residencial / Condominio
+    label_local: Sector / Urbanización
     label_es: Sector / Urb. / Res. / Cond.
     label_en: Neighborhood / Housing Block
     count: null
