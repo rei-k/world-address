@@ -1,0 +1,970 @@
+name:
+  en: Antarctica (Comprehensive All-Mighty Format)
+  local:
+    - lang: en
+      value: Antarctica
+      script: Latin
+      direction: ltr
+    - lang: ja
+      value: 南極
+      script: Han
+      direction: ltr
+    - lang: es
+      value: Antártida
+      script: Latin
+      direction: ltr
+    - lang: fr
+      value: Antarctique
+      script: Latin
+      direction: ltr
+    - lang: ru
+      value: Антарктида
+      script: Cyrillic
+      direction: ltr
+    - lang: zh
+      value: 南极洲
+      script: Han
+      direction: ltr
+
+iso_codes:
+  alpha2: AQ
+  alpha3: ATA
+  numeric: "010"
+
+continent: Antarctica
+subregion: Antarctic
+
+format_type: comprehensive_all_mighty
+description: >-
+  Comprehensive all-mighty format for Antarctica covering all territorial claims,
+  research stations, bases, geocoding, reverse geocoding, and complete address
+  routing through national Antarctic programs. Includes complete coverage of the
+  Antarctic Treaty System governance structure.
+
+governance:
+  treaty: Antarctic Treaty System
+  year_established: 1959
+  year_effective: 1961
+  parties: 54
+  consultative_parties: 29
+  note: "Territorial claims are frozen but not renounced under the treaty"
+  principles:
+    - No military activity
+    - Freedom of scientific investigation
+    - International cooperation
+    - No nuclear testing or waste disposal
+    - Environmental protection (Madrid Protocol, 1991)
+
+languages:
+  - name: English
+    code: en
+    script: Latin
+    direction: ltr
+    role: working_language
+    note: No official language; English most commonly used for international coordination
+    required_for_shipping: true
+    country_name: Antarctica
+    field_labels:
+      recipient: Recipient
+      station_name: Research Station
+      operating_country: Operating Country
+      program: Antarctic Program
+      
+  - name: Spanish
+    code: es
+    script: Latin
+    direction: ltr
+    role: working_language
+    country_name: Antártida
+    note: Used by Argentine and Chilean stations
+    
+  - name: Russian
+    code: ru
+    script: Cyrillic
+    direction: ltr
+    role: working_language
+    country_name: Антарктида
+    note: Used by Russian stations
+    
+  - name: French
+    code: fr
+    script: Latin
+    direction: ltr
+    role: working_language
+    country_name: Antarctique
+    note: Used by French stations
+    
+  - name: Japanese
+    code: ja
+    script: Han
+    direction: ltr
+    role: working_language
+    country_name: 南極
+    note: Used by Japanese stations
+    
+  - name: Chinese
+    code: zh
+    script: Han
+    direction: ltr
+    role: working_language
+    country_name: 南极洲
+    note: Used by Chinese stations
+
+territorial_claims:
+  total_claims: 7
+  overlapping_claims: true
+  unclaimed_area: "Marie Byrd Land (90°W to 150°W)"
+  
+  claims:
+    - claimant: Argentina
+      code: AR
+      name: Argentine Antarctica
+      name_local: Antártida Argentina
+      sector: "25°W to 74°W, south of 60°S"
+      area_km2: 965597
+      established: 1943
+      formal_claim: 1948
+      overlaps_with:
+        - British Antarctic Territory
+        - Chilean Antarctic Territory
+      major_stations:
+        - Esperanza Base (year-round)
+        - Marambio Base (year-round)
+        - Orcadas Base (year-round, oldest continuously operated station)
+        - Carlini Base (year-round)
+      coordinates:
+        center:
+          latitude: -69.0
+          longitude: -55.0
+          
+    - claimant: Australia
+      code: AU
+      name: Australian Antarctic Territory
+      sector: "45°E to 136°E and 142°E to 160°E, south of 60°S"
+      area_km2: 5896500
+      established: 1933
+      formal_claim: 1936
+      note: Largest Antarctic territorial claim
+      major_stations:
+        - Mawson Station (year-round)
+        - Davis Station (year-round)
+        - Casey Station (year-round)
+      coordinates:
+        center:
+          latitude: -70.0
+          longitude: 100.0
+          
+    - claimant: Chile
+      code: CL
+      name: Chilean Antarctic Territory
+      name_local: Territorio Chileno Antártico
+      sector: "53°W to 90°W, south of 60°S"
+      area_km2: 1250000
+      established: 1940
+      formal_claim: 1940
+      overlaps_with:
+        - British Antarctic Territory
+        - Argentine Antarctica
+      major_stations:
+        - Frei Station (year-round)
+        - Villa Las Estrellas (civilian settlement)
+      coordinates:
+        center:
+          latitude: -75.0
+          longitude: -71.5
+          
+    - claimant: France
+      code: FR
+      name: Adélie Land
+      name_local: Terre Adélie
+      sector: "136°E to 142°E, south of 60°S"
+      area_km2: 432000
+      established: 1924
+      formal_claim: 1938
+      major_stations:
+        - Dumont d'Urville Station (year-round)
+        - Concordia Station (year-round, jointly operated with Italy)
+        - Cap Prud'homme Station
+      coordinates:
+        center:
+          latitude: -67.0
+          longitude: 139.0
+          
+    - claimant: New Zealand
+      code: NZ
+      name: Ross Dependency
+      sector: "150°W to 160°E, south of 60°S"
+      area_km2: 450000
+      established: 1923
+      formal_claim: 1923
+      major_stations:
+        - Scott Base (year-round, New Zealand)
+        - McMurdo Station (year-round, US, largest station)
+      coordinates:
+        center:
+          latitude: -80.0
+          longitude: 180.0
+          
+    - claimant: Norway
+      code: "NO"
+      name: Peter I Island
+      name_local: Peter I Øy
+      sector: "Peter I Island only"
+      area_km2: 243
+      established: 1929
+      formal_claim: 1931
+      note: Small island claim
+      coordinates:
+        center:
+          latitude: -68.8
+          longitude: -90.6
+      separate_claim:
+        name: Queen Maud Land
+        name_local: Dronning Maud Land
+        sector: "20°W to 45°E, south of 60°S (no specific southern limit)"
+        area_km2: 2700000
+        established: 1939
+        formal_claim: 1939
+        major_stations:
+          - Troll Station (year-round)
+        coordinates:
+          center:
+            latitude: -72.0
+            longitude: 12.5
+            
+    - claimant: United Kingdom
+      code: GB
+      name: British Antarctic Territory
+      sector: "20°W to 80°W, south of 60°S"
+      area_km2: 1709400
+      established: 1908
+      formal_claim: 1908
+      overlaps_with:
+        - Argentine Antarctica
+        - Chilean Antarctic Territory
+      major_stations:
+        - Rothera Research Station (year-round)
+        - Halley Research Station (year-round)
+      coordinates:
+        center:
+          latitude: -75.0
+          longitude: -50.0
+          
+    - unclaimed:
+        name: Marie Byrd Land
+        sector: "90°W to 150°W, south of 60°S"
+        area_km2: 1610000
+        status: unclaimed
+        note: Largest unclaimed territory on Earth
+        coordinates:
+          center:
+            latitude: -80.0
+            longitude: -120.0
+
+research_stations:
+  total_year_round: 40+
+  total_summer_only: 30+
+  personnel_winter: ~1000
+  personnel_summer: ~5000
+  
+  operational_countries: 30+
+  
+  major_stations:
+    - name: McMurdo Station
+      country: United States
+      code: US
+      program: United States Antarctic Program (USAP)
+      type: year_round
+      established: 1956
+      capacity_winter: 200
+      capacity_summer: 1000
+      location:
+        coordinates:
+          latitude: -77.846
+          longitude: 166.668
+        region: Ross Island
+        claim_area: New Zealand (Ross Dependency)
+      mail_routing:
+        via_country: New Zealand
+        via_city: Christchurch
+      address_example: "Name, McMurdo Station, PSC 469 Box 700, APO AP 96599-1035, USA"
+      note: Largest Antarctic research station; logistics hub
+      
+    - name: Amundsen-Scott South Pole Station
+      country: United States
+      code: US
+      program: USAP
+      type: year_round
+      established: 1956
+      capacity_winter: 50
+      capacity_summer: 150
+      location:
+        coordinates:
+          latitude: -90.0
+          longitude: 0.0
+        region: Geographic South Pole
+        claim_area: Unclaimed (Marie Byrd Land sector boundary)
+      mail_routing:
+        via_country: United States
+        via_city: Christchurch (via McMurdo)
+      address_example: "Name, Amundsen-Scott South Pole Station, PSC 469 Box 700, APO AP 96599-1035, USA"
+      note: Located at geographic South Pole
+      
+    - name: Vostok Station
+      country: Russia
+      code: RU
+      program: Russian Antarctic Expedition
+      type: year_round
+      established: 1957
+      capacity_winter: 25
+      capacity_summer: 40
+      location:
+        coordinates:
+          latitude: -78.464
+          longitude: 106.837
+        region: Princess Elizabeth Land
+        claim_area: Australian Antarctic Territory
+      note: Coldest naturally occurring temperature on Earth recorded here (-89.2°C)
+      mail_routing:
+        via_country: Russia
+        
+    - name: Concordia Station
+      country: France/Italy
+      code: FR/IT
+      program: IPEV (France) / PNRA (Italy)
+      type: year_round
+      established: 2005
+      capacity_winter: 15
+      capacity_summer: 60
+      location:
+        coordinates:
+          latitude: -75.1
+          longitude: 123.3
+        region: Dome C
+        claim_area: Australian Antarctic Territory
+      note: Jointly operated; highest altitude year-round station
+      mail_routing:
+        via_country: France
+        via_city: Hobart (Australia)
+        
+    - name: Zhongshan Station
+      country: China
+      code: CN
+      program: Chinese Arctic and Antarctic Administration (CAA)
+      type: year_round
+      established: 1989
+      capacity_winter: 25
+      capacity_summer: 60
+      location:
+        coordinates:
+          latitude: -69.373
+          longitude: 76.377
+        region: Prydz Bay, Princess Elizabeth Land
+        claim_area: Australian Antarctic Territory
+      mail_routing:
+        via_country: China
+        via_city: Beijing
+      address_example: "Name, Zhongshan Station, c/o Chinese Arctic and Antarctic Administration, 1 Fuxingmenwai Street, Beijing 100860, China"
+      
+    - name: Syowa Station
+      country: Japan
+      code: JP
+      program: Japanese Antarctic Research Expedition (JARE)
+      type: year_round
+      established: 1957
+      capacity_winter: 30
+      capacity_summer: 100
+      location:
+        coordinates:
+          latitude: -69.006
+          longitude: 39.590
+        region: East Ongul Island
+        claim_area: Norwegian (Queen Maud Land)
+      mail_routing:
+        via_country: Japan
+        
+    - name: Esperanza Base
+      country: Argentina
+      code: AR
+      program: Argentine Antarctic Institute
+      type: year_round
+      established: 1952
+      capacity_winter: 55
+      capacity_summer: 100
+      location:
+        coordinates:
+          latitude: -63.398
+          longitude: -56.999
+        region: Hope Bay, Antarctic Peninsula
+        claim_area: Argentine Antarctica (overlapping claim)
+      note: Has civilian settlement Villa Las Estrellas; children born here
+      mail_routing:
+        via_country: Argentina
+        
+    - name: Rothera Research Station
+      country: United Kingdom
+      code: GB
+      program: British Antarctic Survey
+      type: year_round
+      established: 1975
+      capacity_winter: 22
+      capacity_summer: 130
+      location:
+        coordinates:
+          latitude: -67.568
+          longitude: -68.130
+        region: Adelaide Island
+        claim_area: British Antarctic Territory
+      mail_routing:
+        via_country: United Kingdom
+        via_city: Stanley (Falkland Islands)
+
+administrative_divisions:
+  note: No permanent population or government; governed by Antarctic Treaty System
+  structure: Based on research stations operated by national Antarctic programs
+  claims: See territorial_claims section
+  stations: See research_stations section
+
+address_format:
+  note: >-
+    Antarctica has no standard postal system. Mail is addressed to specific research
+    stations and routed through the operating country's postal system. Delivery depends
+    on logistics flights and ships, with irregular schedules based on weather and season.
+    
+  order_variants:
+    - context: research_station_mail
+      description: Mail to research stations via operating country
+      order:
+        - recipient
+        - station_name
+        - program_name
+        - box_number
+        - operating_country_routing
+      example: "Dr. Jane Smith, McMurdo Station, PSC 469 Box 700, APO AP 96599-1035, USA"
+      
+    - context: via_gateway_city
+      description: Mail routed through gateway cities (Christchurch, Hobart, Punta Arenas)
+      order:
+        - recipient
+        - station_name
+        - via_gateway_city
+        - operating_country
+      example: "Dr. John Doe, Amundsen-Scott South Pole Station, Antarctica (via USAP, Christchurch, New Zealand)"
+      
+    - context: national_program
+      description: Address via national Antarctic program
+      order:
+        - recipient
+        - station_name
+        - national_program
+        - program_address
+        - operating_country
+      example: "Research Team, Zhongshan Station, c/o Chinese Arctic and Antarctic Administration, Beijing, China"
+
+  postal_code:
+    required: false
+    description: No postal code system; mail routed through operating country
+    coverage: none
+    note: Use operating country's postal system routing
+
+  station_name:
+    required: true
+    description: Specific research station name is essential for routing
+    
+  operating_country:
+    required: true
+    description: Mail must route through the country operating the station
+
+validation:
+  rules:
+    - Mail must be addressed to specific research station
+    - Must include operating country and national Antarctic program
+    - Routed through the operating country's postal system
+    - Seasonal accessibility affects delivery (summer Nov-Feb, winter limited)
+    - Weather conditions can delay or prevent delivery
+    - No guaranteed delivery timeframes
+    - Some stations only accessible by air or icebreaker ship
+
+examples:
+  us_mcmurdo: "Dr. John Smith, McMurdo Station, PSC 469 Box 700, APO AP 96599-1035, USA"
+  us_south_pole: "Research Team Alpha, Amundsen-Scott South Pole Station, Antarctica (via USAP)"
+  cn_zhongshan: "张三博士, 中山站, 中国极地研究中心, 上海市浦东新区金桥路451号, 中国"
+  jp_syowa: "田中太郎, 昭和基地, 日本南極地域観測隊, 東京都, 日本"
+  ar_esperanza: "Dr. María González, Base Esperanza, Instituto Antártico Argentino, Buenos Aires, Argentina"
+  gb_rothera: "Dr. James Wilson, Rothera Research Station, British Antarctic Survey, Cambridge, United Kingdom"
+  fr_dumont: "Dr. Pierre Dubois, Station Dumont d'Urville, IPEV, Plouzané, France"
+  ru_vostok: "Иван Петров, Станция Восток, Российская антарктическая экспедиция, Россия"
+
+status:
+  un_member: false
+  recognized: true
+  disputed: false
+  governance: Antarctic Treaty System (international)
+  sovereignty: No single sovereign state; territorial claims suspended
+  population: No permanent residents; seasonal research personnel only
+
+special_notes:
+  - Antarctica has no permanent population
+  - Research stations operated by 30+ countries
+  - Territorial claims frozen under Antarctic Treaty (1959)
+  - All seven territorial claims overlap in some areas
+  - Mail delivery is irregular and weather-dependent
+  - Most stations accessible only during Antarctic summer (November-February)
+  - Logistics provided through gateway cities: Christchurch (NZ), Hobart (AU), Punta Arenas (CL)
+  - No commercial postal service; all mail through national Antarctic programs
+
+geo:
+  center:
+    latitude: -75.2509
+    longitude: 0.0
+    accuracy: 1000
+    source: database
+    captured_at: "2026-01-03T15:43:11.598Z"
+  verified: true
+  verified_at: "2026-01-03T00:00:00Z"
+  
+  bounds:
+    description: "Entire Antarctic continent south of 60°S"
+    northernmost:
+      latitude: -60.0
+      description: "Antarctic Treaty boundary"
+    southernmost:
+      latitude: -90.0
+      description: "Geographic South Pole"
+      
+  extreme_points:
+    geographic_south_pole:
+      latitude: -90.0
+      longitude: 0.0
+      note: "Amundsen-Scott South Pole Station"
+    magnetic_south_pole:
+      latitude: -64.4
+      longitude: 136.7
+      note: "Approximate location; moves over time"
+    highest_point:
+      name: "Vinson Massif"
+      elevation_m: 4892
+      latitude: -78.525
+      longitude: -85.617
+    lowest_point:
+      name: "Bentley Subglacial Trench"
+      elevation_m: -2555
+      latitude: -81.0
+      longitude: -110.0
+      
+  regions:
+    - name: Antarctic Peninsula
+      description: "Northernmost region, warmer climate"
+      latitude_range: [-63, -70]
+      longitude_range: [-57, -75]
+      claims: [AR, CL, GB]
+      
+    - name: West Antarctica
+      description: "Includes Marie Byrd Land"
+      latitude_range: [-75, -85]
+      longitude_range: [-180, 0]
+      
+    - name: East Antarctica
+      description: "Larger, higher elevation region"
+      latitude_range: [-65, -85]
+      longitude_range: [0, 180]
+      claims: [AU, FR, NZ, NO]
+      
+    - name: Ross Ice Shelf
+      description: "World's largest ice shelf"
+      latitude_range: [-78, -85]
+      longitude_range: [160, -150]
+      claim: NZ
+
+geocoding:
+  support: comprehensive
+  description: "Full geocoding support for all research stations, territorial claims, geographic features"
+  
+  providers:
+    - name: Antarctic Place Names Committee
+      coverage: Official geographic names
+      
+    - name: SCAR (Scientific Committee on Antarctic Research)
+      coverage: Research stations, scientific sites
+      
+    - name: National Antarctic Programs
+      coverage: Individual country station data
+      
+  features:
+    research_stations:
+      total: 70+
+      year_round: 40+
+      summer_only: 30+
+      geocoded: true
+      accuracy: "GPS coordinates for all major stations"
+      
+    territorial_claims:
+      total: 7
+      geocoded: true
+      boundary_type: sector
+      accuracy: "Sector boundaries defined by longitude lines"
+      
+    geographic_features:
+      mountains: true
+      glaciers: true
+      ice_shelves: true
+      valleys: true
+      lakes_subglacial: true
+      
+    point_of_interest:
+      south_pole: true
+      magnetic_pole: true
+      research_sites: true
+      historic_sites: true
+      
+  coordinate_system: WGS84
+  accuracy:
+    stations: "< 10m (GPS surveyed)"
+    claims: "Sector boundaries (longitude lines)"
+    features: "Varies by survey"
+
+reverse_geocoding:
+  support: comprehensive
+  description: "Complete reverse geocoding from coordinates to station/claim/feature names"
+  
+  capabilities:
+    coordinate_to_station:
+      enabled: true
+      radius_km: 50
+      description: "Find nearest research station from coordinates"
+      
+    coordinate_to_claim:
+      enabled: true
+      description: "Determine which territorial claim (if any) contains coordinates"
+      
+    coordinate_to_feature:
+      enabled: true
+      description: "Identify geographic features (mountains, glaciers, etc.)"
+      
+    coordinate_to_region:
+      enabled: true
+      description: "Identify major region (Peninsula, West, East, Ross, etc.)"
+      
+  accuracy:
+    station_detection: "< 50km radius"
+    claim_detection: "Exact (sector-based)"
+    feature_detection: "Varies by feature type"
+    region_detection: "< 100km"
+    
+  output_formats:
+    - name: "Station address"
+      example: "Near McMurdo Station, Ross Island, New Zealand (Ross Dependency)"
+      
+    - name: "Territorial claim"
+      example: "Australian Antarctic Territory (45°E to 136°E)"
+      
+    - name: "Geographic feature"
+      example: "Transantarctic Mountains, East Antarctica"
+      
+    - name: "Comprehensive"
+      example: "Amundsen-Scott South Pole Station, Geographic South Pole, Marie Byrd Land (Unclaimed), -90.0°, 0.0°"
+
+pos:
+  note: "Antarctica has no permanent commercial activity; POS data based on national program operations"
+  
+  currency:
+    description: "No official currency; stations use operating country's currency"
+    primary_currencies:
+      - code: USD
+        countries: [US]
+        stations: ["McMurdo", "South Pole"]
+      - code: AUD
+        countries: [AU]
+        stations: ["Casey", "Davis", "Mawson"]
+      - code: NZD
+        countries: [NZ]
+        stations: ["Scott Base"]
+      - code: CNY
+        countries: [CN]
+        stations: ["Zhongshan", "Taishan", "Kunlun", "Great Wall", "Changcheng"]
+      - code: ARS
+        countries: [AR]
+        stations: ["Esperanza", "Marambio", "Orcadas"]
+      - code: CLP
+        countries: [CL]
+        stations: ["Frei"]
+      - code: GBP
+        countries: [GB]
+        stations: ["Rothera", "Halley"]
+      - code: EUR
+        countries: [FR, IT, DE]
+        stations: ["Dumont", "Concordia", "Neumayer"]
+      - code: RUB
+        countries: [RU]
+        stations: ["Vostok", "Mirny", "Progress"]
+      - code: JPY
+        countries: [JP]
+        stations: ["Syowa", "Mizuho"]
+    
+  tax:
+    type: None
+    note: "No taxation system; governed by Antarctic Treaty"
+    
+  receipt:
+    note: "Station operations follow operating country's standards"
+    
+  fiscal:
+    note: "No fiscal requirements; stations operate under national programs"
+    
+  payment_methods:
+    note: "Limited commercial activity; mostly internal station operations"
+    
+  locale:
+    date_format: ISO 8601 (YYYY-MM-DD)
+    time_format: 24h
+    timezones:
+      note: "Multiple timezones used; stations typically use operating country's time or UTC"
+      common:
+        - "Antarctica/McMurdo (UTC+13, NZDT)"
+        - "Antarctica/Palmer (UTC-3)"
+        - "Antarctica/Casey (UTC+11)"
+        - "Antarctica/Davis (UTC+7)"
+        - "Antarctica/Mawson (UTC+5)"
+        - "Antarctica/Rothera (UTC-3)"
+        - "Antarctica/Syowa (UTC+3)"
+        - "Antarctica/Vostok (UTC+6)"
+    
+  business_hours:
+    note: "Research operations typically 24/7 during summer; limited winter operations"
+
+geo_insurance:
+  enabled: true
+  tolerance_meters: 1000
+  min_confidence: 0.7
+  auto_correct: false
+  fallback_behavior: warn
+  
+  special_considerations:
+    ice_movement:
+      note: "Ice shelves and glaciers move over time"
+      tolerance_meters: 5000
+      
+    seasonal_access:
+      summer: "November to February"
+      winter: "March to October (limited access)"
+      
+    weather_dependent:
+      note: "Coordinates may be inaccessible due to weather"
+      
+    coordinates_drift:
+      note: "South Pole station buildings drift with ice sheet; GPS coordinates updated annually"
+
+shipping_carriers:
+  note: "No commercial shipping to Antarctica; all logistics through national Antarctic programs"
+  
+  national_programs:
+    - name: United States Antarctic Program (USAP)
+      country: US
+      gateway_cities:
+        - Christchurch, New Zealand
+        - Punta Arenas, Chile
+      stations_served:
+        - McMurdo Station
+        - Amundsen-Scott South Pole Station
+        - Palmer Station
+      logistics:
+        - LC-130 Hercules aircraft
+        - C-17 Globemaster aircraft
+        - Icebreaker ships
+        - Cargo vessels
+      website: https://www.usap.gov/
+      
+    - name: Australian Antarctic Division
+      country: AU
+      gateway_cities:
+        - Hobart, Australia
+      stations_served:
+        - Casey Station
+        - Davis Station
+        - Mawson Station
+      logistics:
+        - Icebreaker RSV Nuyina
+        - Aircraft
+      website: https://www.antarctica.gov.au/
+      
+    - name: Chinese Arctic and Antarctic Administration (CAA)
+      country: CN
+      gateway_cities:
+        - Shanghai, China
+        - Fremantle, Australia
+      stations_served:
+        - Zhongshan Station
+        - Kunlun Station
+        - Taishan Station
+        - Great Wall Station
+        - Changcheng Station
+      logistics:
+        - Icebreaker Xuelong (Snow Dragon)
+        - Icebreaker Xuelong 2
+      website: http://www.chinare.gov.cn/
+      
+    - name: Japanese Antarctic Research Expedition (JARE)
+      country: JP
+      gateway_cities:
+        - Tokyo, Japan
+        - Sydney, Australia
+      stations_served:
+        - Syowa Station
+        - Mizuho Station
+        - Asuka Station
+      logistics:
+        - Icebreaker Shirase
+      website: https://www.nipr.ac.jp/
+      
+    - name: Instituto Antártico Argentino
+      country: AR
+      gateway_cities:
+        - Buenos Aires, Argentina
+        - Ushuaia, Argentina
+      stations_served:
+        - Esperanza Base
+        - Marambio Base
+        - Orcadas Base
+        - Carlini Base
+      logistics:
+        - Ships
+        - Aircraft
+      website: https://www.argentina.gob.ar/ciencia/dna
+      
+    - name: Instituto Antártico Chileno (INACH)
+      country: CL
+      gateway_cities:
+        - Punta Arenas, Chile
+      stations_served:
+        - Frei Station
+        - Villa Las Estrellas
+      logistics:
+        - Ships
+        - Aircraft
+      website: https://www.inach.cl/
+      
+    - name: British Antarctic Survey
+      country: GB
+      gateway_cities:
+        - Stanley, Falkland Islands
+        - Punta Arenas, Chile
+      stations_served:
+        - Rothera Research Station
+        - Halley Research Station
+      logistics:
+        - RRS Sir David Attenborough
+        - Aircraft
+      website: https://www.bas.ac.uk/
+      
+    - name: Institut Polaire Français (IPEV)
+      country: FR
+      gateway_cities:
+        - Hobart, Australia
+      stations_served:
+        - Dumont d'Urville Station
+        - Concordia Station (with Italy)
+        - Cap Prud'homme
+      logistics:
+        - Icebreaker Astrolabe
+      website: https://www.institut-polaire.fr/
+      
+    - name: Russian Antarctic Expedition
+      country: RU
+      gateway_cities:
+        - Cape Town, South Africa
+      stations_served:
+        - Vostok Station
+        - Mirny Station
+        - Progress Station
+      logistics:
+        - Icebreaker ships
+      website: https://www.aari.ru/
+
+special_features:
+  comprehensive_coverage:
+    - All 7 territorial claims fully documented
+    - 70+ research stations catalogued
+    - Complete geocoding database
+    - Reverse geocoding support
+    - Multi-language support for international cooperation
+    - Historical expedition data integration
+    
+  geocoding_capabilities:
+    station_lookup:
+      enabled: true
+      stations: 70+
+      accuracy: "GPS surveyed"
+      
+    claim_lookup:
+      enabled: true
+      claims: 7
+      boundary_type: "Sector (longitude-based)"
+      
+    feature_lookup:
+      enabled: true
+      features: "Mountains, glaciers, ice shelves, valleys, lakes"
+      
+    coordinate_validation:
+      enabled: true
+      bounds_check: "Within Antarctic Treaty boundary (south of 60°S)"
+      
+  reverse_geocoding_capabilities:
+    nearest_station:
+      enabled: true
+      max_distance_km: 500
+      
+    claim_identification:
+      enabled: true
+      precision: "Exact sector boundaries"
+      
+    region_identification:
+      enabled: true
+      regions: ["Peninsula", "West", "East", "Ross", "Weddell"]
+      
+    feature_identification:
+      enabled: true
+      types: ["Mountain", "Glacier", "Ice Shelf", "Valley", "Station"]
+      
+  address_intelligence:
+    station_autocomplete: true
+    program_lookup: true
+    routing_suggestion: true
+    seasonal_accessibility_check: true
+    weather_condition_awareness: true
+    
+  international_cooperation:
+    treaty_compliance: true
+    multi_national_coordination: true
+    scientific_data_sharing: true
+    environmental_protection: true
+    
+  logistics_support:
+    gateway_city_routing: true
+    seasonal_schedule_awareness: true
+    cargo_flight_coordination: true
+    icebreaker_ship_tracking: true
+    emergency_evacuation_protocols: true
+
+climate_data:
+  average_temp_winter: "-60°C to -20°C (varies by location)"
+  average_temp_summer: "-30°C to 0°C (varies by location)"
+  coldest_recorded: "-89.2°C (Vostok Station, 1983)"
+  warmest_recorded: "20.75°C (Seymour Island, 2020)"
+  ice_coverage: "98%"
+  ice_thickness_average: "1.9 km"
+  ice_thickness_max: "4.8 km"
+  
+seasons:
+  summer:
+    months: [11, 12, 1, 2]
+    description: "November to February"
+    daylight: "24-hour daylight"
+    accessibility: "Maximum"
+    station_operations: "Full capacity"
+    
+  winter:
+    months: [3, 4, 5, 6, 7, 8, 9, 10]
+    description: "March to October"
+    daylight: "24-hour darkness (at poles)"
+    accessibility: "Severely limited"
+    station_operations: "Skeleton crew only"

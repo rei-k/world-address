@@ -46,6 +46,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Sovereign Base Area",
+      "label_local": "Base Area",
       "label_en": "Base Area",
       "count": 2,
       "names": [

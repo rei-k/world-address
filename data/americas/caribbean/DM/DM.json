@@ -33,6 +33,8 @@
   "administrative_divisions": {
     "level1": {
       "type": "Parish",
+      "label_local": "Parish",
+      "label_en": "Parish",
       "count": 10,
       "source": "../../data/dm_parishes.json"
     },

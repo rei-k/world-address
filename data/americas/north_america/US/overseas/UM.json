@@ -29,6 +29,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Island/Atoll",
+      "label_local": "Island / Atoll",
       "label_en": "Island or Atoll",
       "count": 11,
       "description": "Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Atoll, Navassa Island, Palmyra Atoll, Wake Island, Bajo Nuevo Bank, Serranilla Bank"

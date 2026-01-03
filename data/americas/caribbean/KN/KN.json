@@ -27,6 +27,8 @@
   "administrative_divisions": {
     "level1": {
       "type": "Island",
+      "label_local": "Island",
+      "label_en": "Island",
       "values": [
         "Saint Kitts",
         "Nevis"

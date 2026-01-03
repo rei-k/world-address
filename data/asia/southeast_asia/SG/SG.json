@@ -55,6 +55,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Planning Area",
+      "label_local": "Planning Area",
       "label_en": "Planning Area",
       "count": 55,
       "source": "../../data/sg_planning_areas.json"

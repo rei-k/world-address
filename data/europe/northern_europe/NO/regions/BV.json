@@ -39,6 +39,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Uninhabited",
+      "label_local": "No administrative divisions",
       "label_en": "No administrative divisions",
       "count": 0
     }

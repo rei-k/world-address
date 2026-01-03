@@ -36,6 +36,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Island",
+      "label_local": "Island",
       "label_en": "Island",
       "values": [
         "Saint Thomas",
@@ -46,12 +47,14 @@
     },
     "level2": {
       "type": "Subdistrict",
+      "label_local": "Subdistrict",
       "label_en": "Subdistrict",
       "count": null,
       "source": "../../data/vi_subdistricts.json"
     },
     "level3": {
       "type": "Estate",
+      "label_local": "Estate",
       "label_en": "Estate (historical plantation → present local community unit)",
       "count": null,
       "source": "../../data/vi_estates.json"

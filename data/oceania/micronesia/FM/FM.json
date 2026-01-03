@@ -31,6 +31,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "State",
+      "label_local": "State",
       "label_en": "State",
       "count": 4,
       "names": [

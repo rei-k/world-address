@@ -42,6 +42,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Province / Territory",
+      "label_local": "Province / Territoire",
       "label_en": "Province / Territory",
       "label_fr": "Province / Territoire",
       "count": 13,
@@ -49,6 +50,7 @@
     },
     "level2": {
       "type": "Municipality / City / Town",
+      "label_local": "Municipalité",
       "label_en": "Municipality",
       "label_fr": "Municipalité",
       "count": null,
@@ -56,6 +58,7 @@
     },
     "level3": {
       "type": "Locality / Neighborhood / Rural Route",
+      "label_local": "Quartier / Localité",
       "label_en": "Neighborhood / Locality",
       "label_fr": "Quartier / Localité",
       "count": null,

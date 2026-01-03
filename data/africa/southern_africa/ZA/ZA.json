@@ -145,15 +145,21 @@
   "administrative_divisions": {
     "level1": {
       "type": "Province",
+      "label_local": "Province",
+      "label_en": "Province",
       "count": 9,
       "source": "../../data/za_provinces.json"
     },
     "level2": {
       "type": "Municipality",
+      "label_local": "Municipality",
+      "label_en": "Municipality",
       "count": null
     },
     "level3": {
       "type": "Suburb / Township / Locality",
+      "label_local": "Suburb / Township / Locality",
+      "label_en": "Suburb / Township / Locality",
       "count": null
     }
   },

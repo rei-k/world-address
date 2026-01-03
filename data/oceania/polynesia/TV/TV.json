@@ -38,6 +38,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Island Council",
+      "label_local": "Island Council",
       "label_en": "Island Council",
       "count": 8
     }

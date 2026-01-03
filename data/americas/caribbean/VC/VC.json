@@ -27,6 +27,8 @@
   "administrative_divisions": {
     "level1": {
       "type": "Parish",
+      "label_local": "Parish",
+      "label_en": "Parish",
       "source": "../../data/vc_parishes.json"
     },
     "level2": {

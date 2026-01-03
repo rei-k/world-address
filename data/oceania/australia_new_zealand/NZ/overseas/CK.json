@@ -48,6 +48,7 @@
   "administrative_divisions": {
     "level1": {
       "type": "Island",
+      "label_local": "Island",
       "label_en": "Island",
       "count": 15,
       "note": "15 islands divided into Northern and Southern groups"
